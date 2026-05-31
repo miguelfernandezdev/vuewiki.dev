@@ -1,75 +1,50 @@
-# Nuxt Minimal Starter
+# VueWiki.dev
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Vue.js interview questions with answers and code examples. Built with [VitePress](https://vitepress.dev/).
 
-## Setup
+**[vuewiki.vercel.app](https://vuewiki.vercel.app)**
 
-Make sure to install dependencies:
+## Features
+
+- 30 questions across beginner, intermediate, and advanced levels
+- Filter by difficulty and topic tags
+- Full-text search
+- Dark/light mode
+- i18n (English + Spanish)
+- Syntax-highlighted code examples
+
+## Development
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The site runs at `http://localhost:5173`.
 
-Build the application for production:
+## Build
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Project structure
+
+```text
+docs/
+  .vitepress/
+    config.ts          # VitePress config (i18n, search, nav)
+    theme/             # Custom theme (homepage, question layout, i18n)
+  q/                   # English question markdown files
+  es/q/                # Spanish question markdown files
+  public/              # Static assets
+```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add questions, fix answers, or translate content.
+
+## License
+
+MIT
