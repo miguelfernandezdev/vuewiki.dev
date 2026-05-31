@@ -19,7 +19,18 @@
 - [ ] More advanced Vue questions (v-model internals, generics, defineExpose, state management patterns)
 - [ ] Practical debugging and design scenario questions
 
-## Phase 3 — Community
+## Phase 3 — VitePress polish
+
+Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how mature VitePress sites are structured (vitepress.dev, pinia.vuejs.org, vuefire.vuejs.org, pinia-colada.esm.dev) and align.
+
+- [ ] Review layout and navigation against reference VitePress projects
+- [ ] Adopt VitePress sidebar, navbar, and footer conventions
+- [ ] Improve Contributing page (follow patterns from Pinia, VueFire, etc.)
+- [ ] Add useful links section (ecosystem, resources, related projects)
+- [ ] Polish homepage to feel native to VitePress, not a custom SPA
+- [ ] Review theme customization (hero, features, team page, etc.)
+
+## Phase 4 — Community
 
 - [x] Built-in search (VitePress local search)
 - [x] Contribution guide
@@ -27,7 +38,7 @@
 - [ ] Open Graph images for social sharing
 - [ ] Analytics
 
-## Phase 4 — Beyond interviews
+## Phase 5 — Beyond interviews
 
 - [ ] Vue 3 migration guides
 - [ ] Pinia patterns and best practices
