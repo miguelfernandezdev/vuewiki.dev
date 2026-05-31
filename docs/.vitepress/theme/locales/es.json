@@ -3,7 +3,7 @@
     "questions": "{count} preguntas"
   },
   "footer": {
-    "builtWith": "Hecho con Nuxt. Código abierto en",
+    "builtWith": "Hecho con VitePress. Código abierto en",
     "github": "GitHub"
   },
   "home": {
@@ -34,10 +34,6 @@
     "migration": "Migración"
   },
   "detail": {
-    "back": "Todas las preguntas"
-  },
-  "seo": {
-    "title": "VueWiki.dev — Preguntas de entrevista de Vue.js con respuestas y ejemplos",
-    "description": "Domina Vue.js con preguntas reales de entrevista, respuestas claras y ejemplos de código."
+    "back": "← Todas las preguntas"
   }
 }

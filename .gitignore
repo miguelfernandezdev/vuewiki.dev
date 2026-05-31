@@ -1,12 +1,8 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
 
-# Node dependencies
+# Node
 node_modules
 
 # Logs
@@ -23,7 +19,8 @@ logs
 .env.*
 !.env.example
 
-# AI agent skills (installed via `npx autoskills`)
+# AI agent skills
 .agents/
 .claude/skills/
 .kiro/
+.vercel

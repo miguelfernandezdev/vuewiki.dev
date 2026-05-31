@@ -3,24 +3,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["better-sqlite3"]
+    "onlyBuiltDependencies": ["esbuild"]
   },
-  "dependencies": {
-    "@nuxt/content": "^3.14.0",
-    "@nuxt/ui": "^4.8.1",
-    "@nuxtjs/i18n": "^10.4.0",
-    "@nuxtjs/mdc": "^0.22.0",
-    "better-sqlite3": "^12.10.0",
-    "nuxt": "^4.4.6",
-    "tailwindcss": "^4.3.0",
-    "vue": "^3.5.34",
-    "vue-router": "^5.0.7"
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.34"
   }
 }
