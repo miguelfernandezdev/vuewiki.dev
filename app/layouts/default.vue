@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t, locale: currentLocale, locales, setLocale } = useI18n()
 const totalQuestions = 30
 </script>
 
@@ -14,8 +15,17 @@ const totalQuestions = 30
 
       <template #right>
         <UBadge color="neutral" variant="subtle">
-          {{ totalQuestions }} questions
+          {{ t('header.questions', { count: totalQuestions }) }}
         </UBadge>
+        <UButton
+          v-for="locale in locales"
+          :key="locale.code"
+          :label="locale.code.toUpperCase()"
+          :color="currentLocale === locale.code ? 'primary' : 'neutral'"
+          :variant="currentLocale === locale.code ? 'solid' : 'ghost'"
+          size="xs"
+          @click="setLocale(locale.code)"
+        />
         <UButton
           to="https://github.com/miguelfernandezdev/vuewiki.dev"
           target="_blank"
@@ -33,12 +43,12 @@ const totalQuestions = 30
 
     <footer class="border-t border-(--ui-border) mt-16">
       <div class="max-w-4xl mx-auto px-4 py-6 text-center text-sm text-(--ui-text-muted)">
-        Built with Nuxt. Open source on
+        {{ t('footer.builtWith') }}
         <ULink
           to="https://github.com/miguelfernandezdev/vuewiki.dev"
           target="_blank"
         >
-          GitHub
+          {{ t('footer.github') }}
         </ULink>.
       </div>
     </footer>

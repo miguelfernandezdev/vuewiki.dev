@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 interface Question {
   id: number
   title: string
@@ -56,16 +58,16 @@ const difficultyColor = {
 }
 
 const filters = [
-  { label: 'All', value: null },
-  { label: 'Beginner', value: 'beginner' },
-  { label: 'Intermediate', value: 'intermediate' },
-  { label: 'Advanced', value: 'advanced' },
+  { label: t('filters.all'), value: null },
+  { label: t('filters.beginner'), value: 'beginner' },
+  { label: t('filters.intermediate'), value: 'intermediate' },
+  { label: t('filters.advanced'), value: 'advanced' },
 ]
 
 useHead({
-  title: 'VueWiki.dev — Vue.js interview questions with answers and examples',
+  title: t('seo.title'),
   meta: [
-    { name: 'description', content: 'Master Vue.js with real interview questions, clear answers, and code examples.' },
+    { name: 'description', content: t('seo.description') },
   ],
 })
 </script>
@@ -74,16 +76,16 @@ useHead({
   <div>
     <section class="text-center mb-10">
       <h1 class="text-4xl sm:text-5xl font-bold text-(--ui-text) mb-4">
-        Vue.js Interview Questions
+        {{ t('home.title') }}
       </h1>
       <p class="text-lg text-(--ui-text-muted) mb-8">
-        {{ questions.length }} questions with answers and code examples
+        {{ t('home.subtitle', { count: questions.length }) }}
       </p>
 
       <div class="max-w-xl mx-auto">
         <UInput
           v-model="search"
-          placeholder="Search questions..."
+          :placeholder="t('home.searchPlaceholder')"
           icon="i-lucide-search"
           size="lg"
         />
@@ -120,14 +122,14 @@ useHead({
               variant="subtle"
               class="shrink-0"
             >
-              {{ question.difficulty }}
+              {{ t(`filters.${question.difficulty}`) }}
             </UBadge>
           </div>
         </UCard>
       </div>
 
       <p v-if="filteredQuestions.length === 0" class="text-center text-(--ui-text-muted) py-8">
-        No questions match your search.
+        {{ t('home.noResults') }}
       </p>
     </section>
   </div>
