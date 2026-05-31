@@ -1,6 +1,6 @@
 ---
 order: 15
-title: "How do you test Vue components with Vitest?"
+title: "¿Cómo se testean componentes Vue con Vitest?"
 difficulty: "intermediate"
 tags: ["testing"]
 ---
@@ -36,7 +36,7 @@ describe('TodoList', () => {
 })
 ```
 
-**Testing composables:**
+**Testear composables:**
 ```ts
 import { useCounter } from '../useCounter'
 

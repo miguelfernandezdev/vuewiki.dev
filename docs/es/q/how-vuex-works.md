@@ -1,28 +1,28 @@
 ---
 order: 10
-title: "How does Vuex work?"
+title: "¿Cómo funciona Vuex?"
 difficulty: "beginner"
 tags: ["state-management"]
 ---
 
-Vuex follows the Flux pattern: **State → Getters → Mutations → Actions**
+Vuex sigue el patrón Flux: **State → Getters → Mutations → Actions**
 
 ```ts
 const store = createStore({
   state: { count: 0 },
 
-  // Getters: computed values from the store
+  // Getters: valores computados del store
   getters: {
     doubled: (state) => state.count * 2
   },
 
-  // Mutations: ONLY way to mutate state (synchronous)
+  // Mutations: ÚNICA forma de mutar el estado (síncronas)
   mutations: {
     INCREMENT(state) { state.count++ },
     SET_COUNT(state, value: number) { state.count = value }
   },
 
-  // Actions: can be async, call mutations via commit
+  // Actions: pueden ser asíncronas, llaman a mutations mediante commit
   actions: {
     async fetchCount({ commit }) {
       const response = await fetch('/api/count')
@@ -32,7 +32,7 @@ const store = createStore({
   }
 })
 
-// In a component:
+// En un componente:
 store.state.count
 store.getters.doubled
 store.commit('INCREMENT')

@@ -1,6 +1,6 @@
 ---
 order: 5
-title: "How do you emit events with TypeScript?"
+title: "¿Cómo se emiten eventos con TypeScript?"
 difficulty: "beginner"
 tags: ["typescript", "components"]
 ---
@@ -13,7 +13,7 @@ const emit = defineEmits<{
   submit: []
 }>()
 
-// Usage:
+// Uso:
 emit('update', 'new value')
 emit('delete', 42)
 emit('submit')

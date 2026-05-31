@@ -1,21 +1,21 @@
 ---
 order: 23
-title: "How would you design a shared component library?"
+title: "¿Cómo diseñarías una librería de componentes compartida?"
 difficulty: "advanced"
 tags: ["components", "architecture"]
 ---
 
-1. **Separate package** (monorepo or standalone repo)
-2. **Each component:** Typed props, typed emits, slots for flexibility
-3. **Documentation:** VitePress or Storybook with interactive examples
-4. **Design tokens:** CSS custom properties for theming (`--color-primary`, etc.)
-5. **Testing:** Vitest for unit tests + visual regression tests
-6. **Versioning:** Semver so teams can upgrade at their own pace
-7. **Tree-shaking:** Named exports so only what's used gets included
-8. **Accessibility:** ARIA, keyboard navigation, focus management
+1. **Paquete separado** (monorepo o repositorio independiente)
+2. **Cada componente:** Props tipadas, emits tipados, slots para flexibilidad
+3. **Documentación:** VitePress o Storybook con ejemplos interactivos
+4. **Design tokens:** Custom properties de CSS para theming (`--color-primary`, etc.)
+5. **Testing:** Vitest para tests unitarios + tests de regresión visual
+6. **Versionado:** Semver para que cada equipo pueda actualizar a su ritmo
+7. **Tree-shaking:** Named exports para que solo se incluya lo que se usa
+8. **Accesibilidad:** ARIA, navegación por teclado, gestión del foco
 
 ```ts
-// Good library component
+// Buen componente de librería
 <script setup lang="ts">
 interface Props {
   variant?: 'primary' | 'secondary' | 'danger'

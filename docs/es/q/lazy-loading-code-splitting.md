@@ -1,12 +1,12 @@
 ---
 order: 30
-title: "How would you implement lazy loading and code splitting?"
+title: "¿Cómo implementarías lazy loading y code splitting?"
 difficulty: "advanced"
 tags: ["performance", "vue-router"]
 ---
 
 ```ts
-// Lazy loaded routes
+// Rutas con carga diferida
 const routes = [
   {
     path: '/dashboard',
@@ -14,7 +14,7 @@ const routes = [
   }
 ]
 
-// Async component with loading/error states
+// Componente asíncrono con estados de carga y error
 import { defineAsyncComponent } from 'vue'
 
 const HeavyChart = defineAsyncComponent({
@@ -26,4 +26,4 @@ const HeavyChart = defineAsyncComponent({
 })
 ```
 
-**Vite automatically** does code splitting on dynamic imports. Each `() => import(...)` becomes a separate chunk.
+**Vite automáticamente** hace code splitting en los imports dinámicos. Cada `() => import(...)` se convierte en un chunk separado.

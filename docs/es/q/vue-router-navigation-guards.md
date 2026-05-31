@@ -1,6 +1,6 @@
 ---
 order: 18
-title: "How does Vue Router work and what are navigation guards?"
+title: "¿Cómo funciona Vue Router y qué son los navigation guards?"
 difficulty: "intermediate"
 tags: ["vue-router"]
 ---
@@ -21,7 +21,7 @@ const router = createRouter({
   ]
 })
 
-// Global guard
+// Guard global
 router.beforeEach((to, from) => {
   if (to.meta.requiresAuth && !isAuthenticated()) {
     return { path: '/login', query: { redirect: to.fullPath } }
@@ -30,7 +30,7 @@ router.beforeEach((to, from) => {
 ```
 
 ```vue
-<!-- In-component guard -->
+<!-- Guard dentro del componente -->
 <script setup>
 import { onBeforeRouteLeave } from 'vue-router'
 

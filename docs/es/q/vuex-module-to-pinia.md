@@ -1,12 +1,12 @@
 ---
 order: 28
-title: "How would you migrate a Vuex module to Pinia?"
+title: "¿Cómo migrarías un módulo de Vuex a Pinia?"
 difficulty: "advanced"
 tags: ["state-management", "migration"]
 ---
 
 ```ts
-// BEFORE: Vuex module
+// ANTES: Módulo de Vuex
 const cartModule = {
   state: () => ({ items: [], total: 0 }),
   getters: {
@@ -25,7 +25,7 @@ const cartModule = {
   }
 }
 
-// AFTER: Pinia store
+// DESPUÉS: Store de Pinia
 export const useCartStore = defineStore('cart', () => {
   const items = ref<CartItem[]>([])
   const total = computed(() => items.value.reduce((sum, i) => sum + i.price, 0))
@@ -43,4 +43,4 @@ export const useCartStore = defineStore('cart', () => {
 })
 ```
 
-**Key changes:** No mutations, total is computed (not manual state), no `commit`/`dispatch` needed.
+**Cambios clave:** Sin mutations, el total es computed (no estado manual), no se necesita `commit`/`dispatch`.

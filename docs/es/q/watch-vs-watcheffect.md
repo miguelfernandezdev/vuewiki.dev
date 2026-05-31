@@ -1,31 +1,32 @@
 ---
 order: 11
-title: "What's the difference between watch and watchEffect?"
+title: "¿Cuál es la diferencia entre watch y watchEffect?"
 difficulty: "intermediate"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`watch`** — Watches specific sources. Receives old and new values. Only runs when the explicit sources change.
-- **`watchEffect`** — Auto-detects dependencies. Runs immediately and re-runs when any reactive dependency changes.
+- **`watch`** — Observa fuentes específicas. Recibe los valores anterior y nuevo. Solo se ejecuta cuando cambian las fuentes explícitas.
+- **`watchEffect`** — Detecta dependencias automáticamente. Se ejecuta de forma inmediata y vuelve a ejecutarse cuando cambia cualquier dependencia reactiva.
 
 ```ts
-// watch: explicit
+// watch: explícito
 watch(count, (newVal, oldVal) => {
   console.log(`${oldVal} → ${newVal}`)
 })
 
-// watch: multiple sources
+// watch: múltiples fuentes
 watch([firstName, lastName], ([newFirst, newLast]) => {
   console.log(`${newFirst} ${newLast}`)
 })
 
-// watchEffect: auto-tracking
+// watchEffect: seguimiento automático
 watchEffect(() => {
-  // Re-runs automatically when count.value changes
+  // Se vuelve a ejecutar automáticamente cuando count.value cambia
   console.log(`count is ${count.value}`)
 })
 ```
 
-**When to use which:**
-- `watch` when you need the previous value, or when you need to control exactly what you observe
-- `watchEffect` for simple side effects that depend on reactive data
+**Cuándo usar cada uno:**
+
+- `watch` cuando necesitas el valor anterior, o cuando necesitas controlar exactamente qué observas
+- `watchEffect` para efectos secundarios simples que dependen de datos reactivos

@@ -1,16 +1,16 @@
 ---
 order: 12
-title: "How does v-model work on custom components?"
+title: "¿Cómo funciona v-model en componentes personalizados?"
 difficulty: "intermediate"
 tags: ["components", "directives"]
 ---
 
-`v-model` on a component is syntactic sugar for prop + emit:
+`v-model` en un componente es azúcar sintáctico para prop + emit:
 
 ```vue
-<!-- Parent -->
+<!-- Padre -->
 <SearchInput v-model="query" />
-<!-- Equivalent to: -->
+<!-- Equivalente a: -->
 <SearchInput :modelValue="query" @update:modelValue="query = $event" />
 ```
 
@@ -25,7 +25,7 @@ const model = defineModel<string>()
 </template>
 ```
 
-**Multiple v-models:**
+**Múltiples v-models:**
 ```vue
 <UserForm v-model:name="userName" v-model:email="userEmail" />
 ```

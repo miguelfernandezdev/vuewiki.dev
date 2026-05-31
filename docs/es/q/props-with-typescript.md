@@ -1,13 +1,13 @@
 ---
 order: 4
-title: "How do you declare props with TypeScript in Vue 3?"
+title: "¿Cómo se declaran props con TypeScript en Vue 3?"
 difficulty: "beginner"
 tags: ["typescript", "components"]
 ---
 
 ```vue
 <script setup lang="ts">
-// With interface
+// Con interfaz
 interface Props {
   title: string
   count?: number
@@ -20,4 +20,4 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
-`defineProps` is a **compiler macro** — it's not imported, Vue processes it at build time.
+`defineProps` es una **macro del compilador** — no se importa, Vue la procesa en tiempo de compilación.

@@ -1,32 +1,32 @@
 ---
 order: 13
-title: "What are slots and what are they used for?"
+title: "¿Qué son los slots y para qué sirven?"
 difficulty: "intermediate"
 tags: ["components"]
 ---
 
-Slots allow a parent component to inject content into a child component. Three types:
+Los slots permiten que un componente padre inyecte contenido en un componente hijo. Hay tres tipos:
 
 ```vue
 <!-- Card.vue -->
 <template>
   <div class="card">
-    <!-- Default slot -->
+    <!-- Slot por defecto -->
     <slot />
 
-    <!-- Named slot -->
+    <!-- Slot con nombre -->
     <header>
       <slot name="header" />
     </header>
 
-    <!-- Scoped slot: passes data to the parent -->
+    <!-- Scoped slot: pasa datos al padre -->
     <slot name="item" :data="internalData" :index="currentIndex" />
   </div>
 </template>
 ```
 
 ```vue
-<!-- Usage -->
+<!-- Uso -->
 <Card>
   <p>Default slot content</p>
 
@@ -40,4 +40,4 @@ Slots allow a parent component to inject content into a child component. Three t
 </Card>
 ```
 
-**Scoped slots** are very powerful — they let the parent decide how to render data from the child (render delegation pattern).
+Los **scoped slots** son muy potentes: permiten que el padre decida cómo renderizar datos que provienen del hijo (patrón de delegación de renderizado).

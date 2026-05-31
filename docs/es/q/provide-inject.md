@@ -1,18 +1,18 @@
 ---
 order: 14
-title: "What is Provide/Inject?"
+title: "¿Qué es Provide/Inject?"
 difficulty: "intermediate"
 tags: ["components", "composition-api"]
 ---
 
-Dependency injection in Vue. Allows passing data from an ancestor to any descendant without prop drilling.
+Inyección de dependencias en Vue. Permite pasar datos desde un ancestro a cualquier descendiente sin prop drilling.
 
 ```ts
-// Parent/Ancestor
+// Padre/Ancestro
 import { provide, ref } from 'vue'
 import type { InjectionKey } from 'vue'
 
-// Typed key for safety
+// Clave tipada para mayor seguridad
 export const UserKey: InjectionKey<Ref<User>> = Symbol('user')
 
 const user = ref<User>({ name: 'John' })
@@ -20,13 +20,13 @@ provide(UserKey, user)
 ```
 
 ```ts
-// Any descendant (at any depth)
+// Cualquier descendiente (a cualquier nivel de profundidad)
 import { inject } from 'vue'
 import { UserKey } from '@/keys'
 
 const user = inject(UserKey) // Ref<User> | undefined
-// With default value:
+// Con valor por defecto:
 const user = inject(UserKey, ref({ name: 'Guest' }))
 ```
 
-**Use cases:** Theme, auth context, global config, table/form context.
+**Casos de uso:** Tema visual, contexto de autenticación, configuración global, contexto de tablas o formularios.

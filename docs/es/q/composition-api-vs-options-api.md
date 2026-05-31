@@ -1,14 +1,14 @@
 ---
 order: 1
-title: "What is the Composition API and how does it differ from the Options API?"
+title: "¿Qué es la Composition API y en qué se diferencia de la Options API?"
 difficulty: "beginner"
 tags: ["composition-api"]
 ---
 
-The **Options API** (Vue 2) organizes code by option type (`data`, `methods`, `computed`, `watch`). The **Composition API** (Vue 3) organizes code by logic/feature, using functions like `ref()`, `computed()`, `watch()` inside `setup()` or `<script setup>`.
+La **Options API** (Vue 2) organiza el código por tipo de opción (`data`, `methods`, `computed`, `watch`). La **Composition API** (Vue 3) organiza el código por lógica/funcionalidad, usando funciones como `ref()`, `computed()`, `watch()` dentro de `setup()` o `<script setup>`.
 
 ```vue
-<!-- Options API (Vue 2 style) -->
+<!-- Options API (estilo Vue 2) -->
 <script>
 export default {
   data() {
@@ -33,4 +33,4 @@ function increment() { count.value++ }
 </script>
 ```
 
-**Key advantage:** In the Composition API, related logic stays together (instead of being scattered across `data`, `methods`, etc.), making it easy to extract into reusable **composables**.
+**Ventaja clave:** Con la Composition API, la lógica relacionada se mantiene junta (en lugar de estar dispersa entre `data`, `methods`, etc.), lo que facilita extraerla en **composables** reutilizables.

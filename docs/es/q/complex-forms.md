@@ -1,6 +1,6 @@
 ---
 order: 27
-title: "How would you handle complex forms in Vue?"
+title: "¿Cómo gestionarías formularios complejos en Vue?"
 difficulty: "advanced"
 tags: ["components", "composables"]
 ---

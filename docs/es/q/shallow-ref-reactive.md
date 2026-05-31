@@ -1,23 +1,23 @@
 ---
 order: 22
-title: "When would you use shallowRef / shallowReactive?"
+title: "¿Cuándo usarías shallowRef / shallowReactive?"
 difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-When you have large objects that don't need deep reactivity:
+Cuando tienes objetos grandes que no necesitan reactividad profunda:
 
 ```ts
-// ❌ Deep reactive on an array of 10,000 items = slow
+// ❌ Reactividad profunda en un array de 10.000 elementos = lento
 const items = ref<Item[]>(hugeArray)
 
-// ✅ Shallow: only reacts if you reassign the ref, not if you change an item
+// ✅ Shallow: solo reacciona si reasignas el ref, no si cambias un elemento
 const items = shallowRef<Item[]>(hugeArray)
 
-// To update, you need to reassign:
+// Para actualizar, hay que reasignar:
 items.value = [...items.value, newItem]
-// Or force trigger:
+// O forzar el trigger:
 triggerRef(items)
 ```
 
-**Use cases:** Large lists, API data that isn't edited inline, complex config objects.
+**Casos de uso:** Listas grandes, datos de API que no se editan directamente, objetos de configuración complejos.

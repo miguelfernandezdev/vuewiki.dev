@@ -1,11 +1,11 @@
 ---
 order: 6
-title: "What's the difference between v-if and v-show?"
+title: "¿Cuál es la diferencia entre v-if y v-show?"
 difficulty: "beginner"
 tags: ["directives"]
 ---
 
-- **`v-if`** — Mounts/unmounts the element from the DOM. More expensive to toggle, but doesn't render if initially `false`.
-- **`v-show`** — Always mounts the element, just toggles `display: none`. More efficient for frequent toggles.
+- **`v-if`** — Monta y desmonta el elemento del DOM. Más costoso de alternar, pero no renderiza nada si la condición inicial es `false`.
+- **`v-show`** — Siempre monta el elemento, solo alterna `display: none`. Más eficiente para toggles frecuentes.
 
-**Rule:** `v-if` for conditions that rarely change. `v-show` for frequent toggles (tabs, dropdowns).
+**Regla:** `v-if` para condiciones que cambian raramente. `v-show` para toggles frecuentes (tabs, dropdowns).

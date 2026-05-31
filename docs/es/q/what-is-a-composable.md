@@ -1,11 +1,11 @@
 ---
 order: 8
-title: "What is a composable?"
+title: "¿Qué es un composable?"
 difficulty: "beginner"
 tags: ["composables", "composition-api"]
 ---
 
-A function that encapsulates reusable logic using the Composition API. Equivalent to React **custom hooks**. Convention: name starts with `use`.
+Una función que encapsula lógica reutilizable usando la Composition API. Es el equivalente a los **custom hooks** de React. Convención: el nombre empieza por `use`.
 
 ```ts
 // composables/useCounter.ts
@@ -23,7 +23,7 @@ export function useCounter(initial = 0) {
 ```
 
 ```vue
-<!-- Usage in a component -->
+<!-- Uso en un componente -->
 <script setup>
 import { useCounter } from '@/composables/useCounter'
 const { count, doubled, increment } = useCounter(10)

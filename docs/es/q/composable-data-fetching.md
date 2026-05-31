@@ -1,6 +1,6 @@
 ---
 order: 16
-title: "How would you build a composable for data fetching?"
+title: "¿Cómo construirías un composable para peticiones de datos?"
 difficulty: "intermediate"
 tags: ["composables"]
 ---
@@ -28,7 +28,7 @@ export function useFetch<T>(url: string | Ref<string>) {
     }
   }
 
-  // If url is reactive, re-fetch when it changes
+  // Si la url es reactiva, vuelve a hacer la petición cuando cambie
   if (typeof url !== 'string') {
     watchEffect(() => { execute() })
   } else {

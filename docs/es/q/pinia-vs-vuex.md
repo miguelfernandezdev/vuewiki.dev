@@ -1,23 +1,23 @@
 ---
 order: 9
-title: "What is Pinia and how does it differ from Vuex?"
+title: "¿Qué es Pinia y en qué se diferencia de Vuex?"
 difficulty: "beginner"
 tags: ["state-management"]
 ---
 
-**Pinia** is the official store for Vue 3 (replaces Vuex). Key differences:
+**Pinia** es el store oficial de Vue 3 (reemplaza a Vuex). Diferencias clave:
 
 | | Vuex | Pinia |
 |---|---|---|
-| Mutations | Yes (required) | Don't exist |
-| TypeScript | Limited support | Native support |
-| Stores | Modules inside 1 store | Independent stores |
-| Syntax | Options or Setup | Options or Setup |
-| DevTools | Yes | Yes |
-| Composition | Complex (namespaced modules) | Simple (import and use) |
+| Mutations | Sí (obligatorias) | No existen |
+| TypeScript | Soporte limitado | Soporte nativo |
+| Stores | Módulos dentro de 1 store | Stores independientes |
+| Sintaxis | Options o Setup | Options o Setup |
+| DevTools | Sí | Sí |
+| Composición | Compleja (módulos con namespace) | Simple (importar y usar) |
 
 ```ts
-// Pinia store
+// Store de Pinia
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 

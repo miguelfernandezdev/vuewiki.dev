@@ -1,6 +1,6 @@
 ---
 order: 25
-title: "How would you test a composable that fetches data?"
+title: "¿Cómo testearías un composable que hace fetch de datos?"
 difficulty: "advanced"
 tags: ["testing", "composables"]
 ---
@@ -10,7 +10,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { useFetch } from '../useFetch'
 import { flushPromises } from '@vue/test-utils'
 
-// Mock global fetch
+// Mock del fetch global
 const mockFetch = vi.fn()
 global.fetch = mockFetch
 

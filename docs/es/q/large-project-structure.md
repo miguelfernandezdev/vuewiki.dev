@@ -1,6 +1,6 @@
 ---
 order: 29
-title: "How would you structure a large Vue project?"
+title: "¿Cómo estructurarías un proyecto Vue grande?"
 difficulty: "advanced"
 tags: ["architecture"]
 ---
@@ -21,9 +21,10 @@ src/
 └── App.vue
 ```
 
-**Principles:**
-- Generic UI components separate from business components
-- Composables for reusable logic
-- One store per domain (not one giant store)
-- Shared types in their own folder
-- API layer separate from components
+**Principios:**
+
+- Componentes de UI genéricos separados de los componentes de negocio
+- Composables para lógica reutilizable
+- Un store por dominio (no un único store gigante)
+- Tipos compartidos en su propia carpeta
+- Capa de API separada de los componentes

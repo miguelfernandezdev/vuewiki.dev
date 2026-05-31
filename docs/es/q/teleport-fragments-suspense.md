@@ -1,18 +1,18 @@
 ---
 order: 19
-title: "What are Teleport, Fragments, and Suspense?"
+title: "¿Qué son Teleport, Fragments y Suspense?"
 difficulty: "intermediate"
 tags: ["components"]
 ---
 
-**Teleport** — Renders DOM in a different part of the tree (like React Portals):
+**Teleport** — Renderiza el DOM en otra parte del árbol (similar a los Portals de React):
 ```vue
 <Teleport to="body">
   <Modal v-if="showModal" @close="showModal = false" />
 </Teleport>
 ```
 
-**Fragments** — Multiple root nodes (Vue 2 required a single root):
+**Fragments** — Múltiples nodos raíz (Vue 2 exigía un único nodo raíz):
 ```vue
 <template>
   <header>Header</header>
@@ -21,7 +21,7 @@ tags: ["components"]
 </template>
 ```
 
-**Suspense** — Handles async components with a fallback:
+**Suspense** — Gestiona componentes asíncronos con un fallback mientras cargan:
 ```vue
 <Suspense>
   <template #default>

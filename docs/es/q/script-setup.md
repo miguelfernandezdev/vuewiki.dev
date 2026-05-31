@@ -1,18 +1,19 @@
 ---
 order: 3
-title: "What is script setup?"
+title: "¿Qué es script setup?"
 difficulty: "beginner"
 tags: ["composition-api"]
 ---
 
-Syntactic sugar for the Composition API that removes boilerplate:
-- No `return` needed — everything declared is available in the template
-- No `export default` needed
-- `defineProps`, `defineEmits`, `defineModel` are compiler macros (not imports)
+Azúcar sintáctico para la Composition API que elimina el código repetitivo:
+
+- No hace falta `return` — todo lo que se declara está disponible en la plantilla
+- No hace falta `export default`
+- `defineProps`, `defineEmits`, `defineModel` son macros del compilador (no se importan)
 
 ```vue
 <script setup lang="ts">
-// Everything here is automatically accessible in the template
+// Todo lo que se declara aquí es accesible automáticamente en la plantilla
 import { ref } from 'vue'
 
 const count = ref(0)

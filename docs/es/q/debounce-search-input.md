@@ -1,6 +1,6 @@
 ---
 order: 17
-title: "How would you implement debounce on a search input?"
+title: "¿Cómo implementarías debounce en un campo de búsqueda?"
 difficulty: "intermediate"
 tags: ["composables", "performance"]
 ---
@@ -28,7 +28,7 @@ watch(searchQuery, (newVal) => {
 </template>
 ```
 
-**As a reusable composable:**
+**Como composable reutilizable:**
 ```ts
 import { ref, watch, type Ref } from 'vue'
 
