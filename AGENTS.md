@@ -4,32 +4,52 @@ This file provides guidance to AI coding agents working with code in this reposi
 
 ## Project
 
-VueWiki.dev is a Vue.js interview Q&A site with questions organized by difficulty (beginner, intermediate, advanced). Built with Nuxt 4, Nuxt UI v4, and Tailwind CSS v4.
+VueWiki.dev is a Vue.js interview Q&A site with 30 questions organized by difficulty (beginner, intermediate, advanced) and topic tags. Built with VitePress.
 
 ## Commands
 
-- `pnpm dev` — start dev server (localhost:3000)
-- `pnpm build` — production build
-- `pnpm generate` — static site generation
+- `pnpm dev` — start dev server (localhost:5173)
+- `pnpm build` — static site build
 - `pnpm preview` — preview production build
 
 ## Architecture
 
-- `app/pages/` — file-based routing (Nuxt auto-imports)
-- `app/layouts/` — page layouts (default layout has header/footer)
-- `app/components/` — auto-imported Vue components
-- `app/assets/css/main.css` — Tailwind v4 + Nuxt UI CSS entry point
-- Questions are currently hardcoded in `app/pages/index.vue` (will move to Nuxt Content later)
+- `docs/` — VitePress source directory
+- `docs/.vitepress/config.ts` — site config (i18n, search, nav, social links)
+- `docs/.vitepress/theme/` — custom theme extending VitePress default
+- `docs/.vitepress/theme/HomePage.vue` — homepage with search, difficulty filters, and tag filters
+- `docs/.vitepress/theme/QuestionMeta.vue` — question detail metadata (back link, difficulty badge, tags)
+- `docs/.vitepress/theme/questions.data.ts` — build-time data loader for question frontmatter
+- `docs/.vitepress/theme/i18n.ts` — i18n composable using locale JSON files
+- `docs/.vitepress/theme/locales/` — EN and ES translation files
+- `docs/q/` — English question markdown files
+- `docs/es/q/` — Spanish question markdown files (same content, not yet translated)
+- `docs/public/` — static assets (favicon, robots.txt)
+
+## Question format
+
+Each question is a markdown file with this frontmatter:
+
+```yaml
+---
+order: 1
+title: "Question title here?"
+difficulty: "beginner"
+tags: ["composition-api", "reactivity"]
+---
+```
+
+The markdown body is the answer, rendered by VitePress with syntax highlighting.
 
 ## Stack
 
-- **Nuxt 4** with Nuxt UI v4 components (UCard, UBadge, UButton, UInput, UHeader, etc.)
-- **Tailwind CSS v4** via Nuxt UI (no separate `@nuxtjs/tailwindcss` module needed)
-- **pnpm** as package manager
+- VitePress 1.6 with custom theme extending DefaultTheme
+- i18n via VitePress locales config (EN default, ES at /es/)
+- Deployed to Vercel as static site
 
 ## Conventions
 
 - Conventional commits in English (`feat:`, `fix:`, `chore:`, `docs:`)
 - Small, focused commits (one logical change per commit)
 - Vue 3 Composition API with `<script setup lang="ts">`
-- Nuxt auto-imports (no manual imports for Vue/Nuxt APIs)
+- Slug-based markdown filenames (e.g. `ref-vs-reactive.md`)
