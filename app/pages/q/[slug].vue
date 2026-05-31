@@ -17,8 +17,15 @@ const difficultyColor = {
   advanced: 'error' as const,
 }
 
-useHead({
-  title: `${question.value.title} — VueWiki.dev`,
+const pageTitle = `${question.value.title} — VueWiki.dev`
+const pageDescription = `${question.value.title} — ${t(`filters.${question.value.difficulty}`)} level Vue.js interview question with answer and code examples.`
+
+useSeoMeta({
+  title: pageTitle,
+  ogTitle: pageTitle,
+  description: pageDescription,
+  ogDescription: pageDescription,
+  ogType: 'article',
 })
 </script>
 

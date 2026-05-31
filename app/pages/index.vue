@@ -33,11 +33,12 @@ const filters = [
 
 const totalQuestions = computed(() => questions.value?.length ?? 0)
 
-useHead({
+useSeoMeta({
   title: t('seo.title'),
-  meta: [
-    { name: 'description', content: t('seo.description') },
-  ],
+  ogTitle: t('seo.title'),
+  description: t('seo.description'),
+  ogDescription: t('seo.description'),
+  ogType: 'website',
 })
 </script>
 

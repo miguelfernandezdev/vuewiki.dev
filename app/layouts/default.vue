@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const { t, locale: currentLocale, locales, setLocale } = useI18n()
-const totalQuestions = 30
+
+const { data: totalQuestions } = await useAsyncData(
+  'total-questions',
+  () => queryCollection('content').where('path', 'LIKE', '/questions/%').count()
+)
 </script>
 
 <template>
