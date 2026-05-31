@@ -6,7 +6,7 @@
 - [x] Syntax highlighting for code blocks
 - [x] SEO meta tags per question
 - [x] Dark/light mode
-- [ ] Deploy to Vercel
+- [x] Deploy to Vercel
 
 ## Phase 2 — More content and i18n
 
@@ -22,8 +22,8 @@
 ## Phase 3 — Community
 
 - [x] Built-in search (VitePress local search)
-- [ ] Contribution guide
-- [ ] Community Q&A submissions via GitHub PRs
+- [x] Contribution guide
+- [x] Community Q&A submissions via GitHub PRs
 - [ ] Open Graph images for social sharing
 - [ ] Analytics
 
