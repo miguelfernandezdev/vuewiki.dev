@@ -2,6 +2,7 @@
 order: 30
 title: "How would you implement lazy loading and code splitting?"
 difficulty: "advanced"
+tags: ["performance", "vue-router"]
 ---
 
 ```ts

@@ -2,6 +2,7 @@
 order: 24
 title: "How would you optimize performance in a Vue app?"
 difficulty: "advanced"
+tags: ["performance"]
 ---
 
 1. **Lazy loading routes:** `() => import('./views/Heavy.vue')`

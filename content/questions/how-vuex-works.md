@@ -2,6 +2,7 @@
 order: 10
 title: "How does Vuex work?"
 difficulty: "beginner"
+tags: ["state-management"]
 ---
 
 Vuex follows the Flux pattern: **State → Getters → Mutations → Actions**

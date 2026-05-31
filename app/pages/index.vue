@@ -8,13 +8,22 @@ const { data: questions } = await useAsyncData(
 
 const search = ref('')
 const activeFilter = ref<string | null>(null)
+const activeTag = ref<string | null>(null)
+
+const allTags = computed(() => {
+  if (!questions.value) return []
+  const tags = new Set<string>()
+  questions.value.forEach((q) => q.tags?.forEach((tag: string) => tags.add(tag)))
+  return Array.from(tags).sort()
+})
 
 const filteredQuestions = computed(() => {
   if (!questions.value) return []
   return questions.value.filter((q) => {
     const matchesSearch = q.title.toLowerCase().includes(search.value.toLowerCase())
     const matchesFilter = !activeFilter.value || q.difficulty === activeFilter.value
-    return matchesSearch && matchesFilter
+    const matchesTag = !activeTag.value || q.tags?.includes(activeTag.value)
+    return matchesSearch && matchesFilter && matchesTag
   })
 })
 
@@ -63,7 +72,7 @@ useSeoMeta({
     </section>
 
     <section>
-      <div class="flex gap-2 mb-6">
+      <div class="flex gap-2 mb-4">
         <UButton
           v-for="filter in filters"
           :key="filter.label"
@@ -72,6 +81,25 @@ useSeoMeta({
           :variant="activeFilter === filter.value ? 'solid' : 'outline'"
           size="sm"
           @click="activeFilter = filter.value"
+        />
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-6">
+        <UButton
+          :label="t('filters.all')"
+          :color="activeTag === null ? 'primary' : 'neutral'"
+          :variant="activeTag === null ? 'subtle' : 'ghost'"
+          size="xs"
+          @click="activeTag = null"
+        />
+        <UButton
+          v-for="tag in allTags"
+          :key="tag"
+          :label="t(`tags.${tag}`)"
+          :color="activeTag === tag ? 'primary' : 'neutral'"
+          :variant="activeTag === tag ? 'subtle' : 'ghost'"
+          size="xs"
+          @click="activeTag = tag"
         />
       </div>
 
@@ -84,9 +112,22 @@ useSeoMeta({
         >
           <UCard class="hover:ring-(--ui-primary) transition-shadow cursor-pointer">
             <div class="flex items-center justify-between gap-3">
-              <span class="text-(--ui-text)">
-                {{ question.title }}
-              </span>
+              <div class="min-w-0">
+                <span class="text-(--ui-text)">
+                  {{ question.title }}
+                </span>
+                <div v-if="question.tags?.length" class="flex flex-wrap gap-1 mt-2">
+                  <UBadge
+                    v-for="tag in question.tags"
+                    :key="tag"
+                    color="neutral"
+                    variant="subtle"
+                    size="xs"
+                  >
+                    {{ t(`tags.${tag}`) }}
+                  </UBadge>
+                </div>
+              </div>
               <UBadge
                 :color="difficultyColor[question.difficulty as keyof typeof difficultyColor]"
                 variant="subtle"

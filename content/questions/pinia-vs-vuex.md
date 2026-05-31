@@ -2,6 +2,7 @@
 order: 9
 title: "What is Pinia and how does it differ from Vuex?"
 difficulty: "beginner"
+tags: ["state-management"]
 ---
 
 **Pinia** is the official store for Vue 3 (replaces Vuex). Key differences:

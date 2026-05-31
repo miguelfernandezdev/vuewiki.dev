@@ -2,6 +2,7 @@
 order: 28
 title: "How would you migrate a Vuex module to Pinia?"
 difficulty: "advanced"
+tags: ["state-management", "migration"]
 ---
 
 ```ts

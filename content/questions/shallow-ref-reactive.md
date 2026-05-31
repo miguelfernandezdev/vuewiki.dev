@@ -2,6 +2,7 @@
 order: 22
 title: "When would you use shallowRef / shallowReactive?"
 difficulty: "advanced"
+tags: ["reactivity", "performance"]
 ---
 
 When you have large objects that don't need deep reactivity:

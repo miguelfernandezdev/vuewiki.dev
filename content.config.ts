@@ -9,6 +9,7 @@ export default defineContentConfig({
         order: z.number(),
         title: z.string(),
         difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+        tags: z.array(z.string()),
       }),
     }),
   },

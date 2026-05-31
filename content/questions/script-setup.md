@@ -2,6 +2,7 @@
 order: 3
 title: "What is script setup?"
 difficulty: "beginner"
+tags: ["composition-api"]
 ---
 
 Syntactic sugar for the Composition API that removes boilerplate:

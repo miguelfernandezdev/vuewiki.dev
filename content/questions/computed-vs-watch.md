@@ -2,6 +2,7 @@
 order: 26
 title: "What's the difference between computed and watch?"
 difficulty: "advanced"
+tags: ["reactivity", "composition-api"]
 ---
 
 | | `computed` | `watch` |

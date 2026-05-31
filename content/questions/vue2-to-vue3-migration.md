@@ -2,6 +2,7 @@
 order: 21
 title: "How would you plan a Vue 2 to Vue 3 migration?"
 difficulty: "advanced"
+tags: ["migration"]
 ---
 
 1. **Audit:** Inventory of components, mixins, filters, plugins, dependencies

@@ -2,6 +2,7 @@
 order: 11
 title: "What's the difference between watch and watchEffect?"
 difficulty: "intermediate"
+tags: ["reactivity", "composition-api"]
 ---
 
 - **`watch`** — Watches specific sources. Receives old and new values. Only runs when the explicit sources change.

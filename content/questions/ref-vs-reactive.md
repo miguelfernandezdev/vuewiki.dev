@@ -2,6 +2,7 @@
 order: 2
 title: "What's the difference between ref and reactive?"
 difficulty: "beginner"
+tags: ["reactivity", "composition-api"]
 ---
 
 - **`ref`** — Wraps any value (primitive or object). Accessed via `.value` in JS/TS, but NOT in templates.

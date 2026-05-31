@@ -2,15 +2,15 @@
 
 ## Phase 1 — MVP
 
-- [ ] Question detail pages with full answers and code examples
-- [ ] Syntax highlighting for code blocks
-- [ ] SEO meta tags per question
+- [x] Question detail pages with full answers and code examples
+- [x] Syntax highlighting for code blocks (Shiki via Nuxt Content)
+- [x] SEO meta tags per question
 - [ ] Deploy to Vercel
 
 ## Phase 2 — More content and i18n
 
-- [ ] i18n (English + Spanish)
-- [ ] Move questions to Nuxt Content (markdown files)
+- [x] i18n (English + Spanish)
+- [x] Move questions to Nuxt Content (markdown files)
 - [ ] Topic tags (Pinia, Vue Router, Composition API, Nuxt, testing)
 - [ ] Nuxt-specific questions (Nitro, data fetching, modules, hybrid rendering, SSR patterns)
 - [ ] More advanced Vue questions (v-model internals, generics, defineExpose, state management patterns)

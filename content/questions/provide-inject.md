@@ -2,6 +2,7 @@
 order: 14
 title: "What is Provide/Inject?"
 difficulty: "intermediate"
+tags: ["components", "composition-api"]
 ---
 
 Dependency injection in Vue. Allows passing data from an ancestor to any descendant without prop drilling.

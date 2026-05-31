@@ -2,6 +2,7 @@
 order: 25
 title: "How would you test a composable that fetches data?"
 difficulty: "advanced"
+tags: ["testing", "composables"]
 ---
 
 ```ts

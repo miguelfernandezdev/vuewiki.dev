@@ -2,6 +2,7 @@
 order: 7
 title: "What's the purpose of :key in v-for?"
 difficulty: "beginner"
+tags: ["directives"]
 ---
 
 Vue uses `key` to identify each DOM node and reuse it efficiently. Without `key` (or with `key` = index), Vue can mix up elements and cause bugs in stateful components.

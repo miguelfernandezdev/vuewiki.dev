@@ -2,6 +2,7 @@
 order: 15
 title: "How do you test Vue components with Vitest?"
 difficulty: "intermediate"
+tags: ["testing"]
 ---
 
 ```ts

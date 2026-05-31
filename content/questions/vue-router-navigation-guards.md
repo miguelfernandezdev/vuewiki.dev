@@ -2,6 +2,7 @@
 order: 18
 title: "How does Vue Router work and what are navigation guards?"
 difficulty: "intermediate"
+tags: ["vue-router"]
 ---
 
 ```ts

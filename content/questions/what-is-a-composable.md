@@ -2,6 +2,7 @@
 order: 8
 title: "What is a composable?"
 difficulty: "beginner"
+tags: ["composables", "composition-api"]
 ---
 
 A function that encapsulates reusable logic using the Composition API. Equivalent to React **custom hooks**. Convention: name starts with `use`.

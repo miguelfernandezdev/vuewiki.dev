@@ -2,6 +2,7 @@
 order: 5
 title: "How do you emit events with TypeScript?"
 difficulty: "beginner"
+tags: ["typescript", "components"]
 ---
 
 ```vue

@@ -2,6 +2,7 @@
 order: 29
 title: "How would you structure a large Vue project?"
 difficulty: "advanced"
+tags: ["architecture"]
 ---
 
 ```

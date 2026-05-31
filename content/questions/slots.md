@@ -2,6 +2,7 @@
 order: 13
 title: "What are slots and what are they used for?"
 difficulty: "intermediate"
+tags: ["components"]
 ---
 
 Slots allow a parent component to inject content into a child component. Three types:

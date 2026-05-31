@@ -2,6 +2,7 @@
 order: 12
 title: "How does v-model work on custom components?"
 difficulty: "intermediate"
+tags: ["components", "directives"]
 ---
 
 `v-model` on a component is syntactic sugar for prop + emit:

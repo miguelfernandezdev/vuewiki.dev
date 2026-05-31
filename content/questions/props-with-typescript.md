@@ -2,6 +2,7 @@
 order: 4
 title: "How do you declare props with TypeScript in Vue 3?"
 difficulty: "beginner"
+tags: ["typescript", "components"]
 ---
 
 ```vue

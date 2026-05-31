@@ -2,6 +2,7 @@
 order: 23
 title: "How would you design a shared component library?"
 difficulty: "advanced"
+tags: ["components", "architecture"]
 ---
 
 1. **Separate package** (monorepo or standalone repo)

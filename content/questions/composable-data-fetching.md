@@ -2,6 +2,7 @@
 order: 16
 title: "How would you build a composable for data fetching?"
 difficulty: "intermediate"
+tags: ["composables"]
 ---
 
 ```ts

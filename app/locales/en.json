@@ -18,6 +18,21 @@
     "intermediate": "Intermediate",
     "advanced": "Advanced"
   },
+  "tags": {
+    "label": "Topics",
+    "composition-api": "Composition API",
+    "reactivity": "Reactivity",
+    "typescript": "TypeScript",
+    "directives": "Directives",
+    "components": "Components",
+    "state-management": "State Management",
+    "testing": "Testing",
+    "composables": "Composables",
+    "vue-router": "Vue Router",
+    "performance": "Performance",
+    "architecture": "Architecture",
+    "migration": "Migration"
+  },
   "detail": {
     "back": "All questions"
   },

@@ -54,6 +54,17 @@ useSeoMeta({
       <h1 class="text-3xl sm:text-4xl font-bold text-(--ui-text)">
         {{ question.title }}
       </h1>
+
+      <div v-if="question.tags?.length" class="flex flex-wrap gap-1.5 mt-4">
+        <UBadge
+          v-for="tag in question.tags"
+          :key="tag"
+          color="neutral"
+          variant="subtle"
+        >
+          {{ t(`tags.${tag}`) }}
+        </UBadge>
+      </div>
     </div>
 
     <div class="prose prose-invert max-w-none">

@@ -2,6 +2,7 @@
 order: 19
 title: "What are Teleport, Fragments, and Suspense?"
 difficulty: "intermediate"
+tags: ["components"]
 ---
 
 **Teleport** — Renders DOM in a different part of the tree (like React Portals):

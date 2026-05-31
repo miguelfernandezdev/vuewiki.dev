@@ -2,6 +2,7 @@
 order: 20
 title: "How does Vue 3's reactivity system work?"
 difficulty: "intermediate"
+tags: ["reactivity"]
 ---
 
 Vue 3 uses **Proxy** (instead of Vue 2's `Object.defineProperty`):
