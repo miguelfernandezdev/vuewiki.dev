@@ -18,6 +18,9 @@
     "intermediate": "Intermedio",
     "advanced": "Avanzado"
   },
+  "detail": {
+    "back": "Todas las preguntas"
+  },
   "seo": {
     "title": "VueWiki.dev — Preguntas de entrevista de Vue.js con respuestas y ejemplos",
     "description": "Domina Vue.js con preguntas reales de entrevista, respuestas claras y ejemplos de código."

@@ -18,6 +18,9 @@
     "intermediate": "Intermediate",
     "advanced": "Advanced"
   },
+  "detail": {
+    "back": "All questions"
+  },
   "seo": {
     "title": "VueWiki.dev — Vue.js interview questions with answers and examples",
     "description": "Master Vue.js with real interview questions, clear answers, and code examples."
