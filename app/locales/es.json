@@ -1,0 +1,25 @@
+{
+  "header": {
+    "questions": "{count} preguntas"
+  },
+  "footer": {
+    "builtWith": "Hecho con Nuxt. Código abierto en",
+    "github": "GitHub"
+  },
+  "home": {
+    "title": "Preguntas de Entrevista de Vue.js",
+    "subtitle": "{count} preguntas con respuestas y ejemplos de código",
+    "searchPlaceholder": "Buscar preguntas...",
+    "noResults": "Ninguna pregunta coincide con tu búsqueda."
+  },
+  "filters": {
+    "all": "Todas",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado"
+  },
+  "seo": {
+    "title": "VueWiki.dev — Preguntas de entrevista de Vue.js con respuestas y ejemplos",
+    "description": "Domina Vue.js con preguntas reales de entrevista, respuestas claras y ejemplos de código."
+  }
+}
