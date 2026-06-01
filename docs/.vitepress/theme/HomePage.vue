@@ -144,7 +144,7 @@ const difficultyClass: Record<string, string> = {
 .home-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 1.5rem 2rem;
+  padding: 2.5rem 1.5rem 2rem;
 }
 
 .search-wrapper {
