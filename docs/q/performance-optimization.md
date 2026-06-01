@@ -14,7 +14,7 @@ tags: ["performance"]
 7. **Code splitting** with `defineAsyncComponent`
 8. **Debounce** on search/filter inputs
 9. **`v-show`** instead of `v-if` for frequent toggles
-10. **Avoid unnecessary watchers** — prefer computed when possible
+10. **Avoid unnecessary watchers**, prefer computed when possible
 
 **Diagnosing:**
 - Vue DevTools → Performance timeline

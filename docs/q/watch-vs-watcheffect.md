@@ -5,8 +5,8 @@ difficulty: "intermediate"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`watch`** — Watches specific sources. Receives old and new values. Only runs when the explicit sources change.
-- **`watchEffect`** — Auto-detects dependencies. Runs immediately and re-runs when any reactive dependency changes.
+- **`watch`**: watches specific sources. Receives old and new values. Only runs when the explicit sources change.
+- **`watchEffect`**: auto-detects dependencies. Runs immediately and re-runs when any reactive dependency changes.
 
 ```ts
 // watch: explicit

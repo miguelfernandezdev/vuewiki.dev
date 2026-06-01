@@ -43,10 +43,10 @@ export default defineNuxtConfig({
 
 The component tree shows every component in your app with its hierarchy. Select a component to see:
 
-- **Props** — current values, types, whether they're required
-- **Reactive state** — refs, reactive objects, computed values with their current values
-- **Emitted events** — a log of every event the component has emitted
-- **Slots** — which slots are being used
+- **Props**: current values, types, whether they're required
+- **Reactive state**: refs, reactive objects, computed values with their current values
+- **Emitted events**: a log of every event the component has emitted
+- **Slots**: which slots are being used
 
 You can edit reactive state directly in the panel to test how the UI responds without changing code.
 

@@ -41,7 +41,7 @@ console.log(listA[0] === listB[0]) // false
 
 ## Fix 1: compare by ID (preferred)
 
-Use primitive identifiers instead of object identity. This is the most robust approach:
+Use primitive identifiers instead of object identity. This is the most reliable approach:
 
 ```ts
 const items = reactive([

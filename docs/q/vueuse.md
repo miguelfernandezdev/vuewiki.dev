@@ -15,14 +15,14 @@ npm install @vueuse/core
 
 ### Browser and DOM
 
-**useLocalStorage / useSessionStorage** — reactive storage that syncs automatically:
+**useLocalStorage / useSessionStorage**: reactive storage that syncs automatically.
 
 ```ts
 const theme = useLocalStorage('theme', 'light')
 theme.value = 'dark' // saved to localStorage immediately
 ```
 
-**useClipboard** — copy to clipboard:
+**useClipboard**: copy to clipboard.
 
 ```ts
 const { copy, copied } = useClipboard()
@@ -30,20 +30,20 @@ await copy('Hello!')
 // copied.value is true for 1.5 seconds
 ```
 
-**useMediaQuery** — reactive CSS media query:
+**useMediaQuery**: reactive CSS media query.
 
 ```ts
 const isMobile = useMediaQuery('(max-width: 768px)')
 ```
 
-**useDark** — dark mode with persistence:
+**useDark**: dark mode with persistence.
 
 ```ts
 const isDark = useDark()
 const toggle = useToggle(isDark)
 ```
 
-**useEventListener** — auto-cleaned event listeners:
+**useEventListener**: auto-cleaned event listeners.
 
 ```ts
 useEventListener(window, 'resize', () => {
@@ -54,7 +54,7 @@ useEventListener(window, 'resize', () => {
 
 ### State
 
-**useToggle** — boolean toggle:
+**useToggle**: boolean toggle.
 
 ```ts
 const [value, toggle] = useToggle(false)
@@ -62,7 +62,7 @@ toggle() // true
 toggle() // false
 ```
 
-**useDebounceFn / useThrottleFn** — debounce and throttle:
+**useDebounceFn / useThrottleFn**: debounce and throttle.
 
 ```ts
 const search = useDebounceFn((query: string) => {
@@ -70,7 +70,7 @@ const search = useDebounceFn((query: string) => {
 }, 300)
 ```
 
-**createGlobalState** — shared state across components without Pinia:
+**createGlobalState**: shared state across components without Pinia.
 
 ```ts
 const useGlobalCounter = createGlobalState(() => {
@@ -81,7 +81,7 @@ const useGlobalCounter = createGlobalState(() => {
 
 ### Network
 
-**useFetch** — reactive fetch wrapper (different from Nuxt's useFetch):
+**useFetch**: reactive fetch wrapper (different from Nuxt's useFetch).
 
 ```ts
 const { data, error, isFetching } = useFetch('https://api.example.com/posts')
@@ -89,7 +89,7 @@ const { data, error, isFetching } = useFetch('https://api.example.com/posts')
   .json<Post[]>()
 ```
 
-**useWebSocket** — reactive WebSocket connection:
+**useWebSocket**: reactive WebSocket connection.
 
 ```ts
 const { data, send, status } = useWebSocket('wss://example.com/ws')
@@ -101,13 +101,13 @@ watch(data, (message) => {
 
 ### Sensors
 
-**useMouse** — reactive mouse position:
+**useMouse**: reactive mouse position.
 
 ```ts
 const { x, y } = useMouse()
 ```
 
-**useIntersectionObserver** — detect element visibility:
+**useIntersectionObserver**: detect element visibility.
 
 ```ts
 const target = ref<HTMLElement>()
@@ -118,7 +118,7 @@ useIntersectionObserver(target, ([entry]) => {
 })
 ```
 
-**useElementSize** — reactive element dimensions:
+**useElementSize**: reactive element dimensions.
 
 ```ts
 const el = ref<HTMLElement>()
@@ -127,7 +127,7 @@ const { width, height } = useElementSize(el)
 
 ### Utilities
 
-**watchDebounced** — debounced watcher:
+**watchDebounced**: debounced watcher.
 
 ```ts
 const search = ref('')
@@ -137,7 +137,7 @@ watchDebounced(search, (value) => {
 }, { debounce: 300 })
 ```
 
-**whenever** — watch that fires only when value is truthy:
+**whenever**: watch that fires only when value is truthy.
 
 ```ts
 const isReady = ref(false)
@@ -147,7 +147,7 @@ whenever(isReady, () => {
 })
 ```
 
-**useAsyncState** — run async function with reactive loading/error state:
+**useAsyncState**: run async function with reactive loading/error state.
 
 ```ts
 const { state, isLoading, error } = useAsyncState(

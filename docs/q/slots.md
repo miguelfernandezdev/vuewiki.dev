@@ -40,4 +40,4 @@ Slots allow a parent component to inject content into a child component. Three t
 </Card>
 ```
 
-**Scoped slots** are very powerful — they let the parent decide how to render data from the child (render delegation pattern).
+**Scoped slots** let the parent decide how to render data from the child (render delegation pattern).

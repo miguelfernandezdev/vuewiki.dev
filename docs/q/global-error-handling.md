@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["error-handling", "architecture"]
 ---
 
-Vue provides multiple layers for catching errors: `app.config.errorHandler` for uncaught errors globally, `onErrorCaptured` for errors in a component subtree, and try/catch for async operations. A robust app combines all three, plus a user-facing error UI.
+Vue provides multiple layers for catching errors: `app.config.errorHandler` for uncaught errors globally, `onErrorCaptured` for errors in a component subtree, and try/catch for async operations. A production app should combine all three, plus a user-facing error UI.
 
 ## app.config.errorHandler (global catch-all)
 

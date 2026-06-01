@@ -20,4 +20,4 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
-`defineProps` is a **compiler macro** — it's not imported, Vue processes it at build time.
+`defineProps` is a **compiler macro**. It's not imported, Vue processes it at build time.

@@ -5,8 +5,8 @@ difficulty: "beginner"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`ref`** — Wraps any value (primitive or object). Accessed via `.value` in JS/TS, but NOT in templates.
-- **`reactive`** — Only for objects/arrays. No `.value` needed, but you CANNOT reassign the entire object.
+- **`ref`**: wraps any value (primitive or object). Accessed via `.value` in JS/TS, but NOT in templates.
+- **`reactive`**: only for objects/arrays. No `.value` needed, but you CANNOT reassign the entire object.
 
 ```ts
 const count = ref(0)          // count.value = 1

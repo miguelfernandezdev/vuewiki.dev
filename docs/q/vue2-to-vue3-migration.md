@@ -16,4 +16,4 @@ tags: ["migration"]
 4. **Testing at each step:** Existing tests should keep passing
 5. **Risk areas:** Third-party libraries, custom directives, render functions, plugins
 
-The compatibility build makes it possible to do it incrementally. The key is not trying to migrate everything at once — component by component, with tests at each step.
+The compatibility build makes it possible to do it incrementally. The key is not trying to migrate everything at once. Go component by component, with tests at each step.
