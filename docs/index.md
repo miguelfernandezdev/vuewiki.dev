@@ -1,10 +1,10 @@
 ---
 layout: home
-title: VueWiki.dev
+title: VueWiki
 titleTemplate: Vue.js interview questions with answers and examples
 
 hero:
-  name: VueWiki.dev
+  name: VueWiki
   text: Vue.js Interview Questions
   tagline: Prepare your next Vue.js interview with real questions, detailed answers, and code examples.
   actions:

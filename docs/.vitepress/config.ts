@@ -7,7 +7,7 @@ const siteUrl = 'https://vuewiki.dev'
 const ogDescription = 'Vue.js interview questions with answers and examples'
 
 export default defineConfig({
-  title: 'VueWiki.dev',
+  title: 'VueWiki',
   description: ogDescription,
   cleanUrls: true,
   lastUpdated: true,
@@ -19,11 +19,11 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'VueWiki.dev' }],
+    ['meta', { property: 'og:title', content: 'VueWiki' }],
     ['meta', { property: 'og:description', content: ogDescription }],
     ['meta', { property: 'og:url', content: siteUrl }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'VueWiki.dev' }],
+    ['meta', { name: 'twitter:title', content: 'VueWiki' }],
     ['meta', { name: 'twitter:description', content: ogDescription }],
   ],
 
