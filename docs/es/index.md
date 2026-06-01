@@ -16,13 +16,13 @@ hero:
       link: https://github.com/miguelfernandezdev/vuewiki.dev
 
 features:
-  - title: 170+ Preguntas
+  - title: 📚 170+ Preguntas
     details: Cubriendo Vue 3, Composition API, reactividad, componentes, TypeScript, Nuxt, SSR y más.
-  - title: Principiante a Avanzado
+  - title: 🎯 Principiante a Avanzado
     details: Tres niveles de dificultad para estudiar progresivamente o saltar al tema que necesites.
-  - title: Inglés y Español
+  - title: 🌍 Inglés y Español
     details: Contenido bilingüe completo. Cambia de idioma sin perder tu lugar.
-  - title: Ejemplos de Código
+  - title: 💻 Ejemplos de Código
     details: Cada respuesta incluye snippets de código prácticos que puedes usar en proyectos reales.
 ---
 
