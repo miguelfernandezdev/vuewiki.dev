@@ -32,6 +32,32 @@ const filteredQuestions = computed(() => {
 
 const totalQuestions = computed(() => questions.value.length)
 
+const PAGE_SIZE = 30
+const visibleCount = ref(PAGE_SIZE)
+
+const visibleQuestions = computed(() =>
+  filteredQuestions.value.slice(0, visibleCount.value),
+)
+
+const hasMore = computed(() =>
+  visibleCount.value < filteredQuestions.value.length,
+)
+
+function showMore() {
+  visibleCount.value += PAGE_SIZE
+}
+
+// Reset visible count when filters change
+function setFilter(value: string | null) {
+  activeFilter.value = value
+  visibleCount.value = PAGE_SIZE
+}
+
+function setTag(value: string | null) {
+  activeTag.value = value
+  visibleCount.value = PAGE_SIZE
+}
+
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',
   intermediate: 'badge-intermediate',
@@ -65,7 +91,7 @@ const difficultyClass: Record<string, string> = {
           ]"
           :key="f.label"
           :class="['filter-btn', { active: activeFilter === f.value }]"
-          @click="activeFilter = f.value"
+          @click="setFilter(f.value)"
         >
           {{ f.label }}
         </button>
@@ -74,7 +100,7 @@ const difficultyClass: Record<string, string> = {
       <div class="tag-row">
         <button
           :class="['tag-btn', { active: activeTag === null }]"
-          @click="activeTag = null"
+          @click="setTag(null)"
         >
           {{ t('filters.all') }}
         </button>
@@ -82,7 +108,7 @@ const difficultyClass: Record<string, string> = {
           v-for="tag in allTags"
           :key="tag"
           :class="['tag-btn', { active: activeTag === tag }]"
-          @click="activeTag = tag"
+          @click="setTag(tag)"
         >
           {{ t(`tags.${tag}`) }}
         </button>
@@ -90,7 +116,7 @@ const difficultyClass: Record<string, string> = {
 
       <div class="question-list">
         <a
-          v-for="q in filteredQuestions"
+          v-for="q in visibleQuestions"
           :key="q.url"
           :href="q.url"
           class="question-card"
@@ -108,6 +134,10 @@ const difficultyClass: Record<string, string> = {
           </span>
         </a>
       </div>
+
+      <button v-if="hasMore" class="show-more-btn" @click="showMore">
+        {{ t('home.showMore', { remaining: filteredQuestions.length - visibleCount }) }}
+      </button>
 
       <p v-if="filteredQuestions.length === 0" class="no-results">
         {{ t('home.noResults') }}
@@ -301,6 +331,26 @@ const difficultyClass: Record<string, string> = {
 .badge-advanced {
   background: var(--vp-c-red-soft);
   color: var(--vp-c-red-2);
+}
+
+.show-more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.show-more-btn:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
 }
 
 .no-results {
