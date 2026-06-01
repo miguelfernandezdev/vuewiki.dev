@@ -31,7 +31,18 @@
     "vue-router": "Vue Router",
     "performance": "Rendimiento",
     "architecture": "Arquitectura",
-    "migration": "Migración"
+    "migration": "Migración",
+    "animation": "Animación",
+    "core": "Core",
+    "data-fetching": "Data Fetching",
+    "error-handling": "Manejo de errores",
+    "errors": "Errores comunes",
+    "forms": "Formularios",
+    "lifecycle": "Ciclo de vida",
+    "nuxt": "Nuxt",
+    "ssr": "SSR",
+    "styling": "Estilos",
+    "tooling": "Herramientas"
   },
   "detail": {
     "back": "← Todas las preguntas"
