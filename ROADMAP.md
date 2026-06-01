@@ -15,9 +15,9 @@
 - [x] Topic tags (Composition API, Reactivity, Components, Testing, etc.)
 - [x] Migrate to VitePress
 - [x] Translate question content to Spanish
-- [ ] Nuxt-specific questions (Nitro, data fetching, modules, hybrid rendering, SSR patterns)
-- [ ] More advanced Vue questions (v-model internals, generics, defineExpose, state management patterns)
-- [ ] Practical debugging and design scenario questions
+- [x] Nuxt-specific questions (Nitro, data fetching, modules, hybrid rendering, SSR patterns)
+- [x] More advanced Vue questions (v-model internals, generics, defineExpose, state management patterns)
+- [x] Practical debugging and design scenario questions
 
 ## Phase 3 — VitePress polish
 
