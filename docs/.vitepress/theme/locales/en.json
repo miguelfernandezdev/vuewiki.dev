@@ -20,6 +20,7 @@
   },
   "tags": {
     "label": "Topics",
+    "accessibility": "Accessibility",
     "composition-api": "Composition API",
     "reactivity": "Reactivity",
     "typescript": "TypeScript",
