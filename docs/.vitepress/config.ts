@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import llmstxt from 'vitepress-plugin-llms'
 import { generateSidebar } from './sidebar'
 
 const docsDir = new URL('../', import.meta.url).pathname
@@ -31,6 +32,20 @@ export default defineConfig({
       dark: 'github-dark',
       light: 'github-light',
     },
+  },
+
+  vite: {
+    plugins: [
+      llmstxt({
+        description: 'Vue.js interview questions with answers and code examples',
+        details: `
+170 questions covering Vue 3, Composition API, reactivity, components, TypeScript,
+testing, Nuxt, SSR, performance, architecture, and common interview scenarios.
+Available in English and Spanish.
+`.trim(),
+        ignoreFiles: ['index.md', 'es/index.md'],
+      }),
+    ],
   },
 
   locales: {
