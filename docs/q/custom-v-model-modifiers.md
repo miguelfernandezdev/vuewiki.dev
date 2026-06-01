@@ -1,0 +1,143 @@
+---
+order: 78
+title: "How do custom v-model modifiers work?"
+difficulty: "advanced"
+tags: ["components", "directives"]
+---
+
+Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.number`, `.trim`). On custom components, you can define your own modifiers that transform the value as it flows in or out.
+
+## Built-in modifiers recap
+
+```vue
+<template>
+  <input v-model.lazy="msg" />    <!-- sync on change, not input -->
+  <input v-model.number="age" />  <!-- cast to number via parseFloat -->
+  <input v-model.trim="name" />   <!-- trim whitespace -->
+</template>
+```
+
+The `.number` modifier has a gotcha: it returns an empty string (not `0` or `NaN`) when the input is cleared, and `parseFloat("123abc")` returns `123`, not `NaN`.
+
+## Custom modifiers with defineModel (Vue 3.4+)
+
+`defineModel` returns a tuple `[ref, modifiers]` when you provide a `set` transform:
+
+```vue
+<!-- CurrencyInput.vue -->
+<script setup lang="ts">
+const [model, modifiers] = defineModel<number>({
+  set(value) {
+    if (modifiers.round) {
+      return Math.round(value)
+    }
+    return value
+  }
+})
+</script>
+
+<template>
+  <input type="number" v-model="model" />
+</template>
+```
+
+```vue
+<!-- Parent.vue -->
+<template>
+  <CurrencyInput v-model.round="price" />
+</template>
+```
+
+When the user types `9.7`, the parent receives `10`.
+
+## Multiple modifiers
+
+Modifiers are just boolean flags on an object. You can combine them:
+
+```vue
+<script setup lang="ts">
+const [model, modifiers] = defineModel<string>({
+  set(value) {
+    let result = value
+    if (modifiers.capitalize) {
+      result = result.charAt(0).toUpperCase() + result.slice(1)
+    }
+    if (modifiers.trim) {
+      result = result.trim()
+    }
+    return result
+  }
+})
+</script>
+```
+
+```vue
+<!-- Parent -->
+<TextInput v-model.capitalize.trim="name" />
+```
+
+## get transform
+
+You can also transform the value coming from the parent:
+
+```vue
+<script setup lang="ts">
+const [model, modifiers] = defineModel<string>({
+  get(value) {
+    if (modifiers.uppercase) {
+      return value.toUpperCase()
+    }
+    return value
+  },
+  set(value) {
+    return value.toLowerCase()
+  }
+})
+</script>
+```
+
+## Named models with modifiers
+
+Custom modifiers work with named `v-model` too:
+
+```vue
+<script setup lang="ts">
+const [firstName, firstModifiers] = defineModel<string>('firstName')
+const [lastName, lastModifiers] = defineModel<string>('lastName')
+</script>
+```
+
+```vue
+<UserForm v-model:first-name.capitalize="first" v-model:last-name.capitalize="last" />
+```
+
+## Before defineModel (Vue < 3.4)
+
+Modifiers arrive as a prop named `modelModifiers` (or `nameModifiers` for named models):
+
+```vue
+<script setup lang="ts">
+const props = defineProps<{
+  modelValue: string
+  modelModifiers?: { capitalize?: boolean }
+}>()
+
+const emit = defineEmits<{
+  'update:modelValue': [value: string]
+}>()
+
+function handleInput(e: Event) {
+  let value = (e.target as HTMLInputElement).value
+  if (props.modelModifiers?.capitalize) {
+    value = value.charAt(0).toUpperCase() + value.slice(1)
+  }
+  emit('update:modelValue', value)
+}
+</script>
+
+<template>
+  <input :value="modelValue" @input="handleInput" />
+</template>
+```
+
+`defineModel` eliminates all this boilerplate.
