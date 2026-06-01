@@ -2,10 +2,7 @@
   "header": {
     "questions": "{count} questions"
   },
-  "footer": {
-    "builtWith": "Built with VitePress. Open source on",
-    "github": "GitHub"
-  },
+  "footer": {},
   "home": {
     "title": "Vue.js Interview Questions",
     "subtitle": "{count} questions with answers and code examples",
