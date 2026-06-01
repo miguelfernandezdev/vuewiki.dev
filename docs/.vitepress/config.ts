@@ -58,6 +58,48 @@ Available in English and Spanish.
       label: 'Español',
       lang: 'es',
       description: 'Preguntas de entrevista de Vue.js con respuestas y ejemplos',
+      themeConfig: {
+        returnToTopLabel: 'Volver arriba',
+        sidebarMenuLabel: 'Menú',
+        darkModeSwitchLabel: 'Apariencia',
+        lightModeSwitchTitle: 'Cambiar a tema claro',
+        darkModeSwitchTitle: 'Cambiar a tema oscuro',
+        outline: {
+          label: 'En esta página',
+        },
+        docFooter: {
+          prev: 'Página anterior',
+          next: 'Página siguiente',
+        },
+        lastUpdated: {
+          text: 'Última actualización',
+        },
+        editLink: {
+          pattern: 'https://github.com/miguelfernandezdev/vuewiki.dev/edit/main/docs/:path',
+          text: 'Sugerir cambios en esta página',
+        },
+        footer: {
+          message: 'Publicado bajo la licencia MIT.',
+          copyright: 'Copyright © 2026-present Miguel Fernández',
+        },
+        nav: [
+          { text: 'Preguntas', link: '/es/', activeMatch: '^/es/' },
+          {
+            text: 'Enlaces',
+            items: [
+              { text: 'Contribuir', link: 'https://github.com/miguelfernandezdev/vuewiki.dev/blob/main/CONTRIBUTING.md' },
+              { text: 'Changelog', link: 'https://github.com/miguelfernandezdev/vuewiki.dev/commits/main' },
+            ],
+          },
+        ],
+        notFound: {
+          title: 'PÁGINA NO ENCONTRADA',
+          quote: 'Pero si no cambias de dirección y sigues buscando, puede que acabes donde no querías llegar.',
+          linkLabel: 'ir al inicio',
+          linkText: 'Llévame al inicio',
+          code: '404',
+        },
+      },
     },
   },
 
@@ -66,6 +108,27 @@ Available in English and Spanish.
       provider: 'local',
       options: {
         detailedView: true,
+        locales: {
+          es: {
+            translations: {
+              button: {
+                buttonText: 'Buscar',
+                buttonAriaLabel: 'Buscar',
+              },
+              modal: {
+                displayDetails: 'Mostrar lista detallada',
+                resetButtonTitle: 'Limpiar búsqueda',
+                backButtonTitle: 'Cerrar búsqueda',
+                noResultsText: 'Sin resultados para',
+                footer: {
+                  selectText: 'para seleccionar',
+                  navigateText: 'para navegar',
+                  closeText: 'para cerrar',
+                },
+              },
+            },
+          },
+        },
       },
     },
 
