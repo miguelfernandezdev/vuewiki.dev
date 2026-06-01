@@ -26,7 +26,7 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [x] Review layout and navigation against reference VitePress projects
 - [x] Adopt VitePress sidebar, navbar, and footer conventions
 - [x] Improve Contributing page (follow patterns from Pinia, VueFire, etc.)
-- [ ] Add useful links section (ecosystem, resources, related projects)
+- [x] Add useful links section (ecosystem, resources, related projects)
 - [x] Polish homepage to feel native to VitePress, not a custom SPA
 - [x] Review theme customization (hero, features, team page, etc.)
 - [x] Native VitePress homepage hero with gradient text and feature cards
