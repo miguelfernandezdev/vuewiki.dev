@@ -23,12 +23,16 @@
 
 Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how mature VitePress sites are structured (vitepress.dev, pinia.vuejs.org, vuefire.vuejs.org, pinia-colada.esm.dev) and align.
 
-- [ ] Review layout and navigation against reference VitePress projects
-- [ ] Adopt VitePress sidebar, navbar, and footer conventions
+- [x] Review layout and navigation against reference VitePress projects
+- [x] Adopt VitePress sidebar, navbar, and footer conventions
 - [ ] Improve Contributing page (follow patterns from Pinia, VueFire, etc.)
 - [ ] Add useful links section (ecosystem, resources, related projects)
-- [ ] Polish homepage to feel native to VitePress, not a custom SPA
-- [ ] Review theme customization (hero, features, team page, etc.)
+- [x] Polish homepage to feel native to VitePress, not a custom SPA
+- [x] Review theme customization (hero, features, team page, etc.)
+- [x] Native VitePress homepage hero with gradient text and feature cards
+- [x] SVG book logo with hero glow effect
+- [x] Favicon and navbar logo
+- [x] Brand rename from VueWiki.dev to VueWiki
 
 ## Phase 4 — Community
 
