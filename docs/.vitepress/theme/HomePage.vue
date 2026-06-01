@@ -30,8 +30,6 @@ const filteredQuestions = computed(() => {
   })
 })
 
-const totalQuestions = computed(() => questions.value.length)
-
 const PAGE_SIZE = 30
 const visibleCount = ref(PAGE_SIZE)
 
@@ -67,18 +65,14 @@ const difficultyClass: Record<string, string> = {
 
 <template>
   <div class="home-page">
-    <section class="hero">
-      <h1>{{ t('home.title') }}</h1>
-      <p class="subtitle">{{ t('home.subtitle', { count: totalQuestions }) }}</p>
-      <div class="search-wrapper">
-        <input
-          v-model="search"
-          type="text"
-          :placeholder="t('home.searchPlaceholder')"
-          class="search-input"
-        />
-      </div>
-    </section>
+    <div class="search-wrapper">
+      <input
+        v-model="search"
+        type="text"
+        :placeholder="t('home.searchPlaceholder')"
+        class="search-input"
+      />
+    </div>
 
     <section class="content">
       <div class="filter-row">
@@ -150,31 +144,12 @@ const difficultyClass: Record<string, string> = {
 .home-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
-
-.subtitle {
-  font-size: 1.1rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 1.5rem;
+  padding: 0 1.5rem 2rem;
 }
 
 .search-wrapper {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
 }
 
 .search-input {
@@ -360,10 +335,6 @@ const difficultyClass: Record<string, string> = {
 }
 
 @media (max-width: 640px) {
-  .hero h1 {
-    font-size: 1.75rem;
-  }
-
   .question-card {
     flex-direction: column;
     align-items: flex-start;
