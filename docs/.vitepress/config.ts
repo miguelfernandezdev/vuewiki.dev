@@ -1,12 +1,38 @@
 import { defineConfig } from 'vitepress'
+import { generateSidebar } from './sidebar'
+
+const docsDir = new URL('../', import.meta.url).pathname
+const siteUrl = 'https://vuewiki.dev'
+const ogDescription = 'Vue.js interview questions with answers and examples'
 
 export default defineConfig({
   title: 'VueWiki.dev',
-  description: 'Vue.js interview questions with answers and examples',
+  description: ogDescription,
   cleanUrls: true,
+  lastUpdated: true,
+
+  sitemap: {
+    hostname: siteUrl,
+  },
+
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'VueWiki.dev' }],
+    ['meta', { property: 'og:description', content: ogDescription }],
+    ['meta', { property: 'og:url', content: siteUrl }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'VueWiki.dev' }],
+    ['meta', { name: 'twitter:description', content: ogDescription }],
   ],
+
+  markdown: {
+    theme: {
+      dark: 'github-dark',
+      light: 'github-light',
+    },
+  },
+
   locales: {
     root: {
       label: 'English',
@@ -18,12 +44,41 @@ export default defineConfig({
       description: 'Preguntas de entrevista de Vue.js con respuestas y ejemplos',
     },
   },
+
   themeConfig: {
-    search: { provider: 'local' },
+    search: {
+      provider: 'local',
+      options: {
+        detailedView: true,
+      },
+    },
+
     socialLinks: [
+      { icon: 'x', link: 'https://x.com/MiguelFdezDev' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/miguelfernandez.dev' },
       { icon: 'github', link: 'https://github.com/miguelfernandezdev/vuewiki.dev' },
     ],
-    nav: [],
-    sidebar: {},
+
+    editLink: {
+      pattern: 'https://github.com/miguelfernandezdev/vuewiki.dev/edit/main/docs/:path',
+      text: 'Suggest changes to this page',
+    },
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2026-present Miguel Fernández',
+    },
+
+    nav: [
+      { text: 'Questions', link: '/', activeMatch: '^/$' },
+      {
+        text: 'Links',
+        items: [
+          { text: 'Contributing', link: 'https://github.com/miguelfernandezdev/vuewiki.dev/blob/main/CONTRIBUTING.md' },
+          { text: 'Changelog', link: 'https://github.com/miguelfernandezdev/vuewiki.dev/commits/main' },
+        ],
+      },
+    ],
+    sidebar: generateSidebar(docsDir),
   },
 })
