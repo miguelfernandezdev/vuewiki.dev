@@ -1,0 +1,133 @@
+---
+order: 64
+title: "How do multiple v-model bindings work on a component?"
+difficulty: "intermediate"
+tags: ["components", "directives"]
+---
+
+Since Vue 3, you can bind multiple `v-model` directives to a single component by giving each one a name. This replaces the Vue 2 pattern of one `v-model` plus `.sync` modifiers.
+
+## Basic usage
+
+```vue
+<!-- Parent.vue -->
+<template>
+  <UserForm v-model:first-name="first" v-model:last-name="last" />
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const first = ref('Ana')
+const last = ref('García')
+</script>
+```
+
+```vue
+<!-- UserForm.vue -->
+<script setup>
+const firstName = defineModel('firstName')
+const lastName = defineModel('lastName')
+</script>
+
+<template>
+  <input v-model="firstName" placeholder="First name" />
+  <input v-model="lastName" placeholder="Last name" />
+</template>
+```
+
+`defineModel` (Vue 3.4+) creates a two-way binding automatically. Each named model corresponds to a `v-model:name` on the parent.
+
+## How it works under the hood
+
+`v-model:firstName="first"` is shorthand for:
+
+```vue
+<UserForm
+  :firstName="first"
+  @update:firstName="first = $event"
+/>
+```
+
+And `defineModel('firstName')` is shorthand for:
+
+```vue
+<script setup>
+const props = defineProps<{ firstName: string }>()
+const emit = defineEmits<{ 'update:firstName': [value: string] }>()
+
+// A writable computed that proxies the prop
+const firstName = computed({
+  get: () => props.firstName,
+  set: (val) => emit('update:firstName', val)
+})
+</script>
+```
+
+## Default (unnamed) v-model alongside named ones
+
+The default `v-model` (without a name) uses `modelValue` as the prop name:
+
+```vue
+<!-- Parent.vue -->
+<template>
+  <SearchInput v-model="query" v-model:filters="activeFilters" />
+</template>
+```
+
+```vue
+<!-- SearchInput.vue -->
+<script setup>
+const query = defineModel()              // maps to v-model (modelValue)
+const filters = defineModel('filters')   // maps to v-model:filters
+</script>
+```
+
+## Adding types
+
+```vue
+<script setup lang="ts">
+const firstName = defineModel<string>('firstName', { required: true })
+const age = defineModel<number>('age', { default: 0 })
+</script>
+```
+
+## Before defineModel (Vue < 3.4)
+
+If you're on an older Vue 3 version, you declare the props and emits manually:
+
+```vue
+<script setup>
+const props = defineProps<{
+  firstName: string
+  lastName: string
+}>()
+
+const emit = defineEmits<{
+  'update:firstName': [value: string]
+  'update:lastName': [value: string]
+}>()
+</script>
+
+<template>
+  <input
+    :value="firstName"
+    @input="emit('update:firstName', ($event.target as HTMLInputElement).value)"
+  />
+  <input
+    :value="lastName"
+    @input="emit('update:lastName', ($event.target as HTMLInputElement).value)"
+  />
+</template>
+```
+
+`defineModel` removes all this boilerplate.
+
+## When to use multiple v-model
+
+| Scenario | Approach |
+|---|---|
+| Single value (search input, toggle) | `v-model` (unnamed) |
+| Form with several related fields | Multiple named `v-model` |
+| Complex object as a single value | Single `v-model` with an object type |
+| Unrelated values that change independently | Multiple named `v-model` |

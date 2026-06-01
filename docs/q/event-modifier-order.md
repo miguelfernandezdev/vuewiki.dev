@@ -1,0 +1,91 @@
+---
+order: 71
+title: "What are event modifiers and why does order matter?"
+difficulty: "intermediate"
+tags: ["directives"]
+---
+
+Event modifiers are suffixes on `v-on` (or `@`) that handle common event patterns declaratively. Vue compiles them into JavaScript in the exact order you write them, and that order changes behavior.
+
+## Order matters
+
+Vue generates code for each modifier left to right. `.prevent.self` and `.self.prevent` produce different results:
+
+```ts
+// @click.prevent.self compiles to:
+event.preventDefault()               // runs first, on ALL clicks
+if (event.target !== event.currentTarget) return
+handler()
+
+// @click.self.prevent compiles to:
+if (event.target !== event.currentTarget) return  // check first
+event.preventDefault()               // only runs if the click was on the element itself
+handler()
+```
+
+In practice:
+
+```vue
+<template>
+  <!-- .prevent.self: prevents default on children too -->
+  <div @click.prevent.self="handleClick">
+    <a href="/page">Link</a> <!-- default prevented even though click is on child -->
+  </div>
+
+  <!-- .self.prevent: only prevents default on the div itself -->
+  <div @click.self.prevent="handleClick">
+    <a href="/page">Link</a> <!-- navigation works normally -->
+  </div>
+</template>
+```
+
+## All event modifiers
+
+| Modifier | What it does |
+|---|---|
+| `.prevent` | Calls `event.preventDefault()` |
+| `.stop` | Calls `event.stopPropagation()` |
+| `.self` | Only fires if `event.target === event.currentTarget` |
+| `.once` | Removes the listener after the first trigger |
+| `.capture` | Uses capture phase instead of bubbling |
+| `.passive` | Sets `{ passive: true }` on the listener (improves scroll performance) |
+
+## Common combinations
+
+```vue
+<template>
+  <!-- Stop propagation AND prevent default (order doesn't matter here) -->
+  <a @click.stop.prevent="handleClick">Link</a>
+
+  <!-- Fire only once, in capture phase -->
+  <div @click.capture.once="handleOnce">...</div>
+
+  <!-- Only fire if EXACTLY Ctrl is held (no Shift, no Alt) -->
+  <button @click.ctrl.exact="onCtrlClick">Ctrl+Click</button>
+
+  <!-- Prevent form submission, handle in JavaScript -->
+  <form @submit.prevent="onSubmit">...</form>
+</template>
+```
+
+## When order doesn't matter
+
+For most combinations, order is irrelevant. `.stop.prevent` and `.prevent.stop` both call `stopPropagation()` and `preventDefault()` unconditionally.
+
+Order only matters when one modifier is conditional (`.self`) and the other has side effects (`.prevent`, `.stop`). In those cases, think about whether the side effect should run before or after the condition check.
+
+## When to use separate handlers instead
+
+If the modifier chain gets confusing, split the logic into explicit handlers:
+
+```vue
+<template>
+  <div @click.self="handleSelfClick">
+    <button @click.prevent="handleChildClick">
+      Child
+    </button>
+  </div>
+</template>
+```
+
+Clarity beats cleverness.
