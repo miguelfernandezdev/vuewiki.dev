@@ -10,7 +10,8 @@
     "title": "Preguntas de Entrevista de Vue.js",
     "subtitle": "{count} preguntas con respuestas y ejemplos de código",
     "searchPlaceholder": "Buscar preguntas...",
-    "noResults": "Ninguna pregunta coincide con tu búsqueda."
+    "noResults": "Ninguna pregunta coincide con tu búsqueda.",
+    "showMore": "Mostrar más ({remaining} restantes)"
   },
   "filters": {
     "all": "Todas",
@@ -43,7 +44,9 @@
     "nuxt": "Nuxt",
     "ssr": "SSR",
     "styling": "Estilos",
-    "tooling": "Herramientas"
+    "tooling": "Herramientas",
+    "debugging": "Depuración",
+    "security": "Seguridad"
   },
   "detail": {
     "back": "← Todas las preguntas"
