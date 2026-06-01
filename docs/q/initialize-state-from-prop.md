@@ -94,7 +94,7 @@ props.count++ // [Vue warn]: Set operation on key "count" of target is invalid
 
 Mutating a prop directly would change the parent's data from the child, making it impossible to trace where state changes come from. The three valid patterns are:
 
-1. **Use the prop directly** (read-only): `{{ props.count }}`
+1. **Use the prop directly** (read-only): <code v-pre>{{ props.count }}</code>
 2. **Derive a value**: `computed(() => props.count * 2)`
 3. **Copy to local state**: `ref(props.count)` for editable forms
 
