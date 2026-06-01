@@ -7,6 +7,9 @@ hero:
   name: VueWiki
   text: Vue.js Interview Questions
   tagline: Prepare your next Vue.js interview with real questions, detailed answers, and code examples.
+  image:
+    src: /logo.svg
+    alt: VueWiki
   actions:
     - theme: brand
       text: Browse Questions

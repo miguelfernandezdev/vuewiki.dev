@@ -17,6 +17,7 @@ export default defineConfig({
   },
 
   head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'VueWiki' }],
@@ -67,6 +68,8 @@ Available in English and Spanish.
         detailedView: true,
       },
     },
+
+    logo: '/logo.svg',
 
     socialLinks: [
       { icon: 'x', link: 'https://x.com/MiguelFdezDev' },

@@ -5,6 +5,8 @@
   --vp-c-brand-soft: rgba(66, 184, 131, 0.14);
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(120deg, #42b883 30%, #06b6d4);
+  --vp-home-hero-image-background-image: linear-gradient(15deg, #42b883 50%, #06b6d4 50%);
+  --vp-home-hero-image-filter: blur(44px);
 }
 
 .dark {
@@ -13,10 +15,45 @@
   --vp-c-brand-3: #42b883;
   --vp-c-brand-soft: rgba(66, 184, 131, 0.16);
   --vp-home-hero-name-background: linear-gradient(120deg, #42b883 20%, #22d3ee);
+  --vp-home-hero-image-background-image: linear-gradient(15deg, #42b883 50%, #22d3ee 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
 }
 
 .VPNav .title {
   font-weight: 700 !important;
+}
+
+.VPNavBar .VPImage.logo {
+  height: 32px;
+  width: 32px;
+}
+
+.VPHero .VPImage.image-src {
+  max-height: 256px;
+}
+
+@media (min-width: 640px) {
+  .VPHero .VPImage.image-src {
+    max-height: 320px;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHero .VPImage.image-src {
+    max-height: 392px;
+  }
 }
 
 .vp-doc h1:first-child {

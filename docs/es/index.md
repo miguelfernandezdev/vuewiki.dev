@@ -7,6 +7,9 @@ hero:
   name: VueWiki
   text: Preguntas de Entrevista de Vue.js
   tagline: Prepara tu siguiente entrevista de Vue.js con preguntas reales, respuestas detalladas y ejemplos de código.
+  image:
+    src: /logo.svg
+    alt: VueWiki
   actions:
     - theme: brand
       text: Ver Preguntas
