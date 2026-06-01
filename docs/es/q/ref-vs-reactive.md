@@ -5,8 +5,8 @@ difficulty: "beginner"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`ref`** — Envuelve cualquier valor (primitivo u objeto). Se accede con `.value` en JS/TS, pero NO en las plantillas.
-- **`reactive`** — Solo para objetos/arrays. No necesita `.value`, pero NO PUEDES reasignar el objeto completo.
+- **`ref`**: envuelve cualquier valor (primitivo u objeto). Se accede con `.value` en JS/TS, pero NO en las plantillas.
+- **`reactive`**: solo para objetos/arrays. No necesita `.value`, pero NO PUEDES reasignar el objeto completo.
 
 ```ts
 const count = ref(0)          // count.value = 1

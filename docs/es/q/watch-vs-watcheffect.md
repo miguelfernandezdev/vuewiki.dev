@@ -5,8 +5,8 @@ difficulty: "intermediate"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`watch`** — Observa fuentes específicas. Recibe los valores anterior y nuevo. Solo se ejecuta cuando cambian las fuentes explícitas.
-- **`watchEffect`** — Detecta dependencias automáticamente. Se ejecuta de forma inmediata y vuelve a ejecutarse cuando cambia cualquier dependencia reactiva.
+- **`watch`**: observa fuentes específicas. Recibe los valores anterior y nuevo. Solo se ejecuta cuando cambian las fuentes explícitas.
+- **`watchEffect`**: detecta dependencias automáticamente. Se ejecuta de forma inmediata y vuelve a ejecutarse cuando cambia cualquier dependencia reactiva.
 
 ```ts
 // watch: explícito

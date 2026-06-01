@@ -16,4 +16,4 @@ tags: ["migration"]
 4. **Tests en cada paso:** Los tests existentes deben seguir pasando
 5. **Zonas de riesgo:** Librerías de terceros, directivas personalizadas, render functions, plugins
 
-El build de compatibilidad permite hacerlo de forma incremental. La clave es no intentar migrar todo a la vez — componente a componente, con tests en cada paso.
+El build de compatibilidad permite hacerlo de forma incremental. La clave es no intentar migrar todo a la vez. Componente a componente, con tests en cada paso.

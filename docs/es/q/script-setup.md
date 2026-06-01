@@ -7,7 +7,7 @@ tags: ["composition-api"]
 
 Azúcar sintáctico para la Composition API que elimina el código repetitivo:
 
-- No hace falta `return` — todo lo que se declara está disponible en la plantilla
+- No hace falta `return`, todo lo que se declara está disponible en la plantilla
 - No hace falta `export default`
 - `defineProps`, `defineEmits`, `defineModel` son macros del compilador (no se importan)
 

@@ -1,0 +1,205 @@
+---
+order: 121
+title: "¿Cómo implementarías el manejo global de errores en una app Vue?"
+difficulty: "advanced"
+tags: ["error-handling", "architecture"]
+---
+
+Vue proporciona múltiples capas para capturar errores: `app.config.errorHandler` para errores no capturados de forma global, `onErrorCaptured` para errores en un subárbol de componentes, y try/catch para operaciones asíncronas. Una app en producción debería combinar los tres, más una interfaz de error visible para el usuario.
+
+## app.config.errorHandler (captura global)
+
+Es la última línea de defensa. Captura cualquier error no gestionado de componentes, watchers, lifecycle hooks y manejadores de eventos:
+
+```ts
+// main.ts
+const app = createApp(App)
+
+app.config.errorHandler = (err, instance, info) => {
+  console.error('Error no gestionado:', err)
+  console.error('Componente:', instance?.$options?.name || 'desconocido')
+  console.error('Hook:', info)
+
+  // Enviar al servicio de seguimiento de errores
+  reportToSentry(err, { component: instance?.$options?.name, info })
+}
+```
+
+| Parámetro | Qué contiene |
+|---|---|
+| `err` | El objeto Error |
+| `instance` | La instancia del componente que lanzó el error (o null) |
+| `info` | Dónde ocurrió el error: `'setup function'`, `'render function'`, `'watcher callback'`, etc. |
+
+## onErrorCaptured (barrera a nivel de componente)
+
+`onErrorCaptured` captura errores de cualquier componente descendiente. Funciona como una barrera de errores: puedes gestionar el error localmente e impedir que se propague hacia arriba.
+
+```vue
+<!-- components/ErrorBoundary.vue -->
+<script setup lang="ts">
+const error = ref<Error | null>(null)
+
+onErrorCaptured((err) => {
+  error.value = err
+  return false // detener propagación, no llega a app.config.errorHandler
+})
+
+function retry() {
+  error.value = null
+}
+</script>
+
+<template>
+  <div v-if="error" class="error-state">
+    <h3>Algo salió mal</h3>
+    <p>{{ error.message }}</p>
+    <button @click="retry">Intentar de nuevo</button>
+  </div>
+  <slot v-else />
+</template>
+```
+
+Envuelve las secciones de tu app que pueden fallar:
+
+```vue
+<template>
+  <AppHeader />
+  <ErrorBoundary>
+    <RouterView />
+  </ErrorBoundary>
+  <AppFooter />
+</template>
+```
+
+Si una página falla, la cabecera y el pie permanecen visibles. El usuario ve un mensaje de error con un botón de reintento en lugar de una pantalla en blanco.
+
+## Valor de retorno de onErrorCaptured
+
+| Retorno | Efecto |
+|---|---|
+| `false` | Error capturado, deja de propagarse |
+| `true` o nada | El error continúa hacia el padre y eventualmente a `app.config.errorHandler` |
+
+## Manejo de errores asíncronos
+
+`app.config.errorHandler` captura errores en lifecycle hooks y watchers asíncronos. Pero `$fetch`, `fetch` o cualquier promesa en un manejador de eventos necesita try/catch explícito:
+
+```vue
+<script setup>
+const error = ref<string | null>(null)
+const isLoading = ref(false)
+
+async function submitForm(data: FormData) {
+  error.value = null
+  isLoading.value = true
+  try {
+    await $fetch('/api/submit', { method: 'POST', body: data })
+    navigateTo('/success')
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : 'Algo salió mal'
+  } finally {
+    isLoading.value = false
+  }
+}
+</script>
+
+<template>
+  <div v-if="error" class="alert-error">{{ error }}</div>
+  <form @submit.prevent="submitForm">...</form>
+</template>
+```
+
+## Composable para operaciones asíncronas
+
+Extrae el patrón try/catch en un composable reutilizable:
+
+```ts
+// composables/useAsyncAction.ts
+export function useAsyncAction<T>(action: () => Promise<T>) {
+  const isLoading = ref(false)
+  const error = ref<string | null>(null)
+
+  async function execute() {
+    isLoading.value = true
+    error.value = null
+    try {
+      const result = await action()
+      return result
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Error inesperado'
+      return null
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  return { execute, isLoading, error }
+}
+```
+
+```vue
+<script setup>
+const { execute: submit, isLoading, error } = useAsyncAction(
+  () => $fetch('/api/submit', { method: 'POST', body: formData })
+)
+</script>
+```
+
+## Manejo de errores en Nuxt
+
+Nuxt añade manejo de errores a nivel de framework por encima del de Vue:
+
+**error.vue** captura errores fatales y muestra una pantalla de error a página completa:
+
+```vue
+<!-- error.vue -->
+<script setup lang="ts">
+const props = defineProps<{ error: { statusCode: number; message: string } }>()
+
+function goHome() {
+  clearError({ redirect: '/' })
+}
+</script>
+
+<template>
+  <div class="error-page">
+    <h1>{{ error.statusCode }}</h1>
+    <p>{{ error.message }}</p>
+    <button @click="goHome">Ir al inicio</button>
+  </div>
+</template>
+```
+
+**showError / createError** para lanzar errores de forma explícita:
+
+```ts
+// En una página o middleware
+throw createError({ statusCode: 404, statusMessage: 'Página no encontrada' })
+```
+
+**NuxtErrorBoundary** para captura de errores con ámbito:
+
+```vue
+<template>
+  <NuxtErrorBoundary>
+    <SomeRiskyComponent />
+    <template #error="{ error, clearError }">
+      <p>{{ error.message }}</p>
+      <button @click="clearError">Reintentar</button>
+    </template>
+  </NuxtErrorBoundary>
+</template>
+```
+
+## Capas de manejo de errores
+
+```
+Try/catch en manejadores de eventos (local, explícito)
+        ↓ no capturado
+onErrorCaptured en ErrorBoundary (subárbol de componentes)
+        ↓ se propaga si no devuelve false
+app.config.errorHandler (captura global)
+        ↓ en Nuxt
+error.vue (errores fatales a nivel de página)
+```

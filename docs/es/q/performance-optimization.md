@@ -14,7 +14,7 @@ tags: ["performance"]
 7. **Code splitting** con `defineAsyncComponent`
 8. **Debounce** en inputs de búsqueda y filtros
 9. **`v-show`** en lugar de `v-if` para elementos que se ocultan y muestran con frecuencia
-10. **Evitar watchers innecesarios** — preferir computed cuando sea posible
+10. **Evitar watchers innecesarios**, preferir computed cuando sea posible
 
 **Diagnóstico:**
 - Vue DevTools → Performance timeline

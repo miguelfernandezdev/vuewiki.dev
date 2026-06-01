@@ -20,4 +20,4 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
-`defineProps` es una **macro del compilador** — no se importa, Vue la procesa en tiempo de compilación.
+`defineProps` es una **macro del compilador**. No se importa, Vue la procesa en tiempo de compilación.

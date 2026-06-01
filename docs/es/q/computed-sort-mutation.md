@@ -1,0 +1,53 @@
+---
+order: 41
+title: "¿Por qué ordenar un array dentro de computed muta los datos originales?"
+difficulty: "intermediate"
+tags: ["reactivity", "errors"]
+---
+
+Porque `.sort()`, `.reverse()` y `.splice()` modifican el array **en su lugar**. Dentro de un computed, estás llamando a estos métodos sobre el array fuente reactivo. La "copia ordenada" y el original acaban siendo el mismo array mutado.
+
+```ts
+const items = ref([3, 1, 4, 1, 5])
+
+const sorted = computed(() => {
+  return items.value.sort((a, b) => a - b)
+  // items.value también queda ordenado, el orden original se pierde
+})
+```
+
+## Cómo solucionarlo
+
+**Opción 1:** Copia el array primero con spread.
+
+```ts
+const sorted = computed(() => {
+  return [...items.value].sort((a, b) => a - b)
+})
+```
+
+**Opción 2:** Usa `.slice()` para crear una copia.
+
+```ts
+const reversed = computed(() => {
+  return items.value.slice().reverse()
+})
+```
+
+**Opción 3 (ES2023):** Usa las versiones no mutantes.
+
+```ts
+const sorted = computed(() => items.value.toSorted((a, b) => a - b))
+const reversed = computed(() => items.value.toReversed())
+```
+
+## Métodos que mutan frente a los que no mutan
+
+| Muta el original | Devuelve un nuevo array |
+|---|---|
+| `sort()` | `toSorted()` |
+| `reverse()` | `toReversed()` |
+| `splice()` | `toSpliced()` |
+| `push()` | `concat()` |
+
+La regla general: si estás dentro de un `computed`, nunca llames a un método que cambie el array fuente. Trabaja siempre sobre una copia.

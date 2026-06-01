@@ -5,14 +5,14 @@ difficulty: "intermediate"
 tags: ["components"]
 ---
 
-**Teleport** — Renderiza el DOM en otra parte del árbol (similar a los Portals de React):
+**Teleport** renderiza el DOM en otra parte del árbol (similar a los Portals de React):
 ```vue
 <Teleport to="body">
   <Modal v-if="showModal" @close="showModal = false" />
 </Teleport>
 ```
 
-**Fragments** — Múltiples nodos raíz (Vue 2 exigía un único nodo raíz):
+**Fragments** permite múltiples nodos raíz (Vue 2 exigía un único nodo raíz):
 ```vue
 <template>
   <header>Header</header>
@@ -21,7 +21,7 @@ tags: ["components"]
 </template>
 ```
 
-**Suspense** — Gestiona componentes asíncronos con un fallback mientras cargan:
+**Suspense** gestiona componentes asíncronos con un fallback mientras cargan:
 ```vue
 <Suspense>
   <template #default>

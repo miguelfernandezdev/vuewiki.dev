@@ -1,0 +1,87 @@
+---
+order: 52
+title: "¿Cómo funcionan los estilos con scoped, CSS Modules y clases dinámicas en Vue?"
+difficulty: "beginner"
+tags: ["components", "styling"]
+---
+
+Los Single-File Components de Vue ofrecen tres formas de aplicar estilos a los componentes, cada una resolviendo un problema diferente.
+
+## Estilos con scoped
+
+Añadir `scoped` a un bloque `<style>` limita el CSS al componente actual. Vue añade un atributo único `data-v-xxxxx` a cada elemento del template y lo añade a cada selector.
+
+```vue
+<style scoped>
+.title { color: blue; }
+/* Compila a: .title[data-v-abc123] { color: blue; } */
+</style>
+```
+
+Los estilos no se filtran a componentes padre o hermanos. Los internos de los componentes hijos tampoco se ven afectados (excepto el elemento raíz del hijo).
+
+## CSS Modules
+
+CSS Modules hace hash de los nombres de clase en tiempo de compilación. Los enlazas a través de `$style` en lugar de escribir nombres de clase simples.
+
+```vue
+<template>
+  <h1 :class="$style.title">Hello</h1>
+</template>
+
+<style module>
+.title { color: blue; }
+/* Compila a: .title_abc1 { color: blue; } */
+</style>
+```
+
+La ventaja frente a los estilos con scoped: los nombres con hash funcionan en cualquier lugar del DOM, así que son seguros para contenido teleportado, elementos dinámicos e integraciones de terceros.
+
+## Clases dinámicas
+
+Vue ofrece varias sintaxis para enlazar clases dinámicamente.
+
+```vue
+<template>
+  <!-- Sintaxis de objeto: la clave es el nombre de clase, el valor es la condición -->
+  <div :class="{ active: isActive, disabled: isDisabled }">...</div>
+
+  <!-- Sintaxis de array: combina varias fuentes -->
+  <div :class="[baseClass, { active: isActive }]">...</div>
+
+  <!-- Con CSS Modules -->
+  <div :class="[$style.card, { [$style.active]: isActive }]">...</div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const isActive = ref(true)
+const isDisabled = ref(false)
+const baseClass = ref('card')
+</script>
+```
+
+## Estilos inline dinámicos
+
+```vue
+<template>
+  <!-- Sintaxis de objeto -->
+  <div :style="{ color: textColor, fontSize: size + 'px' }">...</div>
+
+  <!-- Sintaxis de array: combina varios objetos de estilo -->
+  <div :style="[baseStyles, overrideStyles]">...</div>
+</template>
+```
+
+Vue añade automáticamente prefijos de vendor para propiedades CSS específicas del navegador, así que no necesitas escribir `-webkit-` ni `-moz-` tú mismo.
+
+## Cuándo usar cada opción
+
+| Necesidad | Usar |
+|---|---|
+| Aislamiento simple del componente | `<style scoped>` |
+| Contenido teleportado o dinámico | `<style module>` |
+| Alternar una clase según el estado | `:class="{ active: isActive }"` |
+| Combinar clases estáticas y dinámicas | `:class="['base', { active: isActive }]"` |
+| Sobrescrituras inline puntuales | `:style="{ color: x }"` |
