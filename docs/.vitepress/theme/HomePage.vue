@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import Fuse from 'fuse.js'
 import { data as allQuestions } from './questions.data'
@@ -30,9 +30,40 @@ const DIFFICULTY_ORDER: Record<string, number> = {
 }
 
 type SortKey = 'recommended' | 'easiest' | 'hardest'
+const VALID_SORTS = new Set<SortKey>(['recommended', 'easiest', 'hardest'])
+const VALID_DIFFICULTIES = new Set(['beginner', 'intermediate', 'advanced'])
 const activeSort = ref<SortKey>('recommended')
 const sortDropdownOpen = ref(false)
 const sortDropdownRef = ref<HTMLElement | null>(null)
+
+function readUrlParams() {
+  const params = new URLSearchParams(globalThis.location.search)
+
+  const diff = params.get('difficulty')
+  if (diff && VALID_DIFFICULTIES.has(diff)) activeFilter.value = diff
+
+  const tags = params.get('tags')
+  if (tags) activeTags.value = new Set(tags.split(',').filter(Boolean))
+
+  const sort = params.get('sort') as SortKey
+  if (sort && VALID_SORTS.has(sort)) activeSort.value = sort
+
+  const q = params.get('q')
+  if (q) search.value = q
+}
+
+function syncUrlParams() {
+  const params = new URLSearchParams()
+
+  if (activeFilter.value) params.set('difficulty', activeFilter.value)
+  if (activeTags.value.size > 0) params.set('tags', [...activeTags.value].join(','))
+  if (activeSort.value !== 'recommended') params.set('sort', activeSort.value)
+  if (search.value) params.set('q', search.value)
+
+  const qs = params.toString()
+  const url = globalThis.location.pathname + (qs ? `?${qs}` : '')
+  globalThis.history.replaceState(null, '', url)
+}
 
 function toggleSortDropdown() {
   sortDropdownOpen.value = !sortDropdownOpen.value
@@ -132,8 +163,17 @@ function onClickOutside(e: MouseEvent) {
   }
 }
 
-onMounted(() => document.addEventListener('click', onClickOutside))
+onMounted(() => {
+  document.addEventListener('click', onClickOutside)
+  readUrlParams()
+})
 onUnmounted(() => document.removeEventListener('click', onClickOutside))
+
+watch(
+  [search, activeFilter, activeTags, activeSort],
+  () => syncUrlParams(),
+  { deep: true },
+)
 
 const fuse = computed(() => new Fuse(questions.value, {
   keys: ['title'],

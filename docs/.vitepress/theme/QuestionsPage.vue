@@ -28,6 +28,9 @@ const difficultyClass: Record<string, string> = {
   intermediate: 'badge-intermediate',
   advanced: 'badge-advanced',
 }
+
+const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
+
 </script>
 
 <template>
@@ -41,9 +44,12 @@ const difficultyClass: Record<string, string> = {
 
     <div v-for="group in groups" :key="group.difficulty" class="difficulty-group">
       <div class="group-header">
-        <span :class="['difficulty-badge', difficultyClass[group.difficulty]]">
+        <a
+          :href="`${homeBase}?difficulty=${group.difficulty}`"
+          :class="['difficulty-badge', difficultyClass[group.difficulty]]"
+        >
           {{ t(`filters.${group.difficulty}`) }}
-        </span>
+        </a>
         <span class="group-count">{{ group.questions.length }}</span>
         <div class="group-progress">
           <div class="group-progress-bar">
@@ -205,6 +211,12 @@ const difficultyClass: Record<string, string> = {
   padding: 0.25rem 0.625rem;
   border-radius: 9999px;
   white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.difficulty-badge:hover {
+  opacity: 0.8;
 }
 
 .badge-beginner {
