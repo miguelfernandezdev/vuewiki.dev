@@ -3,6 +3,7 @@ order: 11
 title: "Why doesn't v-show work on template elements?"
 difficulty: "beginner"
 tags: ["directives", "errors"]
+summary: "v-show toggles CSS display, but <template> elements don't render to the DOM. There's no element to set display:none on. Use v-if instead."
 ---
 
 Because `v-show` works by toggling the CSS `display` property, and `<template>` elements don't render to the DOM. There is no real element to set `display: none` on.

@@ -3,6 +3,7 @@ order: 94
 title: "¿Cómo cancelas una petición API en un composable?"
 difficulty: "intermediate"
 tags: ["composables", "vueuse", "watchers", "v-model"]
+summary: "Crea un AbortController, pasa su signal a fetch, y llama a abort() al desmontar o cuando una nueva petición reemplaza una obsoleta."
 ---
 
 Usa la API `AbortController` del navegador. Crea un controller, pasa su `signal` a `fetch`, y llama a `controller.abort()` cuando necesites cancelar. En Vue, los dos motivos más comunes para cancelar son el desmontaje del componente (evitar actualizaciones de estado en componentes destruidos) y las peticiones nuevas que reemplazan a las antiguas (prevención de condiciones de carrera).

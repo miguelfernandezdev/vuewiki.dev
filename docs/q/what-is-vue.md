@@ -3,6 +3,7 @@ order: 1
 title: "What is Vue and what are its main features?"
 difficulty: "beginner"
 tags: ["core", "pinia"]
+summary: "A JavaScript framework for building UIs with declarative templates, a component-based model, and a reactivity system that auto-updates the DOM."
 ---
 
 Vue is a JavaScript framework for building user interfaces. It extends standard HTML, CSS, and JavaScript with a declarative, component-based model and a [reactivity system](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) that automatically updates the DOM when your data changes.

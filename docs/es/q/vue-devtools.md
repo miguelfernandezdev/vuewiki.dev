@@ -3,6 +3,7 @@ order: 7
 title: "¿Cómo ayudan las Vue DevTools con la depuración?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite"]
+summary: "Extensión del navegador que muestra el árbol de componentes, estado reactivo, stores de Pinia, rutas y datos de rendimiento. Esencial para depurar apps Vue."
 ---
 
 Vue DevTools es una extensión de navegador (Chrome, Firefox, Edge) y un plugin de Vite independiente que te permite inspeccionar tu aplicación Vue en tiempo de ejecución. Puedes ver el árbol de componentes, el estado reactivo, los stores de Pinia, las rutas y los datos de rendimiento sin añadir `console.log` por todas partes.

@@ -3,6 +3,7 @@ order: 170
 title: "¿Cómo gestionas el foco en SPAs con Vue?"
 difficulty: "advanced"
 tags: ["accessibility", "vue-router", "watchers", "suspense"]
+summary: "Mueve el foco al encabezado principal tras cambios de ruta, atrapa el foco en modales y restáuralo al cerrar contenido dinámico."
 ---
 
 En un sitio web tradicional, el navegador mueve el foco al principio de la página en cada navegación. Las SPAs rompen esto porque la página nunca se recarga. Después de un cambio de ruta del lado del cliente, el foco permanece donde estaba, lo que significa que un usuario de lector de pantalla no tiene forma de saber que la página cambió. Necesitas mover el foco manualmente en los cambios de ruta, atraparlo dentro de los modales y devolverlo cuando el contenido dinámico se cierra.

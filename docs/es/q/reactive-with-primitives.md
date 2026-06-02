@@ -3,6 +3,7 @@ order: 65
 title: "¿Por qué reactive() no funciona con primitivos?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]
+summary: "reactive() se basa en Proxy, que solo puede envolver objetos. Los primitivos (string, number, boolean) no pueden ser proxied — usa ref()."
 ---
 
 Porque `reactive()` se construye sobre objetos [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de JavaScript, y los Proxies solo pueden envolver **objetos**. Los valores primitivos (strings, números, booleanos) no son objetos, así que no hay nada que el Proxy pueda envolver.

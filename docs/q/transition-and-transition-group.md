@@ -3,6 +3,7 @@ order: 36
 title: "How do Transition and TransitionGroup work?"
 difficulty: "intermediate"
 tags: ["components", "animation"]
+summary: "<Transition> animates a single element entering/leaving. <TransitionGroup> animates list items. Both use CSS classes for enter/leave stages."
 ---
 
 Vue provides two built-in components for animation. `<Transition>` animates a single element entering or leaving. `<TransitionGroup>` animates items in a list.

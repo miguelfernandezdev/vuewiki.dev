@@ -3,6 +3,7 @@ order: 109
 title: "¿Cómo se tipan los manejadores de eventos en los templates de Vue?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]
+summary: "Tipar el parámetro del evento (e: Event) y castear event.target al tipo correcto (e.target as HTMLInputElement) para acceder a .value o .checked."
 ---
 
 Los manejadores de eventos DOM en templates de Vue reciben un objeto `Event`, pero TypeScript no sabe qué elemento específico lo disparó. Necesitas tipar el parámetro del evento explícitamente y hacer un cast de `event.target` al tipo de elemento correcto para acceder a propiedades como `.value` o `.checked`.

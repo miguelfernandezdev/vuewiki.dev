@@ -3,6 +3,7 @@ order: 79
 title: "¿Cuál es la diferencia entre computed y watch?"
 difficulty: "advanced"
 tags: ["reactivity", "composition-api", "watchers"]
+summary: "computed deriva un valor cacheado de datos reactivos (puro, sin efectos). watch ejecuta efectos secundarios cuando fuentes específicas cambian (APIs, DOM)."
 ---
 
 Ambos reaccionan a cambios en datos reactivos, pero sirven para propósitos fundamentalmente distintos. Equivocarse lleva a estado duplicado (usar `watch` donde `computed` bastaría) o efectos secundarios inesperados (usar `computed` para cosas que no deberían ser puras).

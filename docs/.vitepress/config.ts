@@ -87,6 +87,7 @@ Available in English and Spanish.
         nav: [
           { text: 'Preguntas', link: '/es/', activeMatch: '^/es/$' },
           { text: 'Por dificultad', link: '/es/questions' },
+          { text: 'Flashcards', link: '/es/flashcards' },
           { text: 'Recursos', link: '/es/resources' },
           {
             text: 'Enlaces',
@@ -157,6 +158,7 @@ Available in English and Spanish.
     nav: [
       { text: 'Questions', link: '/', activeMatch: '^/$' },
       { text: 'By Difficulty', link: '/questions' },
+      { text: 'Flashcards', link: '/flashcards' },
       { text: 'Resources', link: '/resources' },
       {
         text: 'Links',

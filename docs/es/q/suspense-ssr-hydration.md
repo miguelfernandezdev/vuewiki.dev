@@ -3,6 +3,7 @@ order: 145
 title: "¿Qué problemas de hidratación SSR causa Suspense y cómo se evitan?"
 difficulty: "advanced"
 tags: ["ssr", "components", "vueuse", "suspense"]
+summary: "Durante la hydration, los chunks de componentes async pueden no estar cargados, causando mismatches. Precarga chunks o usa el Suspense integrado de Nuxt."
 ---
 
 `<Suspense>` y SSR tienen casos límite conocidos. El problema central: durante la hidratación, el chunk de un componente asíncrono puede no estar cargado todavía, así que el cliente renderiza el fallback mientras el servidor envió el contenido resuelto. Esto crea un error de hidratación que provoca parpadeos, pérdida de estado o errores en tiempo de ejecución.

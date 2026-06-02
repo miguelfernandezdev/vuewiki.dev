@@ -3,6 +3,7 @@ order: 64
 title: "¿Por qué olvidar .value con ref provoca bugs?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]
+summary: "ref() envuelve el valor en un objeto — accédelo via .value en script. Olvidar .value significa que operas sobre el wrapper, no sobre los datos."
 ---
 
 Porque [ref()](https://vuejs.org/api/reactivity-core.html#ref) envuelve tu valor dentro de un objeto. Los datos reales viven en `.value`, no en el ref en sí. Si se olvida `.value` en JavaScript, se está operando sobre el objeto envolvente, no sobre los datos.

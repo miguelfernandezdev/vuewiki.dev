@@ -3,6 +3,7 @@ order: 161
 title: "What is the difference between server middleware and route middleware in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt"]
+summary: "Server middleware runs on every HTTP request in Nitro. Route middleware runs on page navigations in Vue with access to composables."
 ---
 
 They run at completely different layers. Server middleware runs on every HTTP request hitting the Nitro server (before API routes, before page rendering). Route middleware runs on page navigations (both server-side during SSR and client-side during SPA navigation). Server middleware handles HTTP-level concerns like CORS, logging, and auth headers. Route middleware handles page-level concerns like access control and redirects.

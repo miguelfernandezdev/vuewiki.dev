@@ -3,6 +3,7 @@ order: 162
 title: "What are Nuxt layers and when would you use them?"
 difficulty: "advanced"
 tags: ["nuxt", "architecture"]
+summary: "Layers are partial Nuxt apps you extend via config. They share components, composables, pages, and config across projects."
 ---
 
 Layers let you share partial Nuxt applications across projects. A layer can include components, composables, pages, layouts, middleware, plugins, server routes, and config. Think of them as Nuxt's inheritance model: your project extends one or more layers, and everything merges automatically.

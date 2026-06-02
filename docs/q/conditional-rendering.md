@@ -3,6 +3,7 @@ order: 14
 title: "What is conditional rendering in Vue?"
 difficulty: "beginner"
 tags: ["directives"]
+summary: "v-if adds/removes elements from the DOM. v-show toggles CSS display. Use v-if for rare toggles, v-show for frequent ones."
 ---
 
 Conditional rendering controls whether elements appear in the DOM based on reactive state. Vue provides two mechanisms: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (adds/removes elements) and [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (toggles CSS `display`).

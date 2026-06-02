@@ -3,6 +3,7 @@ order: 14
 title: "¿Qué es el renderizado condicional en Vue?"
 difficulty: "beginner"
 tags: ["directives"]
+summary: "v-if añade/elimina elementos del DOM. v-show cambia el CSS display. Usa v-if para cambios raros, v-show para frecuentes."
 ---
 
 El renderizado condicional controla si los elementos aparecen en el DOM según el estado reactivo. Vue ofrece dos mecanismos: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (añade o elimina elementos) y [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (alterna la propiedad CSS `display`).

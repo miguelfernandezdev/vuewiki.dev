@@ -3,6 +3,7 @@ order: 167
 title: "How would you implement global error handling in a Vue app?"
 difficulty: "advanced"
 tags: ["error-handling", "architecture"]
+summary: "app.config.errorHandler catches all uncaught errors globally. Combine with onErrorCaptured for subtree boundaries and try/catch for async operations."
 ---
 
 Vue provides multiple layers for catching errors: `app.config.errorHandler` for uncaught errors globally, `onErrorCaptured` for errors in a component subtree, and try/catch for async operations. A production app should combine all three, plus a user-facing error UI.

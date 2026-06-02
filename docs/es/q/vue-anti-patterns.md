@@ -3,6 +3,7 @@ order: 140
 title: "¿Cuáles son los antipatrones más comunes en bases de código Vue grandes?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "watchers", "provide-inject"]
+summary: "Componentes dios, todo en stores, watchers en vez de computed, prop drilling sin provide/inject y acoplamiento fuerte a librerías externas."
 ---
 
 Los antipatrones más dañinos en proyectos Vue no son errores de sintaxis. Son decisiones estructurales que parecen productivas al principio pero generan problemas acumulativos a medida que crece la base de código. Estos son los que aparecen repetidamente en código real en producción.

@@ -3,6 +3,7 @@ order: 129
 title: "Una página tarda 3-4 segundos en ser interactiva. ¿Cómo la diagnosticas y corriges?"
 difficulty: "advanced"
 tags: ["performance", "debugging", "watchers"]
+summary: "Mide primero (pestaña Performance, Lighthouse). Revisa red (APIs lentas), bundle (code splitting) y renderizado (reactividad excesiva)."
 ---
 
 Sigue un proceso estructurado: mide, identifica la categoría del cuello de botella, corrige, mide de nuevo. El cuello de botella siempre es una de tres cosas: la red (llamadas a la API lentas o demasiadas), el bundle (demasiado JavaScript enviado) o el renderizado (demasiado trabajo en el hilo principal).

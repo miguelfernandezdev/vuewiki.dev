@@ -3,6 +3,7 @@ order: 8
 title: "What's the difference between v-if and v-show?"
 difficulty: "beginner"
 tags: ["directives"]
+summary: "v-if adds/removes elements from the DOM (higher toggle cost, zero render cost when hidden). v-show toggles CSS display (cheap toggle, always rendered)."
 ---
 
 Both hide and show elements based on a condition, but they do it in completely different ways — and that difference has real performance implications.

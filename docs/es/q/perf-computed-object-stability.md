@@ -3,6 +3,7 @@ order: 127
 title: "¿Cómo afecta la estabilidad de objetos en computed a los re-renders?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]
+summary: "Un computed que devuelve un nuevo objeto cada vez dispara todos los dependientes aunque los valores sean iguales. Compara manualmente o devuelve primitivos."
 ---
 
 Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) que devuelve un objeto nuevo en cada evaluación crea una nueva referencia en cada ejecución. Vue detecta la nueva referencia y dispara cada watcher, efecto y componente hijo que dependa de ella, aunque los valores dentro del objeto sean idénticos. Para primitivos, Vue 3.4+ lo gestiona automáticamente. Para objetos, hay que comparar de forma manual.

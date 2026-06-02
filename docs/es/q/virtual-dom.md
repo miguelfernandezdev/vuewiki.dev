@@ -3,6 +3,7 @@ order: 2
 title: "¿Qué es el Virtual DOM y cómo lo usa Vue?"
 difficulty: "beginner"
 tags: ["core", "reactivity"]
+summary: "Un árbol JS ligero de vnodes. Vue compara el árbol nuevo con el anterior y aplica solo las operaciones DOM mínimas necesarias."
 ---
 
 El [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) es una representación JavaScript ligera del DOM real. En lugar de manipular directamente el DOM del navegador en cada cambio, Vue construye un árbol de objetos planos (vnodes), compara el nuevo árbol con el anterior y aplica solo el conjunto mínimo de operaciones DOM necesarias.

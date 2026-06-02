@@ -3,6 +3,7 @@ order: 10
 title: "Why can't you use v-if and v-for on the same element?"
 difficulty: "beginner"
 tags: ["directives", "errors"]
+summary: "In Vue 3, v-if runs before v-for, so the loop variable isn't available. Wrap with <template v-for> and put v-if on the inner element, or use computed."
 ---
 
 Because the precedence between them changed from Vue 2 to Vue 3, and putting them together creates ambiguous code regardless of version.

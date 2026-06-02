@@ -3,6 +3,7 @@ order: 92
 title: "How would you implement debounce on a search input?"
 difficulty: "intermediate"
 tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
+summary: "Watch the input ref and delay the query update with setTimeout. Extract it as a composable or use VueUse's refDebounced."
 ---
 
 Debouncing delays an action until the user stops typing for a set amount of time. Without it, a search input fires an API call on every keystroke — typing "vue router" sends 10 requests, most of which are useless because the user hasn't finished typing.

@@ -3,6 +3,7 @@ order: 49
 title: "¿Cómo diseñarías una librería de componentes compartida?"
 difficulty: "advanced"
 tags: ["components", "architecture", "vite", "vitest", "slots"]
+summary: "Cada componente es autónomo con props tipados, emits y slots. Publica como paquete con exports tree-shakeable y temas via variables CSS."
 ---
 
 Una librería de componentes compartida da a múltiples apps (o equipos) un conjunto consistente de componentes UI. El objetivo es reutilización sin acoplamiento — cada consumidor importa lo que necesita, obtiene type safety y theming, y puede actualizar a su propio ritmo.

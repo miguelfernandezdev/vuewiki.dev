@@ -3,6 +3,7 @@ order: 45
 title: "¿Cómo explicarías v-model a alguien que viene de React?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]
+summary: "v-model = value + onChange de React en una línea. Es azúcar sintáctico: internamente enlaza un prop y escucha un evento de actualización."
 ---
 
 En React, el estado de los formularios es siempre unidireccional: el estado fluye hacia abajo a través de `value` y los cambios suben a través de `onChange`. Dos líneas por cada input. En Vue, `v-model` gestiona ambas direcciones en una sola declaración. Es azúcar sintáctico: internamente vincula un prop de valor y escucha un evento de actualización, pero escribes una línea en lugar de dos. El compromiso es explicitez frente a conveniencia.

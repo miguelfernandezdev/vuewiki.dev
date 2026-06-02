@@ -3,6 +3,7 @@ order: 31
 title: "¿Por qué los estilos con scoped no se aplican al contenido teletransportado?"
 difficulty: "intermediate"
 tags: ["components", "errors", "suspense", "teleport"]
+summary: "Los elementos teleportados salen del subárbol DOM del componente, así que los atributos scoped data-v no aplican. Usa :global() o un bloque de estilos sin scope."
 ---
 
 Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a los elementos del subárbol DOM del componente. Cuando `<Teleport>` mueve elementos a otra parte del DOM (como `body`), esos elementos salen del subárbol del componente, por lo que los selectores de atributo con scoped dejan de coincidir.

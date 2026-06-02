@@ -3,6 +3,7 @@ order: 37
 title: "¿Cómo funcionan los bindings múltiples de v-model en un componente?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]
+summary: "Añade un nombre tras v-model: v-model:title, v-model:body. Cada uno enlaza un prop separado y emite update:title, update:body."
 ---
 
 Desde Vue 3, puedes enlazar múltiples directivas `v-model` a un solo componente dándole un nombre a cada una. Esto reemplaza el patrón de Vue 2 de un `v-model` más modificadores `.sync`.

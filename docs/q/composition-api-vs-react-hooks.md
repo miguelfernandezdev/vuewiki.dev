@@ -3,6 +3,7 @@ order: 59
 title: "What is the difference between Composition API and React Hooks?"
 difficulty: "advanced"
 tags: ["composition-api", "watchers"]
+summary: "Vue's setup() runs once per instance; React's component function runs on every render. This eliminates stale closures, dependency arrays, and useCallback/useMemo."
 ---
 
 They look similar on the surface — both extract reusable logic into functions. But they have a fundamental difference: Vue's `setup` runs **once** per component instance, while React's component function runs on **every render**. This single difference eliminates entire categories of bugs and unnecessary patterns that React developers deal with daily.

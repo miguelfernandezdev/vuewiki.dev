@@ -3,6 +3,7 @@ order: 123
 title: "¿Cómo implementarías lazy loading y code splitting?"
 difficulty: "advanced"
 tags: ["performance", "vue-router", "vite"]
+summary: "Usa import() dinámico en definiciones de rutas y defineAsyncComponent. Vite crea automáticamente chunks separados que se cargan bajo demanda."
 ---
 
 El code splitting divide tu app en archivos JavaScript más pequeños (chunks) que se cargan bajo demanda en lugar de todos a la vez. El lazy loading significa cargar un chunk solo cuando el usuario realmente lo necesita — al navegar a una ruta, abrir un modal o hacer scroll a una sección. Vite gestiona esto automáticamente cuando usas `import()` dinámico.

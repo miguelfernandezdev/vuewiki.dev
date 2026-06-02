@@ -3,6 +3,7 @@ order: 8
 title: "¿Cuál es la diferencia entre v-if y v-show?"
 difficulty: "beginner"
 tags: ["directives"]
+summary: "v-if añade/elimina elementos del DOM (mayor coste de cambio, cero coste oculto). v-show cambia CSS display (cambio barato, siempre renderizado)."
 ---
 
 Ambas directivas muestran y ocultan elementos según una condición, pero lo hacen de formas completamente distintas — y esa diferencia tiene implicaciones reales de rendimiento.

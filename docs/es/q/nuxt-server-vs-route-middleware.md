@@ -3,6 +3,7 @@ order: 161
 title: "¿Cuál es la diferencia entre el middleware de servidor y el middleware de rutas en Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt"]
+summary: "El middleware de servidor se ejecuta en cada petición HTTP en Nitro. El de rutas se ejecuta en navegaciones de página en Vue con acceso a composables."
 ---
 
 Se ejecutan en capas completamente distintas. El middleware de servidor se ejecuta en cada petición HTTP que llega al servidor Nitro (antes de las rutas de API, antes del renderizado de páginas). El middleware de rutas se ejecuta en las navegaciones de página (tanto en el servidor durante SSR como en el cliente durante la navegación SPA). El middleware de servidor gestiona aspectos HTTP como CORS, logging y cabeceras de autenticación. El middleware de rutas gestiona aspectos de página como el control de acceso y las redirecciones.

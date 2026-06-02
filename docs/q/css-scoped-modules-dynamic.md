@@ -3,6 +3,7 @@ order: 21
 title: "How do scoped styles, CSS Modules, and dynamic classes work in Vue?"
 difficulty: "beginner"
 tags: ["components", "styling", "teleport"]
+summary: "Scoped styles add data-v attributes for isolation. CSS Modules hash class names for uniqueness. :class and :style bind classes/styles dynamically."
 ---
 
 Vue Single-File Components offer three ways to style components, each solving a different problem.

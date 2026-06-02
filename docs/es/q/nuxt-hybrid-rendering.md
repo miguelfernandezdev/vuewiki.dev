@@ -3,6 +3,7 @@ order: 155
 title: "¿Cómo funciona el renderizado híbrido (route rules) en Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "performance"]
+summary: "routeRules permite combinar prerender, ISR, SWR y SPA por ruta en la misma app Nuxt."
 ---
 
 El renderizado híbrido permite combinar estrategias de renderizado por ruta dentro de la misma app Nuxt. Una página de marketing puede pre-renderizarse en tiempo de build, el blog puede usar ISR y el panel de administración puede ser solo del cliente. Todo se configura en `routeRules`.

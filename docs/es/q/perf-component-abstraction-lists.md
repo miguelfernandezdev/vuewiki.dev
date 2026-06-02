@@ -3,6 +3,7 @@ order: 125
 title: "¿Por qué deberías evitar la abstracción en componentes dentro de listas grandes?"
 difficulty: "advanced"
 tags: ["performance", "components"]
+summary: "Cada instancia de componente tiene overhead (setup reactivo, vnode, lifecycle). En listas grandes, aplana el árbol de componentes para reducir instancias."
 ---
 
 Cada instancia de componente Vue tiene un coste: configuración reactiva, creación de vnode, lifecycle hooks y memoria para el proxy de la instancia. Para un solo componente es despreciable. En una lista de 100 o más elementos, el coste se multiplica. Si cada elemento de la lista tiene 5 componentes anidados, son 500 instancias en lugar de 100.

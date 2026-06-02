@@ -3,6 +3,7 @@ order: 117
 title: "¿Cómo testearías un composable que hace fetch de datos?"
 difficulty: "advanced"
 tags: ["testing", "composables", "vitest", "vueuse"]
+summary: "Mockea fetch o $fetch con vi.fn(), llama al composable, espera la promesa y verifica las refs reactivas devueltas (data, error, isLoading)."
 ---
 
 ```ts

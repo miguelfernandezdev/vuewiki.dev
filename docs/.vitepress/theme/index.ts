@@ -3,6 +3,7 @@ import type { Theme } from 'vitepress'
 import { h } from 'vue'
 import HomePage from './HomePage.vue'
 import QuestionsPage from './QuestionsPage.vue'
+import FlashcardsPage from './FlashcardsPage.vue'
 import QuestionMeta from './QuestionMeta.vue'
 import BookLogo from './BookLogo.vue'
 import FooterCta from './FooterCta.vue'
@@ -20,5 +21,6 @@ export default {
   enhanceApp({ app }) {
     app.component('HomePage', HomePage)
     app.component('QuestionsPage', QuestionsPage)
+    app.component('FlashcardsPage', FlashcardsPage)
   },
 } satisfies Theme

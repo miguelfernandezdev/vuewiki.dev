@@ -3,6 +3,7 @@ order: 160
 title: "¿Qué pasa si llamas a useFetch dentro de un event handler?"
 difficulty: "intermediate"
 tags: ["nuxt", "errors", "vueuse"]
+summary: "useFetch necesita contexto del componente — llámalo en el nivel superior de setup(), no en event handlers. Usa $fetch para peticiones del usuario."
 ---
 
 No funciona como se espera. `useFetch` y `useAsyncData` deben llamarse en el nivel superior de `<script setup>` (o en un plugin/middleware), no dentro de event handlers, callbacks o lifecycle hooks. Dependen del contexto del componente de Nuxt para registrarse en la transferencia del payload SSR y la deduplicación. Dentro de un event handler, ese contexto desaparece. Usa `$fetch` directamente para peticiones disparadas por acciones del usuario.

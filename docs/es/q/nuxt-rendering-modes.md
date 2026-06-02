@@ -3,6 +3,7 @@ order: 146
 title: "¿Qué es Nuxt y qué modos de renderizado admite?"
 difficulty: "beginner"
 tags: ["nuxt"]
+summary: "Nuxt soporta SSR (por defecto), SPA, SSG y renderizado híbrido. Usa routeRules para combinar estrategias por ruta."
 ---
 
 Nuxt es un framework full-stack construido sobre Vue. Añade server-side rendering, enrutamiento basado en archivos, auto-importaciones, utilidades de obtención de datos y un motor de servidor (Nitro) de serie. Su principal diferenciador es que puedes elegir cómo se renderiza cada página: en el servidor, en el cliente, en tiempo de build o una combinación de los tres.

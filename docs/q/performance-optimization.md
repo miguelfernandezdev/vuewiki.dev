@@ -3,6 +3,7 @@ order: 122
 title: "How would you optimize performance in a Vue app?"
 difficulty: "advanced"
 tags: ["performance", "vite", "watchers", "slots"]
+summary: "Measure first, then fix: lazy loading, v-once/v-memo, shallowRef for large data, virtual lists, code splitting. Never optimize without profiling."
 ---
 
 Performance optimization is not a list of tricks to apply upfront — it is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.

@@ -3,6 +3,7 @@ order: 46
 title: "How do you force a component to re-render?"
 difficulty: "intermediate"
 tags: ["components", "reactivity"]
+summary: "Change the component's :key. Vue destroys the old instance and creates a new one from scratch. Avoid $forceUpdate — it signals broken reactivity."
 ---
 
 Change the component's `key` attribute. When the key changes, Vue destroys the old instance and creates a new one from scratch, running all lifecycle hooks again and resetting all local state. This is the only clean approach. Techniques like `$forceUpdate` or incrementing a counter to trigger a re-render are almost always symptoms of a broken reactivity setup.

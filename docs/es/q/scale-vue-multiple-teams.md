@@ -3,6 +3,7 @@ order: 139
 title: "¿Cómo se arquitectura una app Vue 3 para escalar con múltiples equipos?"
 difficulty: "advanced"
 tags: ["architecture", "pinia"]
+summary: "Organiza por dominio de negocio (módulos de feature), no por capas técnicas. Cada equipo posee un slice vertical con sus componentes, stores y rutas."
 ---
 
 Organizar el código por dominio de negocio, no por capa técnica. Cada equipo posee un corte vertical de la aplicación (un módulo de funcionalidad) con sus propios componentes, composables, stores y rutas. El código compartido va en un paquete separado con límites de API claros. El objetivo es que los equipos puedan entregar de forma independiente sin pisarse el código.

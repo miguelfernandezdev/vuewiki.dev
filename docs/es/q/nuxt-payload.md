@@ -3,6 +3,7 @@ order: 159
 title: "¿Qué es el payload de Nuxt y cómo evita la doble petición?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "pinia", "vueuse"]
+summary: "El payload serializa datos del servidor en el HTML para que el cliente los reutilice durante la hydration en vez de volver a pedirlos."
 ---
 
 El payload es el mecanismo de Nuxt para transferir datos del servidor al cliente durante SSR. Cuando `useFetch`, `useAsyncData` o `useState` se resuelven en el servidor, Nuxt serializa sus resultados en una etiqueta `<script>` incrustada en la respuesta HTML. En el cliente, Nuxt lee esos datos serializados en lugar de volver a ejecutar las llamadas de fetch. Por eso no hay "doble petición": el servidor hace la petición una vez y el cliente reutiliza el resultado.

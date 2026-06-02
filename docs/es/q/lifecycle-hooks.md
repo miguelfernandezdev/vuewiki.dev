@@ -3,6 +3,7 @@ order: 55
 title: "¿Cuáles son los lifecycle hooks en Vue 3?"
 difficulty: "beginner"
 tags: ["composition-api", "lifecycle"]
+summary: "onMounted (DOM listo), onUpdated (tras re-render), onUnmounted (limpieza), onBeforeMount, onBeforeUpdate, onBeforeUnmount. Se registran dentro de setup()."
 ---
 
 Los lifecycle hooks permiten ejecutar código en momentos concretos de la vida de un componente: cuando se crea, cuando se monta en el DOM, cuando se actualiza o cuando se destruye. En la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), los registras como funciones dentro de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html).

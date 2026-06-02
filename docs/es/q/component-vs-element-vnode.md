@@ -3,6 +3,7 @@ order: 43
 title: "¿Cuál es la diferencia entre un componente y un elemento en Vue?"
 difficulty: "intermediate"
 tags: ["components", "core"]
+summary: "Un elemento es una etiqueta HTML (<div>, <button>). Un componente es una unidad de UI reutilizable con su propio estado, ciclo de vida, props y emit."
 ---
 
 Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un componente es una pieza de UI reutilizable definida por ti (`<UserCard>`, `<Modal>`, `<AppHeader>`). Ambos producen [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (nodos del Virtual DOM) en tiempo de renderizado, pero Vue los gestiona de forma diferente: los elementos se corresponden directamente con nodos del DOM, mientras que los componentes pasan por un ciclo de vida de instancia (props, setup, estado reactivo, slots, emit) antes de renderizar su propio árbol de elementos.

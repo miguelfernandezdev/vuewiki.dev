@@ -3,6 +3,7 @@ order: 70
 title: "¿Por qué mi propiedad computed no se actualiza cuando cambia una dependencia?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]
+summary: "Computed rastrea dependencias registrando qué propiedades reactivas se LEEN durante la ejecución. Si una rama no lee una propiedad, no se rastrea."
 ---
 
 Probablemente porque la dependencia no se accedió durante la última ejecución. Vue rastrea las dependencias de [computed](https://vuejs.org/api/reactivity-core.html#computed) registrando qué propiedades reactivas se leen cada vez que se ejecuta el getter. Si la lógica condicional impide que se lea una propiedad en una evaluación dada, Vue no la rastrea como dependencia hasta que una reevaluación futura la lea.

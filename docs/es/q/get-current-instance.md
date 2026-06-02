@@ -3,6 +3,7 @@ order: 61
 title: "¿Qué es getCurrentInstance() y por qué deberías evitarlo?"
 difficulty: "advanced"
 tags: ["composition-api", "pinia", "vueuse", "provide-inject"]
+summary: "getCurrentInstance() expone el estado interno del componente. Es API interna para autores de librerías — evítalo en código de app, puede romperse entre versiones."
 ---
 
 [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) devuelve la instancia interna del componente durante `setup()`. Expone internos como `$el`, `$parent`, `$refs`, `$emit`, el proxy del componente y todo el estado interno. Es una vía de escape para autores de librerías, no para código de aplicación. El equipo de Vue la marca explícitamente como API interna, lo que significa que puede cambiar entre versiones menores sin previo aviso. Si la usas en tu app, estás acoplándote a detalles de implementación que pueden romperse en cualquier actualización de Vue.

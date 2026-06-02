@@ -3,6 +3,7 @@ order: 149
 title: "What are Nuxt layouts and how do they work?"
 difficulty: "beginner"
 tags: ["nuxt", "components"]
+summary: "Layouts wrap pages with shared UI (headers, footers). Pages choose a layout via definePageMeta or default.vue applies automatically."
 ---
 
 Layouts are wrapper components that surround your pages. They define shared UI like headers, footers, and sidebars. Instead of repeating that structure in every page, you define it once in a layout and let Nuxt wrap your pages automatically.

@@ -3,6 +3,7 @@ order: 113
 title: "What are the limitations of type-based defineProps?"
 difficulty: "advanced"
 tags: ["typescript", "components"]
+summary: "Vue's compiler resolves types statically — conditional types, deep mapped types, and ambient globals fail. Flatten complex types into explicit interfaces."
 ---
 
 Type-based `defineProps<T>()` works with imported interfaces and type aliases since Vue 3.3, but some complex TypeScript patterns fail at compile time because Vue's compiler resolves types statically, not through the full TypeScript type system.

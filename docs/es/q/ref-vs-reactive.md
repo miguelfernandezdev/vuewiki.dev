@@ -3,6 +3,7 @@ order: 62
 title: "¿Cuál es la diferencia entre ref y reactive?"
 difficulty: "beginner"
 tags: ["reactivity", "composition-api"]
+summary: "ref funciona con cualquier tipo y requiere .value. reactive solo con objetos, sin .value, pero no se puede reasignar ni destructurar de forma segura."
 ---
 
 Vue 3 te ofrece dos formas de crear estado reactivo: [`ref`](https://vuejs.org/api/reactivity-core.html#ref) y [`reactive`](https://vuejs.org/api/reactivity-core.html#reactive). Ambas hacen los datos reactivos para que la plantilla se actualice cuando cambian, pero funcionan de forma distinta y tienen restricciones diferentes.

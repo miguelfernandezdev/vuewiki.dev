@@ -3,6 +3,7 @@ order: 120
 title: "How would you implement infinite scroll with Vue?"
 difficulty: "intermediate"
 tags: ["performance", "composables", "vueuse", "watchers"]
+summary: "Use IntersectionObserver on a sentinel element at the bottom of the list. When it enters the viewport, fetch the next page."
 ---
 
 Infinite scroll loads more content as the user scrolls near the bottom of the page. The standard approach uses `IntersectionObserver` on a sentinel element at the end of the list. When the sentinel enters the viewport, you fetch the next page.

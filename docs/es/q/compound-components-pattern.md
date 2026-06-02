@@ -3,6 +3,7 @@ order: 135
 title: "¿Qué es el patrón de componentes compuestos en Vue?"
 difficulty: "advanced"
 tags: ["architecture", "components", "vite", "provide-inject"]
+summary: "Componentes que comparten estado implícito via provide/inject. El padre gestiona el estado, los hijos lo consumen. Ejemplos: tabs, acordeones, selects."
 ---
 
 Los componentes compuestos son un conjunto de componentes que trabajan juntos y comparten estado implícito a través de provide/inject. El padre gestiona el estado, los hijos lo consumen. El consumidor organiza los hijos libremente sin necesidad de conectar props o eventos entre ellos manualmente.

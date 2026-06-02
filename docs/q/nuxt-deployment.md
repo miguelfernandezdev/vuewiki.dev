@@ -3,6 +3,7 @@ order: 157
 title: "How do you deploy a Nuxt app?"
 difficulty: "intermediate"
 tags: ["nuxt", "tooling"]
+summary: "Nitro compiles your app for any platform. nuxt build for SSR servers/serverless, nuxt generate for static files."
 ---
 
 Nuxt uses Nitro as its server engine, which compiles your app for any hosting platform. You build once, and Nitro adapts the output to the target: Node.js server, static files, serverless functions, or edge workers.

@@ -3,6 +3,7 @@ order: 24
 title: "How does v-model work on custom components?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]
+summary: "v-model on a component binds a modelValue prop and listens for update:modelValue. Use defineModel() (Vue 3.4+) to simplify the boilerplate."
 ---
 
 When you write `v-model` on a native `<input>`, Vue binds its value and listens for input events. When you write `v-model` on a custom component, Vue does something similar: it passes a `modelValue` prop and listens for an `update:modelValue` event. The component controls what the user sees and when to emit updates.

@@ -3,6 +3,7 @@ order: 164
 title: "¿Cómo gestionas la autenticación en Nuxt 3?"
 difficulty: "advanced"
 tags: ["nuxt", "architecture"]
+summary: "Combina un composable useAuth, un plugin para iniciar sesión, middleware de rutas para proteger páginas, y cookies (no localStorage) para tokens compatibles con SSR."
 ---
 
 El patrón estándar usa cuatro piezas que trabajan juntas: un composable `useAuth` que expone el state de autenticación y sus métodos, un plugin que inicializa la sesión de usuario al arrancar la app, un middleware de ruta que protege páginas, y un middleware de servidor que protege las rutas de la API. Los tokens se almacenan en cookies (no en localStorage) porque las cookies son accesibles durante SSR.

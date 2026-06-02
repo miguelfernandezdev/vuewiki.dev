@@ -3,6 +3,7 @@ order: 151
 title: "What is the difference between useFetch, useAsyncData, and $fetch?"
 difficulty: "intermediate"
 tags: ["nuxt", "data-fetching", "vueuse"]
+summary: "useFetch for SSR-aware component data, useAsyncData for custom async logic, $fetch for client-side actions like form submissions."
 ---
 
 Nuxt provides three ways to fetch data. Each solves a different problem around SSR, hydration, and double-fetching.

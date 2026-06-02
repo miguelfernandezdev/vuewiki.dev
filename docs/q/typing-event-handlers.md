@@ -3,6 +3,7 @@ order: 109
 title: "How do you type event handlers in Vue templates?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]
+summary: "Type the event parameter explicitly (e: Event) and cast event.target to the correct element type (e.target as HTMLInputElement) to access .value or .checked."
 ---
 
 DOM event handlers in Vue templates receive an `Event` object, but TypeScript doesn't know which specific element triggered it. You need to type the event parameter explicitly and cast `event.target` to the correct element type to access properties like `.value` or `.checked`.

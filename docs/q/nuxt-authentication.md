@@ -3,6 +3,7 @@ order: 164
 title: "How do you handle authentication in Nuxt 3?"
 difficulty: "advanced"
 tags: ["nuxt", "architecture"]
+summary: "Combine a useAuth composable, a plugin for session init, route middleware for page protection, and cookies (not localStorage) for SSR-safe token storage."
 ---
 
 The standard pattern uses four pieces working together: a `useAuth` composable that exposes the auth state and methods, a plugin that initializes the user session on app start, a route middleware that protects pages, and a server middleware that protects API routes. Tokens are stored in cookies (not localStorage) because cookies are accessible during SSR.

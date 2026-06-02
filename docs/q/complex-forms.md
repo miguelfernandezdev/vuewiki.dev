@@ -3,6 +3,7 @@ order: 50
 title: "How would you handle complex forms in Vue?"
 difficulty: "advanced"
 tags: ["components", "composables", "v-model"]
+summary: "Use a reactive object for form data, a parallel object for errors, and extract validation into a composable. For large forms, consider VeeValidate or FormKit."
 ---
 
 A "complex form" usually means one or more of: many fields, multi-step wizards, dynamic sections (add/remove fields), nested objects, cross-field validation, or async validation (check if username is taken). The challenge isn't any single field — it's keeping validation, state, dirty tracking, and submit logic organized as the form grows.

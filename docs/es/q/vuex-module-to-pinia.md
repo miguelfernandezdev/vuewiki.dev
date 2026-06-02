@@ -3,6 +3,7 @@ order: 100
 title: "¿Cómo migrarías un módulo de Vuex a Pinia?"
 difficulty: "advanced"
 tags: ["state-management", "migration", "pinia", "vuex"]
+summary: "Cada módulo Vuex se convierte en defineStore. Las mutations desaparecen, commit/dispatch se convierten en llamadas directas. Actualiza cada componente consumidor."
 ---
 
 Migrar de Vuex a Pinia es mayormente mecánico: cada módulo de Vuex se convierte en su propio `defineStore`, las mutations desaparecen, y las llamadas basadas en strings `commit`/`dispatch` se convierten en llamadas directas a métodos. La parte difícil no es el store en sí — es encontrar y actualizar cada componente que lo usa.

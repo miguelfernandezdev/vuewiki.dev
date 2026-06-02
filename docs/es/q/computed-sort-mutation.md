@@ -3,6 +3,7 @@ order: 73
 title: "¿Por qué ordenar un array dentro de computed muta los datos originales?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]
+summary: "sort(), reverse() y splice() mutan en sitio. Dentro de computed, usa spread ([...arr].sort()) o toSorted() para no mutar el origen."
 ---
 
 Porque `.sort()`, `.reverse()` y `.splice()` modifican el array **en su lugar**. Dentro de un [computed](https://vuejs.org/api/reactivity-core.html#computed), estás llamando a estos métodos sobre el array fuente reactivo. La "copia ordenada" y el original acaban siendo el mismo array mutado.

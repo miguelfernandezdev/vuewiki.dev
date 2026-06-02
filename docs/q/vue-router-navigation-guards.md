@@ -3,6 +3,7 @@ order: 103
 title: "How does Vue Router work and what are navigation guards?"
 difficulty: "intermediate"
 tags: ["vue-router"]
+summary: "Vue Router maps URLs to components. Navigation guards (beforeEach, beforeEnter, beforeRouteLeave) let you control access, redirect, or cancel navigations."
 ---
 
 Vue Router maps URL paths to components. When the URL changes, Vue Router renders the matching component without a full page reload. Navigation guards are hooks that run before, during, or after each navigation, letting you control access, cancel navigations, or run side effects.

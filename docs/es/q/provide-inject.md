@@ -3,6 +3,7 @@ order: 26
 title: "¿Qué es Provide/Inject?"
 difficulty: "intermediate"
 tags: ["components", "composition-api", "pinia", "provide-inject"]
+summary: "provide envía datos de un padre a cualquier descendiente sin prop drilling. inject los lee. Funciona a cualquier profundidad de anidamiento."
 ---
 
 Cuando un componente padre necesita pasar datos a un hijo profundamente anidado, normalmente tendrías que pasar props a través de cada componente intermedio, aunque esos componentes no usen los datos. Esto se llama "prop drilling", y hace el código frágil y difícil de mantener.

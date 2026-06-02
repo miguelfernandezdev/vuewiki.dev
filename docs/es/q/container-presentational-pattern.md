@@ -3,6 +3,7 @@ order: 131
 title: "¿Qué es el patrón contenedor-presentacional en Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "components", "vueuse"]
+summary: "Los contenedores gestionan lógica y datos; los presentacionales reciben props y emiten eventos. En Vue 3, los composables suelen reemplazar contenedores."
 ---
 
 El patrón contenedor-presentacional separa los componentes en dos roles: los contenedores gestionan la lógica y los datos, los componentes presentacionales gestionan la UI. Los contenedores cargan datos, gestionan el estado y llaman a las APIs. Los componentes presentacionales reciben todo a través de props y emiten eventos. No saben de dónde vienen los datos.

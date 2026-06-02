@@ -3,6 +3,7 @@ order: 63
 title: "Why do I lose reactivity when destructuring a reactive object?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]
+summary: "Destructuring extracts plain values out of the reactive Proxy, breaking the reactive connection. Use toRefs() to keep reactivity."
 ---
 
 Because `reactive()` uses a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to track property access. When you destructure, you extract **plain values** out of the proxy, and the reactive connection is gone.

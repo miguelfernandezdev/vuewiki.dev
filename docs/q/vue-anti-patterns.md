@@ -3,6 +3,7 @@ order: 140
 title: "What are common anti-patterns in large Vue codebases?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "watchers", "provide-inject"]
+summary: "God components, everything in stores, watchers instead of computed, prop drilling without provide/inject, and tight coupling to external libraries."
 ---
 
 The most damaging anti-patterns in Vue projects aren't syntax mistakes. They're structural decisions that feel productive early on but create compounding problems as the codebase grows. Here are the ones that show up repeatedly in real production code.

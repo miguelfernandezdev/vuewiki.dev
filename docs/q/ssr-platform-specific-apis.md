@@ -3,6 +3,7 @@ order: 143
 title: "How do you avoid platform-specific API issues in SSR?"
 difficulty: "intermediate"
 tags: ["ssr", "vite"]
+summary: "window, document, and localStorage don't exist on the server. Guard them with onMounted, typeof window checks, or <ClientOnly>."
 ---
 
 In SSR, your Vue code runs on both the server (Node.js) and the browser. Browser APIs like `window`, `document`, and `localStorage` don't exist on the server and will throw `ReferenceError`. You need to guard platform-specific code so it only runs in the right environment.

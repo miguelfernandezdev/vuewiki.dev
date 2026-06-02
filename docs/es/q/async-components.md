@@ -3,6 +3,7 @@ order: 35
 title: "¿Qué son los componentes asíncronos y defineAsyncComponent?"
 difficulty: "intermediate"
 tags: ["components", "performance", "vite", "suspense", "teleport"]
+summary: "defineAsyncComponent envuelve un import dinámico para que el código del componente se cargue solo cuando se necesite, creando un chunk separado."
 ---
 
 Los componentes asíncronos permiten dividir el bundle cargando el código de un componente solo cuando se necesita. En lugar de importar el componente al inicio del archivo (lo que lo incluye en el bundle del componente padre), envuelves la importación en `defineAsyncComponent` y Vite crea un chunk separado para él.

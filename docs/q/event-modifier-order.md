@@ -3,6 +3,7 @@ order: 18
 title: "What are event modifiers and why does order matter?"
 difficulty: "intermediate"
 tags: ["directives"]
+summary: "Modifiers compile left to right — .prevent.self and .self.prevent produce different behavior. Order matters because each modifier transforms the handler chain."
 ---
 
 Event modifiers are suffixes on `v-on` (or `@`) that handle common event patterns declaratively. Vue compiles them into JavaScript in the exact order you write them, and that order changes behavior.

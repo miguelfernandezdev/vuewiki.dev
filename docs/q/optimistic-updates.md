@@ -3,6 +3,7 @@ order: 87
 title: "How would you implement optimistic updates in Vue?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "pinia"]
+summary: "Update the UI immediately, snapshot the previous state with toRaw, send the request, and roll back on failure."
 ---
 
 Optimistic updates change the UI immediately before the server confirms the action. If the server request succeeds, nothing changes visually. If it fails, you roll back to the previous state. The pattern relies on [ref](https://vuejs.org/api/reactivity-core.html#ref) and [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) to snapshot and restore state. This makes the app feel instant because the user doesn't wait for a network round trip.

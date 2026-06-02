@@ -3,6 +3,7 @@ order: 86
 title: "How do writable computed properties work?"
 difficulty: "advanced"
 tags: ["reactivity", "pinia", "v-model"]
+summary: "A computed with a setter: reading derives the value, writing updates the underlying source. Common use: two-way computed binding for form transforms."
 ---
 
 A regular [computed](https://vuejs.org/api/reactivity-core.html#computed) property is read-only: it derives a value from reactive dependencies. A writable computed adds a setter, so you can assign to it and the setter updates the underlying source data.

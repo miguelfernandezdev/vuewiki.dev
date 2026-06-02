@@ -3,6 +3,7 @@ order: 112
 title: "¿Cuáles son los tipos de utilidad TypeScript clave para Vue?"
 difficulty: "advanced"
 tags: ["typescript", "watchers", "provide-inject"]
+summary: "Tipos clave: PropType (props runtime), ComponentPublicInstance (refs de componentes), ExtractPropTypes, MaybeRef/MaybeRefOrGetter (inputs de composables)."
 ---
 
 Vue exporta varios tipos de utilidad que te ayudan a tipar props, refs, componentes y eventos correctamente. Conocerlos te ahorra escribir generics complejos a mano y te proporciona mejor soporte en el IDE.

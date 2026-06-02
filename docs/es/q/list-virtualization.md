@@ -3,6 +3,7 @@ order: 124
 title: "¿Cómo virtualizarías una lista de miles de elementos?"
 difficulty: "advanced"
 tags: ["performance", "slots"]
+summary: "Renderiza solo los elementos visibles en el viewport con vue-virtual-scroller. Una lista de 10.000 elementos usa ~20 nodos DOM en vez de 10.000."
 ---
 
 La virtualización de listas renderiza solo los elementos visibles en el viewport en lugar de crear nodos del DOM para cada elemento. Una lista de 10.000 elementos con virtualización sigue usando alrededor de 20 nodos del DOM, igual que una lista de 100.

@@ -3,6 +3,7 @@ order: 85
 title: "¿Cómo agrupa Vue las actualizaciones del DOM?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "watchers"]
+summary: "Vue agrupa todos los cambios de estado síncronos en un tick en una sola actualización del DOM. Usa nextTick() para leer el DOM después."
 ---
 
 Vue no actualiza el DOM en cada cambio de estado reactivo. Agrupa todas las mutaciones síncronas dentro del mismo tick del event loop y las aplica en una única actualización del DOM. Los watchers y los [computed](https://vuejs.org/api/reactivity-core.html#computed) también se disparan una sola vez con el valor final, no con cada cambio intermedio.

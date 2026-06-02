@@ -3,6 +3,7 @@ order: 68
 title: "What's the difference between watch and watchEffect?"
 difficulty: "intermediate"
 tags: ["reactivity", "composition-api", "watchers"]
+summary: "watch specifies explicit sources and gives old/new values. watchEffect auto-tracks dependencies and runs immediately. watch is more predictable for complex logic."
 ---
 
 Both run code in response to reactive changes, but they differ in **how you tell Vue what to watch** and **when they first run**.

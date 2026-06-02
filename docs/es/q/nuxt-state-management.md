@@ -3,6 +3,7 @@ order: 156
 title: "¿Cómo funciona la gestión de estado en Nuxt? (useState, Pinia)"
 difficulty: "intermediate"
 tags: ["nuxt", "state-management", "pinia"]
+summary: "useState para estado compartido compatible con SSR (serializado en el payload). Pinia para dominios complejos. Nunca uses ref plano a nivel de módulo."
 ---
 
 Nuxt proporciona `useState`, un composable compatible con SSR para compartir estado reactivo entre componentes. Para estado complejo, se añade Pinia como módulo. La regla principal: nunca uses `ref` o `reactive` en el ámbito de módulo en Nuxt, porque ese estado se filtra entre peticiones en el servidor.

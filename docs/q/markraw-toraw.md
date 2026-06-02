@@ -3,6 +3,7 @@ order: 83
 title: "When should you use markRaw and toRaw?"
 difficulty: "advanced"
 tags: ["reactivity", "performance"]
+summary: "markRaw prevents an object from becoming reactive (for libraries, DOM elements, static data). toRaw returns the original object behind a reactive Proxy."
 ---
 
 [markRaw](https://vuejs.org/api/reactivity-advanced.html#markraw) tells Vue to never wrap an object in a reactive [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) returns the original object behind an existing Proxy. Both exist because not everything belongs inside the reactivity system.

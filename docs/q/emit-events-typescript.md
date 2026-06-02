@@ -3,6 +3,7 @@ order: 106
 title: "How do you emit events with TypeScript?"
 difficulty: "beginner"
 tags: ["typescript", "components"]
+summary: "Use defineEmits with a type parameter to declare event names and payload types. TypeScript enforces correct emit() calls at compile time."
 ---
 
 In Vue 3 with `<script setup>`, you declare emits using [`defineEmits`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) — a compiler macro, same as `defineProps`. TypeScript typing ensures that every `emit()` call in your component has the right event name and the right payload types.

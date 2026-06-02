@@ -3,6 +3,7 @@ order: 50
 title: "¿Cómo gestionarías formularios complejos en Vue?"
 difficulty: "advanced"
 tags: ["components", "composables", "v-model"]
+summary: "Usa un objeto reactive para los datos, otro paralelo para errores, y extrae la validación a un composable. Para formularios grandes, considera VeeValidate o FormKit."
 ---
 
 Un "formulario complejo" normalmente significa una o más de: muchos campos, wizards multi-paso, secciones dinámicas (añadir/eliminar campos), objetos anidados, validación entre campos, o validación asíncrona (verificar si un nombre de usuario está disponible). El reto no es un campo individual — es mantener la validación, el estado, el tracking de cambios y la lógica de envío organizados a medida que el formulario crece.

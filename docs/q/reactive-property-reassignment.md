@@ -3,6 +3,7 @@ order: 75
 title: "Does reassigning a property on a reactive object break reactivity?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]
+summary: "Reassigning a property on a reactive object works fine (Proxy traps it). What breaks reactivity is reassigning the entire variable to a new object."
 ---
 
 No. Reassigning a property on a `reactive()` object does NOT break reactivity. This is a common trick question in interviews. Because `reactive()` returns a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), the proxy's `set` trap intercepts the assignment and triggers updates correctly. What DOES break reactivity is reassigning the entire variable to a new object, because that replaces the proxy reference.

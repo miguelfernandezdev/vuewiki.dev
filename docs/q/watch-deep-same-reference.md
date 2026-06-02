@@ -3,6 +3,7 @@ order: 71
 title: "Why does my watcher receive the same value for old and new?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]
+summary: "Deep-watching a reactive object gives the same reference for old and new — Vue doesn't clone before mutation. Snapshot with structuredClone if you need the diff."
 ---
 
 Because when you deep-[watch](https://vuejs.org/api/reactivity-core.html#watch) a reactive object and mutate a nested property, both `newValue` and `oldValue` point to the **same object reference**. Vue doesn't clone the object before the mutation, so by the time the callback runs, both references reflect the current (mutated) state.

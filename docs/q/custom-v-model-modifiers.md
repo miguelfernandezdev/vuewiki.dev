@@ -3,6 +3,7 @@ order: 51
 title: "How do custom v-model modifiers work?"
 difficulty: "advanced"
 tags: ["components", "directives", "v-model"]
+summary: "Define set/get transforms in defineModel to create modifiers like .capitalize or .round that transform v-model values as they flow in or out."
 ---
 
 Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.number`, `.trim`). On custom components, you can define your own modifiers that transform the value as it flows in or out.

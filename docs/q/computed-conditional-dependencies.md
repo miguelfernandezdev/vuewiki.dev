@@ -3,6 +3,7 @@ order: 70
 title: "Why does my computed property not update when a dependency changes?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]
+summary: "Computed tracks dependencies by recording which reactive properties are READ during execution. If a branch skips reading a property, it's not tracked."
 ---
 
 Probably because the dependency wasn't accessed during the last run. Vue tracks [computed](https://vuejs.org/api/reactivity-core.html#computed) dependencies by recording which reactive properties are read each time the getter executes. If conditional logic prevents a property from being read in a given evaluation, Vue doesn't track it as a dependency until a future re-evaluation reads it.

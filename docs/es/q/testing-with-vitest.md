@@ -3,6 +3,7 @@ order: 114
 title: "¿Cómo se testean componentes Vue con Vitest?"
 difficulty: "intermediate"
 tags: ["testing", "vitest", "v-model"]
+summary: "Vitest + @vue/test-utils: mount() para tests de integración con hijos, shallowMount() para tests aislados del padre. Se ejecuta en jsdom o happy-dom."
 ---
 
 Vitest ejecuta tests de componentes Vue usando `@vue/test-utils` para montar componentes y la propia API de aserciones de Vitest. Los tests corren en un entorno DOM simulado (jsdom o happy-dom), no en un navegador real, lo que mantiene el ciclo de feedback rápido. La contrapartida es que las APIs específicas del navegador son mocked — para comportamiento real de navegador, considera Playwright o Cypress.

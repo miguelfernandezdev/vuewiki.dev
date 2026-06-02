@@ -3,6 +3,7 @@ order: 155
 title: "How does hybrid rendering (route rules) work in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "performance"]
+summary: "routeRules lets you mix prerender, ISR, SWR, and SPA strategies per route in the same Nuxt app."
 ---
 
 Hybrid rendering lets you mix rendering strategies per route in the same Nuxt app. A marketing page can be prerendered at build time, the blog can use ISR, and the admin panel can be client-only. You configure all of this in `routeRules`.

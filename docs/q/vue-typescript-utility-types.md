@@ -3,6 +3,7 @@ order: 112
 title: "What are the key TypeScript utility types for Vue?"
 difficulty: "advanced"
 tags: ["typescript", "watchers", "provide-inject"]
+summary: "Key types: PropType (runtime props), ComponentPublicInstance (component refs), ExtractPropTypes, MaybeRef/MaybeRefOrGetter (composable inputs)."
 ---
 
 Vue exports several utility types that help you type props, refs, components, and events correctly. Knowing them saves you from writing complex generics manually and gives you better IDE support.

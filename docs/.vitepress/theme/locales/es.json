@@ -65,6 +65,23 @@
     "title": "Todas las preguntas por dificultad",
     "subtitle": "{read} de {total} leídas"
   },
+  "flashcards": {
+    "title": "Flashcards",
+    "description": "Pon a prueba tu memoria — lee la pregunta, piensa la respuesta y comprueba.",
+    "start": "Empezar ({count} tarjetas)",
+    "reveal": "Revelar",
+    "revealHint": "Piensa tu respuesta primero",
+    "selfAssess": "¿Sabías la respuesta?",
+    "gotIt": "La sabía",
+    "reviewAgain": "Repasar",
+    "seeAnswer": "Ver respuesta completa",
+    "completeTitle": "¡Sesión completada!",
+    "gotItCount": "{count} acertadas",
+    "reviewCount": "{count} para repasar",
+    "reviewPile": "Repasar {count} de nuevo",
+    "restart": "Reiniciar todas",
+    "backToSetup": "Volver al inicio"
+  },
   "sort": {
     "recommended": "Recomendado",
     "easiest": "Más fácil primero",

@@ -3,6 +3,7 @@ order: 25
 title: "¿Qué son los slots y para qué se usan?"
 difficulty: "intermediate"
 tags: ["components", "slots"]
+summary: "Los slots permiten que un padre pase contenido de template a un hijo. Slots por defecto, con nombre para múltiples áreas, scoped para datos del hijo."
 ---
 
 Los [slots](https://vuejs.org/guide/components/slots.html) permiten a un componente padre pasar contenido de template a un hijo. En lugar de que el hijo decida qué renderizar, el padre proporciona el markup y el hijo decide dónde colocarlo. Esto hace los componentes flexibles — un `Card` no necesita una prop para cada posible variación de layout; proporciona un slot y el padre lo rellena.

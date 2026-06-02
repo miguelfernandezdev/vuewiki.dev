@@ -3,6 +3,7 @@ order: 66
 title: "Can you initialize state with a prop value? What happens?"
 difficulty: "beginner"
 tags: ["reactivity", "components", "watchers", "v-model"]
+summary: "Yes — ref(props.value) creates a one-time copy. The local ref becomes independent: prop changes won't update it, and local changes won't affect the parent."
 ---
 
 Yes, you can use a prop as the initial value for local state. The local [ref](https://vuejs.org/api/reactivity-core.html#ref) gets the prop's current value at the time of creation and then becomes independent. Changes to the prop do NOT update the local state, and changes to the local state do NOT affect the parent. This is intentional: it creates a one-way copy.

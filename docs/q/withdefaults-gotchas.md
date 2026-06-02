@@ -3,6 +3,7 @@ order: 110
 title: "How does withDefaults work and what are its gotchas?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]
+summary: "withDefaults provides defaults for type-based defineProps. Gotcha: mutable defaults (arrays, objects) MUST use factory functions to avoid shared references."
 ---
 
 `withDefaults` provides default values for type-based `defineProps`. The main gotcha: mutable defaults (arrays, objects) MUST use factory functions, otherwise all component instances share the same reference. Vue 3.5+ introduces destructured defaults that handle this automatically.

@@ -3,6 +3,7 @@ order: 126
 title: "¿Cómo funcionan las optimizaciones de estabilidad de props?"
 difficulty: "advanced"
 tags: ["performance", "components"]
+summary: "Vue salta el re-render de hijos cuando los props no cambian. Evita pasar valores compartidos (como activeId) a cada item — pasa solo un booleano."
 ---
 
 Vue omite el re-render de un componente hijo cuando ninguna de sus props cambia. La estabilidad de props consiste en estructurarlas para que solo los componentes que realmente necesitan actualizarse reciban valores cambiados. La mayor ventaja está en las listas: pasar un valor compartido como `activeId` a todos los elementos obliga a re-renderizar todos, aunque solo dos elementos hayan cambiado de estado.

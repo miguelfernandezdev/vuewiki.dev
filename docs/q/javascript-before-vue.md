@@ -3,6 +3,7 @@ order: 4
 title: "What JavaScript do you need to learn before Vue?"
 difficulty: "beginner"
 tags: ["core", "vueuse", "watchers"]
+summary: "ES Modules, destructuring, arrow functions, Promises/async-await, array methods (map, filter), template literals, and the spread operator."
 ---
 
 You need solid fundamentals in modern JavaScript (ES6+) before Vue will make sense. Vue's reactivity system, component model, and Composition API are all built on core JS concepts.

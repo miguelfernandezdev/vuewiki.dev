@@ -3,6 +3,7 @@ order: 167
 title: "¿Cómo implementarías el manejo global de errores en una app Vue?"
 difficulty: "advanced"
 tags: ["error-handling", "architecture"]
+summary: "app.config.errorHandler captura todos los errores no manejados globalmente. Combínalo con onErrorCaptured para subárboles y try/catch para operaciones async."
 ---
 
 Vue proporciona múltiples capas para capturar errores: `app.config.errorHandler` para errores no capturados de forma global, `onErrorCaptured` para errores en un subárbol de componentes, y try/catch para operaciones asíncronas. Una app en producción debería combinar los tres, más una interfaz de error visible para el usuario.

@@ -3,6 +3,7 @@ order: 47
 title: "What are functional components and when are they useful?"
 difficulty: "intermediate"
 tags: ["components", "performance"]
+summary: "Plain functions that receive props and return VNodes — no instance, no state, no lifecycle. In Vue 3, the performance gain over stateful components is negligible."
 ---
 
 Functional components are components defined as plain functions that receive props and return VNodes. They have no instance, no reactive state, no lifecycle hooks, and no `this` context. In Vue 2, they offered a measurable performance advantage because they skipped the component instance creation overhead. In Vue 3, stateful components are already so fast that the performance difference is negligible. Functional components still exist but their main use is now programmatic rendering patterns, not optimization.

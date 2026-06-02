@@ -3,6 +3,7 @@ order: 69
 title: "¿Cómo funciona el sistema de reactividad de Vue 3?"
 difficulty: "intermediate"
 tags: ["reactivity", "watchers"]
+summary: "Vue 3 envuelve objetos en un Proxy que intercepta lecturas (track dependencias) y escrituras (trigger actualizaciones). Los efectos se re-ejecutan cuando cambian."
 ---
 
 Cuando cambias un valor en Vue y la página se actualiza automáticamente, es el sistema de reactividad en acción.

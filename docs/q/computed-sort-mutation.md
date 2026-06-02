@@ -3,6 +3,7 @@ order: 73
 title: "Why does sorting an array inside computed mutate the original data?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]
+summary: "sort(), reverse(), and splice() mutate in place. Inside computed, use spread ([...arr].sort()) or toSorted() to avoid mutating the source."
 ---
 
 Because `.sort()`, `.reverse()`, and `.splice()` modify the array **in place**. Inside a [computed](https://vuejs.org/api/reactivity-core.html#computed), you're calling these methods on the reactive source array. The "sorted copy" and the original end up being the same mutated array.

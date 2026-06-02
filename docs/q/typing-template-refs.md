@@ -3,6 +3,7 @@ order: 108
 title: "How do you type template refs in TypeScript?"
 difficulty: "intermediate"
 tags: ["typescript", "components", "watchers"]
+summary: "Declare as ref<HTMLElement | null>(null). Use optional chaining (el.value?.focus()) or access in onMounted where it's guaranteed to exist."
 ---
 
 Template refs start as `null` and become the DOM element or component instance after mount. In TypeScript, you must account for this with a union type and guard access with optional chaining or lifecycle hooks.

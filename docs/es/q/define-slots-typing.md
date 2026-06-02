@@ -3,6 +3,7 @@ order: 107
 title: "¿Cómo tipas los slots con defineSlots?"
 difficulty: "intermediate"
 tags: ["typescript", "components", "slots"]
+summary: "defineSlots (Vue 3.3+) declara el contrato de tipos de los slots, dando autocompletado y comprobación de tipos en scoped slots."
 ---
 
 `defineSlots` es una macro del compilador (Vue 3.3+) que declara el contrato de tipos para los slots de tu componente. Sin ella, las props de los scoped slots no tienen tipo y los consumidores no obtienen autocompletado ni comprobación de tipos. Con ella, el template del padre sabe exactamente qué props expone cada slot.

@@ -3,6 +3,7 @@ order: 33
 title: "How do template refs work?"
 difficulty: "intermediate"
 tags: ["components", "composition-api"]
+summary: "Add ref=\\\"name\\\" in the template and declare a matching ref() in script. After mount, it holds the DOM element or child component instance."
 ---
 
 Template refs give you direct access to a DOM element or child component instance. You add a `ref` attribute in the template and read the corresponding value in script after the component mounts. See the [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) guide for full details.

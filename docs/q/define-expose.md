@@ -3,6 +3,7 @@ order: 56
 title: "What is defineExpose and when is it needed?"
 difficulty: "intermediate"
 tags: ["composition-api", "components"]
+summary: "script setup components are closed by default. defineExpose explicitly exposes properties and methods to parent template refs."
 ---
 
 Components using [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) are closed by default. A parent that grabs a template ref to a child component gets an empty object unless the child explicitly exposes properties with [`defineExpose`](https://vuejs.org/api/sfc-script-setup.html#defineexpose). This is a deliberate change from [Options API](https://vuejs.org/guide/introduction.html#options-api), where `this.$refs.child` gave full access to the entire instance.

@@ -3,6 +3,7 @@ order: 115
 title: "¿Cómo se configura Vitest para un proyecto Vue?"
 difficulty: "intermediate"
 tags: ["testing", "tooling", "pinia", "vite", "vitest", "provide-inject"]
+summary: "Vitest reutiliza tu config de Vite. Añade @vue/test-utils + jsdom/happy-dom. Configura en vitest.config.ts o dentro de vite.config.ts bajo test."
 ---
 
 Vitest es un test runner construido sobre Vite. Entiende archivos `.vue`, TypeScript y JSX sin configuración adicional porque reutiliza tu config de Vite. Combinado con `@vue/test-utils` para montar componentes y `jsdom` o `happy-dom` para simular el DOM, es la configuración de testing estándar para proyectos Vue 3.

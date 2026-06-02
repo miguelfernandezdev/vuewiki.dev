@@ -3,6 +3,7 @@ order: 56
 title: "¿Qué es defineExpose y cuándo es necesario?"
 difficulty: "intermediate"
 tags: ["composition-api", "components"]
+summary: "Los componentes con script setup están cerrados por defecto. defineExpose expone explícitamente propiedades y métodos a las template refs del padre."
 ---
 
 Los componentes que usan [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) están cerrados por defecto. Un padre que obtiene una template ref a un componente hijo recibe un objeto vacío a menos que el hijo exponga explícitamente propiedades con [`defineExpose`](https://vuejs.org/api/sfc-script-setup.html#defineexpose). Este es un cambio deliberado respecto a la [Options API](https://vuejs.org/guide/introduction.html#options-api), donde `this.$refs.child` daba acceso completo a toda la instancia.

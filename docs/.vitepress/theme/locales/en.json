@@ -65,6 +65,23 @@
     "title": "All Questions by Difficulty",
     "subtitle": "{read} of {total} read"
   },
+  "flashcards": {
+    "title": "Flashcards",
+    "description": "Test your recall — see the question, think of the answer, then check yourself.",
+    "start": "Start ({count} cards)",
+    "reveal": "Reveal",
+    "revealHint": "Think about your answer first",
+    "selfAssess": "Did you know the answer?",
+    "gotIt": "Got it",
+    "reviewAgain": "Review again",
+    "seeAnswer": "See full answer",
+    "completeTitle": "Session complete!",
+    "gotItCount": "{count} got it",
+    "reviewCount": "{count} to review",
+    "reviewPile": "Review {count} again",
+    "restart": "Restart all",
+    "backToSetup": "Back to setup"
+  },
   "sort": {
     "recommended": "Recommended",
     "easiest": "Easiest first",

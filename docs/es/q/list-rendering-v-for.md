@@ -3,6 +3,7 @@ order: 13
 title: "¿Cómo funciona el renderizado de listas con v-for?"
 difficulty: "beginner"
 tags: ["directives"]
+summary: "v-for itera sobre arrays, objetos, números y strings. Siempre proporciona un :key único para que Vue rastree y reutilice elementos DOM eficientemente."
 ---
 
 [`v-for`](https://vuejs.org/guide/essentials/list.html) itera sobre arrays, objetos, números y strings para renderizar una lista de elementos. Funciona como un bucle `for...of` en JavaScript, pero dentro del template.

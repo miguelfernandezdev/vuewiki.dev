@@ -3,6 +3,7 @@ order: 145
 title: "What are Suspense SSR hydration issues and how do you work around them?"
 difficulty: "advanced"
 tags: ["ssr", "components", "vueuse", "suspense"]
+summary: "During hydration, async component chunks may not be loaded yet, causing mismatches. Prefetch chunks or use Nuxt's built-in Suspense handling."
 ---
 
 `<Suspense>` and SSR have known edge cases. The core problem: during hydration, an async component's chunk might not be loaded yet, so the client renders the fallback while the server sent the resolved content. This creates a hydration mismatch that causes flickering, state loss, or runtime errors.

@@ -3,6 +3,7 @@ order: 57
 title: "¿Se puede usar await directamente en script setup? ¿Cuándo?"
 difficulty: "intermediate"
 tags: ["composition-api", "nuxt", "vueuse", "watchers", "suspense"]
+summary: "Sí — el compilador lo envuelve en async setup(). La trampa: el padre debe proveer un <Suspense>. Nuxt lo hace automáticamente."
 ---
 
 Sí, puedes usar `await` en el nivel superior de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). El compilador envuelve el bloque setup en una función `async setup()` automáticamente. El problema: los componentes asíncronos requieren un límite `<Suspense>` en el padre para gestionar el estado pendiente mientras el await se resuelve. Sin `<Suspense>`, el componente nunca se renderiza. Nuxt envuelve cada página en `<Suspense>` por defecto, así que en Nuxt puedes usar `await` libremente en páginas y layouts sin preocuparte por ello.

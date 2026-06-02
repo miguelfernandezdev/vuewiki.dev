@@ -3,6 +3,7 @@ order: 128
 title: "When should you use the updated hook and what are its performance implications?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]
+summary: "onUpdated fires after ANY state change, not just the one you care about. Prefer watch or computed for targeted reactions."
 ---
 
 The `updated` hook (`onUpdated` in Composition API) runs after every reactive state change that causes a re-render. It fires for ANY state change in the component, not just the one you care about. This makes it a dangerous place for expensive operations, API calls, or state mutations. For most use cases, [watch](https://vuejs.org/api/reactivity-core.html#watch) or [computed](https://vuejs.org/api/reactivity-core.html#computed) is a better choice.

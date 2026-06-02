@@ -3,6 +3,7 @@ order: 154
 title: "What is Nitro and how do server routes work in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "vueuse"]
+summary: "Nitro is Nuxt's server engine. Files in server/api/ become API endpoints automatically with file-based routing."
 ---
 
 Nitro is Nuxt's server engine. It handles API routes, server middleware, and deployment. You write your server code in `server/`, and Nitro compiles it for any hosting platform (Node, Cloudflare Workers, Vercel, Deno, etc.) with zero config changes.

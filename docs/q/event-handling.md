@@ -3,6 +3,7 @@ order: 12
 title: "How does event handling work in Vue?"
 difficulty: "beginner"
 tags: ["directives", "components"]
+summary: "v-on (or @) binds DOM event listeners in the template. Vue attaches and removes them automatically with the component lifecycle."
 ---
 
 Vue listens to DOM events with the [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on) directive, shortened to `@`. You bind a handler directly in the template, and Vue takes care of attaching and removing the listener with the component's lifecycle.

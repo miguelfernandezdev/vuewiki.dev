@@ -3,6 +3,7 @@ order: 89
 title: "¿Cómo funcionan los Maps y Sets reactivos en Vue 3?"
 difficulty: "advanced"
 tags: ["reactivity", "watchers"]
+summary: "reactive() soporta Map, Set, WeakMap y WeakSet nativamente. Vue intercepta los métodos de colección (get, set, add, delete) para tracking automático."
 ---
 
 [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. Puedes usar tanto `reactive()` como `ref()` — ambos funcionan. Con `reactive()` interactúas con la colección directamente; con `ref()` accedes a ella a través de `.value`, y Vue hace el valor interno reactivo automáticamente.

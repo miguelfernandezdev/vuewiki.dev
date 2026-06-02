@@ -3,6 +3,7 @@ order: 12
 title: "¿Cómo funciona el manejo de eventos en Vue?"
 difficulty: "beginner"
 tags: ["directives", "components"]
+summary: "v-on (o @) enlaza listeners de eventos DOM en el template. Vue los adjunta y elimina automáticamente con el ciclo de vida del componente."
 ---
 
 Vue escucha eventos del DOM con la directiva [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on), abreviada como `@`. Enlazas un manejador directamente en el template, y Vue se encarga de adjuntar y eliminar el listener con el lifecycle del componente.

@@ -3,6 +3,7 @@ order: 127
 title: "How does computed object stability affect re-renders?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]
+summary: "A computed that returns a new object each time triggers all dependents even if values are identical. Compare manually or return primitives."
 ---
 
 A [computed](https://vuejs.org/api/reactivity-core.html#computed) property that returns a new object every time creates a new reference on each evaluation. Vue sees a new reference and triggers every watcher, effect, and child component that depends on it, even if the actual values inside the object are identical. For primitives, Vue 3.4+ handles this automatically. For objects, you need to compare manually.

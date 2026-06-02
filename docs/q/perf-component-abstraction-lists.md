@@ -3,6 +3,7 @@ order: 125
 title: "Why should you avoid component abstraction in large lists?"
 difficulty: "advanced"
 tags: ["performance", "components"]
+summary: "Each component instance has overhead (reactive setup, vnode, lifecycle). In large lists, flatten the component tree to reduce instances."
 ---
 
 Every Vue component instance has a cost: reactive setup, vnode creation, lifecycle hooks, and memory for the instance proxy. For a single component this is negligible. In a list of 100+ items, the cost multiplies. If each list item is 5 nested components deep, that's 500 instances instead of 100.

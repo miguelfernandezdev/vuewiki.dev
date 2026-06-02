@@ -3,6 +3,7 @@ order: 88
 title: "What is customRef and when would you use one?"
 difficulty: "advanced"
 tags: ["reactivity", "v-model"]
+summary: "customRef lets you control when track() and trigger() fire — enabling debounced, validated, or localStorage-synced refs."
 ---
 
 [customRef](https://vuejs.org/api/reactivity-advanced.html#customref) creates a ref where you control when dependency tracking (`track`) and update triggering (`trigger`) happen. Normal refs track on every read and trigger on every write automatically. With `customRef`, you insert your own logic between the read/write and the reactivity system. The classic use case is a debounced ref that delays triggering updates until the user stops typing.

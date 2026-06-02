@@ -3,6 +3,7 @@ order: 110
 title: "¿Cómo funciona withDefaults y cuáles son sus errores habituales?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]
+summary: "withDefaults provee valores por defecto para defineProps tipados. Trampa: defaults mutables (arrays, objetos) DEBEN usar funciones factory para evitar referencias compartidas."
 ---
 
 `withDefaults` proporciona valores por defecto para `defineProps` basado en tipos. El principal error: los defaults mutables (arrays, objetos) DEBEN usar funciones factory; de lo contrario, todas las instancias del componente comparten la misma referencia. Vue 3.5+ introduce defaults con desestructuración que gestionan esto automáticamente.

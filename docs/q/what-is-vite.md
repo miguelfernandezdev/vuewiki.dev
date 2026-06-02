@@ -3,6 +3,7 @@ order: 6
 title: "What is Vite and how does it work?"
 difficulty: "beginner"
 tags: ["tooling", "vite"]
+summary: "A build tool that serves code via native ES modules in dev (instant start) and bundles with Rollup for production. Created by Evan You."
 ---
 
 Vite is a build tool created by Evan You (also the creator of Vue). It serves your code during development using native ES modules, which makes the dev server start instantly regardless of project size. For production, it bundles with Rollup.

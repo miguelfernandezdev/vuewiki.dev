@@ -3,6 +3,7 @@ order: 118
 title: "How do you test a composable that uses setTimeout?"
 difficulty: "advanced"
 tags: ["testing", "composables", "pinia", "vitest", "watchers"]
+summary: "Use vi.useFakeTimers() to control time, await nextTick() to flush Vue's watcher, then vi.advanceTimersByTime() to trigger the timeout."
 ---
 
 Use Vitest's fake timers (`vi.useFakeTimers`) to control time, and Vue's `nextTick` to flush reactive updates between steps. The pattern is: activate fake timers, call the composable, change reactive state, `await nextTick()` to let Vue's watcher run, then `vi.advanceTimersByTime()` to trigger the timeout. Without `nextTick`, the watcher that starts the timer never fires. Without fake timers, the test has to wait real time.

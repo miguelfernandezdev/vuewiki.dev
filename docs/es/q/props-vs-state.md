@@ -3,6 +3,7 @@ order: 22
 title: "¿Cuál es la diferencia entre props y estado en Vue?"
 difficulty: "beginner"
 tags: ["components", "reactivity", "v-model"]
+summary: "Props son datos de solo lectura pasados desde el padre. State (ref/reactive) son datos que el componente posee y puede modificar."
 ---
 
 Las props son datos que se pasan **hacia abajo** desde un componente padre. El estado (datos reactivos locales) es datos que el componente **posee** y gestiona él mismo. La diferencia clave: las props son de solo lectura, el estado es de lectura y escritura. El estado se declara con [ref](https://vuejs.org/api/reactivity-core.html#ref) o [reactive](https://vuejs.org/api/reactivity-core.html#reactive).

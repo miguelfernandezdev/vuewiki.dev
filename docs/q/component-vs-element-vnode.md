@@ -3,6 +3,7 @@ order: 43
 title: "What is the difference between a component and an element in Vue?"
 difficulty: "intermediate"
 tags: ["components", "core"]
+summary: "An element is a plain HTML tag (<div>, <button>). A component is a reusable UI unit with its own state, lifecycle, props, and emit."
 ---
 
 An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is a reusable piece of UI defined by you (`<UserCard>`, `<Modal>`, `<AppHeader>`). Both produce [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (Virtual DOM nodes) at render time, but Vue handles them differently: elements map directly to DOM nodes, while components go through an instance lifecycle (props, setup, reactive state, slots, emit) before eventually rendering their own tree of elements.

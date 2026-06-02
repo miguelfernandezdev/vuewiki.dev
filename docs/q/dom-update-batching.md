@@ -3,6 +3,7 @@ order: 85
 title: "How does Vue batch DOM updates?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "watchers"]
+summary: "Vue batches all synchronous state changes within one tick into a single DOM update. Use nextTick() to read the DOM after the batch applies."
 ---
 
 Vue doesn't update the DOM on every reactive state change. It batches all synchronous mutations within the same event loop tick and applies them in a single DOM update. Watchers and [computed](https://vuejs.org/api/reactivity-core.html#computed) properties also only fire once with the final value, not for each intermediate change.

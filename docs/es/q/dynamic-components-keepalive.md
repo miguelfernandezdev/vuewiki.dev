@@ -3,6 +3,7 @@ order: 34
 title: "¿Qué son los componentes dinámicos y cómo funciona KeepAlive?"
 difficulty: "intermediate"
 tags: ["components", "performance", "slots", "suspense", "teleport"]
+summary: "<component :is> cambia componentes en tiempo de ejecución. <KeepAlive> cachea instancias en memoria en lugar de destruirlas en cada cambio."
 ---
 
 Los componentes dinámicos permiten cambiar entre componentes en tiempo de ejecución usando el elemento integrado `<component>` con la prop `:is`. Por defecto, Vue destruye el componente antiguo y crea uno nuevo en cada cambio. `<KeepAlive>` altera ese comportamiento almacenando las instancias en memoria.

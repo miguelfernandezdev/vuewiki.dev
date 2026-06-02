@@ -3,6 +3,7 @@ order: 60
 title: "What are higher-order components (HOC) equivalent in Vue?"
 difficulty: "advanced"
 tags: ["composition-api", "architecture", "vueuse", "watchers", "slots"]
+summary: "Vue doesn't use HOCs. Composables replace them for logic reuse, and renderless components (via slots) for logic + rendering patterns."
 ---
 
 In React, a Higher-Order Component (HOC) is a function that takes a component and returns a new component with added behavior. Vue doesn't use this pattern because the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) solves the same problem more directly. The Vue equivalents are composables (for logic reuse) and renderless components (for logic + slot-based rendering). Both avoid the wrapper nesting, prop collision, and debugging pain that HOCs cause.

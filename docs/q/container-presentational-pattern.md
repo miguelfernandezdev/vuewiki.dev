@@ -3,6 +3,7 @@ order: 131
 title: "What is the container-presentational pattern in Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "components", "vueuse"]
+summary: "Containers handle logic and data fetching; presentational components receive props and emit events. In Vue 3, composables often replace containers."
 ---
 
 The container-presentational pattern separates components into two roles: containers handle logic and data, presentational components handle UI. Containers fetch data, manage state, and call APIs. Presentational components receive everything through props and emit events. They don't know where the data comes from.

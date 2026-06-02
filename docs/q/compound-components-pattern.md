@@ -3,6 +3,7 @@ order: 135
 title: "What is the compound components pattern in Vue?"
 difficulty: "advanced"
 tags: ["architecture", "components", "vite", "provide-inject"]
+summary: "Components that share implicit state via provide/inject. The parent manages state, children consume it. Classic examples: tabs, accordions, selects."
 ---
 
 Compound components are a set of components that work together and share implicit state through provide/inject. The parent manages the state, the children consume it. The consumer arranges the children freely without wiring props or events between them manually.

@@ -3,6 +3,7 @@ order: 93
 title: "What is VueUse and what are its most useful composables?"
 difficulty: "intermediate"
 tags: ["composables", "tooling", "pinia", "vueuse", "watchers", "v-model"]
+summary: "A collection of 200+ composables for common tasks: browser APIs, sensors, state, network. Install @vueuse/core and use them directly."
 ---
 
 VueUse is a collection of composables for common tasks: browser APIs, sensors, state, animations, network, and more. Instead of writing your own `useLocalStorage` or `useDebounceFn` from scratch, you install `@vueuse/core` and get 200+ battle-tested composables that work with Vue 3's reactivity system.

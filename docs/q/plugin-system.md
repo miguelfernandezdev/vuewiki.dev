@@ -3,6 +3,7 @@ order: 130
 title: "How does the Vue plugin system work?"
 difficulty: "intermediate"
 tags: ["architecture", "provide-inject"]
+summary: "Plugins add app-level functionality via app.use(). Inside install(), you can register global components, directives, provide values, or add properties."
 ---
 
 A plugin is a way to add app-level functionality to Vue. You install it with `app.use()`, and inside the plugin's `install` function you can register global components, directives, provide values for injection, or add global properties.

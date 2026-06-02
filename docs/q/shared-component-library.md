@@ -3,6 +3,7 @@ order: 49
 title: "How would you design a shared component library?"
 difficulty: "advanced"
 tags: ["components", "architecture", "vite", "vitest", "slots"]
+summary: "Each component is self-contained with typed props, emits, and slots. Ship as a package with tree-shakeable exports, theming via CSS variables."
 ---
 
 A shared component library gives multiple apps (or teams) a consistent set of UI components. The goal is reusability without coupling — each consumer imports what they need, gets type safety and theming, and can upgrade on their own schedule.

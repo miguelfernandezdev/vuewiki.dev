@@ -3,6 +3,7 @@ order: 111
 title: "¿Cómo funcionan los componentes genéricos con TypeScript?"
 difficulty: "advanced"
 tags: ["typescript", "components", "v-model", "slots"]
+summary: "El atributo generic en <script setup> (Vue 3.3+) declara parámetros de tipo que fluyen por props, emits y slots con total seguridad de tipos."
 ---
 
 Los componentes genéricos permiten escribir un único componente que funciona con diferentes tipos de datos manteniendo la seguridad de tipos completa. El atributo `generic` en `<script setup>` (Vue 3.3+) declara parámetros de tipo que fluyen a través de las props, los emits y los slots.

@@ -3,6 +3,7 @@ order: 152
 title: "What are Nuxt middleware and how do they work?"
 difficulty: "intermediate"
 tags: ["nuxt", "vue-router"]
+summary: "Route middleware guards page navigations (auth, redirects). Server middleware handles HTTP concerns (CORS, logging) before Vue runs."
 ---
 
 Nuxt has two types of middleware that run at different layers. Route middleware runs in Vue before a page renders (client and server). Server middleware runs in Nitro before the request reaches Vue at all.

@@ -3,6 +3,7 @@ order: 158
 title: "What are the differences between Nuxt 2 and Nuxt 3?"
 difficulty: "intermediate"
 tags: ["nuxt", "migration", "pinia", "vite", "vueuse", "vuex"]
+summary: "Nuxt 3 rewrites everything on Vue 3, Vite, and Nitro. New APIs for data fetching (useFetch), state (useState), and TypeScript-first DX."
 ---
 
 Nuxt 3 is a full rewrite on top of Vue 3, Vite, and the Nitro server engine. The changes go beyond the Vue 2 to Vue 3 shift: the build tool, server layer, data fetching, state management, module system, and TypeScript experience are all different. The core philosophy is the same (convention over configuration, file-based routing, SSR by default), but almost every API surface changed.

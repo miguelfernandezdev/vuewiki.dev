@@ -3,6 +3,7 @@ order: 111
 title: "How do generic components work with TypeScript?"
 difficulty: "advanced"
 tags: ["typescript", "components", "v-model", "slots"]
+summary: "The generic attribute on <script setup> (Vue 3.3+) declares type parameters that flow through props, emits, and slots for full type safety."
 ---
 
 Generic components let you write a single component that works with different data types while keeping full type safety. The `generic` attribute on `<script setup>` (Vue 3.3+) declares type parameters that flow through props, emits, and slots.

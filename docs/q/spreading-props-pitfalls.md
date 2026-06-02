@@ -3,6 +3,7 @@ order: 44
 title: "Why can spreading all props to a child component be a bad idea?"
 difficulty: "intermediate"
 tags: ["components"]
+summary: "Spreading all props hides the component's API, causes unnecessary re-renders, and can leak sensitive data. Pass only what the child explicitly needs."
 ---
 
 Spreading all props with `v-bind="$attrs"` or passing an entire object as props sends everything the parent has to the child, including attributes the child doesn't need. This causes unnecessary re-renders, hides the component's actual API, and can leak sensitive data or create naming collisions. Pass only what the child needs explicitly.

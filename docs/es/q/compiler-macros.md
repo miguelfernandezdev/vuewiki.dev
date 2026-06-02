@@ -3,6 +3,7 @@ order: 58
 title: "¿Cuáles son todas las macros del compilador en Vue?"
 difficulty: "advanced"
 tags: ["composition-api", "typescript", "v-model", "slots"]
+summary: "defineProps, defineEmits, defineExpose, defineModel, defineSlots y defineOptions. Se ejecutan en compilación y no necesitan imports."
 ---
 
 Las macros del compilador son funciones especiales que solo funcionan dentro de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). Se procesan en tiempo de compilación y no necesitan ser importadas. Vue 3.5 tiene seis de ellas.

@@ -3,6 +3,7 @@ order: 42
 title: "¿Cómo implementarías drag and drop en Vue?"
 difficulty: "intermediate"
 tags: ["components", "v-model"]
+summary: "Usa vue-draggable-plus para listas ordenables, la API nativa HTML Drag and Drop para casos simples, o pointer events para arrastre personalizado."
 ---
 
 Hay tres enfoques: la API nativa de HTML Drag and Drop para casos simples, la librería `vue-draggable-plus` (o `vuedraggable`) para listas ordenables, y los pointer events para comportamiento completamente personalizado. La mayoría de casos reales (listas reordenables, tableros kanban) se resuelven mejor con una librería.

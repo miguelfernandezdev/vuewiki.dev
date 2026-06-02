@@ -3,6 +3,7 @@ order: 76
 title: "What happens when you use Object.freeze() on reactive data?"
 difficulty: "intermediate"
 tags: ["reactivity"]
+summary: "Vue can't make frozen objects reactive — Proxy set traps silently fail. Useful as a performance optimization for large, read-only datasets."
 ---
 
 Vue cannot make a frozen object reactive. `Object.freeze()` prevents property modifications at the JavaScript engine level, so Vue's [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) traps for `set` and `deleteProperty` silently fail. The object renders once with its initial values, but mutations won't trigger updates. This is actually useful as a performance optimization for large datasets that never change.

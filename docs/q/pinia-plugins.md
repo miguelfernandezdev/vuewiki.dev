@@ -3,6 +3,7 @@ order: 101
 title: "What are Pinia plugins and how do you create one?"
 difficulty: "advanced"
 tags: ["state-management", "architecture", "pinia"]
+summary: "A function that runs for every store creation. Use them to add localStorage persistence, logging, shared properties, or action wrappers."
 ---
 
 Pinia plugins let you add behavior to every store globally: persist state to localStorage, add shared properties, wrap actions with logging, sync with external systems. A plugin is a function that receives a context object and runs once per store creation.

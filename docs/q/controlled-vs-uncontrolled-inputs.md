@@ -3,6 +3,7 @@ order: 39
 title: "What is the difference between controlled and uncontrolled inputs?"
 difficulty: "intermediate"
 tags: ["components", "forms", "v-model"]
+summary: "Controlled inputs use v-model (state drives the value). Uncontrolled inputs let the DOM own the value and read it via template refs when needed."
 ---
 
 A controlled input has its value driven by reactive state. Every keystroke updates the state, and the state dictates what the input displays. An uncontrolled input manages its own value internally through the DOM. You read it when needed (on submit, on blur) rather than tracking every change.

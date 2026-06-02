@@ -3,6 +3,7 @@ order: 72
 title: "¿Por qué mi watchEffect pierde dependencias después de un await?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]
+summary: "watchEffect solo rastrea dependencias durante la ejecución síncrona. Tras el primer await, Vue deja de rastrear — las refs accedidas después son invisibles."
 ---
 
 Porque [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) solo rastrea dependencias durante la ejecución **síncrona**. Después del primer `await`, Vue deja de rastrear. Cualquier propiedad reactiva accedida después de ese punto es invisible para el watcher.

@@ -3,6 +3,7 @@ order: 118
 title: "¿Cómo se prueba un composable que usa setTimeout?"
 difficulty: "advanced"
 tags: ["testing", "composables", "pinia", "vitest", "watchers"]
+summary: "Usa vi.useFakeTimers() para controlar el tiempo, await nextTick() para ejecutar el watcher de Vue, luego vi.advanceTimersByTime() para disparar el timeout."
 ---
 
 Usa los timers falsos de Vitest (`vi.useFakeTimers`) para controlar el tiempo, y el `nextTick` de Vue para vaciar las actualizaciones reactivas entre pasos. El patrón es: activa los timers falsos, llama al composable, cambia el estado reactivo, `await nextTick()` para que se ejecute el watcher de Vue, y luego `vi.advanceTimersByTime()` para disparar el timeout. Sin `nextTick`, el watcher que inicia el timer nunca se ejecuta. Sin los timers falsos, el test tiene que esperar tiempo real.

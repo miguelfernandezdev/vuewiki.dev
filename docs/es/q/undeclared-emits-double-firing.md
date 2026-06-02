@@ -3,6 +3,7 @@ order: 29
 title: "¿Por qué los emits no declarados se disparan dos veces?"
 difficulty: "intermediate"
 tags: ["components", "errors"]
+summary: "Re-emitir un evento nativo sin declararlo lo dispara dos veces: una via $attrs fallthrough, otra via tu emit(). Decláralo en defineEmits para solucionarlo."
 ---
 
 Porque cuando re-emites un evento nativo (como `click`) sin declararlo en `defineEmits`, el listener del padre acaba adjunto en dos sitios: una vez a través del fallthrough de `$attrs` en el elemento raíz, y otra a través de tu llamada explícita a `$emit()`.

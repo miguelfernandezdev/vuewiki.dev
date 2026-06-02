@@ -3,6 +3,7 @@ order: 96
 title: "What is Pinia and how does it differ from Vuex?"
 difficulty: "beginner"
 tags: ["state-management", "pinia", "vuex"]
+summary: "Pinia replaces Vuex: no mutations, no string-based API, full TypeScript support, modular by design. Vuex is in maintenance mode."
 ---
 
 [Pinia](https://pinia.vuejs.org/) is the official state management library for Vue 3. It replaces [Vuex](/q/how-vuex-works) — the Vue team created it because Vuex's design (mutations, string-based API, complex modules) didn't align well with TypeScript and the Composition API.

@@ -3,6 +3,7 @@ order: 15
 title: "How do you inject raw HTML in Vue and why is it dangerous?"
 difficulty: "beginner"
 tags: ["directives", "security"]
+summary: "v-html renders raw HTML via innerHTML. Never use it with user input — it enables XSS attacks. Only use with trusted, sanitized content."
 ---
 
 The `v-html` directive renders a string as raw HTML instead of plain text. It bypasses Vue's template compilation and inserts the HTML directly into the DOM using `innerHTML`. This is useful for rendering trusted rich content (markdown output, CMS content from your own system), but it opens the door to Cross-Site Scripting (XSS) if the content comes from user input.

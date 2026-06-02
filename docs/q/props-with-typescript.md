@@ -3,6 +3,7 @@ order: 105
 title: "How do you declare props with TypeScript in Vue 3?"
 difficulty: "beginner"
 tags: ["typescript", "components"]
+summary: "Pass a TypeScript interface to defineProps as a generic: defineProps<{ title: string }>. Vue generates runtime checks from your types."
 ---
 
 In Vue 3 with `<script setup>`, you declare props using [`defineProps`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) — a compiler macro that Vue processes at build time. You don't import it; it's available automatically inside `<script setup>`.

@@ -3,6 +3,7 @@ order: 17
 title: "¿Qué es v-model y en qué se diferencia de .sync en Vue 2?"
 difficulty: "intermediate"
 tags: ["directives", "migration", "v-model"]
+summary: "v-model crea enlace bidireccional. En inputs nativos: :value + @input. En componentes: prop :modelValue + evento @update:modelValue."
 ---
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) crea un enlace bidireccional entre los datos del padre y un componente hijo (o un elemento de formulario). En elementos nativos es azúcar sintáctico para un binding `:value` más un listener `@input`. En componentes, vincula un prop y escucha un evento de actualización.

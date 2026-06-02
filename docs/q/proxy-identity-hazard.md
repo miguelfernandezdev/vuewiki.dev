@@ -3,6 +3,7 @@ order: 84
 title: "What is the reactivity proxy identity hazard?"
 difficulty: "advanced"
 tags: ["reactivity"]
+summary: "reactive() returns a Proxy, not the original object. === between Proxy and original is always false — use toRaw() for identity comparisons."
 ---
 
 [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) returns a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), not the original object. The Proxy and the original have different identities, so `===` comparisons between them always return `false`. This causes silent bugs in selection logic, Set/Map operations, and any code that relies on object identity.

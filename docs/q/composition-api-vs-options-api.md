@@ -3,6 +3,7 @@ order: 53
 title: "What is the Composition API and how does it differ from the Options API?"
 difficulty: "beginner"
 tags: ["composition-api"]
+summary: "Options API organizes by option type (data, methods, computed). Composition API organizes by logical concern using setup() and composables."
 ---
 
 Vue gives you two ways to write component logic.

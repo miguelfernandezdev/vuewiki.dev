@@ -3,6 +3,7 @@ order: 157
 title: "¿Cómo se despliega una aplicación Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "tooling"]
+summary: "Nitro compila tu app para cualquier plataforma. nuxt build para servidores SSR/serverless, nuxt generate para archivos estáticos."
 ---
 
 Nuxt usa Nitro como motor de servidor, que compila la aplicación para cualquier plataforma de alojamiento. Se construye una vez y Nitro adapta la salida al destino: servidor Node.js, archivos estáticos, funciones serverless o edge workers.

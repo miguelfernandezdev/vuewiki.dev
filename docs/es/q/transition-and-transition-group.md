@@ -3,6 +3,7 @@ order: 36
 title: "¿Cómo funcionan Transition y TransitionGroup?"
 difficulty: "intermediate"
 tags: ["components", "animation"]
+summary: "<Transition> anima un elemento al entrar/salir. <TransitionGroup> anima elementos de lista. Ambos usan clases CSS para las etapas enter/leave."
 ---
 
 Vue incluye dos componentes integrados para animación. `<Transition>` anima un único elemento al entrar o salir. `<TransitionGroup>` anima elementos en una lista.

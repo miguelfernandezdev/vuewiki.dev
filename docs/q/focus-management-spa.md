@@ -3,6 +3,7 @@ order: 170
 title: "How do you manage focus in Vue SPAs?"
 difficulty: "advanced"
 tags: ["accessibility", "vue-router", "watchers", "suspense"]
+summary: "Move focus to the main heading after route changes, trap focus inside modals, and restore focus when dynamic content is dismissed."
 ---
 
 In a traditional website, the browser moves focus to the top of the page on every navigation. SPAs break this because the page never reloads. After a client-side route change, focus stays wherever it was, which means a screen reader user has no idea the page changed. You need to move focus manually on route changes, trap it inside modals, and return it when dynamic content is dismissed.

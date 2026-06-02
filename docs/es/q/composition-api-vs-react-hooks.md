@@ -3,6 +3,7 @@ order: 59
 title: "¿Cuál es la diferencia entre la Composition API y los React Hooks?"
 difficulty: "advanced"
 tags: ["composition-api", "watchers"]
+summary: "El setup() de Vue se ejecuta una vez por instancia; la función del componente React se ejecuta en cada render. Esto elimina closures obsoletas y dependency arrays."
 ---
 
 A primera vista se parecen (ambos extraen lógica reutilizable en funciones), pero tienen una diferencia fundamental: el `setup` de Vue se ejecuta **una vez** por instancia de componente, mientras que la función de componente de React se ejecuta en **cada renderizado**. Esta única diferencia elimina categorías enteras de bugs y patrones innecesarios.

@@ -3,6 +3,7 @@ order: 149
 title: "¿Qué son los layouts de Nuxt y cómo funcionan?"
 difficulty: "beginner"
 tags: ["nuxt", "components"]
+summary: "Los layouts envuelven páginas con UI compartida (cabeceras, pies). Las páginas eligen layout via definePageMeta o default.vue se aplica automáticamente."
 ---
 
 Los layouts son componentes wrapper que rodean tus páginas. Definen la interfaz compartida como cabeceras, pies de página y barras laterales. En lugar de repetir esa estructura en cada página, la defines una vez en un layout y Nuxt envuelve las páginas automáticamente.

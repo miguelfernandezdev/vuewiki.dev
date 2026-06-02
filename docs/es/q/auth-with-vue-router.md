@@ -3,6 +3,7 @@ order: 104
 title: "¿Cómo implementarías la autenticación con Vue Router?"
 difficulty: "advanced"
 tags: ["vue-router", "architecture"]
+summary: "Combina un store/composable de auth, un guard beforeEach y meta fields en las rutas. Guarda tokens en cookies para compatibilidad con SSR."
 ---
 
 El enfoque estándar combina un composable o store para el estado de autenticación, un navigation guard para proteger las rutas, y meta de ruta para declarar qué páginas requieren autenticación. El guard comprueba el estado de autenticación antes de cada navegación y redirige a los usuarios no autenticados al login.
