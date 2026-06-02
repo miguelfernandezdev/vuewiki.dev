@@ -2,7 +2,7 @@
 order: 13
 title: "What are slots and what are they used for?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "slots"]
 ---
 
 [Slots](https://vuejs.org/guide/components/slots.html) let a parent component pass template content into a child. Instead of the child deciding what to render, the parent provides the markup and the child decides where to place it. This makes components flexible — a `Card` doesn't need a prop for every possible layout variation; it provides a slot and the parent fills it in.

@@ -2,7 +2,7 @@
 order: 107
 title: "How do you type slots with defineSlots?"
 difficulty: "intermediate"
-tags: ["typescript", "components"]
+tags: ["typescript", "components", "slots"]
 ---
 
 `defineSlots` is a compiler macro (Vue 3.3+) that declares the type contract for your component's slots. Without it, scoped slot props are untyped and consumers get no autocomplete or type checking. With it, the parent template knows exactly what props each slot exposes.

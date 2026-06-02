@@ -2,7 +2,7 @@
 order: 102
 title: "¿Qué son los plugins de Pinia y cómo se crea uno?"
 difficulty: "advanced"
-tags: ["state-management", "architecture"]
+tags: ["state-management", "architecture", "pinia"]
 ---
 
 Los plugins de Pinia permiten añadir comportamiento a todos los stores globalmente: persistir estado en localStorage, agregar propiedades compartidas, envolver acciones con logging, sincronizar con sistemas externos. Un plugin es una función que recibe un objeto de contexto y se ejecuta una vez por cada creación de store.

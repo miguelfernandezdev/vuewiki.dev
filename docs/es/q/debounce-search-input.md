@@ -2,7 +2,7 @@
 order: 17
 title: "¿Cómo implementarías debounce en un input de búsqueda?"
 difficulty: "intermediate"
-tags: ["composables", "performance"]
+tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
 ---
 
 Debouncing retrasa una acción hasta que el usuario deja de escribir durante un tiempo determinado. Sin él, un input de búsqueda dispara una llamada a la API en cada tecla — escribir "vue router" envía 10 peticiones, la mayoría inútiles porque el usuario no ha terminado de escribir.

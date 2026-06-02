@@ -2,7 +2,7 @@
 order: 10
 title: "How does Vuex work?"
 difficulty: "beginner"
-tags: ["state-management"]
+tags: ["state-management", "pinia", "vuex"]
 ---
 
 [Vuex](https://vuex.vuejs.org/) is the official state management library for Vue (before [Pinia](/q/how-pinia-works) replaced it). It implements the [Flux pattern](/q/flux-unidirectional-data-flow): a single store holds all shared state, and changes flow in one direction through a strict pipeline.

@@ -2,7 +2,7 @@
 order: 87
 title: "What is the difference between useFetch, useAsyncData, and $fetch?"
 difficulty: "intermediate"
-tags: ["nuxt", "data-fetching"]
+tags: ["nuxt", "data-fetching", "vueuse"]
 ---
 
 Nuxt provides three ways to fetch data. Each solves a different problem around SSR, hydration, and double-fetching.

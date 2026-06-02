@@ -2,7 +2,7 @@
 order: 149
 title: "¿Cuáles son los principales puntos de fricción al migrar de Nuxt 2 a Nuxt 3?"
 difficulty: "advanced"
-tags: ["nuxt", "migration"]
+tags: ["nuxt", "migration", "pinia", "vueuse", "vuex", "provide-inject"]
 ---
 
 Hay cuatro ejes de fricción: la gestión de estado (de Vuex a Pinia requiere repensar el flujo de datos, no solo la sintaxis), la obtención de datos (de asyncData/fetch a composables), el ecosistema (librerías de terceros sin soporte para Vue 3) y el cambio a la Composition API (convenciones de equipo, perder `this`, nuevas particularidades de reactividad). La migración debe ser incremental, usando Nuxt Bridge como paso intermedio.

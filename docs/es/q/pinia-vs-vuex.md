@@ -2,7 +2,7 @@
 order: 9
 title: "¿Qué es Pinia y en qué se diferencia de Vuex?"
 difficulty: "beginner"
-tags: ["state-management"]
+tags: ["state-management", "pinia", "vuex"]
 ---
 
 [Pinia](https://pinia.vuejs.org/) es la librería oficial de gestión de estado para Vue 3. Reemplaza a [Vuex](/es/q/how-vuex-works) — el equipo de Vue la creó porque el diseño de Vuex (mutations, API basada en strings, módulos complejos) no encajaba bien con TypeScript y la Composition API.

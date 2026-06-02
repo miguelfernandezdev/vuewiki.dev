@@ -2,7 +2,7 @@
 order: 29
 title: "How would you structure a large Vue project?"
 difficulty: "advanced"
-tags: ["architecture"]
+tags: ["architecture", "pinia", "vite"]
 ---
 
 Vue does not enforce any particular project structure. A brand-new Vite scaffold gives you a `src/` folder and leaves the rest to you. That works fine for a few dozen files, but as the codebase grows the absence of conventions becomes a real problem: no one can predict where a given piece of logic lives, reviews become harder, and onboarding new developers takes longer than it should. The goal of a deliberate structure is simple — any file should be findable by its responsibility, not by memory.

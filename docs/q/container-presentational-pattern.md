@@ -2,7 +2,7 @@
 order: 117
 title: "What is the container-presentational pattern in Vue?"
 difficulty: "intermediate"
-tags: ["architecture", "components"]
+tags: ["architecture", "components", "vueuse"]
 ---
 
 The container-presentational pattern separates components into two roles: containers handle logic and data, presentational components handle UI. Containers fetch data, manage state, and call APIs. Presentational components receive everything through props and emit events. They don't know where the data comes from.

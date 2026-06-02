@@ -2,7 +2,7 @@
 order: 139
 title: "What is Flux/unidirectional data flow and how does Vue implement it?"
 difficulty: "intermediate"
-tags: ["architecture", "state-management"]
+tags: ["architecture", "state-management", "pinia", "vuex", "v-model", "provide-inject"]
 ---
 
 Flux is an architecture pattern where data flows in one direction: actions trigger state changes, state changes trigger view updates, and views dispatch new actions. There is no two-way binding between the view and the store. Vue implements this principle at two levels: within components (props down, events up) and at application scale (Pinia stores follow the same action-state-view cycle).

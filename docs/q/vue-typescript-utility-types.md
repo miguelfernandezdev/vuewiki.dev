@@ -2,7 +2,7 @@
 order: 109
 title: "What are the key TypeScript utility types for Vue?"
 difficulty: "advanced"
-tags: ["typescript"]
+tags: ["typescript", "watchers", "provide-inject"]
 ---
 
 Vue exports several utility types that help you type props, refs, components, and events correctly. Knowing them saves you from writing complex generics manually and gives you better IDE support.

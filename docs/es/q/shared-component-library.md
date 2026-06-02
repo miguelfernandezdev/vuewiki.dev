@@ -2,7 +2,7 @@
 order: 23
 title: "¿Cómo diseñarías una librería de componentes compartida?"
 difficulty: "advanced"
-tags: ["components", "architecture"]
+tags: ["components", "architecture", "vite", "vitest", "slots"]
 ---
 
 Una librería de componentes compartida da a múltiples apps (o equipos) un conjunto consistente de componentes UI. El objetivo es reutilización sin acoplamiento — cada consumidor importa lo que necesita, obtiene type safety y theming, y puede actualizar a su propio ritmo.

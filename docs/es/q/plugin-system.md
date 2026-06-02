@@ -2,7 +2,7 @@
 order: 66
 title: "¿Cómo funciona el sistema de plugins de Vue?"
 difficulty: "intermediate"
-tags: ["architecture"]
+tags: ["architecture", "provide-inject"]
 ---
 
 Un plugin es una forma de añadir funcionalidad a nivel de app en Vue. Se instala con `app.use()`, y dentro de la función `install` del plugin se pueden registrar componentes globales, directivas, proveer valores para inyección o añadir propiedades globales.

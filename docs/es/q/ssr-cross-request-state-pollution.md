@@ -2,7 +2,7 @@
 order: 98
 title: "¿Qué es la contaminación de estado entre peticiones en SSR y cómo se evita?"
 difficulty: "advanced"
-tags: ["nuxt", "ssr", "state-management"]
+tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]
 ---
 
 En SSR, el proceso del servidor gestiona múltiples peticiones. Si declaras estado reactivo en el ámbito del módulo, ese estado es un singleton compartido por TODAS las peticiones. Los datos del usuario A pueden filtrarse a la respuesta del usuario B. Esto es una vulnerabilidad de seguridad, no solo un bug.

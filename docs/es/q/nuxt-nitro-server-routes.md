@@ -2,7 +2,7 @@
 order: 91
 title: "¿Qué es Nitro y cómo funcionan las rutas de servidor en Nuxt?"
 difficulty: "intermediate"
-tags: ["nuxt", "ssr"]
+tags: ["nuxt", "ssr", "vueuse"]
 ---
 
 Nitro es el motor de servidor de Nuxt. Gestiona las rutas de API, el middleware de servidor y el despliegue. Escribes el código del servidor en `server/`, y Nitro lo compila para cualquier plataforma de alojamiento (Node, Cloudflare Workers, Vercel, Deno, etc.) sin cambios de configuración.

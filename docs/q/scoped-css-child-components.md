@@ -2,7 +2,7 @@
 order: 43
 title: "Why doesn't scoped CSS style child component elements?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "teleport"]
 ---
 
 Because Vue scoped CSS works by adding a unique `data-v-xxxxx` attribute to elements in the current component's template and appending it to every CSS selector. Elements rendered by child components don't get that attribute, so the selectors don't match.

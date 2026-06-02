@@ -2,7 +2,7 @@
 order: 161
 title: "¿Qué son readonly y shallowReadonly?"
 difficulty: "intermediate"
-tags: ["reactivity"]
+tags: ["reactivity", "provide-inject"]
 ---
 
 `readonly()` crea un proxy reactivo profundamente inmutable. Se pueden leer todas las propiedades y siguen siendo reactivas ([computed](https://vuejs.org/api/reactivity-core.html#computed) y watchers continúan registrando cambios de la fuente original), pero cualquier intento de mutarlas genera un aviso en desarrollo y falla silenciosamente en producción. `shallowReadonly()` hace lo mismo pero solo en el primer nivel: los objetos anidados siguen siendo mutables.

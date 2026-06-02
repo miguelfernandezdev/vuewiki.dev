@@ -2,7 +2,7 @@
 order: 75
 title: "How do toRefs, toRef, and toValue work?"
 difficulty: "advanced"
-tags: ["reactivity"]
+tags: ["reactivity", "vueuse", "watchers"]
 ---
 
 These three utilities solve the problem of converting between Vue's reactive types. They're most useful when destructuring reactive objects, writing composables that accept flexible input, or bridging between `reactive()` and `ref()`. See [toRefs](https://vuejs.org/api/reactivity-utilities.html#torefs), [toRef](https://vuejs.org/api/reactivity-utilities.html#toref), and [unref](https://vuejs.org/api/reactivity-utilities.html#unref) in the docs.

@@ -2,7 +2,7 @@
 order: 48
 title: "¿Qué es Vue y cuáles son sus características principales?"
 difficulty: "beginner"
-tags: ["core"]
+tags: ["core", "pinia"]
 ---
 
 Vue es un framework JavaScript para construir interfaces de usuario. Extiende HTML, CSS y JavaScript estándar con un modelo declarativo y basado en componentes, y un [sistema de reactividad](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) que actualiza el DOM automáticamente cuando cambian tus datos.

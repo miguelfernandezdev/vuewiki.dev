@@ -2,7 +2,7 @@
 order: 45
 title: "¿Qué causa los errores de hidratación en SSR y cómo se corrigen?"
 difficulty: "advanced"
-tags: ["ssr", "errors"]
+tags: ["ssr", "errors", "vite"]
 ---
 
 Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere del que envió el servidor. Vue intenta recuperarse descartando los nodos que no coinciden y re-renderizándolos, lo que provoca parpadeos, pérdida de rendimiento y manejadores de eventos rotos.

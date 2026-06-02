@@ -2,7 +2,7 @@
 order: 46
 title: "¿Por qué los estilos con scoped no se aplican al contenido teletransportado?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "suspense", "teleport"]
 ---
 
 Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a los elementos del subárbol DOM del componente. Cuando `<Teleport>` mueve elementos a otra parte del DOM (como `body`), esos elementos salen del subárbol del componente, por lo que los selectores de atributo con scoped dejan de coincidir.

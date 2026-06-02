@@ -2,7 +2,7 @@
 order: 24
 title: "¿Cómo optimizarías el rendimiento de una app Vue?"
 difficulty: "advanced"
-tags: ["performance"]
+tags: ["performance", "vite", "watchers", "slots"]
 ---
 
 La optimización de rendimiento no es una lista de trucos que se aplican de antemano — es un ciclo: **medir -> identificar el cuello de botella -> corregirlo -> medir de nuevo**. Usa Vue DevTools, la pestaña Performance del navegador y Lighthouse para encontrar dónde se va realmente el tiempo antes de cambiar cualquier código.

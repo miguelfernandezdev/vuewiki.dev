@@ -2,7 +2,7 @@
 order: 169
 title: "¿Cómo se prueban componentes que usan async setup y Suspense?"
 difficulty: "advanced"
-tags: ["testing", "components"]
+tags: ["testing", "components", "vitest", "suspense"]
 ---
 
 Envuelve el componente en un límite `<Suspense>` en tu test, luego usa `flushPromises()` para esperar a que el async setup se resuelva. Sin `<Suspense>`, Vue avisa de que el componente tiene un `setup()` asíncrono pero no tiene un límite Suspense padre, y el componente nunca se renderiza. El test monta un wrapper que proporciona el Suspense y luego hace las comprobaciones después de que todas las promesas se resuelvan.

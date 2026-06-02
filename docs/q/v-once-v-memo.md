@@ -2,7 +2,7 @@
 order: 83
 title: "What is v-once and v-memo? When should you use them?"
 difficulty: "advanced"
-tags: ["directives", "performance"]
+tags: ["directives", "performance", "v-model"]
 ---
 
 `v-once` renders an element once and skips all future updates. `v-memo` conditionally skips re-renders based on a dependency array. Both reduce render work by telling Vue that certain parts of the template don't need to be re-evaluated.

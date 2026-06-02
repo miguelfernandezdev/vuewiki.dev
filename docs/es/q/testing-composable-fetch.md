@@ -2,7 +2,7 @@
 order: 25
 title: "¿Cómo testearías un composable que hace fetch de datos?"
 difficulty: "advanced"
-tags: ["testing", "composables"]
+tags: ["testing", "composables", "vitest", "vueuse"]
 ---
 
 ```ts

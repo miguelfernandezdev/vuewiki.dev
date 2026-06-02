@@ -2,7 +2,7 @@
 order: 34
 title: "Why does mutating props directly cause warnings?"
 difficulty: "beginner"
-tags: ["components", "errors"]
+tags: ["components", "errors", "v-model"]
 ---
 
 Because Vue enforces **one-way data flow**: props go down (parent to child), events go up (child to parent). If a child modifies a prop directly, the parent doesn't know about it, and the next time the parent re-renders, it will overwrite the child's change.

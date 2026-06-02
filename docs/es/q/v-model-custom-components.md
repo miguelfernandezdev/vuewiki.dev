@@ -2,7 +2,7 @@
 order: 12
 title: "¿Cómo funciona v-model en componentes personalizados?"
 difficulty: "intermediate"
-tags: ["components", "directives"]
+tags: ["components", "directives", "v-model"]
 ---
 
 Cuando escribes `v-model` en un `<input>` nativo, Vue vincula su valor y escucha eventos de input. Cuando escribes `v-model` en un componente personalizado, Vue hace algo similar: pasa una prop `modelValue` y escucha un evento `update:modelValue`. El componente controla lo que el usuario ve y cuándo emitir actualizaciones.

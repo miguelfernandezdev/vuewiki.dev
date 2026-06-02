@@ -2,7 +2,7 @@
 order: 120
 title: "¿Cómo construirías un carrito de compra con Vue?"
 difficulty: "advanced"
-tags: ["architecture", "state-management"]
+tags: ["architecture", "state-management", "pinia"]
 ---
 
 Un carrito de compra es un problema clásico de gestión de estado. El estado del carrito debe compartirse entre varias páginas (lista de productos, cajón del carrito, checkout), persistir al recargar la página y actualizarse desde distintos lugares. Un store de Pinia es la solución natural.

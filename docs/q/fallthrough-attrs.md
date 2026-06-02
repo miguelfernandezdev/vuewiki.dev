@@ -2,7 +2,7 @@
 order: 67
 title: "What are fallthrough attributes?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "watchers"]
 ---
 
 Fallthrough attributes are props and event listeners passed to a component that aren't declared in `defineProps` or `defineEmits`. Vue automatically forwards them to the component's root element. This includes `class`, `style`, `id`, `data-*`, `aria-*`, and event listeners.

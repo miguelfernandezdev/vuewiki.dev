@@ -2,7 +2,7 @@
 order: 19
 title: "¿Qué son Teleport, Fragments y Suspense?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "suspense", "teleport"]
 ---
 
 Estas son tres funcionalidades integradas introducidas en Vue 3. Cada una resuelve un problema diferente: renderizar contenido fuera del árbol de componentes, permitir múltiples elementos raíz, y manejar dependencias asíncronas con estados de carga.

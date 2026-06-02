@@ -2,7 +2,7 @@
 order: 24
 title: "How would you optimize performance in a Vue app?"
 difficulty: "advanced"
-tags: ["performance"]
+tags: ["performance", "vite", "watchers", "slots"]
 ---
 
 Performance optimization is not a list of tricks to apply upfront — it is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.

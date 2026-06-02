@@ -2,7 +2,7 @@
 order: 141
 title: "A page takes 3-4 seconds to become interactive. How do you diagnose and fix it?"
 difficulty: "advanced"
-tags: ["performance", "debugging"]
+tags: ["performance", "debugging", "watchers"]
 ---
 
 Follow a structured process: measure, identify the bottleneck category, fix, measure again. The bottleneck is always one of three things: the network (slow or too many API calls), the bundle (too much JavaScript shipped), or the rendering (too much work on the main thread).

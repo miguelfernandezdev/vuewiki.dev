@@ -2,7 +2,7 @@
 order: 29
 title: "¿Cómo estructurarías un proyecto Vue grande?"
 difficulty: "advanced"
-tags: ["architecture"]
+tags: ["architecture", "pinia", "vite"]
 ---
 
 Vue no impone ninguna estructura de proyecto en particular. Un scaffold nuevo con Vite te da una carpeta `src/` y el resto queda en tus manos. Eso funciona bien con unas pocas decenas de archivos, pero a medida que el código crece, la ausencia de convenciones se convierte en un problema real: nadie puede predecir dónde vive una determinada pieza de lógica, las revisiones se complican y incorporar nuevos desarrolladores tarda más de lo que debería. El objetivo de una estructura deliberada es simple: cualquier archivo debe ser encontrable por su responsabilidad, no de memoria.

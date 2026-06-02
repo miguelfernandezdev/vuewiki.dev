@@ -2,7 +2,7 @@
 order: 56
 title: "What is lifting state up and when should you do it?"
 difficulty: "beginner"
-tags: ["components", "architecture"]
+tags: ["components", "architecture", "pinia", "provide-inject"]
 ---
 
 Lifting state up means moving shared data from a child component to the nearest common ancestor so that multiple children can access and stay in sync with the same state.

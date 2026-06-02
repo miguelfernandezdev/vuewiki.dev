@@ -2,7 +2,7 @@
 order: 88
 title: "How does file-based routing work in Nuxt?"
 difficulty: "beginner"
-tags: ["nuxt", "vue-router"]
+tags: ["nuxt", "vue-router", "vueuse"]
 ---
 
 In Nuxt, you don't configure routes manually. Every `.vue` file inside the `pages/` directory automatically becomes a route. The file system IS the router config.

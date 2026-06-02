@@ -2,7 +2,7 @@
 order: 116
 title: "¿Qué problemas de hidratación SSR causa Suspense y cómo se evitan?"
 difficulty: "advanced"
-tags: ["ssr", "components"]
+tags: ["ssr", "components", "vueuse", "suspense"]
 ---
 
 `<Suspense>` y SSR tienen casos límite conocidos. El problema central: durante la hidratación, el chunk de un componente asíncrono puede no estar cargado todavía, así que el cliente renderiza el fallback mientras el servidor envió el contenido resuelto. Esto crea un error de hidratación que provoca parpadeos, pérdida de estado o errores en tiempo de ejecución.

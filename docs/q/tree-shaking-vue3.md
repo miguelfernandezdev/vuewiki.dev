@@ -2,7 +2,7 @@
 order: 164
 title: "What is tree-shaking and how does Vue 3 support it?"
 difficulty: "intermediate"
-tags: ["performance", "tooling"]
+tags: ["performance", "tooling", "vite", "watchers", "v-model", "provide-inject", "suspense", "teleport"]
 ---
 
 Tree-shaking is a build-time optimization where the bundler (Vite/Rollup, webpack) removes unused code from the final output. If you import `ref` and `computed` but never use `watch`, the bundler strips `watch` from the production build. Vue 3 was rewritten specifically to support this. Vue 2's global API (`Vue.component`, `Vue.use`, `Vue.mixin`) made everything a single import, so the bundler couldn't remove anything.

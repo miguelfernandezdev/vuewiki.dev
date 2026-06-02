@@ -2,7 +2,7 @@
 order: 126
 title: "How would you handle internationalization (i18n) in Vue?"
 difficulty: "intermediate"
-tags: ["architecture"]
+tags: ["architecture", "v-model"]
 ---
 
 The standard solution is `vue-i18n` for Vue apps and `@nuxtjs/i18n` for Nuxt. They provide reactive locale switching, message interpolation, pluralization, date/number formatting, and lazy-loaded translations. For simpler needs, you can build a lightweight i18n system with a composable and JSON files.

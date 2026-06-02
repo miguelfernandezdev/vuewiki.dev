@@ -2,7 +2,7 @@
 order: 124
 title: "¿Cómo implementarías el scroll infinito con Vue?"
 difficulty: "intermediate"
-tags: ["performance", "composables"]
+tags: ["performance", "composables", "vueuse", "watchers"]
 ---
 
 El scroll infinito carga más contenido a medida que el usuario se desplaza cerca del fondo de la página. El enfoque estándar usa `IntersectionObserver` sobre un elemento centinela al final de la lista. Cuando el centinela entra en el viewport, se obtiene la siguiente página.

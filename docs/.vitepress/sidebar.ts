@@ -35,6 +35,17 @@ const TAG_ORDER: Record<string, number> = {
   debugging: 23,
   security: 24,
   accessibility: 25,
+  pinia: 26,
+  vite: 27,
+  vitest: 28,
+  vueuse: 29,
+  vuex: 30,
+  watchers: 31,
+  'v-model': 32,
+  'provide-inject': 33,
+  slots: 34,
+  suspense: 35,
+  teleport: 36,
 }
 
 const TAG_LABELS_EN: Record<string, string> = {
@@ -64,6 +75,17 @@ const TAG_LABELS_EN: Record<string, string> = {
   debugging: 'Debugging',
   security: 'Security',
   accessibility: 'Accessibility',
+  pinia: 'Pinia',
+  vite: 'Vite',
+  vitest: 'Vitest',
+  vueuse: 'VueUse',
+  vuex: 'Vuex',
+  watchers: 'Watchers',
+  'v-model': 'v-model',
+  'provide-inject': 'Provide/Inject',
+  slots: 'Slots',
+  suspense: 'Suspense',
+  teleport: 'Teleport',
 }
 
 const TAG_LABELS_ES: Record<string, string> = {
@@ -93,6 +115,17 @@ const TAG_LABELS_ES: Record<string, string> = {
   debugging: 'Depuración',
   security: 'Seguridad',
   accessibility: 'Accesibilidad',
+  pinia: 'Pinia',
+  vite: 'Vite',
+  vitest: 'Vitest',
+  vueuse: 'VueUse',
+  vuex: 'Vuex',
+  watchers: 'Watchers',
+  'v-model': 'v-model',
+  'provide-inject': 'Provide/Inject',
+  slots: 'Slots',
+  suspense: 'Suspense',
+  teleport: 'Teleport',
 }
 
 function parseFrontmatter(content: string): QuestionFrontmatter | null {

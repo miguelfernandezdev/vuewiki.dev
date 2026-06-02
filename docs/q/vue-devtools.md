@@ -2,7 +2,7 @@
 order: 104
 title: "How do Vue DevTools help with debugging?"
 difficulty: "beginner"
-tags: ["tooling"]
+tags: ["tooling", "pinia", "vite"]
 ---
 
 Vue DevTools is a browser extension (Chrome, Firefox, Edge) and a standalone Vite plugin that lets you inspect your Vue app at runtime. You can see the component tree, reactive state, Pinia stores, routes, and performance data without adding `console.log` everywhere.

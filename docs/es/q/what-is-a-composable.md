@@ -2,7 +2,7 @@
 order: 8
 title: "¿Qué es un composable?"
 difficulty: "beginner"
-tags: ["composables", "composition-api"]
+tags: ["composables", "composition-api", "vueuse", "watchers"]
 ---
 
 A medida que tus componentes crecen, notarás partes de lógica que no pertenecen a ningún componente concreto — patrones de obtención de datos, validación de formularios, temporizadores, event listeners. Un composable es una función que empaqueta esa lógica reutilizable usando la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), para que puedas compartirla entre componentes sin duplicar código.

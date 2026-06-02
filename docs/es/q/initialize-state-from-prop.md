@@ -2,7 +2,7 @@
 order: 131
 title: "¿Puedes inicializar el state con el valor de una prop? ¿Qué ocurre?"
 difficulty: "beginner"
-tags: ["reactivity", "components"]
+tags: ["reactivity", "components", "watchers", "v-model"]
 ---
 
 Sí, puedes usar una prop como valor inicial para el state local. El [ref](https://vuejs.org/api/reactivity-core.html#ref) local obtiene el valor actual de la prop en el momento de su creación y luego se vuelve independiente. Los cambios en la prop NO actualizan el state local, y los cambios en el state local NO afectan al padre. Es algo intencional: crea una copia unidireccional.

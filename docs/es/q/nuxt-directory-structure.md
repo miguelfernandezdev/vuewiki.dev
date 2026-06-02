@@ -2,7 +2,7 @@
 order: 99
 title: "¿Cuál es la convención de estructura de directorios en Nuxt?"
 difficulty: "beginner"
-tags: ["nuxt", "architecture"]
+tags: ["nuxt", "architecture", "vite"]
 ---
 
 Nuxt está basado en convenciones. La estructura de directorios es la configuración. El lugar donde colocas un archivo determina su función: un archivo `.vue` en `pages/` se convierte en una ruta, un archivo `.ts` en `server/api/` se convierte en un endpoint de API, un composable en `composables/` se importa automáticamente. No hay configuración manual.

@@ -2,7 +2,7 @@
 order: 30
 title: "How would you implement lazy loading and code splitting?"
 difficulty: "advanced"
-tags: ["performance", "vue-router"]
+tags: ["performance", "vue-router", "vite"]
 ---
 
 Code splitting breaks your app into smaller JavaScript files (chunks) that load on demand instead of all at once. Lazy loading means loading a chunk only when the user actually needs it — navigating to a route, opening a modal, scrolling to a section. Vite handles this automatically when you use dynamic `import()`.

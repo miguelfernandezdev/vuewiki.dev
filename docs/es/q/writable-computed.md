@@ -2,7 +2,7 @@
 order: 84
 title: "¿Cómo funcionan las propiedades computed con escritura?"
 difficulty: "advanced"
-tags: ["reactivity"]
+tags: ["reactivity", "pinia", "v-model"]
 ---
 
 Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) normal es de solo lectura: deriva un valor de las dependencias reactivas. Un computed con escritura añade un setter, por lo que puedes asignarle un valor y el setter actualiza los datos fuente subyacentes.

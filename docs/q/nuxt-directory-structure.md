@@ -2,7 +2,7 @@
 order: 99
 title: "What is the Nuxt directory structure convention?"
 difficulty: "beginner"
-tags: ["nuxt", "architecture"]
+tags: ["nuxt", "architecture", "vite"]
 ---
 
 Nuxt is convention-driven. The directory structure IS the configuration. Where you place a file determines what it does: a `.vue` file in `pages/` becomes a route, a `.ts` file in `server/api/` becomes an API endpoint, a composable in `composables/` gets auto-imported. You don't wire things up manually.

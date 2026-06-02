@@ -2,7 +2,7 @@
 order: 148
 title: "How do you debug SSR requests that don't go through the browser?"
 difficulty: "advanced"
-tags: ["nuxt", "ssr", "debugging"]
+tags: ["nuxt", "ssr", "debugging", "vueuse"]
 ---
 
 During SSR, HTTP requests go out from the Node.js server process, not from the browser. There is no Network tab. The server fetches data, renders HTML, and sends it to the client. If an API call fails or returns unexpected data during SSR, you won't see it in browser DevTools. You need server-side observability: interceptors that log to the terminal, proxy tools that capture outgoing traffic, and Nuxt DevTools' server request panel.

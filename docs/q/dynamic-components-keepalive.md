@@ -2,7 +2,7 @@
 order: 59
 title: "What are dynamic components and how does KeepAlive work?"
 difficulty: "intermediate"
-tags: ["components", "performance"]
+tags: ["components", "performance", "slots", "suspense", "teleport"]
 ---
 
 Dynamic components let you switch between components at runtime using the built-in `<component>` element with the `:is` prop. By default, Vue destroys the old component and creates a new one on each switch. `<KeepAlive>` changes that behavior by caching instances in memory.

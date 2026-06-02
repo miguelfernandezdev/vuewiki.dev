@@ -2,7 +2,7 @@
 order: 142
 title: "¿Cuáles son las diferencias entre Nuxt 2 y Nuxt 3?"
 difficulty: "intermediate"
-tags: ["nuxt", "migration"]
+tags: ["nuxt", "migration", "pinia", "vite", "vueuse", "vuex"]
 ---
 
 Nuxt 3 es una reescritura completa sobre Vue 3, Vite y el motor de servidor Nitro. Los cambios van más allá del salto de Vue 2 a Vue 3: la herramienta de build, la capa de servidor, la obtención de datos, la gestión de estado, el sistema de módulos y la experiencia con TypeScript son todos distintos. La filosofía central es la misma (convención sobre configuración, enrutamiento basado en archivos, SSR por defecto), pero casi toda la superficie de API ha cambiado.

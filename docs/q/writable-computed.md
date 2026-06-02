@@ -2,7 +2,7 @@
 order: 84
 title: "How do writable computed properties work?"
 difficulty: "advanced"
-tags: ["reactivity"]
+tags: ["reactivity", "pinia", "v-model"]
 ---
 
 A regular [computed](https://vuejs.org/api/reactivity-core.html#computed) property is read-only: it derives a value from reactive dependencies. A writable computed adds a setter, so you can assign to it and the setter updates the underlying source data.

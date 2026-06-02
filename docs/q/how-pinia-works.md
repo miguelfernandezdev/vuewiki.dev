@@ -2,7 +2,7 @@
 order: 101
 title: "How does Pinia work internally? (stores, state, getters, actions)"
 difficulty: "intermediate"
-tags: ["state-management"]
+tags: ["state-management", "pinia", "vuex"]
 ---
 
 Pinia is Vue's official state management library. Each store is an isolated reactive unit with state, getters (computed values), and actions (methods). Under the hood, a store is a `reactive` object enhanced with devtools integration, plugin support, and SSR safety.

@@ -2,7 +2,7 @@
 order: 74
 title: "¿Qué es effectScope y cuándo lo usarías?"
 difficulty: "advanced"
-tags: ["reactivity", "composables"]
+tags: ["reactivity", "composables", "pinia", "watchers"]
 ---
 
 [effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) crea un contenedor que recolecta todos los efectos reactivos (watchers, computed, watchEffect) creados dentro de él. Cuando llamas a `scope.stop()`, todos los efectos del scope se eliminan a la vez. Esto es lo que Vue hace internamente para cada instancia de componente, pero puedes usarlo tú mismo en composables o contextos fuera de componentes.

@@ -2,7 +2,7 @@
 order: 159
 title: "¿Qué es customRef y cuándo lo usarías?"
 difficulty: "advanced"
-tags: ["reactivity"]
+tags: ["reactivity", "v-model"]
 ---
 
 [customRef](https://vuejs.org/api/reactivity-advanced.html#customref) crea una ref donde tú controlas cuándo ocurre el rastreo de dependencias (`track`) y el disparo de actualizaciones (`trigger`). Las refs normales rastrean en cada lectura y disparan en cada escritura automáticamente. Con `customRef`, insertas tu propia lógica entre la lectura/escritura y el sistema de reactividad. El caso de uso clásico es una ref con debounce que retrasa el disparo de actualizaciones hasta que el usuario deja de escribir.

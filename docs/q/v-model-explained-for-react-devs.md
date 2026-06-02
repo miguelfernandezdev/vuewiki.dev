@@ -2,7 +2,7 @@
 order: 153
 title: "How would you explain v-model to someone coming from React?"
 difficulty: "intermediate"
-tags: ["components", "directives"]
+tags: ["components", "directives", "v-model"]
 ---
 
 In React, form state is always unidirectional: state flows down through `value` and changes flow up through `onChange`. Two lines for every input. In Vue, `v-model` handles both directions in a single declaration. It's syntactic sugar: internally it binds a value prop and listens for an update event, but you write one line instead of two. The trade-off is explicitness vs convenience.

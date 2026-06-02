@@ -2,7 +2,7 @@
 order: 93
 title: "How does state management work in Nuxt? (useState, Pinia)"
 difficulty: "intermediate"
-tags: ["nuxt", "state-management"]
+tags: ["nuxt", "state-management", "pinia"]
 ---
 
 Nuxt provides `useState`, an SSR-safe composable for sharing reactive state across components. For complex state, you add Pinia as a module. The key rule: never use plain `ref` or `reactive` at module scope in Nuxt, because that state leaks between requests on the server.

@@ -2,7 +2,7 @@
 order: 64
 title: "How do multiple v-model bindings work on a component?"
 difficulty: "intermediate"
-tags: ["components", "directives"]
+tags: ["components", "directives", "v-model"]
 ---
 
 Since Vue 3, you can bind multiple `v-model` directives to a single component by giving each one a name. This replaces the Vue 2 pattern of one `v-model` plus `.sync` modifiers.

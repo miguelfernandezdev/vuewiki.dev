@@ -2,7 +2,7 @@
 order: 88
 title: "¿Cómo funciona el enrutamiento basado en archivos en Nuxt?"
 difficulty: "beginner"
-tags: ["nuxt", "vue-router"]
+tags: ["nuxt", "vue-router", "vueuse"]
 ---
 
 En Nuxt no se configuran las rutas manualmente. Cada archivo `.vue` dentro del directorio `pages/` se convierte automáticamente en una ruta. El sistema de archivos es la configuración del router.

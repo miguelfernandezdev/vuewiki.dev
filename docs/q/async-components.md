@@ -2,7 +2,7 @@
 order: 60
 title: "What are async components and defineAsyncComponent?"
 difficulty: "intermediate"
-tags: ["components", "performance"]
+tags: ["components", "performance", "vite", "suspense", "teleport"]
 ---
 
 Async components let you split your bundle by loading a component's code only when it's needed. Instead of importing the component at the top of the file (which bundles it with the parent), you wrap the import in `defineAsyncComponent` and Vite creates a separate chunk for it.

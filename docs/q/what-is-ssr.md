@@ -2,7 +2,7 @@
 order: 113
 title: "What is Server Side Rendering and what are its advantages?"
 difficulty: "intermediate"
-tags: ["ssr"]
+tags: ["ssr", "vite"]
 ---
 
 Server Side Rendering (SSR) means generating the HTML for a page on the server instead of in the browser. When a user requests a page, the server runs your Vue components, produces complete HTML, and sends it. The browser shows the content immediately, then JavaScript loads and makes the page interactive (hydration).

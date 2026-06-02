@@ -2,7 +2,7 @@
 order: 155
 title: "How do you test a Pinia store?"
 difficulty: "intermediate"
-tags: ["testing", "state-management"]
+tags: ["testing", "state-management", "pinia", "vitest"]
 ---
 
 Create a fresh Pinia instance in `beforeEach` with `setActivePinia(createPinia())`. This gives every test an isolated store with clean state. Then call the store's composable function, interact with its actions, and assert against its state and getters. For async actions that call APIs, mock `fetch` or `$fetch` with `vi.fn()`.

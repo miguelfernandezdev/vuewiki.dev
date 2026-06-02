@@ -2,7 +2,7 @@
 order: 61
 title: "¿Cómo se crean directivas personalizadas en Vue?"
 difficulty: "intermediate"
-tags: ["directives"]
+tags: ["directives", "v-model"]
 ---
 
 Las [directivas personalizadas](https://vuejs.org/guide/reusability/custom-directives.html) te dan acceso de bajo nivel a los elementos del DOM cuando las directivas integradas (`v-if`, `v-show`, `v-model`) no son suficientes. Son ideales para cosas como auto-focus, intersection observers o integración con librerías de terceros.

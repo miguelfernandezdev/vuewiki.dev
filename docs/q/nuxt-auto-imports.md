@@ -2,7 +2,7 @@
 order: 94
 title: "What is auto-imports in Nuxt and how does it work?"
 difficulty: "beginner"
-tags: ["nuxt", "tooling"]
+tags: ["nuxt", "tooling", "vueuse", "watchers"]
 ---
 
 Nuxt automatically imports Vue APIs, Nuxt composables, your own composables, utilities, and components. You never write `import { ref } from 'vue'` or `import { useFetch } from '#app'` in a Nuxt project. Everything is available directly.

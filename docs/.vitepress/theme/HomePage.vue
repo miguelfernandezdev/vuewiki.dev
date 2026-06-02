@@ -19,23 +19,59 @@ const search = ref('')
 const activeFilter = ref<string | null>(null)
 const activeTags = ref<Set<string>>(new Set())
 
+const TECHNOLOGY_TAGS = new Set([
+  'nuxt', 'typescript', 'vue-router', 'pinia', 'vite', 'vitest', 'vueuse', 'vuex',
+])
+
 const allTags = computed(() => {
   const tags = new Set<string>()
   questions.value.forEach(q => q.tags.forEach(tag => tags.add(tag)))
   return Array.from(tags).sort()
 })
 
+const groupedTags = computed(() => {
+  const topics: string[] = []
+  const technologies: string[] = []
+  for (const tag of allTags.value) {
+    if (TECHNOLOGY_TAGS.has(tag)) {
+      technologies.push(tag)
+    } else {
+      topics.push(tag)
+    }
+  }
+  return { topics, technologies }
+})
+
 const topicDropdownOpen = ref(false)
 const topicSearch = ref('')
 const dropdownRef = ref<HTMLElement | null>(null)
 
-const filteredTags = computed(() => {
-  if (!topicSearch.value) return allTags.value
+const filteredTopics = computed(() => {
+  if (!topicSearch.value) return groupedTags.value.topics
   const q = topicSearch.value.toLowerCase()
-  return allTags.value.filter(tag =>
+  return groupedTags.value.topics.filter(tag =>
     t(`tags.${tag}`).toLowerCase().includes(q) || tag.toLowerCase().includes(q),
   )
 })
+
+const techDropdownOpen = ref(false)
+const techSearch = ref('')
+const techDropdownRef = ref<HTMLElement | null>(null)
+
+const filteredTech = computed(() => {
+  if (!techSearch.value) return groupedTags.value.technologies
+  const q = techSearch.value.toLowerCase()
+  return groupedTags.value.technologies.filter(tag =>
+    t(`tags.${tag}`).toLowerCase().includes(q) || tag.toLowerCase().includes(q),
+  )
+})
+
+function toggleTechDropdown() {
+  techDropdownOpen.value = !techDropdownOpen.value
+  if (techDropdownOpen.value) {
+    techSearch.value = ''
+  }
+}
 
 function toggleDropdown() {
   topicDropdownOpen.value = !topicDropdownOpen.value
@@ -47,6 +83,9 @@ function toggleDropdown() {
 function onClickOutside(e: MouseEvent) {
   if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
     topicDropdownOpen.value = false
+  }
+  if (techDropdownRef.value && !techDropdownRef.value.contains(e.target as Node)) {
+    techDropdownOpen.value = false
   }
 }
 
@@ -197,7 +236,8 @@ const difficultyClass: Record<string, string> = {
 
         <div ref="dropdownRef" class="topic-dropdown">
           <button class="dropdown-trigger" @click="toggleDropdown">
-            <span>{{ activeTags.size === 0 ? t('tags.allTopics') : t('tags.label') + ` (${activeTags.size})` }}</span>
+            <span>{{ t('tags.topicsGroup') }}</span>
+            <span v-if="activeTags.size > 0 && [...activeTags].some(t => !TECHNOLOGY_TAGS.has(t))" class="trigger-count">{{ [...activeTags].filter(t => !TECHNOLOGY_TAGS.has(t)).length }}</span>
             <svg class="dropdown-chevron" :class="{ open: topicDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -210,7 +250,38 @@ const difficultyClass: Record<string, string> = {
               :placeholder="t('tags.searchTopics')"
             />
             <ul class="dropdown-list">
-              <li v-for="tag in filteredTags" :key="tag">
+              <li v-for="tag in filteredTopics" :key="tag">
+                <button
+                  :class="['dropdown-option', { active: activeTags.has(tag) }]"
+                  @click="toggleTag(tag)"
+                >
+                  <svg v-if="activeTags.has(tag)" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ t(`tags.${tag}`) }}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div ref="techDropdownRef" class="topic-dropdown">
+          <button class="dropdown-trigger" @click="toggleTechDropdown">
+            <span>{{ t('tags.techGroup') }}</span>
+            <span v-if="[...activeTags].some(t => TECHNOLOGY_TAGS.has(t))" class="trigger-count">{{ [...activeTags].filter(t => TECHNOLOGY_TAGS.has(t)).length }}</span>
+            <svg class="dropdown-chevron" :class="{ open: techDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div v-show="techDropdownOpen" class="dropdown-panel">
+            <input
+              v-model="techSearch"
+              type="text"
+              class="dropdown-search"
+              :placeholder="t('tags.searchTopics')"
+            />
+            <ul class="dropdown-list">
+              <li v-for="tag in filteredTech" :key="tag">
                 <button
                   :class="['dropdown-option', { active: activeTags.has(tag) }]"
                   @click="toggleTag(tag)"
@@ -539,6 +610,20 @@ const difficultyClass: Record<string, string> = {
   margin: 0;
   padding: 0.25rem 0;
   overflow-y: auto;
+}
+
+.trigger-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
 }
 
 .dropdown-option {

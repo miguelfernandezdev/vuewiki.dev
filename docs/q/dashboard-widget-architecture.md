@@ -2,7 +2,7 @@
 order: 140
 title: "How would you architect a dashboard with multiple widgets that each fetch their own data?"
 difficulty: "advanced"
-tags: ["architecture", "composables", "performance"]
+tags: ["architecture", "composables", "performance", "pinia", "provide-inject", "suspense"]
 ---
 
 Each widget should be an independent component with its own composable for data fetching. Every widget manages its own loading, error, and data state so one slow API doesn't block the other four. Shared data goes in a Pinia store; widget-only data stays in the composable's local refs. The layout uses CSS Grid so widgets are responsive grid cells that render independently.

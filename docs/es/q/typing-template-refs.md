@@ -2,7 +2,7 @@
 order: 108
 title: "¿Cómo se tipan los template refs en TypeScript?"
 difficulty: "intermediate"
-tags: ["typescript", "components"]
+tags: ["typescript", "components", "watchers"]
 ---
 
 Los template refs comienzan como `null` y se convierten en el elemento DOM o en la instancia del componente después del montaje. En TypeScript, debes tener en cuenta esto con un tipo unión y proteger el acceso con optional chaining o hooks del ciclo de vida.

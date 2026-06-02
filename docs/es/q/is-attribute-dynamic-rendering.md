@@ -2,7 +2,7 @@
 order: 168
 title: "¿Cómo funciona el atributo `is` para el renderizado dinámico de componentes?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "vite"]
 ---
 
 El atributo `is` en `<component>` acepta un objeto de definición de componente, un string con el nombre del componente o un string con el nombre de una etiqueta HTML. Vue lo resuelve en tiempo de ejecución y renderiza el componente o elemento correspondiente. Más allá del patrón estándar `<component :is>`, `is` tiene un comportamiento especial en elementos HTML nativos e interactúa con web components mediante el prefijo `vue:`.

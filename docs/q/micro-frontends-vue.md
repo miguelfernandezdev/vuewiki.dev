@@ -2,7 +2,7 @@
 order: 122
 title: "How would you structure a micro-frontend with Vue?"
 difficulty: "advanced"
-tags: ["architecture"]
+tags: ["architecture", "pinia", "vite", "provide-inject"]
 ---
 
 Micro-frontends split a large frontend into independent apps that are developed, deployed, and run separately. Each team owns a feature and ships it without coordinating releases with others. In Vue, the main approaches are Module Federation, Web Components, and iframe-based composition.

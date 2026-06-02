@@ -2,7 +2,7 @@
 order: 151
 title: "¿Por qué inicializar un ref de búsqueda con '' en lugar de null?"
 difficulty: "beginner"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "vueuse", "v-model"]
 ---
 
 Cuando se enlaza un [ref](https://vuejs.org/api/reactivity-core.html#ref) a un input con [v-model](https://vuejs.org/guide/components/v-model.html), el input siempre produce un string. Si se inicializa el ref como `null`, el tipo es `Ref<string | null>` y cada consumidor necesita comprobar si es null. Si se inicializa como `''` (string vacío), el tipo es `Ref<string>`, que coincide con lo que produce el input. Sin comprobaciones de null, sin type narrowing, sin casos extremos.

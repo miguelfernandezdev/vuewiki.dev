@@ -2,7 +2,7 @@
 order: 63
 title: "¿Qué es nextTick y cuándo lo necesitas?"
 difficulty: "intermediate"
-tags: ["reactivity"]
+tags: ["reactivity", "watchers"]
 ---
 
 [nextTick](https://vuejs.org/api/general.html#nexttick) es una utilidad que permite esperar hasta que Vue haya terminado de actualizar el DOM después de un cambio de state. Vue agrupa las actualizaciones del DOM de forma asíncrona por rendimiento, así que si lees el DOM justo después de cambiar state reactivo, verás valores obsoletos.

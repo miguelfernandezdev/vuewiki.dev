@@ -2,7 +2,7 @@
 order: 19
 title: "What are Teleport, Fragments, and Suspense?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "suspense", "teleport"]
 ---
 
 These are three built-in features introduced in Vue 3. Each solves a different problem: rendering content outside the component tree, allowing multiple root elements, and handling async dependencies with loading states.

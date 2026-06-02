@@ -2,7 +2,7 @@
 order: 118
 title: "¿Qué es el patrón de componentes compuestos en Vue?"
 difficulty: "advanced"
-tags: ["architecture", "components"]
+tags: ["architecture", "components", "vite", "provide-inject"]
 ---
 
 Los componentes compuestos son un conjunto de componentes que trabajan juntos y comparten estado implícito a través de provide/inject. El padre gestiona el estado, los hijos lo consumen. El consumidor organiza los hijos libremente sin necesidad de conectar props o eventos entre ellos manualmente.

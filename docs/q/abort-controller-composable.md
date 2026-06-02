@@ -2,7 +2,7 @@
 order: 138
 title: "How do you cancel an API request in a composable?"
 difficulty: "intermediate"
-tags: ["composables"]
+tags: ["composables", "vueuse", "watchers", "v-model"]
 ---
 
 Use the browser's `AbortController` API. Create a controller, pass its `signal` to `fetch`, and call `controller.abort()` when you need to cancel. In Vue, the two most common triggers for cancellation are component unmount (prevent state updates on destroyed components) and new requests replacing stale ones (race condition prevention).

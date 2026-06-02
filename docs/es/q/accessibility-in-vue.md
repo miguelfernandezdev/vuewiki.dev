@@ -2,7 +2,7 @@
 order: 156
 title: "¿Cómo se gestiona la accesibilidad en Vue?"
 difficulty: "intermediate"
-tags: ["accessibility", "components"]
+tags: ["accessibility", "components", "teleport"]
 ---
 
 Empieza con elementos HTML semánticos en lugar de divs. Añade atributos ARIA solo cuando la semántica nativa no sea suficiente. Gestiona el foco explícitamente en los cambios de ruta y en el contenido dinámico. Vue no añade barreras a la accesibilidad, pero tampoco añade restricciones. La responsabilidad es tuya.

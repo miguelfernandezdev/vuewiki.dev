@@ -2,7 +2,7 @@
 order: 130
 title: "¿Cuándo usar el hook updated y cuáles son sus implicaciones de rendimiento?"
 difficulty: "advanced"
-tags: ["performance", "reactivity"]
+tags: ["performance", "reactivity", "watchers"]
 ---
 
 El hook `updated` (`onUpdated` en Composition API) se ejecuta después de cada cambio de estado reactivo que provoca un re-render. Se dispara ante CUALQUIER cambio de estado en el componente, no solo ante el que te interesa. Esto lo convierte en un lugar peligroso para operaciones costosas, llamadas a APIs o mutaciones de estado. Para la mayoría de los casos, [watch](https://vuejs.org/api/reactivity-core.html#watch) o [computed](https://vuejs.org/api/reactivity-core.html#computed) son una mejor opción.

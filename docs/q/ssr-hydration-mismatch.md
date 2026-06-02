@@ -2,7 +2,7 @@
 order: 45
 title: "What causes SSR hydration mismatches and how do you fix them?"
 difficulty: "advanced"
-tags: ["ssr", "errors"]
+tags: ["ssr", "errors", "vite"]
 ---
 
 A hydration mismatch happens when the HTML the client renders differs from what the server sent. Vue tries to recover by discarding the mismatched nodes and re-rendering them, which causes flickering, performance loss, and broken event handlers.

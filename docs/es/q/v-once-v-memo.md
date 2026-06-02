@@ -2,7 +2,7 @@
 order: 83
 title: "¿Qué son v-once y v-memo? ¿Cuándo deberías usarlos?"
 difficulty: "advanced"
-tags: ["directives", "performance"]
+tags: ["directives", "performance", "v-model"]
 ---
 
 `v-once` renderiza un elemento una sola vez y omite todas las actualizaciones futuras. `v-memo` omite re-renders de forma condicional basándose en un array de dependencias. Ambos reducen el trabajo de render indicándole a Vue que ciertas partes del template no necesitan reevaluarse.

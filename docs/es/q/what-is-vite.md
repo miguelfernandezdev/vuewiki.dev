@@ -2,7 +2,7 @@
 order: 100
 title: "¿Qué es Vite y cómo funciona?"
 difficulty: "beginner"
-tags: ["tooling"]
+tags: ["tooling", "vite"]
 ---
 
 Vite es una herramienta de compilación creada por Evan You (también el creador de Vue). Sirve tu código durante el desarrollo usando módulos ES nativos, lo que hace que el servidor de desarrollo arranque al instante independientemente del tamaño del proyecto. Para producción, empaqueta con Rollup.

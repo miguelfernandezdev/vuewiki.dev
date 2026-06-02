@@ -2,7 +2,7 @@
 order: 80
 title: "How does error handling work in Vue?"
 difficulty: "advanced"
-tags: ["components", "error-handling"]
+tags: ["components", "error-handling", "suspense"]
 ---
 
 Vue provides `onErrorCaptured` to catch errors from descendant components, letting you build error boundaries similar to React's `componentDidCatch`. Combined with `app.config.errorHandler` for global errors and `defineAsyncComponent`'s error options, you can handle failures at every level.

@@ -2,7 +2,7 @@
 order: 72
 title: "¿Cómo funciona Suspense con componentes asíncronos?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "slots", "suspense", "teleport"]
 ---
 
 `<Suspense>` es un componente integrado que renderiza contenido de fallback mientras sus hijos asíncronos se resuelven. Funciona con dos tipos de dependencias asíncronas: componentes asíncronos (`defineAsyncComponent`) y componentes con un `async setup()`.

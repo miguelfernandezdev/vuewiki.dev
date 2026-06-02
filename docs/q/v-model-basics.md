@@ -2,7 +2,7 @@
 order: 70
 title: "What is v-model and how does it differ from .sync in Vue 2?"
 difficulty: "intermediate"
-tags: ["directives", "migration"]
+tags: ["directives", "migration", "v-model"]
 ---
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) creates a two-way binding between a parent's data and a child component (or a form element). On native elements it's syntactic sugar for a `:value` binding plus an `@input` listener. On components, it binds a prop and listens for an update event.

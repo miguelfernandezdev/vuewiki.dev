@@ -2,7 +2,7 @@
 order: 23
 title: "How would you design a shared component library?"
 difficulty: "advanced"
-tags: ["components", "architecture"]
+tags: ["components", "architecture", "vite", "vitest", "slots"]
 ---
 
 A shared component library gives multiple apps (or teams) a consistent set of UI components. The goal is reusability without coupling — each consumer imports what they need, gets type safety and theming, and can upgrade on their own schedule.

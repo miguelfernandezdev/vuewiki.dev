@@ -2,7 +2,7 @@
 order: 39
 title: "Why does my watchEffect miss dependencies after an await?"
 difficulty: "intermediate"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "watchers"]
 ---
 
 Because [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) only tracks dependencies during **synchronous** execution. After the first `await`, Vue stops tracking. Any reactive property accessed after that point is invisible to the watcher.

@@ -2,7 +2,7 @@
 order: 78
 title: "¿Cómo funcionan los modificadores personalizados de v-model?"
 difficulty: "advanced"
-tags: ["components", "directives"]
+tags: ["components", "directives", "v-model"]
 ---
 
 Vue tiene tres modificadores integrados para `v-model` en inputs nativos (`.lazy`, `.number`, `.trim`). En componentes personalizados, puedes definir los tuyos propios que transforman el valor según fluye hacia dentro o hacia fuera.

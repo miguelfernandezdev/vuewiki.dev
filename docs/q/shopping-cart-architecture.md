@@ -2,7 +2,7 @@
 order: 120
 title: "How would you build a shopping cart with Vue?"
 difficulty: "advanced"
-tags: ["architecture", "state-management"]
+tags: ["architecture", "state-management", "pinia"]
 ---
 
 A shopping cart is a classic state management problem. The cart state needs to be shared across multiple pages (product list, cart drawer, checkout), persisted across page refreshes, and updated from different places. A Pinia store is the natural fit.

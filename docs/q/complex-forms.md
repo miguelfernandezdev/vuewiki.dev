@@ -2,7 +2,7 @@
 order: 27
 title: "How would you handle complex forms in Vue?"
 difficulty: "advanced"
-tags: ["components", "composables"]
+tags: ["components", "composables", "v-model"]
 ---
 
 A "complex form" usually means one or more of: many fields, multi-step wizards, dynamic sections (add/remove fields), nested objects, cross-field validation, or async validation (check if username is taken). The challenge isn't any single field — it's keeping validation, state, dirty tracking, and submit logic organized as the form grows.

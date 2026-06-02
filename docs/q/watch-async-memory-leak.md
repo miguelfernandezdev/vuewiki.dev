@@ -2,7 +2,7 @@
 order: 44
 title: "Why do watchers created inside async callbacks cause memory leaks?"
 difficulty: "advanced"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "watchers"]
 ---
 
 Because Vue only auto-cleans watchers that are created **synchronously** during `setup()`. When you create a [watch](https://vuejs.org/api/reactivity-core.html#watch) or [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) inside a `setTimeout`, `Promise.then`, or after an `await`, Vue can't bind it to the component lifecycle. It keeps running after the component unmounts.

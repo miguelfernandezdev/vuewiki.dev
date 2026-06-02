@@ -2,7 +2,7 @@
 order: 156
 title: "How do you handle accessibility in Vue?"
 difficulty: "intermediate"
-tags: ["accessibility", "components"]
+tags: ["accessibility", "components", "teleport"]
 ---
 
 Start with semantic HTML elements instead of divs. Add ARIA attributes only when native semantics aren't enough. Manage focus explicitly on route changes and dynamic content. Vue doesn't add any barriers to accessibility, but it doesn't add any guardrails either. It's on you.

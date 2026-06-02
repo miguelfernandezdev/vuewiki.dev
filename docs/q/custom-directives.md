@@ -2,7 +2,7 @@
 order: 61
 title: "How do you create custom directives in Vue?"
 difficulty: "intermediate"
-tags: ["directives"]
+tags: ["directives", "v-model"]
 ---
 
 [Custom directives](https://vuejs.org/guide/reusability/custom-directives.html) give you low-level access to DOM elements when built-in directives (`v-if`, `v-show`, `v-model`) aren't enough. They're ideal for things like auto-focus, intersection observers, or third-party library integration.

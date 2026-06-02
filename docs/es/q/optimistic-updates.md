@@ -2,7 +2,7 @@
 order: 123
 title: "¿Cómo implementarías actualizaciones optimistas en Vue?"
 difficulty: "advanced"
-tags: ["reactivity", "performance"]
+tags: ["reactivity", "performance", "pinia"]
 ---
 
 Las actualizaciones optimistas cambian la interfaz de inmediato antes de que el servidor confirme la acción. El patrón se apoya en [ref](https://vuejs.org/api/reactivity-core.html#ref) y [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) para capturar y restaurar el estado. Si la petición al servidor tiene éxito, nada cambia visualmente. Si falla, se revierte al estado anterior. La app se siente instantánea porque el usuario no espera un viaje de red de ida y vuelta.

@@ -2,7 +2,7 @@
 order: 38
 title: "¿Por qué mi watcher recibe el mismo valor para old y new?"
 difficulty: "intermediate"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "watchers"]
 ---
 
 Porque cuando observas en profundidad un objeto reactivo con [watch](https://vuejs.org/api/reactivity-core.html#watch) y mutas una propiedad anidada, tanto `newValue` como `oldValue` apuntan a la **misma referencia de objeto**. Vue no clona el objeto antes de la mutación, por lo que cuando se ejecuta el callback, ambas referencias reflejan el estado actual (mutado).

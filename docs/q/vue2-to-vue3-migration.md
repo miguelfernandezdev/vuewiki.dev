@@ -2,7 +2,7 @@
 order: 21
 title: "How would you plan a Vue 2 to Vue 3 migration?"
 difficulty: "advanced"
-tags: ["migration"]
+tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]
 ---
 
 A Vue 2 to Vue 3 migration is not a rewrite — it is an incremental process. Vue 3 provides `@vue/compat` (the compatibility build), which runs your existing Vue 2 code on the Vue 3 runtime and logs deprecation warnings for every API you are using that has been removed or changed. This means you can flip the switch one day and still have a working application, then fix issues category by category over weeks or months, at your own pace.

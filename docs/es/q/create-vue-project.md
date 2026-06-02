@@ -2,7 +2,7 @@
 order: 57
 title: "¿Cómo se crea un proyecto Vue desde cero?"
 difficulty: "beginner"
-tags: ["tooling"]
+tags: ["tooling", "pinia", "vite", "vitest"]
 ---
 
 La forma oficial de iniciar un nuevo proyecto Vue es `create-vue`, que genera un proyecto basado en Vite con TypeScript, Router, Pinia, Vitest y ESLint opcionales.

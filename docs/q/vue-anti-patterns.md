@@ -2,7 +2,7 @@
 order: 163
 title: "What are common anti-patterns in large Vue codebases?"
 difficulty: "advanced"
-tags: ["architecture"]
+tags: ["architecture", "pinia", "watchers", "provide-inject"]
 ---
 
 The most damaging anti-patterns in Vue projects aren't syntax mistakes. They're structural decisions that feel productive early on but create compounding problems as the codebase grows. Here are the ones that show up repeatedly in real production code.

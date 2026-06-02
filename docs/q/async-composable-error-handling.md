@@ -2,7 +2,7 @@
 order: 170
 title: "How do you handle errors in async composables?"
 difficulty: "intermediate"
-tags: ["composables", "error-handling"]
+tags: ["composables", "error-handling", "watchers"]
 ---
 
 Return an `error` ref alongside `data` and `isLoading`. The composable catches errors internally and exposes them as reactive state, so the component can render error UI without try/catch blocks in the template. Never let errors escape silently, and never throw from a composable unless the caller explicitly expects it.

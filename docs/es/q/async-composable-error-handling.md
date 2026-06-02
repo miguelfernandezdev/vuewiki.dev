@@ -2,7 +2,7 @@
 order: 170
 title: "¿Cómo se gestionan los errores en composables asíncronos?"
 difficulty: "intermediate"
-tags: ["composables", "error-handling"]
+tags: ["composables", "error-handling", "watchers"]
 ---
 
 Devuelve una ref `error` junto a `data` e `isLoading`. El composable captura los errores internamente y los expone como estado reactivo, para que el componente pueda renderizar la UI de error sin bloques try/catch en el template. Nunca dejes que los errores escapen en silencio, y nunca lances excepciones desde un composable a menos que quien lo llame lo espere explícitamente.

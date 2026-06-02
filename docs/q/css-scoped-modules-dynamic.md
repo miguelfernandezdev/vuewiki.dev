@@ -2,7 +2,7 @@
 order: 52
 title: "How do scoped styles, CSS Modules, and dynamic classes work in Vue?"
 difficulty: "beginner"
-tags: ["components", "styling"]
+tags: ["components", "styling", "teleport"]
 ---
 
 Vue Single-File Components offer three ways to style components, each solving a different problem.

@@ -2,7 +2,7 @@
 order: 152
 title: "¿Cuándo usar Pinia, un composable o estado local?"
 difficulty: "intermediate"
-tags: ["state-management", "architecture"]
+tags: ["state-management", "architecture", "pinia", "watchers", "provide-inject"]
 ---
 
 Estado local por defecto. Pinia solo cuando hay una razón clara. La decisión depende de tres preguntas: cuántos componentes necesitan estos datos, si deben sobrevivir a la navegación entre páginas y si la lógica es reutilizable. El anti-patrón es meter todo en un store "por si acaso", lo que genera un estado global inflado donde el 80% es estado local disfrazado.

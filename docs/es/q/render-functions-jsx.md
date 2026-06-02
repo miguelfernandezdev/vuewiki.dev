@@ -2,7 +2,7 @@
 order: 69
 title: "¿Cómo funcionan las render functions y JSX en Vue?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "v-model"]
 ---
 
 Las render functions son una alternativa a los templates. En lugar de escribir markup estilo HTML, se usa la función `h()` (o JSX) para crear vnodes de forma programática. Los templates se compilan en render functions en tiempo de build, así que las render functions son lo que Vue ejecuta realmente.

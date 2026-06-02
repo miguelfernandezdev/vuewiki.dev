@@ -2,7 +2,7 @@
 order: 136
 title: "¿Vue es una librería o un framework? ¿Por qué?"
 difficulty: "beginner"
-tags: ["core"]
+tags: ["core", "pinia", "vite"]
 ---
 
 Vue se describe oficialmente como un "[framework progresivo](https://vuejs.org/guide/introduction.html)". El paquete principal (`vue`) es una librería de vistas centrada en renderizar la interfaz, comparable en alcance a React. Pero a diferencia de una librería pura, Vue incluye un ecosistema oficial ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), scaffolding con [Vite](https://vite.dev/), [DevTools](https://devtools.vuejs.org/), SSR) que le da capacidades de framework completo. Empiezas solo con la capa de vista y adoptas más piezas a medida que tu proyecto las necesita.

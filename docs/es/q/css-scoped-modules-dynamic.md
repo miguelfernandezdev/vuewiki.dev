@@ -2,7 +2,7 @@
 order: 52
 title: "¿Cómo funcionan los estilos con scoped, CSS Modules y clases dinámicas en Vue?"
 difficulty: "beginner"
-tags: ["components", "styling"]
+tags: ["components", "styling", "teleport"]
 ---
 
 Los Single-File Components de Vue ofrecen tres formas de aplicar estilos a los componentes, cada una resolviendo un problema diferente.

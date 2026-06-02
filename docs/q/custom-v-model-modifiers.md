@@ -2,7 +2,7 @@
 order: 78
 title: "How do custom v-model modifiers work?"
 difficulty: "advanced"
-tags: ["components", "directives"]
+tags: ["components", "directives", "v-model"]
 ---
 
 Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.number`, `.trim`). On custom components, you can define your own modifiers that transform the value as it flows in or out.

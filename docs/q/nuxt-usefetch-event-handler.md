@@ -2,7 +2,7 @@
 order: 144
 title: "What happens if you call useFetch inside an event handler?"
 difficulty: "intermediate"
-tags: ["nuxt", "errors"]
+tags: ["nuxt", "errors", "vueuse"]
 ---
 
 It doesn't work as expected. `useFetch` and `useAsyncData` must be called at the top level of `<script setup>` (or in a plugin/middleware), not inside event handlers, callbacks, or lifecycle hooks. They rely on Nuxt's component context to register themselves for SSR payload transfer and deduplication. Inside an event handler, that context is gone. Use `$fetch` directly for requests triggered by user actions.

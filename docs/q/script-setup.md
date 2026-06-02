@@ -2,7 +2,7 @@
 order: 3
 title: "What is script setup?"
 difficulty: "beginner"
-tags: ["composition-api"]
+tags: ["composition-api", "v-model"]
 ---
 
 [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) is the recommended way to write Vue components using the Composition API. It removes boilerplate that you'd otherwise have to write manually, so you spend less time on wiring and more on actual logic.

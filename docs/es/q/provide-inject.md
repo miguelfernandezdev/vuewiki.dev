@@ -2,7 +2,7 @@
 order: 14
 title: "¿Qué es Provide/Inject?"
 difficulty: "intermediate"
-tags: ["components", "composition-api"]
+tags: ["components", "composition-api", "pinia", "provide-inject"]
 ---
 
 Cuando un componente padre necesita pasar datos a un hijo profundamente anidado, normalmente tendrías que pasar props a través de cada componente intermedio, aunque esos componentes no usen los datos. Esto se llama "prop drilling", y hace el código frágil y difícil de mantener.

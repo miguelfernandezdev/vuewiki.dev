@@ -2,7 +2,7 @@
 order: 16
 title: "¿Cómo construirías un composable para data fetching?"
 difficulty: "intermediate"
-tags: ["composables"]
+tags: ["composables", "pinia", "vueuse", "watchers"]
 ---
 
 Data fetching es una de las primeras cosas que extraerás en un [composable](/es/q/what-is-a-composable). Cada componente que carga datos de una API repite el mismo patrón: un flag de loading, un estado de error, los datos en sí, y la lógica de fetch. Un composable `useFetch` envuelve todo eso en una función reutilizable.

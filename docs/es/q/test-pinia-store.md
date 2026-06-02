@@ -2,7 +2,7 @@
 order: 155
 title: "¿Cómo se prueba un store de Pinia?"
 difficulty: "intermediate"
-tags: ["testing", "state-management"]
+tags: ["testing", "state-management", "pinia", "vitest"]
 ---
 
 Crea una instancia de Pinia nueva en `beforeEach` con `setActivePinia(createPinia())`. Esto le da a cada test un store aislado con estado limpio. Luego llama a la función composable del store, interactúa con sus acciones y comprueba su estado y getters. Para acciones asíncronas que llaman a APIs, simula `fetch` o `$fetch` con `vi.fn()`.

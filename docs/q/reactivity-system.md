@@ -2,7 +2,7 @@
 order: 20
 title: "How does Vue 3's reactivity system work?"
 difficulty: "intermediate"
-tags: ["reactivity"]
+tags: ["reactivity", "watchers"]
 ---
 
 When you change a value in Vue and the page updates automatically, that's the reactivity system at work.

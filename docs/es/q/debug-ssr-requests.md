@@ -2,7 +2,7 @@
 order: 148
 title: "¿Cómo depuras peticiones SSR que no pasan por el navegador?"
 difficulty: "advanced"
-tags: ["nuxt", "ssr", "debugging"]
+tags: ["nuxt", "ssr", "debugging", "vueuse"]
 ---
 
 Durante el SSR, las peticiones HTTP salen desde el proceso Node.js del servidor, no desde el navegador. No hay pestaña de Red. El servidor obtiene los datos, renderiza el HTML y lo envía al cliente. Si una llamada a la API falla o devuelve datos inesperados durante el SSR, no lo verás en las DevTools del navegador. Necesitas observabilidad del lado del servidor: interceptores que registren en el terminal, herramientas proxy que capturen el tráfico saliente y el panel de peticiones del servidor de Nuxt DevTools.

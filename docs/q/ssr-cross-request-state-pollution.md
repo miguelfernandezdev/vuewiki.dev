@@ -2,7 +2,7 @@
 order: 98
 title: "What is SSR cross-request state pollution and how do you avoid it?"
 difficulty: "advanced"
-tags: ["nuxt", "ssr", "state-management"]
+tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]
 ---
 
 In SSR, the server process handles multiple requests. If you declare reactive state at module scope, that state is a singleton shared across ALL requests. User A's data can leak into User B's response. This is a security vulnerability, not just a bug.

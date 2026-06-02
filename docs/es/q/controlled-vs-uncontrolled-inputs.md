@@ -2,7 +2,7 @@
 order: 68
 title: "¿Cuál es la diferencia entre inputs controlados y no controlados?"
 difficulty: "intermediate"
-tags: ["components", "forms"]
+tags: ["components", "forms", "v-model"]
 ---
 
 Un input controlado tiene su valor dirigido por estado reactivo. Cada pulsación de tecla actualiza el estado, y el estado dicta lo que muestra el input. Un input no controlado gestiona su propio valor internamente a través del DOM. Lo lees cuando lo necesitas (al enviar, al perder el foco) en lugar de rastrear cada cambio.

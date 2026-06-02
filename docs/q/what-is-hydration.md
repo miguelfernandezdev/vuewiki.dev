@@ -2,7 +2,7 @@
 order: 114
 title: "What is hydration and how does it work in Vue?"
 difficulty: "intermediate"
-tags: ["ssr"]
+tags: ["ssr", "vueuse"]
 ---
 
 Hydration is the process where Vue takes over static HTML that was rendered on the server and makes it interactive. The server sends fully rendered HTML so the user sees content immediately. Then Vue loads on the client, walks the existing DOM, attaches event listeners, and connects reactivity. The page becomes a live Vue app without re-rendering from scratch.

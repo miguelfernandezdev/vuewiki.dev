@@ -2,7 +2,7 @@
 order: 106
 title: "¿Qué es Pinia Colada y cómo gestiona el estado asíncrono?"
 difficulty: "advanced"
-tags: ["state-management", "data-fetching"]
+tags: ["state-management", "data-fetching", "pinia"]
 ---
 
 Pinia Colada es una capa de gestión de estado asíncrono para Vue, desarrollada por Eduardo San Martin Morote (el creador de Pinia y Vue Router). Gestiona peticiones de datos, caché, invalidación, actualizaciones optimistas y deduplicación. Funciona como la respuesta de Vue a TanStack Query (React Query), pero diseñada en torno a la reactividad de Vue y el ecosistema de Pinia.

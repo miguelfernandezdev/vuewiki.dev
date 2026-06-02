@@ -2,7 +2,7 @@
 order: 34
 title: "¿Por qué mutar props directamente genera warnings?"
 difficulty: "beginner"
-tags: ["components", "errors"]
+tags: ["components", "errors", "v-model"]
 ---
 
 Porque Vue impone el **flujo de datos unidireccional**: las props van hacia abajo (padre a hijo), los eventos van hacia arriba (hijo a padre). Si un hijo modifica una prop directamente, el padre no se entera, y la próxima vez que el padre se re-renderice, sobreescribirá el cambio del hijo.

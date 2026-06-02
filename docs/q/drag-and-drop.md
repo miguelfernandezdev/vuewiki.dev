@@ -2,7 +2,7 @@
 order: 125
 title: "How would you implement drag and drop in Vue?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "v-model"]
 ---
 
 There are three approaches: the native HTML Drag and Drop API for simple cases, the `vue-draggable-plus` (or `vuedraggable`) library for sortable lists, and pointer events for fully custom behavior. Most real-world cases (reorderable lists, kanban boards) are best served by a library.

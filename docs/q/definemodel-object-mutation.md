@@ -2,7 +2,7 @@
 order: 47
 title: "Why doesn't mutating an object through defineModel update the parent?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "v-model"]
 ---
 
 Because `defineModel()` only emits `update:modelValue` when you reassign `model.value` itself. Mutating a property inside the object (`model.value.name = 'x'`) changes the object in place without changing the reference, so Vue never fires the `update:modelValue` event — parent watchers on the v-model binding won't detect the change, though the parent's template still reflects the mutation because both sides share the same reactive object.

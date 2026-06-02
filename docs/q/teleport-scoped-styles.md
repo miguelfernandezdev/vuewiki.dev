@@ -2,7 +2,7 @@
 order: 46
 title: "Why don't scoped styles apply to teleported content?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "suspense", "teleport"]
 ---
 
 Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in the component's DOM subtree. When `<Teleport>` moves elements to a different part of the DOM (like `body`), those elements leave the component's subtree, so the scoped attribute selectors stop matching.

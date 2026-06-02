@@ -2,7 +2,7 @@
 order: 149
 title: "What are the main friction points when migrating Nuxt 2 to Nuxt 3?"
 difficulty: "advanced"
-tags: ["nuxt", "migration"]
+tags: ["nuxt", "migration", "pinia", "vueuse", "vuex", "provide-inject"]
 ---
 
 There are four axes of friction: state management (Vuex to Pinia requires rethinking data flow, not just syntax), data fetching (asyncData/fetch to composables), the ecosystem (third-party libraries without Vue 3 support), and the Composition API shift (team conventions, losing `this`, new reactivity gotchas). The migration should be incremental, ideally using Nuxt Bridge as a stepping stone.

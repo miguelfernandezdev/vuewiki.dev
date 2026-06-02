@@ -2,7 +2,7 @@
 order: 72
 title: "How does Suspense work for async components?"
 difficulty: "intermediate"
-tags: ["components"]
+tags: ["components", "slots", "suspense", "teleport"]
 ---
 
 `<Suspense>` is a built-in component that renders fallback content while its async children resolve. It works with two kinds of async dependencies: async components (`defineAsyncComponent`) and components with an `async setup()`.

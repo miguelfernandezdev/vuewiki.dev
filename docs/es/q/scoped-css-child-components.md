@@ -2,7 +2,7 @@
 order: 43
 title: "¿Por qué el CSS con scoped no afecta a elementos de componentes hijos?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "teleport"]
 ---
 
 Porque el CSS con scoped en Vue funciona añadiendo un atributo único `data-v-xxxxx` a los elementos del template del componente actual y añadiéndolo a cada selector CSS. Los elementos renderizados por componentes hijos no tienen ese atributo, así que los selectores no coinciden.

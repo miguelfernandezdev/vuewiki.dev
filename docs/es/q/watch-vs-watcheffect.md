@@ -2,7 +2,7 @@
 order: 11
 title: "¿Cuál es la diferencia entre watch y watchEffect?"
 difficulty: "intermediate"
-tags: ["reactivity", "composition-api"]
+tags: ["reactivity", "composition-api", "watchers"]
 ---
 
 Ambos ejecutan código en respuesta a cambios reactivos, pero difieren en **cómo le dices a Vue qué observar** y **cuándo se ejecutan por primera vez**.

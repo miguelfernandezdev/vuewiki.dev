@@ -2,7 +2,7 @@
 order: 115
 title: "¿Cómo se evitan los problemas con APIs específicas de plataforma en SSR?"
 difficulty: "intermediate"
-tags: ["ssr"]
+tags: ["ssr", "vite"]
 ---
 
 En SSR, tu código Vue se ejecuta tanto en el servidor (Node.js) como en el navegador. APIs del navegador como `window`, `document` y `localStorage` no existen en el servidor y lanzarán un `ReferenceError`. Hay que proteger el código específico de cada plataforma para que solo se ejecute en el entorno correcto.

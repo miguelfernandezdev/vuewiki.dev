@@ -2,7 +2,7 @@
 order: 137
 title: "¿Qué JavaScript necesitas aprender antes de Vue?"
 difficulty: "beginner"
-tags: ["core"]
+tags: ["core", "vueuse", "watchers"]
 ---
 
 Necesitas bases sólidas en JavaScript moderno (ES6+) antes de que Vue tenga sentido. El sistema de reactividad de Vue, el modelo de componentes y la Composition API se construyen sobre conceptos fundamentales de JS.

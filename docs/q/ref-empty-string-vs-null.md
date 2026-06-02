@@ -2,7 +2,7 @@
 order: 151
 title: "Why should you initialize a search ref as '' instead of null?"
 difficulty: "beginner"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "vueuse", "v-model"]
 ---
 
 When you bind a [ref](https://vuejs.org/api/reactivity-core.html#ref) to an input with [v-model](https://vuejs.org/guide/components/v-model.html), the input always produces a string. If you initialize the ref as `null`, the type is `Ref<string | null>`, and every consumer needs a null check. If you initialize as `''` (empty string), the type is `Ref<string>`, which matches what the input produces. No null checks, no type narrowing, no edge cases.

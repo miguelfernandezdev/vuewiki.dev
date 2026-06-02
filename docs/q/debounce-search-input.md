@@ -2,7 +2,7 @@
 order: 17
 title: "How would you implement debounce on a search input?"
 difficulty: "intermediate"
-tags: ["composables", "performance"]
+tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
 ---
 
 Debouncing delays an action until the user stops typing for a set amount of time. Without it, a search input fires an API call on every keystroke — typing "vue router" sends 10 requests, most of which are useless because the user hasn't finished typing.

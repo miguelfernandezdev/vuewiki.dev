@@ -2,7 +2,7 @@
 order: 36
 title: "Why does my template ref return null?"
 difficulty: "intermediate"
-tags: ["components", "errors"]
+tags: ["components", "errors", "watchers"]
 ---
 
 Because the element doesn't exist in the DOM yet (or has been removed by `v-if`). Template refs point to actual DOM elements, so if the element isn't mounted, the ref is `null`.

@@ -2,7 +2,7 @@
 order: 150
 title: "¿Rompe la reactividad reasignar una propiedad en un objeto reactive?"
 difficulty: "intermediate"
-tags: ["reactivity", "errors"]
+tags: ["reactivity", "errors", "watchers"]
 ---
 
 No. Reasignar una propiedad en un objeto `reactive()` NO rompe la reactividad. Es una pregunta trampa habitual en entrevistas. Como `reactive()` devuelve un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), el trap `set` del proxy intercepta la asignación y dispara las actualizaciones correctamente. Lo que SÍ rompe la reactividad es reasignar la variable completa a un nuevo objeto, porque eso reemplaza la referencia al proxy.

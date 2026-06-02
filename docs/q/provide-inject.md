@@ -2,7 +2,7 @@
 order: 14
 title: "What is Provide/Inject?"
 difficulty: "intermediate"
-tags: ["components", "composition-api"]
+tags: ["components", "composition-api", "pinia", "provide-inject"]
 ---
 
 When a parent component needs to pass data to a deeply nested child, you'd normally have to pass props through every component in between — even if intermediate components don't use the data. This is called "prop drilling," and it makes your code fragile and hard to maintain.

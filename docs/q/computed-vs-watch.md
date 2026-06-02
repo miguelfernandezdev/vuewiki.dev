@@ -2,7 +2,7 @@
 order: 26
 title: "What's the difference between computed and watch?"
 difficulty: "advanced"
-tags: ["reactivity", "composition-api"]
+tags: ["reactivity", "composition-api", "watchers"]
 ---
 
 Both react to changes in reactive data, but they serve fundamentally different purposes. Getting this wrong leads to either duplicated state (using `watch` where `computed` would suffice) or unexpected side effects (using `computed` for things that shouldn't be pure).

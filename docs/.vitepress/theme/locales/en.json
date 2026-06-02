@@ -11,7 +11,7 @@
     "showMore": "Show more ({remaining} remaining)"
   },
   "filters": {
-    "all": "All",
+    "all": "📋 All",
     "beginner": "🌱 Beginner",
     "intermediate": "⚡ Intermediate",
     "advanced": "🔥 Advanced"
@@ -21,6 +21,8 @@
     "allTopics": "All topics",
     "searchTopics": "Search topics...",
     "clear": "Clear all",
+    "topicsGroup": "📚 Topics",
+    "techGroup": "🛠️ Technologies",
     "accessibility": "♿ Accessibility",
     "composition-api": "🔗 Composition API",
     "reactivity": "⚛️ Reactivity",
@@ -46,7 +48,18 @@
     "styling": "🎨 Styling",
     "tooling": "🔧 Tooling",
     "debugging": "🐛 Debugging",
-    "security": "🔒 Security"
+    "security": "🔒 Security",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ Watchers",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
   },
   "cta": {
     "missingTitle": "Got a question we haven't covered?",

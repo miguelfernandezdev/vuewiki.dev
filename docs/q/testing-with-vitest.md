@@ -2,7 +2,7 @@
 order: 15
 title: "How do you test Vue components with Vitest?"
 difficulty: "intermediate"
-tags: ["testing"]
+tags: ["testing", "vitest", "v-model"]
 ---
 
 Vitest runs Vue component tests using `@vue/test-utils` for mounting components and Vitest's own assertion API. Tests execute in a simulated DOM environment (jsdom or happy-dom), not a real browser, which keeps the feedback loop fast. The trade-off is that browser-specific APIs are mocked — for real browser behavior, consider Playwright or Cypress.
