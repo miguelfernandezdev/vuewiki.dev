@@ -114,12 +114,21 @@ const difficultyClass: Record<string, string> = {
 <template>
   <div class="home-page">
     <div class="search-wrapper">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="7.5" cy="7.5" r="5.75" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
       <input
         v-model="search"
         type="text"
         :placeholder="t('home.searchPlaceholder')"
         class="search-input"
       />
+      <button v-if="search" class="search-clear" @click="search = ''">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
 
     <section class="content">
@@ -247,28 +256,62 @@ const difficultyClass: Record<string, string> = {
 }
 
 .search-wrapper {
-  max-width: 500px;
-  margin: 0 auto 1.5rem;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vp-c-text-3);
+  pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 2.75rem 0.875rem 2.75rem;
   border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
-  background: var(--vp-c-bg);
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
 }
 
 .search-input:focus {
   border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
 }
 
 .search-input::placeholder {
   color: var(--vp-c-text-3);
+}
+
+.search-clear {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--vp-c-text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.search-clear:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
 }
 
 .content {
