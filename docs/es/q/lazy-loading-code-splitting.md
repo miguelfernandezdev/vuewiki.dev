@@ -105,7 +105,7 @@ En Nuxt, `<NuxtLink>` hace prefetch de las rutas enlazadas automáticamente cuan
 
 ## Chunks con nombre
 
-Agrupa rutas relacionadas en el mismo chunk con los comentarios mágicos de Vite:
+En **Webpack**, los comentarios mágicos agrupan rutas relacionadas en el mismo chunk:
 
 ```ts
 const routes = [
@@ -120,7 +120,25 @@ const routes = [
 ]
 ```
 
-Con Vite (Rollup), usa `manualChunks` en la configuración para más control sobre la agrupación de chunks.
+**Vite usa Rollup**, que no soporta estos comentarios mágicos. Usa `manualChunks` en la configuración de Vite en su lugar:
+
+```ts
+// vite.config.ts
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          settings: [
+            './src/views/SettingsProfile.vue',
+            './src/views/SettingsBilling.vue'
+          ]
+        }
+      }
+    }
+  }
+})
+```
 
 ## Qué hace Vite automáticamente
 

@@ -21,12 +21,12 @@ Si `/api/users` devuelve un 500 durante el SSR, la página se renderiza con dato
 
 ## Registrar con interceptores de $fetch
 
-Crea un plugin exclusivo del servidor que envuelva `$fetch` con logging:
+Crea un plugin exclusivo del servidor que cree una instancia personalizada de `$fetch` con logging. No reemplaces `globalThis.$fetch` directamente: los internos de Nuxt dependen de él y sobreescribirlo puede causar efectos secundarios inesperados:
 
 ```ts
 // plugins/debug-ssr.server.ts
 export default defineNuxtPlugin(() => {
-  globalThis.$fetch = globalThis.$fetch.create({
+  const debugFetch = $fetch.create({
     onRequest({ request, options }) {
       console.log('[SSR Request]', options.method || 'GET', request)
     },
@@ -40,10 +40,14 @@ export default defineNuxtPlugin(() => {
       console.error('[SSR Response Error]', response.status, request)
     }
   })
+
+  return { provide: { debugFetch } }
 })
 ```
 
-El sufijo `.server.ts` garantiza que este plugin solo se ejecute en el servidor. Todas las llamadas a `$fetch` y `useFetch` ahora se registran en tu terminal:
+Usa `useNuxtApp().$debugFetch` donde necesites logging. Para composables como `useFetch`, usa el `useRequestFetch()` integrado de Nuxt, que reenvía automáticamente el contexto SSR (cookies, headers) y se puede combinar con interceptores.
+
+El sufijo `.server.ts` garantiza que este plugin solo se ejecute en el servidor. Las llamadas registradas aparecen en tu terminal:
 
 ```
 [SSR Request] GET https://api.example.com/users

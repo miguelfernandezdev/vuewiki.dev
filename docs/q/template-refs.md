@@ -54,7 +54,33 @@ Benefits: IDE auto-completion for ref names, better TypeScript inference, and ty
 
 ## Refs with v-for
 
-When used inside `v-for`, the ref is populated with an array of elements. This still requires the legacy `ref()` pattern because `useTemplateRef` doesn't support array population.
+When used inside `v-for`, the ref is automatically populated with an array of elements.
+
+### useTemplateRef (Vue 3.5+, recommended)
+
+```vue
+<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+
+const itemRefs = useTemplateRef<HTMLLIElement[]>('items')
+
+onMounted(() => {
+  itemRefs.value?.forEach(el => {
+    console.log(el.textContent)
+  })
+})
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in items" ref="items" :key="item.id">
+      {{ item.text }}
+    </li>
+  </ul>
+</template>
+```
+
+### ref() pattern (before Vue 3.5)
 
 ```vue
 <script setup>

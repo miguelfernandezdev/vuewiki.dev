@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-When you change a value in Vue and the page updates automatically, that's the reactivity system at work. Understanding how it works under the hood helps you debug issues like "why didn't my component update?" and make intentional decisions about performance.
+When you change a value in Vue and the page updates automatically, that's the reactivity system at work.
 
 ## The core mechanism: Proxy
 

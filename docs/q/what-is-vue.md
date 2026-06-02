@@ -66,7 +66,7 @@ App
 | Rendering | Template-based (with optional JSX) | JSX | Template-based |
 | Reactivity | Built-in fine-grained (Proxy) | Manual (useState + re-render) | Zone.js / Signals |
 | Styling | Scoped CSS, CSS Modules built-in | External solutions (CSS Modules, styled-components) | Component-scoped by default |
-| Bundle size | ~33 KB min+gzip | ~40 KB min+gzip | ~90 KB min+gzip |
+| Bundle size (approx.) | ~33 KB | ~42 KB | ~50+ KB |
 | Learning curve | Gentle | Moderate | Steep |
 
 Vue's design philosophy is progressive adoption: start with just the core library for view rendering, then add official packages ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Nuxt](https://nuxt.com/)) as your project grows. You never have to commit to the full stack upfront.

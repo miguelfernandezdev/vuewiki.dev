@@ -11,6 +11,9 @@ El enfoque estándar combina un composable o store para el estado de autenticaci
 
 ```ts
 // composables/useAuth.ts
+// Estado a nivel de módulo — válido para SPAs solo de cliente.
+// En SSR/Nuxt, se comparte entre peticiones. Ver "Contaminación de estado entre peticiones"
+// (/es/q/ssr-cross-request-state-pollution) para la alternativa segura con useState o factorías por petición.
 const user = ref<User | null>(null)
 const token = ref<string | null>(localStorage.getItem('token'))
 

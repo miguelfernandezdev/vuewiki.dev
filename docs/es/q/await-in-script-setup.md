@@ -75,9 +75,11 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 
 Esto funciona sin configuración adicional porque el `app.vue` de Nuxt contiene `<NuxtPage>`, que internamente proporciona el límite `<Suspense>`. Durante SSR, el await se resuelve en el servidor. Durante la navegación del cliente, Nuxt muestra un indicador de carga mientras el setup de la nueva página se resuelve.
 
-## El problema: watchers y lifecycle hooks después de await
+## Watchers y lifecycle hooks después de await
 
-Cuando usas `await`, cualquier código después de él se ejecuta en una microtarea diferente. El contexto de [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) de Vue puede perderse. Esto significa que los watchers y lifecycle hooks registrados después de un `await` pueden no vincularse correctamente:
+Cuando usas `await`, cualquier código después de él se ejecuta en una microtarea diferente. El compilador de `<script setup>` de Vue gestiona esto mediante `withAsyncContext`, que preserva la instancia del componente a través de los límites de await. Esto significa que `watch()` y los lifecycle hooks registrados después de un `await` SÍ funcionan correctamente.
+
+Sin embargo, [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) es una API interna que puede no ser fiable después de `await`, por lo que el código que dependa directamente de ella podría comportarse de forma inesperada.
 
 ```vue
 <script setup>
@@ -88,13 +90,13 @@ onMounted(() => console.log('mounted'))
 
 const data = await fetch('/api/data').then(r => r.json())
 
-// Estos PUEDEN NO funcionar: el contexto de getCurrentInstance() puede perderse
-watch(data, (val) => console.log(val))       // no fiable
-onMounted(() => console.log('after await'))   // no fiable
+// Estos también funcionan: withAsyncContext preserva la instancia
+watch(data, (val) => console.log(val))       // funciona
+onMounted(() => console.log('after await'))   // funciona
 </script>
 ```
 
-La regla: registra todos los watchers, lifecycle hooks y composables ANTES del primer `await`. Pon las declaraciones reactivas al principio, las operaciones asíncronas al final.
+La recomendación: registrar los watchers, lifecycle hooks y composables ANTES del primer `await` sigue siendo buena práctica por legibilidad y claridad. Pon las declaraciones reactivas al principio, las operaciones asíncronas al final.
 
 ```vue
 <script setup>
@@ -139,7 +141,7 @@ const users = await useFetch('/api/users')
 const posts = await useFetch('/api/posts')
 
 // BIEN: paralelo — tiempo total = max(A, B)
-const [users, posts] = await Promise.all([
+const [{ data: users }, { data: posts }] = await Promise.all([
   useFetch('/api/users'),
   useFetch('/api/posts')
 ])

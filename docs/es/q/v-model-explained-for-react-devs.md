@@ -139,7 +139,7 @@ Cada `v-model` con nombre se mapea a su propio par prop/evento: `:name` + `@upda
 <!-- .number convierte a número -->
 <input v-model.number="age" type="number" />
 
-<!-- .lazy sincroniza en change en lugar de input (como onBlur de React) -->
+<!-- .lazy sincroniza con el evento change en lugar de input — actualiza cuando el usuario sale del campo, no en cada pulsación de tecla -->
 <input v-model.lazy="query" />
 ```
 

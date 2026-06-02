@@ -94,10 +94,6 @@ En el paso 1, Vue es una librería. En el paso 4, es un framework completo. Avan
 
 React se llama a sí mismo una librería porque solo gestiona el render. Angular se llama a sí mismo un framework porque incluye todo. Vue empieza como librería y se convierte en framework al añadir su ecosistema oficial.
 
-## La respuesta para una entrevista
-
-Vue es un framework progresivo. El núcleo es una librería de vistas (reactividad + render), pero el ecosistema oficial (router, gestión de estado, herramientas de compilación, SSR con Nuxt) ofrece una experiencia de framework completo. A diferencia de Angular, ninguna de estas piezas es obligatoria. A diferencia de React, todas son oficiales y están diseñadas para funcionar juntas. Eso es lo que significa "progresivo": empieza mínimo, adopta de forma incremental.
-
 Ver también: [¿Qué es Vue y cuáles son sus características principales?](/es/q/what-is-vue)
 
 ## Referencias

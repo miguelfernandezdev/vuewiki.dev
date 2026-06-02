@@ -139,7 +139,7 @@ Vue's `v-model` supports modifiers that transform the value automatically:
 <!-- .number converts to number -->
 <input v-model.number="age" type="number" />
 
-<!-- .lazy syncs on change instead of input (like React's onBlur) -->
+<!-- .lazy syncs on the change event instead of input — updates when the user leaves the field, not on every keystroke -->
 <input v-model.lazy="query" />
 ```
 

@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-Cuando cambias un valor en Vue y la página se actualiza automáticamente, es el sistema de reactividad en acción. Entender cómo funciona internamente ayuda a depurar problemas como "¿por qué no se actualizó mi componente?" y a tomar decisiones conscientes sobre rendimiento.
+Cuando cambias un valor en Vue y la página se actualiza automáticamente, es el sistema de reactividad en acción.
 
 ## El mecanismo central: Proxy
 

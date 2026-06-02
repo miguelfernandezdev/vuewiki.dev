@@ -84,24 +84,32 @@ const users = ref(await $fetch('/api/users'))
 
 El `$fetch` en bruto dentro de `<script setup>` se ejecuta durante SSR y luego vuelve a ejecutarse durante la hydration del cliente. No tiene integración con el payload. Usa siempre `useFetch` o `useAsyncData` para los datos que deben transferirse del servidor al cliente.
 
-## Reducers y revivers del payload
+## Serialización del payload con devalue
 
-Nuxt serializa el payload como JSON, lo que significa que algunos tipos no sobreviven por defecto (`Date`, `Map`, `Set`, clases personalizadas). Nuxt ofrece hooks para gestionar la serialización personalizada:
+Desde Nuxt 3.4+, el payload se serializa usando [devalue](https://github.com/Rich-Harris/devalue) en lugar de JSON plano. Esto significa que tipos nativos como `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined` e incluso referencias cíclicas se gestionan automáticamente — sin necesidad de código personalizado.
+
+Los reducers y revivers personalizados solo son necesarios para **instancias de clases personalizadas** que devalue no reconoce:
 
 ```ts
 // plugins/payload.ts
+class UserSettings {
+  constructor(public theme: string, public locale: string) {}
+}
+
 export default defineNuxtPlugin(() => {
-  definePayloadReducer('Date', (value) => {
-    return value instanceof Date ? value.toISOString() : undefined
+  definePayloadReducer('UserSettings', (value) => {
+    return value instanceof UserSettings
+      ? { theme: value.theme, locale: value.locale }
+      : undefined
   })
 
-  definePayloadReviver('Date', (value) => {
-    return new Date(value)
+  definePayloadReviver('UserSettings', (value) => {
+    return new UserSettings(value.theme, value.locale)
   })
 })
 ```
 
-El reducer se ejecuta en el servidor (serializa) y el reviver se ejecuta en el cliente (deserializa). Sin esto, un objeto `Date` llegaría como una cadena de texto simple.
+El reducer se ejecuta en el servidor (serializa) y el reviver se ejecuta en el cliente (deserializa).
 
 ## Inspeccionar el payload
 

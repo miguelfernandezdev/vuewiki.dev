@@ -21,12 +21,12 @@ If `/api/users` returns a 500 during SSR, the page renders with empty data (or a
 
 ## Log with $fetch interceptors
 
-Create a server-only plugin that wraps `$fetch` with logging:
+Create a server-only plugin that creates a custom `$fetch` instance with logging. Do not replace `globalThis.$fetch` directly — Nuxt internals rely on it, and overwriting it can cause unexpected side effects:
 
 ```ts
 // plugins/debug-ssr.server.ts
 export default defineNuxtPlugin(() => {
-  globalThis.$fetch = globalThis.$fetch.create({
+  const debugFetch = $fetch.create({
     onRequest({ request, options }) {
       console.log('[SSR Request]', options.method || 'GET', request)
     },
@@ -40,10 +40,14 @@ export default defineNuxtPlugin(() => {
       console.error('[SSR Response Error]', response.status, request)
     }
   })
+
+  return { provide: { debugFetch } }
 })
 ```
 
-The `.server.ts` suffix ensures this plugin only runs on the server. All `$fetch` and `useFetch` calls now log to your terminal:
+Use `useNuxtApp().$debugFetch` where you need logging. For composables like `useFetch`, prefer Nuxt's built-in `useRequestFetch()` which automatically forwards SSR context (cookies, headers) and can be combined with interceptors.
+
+The `.server.ts` suffix ensures this plugin only runs on the server. Logged calls appear in your terminal:
 
 ```
 [SSR Request] GET https://api.example.com/users

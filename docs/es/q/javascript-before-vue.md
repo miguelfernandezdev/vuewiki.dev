@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-Necesitas bases sólidas en JavaScript moderno (ES6+) antes de que Vue tenga sentido. El sistema de reactividad de Vue, el modelo de componentes y la Composition API se construyen sobre conceptos fundamentales de JS. Si los omites, memorizarás sintaxis de Vue sin entender por qué funcionan las cosas, y depurar se convierte en adivinanza.
+Necesitas bases sólidas en JavaScript moderno (ES6+) antes de que Vue tenga sentido. El sistema de reactividad de Vue, el modelo de componentes y la Composition API se construyen sobre conceptos fundamentales de JS.
 
 ## Conceptos esenciales
 

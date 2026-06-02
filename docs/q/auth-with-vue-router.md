@@ -11,6 +11,9 @@ The standard approach combines a composable or store for auth state, a navigatio
 
 ```ts
 // composables/useAuth.ts
+// Module-scope state — fine for client-only SPAs.
+// In SSR/Nuxt, this is shared across requests. See "Cross-request state pollution"
+// (/q/ssr-cross-request-state-pollution) for the safe alternative using useState or per-request factories.
 const user = ref<User | null>(null)
 const token = ref<string | null>(localStorage.getItem('token'))
 

@@ -128,7 +128,7 @@ El `computed` se re-evalúa cuando cambia cualquier entrada del Map porque al ha
 
 ## Limitaciones
 
-1. **Sin reactividad profunda para los valores**: si se almacena un objeto plano como valor de un Map, ese objeto NO se convierte automáticamente en reactivo. Habría que envolverlo con `reactive()` antes de almacenarlo.
+1. **Los valores son profundamente reactivos cuando se acceden a través del Map**: `map.get('key')` devuelve un proxy reactivo, por lo que las mutaciones anidadas como `map.get('key').nested = 'new'` se registran. Sin embargo, el objeto original que se pasó a `set()` NO se convierte en reactivo — solo lo es la versión devuelta por `get()`.
 
 2. **WeakMap/WeakSet son limitados**: funcionan con `reactive()` pero no se pueden iterar ni comprobar `.size`, lo que limita su utilidad en templates. Son útiles principalmente para bookkeeping interno en composables.
 

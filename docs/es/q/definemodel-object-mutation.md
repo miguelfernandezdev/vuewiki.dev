@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["components", "errors"]
 ---
 
-Porque `defineModel()` solo emite `update:modelValue` cuando reasignas `model.value` en sí mismo. Mutar una propiedad dentro del objeto (`model.value.name = 'x'`) cambia el objeto en su lugar sin cambiar la referencia, por lo que Vue nunca dispara el evento de actualización y el padre queda desincronizado.
+Porque `defineModel()` solo emite `update:modelValue` cuando reasignas `model.value` en sí mismo. Mutar una propiedad dentro del objeto (`model.value.name = 'x'`) cambia el objeto en su lugar sin cambiar la referencia, por lo que Vue nunca dispara el evento `update:modelValue` — los watchers del padre sobre el binding v-model no detectan el cambio, aunque el template del padre sigue reflejando la mutación porque ambos lados comparten el mismo objeto reactivo.
 
 ```vue
 <script setup>
@@ -55,16 +55,16 @@ function updateCity(city: string) {
 }
 ```
 
-## Cuidado con el batching
+## Evita emisiones dobles innecesarias
 
-Cuando actualices varios campos, agrúpalos en una sola asignación. Dos spreads consecutivos pueden perder datos si el segundo lee un `model.value` desactualizado.
+Cuando actualices varios campos, agrúpalos en una sola asignación. Dos spreads consecutivos leen el `model.value` correcto (las asignaciones a refs son síncronas), pero cada uno crea una nueva referencia de objeto, emitiendo `update:modelValue` dos veces. Esto es innecesario y puede causar re-renders del padre.
 
 ```ts
-// arriesgado: el segundo spread puede usar un valor obsoleto
+// funciona, pero emite update:modelValue dos veces
 model.value = { ...model.value, a: '1' }
 model.value = { ...model.value, b: '2' }
 
-// seguro: asignación única
+// mejor: asignación única, una sola emisión
 model.value = { ...model.value, a: '1', b: '2' }
 ```
 

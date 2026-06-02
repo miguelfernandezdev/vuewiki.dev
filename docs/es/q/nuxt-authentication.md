@@ -161,8 +161,13 @@ export default defineEventHandler(async (event) => {
 
   const token = signJWT({ userId: user.id, role: user.role })
 
+  // No httpOnly — el composable del cliente (useCookie) lee y escribe
+  // esta cookie directamente. Si necesitas cookies httpOnly para mayor
+  // protección contra XSS, el servidor debe gestionar todo el acceso a
+  // la cookie y el cliente debería comprobar el estado de autenticación
+  // a través de un endpoint del servidor (ej. /api/auth/me) en lugar
+  // de leer la cookie con useCookie.
   setCookie(event, 'auth-token', token, {
-    httpOnly: true,
     secure: true,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 7
@@ -180,7 +185,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-Configurar `httpOnly: true` en la cookie del lado del servidor impide que JavaScript acceda al token, protegiéndolo contra ataques XSS. El `useCookie('auth-token')` del lado del cliente puede detectar si la cookie existe (para la comprobación `loggedIn`) pero no puede leer el valor de una cookie httpOnly. Para el valor del token en sí, el servidor lo gestiona todo.
+Dado que el composable `useCookie('auth-token')` del lado del cliente lee y escribe la cookie directamente (para login, logout y la comprobación `loggedIn`), la cookie NO debe ser `httpOnly`. Una cookie `httpOnly` no puede ser accedida por JavaScript en absoluto — `useCookie` leería `null`. Si necesitas la protección más fuerte contra XSS que ofrecen las cookies `httpOnly`, el servidor debe gestionar todas las operaciones con la cookie y el cliente NO debería usar `useCookie` para leer el token. En su lugar, comprueba el estado de autenticación a través de un endpoint del servidor como `/api/auth/me`.
 
 ## Cómo encajan las piezas
 
@@ -209,7 +214,7 @@ Usuario hace clic en logout
 | Middleware de ruta | `middleware/` | Proteger páginas, redirigir usuarios no autenticados |
 | Middleware de servidor | `server/middleware/` | Proteger rutas de la API, validar tokens |
 | Rutas de la API de servidor | `server/api/auth/` | Login, logout, gestión de tokens |
-| Cookie | Enviada con cada petición | Almacenamiento del token (compatible con SSR, httpOnly) |
+| Cookie | Enviada con cada petición | Almacenamiento del token (compatible con SSR) |
 
 Ver también: [¿Cómo implementar autenticación con Vue Router?](/es/q/auth-with-vue-router) · [¿Qué es el middleware de Nuxt?](/es/q/nuxt-middleware) · [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware)
 

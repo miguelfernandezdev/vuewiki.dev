@@ -105,7 +105,7 @@ In Nuxt, `<NuxtLink>` prefetches linked routes automatically when they enter the
 
 ## Named chunks
 
-Group related routes into the same chunk with Vite's magic comments:
+In **Webpack**, magic comments group related routes into the same chunk:
 
 ```ts
 const routes = [
@@ -120,7 +120,25 @@ const routes = [
 ]
 ```
 
-With Vite (Rollup), use `manualChunks` in the config for more control over chunk grouping.
+**Vite uses Rollup**, which does not support these magic comments. Use `manualChunks` in the Vite config instead:
+
+```ts
+// vite.config.ts
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          settings: [
+            './src/views/SettingsProfile.vue',
+            './src/views/SettingsBilling.vue'
+          ]
+        }
+      }
+    }
+  }
+})
+```
 
 ## What Vite does automatically
 

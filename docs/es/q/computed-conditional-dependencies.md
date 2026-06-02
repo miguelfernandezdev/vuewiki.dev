@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Probablemente porque la dependencia nunca se accedió durante la primera ejecución. Vue rastrea las dependencias de [computed](https://vuejs.org/api/reactivity-core.html#computed) registrando qué propiedades reactivas se leen cuando se ejecuta el getter. Si la lógica condicional impide que se lea una propiedad, Vue nunca sabe que es una dependencia.
+Probablemente porque la dependencia no se accedió durante la última ejecución. Vue rastrea las dependencias de [computed](https://vuejs.org/api/reactivity-core.html#computed) registrando qué propiedades reactivas se leen cada vez que se ejecuta el getter. Si la lógica condicional impide que se lea una propiedad en una evaluación dada, Vue no la rastrea como dependencia hasta que una reevaluación futura la lea.
 
 ```ts
 const isEnabled = ref(false)
@@ -19,7 +19,7 @@ const result = computed(() => {
 })
 ```
 
-Cuando `isEnabled` es `false` en la primera ejecución, `data.value` nunca se accede. Vue no lo rastrea. Más tarde, cuando `data` cambia, el computed no recalcula porque Vue no sabe que `result` depende de `data`.
+Vue recoge las dependencias en cada evaluación, no solo en la primera. Cuando `isEnabled` es `false`, el return temprano hace que `data.value` nunca se lea, así que Vue no lo rastrea durante esa ejecución. Si `data` cambia mientras esa rama está activa, el computed no se reevalúa porque `data` no era una dependencia rastreada en la última ejecución. Solo volverá a detectar `data` cuando `isEnabled` cambie a `true` y provoque una reevaluación que lea `data.value`.
 
 Lo mismo ocurre con la evaluación por cortocircuito:
 

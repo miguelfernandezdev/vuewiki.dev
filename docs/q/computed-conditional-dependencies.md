@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Probably because the dependency was never accessed during the first run. Vue tracks [computed](https://vuejs.org/api/reactivity-core.html#computed) dependencies by recording which reactive properties are read when the getter executes. If conditional logic prevents a property from being read, Vue never knows it's a dependency.
+Probably because the dependency wasn't accessed during the last run. Vue tracks [computed](https://vuejs.org/api/reactivity-core.html#computed) dependencies by recording which reactive properties are read each time the getter executes. If conditional logic prevents a property from being read in a given evaluation, Vue doesn't track it as a dependency until a future re-evaluation reads it.
 
 ```ts
 const isEnabled = ref(false)
@@ -19,7 +19,7 @@ const result = computed(() => {
 })
 ```
 
-When `isEnabled` is `false` on the first run, `data.value` is never accessed. Vue doesn't track it. Later, when `data` changes, the computed doesn't recalculate because Vue doesn't know `result` depends on `data`.
+Vue re-collects dependencies on every evaluation, not just the first one. When `isEnabled` is `false`, the early return means `data.value` is never read, so Vue doesn't track it during that run. If `data` changes while this branch is active, the computed won't re-evaluate because `data` wasn't a tracked dependency in the last run. It will only pick up `data` again when `isEnabled` changes to `true` and triggers a re-evaluation that reads `data.value`.
 
 The same thing happens with short-circuit evaluation:
 

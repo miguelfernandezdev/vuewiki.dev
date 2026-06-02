@@ -67,13 +67,13 @@ describe('Counter', () => {
 
     await wrapper.find('input').setValue('hello')
 
-    // setValue triggers both input and change events
+    // setValue triggers the input event and updates the value
     expect(wrapper.find('[data-testid="output"]').text()).toBe('hello')
   })
 })
 ```
 
-If you need to wait for something beyond the next render cycle (a `setTimeout`, a promise), use `await nextTick()` from Vue or `flushPromises()` from `@vue/test-utils`.
+If you need to wait for something beyond the next render cycle, use the right tool for the job. For pending Vue DOM updates, use `await nextTick()`. For pending Promise resolutions (like API calls), use `await flushPromises()` from `@vue/test-utils`. For timers (`setTimeout`), use Vitest's fake timers (`vi.useFakeTimers()`).
 
 ## Testing props and emitted events
 

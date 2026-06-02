@@ -126,7 +126,7 @@ const theme = computed({
 | Complex multi-step transformation | Probably not, use a method |
 | Async operations on set | No, use a watcher |
 
-See also: [What is the difference between computed and watch?](/q/computed-vs-watch) · [How does Vue's v-model work with components?](/q/ref-vs-reactive)
+See also: [What is the difference between computed and watch?](/q/computed-vs-watch) · [How does Vue's v-model work with components?](/q/v-model-custom-components)
 
 ## References
 

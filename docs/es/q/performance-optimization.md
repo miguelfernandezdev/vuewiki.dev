@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance"]
 ---
 
-La optimización de rendimiento no es una lista de trucos que se aplican de antemano — es un ciclo. El orden siempre es: **medir → identificar el cuello de botella → corregirlo → medir de nuevo**. Saltarse el paso de medición es el error más común. Puedes pasar una semana optimizando una propiedad computed que supone 2 ms de un tiempo de carga de 3 segundos, mientras el verdadero culpable es un bundle de 1,2 MB sin code splitting sentado en la ruta crítica. Herramientas como Vue DevTools, la pestaña Performance del navegador y Lighthouse te dicen dónde se va realmente el tiempo. Empieza por ahí.
+La optimización de rendimiento no es una lista de trucos que se aplican de antemano — es un ciclo: **medir -> identificar el cuello de botella -> corregirlo -> medir de nuevo**. Usa Vue DevTools, la pestaña Performance del navegador y Lighthouse para encontrar dónde se va realmente el tiempo antes de cambiar cualquier código.
 
 ## Optimizaciones de renderizado
 

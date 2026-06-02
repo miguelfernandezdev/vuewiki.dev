@@ -119,7 +119,7 @@ store.$patch((state) => {
   state.lastChanged = new Date()
 })
 
-// Restablecer el state completo
+// Restablecer el state completo (solo Option stores — los Setup stores necesitan una implementación propia)
 store.$reset()
 ```
 

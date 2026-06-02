@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["composition-api"]
 ---
 
-Vue ofrece dos formas de escribir la lógica de un componente. Entender ambas es importante porque encontrarás la Options API en proyectos existentes y la Composition API en todo lo nuevo.
+Vue ofrece dos formas de escribir la lógica de un componente.
 
 ## Options API
 

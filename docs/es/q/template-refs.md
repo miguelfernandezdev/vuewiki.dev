@@ -54,7 +54,33 @@ Ventajas: autocompletado en el IDE para nombres de ref, mejor inferencia de Type
 
 ## Refs con v-for
 
-Cuando se usan dentro de `v-for`, el ref se puebla con un array de elementos. Esto sigue requiriendo el patrón `ref()` clásico porque `useTemplateRef` no soporta la población en array.
+Cuando se usan dentro de `v-for`, el ref se puebla automáticamente con un array de elementos.
+
+### useTemplateRef (Vue 3.5+, recomendado)
+
+```vue
+<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+
+const itemRefs = useTemplateRef<HTMLLIElement[]>('items')
+
+onMounted(() => {
+  itemRefs.value?.forEach(el => {
+    console.log(el.textContent)
+  })
+})
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in items" ref="items" :key="item.id">
+      {{ item.text }}
+    </li>
+  </ul>
+</template>
+```
+
+### Patrón con ref() (antes de Vue 3.5)
 
 ```vue
 <script setup>

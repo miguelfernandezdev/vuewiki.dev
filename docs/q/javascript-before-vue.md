@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-You need solid fundamentals in modern JavaScript (ES6+) before Vue will make sense. Vue's reactivity system, component model, and Composition API are all built on core JS concepts. If you skip them, you'll memorize Vue syntax without understanding why things work, and debugging becomes guesswork.
+You need solid fundamentals in modern JavaScript (ES6+) before Vue will make sense. Vue's reactivity system, component model, and Composition API are all built on core JS concepts.
 
 ## Essential concepts
 

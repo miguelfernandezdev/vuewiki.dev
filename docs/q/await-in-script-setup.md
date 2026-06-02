@@ -75,9 +75,11 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 
 This works out of the box because Nuxt's `app.vue` contains `<NuxtPage>`, which internally provides the `<Suspense>` boundary. During SSR, the await resolves on the server. During client navigation, Nuxt shows a loading indicator while the new page's setup resolves.
 
-## The gotcha: watchers and lifecycle hooks after await
+## Watchers and lifecycle hooks after await
 
-When you use `await`, any code after it runs in a different microtask. Vue's [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) context may be lost. This means watchers and lifecycle hooks registered after an `await` might not bind correctly:
+When you use `await`, any code after it runs in a different microtask. Vue's `<script setup>` compiler handles this via `withAsyncContext`, which preserves the component instance across await boundaries. This means `watch()` and lifecycle hooks registered after an `await` DO work correctly.
+
+However, [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) is an internal API that may not be reliable after `await`, so code that depends on it directly could behave unexpectedly.
 
 ```vue
 <script setup>
@@ -88,13 +90,13 @@ onMounted(() => console.log('mounted'))
 
 const data = await fetch('/api/data').then(r => r.json())
 
-// These might NOT work — getCurrentInstance() context may be lost
-watch(data, (val) => console.log(val))       // unreliable
-onMounted(() => console.log('after await'))   // unreliable
+// These also work — withAsyncContext preserves the instance
+watch(data, (val) => console.log(val))       // works
+onMounted(() => console.log('after await'))   // works
 </script>
 ```
 
-The rule: register all watchers, lifecycle hooks, and composables BEFORE the first `await`. Put reactive declarations at the top, async operations at the bottom.
+The recommendation: registering watchers, lifecycle hooks, and composables BEFORE the first `await` is still good practice for readability and clarity. Put reactive declarations at the top, async operations at the bottom.
 
 ```vue
 <script setup>
@@ -139,7 +141,7 @@ const users = await useFetch('/api/users')
 const posts = await useFetch('/api/posts')
 
 // GOOD: parallel — total time = max(A, B)
-const [users, posts] = await Promise.all([
+const [{ data: users }, { data: posts }] = await Promise.all([
   useFetch('/api/users'),
   useFetch('/api/posts')
 ])

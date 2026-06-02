@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance", "debugging"]
 ---
 
-Sigue un proceso estructurado: mide, identifica la categoría del cuello de botella, corrige, mide de nuevo. El cuello de botella siempre es una de tres cosas: la red (llamadas a la API lentas o demasiadas), el bundle (demasiado JavaScript enviado) o el renderizado (demasiado trabajo en el hilo principal). No vuelques soluciones a ciegas. Diagnostica primero, luego aplica soluciones específicas.
+Sigue un proceso estructurado: mide, identifica la categoría del cuello de botella, corrige, mide de nuevo. El cuello de botella siempre es una de tres cosas: la red (llamadas a la API lentas o demasiadas), el bundle (demasiado JavaScript enviado) o el renderizado (demasiado trabajo en el hilo principal).
 
 ## Paso 1: Medir
 

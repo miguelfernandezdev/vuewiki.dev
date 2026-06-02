@@ -68,7 +68,7 @@ export const useCounterStore = defineStore('counter', () => {
   // Estado
   const count = ref(0)
 
-  // Acciones (la única forma de cambiar el estado)
+  // Acciones (encapsulan los cambios de estado)
   function increment() {
     count.value++
   }

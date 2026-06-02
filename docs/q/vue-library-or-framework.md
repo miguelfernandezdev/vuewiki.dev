@@ -94,10 +94,6 @@ At step 1, Vue is a library. By step 4, it's a full framework. You move along th
 
 React calls itself a library because it only handles rendering. Angular calls itself a framework because it includes everything. Vue starts as a library and becomes a framework as you add its official ecosystem.
 
-## The interview answer
-
-Vue is a progressive framework. The core is a view library (reactivity + rendering), but the official ecosystem (router, state management, build tooling, SSR with Nuxt) provides a complete framework experience. Unlike Angular, none of these pieces are mandatory. Unlike React, they're all official and designed to work together. That's what "progressive" means: start minimal, adopt incrementally.
-
 See also: [What is Vue and what are its main features?](/q/what-is-vue)
 
 ## References

@@ -84,24 +84,32 @@ const users = ref(await $fetch('/api/users'))
 
 Raw `$fetch` in `<script setup>` runs during SSR and then runs again during client hydration. It has no payload integration. Always use `useFetch` or `useAsyncData` for data that should transfer from server to client.
 
-## Payload reducers and revivers
+## Payload serialization with devalue
 
-Nuxt serializes the payload as JSON, which means some types don't survive by default (`Date`, `Map`, `Set`, custom classes). Nuxt provides hooks to handle custom serialization:
+Since Nuxt 3.4+, the payload is serialized using [devalue](https://github.com/Rich-Harris/devalue) instead of plain JSON. This means built-in types like `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined`, and even cyclic references are handled automatically — no custom code needed.
+
+Custom reducers and revivers are only necessary for **custom class instances** that devalue doesn't know about:
 
 ```ts
 // plugins/payload.ts
+class UserSettings {
+  constructor(public theme: string, public locale: string) {}
+}
+
 export default defineNuxtPlugin(() => {
-  definePayloadReducer('Date', (value) => {
-    return value instanceof Date ? value.toISOString() : undefined
+  definePayloadReducer('UserSettings', (value) => {
+    return value instanceof UserSettings
+      ? { theme: value.theme, locale: value.locale }
+      : undefined
   })
 
-  definePayloadReviver('Date', (value) => {
-    return new Date(value)
+  definePayloadReviver('UserSettings', (value) => {
+    return new UserSettings(value.theme, value.locale)
   })
 })
 ```
 
-The reducer runs on the server (serializes), the reviver runs on the client (deserializes). Without this, a `Date` object would arrive as a plain string.
+The reducer runs on the server (serializes), the reviver runs on the client (deserializes).
 
 ## Inspecting the payload
 

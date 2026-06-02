@@ -126,7 +126,7 @@ const theme = computed({
 | Transformación compleja de varios pasos | Probablemente no, usa un método |
 | Operaciones asíncronas en el set | No, usa un watcher |
 
-Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-vs-watch) · [¿Cuál es la diferencia entre ref y reactive?](/es/q/ref-vs-reactive)
+Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-vs-watch) · [¿Cómo funciona v-model con componentes?](/es/q/v-model-custom-components)
 
 ## Referencias
 

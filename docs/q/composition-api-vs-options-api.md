@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["composition-api"]
 ---
 
-Vue gives you two ways to write component logic. Understanding both matters because you'll see Options API in legacy codebases and Composition API in everything new.
+Vue gives you two ways to write component logic.
 
 ## Options API
 

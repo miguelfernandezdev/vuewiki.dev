@@ -161,8 +161,12 @@ export default defineEventHandler(async (event) => {
 
   const token = signJWT({ userId: user.id, role: user.role })
 
+  // Not httpOnly — the client composable (useCookie) reads and writes
+  // this cookie directly. If you need httpOnly cookies for better XSS
+  // protection, the server must manage all cookie access and the client
+  // should check auth state via a server endpoint (e.g. /api/auth/me)
+  // instead of reading the cookie with useCookie.
   setCookie(event, 'auth-token', token, {
-    httpOnly: true,
     secure: true,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 7
@@ -180,7 +184,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-Setting `httpOnly: true` on the server-side cookie prevents JavaScript from accessing the token, which protects against XSS attacks. The client-side `useCookie('auth-token')` can detect whether the cookie exists (for the `loggedIn` check) but cannot read an httpOnly cookie's value. For the token value itself, the server handles everything.
+Because the client-side `useCookie('auth-token')` composable reads and writes the cookie directly (for login, logout, and the `loggedIn` check), the cookie must NOT be `httpOnly`. An `httpOnly` cookie cannot be accessed by JavaScript at all — `useCookie` would read `null`. If you need the stronger XSS protection of `httpOnly` cookies, the server must manage all cookie operations and the client should NOT use `useCookie` to read the token. Instead, check auth state through a server endpoint like `/api/auth/me`.
 
 ## How the pieces connect
 
@@ -209,7 +213,7 @@ User clicks logout
 | Route middleware | `middleware/` | Protect pages, redirect unauthenticated users |
 | Server middleware | `server/middleware/` | Protect API routes, validate tokens |
 | Server API routes | `server/api/auth/` | Login, logout, token management |
-| Cookie | Sent with every request | Token storage (SSR-safe, httpOnly) |
+| Cookie | Sent with every request | Token storage (SSR-safe) |
 
 See also: [How do you implement authentication with Vue Router?](/q/auth-with-vue-router) · [What is Nuxt middleware?](/q/nuxt-middleware) · [What is the difference between server and route middleware?](/q/nuxt-server-vs-route-middleware)
 

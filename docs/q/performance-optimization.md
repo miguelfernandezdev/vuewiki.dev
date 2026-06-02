@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance"]
 ---
 
-Performance optimization is not a list of tricks to apply upfront — it is a cycle. The order is always: **measure → identify the bottleneck → fix it → measure again**. Skipping the measurement step is the most common mistake. You may spend a week optimizing a computed property that accounts for 2 ms of a 3-second load time, while the real culprit is a 1.2 MB uncode-split bundle sitting on the critical path. Tools like Vue DevTools, the browser Performance tab, and Lighthouse tell you where time is actually going. Fix that first.
+Performance optimization is not a list of tricks to apply upfront — it is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.
 
 ## Rendering optimizations
 

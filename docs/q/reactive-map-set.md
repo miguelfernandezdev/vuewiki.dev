@@ -128,7 +128,7 @@ The `computed` re-evaluates when any entry in the Map changes because spreading 
 
 ## Limitations
 
-1. **No deep reactivity for values**: if you store a plain object as a Map value, that object is NOT automatically made reactive. You'd need to wrap it with `reactive()` yourself before storing it.
+1. **Values are deeply reactive when accessed through the Map**: `map.get('key')` returns a reactive proxy, so nested mutations like `map.get('key').nested = 'new'` are tracked. However, the original object you passed to `set()` is NOT made reactive — only the version returned by `get()` is.
 
 2. **WeakMap/WeakSet are limited**: they work with `reactive()` but you can't iterate them or check `.size`, which limits their usefulness in templates. They're mainly useful for internal bookkeeping in composables.
 
