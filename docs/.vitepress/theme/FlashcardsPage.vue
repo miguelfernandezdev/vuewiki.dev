@@ -29,22 +29,33 @@ const filteredQuestions = computed(() => {
   return qs
 })
 
+const tagFilteredQuestions = computed(() => {
+  if (tagFilter.value.size === 0) return questions.value
+  return questions.value.filter(q => q.tags.some(tag => tagFilter.value.has(tag)))
+})
+
 const difficultyOptions = computed(() => {
+  const base = tagFilteredQuestions.value
   const counts: Record<string, number> = {}
-  for (const q of questions.value) {
+  for (const q of base) {
     counts[q.difficulty] = (counts[q.difficulty] ?? 0) + 1
   }
   return [
-    { value: null, count: questions.value.length },
+    { value: null, count: base.length },
     { value: 'beginner', count: counts.beginner ?? 0 },
     { value: 'intermediate', count: counts.intermediate ?? 0 },
     { value: 'advanced', count: counts.advanced ?? 0 },
   ]
 })
 
+const difficultyFilteredQuestions = computed(() => {
+  if (!difficultyFilter.value) return questions.value
+  return questions.value.filter(q => q.difficulty === difficultyFilter.value)
+})
+
 const availableTags = computed(() => {
   const counts = new Map<string, number>()
-  for (const q of questions.value) {
+  for (const q of difficultyFilteredQuestions.value) {
     for (const tag of q.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1)
   }
   return [...counts.entries()]
@@ -179,6 +190,12 @@ const swipeOverlayClass = computed(() => {
   return dragX.value > 0 ? 'swipe-right' : 'swipe-left'
 })
 
+// --- Device detection ---
+const isTouch = ref(false)
+onMounted(() => {
+  isTouch.value = matchMedia('(pointer: coarse)').matches
+})
+
 // --- Keyboard shortcuts ---
 function onKeydown(e: KeyboardEvent) {
   if (phase.value !== 'active') return
@@ -247,7 +264,10 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
       </div>
 
       <div class="card-hint">
-        {{ revealed ? '← → ' + t('flashcards.swipeHint') : t('flashcards.spaceHint') }}
+        {{ revealed
+          ? (isTouch ? t('flashcards.swipeHintTouch') : '← → ' + t('flashcards.swipeHint'))
+          : (isTouch ? t('flashcards.tapHint') : t('flashcards.spaceHint'))
+        }}
       </div>
 
       <div
@@ -428,6 +448,7 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 /* Tag picker */
 .tag-picker {
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .tag-picker-label {
@@ -444,7 +465,9 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
   gap: 0.375rem;
   max-height: 160px;
   overflow-y: auto;
-  padding: 0.25rem;
+  padding: 0.25rem 0.25rem 1.5rem;
+  mask-image: linear-gradient(to bottom, black calc(100% - 32px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 32px), transparent 100%);
 }
 
 .tag-pick-btn {

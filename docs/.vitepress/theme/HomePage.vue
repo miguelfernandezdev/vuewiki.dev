@@ -75,9 +75,19 @@ function setSort(key: SortKey) {
   visibleCount.value = PAGE_SIZE
 }
 
+const difficultyFilteredQuestions = computed(() => {
+  if (!activeFilter.value) return questions.value
+  return questions.value.filter(q => q.difficulty === activeFilter.value)
+})
+
+const tagFilteredQuestions = computed(() => {
+  if (activeTags.value.size === 0) return questions.value
+  return questions.value.filter(q => q.tags.some(tag => activeTags.value.has(tag)))
+})
+
 const tagCounts = computed(() => {
   const counts = new Map<string, number>()
-  for (const q of questions.value) {
+  for (const q of difficultyFilteredQuestions.value) {
     for (const tag of q.tags) {
       counts.set(tag, (counts.get(tag) ?? 0) + 1)
     }
@@ -87,7 +97,7 @@ const tagCounts = computed(() => {
 
 const difficultyCounts = computed(() => {
   const counts: Record<string, number> = {}
-  for (const q of questions.value) {
+  for (const q of tagFilteredQuestions.value) {
     counts[q.difficulty] = (counts[q.difficulty] ?? 0) + 1
   }
   return counts

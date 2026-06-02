@@ -82,7 +82,9 @@
     "restart": "Reiniciar todas",
     "backToSetup": "Volver al inicio",
     "swipeHint": "desliza o usa las flechas",
-    "spaceHint": "pulsa Espacio para revelar"
+    "swipeHintTouch": "desliza a izquierda o derecha",
+    "spaceHint": "pulsa Espacio para revelar",
+    "tapHint": "toca Revelar para girar"
   },
   "sort": {
     "recommended": "Recomendado",

@@ -82,7 +82,9 @@
     "restart": "Restart all",
     "backToSetup": "Back to setup",
     "swipeHint": "swipe or use arrow keys",
-    "spaceHint": "press Space to reveal"
+    "swipeHintTouch": "swipe left or right",
+    "spaceHint": "press Space to reveal",
+    "tapHint": "tap Reveal to flip"
   },
   "sort": {
     "recommended": "Recommended",
