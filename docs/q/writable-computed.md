@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-A regular computed property is read-only: it derives a value from reactive dependencies. A writable computed adds a setter, so you can assign to it and the setter updates the underlying source data.
+A regular [computed](https://vuejs.org/api/reactivity-core.html#computed) property is read-only: it derives a value from reactive dependencies. A writable computed adds a setter, so you can assign to it and the setter updates the underlying source data.
 
 ## Basic example
 
@@ -125,3 +125,11 @@ const theme = computed({
 | Unit conversion (km/miles, C/F) | Yes |
 | Complex multi-step transformation | Probably not, use a method |
 | Async operations on set | No, use a watcher |
+
+See also: [What is the difference between computed and watch?](/q/computed-vs-watch) · [How does Vue's v-model work with components?](/q/ref-vs-reactive)
+
+## References
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [v-model — Vue guide](https://vuejs.org/guide/components/v-model.html)
+- [Computed Properties — Vue guide](https://vuejs.org/guide/essentials/computed.html)

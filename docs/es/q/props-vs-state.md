@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["components", "reactivity"]
 ---
 
-Las props son datos que se pasan **hacia abajo** desde un componente padre. El estado (datos reactivos locales) es datos que el componente **posee** y gestiona él mismo. La diferencia clave: las props son de solo lectura, el estado es de lectura y escritura.
+Las props son datos que se pasan **hacia abajo** desde un componente padre. El estado (datos reactivos locales) es datos que el componente **posee** y gestiona él mismo. La diferencia clave: las props son de solo lectura, el estado es de lectura y escritura. El estado se declara con [ref](https://vuejs.org/api/reactivity-core.html#ref) o [reactive](https://vuejs.org/api/reactivity-core.html#reactive).
 
 ```vue
 <!-- Parent.vue -->
@@ -89,3 +89,11 @@ const emit = defineEmits<{ update: [value: number] }>()
 | Valor de input compartido con el padre | Props + emit (o `v-model`) |
 | Datos obtenidos dentro del componente | Estado |
 | Datos obtenidos por el padre y mostrados por el hijo | Props |
+
+Ver también: [¿Puedes inicializar el state con el valor de una prop?](/es/q/initialize-state-from-prop) · [¿Cómo funciona el sistema de reactividad de Vue 3?](/es/q/reactivity-system)
+
+## Referencias
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Props — Vue guide](https://vuejs.org/guide/components/props.html)
+- [Eventos de componente — Vue guide](https://vuejs.org/guide/components/events.html)

@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "errors"]
 ---
 
-Because `reactive()` is built on JavaScript Proxies, and Proxies can only wrap **objects**. Primitive values (strings, numbers, booleans) are not objects, so there is nothing for the Proxy to wrap.
+Because `reactive()` is built on JavaScript [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) objects, and Proxies can only wrap **objects**. Primitive values (strings, numbers, booleans) are not objects, so there is nothing for the Proxy to wrap.
 
 ```ts
 const count = reactive(0)       // ⚠️ value cannot be made reactive: 0
@@ -37,3 +37,11 @@ count.value++               // reactive, triggers updates
 | Needs `.value` | In script, not in template | Never |
 
 Most teams just use `ref()` for everything. It handles both primitives and objects, and the consistency avoids this kind of mistake entirely.
+
+See also: [What is the difference between ref and reactive?](/q/ref-vs-reactive) · [Why do I lose reactivity when destructuring a reactive object?](/q/reactive-destructuring-gotcha)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

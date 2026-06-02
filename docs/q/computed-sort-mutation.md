@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Because `.sort()`, `.reverse()`, and `.splice()` modify the array **in place**. Inside a computed, you're calling these methods on the reactive source array. The "sorted copy" and the original end up being the same mutated array.
+Because `.sort()`, `.reverse()`, and `.splice()` modify the array **in place**. Inside a [computed](https://vuejs.org/api/reactivity-core.html#computed), you're calling these methods on the reactive source array. The "sorted copy" and the original end up being the same mutated array.
 
 ```ts
 const items = ref([3, 1, 4, 1, 5])
@@ -51,3 +51,11 @@ const reversed = computed(() => items.value.toReversed())
 | `push()` | `concat()` |
 
 The general rule: if you're inside a `computed`, never call a method that changes the source array. Always work on a copy.
+
+See also: [Why does my computed property not update when a dependency changes?](/q/computed-conditional-dependencies) · [How do writable computed properties work?](/q/writable-computed)
+
+## References
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Computed Best Practices — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [Array.prototype.toSorted() — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)

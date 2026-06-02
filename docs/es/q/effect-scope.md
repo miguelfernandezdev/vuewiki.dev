@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "composables"]
 ---
 
-`effectScope` crea un contenedor que recolecta todos los efectos reactivos (watchers, computed, watchEffect) creados dentro de él. Cuando llamas a `scope.stop()`, todos los efectos del scope se eliminan a la vez. Esto es lo que Vue hace internamente para cada instancia de componente, pero puedes usarlo tú mismo en composables o contextos fuera de componentes.
+[effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) crea un contenedor que recolecta todos los efectos reactivos (watchers, computed, watchEffect) creados dentro de él. Cuando llamas a `scope.stop()`, todos los efectos del scope se eliminan a la vez. Esto es lo que Vue hace internamente para cada instancia de componente, pero puedes usarlo tú mismo en composables o contextos fuera de componentes.
 
 ## Uso básico
 
@@ -137,3 +137,11 @@ parentScope.stop() // childScope NO se detiene
 | Store tipo Pinia fuera de componentes | Sí, controla el tiempo de vida de los efectos |
 | Configuración de tests con estado reactivo | Sí, limpia en afterEach |
 | Watcher único que puedes detener manualmente | No, es excesivo |
+
+Ver también: [¿Por qué los watchers creados dentro de callbacks asíncronos causan pérdidas de memoria?](/es/q/watch-async-memory-leak) · [¿Qué es nextTick y cuándo lo necesitas?](/es/q/nexttick)
+
+## Referencias
+
+- [effectScope() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Guía de composables — Vue docs](https://vuejs.org/guide/reusability/composables.html)

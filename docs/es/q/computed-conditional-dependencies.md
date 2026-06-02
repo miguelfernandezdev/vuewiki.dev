@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Probablemente porque la dependencia nunca se accedió durante la primera ejecución. Vue rastrea las dependencias de computed registrando qué propiedades reactivas se leen cuando se ejecuta el getter. Si la lógica condicional impide que se lea una propiedad, Vue nunca sabe que es una dependencia.
+Probablemente porque la dependencia nunca se accedió durante la primera ejecución. Vue rastrea las dependencias de [computed](https://vuejs.org/api/reactivity-core.html#computed) registrando qué propiedades reactivas se leen cuando se ejecuta el getter. Si la lógica condicional impide que se lea una propiedad, Vue nunca sabe que es una dependencia.
 
 ```ts
 const isEnabled = ref(false)
@@ -59,3 +59,11 @@ const isValid = computed(() => {
 ```
 
 Este patrón funciona porque Vue rastrea cada acceso a `.value` que ocurre durante la ejecución del getter, independientemente de si el valor se usa en el return.
+
+Ver también: [¿Cómo afecta la estabilidad de objetos en computed a los re-renders?](/es/q/perf-computed-object-stability) · [¿Por qué ordenar un array dentro de computed muta los datos originales?](/es/q/computed-sort-mutation)
+
+## Referencias
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Caché de computed vs. métodos — Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
+- [Buenas prácticas: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

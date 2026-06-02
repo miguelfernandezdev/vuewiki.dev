@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-Una propiedad computed normal es de solo lectura: deriva un valor de las dependencias reactivas. Un computed con escritura añade un setter, por lo que puedes asignarle un valor y el setter actualiza los datos fuente subyacentes.
+Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) normal es de solo lectura: deriva un valor de las dependencias reactivas. Un computed con escritura añade un setter, por lo que puedes asignarle un valor y el setter actualiza los datos fuente subyacentes.
 
 ## Ejemplo básico
 
@@ -125,3 +125,11 @@ const theme = computed({
 | Conversión de unidades (km/millas, C/F) | Sí |
 | Transformación compleja de varios pasos | Probablemente no, usa un método |
 | Operaciones asíncronas en el set | No, usa un watcher |
+
+Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-vs-watch) · [¿Cuál es la diferencia entre ref y reactive?](/es/q/ref-vs-reactive)
+
+## Referencias
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [v-model — Vue guide](https://vuejs.org/guide/components/v-model.html)
+- [Computed Properties — Vue guide](https://vuejs.org/guide/essentials/computed.html)

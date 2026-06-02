@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-`customRef` creates a ref where you control when dependency tracking (`track`) and update triggering (`trigger`) happen. Normal refs track on every read and trigger on every write automatically. With `customRef`, you insert your own logic between the read/write and the reactivity system. The classic use case is a debounced ref that delays triggering updates until the user stops typing.
+[customRef](https://vuejs.org/api/reactivity-advanced.html#customref) creates a ref where you control when dependency tracking (`track`) and update triggering (`trigger`) happen. Normal refs track on every read and trigger on every write automatically. With `customRef`, you insert your own logic between the read/write and the reactivity system. The classic use case is a debounced ref that delays triggering updates until the user stops typing.
 
 ## How it works
 
@@ -130,3 +130,11 @@ Every read goes through `localStorage`, so even if another tab changes the value
 2. Call `trigger()` only when you want to notify dependents. This is the whole point.
 3. Don't call `trigger()` inside `get()`. It creates an infinite loop.
 4. The factory function runs once. The `get`/`set` closures capture `track` and `trigger` permanently.
+
+See also: [What is nextTick and when do you need it?](/q/nexttick) · [When would you use shallowRef / shallowReactive?](/q/shallow-ref-reactive)
+
+## References
+
+- [customRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#customref)
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Reactivity in Depth — Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)

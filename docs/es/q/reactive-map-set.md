@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-`reactive()` de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El Proxy intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. La limitación principal es que no se puede usar `ref()` con ellos, solo `reactive()`.
+[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. La limitación principal es que no se puede usar `ref()` con ellos, solo `reactive()`.
 
 ## Uso básico
 
@@ -72,7 +72,7 @@ const map = reactive(new Map())
 map.set('key', 'val') // completamente reactivo
 ```
 
-Si se necesita reemplazar toda la colección (por ejemplo, al obtener datos frescos de una API), envolver en `shallowRef` y reemplazar `.value` con un nuevo Map/Set:
+Si se necesita reemplazar toda la colección (por ejemplo, al obtener datos frescos de una API), envolver en [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) y reemplazar `.value` con un nuevo Map/Set:
 
 ```ts
 const scores = shallowRef(new Map<string, number>())
@@ -142,3 +142,11 @@ watch(
   }
 )
 ```
+
+Ver también: [¿Por qué reactive() no funciona con primitivos?](/es/q/reactive-with-primitives) · [¿Qué es el problema de identidad del proxy en reactividad?](/es/q/proxy-identity-hazard)
+
+## Referencias
+
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [Fundamentos de reactividad — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

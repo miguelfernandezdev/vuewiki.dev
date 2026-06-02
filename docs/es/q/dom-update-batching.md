@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-Vue no actualiza el DOM en cada cambio de estado reactivo. Agrupa todas las mutaciones síncronas dentro del mismo tick del event loop y las aplica en una única actualización del DOM. Los watchers y los computed también se disparan una sola vez con el valor final, no con cada cambio intermedio.
+Vue no actualiza el DOM en cada cambio de estado reactivo. Agrupa todas las mutaciones síncronas dentro del mismo tick del event loop y las aplica en una única actualización del DOM. Los watchers y los [computed](https://vuejs.org/api/reactivity-core.html#computed) también se disparan una sola vez con el valor final, no con cada cambio intermedio.
 
 ## El batching en acción
 
@@ -116,3 +116,11 @@ count.value = 3 // registra: "immediate: 3"
 ```
 
 Evita `flush: 'sync'` en código de producción. Si crees que lo necesitas, probablemente necesites reestructurar tu lógica.
+
+Ver también: [¿Qué es nextTick y cuándo lo necesitas?](/es/q/nexttick) · [¿Cómo afecta la estabilidad de objetos en computed a los re-renders?](/es/q/perf-computed-object-stability)
+
+## Referencias
+
+- [nextTick() — Vue docs](https://vuejs.org/api/general.html#nexttick)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)

@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-`markRaw` tells Vue to never wrap an object in a reactive Proxy. `toRaw` returns the original object behind an existing Proxy. Both exist because not everything belongs inside the reactivity system.
+[markRaw](https://vuejs.org/api/reactivity-advanced.html#markraw) tells Vue to never wrap an object in a reactive [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) returns the original object behind an existing Proxy. Both exist because not everything belongs inside the reactivity system.
 
 ## markRaw: prevent an object from becoming reactive
 
@@ -44,7 +44,7 @@ const el = markRaw(document.getElementById('canvas')!)
 
 ### Best pattern: shallowRef + markRaw
 
-`shallowRef` only tracks `.value` reassignment (not deep properties), and `markRaw` prevents the assigned object from being proxied:
+[shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) only tracks `.value` reassignment (not deep properties), and `markRaw` prevents the assigned object from being proxied:
 
 ```ts
 import { shallowRef, markRaw, onMounted, onUnmounted } from 'vue'
@@ -110,3 +110,11 @@ const state = reactive({ data })
 // Safer: combine with shallowRef
 const safeData = shallowRef(markRaw(data))
 ```
+
+See also: [What happens when you use Object.freeze() on reactive data?](/q/object-freeze-reactive) · [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard)
+
+## References
+
+- [markRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
+- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)

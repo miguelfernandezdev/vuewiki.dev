@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Porque `watchEffect` solo rastrea dependencias durante la ejecución **síncrona**. Después del primer `await`, Vue deja de rastrear. Cualquier propiedad reactiva accedida después de ese punto es invisible para el watcher.
+Porque [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) solo rastrea dependencias durante la ejecución **síncrona**. Después del primer `await`, Vue deja de rastrear. Cualquier propiedad reactiva accedida después de ese punto es invisible para el watcher.
 
 ```ts
 const userId = ref(1)
@@ -61,3 +61,11 @@ watch(
 ## Por qué ocurre esto
 
 El rastreo de dependencias de Vue funciona interceptando lecturas de propiedades (acceso a `.value`) durante la ejecución del getter. El `await` de JavaScript cede el control de vuelta al event loop. Vue deja de registrar después de ese yield porque no puede garantizar qué microtarea se ejecuta a continuación. Todo lo que ocurre antes del primer `await` es síncrono y se rastrea con normalidad.
+
+Ver también: [¿Por qué los watchers dentro de callbacks asíncronos causan pérdidas de memoria?](/es/q/watch-async-memory-leak) · [¿Cuál es la diferencia entre watch y watchEffect?](/es/q/watch-vs-watcheffect)
+
+## Referencias
+
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Watchers guide — Vue docs](https://vuejs.org/guide/essentials/watchers.html)

@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-Optimistic updates change the UI immediately before the server confirms the action. If the server request succeeds, nothing changes visually. If it fails, you roll back to the previous state. This makes the app feel instant because the user doesn't wait for a network round trip.
+Optimistic updates change the UI immediately before the server confirms the action. If the server request succeeds, nothing changes visually. If it fails, you roll back to the previous state. The pattern relies on [ref](https://vuejs.org/api/reactivity-core.html#ref) and [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) to snapshot and restore state. This makes the app feel instant because the user doesn't wait for a network round trip.
 
 ## Basic pattern
 
@@ -210,3 +210,11 @@ const { mutate } = useMutation({
 | File upload | No | Can't fake the result |
 
 The rule: use optimistic updates when the action is very likely to succeed and the rollback experience is acceptable.
+
+See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [When should you use markRaw and toRaw?](/q/markraw-toraw)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [Pinia Colada — async state management](https://pinia-colada.esm.dev/)

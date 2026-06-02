@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "components"]
 ---
 
-Yes, you can use a prop as the initial value for local state. The local `ref` gets the prop's current value at the time of creation and then becomes independent. Changes to the prop do NOT update the local state, and changes to the local state do NOT affect the parent. This is intentional: it creates a one-way copy.
+Yes, you can use a prop as the initial value for local state. The local [ref](https://vuejs.org/api/reactivity-core.html#ref) gets the prop's current value at the time of creation and then becomes independent. Changes to the prop do NOT update the local state, and changes to the local state do NOT affect the parent. This is intentional: it creates a one-way copy.
 
 ## Basic pattern
 
@@ -62,7 +62,7 @@ const localCount = ref(props.count)
 </script>
 ```
 
-If you need the local value to track the prop, use a `computed` or a `watch`:
+If you need the local value to track the prop, use a [computed](https://vuejs.org/api/reactivity-core.html#computed) or a [watch](https://vuejs.org/api/reactivity-core.html#watch):
 
 ```vue
 <script setup>
@@ -134,3 +134,11 @@ const localFilters = ref({ ...props.initialFilters })
 ```
 
 For nested objects, use `structuredClone(props.initialFilters)` or a deep copy utility.
+
+See also: [What is the difference between props and state in Vue?](/q/props-vs-state) · [Why do I lose reactivity when destructuring a reactive object?](/q/reactive-destructuring-gotcha)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Props — Vue guide](https://vuejs.org/guide/components/props.html)

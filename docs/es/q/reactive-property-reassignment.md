@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-No. Reasignar una propiedad en un objeto `reactive()` NO rompe la reactividad. Es una pregunta trampa habitual en entrevistas. Como `reactive()` devuelve un Proxy, el trap `set` del proxy intercepta la asignación y dispara las actualizaciones correctamente. Lo que SÍ rompe la reactividad es reasignar la variable completa a un nuevo objeto, porque eso reemplaza la referencia al proxy.
+No. Reasignar una propiedad en un objeto `reactive()` NO rompe la reactividad. Es una pregunta trampa habitual en entrevistas. Como `reactive()` devuelve un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), el trap `set` del proxy intercepta la asignación y dispara las actualizaciones correctamente. Lo que SÍ rompe la reactividad es reasignar la variable completa a un nuevo objeto, porque eso reemplaza la referencia al proxy.
 
 ## Reasignación de propiedad: funciona correctamente
 
@@ -111,9 +111,17 @@ state.value.name = 'Charlie'    // funciona (setter del proxy interno)
 
 ## La respuesta en una entrevista
 
-Reasignar una propiedad en un objeto `reactive()` no rompe la reactividad. Vue 3 usa Proxy, que intercepta todas las operaciones sobre propiedades (get, set, delete, incluso añadir nuevas). Lo que rompe la reactividad es reasignar la variable en sí a un nuevo objeto, porque eso desconecta del proxy original. Si se necesita reemplazar un objeto completo, usar `ref` y reasignar `.value`, o usar `Object.assign` para fusionar en el objeto reactivo existente:
+Reasignar una propiedad en un objeto `reactive()` no rompe la reactividad. Vue 3 usa Proxy, que intercepta todas las operaciones sobre propiedades (get, set, delete, incluso añadir nuevas). Lo que rompe la reactividad es reasignar la variable en sí a un nuevo objeto, porque eso desconecta del proxy original. Si se necesita reemplazar un objeto completo, usar [ref](https://vuejs.org/api/reactivity-core.html#ref) y reasignar `.value`, o usar `Object.assign` para fusionar en el objeto reactivo existente:
 
 ```js
 // Reemplazar todas las propiedades sin romper la referencia al proxy
 Object.assign(state, { name: 'Bob', age: 30 })
 ```
+
+Ver también: [¿Qué es el problema de identidad del proxy en reactividad?](/es/q/proxy-identity-hazard) · [¿Por qué pierdo reactividad al desestructurar un objeto reactive?](/es/q/reactive-destructuring-gotcha)
+
+## Referencias
+
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

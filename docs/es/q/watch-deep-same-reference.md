@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Porque cuando observas en profundidad un objeto reactivo y mutas una propiedad anidada, tanto `newValue` como `oldValue` apuntan a la **misma referencia de objeto**. Vue no clona el objeto antes de la mutación, por lo que cuando se ejecuta el callback, ambas referencias reflejan el estado actual (mutado).
+Porque cuando observas en profundidad un objeto reactivo con [watch](https://vuejs.org/api/reactivity-core.html#watch) y mutas una propiedad anidada, tanto `newValue` como `oldValue` apuntan a la **misma referencia de objeto**. Vue no clona el objeto antes de la mutación, por lo que cuando se ejecuta el callback, ambas referencias reflejan el estado actual (mutado).
 
 ```ts
 const state = reactive({
@@ -72,3 +72,11 @@ Difieren cuando el objeto entero se **reemplaza**, no cuando se muta:
 state.user = { name: 'Jane', theme: 'light' }  // reemplazo → referencias distintas
 state.user.name = 'Jane'                         // mutación → misma referencia
 ```
+
+Ver también: [¿Cuál es la diferencia entre watch y watchEffect?](/es/q/watch-vs-watcheffect) · [¿Qué es el problema de identidad del proxy reactivo?](/es/q/proxy-identity-hazard)
+
+## Referencias
+
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Watchers guide — Vue docs](https://vuejs.org/guide/essentials/watchers.html)
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)

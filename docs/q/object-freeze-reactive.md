@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-Vue cannot make a frozen object reactive. `Object.freeze()` prevents property modifications at the JavaScript engine level, so Vue's Proxy traps for `set` and `deleteProperty` silently fail. The object renders once with its initial values, but mutations won't trigger updates. This is actually useful as a performance optimization for large datasets that never change.
+Vue cannot make a frozen object reactive. `Object.freeze()` prevents property modifications at the JavaScript engine level, so Vue's [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) traps for `set` and `deleteProperty` silently fail. The object renders once with its initial values, but mutations won't trigger updates. This is actually useful as a performance optimization for large datasets that never change.
 
 ## What happens step by step
 
@@ -72,7 +72,7 @@ const countries = shallowRef(Object.freeze(
 </template>
 ```
 
-Combining `shallowRef` with `Object.freeze` means Vue tracks the ref itself (you can replace the entire array) but doesn't create Proxies for the 250 country objects or their nested properties.
+Combining [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) with `Object.freeze` means Vue tracks the ref itself (you can replace the entire array) but doesn't create Proxies for the 250 country objects or their nested properties.
 
 ## Replacing frozen data
 
@@ -111,3 +111,11 @@ const chartInstance = markRaw(new Chart(canvas, config))
 | Prevents mutation | Yes | No |
 | Use case | Static data, lookup tables | Third-party objects (Chart.js, maps, editors) |
 | Nested objects | Must freeze recursively | Applies only to the top level |
+
+See also: [When should you use markRaw and toRaw?](/q/markraw-toraw) · [When would you use shallowRef / shallowReactive?](/q/shallow-ref-reactive)
+
+## References
+
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [markRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
+- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance", "reactivity"]
 ---
 
-A computed property that returns a new object every time creates a new reference on each evaluation. Vue sees a new reference and triggers every watcher, effect, and child component that depends on it, even if the actual values inside the object are identical. For primitives, Vue 3.4+ handles this automatically. For objects, you need to compare manually.
+A [computed](https://vuejs.org/api/reactivity-core.html#computed) property that returns a new object every time creates a new reference on each evaluation. Vue sees a new reference and triggers every watcher, effect, and child component that depends on it, even if the actual values inside the object are identical. For primitives, Vue 3.4+ handles this automatically. For objects, you need to compare manually.
 
 ## The problem
 
@@ -162,3 +162,11 @@ Each primitive computed gets Vue 3.4+ automatic stability for free. Components t
 | Object computed with manual comparison | Stable when values match | Shallow comparison code |
 | Object computed with deep comparison | Stable for nested objects | lodash/custom utility |
 | Split into primitive computeds | Automatic per property | Restructure consuming code |
+
+See also: [Why does my computed property not update when a dependency changes?](/q/computed-conditional-dependencies) · [How does Vue batch DOM updates?](/q/dom-update-batching)
+
+## References
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Computed Best Practices — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

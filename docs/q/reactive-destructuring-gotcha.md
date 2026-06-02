@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "errors"]
 ---
 
-Because `reactive()` uses a Proxy to track property access. When you destructure, you extract **plain values** out of the proxy, and the reactive connection is gone.
+Because `reactive()` uses a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to track property access. When you destructure, you extract **plain values** out of the proxy, and the reactive connection is gone.
 
 ```ts
 const state = reactive({ count: 0, name: 'Vue' })
@@ -29,7 +29,7 @@ const { count } = useCounter() // plain number, not reactive
 
 ## How to fix it
 
-**Option 1:** Use `toRefs()` to convert each property into a ref before destructuring.
+**Option 1:** Use [toRefs](https://vuejs.org/api/reactivity-utilities.html#torefs) to convert each property into a ref before destructuring.
 
 ```ts
 const state = reactive({ count: 0, name: 'Vue' })
@@ -59,3 +59,11 @@ const name = ref('Vue')
 ```
 
 Most teams default to `ref()` for everything precisely to avoid this pitfall.
+
+See also: [How do toRefs, toRef, and toValue work?](/q/torefs-toref-tovalue) · [Why doesn't reactive() work with primitives?](/q/reactive-with-primitives)
+
+## References
+
+- [toRefs() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

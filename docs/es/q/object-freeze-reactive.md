@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-Vue no puede hacer reactivo un objeto congelado. `Object.freeze()` impide modificaciones de propiedades a nivel del motor de JavaScript, por lo que las trampas del Proxy de Vue para `set` y `deleteProperty` fallan silenciosamente. El objeto se renderiza una vez con sus valores iniciales, pero las mutaciones no dispararán actualizaciones. Esto es útil como optimización de rendimiento para grandes conjuntos de datos que nunca cambian.
+Vue no puede hacer reactivo un objeto congelado. `Object.freeze()` impide modificaciones de propiedades a nivel del motor de JavaScript, por lo que las trampas del [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de Vue para `set` y `deleteProperty` fallan silenciosamente. El objeto se renderiza una vez con sus valores iniciales, pero las mutaciones no dispararán actualizaciones. Esto es útil como optimización de rendimiento para grandes conjuntos de datos que nunca cambian.
 
 ## Qué ocurre paso a paso
 
@@ -111,3 +111,11 @@ const chartInstance = markRaw(new Chart(canvas, config))
 | Impide la mutación | Sí | No |
 | Caso de uso | Datos estáticos, tablas de referencia | Objetos de terceros (Chart.js, mapas, editores) |
 | Objetos anidados | Hay que congelar recursivamente | Solo aplica al nivel superior |
+
+Ver también: [¿Cuándo deberías usar markRaw y toRaw?](/es/q/markraw-toraw) · [¿Cuándo usarías shallowRef / shallowReactive?](/es/q/shallow-ref-reactive)
+
+## Referencias
+
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [markRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
+- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

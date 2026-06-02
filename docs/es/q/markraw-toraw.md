@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-`markRaw` le dice a Vue que nunca envuelva un objeto en un Proxy reactivo. `toRaw` devuelve el objeto original detrás de un Proxy existente. Ambos existen porque no todo pertenece dentro del sistema de reactividad.
+[markRaw](https://vuejs.org/api/reactivity-advanced.html#markraw) le dice a Vue que nunca envuelva un objeto en un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) reactivo. [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) devuelve el objeto original detrás de un Proxy existente. Ambos existen porque no todo pertenece dentro del sistema de reactividad.
 
 ## markRaw: evitar que un objeto se vuelva reactivo
 
@@ -110,3 +110,11 @@ const state = reactive({ data })
 // Más seguro: combinar con shallowRef
 const safeData = shallowRef(markRaw(data))
 ```
+
+Ver también: [¿Qué ocurre cuando usas Object.freeze() en datos reactivos?](/es/q/object-freeze-reactive) · [¿Qué es el problema de identidad del proxy en reactividad?](/es/q/proxy-identity-hazard)
+
+## Referencias
+
+- [markRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
+- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)

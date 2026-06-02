@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-No. Reassigning a property on a `reactive()` object does NOT break reactivity. This is a common trick question in interviews. Because `reactive()` returns a Proxy, the proxy's `set` trap intercepts the assignment and triggers updates correctly. What DOES break reactivity is reassigning the entire variable to a new object, because that replaces the proxy reference.
+No. Reassigning a property on a `reactive()` object does NOT break reactivity. This is a common trick question in interviews. Because `reactive()` returns a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), the proxy's `set` trap intercepts the assignment and triggers updates correctly. What DOES break reactivity is reassigning the entire variable to a new object, because that replaces the proxy reference.
 
 ## Property reassignment: works fine
 
@@ -117,3 +117,11 @@ Reassigning a property on a `reactive()` object does not break reactivity. Vue 3
 // Replace all properties without breaking the proxy reference
 Object.assign(state, { name: 'Bob', age: 30 })
 ```
+
+See also: [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard) · [Why do I lose reactivity when destructuring a reactive object?](/q/reactive-destructuring-gotcha)
+
+## References
+
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

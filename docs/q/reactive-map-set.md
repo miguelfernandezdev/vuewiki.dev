@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-Vue 3's `reactive()` supports `Map`, `Set`, `WeakMap`, and `WeakSet` out of the box. The Proxy intercepts collection methods like `get`, `set`, `add`, `delete`, `has`, and `forEach`, tracking reads and triggering updates on writes. You use the standard JavaScript API, and Vue handles reactivity transparently. The main limitation is that you can't use `ref()` with them, only `reactive()`.
+Vue 3's [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) supports `Map`, `Set`, `WeakMap`, and `WeakSet` out of the box. The [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepts collection methods like `get`, `set`, `add`, `delete`, `has`, and `forEach`, tracking reads and triggering updates on writes. You use the standard JavaScript API, and Vue handles reactivity transparently. The main limitation is that you can't use `ref()` with them, only `reactive()`.
 
 ## Basic usage
 
@@ -72,7 +72,7 @@ const map = reactive(new Map())
 map.set('key', 'val') // fully reactive
 ```
 
-If you need to replace the entire collection (like swapping it for fresh data from an API), wrap it in a `shallowRef` and replace `.value` with a new Map/Set:
+If you need to replace the entire collection (like swapping it for fresh data from an API), wrap it in a [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) and replace `.value` with a new Map/Set:
 
 ```ts
 const scores = shallowRef(new Map<string, number>())
@@ -142,3 +142,11 @@ watch(
   }
 )
 ```
+
+See also: [Why doesn't reactive() work with primitives?](/q/reactive-with-primitives) · [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard)
+
+## References
+
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

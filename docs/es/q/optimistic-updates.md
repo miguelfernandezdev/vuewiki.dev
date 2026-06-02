@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "performance"]
 ---
 
-Las actualizaciones optimistas cambian la interfaz de inmediato antes de que el servidor confirme la acción. Si la petición al servidor tiene éxito, nada cambia visualmente. Si falla, se revierte al estado anterior. La app se siente instantánea porque el usuario no espera un viaje de red de ida y vuelta.
+Las actualizaciones optimistas cambian la interfaz de inmediato antes de que el servidor confirme la acción. El patrón se apoya en [ref](https://vuejs.org/api/reactivity-core.html#ref) y [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) para capturar y restaurar el estado. Si la petición al servidor tiene éxito, nada cambia visualmente. Si falla, se revierte al estado anterior. La app se siente instantánea porque el usuario no espera un viaje de red de ida y vuelta.
 
 ## Patrón básico
 
@@ -210,3 +210,11 @@ const { mutate } = useMutation({
 | Subida de archivo | No | No se puede simular el resultado |
 
 La regla: usa actualizaciones optimistas cuando la acción tiene muchas probabilidades de éxito y la experiencia de revertir es aceptable.
+
+Ver también: [¿Cómo agrupa Vue las actualizaciones del DOM?](/es/q/dom-update-batching) · [¿Cuándo deberías usar markRaw y toRaw?](/es/q/markraw-toraw)
+
+## Referencias
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [Pinia Colada — async state management](https://pinia-colada.esm.dev/)

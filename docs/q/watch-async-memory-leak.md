@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "errors"]
 ---
 
-Because Vue only auto-cleans watchers that are created **synchronously** during `setup()`. When you create a watcher inside a `setTimeout`, `Promise.then`, or after an `await`, Vue can't bind it to the component lifecycle. It keeps running after the component unmounts.
+Because Vue only auto-cleans watchers that are created **synchronously** during `setup()`. When you create a [watch](https://vuejs.org/api/reactivity-core.html#watch) or [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) inside a `setTimeout`, `Promise.then`, or after an `await`, Vue can't bind it to the component lifecycle. It keeps running after the component unmounts.
 
 ```ts
 onMounted(async () => {
@@ -69,3 +69,11 @@ onUnmounted(() => {
 ```
 
 The first option is almost always better. If you can restructure the logic so the watcher is created synchronously and the async condition is checked inside the callback, you avoid the manual cleanup entirely.
+
+See also: [Why does my watchEffect miss dependencies after an await?](/q/watcheffect-async-tracking) · [What is effectScope and when would you use it?](/q/effect-scope)
+
+## References
+
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)

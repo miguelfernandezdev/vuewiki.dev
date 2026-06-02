@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance", "reactivity"]
 ---
 
-Una propiedad computed que devuelve un objeto nuevo en cada evaluación crea una nueva referencia en cada ejecución. Vue detecta la nueva referencia y dispara cada watcher, efecto y componente hijo que dependa de ella, aunque los valores dentro del objeto sean idénticos. Para primitivos, Vue 3.4+ lo gestiona automáticamente. Para objetos, hay que comparar de forma manual.
+Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) que devuelve un objeto nuevo en cada evaluación crea una nueva referencia en cada ejecución. Vue detecta la nueva referencia y dispara cada watcher, efecto y componente hijo que dependa de ella, aunque los valores dentro del objeto sean idénticos. Para primitivos, Vue 3.4+ lo gestiona automáticamente. Para objetos, hay que comparar de forma manual.
 
 ## El problema
 
@@ -162,3 +162,11 @@ Cada computed primitivo obtiene la estabilidad automática de Vue 3.4+ sin coste
 | Object computed con comparación manual | Estable cuando los valores coinciden | Código de comparación superficial |
 | Object computed con comparación profunda | Estable para objetos anidados | lodash o utilidad personalizada |
 | Dividir en computeds primitivos | Automática por propiedad | Reestructurar el código consumidor |
+
+Ver también: [¿Por qué mi propiedad computed no se actualiza cuando cambia una dependencia?](/es/q/computed-conditional-dependencies) · [¿Cómo agrupa Vue las actualizaciones del DOM?](/es/q/dom-update-batching)
+
+## Referencias
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Buenas prácticas: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

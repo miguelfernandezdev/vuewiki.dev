@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "errors"]
 ---
 
-Because `ref()` wraps your value inside an object. The actual data lives at `.value`, not on the ref itself. If you forget `.value` in JavaScript, you're operating on the wrapper object, not the data.
+Because [ref()](https://vuejs.org/api/reactivity-core.html#ref) wraps your value inside an object. The actual data lives at `.value`, not on the ref itself. If you forget `.value` in JavaScript, you're operating on the wrapper object, not the data.
 
 ```ts
 const count = ref(0)
@@ -44,3 +44,11 @@ In `<template>`, Vue unwraps refs automatically. You do NOT write `.value` there
 ```
 
 This inconsistency (`.value` in script, no `.value` in template) is the #1 source of confusion for people learning Vue 3. TypeScript helps catch it early because the types won't match if you forget `.value`.
+
+See also: [Why doesn't reactive() work with primitives?](/q/reactive-with-primitives) · [What is the difference between ref and reactive?](/q/ref-vs-reactive)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [Template Refs — Vue guide](https://vuejs.org/guide/essentials/template-refs.html)

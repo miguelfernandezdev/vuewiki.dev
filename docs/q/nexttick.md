@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-`nextTick` is a utility that lets you wait until Vue has finished updating the DOM after a state change. Vue batches DOM updates asynchronously for performance, so if you read from the DOM right after changing reactive state, you'll see stale values.
+[nextTick](https://vuejs.org/api/general.html#nexttick) is a utility that lets you wait until Vue has finished updating the DOM after a state change. Vue batches DOM updates asynchronously for performance, so if you read from the DOM right after changing reactive state, you'll see stale values.
 
 ## The problem
 
@@ -115,3 +115,11 @@ watch(items, (newItems) => {
 ```
 
 Reserve `nextTick` for when you genuinely need to interact with the DOM (scrolling, focusing, measuring).
+
+See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [When should you use the updated hook?](/q/perf-updated-hook)
+
+## References
+
+- [nextTick() — Vue docs](https://vuejs.org/api/general.html#nexttick)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Reactivity in Depth — Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)

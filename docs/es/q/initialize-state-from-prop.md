@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "components"]
 ---
 
-Sí, puedes usar una prop como valor inicial para el state local. El `ref` local obtiene el valor actual de la prop en el momento de su creación y luego se vuelve independiente. Los cambios en la prop NO actualizan el state local, y los cambios en el state local NO afectan al padre. Es algo intencional: crea una copia unidireccional.
+Sí, puedes usar una prop como valor inicial para el state local. El [ref](https://vuejs.org/api/reactivity-core.html#ref) local obtiene el valor actual de la prop en el momento de su creación y luego se vuelve independiente. Los cambios en la prop NO actualizan el state local, y los cambios en el state local NO afectan al padre. Es algo intencional: crea una copia unidireccional.
 
 ## Patrón básico
 
@@ -134,3 +134,11 @@ const localFilters = ref({ ...props.initialFilters })
 ```
 
 Para objetos anidados, usa `structuredClone(props.initialFilters)` o una utilidad de copia profunda.
+
+Ver también: [¿Cuál es la diferencia entre props y estado en Vue?](/es/q/props-vs-state) · [¿Por qué pierdo reactividad al desestructurar un objeto reactive?](/es/q/reactive-destructuring-gotcha)
+
+## Referencias
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Props — Vue guide](https://vuejs.org/guide/components/props.html)

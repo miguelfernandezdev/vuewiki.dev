@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity", "composables"]
 ---
 
-`effectScope` creates a container that collects all reactive effects (watchers, computed, watchEffect) created inside it. When you call `scope.stop()`, every effect in the scope is disposed at once. This is what Vue does internally for each component instance, but you can use it yourself in composables or non-component contexts.
+[effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) creates a container that collects all reactive effects (watchers, computed, watchEffect) created inside it. When you call `scope.stop()`, every effect in the scope is disposed at once. This is what Vue does internally for each component instance, but you can use it yourself in composables or non-component contexts.
 
 ## Basic usage
 
@@ -137,3 +137,11 @@ parentScope.stop() // childScope is NOT stopped
 | Pinia-like store outside components | Yes, controls effect lifetime |
 | Test setup with reactive state | Yes, clean up in afterEach |
 | Single watcher you can stop manually | No, overkill |
+
+See also: [Why do watchers created inside async callbacks cause memory leaks?](/q/watch-async-memory-leak) · [What is nextTick and when do you need it?](/q/nexttick)
+
+## References
+
+- [effectScope() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)

@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity"]
 ---
 
-`readonly()` creates a deeply immutable reactive proxy. You can read all properties and they stay reactive (computed and watchers still track changes from the original source), but any attempt to mutate them triggers a warning in development and silently fails in production. `shallowReadonly()` does the same but only for the top level: nested objects remain mutable.
+`readonly()` creates a deeply immutable reactive proxy. You can read all properties and they stay reactive ([computed](https://vuejs.org/api/reactivity-core.html#computed) and watchers still track changes from the original source), but any attempt to mutate them triggers a warning in development and silently fails in production. `shallowReadonly()` does the same but only for the top level: nested objects remain mutable.
 
 ## readonly
 
@@ -122,3 +122,11 @@ This enforces unidirectional data flow through the provide/inject tree, similar 
 | Use case | Controlled access to live state | Static data optimization |
 
 The key difference: `readonly` creates a read-only view of data that can still change through the original reference. `Object.freeze` makes the data permanently immutable for everyone.
+
+See also: [What happens when you use Object.freeze() on reactive data?](/q/object-freeze-reactive) · [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard)
+
+## References
+
+- [readonly() — Vue docs](https://vuejs.org/api/reactivity-core.html#readonly)
+- [shallowReadonly() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowreadonly)
+- [provide / inject — Vue guide](https://vuejs.org/guide/components/provide-inject.html)

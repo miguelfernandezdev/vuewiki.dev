@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["performance", "reactivity"]
 ---
 
-The `updated` hook (`onUpdated` in Composition API) runs after every reactive state change that causes a re-render. It fires for ANY state change in the component, not just the one you care about. This makes it a dangerous place for expensive operations, API calls, or state mutations. For most use cases, `watch` or `computed` is a better choice.
+The `updated` hook (`onUpdated` in Composition API) runs after every reactive state change that causes a re-render. It fires for ANY state change in the component, not just the one you care about. This makes it a dangerous place for expensive operations, API calls, or state mutations. For most use cases, [watch](https://vuejs.org/api/reactivity-core.html#watch) or [computed](https://vuejs.org/api/reactivity-core.html#computed) is a better choice.
 
 ## How updated works
 
@@ -192,3 +192,11 @@ The guard prevents the operation from running when unrelated state changes cause
 | Scroll or measure DOM after render | `onUpdated` |
 | API calls when data changes | `watch` with debounce |
 | Update derived state | `computed` (never `updated`) |
+
+See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [What is nextTick and when do you need it?](/q/nexttick)
+
+## References
+
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Lifecycle Hooks — Vue guide](https://vuejs.org/guide/essentials/lifecycle.html)

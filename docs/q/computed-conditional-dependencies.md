@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Probably because the dependency was never accessed during the first run. Vue tracks computed dependencies by recording which reactive properties are read when the getter executes. If conditional logic prevents a property from being read, Vue never knows it's a dependency.
+Probably because the dependency was never accessed during the first run. Vue tracks [computed](https://vuejs.org/api/reactivity-core.html#computed) dependencies by recording which reactive properties are read when the getter executes. If conditional logic prevents a property from being read, Vue never knows it's a dependency.
 
 ```ts
 const isEnabled = ref(false)
@@ -59,3 +59,11 @@ const isValid = computed(() => {
 ```
 
 This pattern works because Vue tracks every `.value` access that happens during the getter execution, regardless of whether the value is used in the return.
+
+See also: [How does computed object stability affect re-renders?](/q/perf-computed-object-stability) · [Why does sorting an array inside computed mutate the original data?](/q/computed-sort-mutation)
+
+## References
+
+- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Computed caching vs. methods — Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
+- [Best Practices: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

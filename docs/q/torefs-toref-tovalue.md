@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-These three utilities solve the problem of converting between Vue's reactive types. They're most useful when destructuring reactive objects, writing composables that accept flexible input, or bridging between `reactive()` and `ref()`.
+These three utilities solve the problem of converting between Vue's reactive types. They're most useful when destructuring reactive objects, writing composables that accept flexible input, or bridging between `reactive()` and `ref()`. See [toRefs](https://vuejs.org/api/reactivity-utilities.html#torefs), [toRef](https://vuejs.org/api/reactivity-utilities.html#toref), and [unref](https://vuejs.org/api/reactivity-utilities.html#unref) in the docs.
 
 ## toRefs: destructure reactive without losing reactivity
 
@@ -132,3 +132,11 @@ useFetch('/api/users')
 useFetch(urlRef)
 useFetch(() => `/api/users/${id.value}`)
 ```
+
+See also: [Why do I lose reactivity when destructuring a reactive object?](/q/reactive-destructuring-gotcha) · [What is the difference between ref and reactive?](/q/ref-vs-reactive)
+
+## References
+
+- [toRefs() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
+- [toRef() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#toref)
+- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)

@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["reactivity", "errors"]
 ---
 
-When you bind a `ref` to an input with `v-model`, the input always produces a string. If you initialize the ref as `null`, the type is `Ref<string | null>`, and every consumer needs a null check. If you initialize as `''` (empty string), the type is `Ref<string>`, which matches what the input produces. No null checks, no type narrowing, no edge cases.
+When you bind a [ref](https://vuejs.org/api/reactivity-core.html#ref) to an input with [v-model](https://vuejs.org/guide/components/v-model.html), the input always produces a string. If you initialize the ref as `null`, the type is `Ref<string | null>`, and every consumer needs a null check. If you initialize as `''` (empty string), the type is `Ref<string>`, which matches what the input produces. No null checks, no type narrowing, no edge cases.
 
 ## The problem with null
 
@@ -103,3 +103,11 @@ const { data } = useFetch<Product[]>('/api/products')
 ```
 
 For these cases, `null` communicates "we don't have this data yet," which is different from an empty default. But for form inputs that always produce a value, start with the empty version of that type.
+
+See also: [Why does forgetting .value with ref cause bugs?](/q/ref-value-gotcha) · [What is the difference between ref and reactive?](/q/ref-vs-reactive)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [v-model — Vue guide](https://vuejs.org/guide/components/v-model.html)
+- [Form Input Bindings — Vue guide](https://vuejs.org/guide/essentials/forms.html)

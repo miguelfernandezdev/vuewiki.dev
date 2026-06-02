@@ -36,7 +36,7 @@ function forceRecreate() {
 
 ## Por qué rara vez lo necesitas
 
-Si sientes la necesidad de forzar un re-render, el estado reactivo probablemente no está configurado correctamente. Causas habituales:
+Si sientes la necesidad de forzar un re-render, el estado reactivo probablemente no está configurado correctamente. Los primitivos [ref](https://vuejs.org/api/reactivity-core.html#ref) y [reactive](https://vuejs.org/api/reactivity-core.html#reactive) deberían gestionar la mayoría de los casos automáticamente. Causas habituales:
 
 **Mutar un array u objeto sin que Vue lo rastree:**
 
@@ -107,3 +107,11 @@ No existe un equivalente de `$forceUpdate` en la Composition API porque la premi
 | Rendimiento | Costoso (desmontaje completo + setup) | Barato (actualizaciones dirigidas) |
 
 Usa actualizaciones reactivas por defecto. Reserva el re-render basado en key para casos donde genuinamente necesites una instancia fresca del componente.
+
+Ver también: [¿Cómo funciona el sistema de reactividad de Vue 3?](/es/q/reactivity-system) · [¿Rompe la reactividad reasignar una propiedad en un objeto reactive?](/es/q/reactive-property-reassignment)
+
+## Referencias
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Atributos especiales: key — Vue docs](https://vuejs.org/api/built-in-special-attributes.html#key)
+- [Fundamentos de reactividad — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

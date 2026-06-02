@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Because `watchEffect` only tracks dependencies during **synchronous** execution. After the first `await`, Vue stops tracking. Any reactive property accessed after that point is invisible to the watcher.
+Because [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) only tracks dependencies during **synchronous** execution. After the first `await`, Vue stops tracking. Any reactive property accessed after that point is invisible to the watcher.
 
 ```ts
 const userId = ref(1)
@@ -61,3 +61,11 @@ watch(
 ## Why this happens
 
 Vue's dependency tracking works by intercepting property reads (`.value` access) during the getter execution. JavaScript `await` yields control back to the event loop. Vue stops recording after that yield because it can't guarantee which microtask runs next. Everything before the first `await` is synchronous and gets tracked normally.
+
+See also: [Why do watchers created inside async callbacks cause memory leaks?](/q/watch-async-memory-leak) · [What is the difference between watch and watchEffect?](/q/watch-vs-watcheffect)
+
+## References
+
+- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Watchers guide — Vue docs](https://vuejs.org/guide/essentials/watchers.html)

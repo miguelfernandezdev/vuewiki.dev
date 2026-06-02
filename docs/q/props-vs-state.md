@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["components", "reactivity"]
 ---
 
-Props are data passed **down** from a parent component. State (local reactive data) is data the component **owns** and manages itself. The key difference: props are read-only, state is read-write.
+Props are data passed **down** from a parent component. State (local reactive data) is data the component **owns** and manages itself. The key difference: props are read-only, state is read-write. State is declared with [ref](https://vuejs.org/api/reactivity-core.html#ref) or [reactive](https://vuejs.org/api/reactivity-core.html#reactive).
 
 ```vue
 <!-- Parent.vue -->
@@ -89,3 +89,11 @@ const emit = defineEmits<{ update: [value: number] }>()
 | Form input value shared with parent | Props + emit (or `v-model`) |
 | Data fetched inside the component | State |
 | Data fetched by parent, displayed by child | Props |
+
+See also: [Can you initialize state with a prop value?](/q/initialize-state-from-prop) · [What is Vue's reactivity system?](/q/reactivity-system)
+
+## References
+
+- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Props — Vue guide](https://vuejs.org/guide/components/props.html)
+- [Component Events — Vue guide](https://vuejs.org/guide/components/events.html)

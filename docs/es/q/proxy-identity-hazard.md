@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-`reactive()` devuelve un Proxy, no el objeto original. El Proxy y el original tienen identidades distintas, por lo que las comparaciones con `===` entre ellos siempre devuelven `false`. Esto provoca bugs silenciosos en lógica de selección, operaciones con Set/Map y cualquier código que dependa de la identidad del objeto.
+[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) devuelve un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), no el objeto original. El Proxy y el original tienen identidades distintas, por lo que las comparaciones con `===` entre ellos siempre devuelven `false`. Esto provoca bugs silenciosos en lógica de selección, operaciones con Set/Map y cualquier código que dependa de la identidad del objeto.
 
 ## El problema
 
@@ -114,4 +114,12 @@ copy.indexOf(target) // -1
 
 ## Regla general
 
-Nunca depender de `===` entre objetos reactivos para la lógica de la aplicación. Comparar siempre por una clave primitiva única (ID, slug, índice). Reservar `toRaw` para casos excepcionales donde se controlan ambos lados de la comparación.
+Nunca depender de `===` entre objetos reactivos para la lógica de la aplicación. Comparar siempre por una clave primitiva única (ID, slug, índice). Reservar [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) para casos excepcionales donde se controlan ambos lados de la comparación.
+
+Ver también: [¿Rompe la reactividad reasignar una propiedad en un objeto reactive?](/es/q/reactive-property-reassignment) · [¿Cuándo deberías usar markRaw y toRaw?](/es/q/markraw-toraw)
+
+## Referencias
+
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

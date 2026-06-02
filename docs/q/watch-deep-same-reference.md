@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["reactivity", "errors"]
 ---
 
-Because when you deep-watch a reactive object and mutate a nested property, both `newValue` and `oldValue` point to the **same object reference**. Vue doesn't clone the object before the mutation, so by the time the callback runs, both references reflect the current (mutated) state.
+Because when you deep-[watch](https://vuejs.org/api/reactivity-core.html#watch) a reactive object and mutate a nested property, both `newValue` and `oldValue` point to the **same object reference**. Vue doesn't clone the object before the mutation, so by the time the callback runs, both references reflect the current (mutated) state.
 
 ```ts
 const state = reactive({
@@ -72,3 +72,11 @@ They differ when the entire object is **replaced**, not mutated:
 state.user = { name: 'Jane', theme: 'light' }  // replacement → different references
 state.user.name = 'Jane'                         // mutation → same reference
 ```
+
+See also: [What is the difference between watch and watchEffect?](/q/watch-vs-watcheffect) · [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard)
+
+## References
+
+- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Watchers guide — Vue docs](https://vuejs.org/guide/essentials/watchers.html)
+- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
