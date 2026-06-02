@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core", "reactivity"]
 ---
 
-El Virtual DOM es una representación JavaScript ligera del DOM real. En lugar de manipular directamente el DOM del navegador en cada cambio, Vue construye un árbol de objetos planos (vnodes), compara el nuevo árbol con el anterior y aplica solo el conjunto mínimo de operaciones DOM necesarias.
+El [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) es una representación JavaScript ligera del DOM real. En lugar de manipular directamente el DOM del navegador en cada cambio, Vue construye un árbol de objetos planos (vnodes), compara el nuevo árbol con el anterior y aplica solo el conjunto mínimo de operaciones DOM necesarias.
 
 ## Cómo funciona
 
@@ -50,7 +50,7 @@ function addItem() {
 
 ## Las optimizaciones de Vue sobre una comparación ingenua
 
-El compilador de Vue analiza tus templates en tiempo de compilación y añade pistas que hacen la comparación en tiempo de ejecución más rápida:
+El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom) analiza tus templates en tiempo de compilación y añade pistas que hacen la comparación en tiempo de ejecución más rápida:
 
 - **Elevación de estáticos.** Los elementos que nunca cambian se crean una vez y se reutilizan en cada re-render.
 - **Flags de parche.** Los bindings dinámicos se etiquetan para que la comparación omita las partes estáticas por completo.
@@ -74,3 +74,10 @@ Algunos frameworks (Svelte, SolidJS) prescinden por completo del Virtual DOM y c
 |---|---|---|
 | Virtual DOM | Vue, React | API flexible, ligero coste de la comparación |
 | Sin Virtual DOM | Svelte, SolidJS | Menos coste, pero control programático limitado |
+
+Ver también: [¿Cuál es la diferencia entre un componente y un elemento?](/es/q/component-vs-element-vnode), [¿Qué es Vue y cuáles son sus características principales?](/es/q/what-is-vue)
+
+## Referencias
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs

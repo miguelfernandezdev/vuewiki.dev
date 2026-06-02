@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-Vue is a JavaScript framework for building user interfaces. It extends standard HTML, CSS, and JavaScript with a declarative, component-based model and a reactivity system that automatically updates the DOM when your data changes.
+Vue is a JavaScript framework for building user interfaces. It extends standard HTML, CSS, and JavaScript with a declarative, component-based model and a [reactivity system](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) that automatically updates the DOM when your data changes.
 
 ## Core features
 
@@ -43,7 +43,7 @@ App
     └── Pagination
 ```
 
-**Single-File Components.** Each `.vue` file bundles template, script, and styles in one place, with optional scoped CSS.
+**[Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html).** Each `.vue` file bundles template, script, and styles in one place, with optional scoped CSS.
 
 ```vue
 <script setup>
@@ -69,4 +69,12 @@ App
 | Bundle size | ~33 KB min+gzip | ~40 KB min+gzip | ~90 KB min+gzip |
 | Learning curve | Gentle | Moderate | Steep |
 
-Vue's design philosophy is progressive adoption: start with just the core library for view rendering, then add official packages (Vue Router, Pinia, Nuxt) as your project grows. You never have to commit to the full stack upfront.
+Vue's design philosophy is progressive adoption: start with just the core library for view rendering, then add official packages ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Nuxt](https://nuxt.com/)) as your project grows. You never have to commit to the full stack upfront.
+
+See also: [What is the Virtual DOM and how does Vue use it?](/q/virtual-dom), [Is Vue a library or a framework?](/q/vue-library-or-framework)
+
+## References
+
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs
+- [Quick Start](https://vuejs.org/guide/quick-start.html) - Vue.js docs
+- [Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html) - Vue.js docs

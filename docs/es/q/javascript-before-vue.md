@@ -9,7 +9,7 @@ Necesitas bases sólidas en JavaScript moderno (ES6+) antes de que Vue tenga sen
 
 ## Conceptos esenciales
 
-### ES Modules (import/export)
+### [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) (import/export)
 
 Cada archivo Vue usa módulos. Necesitas entender los exports con nombre vs los exports por defecto, los re-exports y cómo el sistema de módulos resuelve las rutas.
 
@@ -25,7 +25,7 @@ import { useCounter } from './composables/useCounter'
 import MyComponent from './components/MyComponent.vue'
 ```
 
-### Desestructuración
+### [Desestructuración](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 Se usa en todas partes en Vue: props, valores de retorno de composables, state reactivo.
 
@@ -41,7 +41,7 @@ const { page = 1, limit = 20 } = options
 const [first, ...rest] = items
 ```
 
-### Arrow functions
+### [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 Los manejadores de eventos, computed, watchers y composables usan arrow functions.
 
@@ -79,7 +79,7 @@ function setup(...args) { /* ... */ }
 const newItems = [...items, newItem]
 ```
 
-### Promises y async/await
+### [Promises y async/await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises)
 
 La obtención de datos, las llamadas a la API y `useFetch` de Nuxt trabajan con código asíncrono.
 
@@ -163,7 +163,7 @@ function useCounter() {
 }
 ```
 
-### Proxy
+### [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
 El sistema de reactividad de Vue 3 usa `Proxy` para interceptar el acceso y la mutación de propiedades. No necesitas escribir proxies tú mismo, pero entender el concepto ayuda a depurar problemas de reactividad.
 
@@ -219,3 +219,11 @@ No es obligatorio para empezar, pero la mayoría de proyectos Vue 3 usan TypeScr
 | Optional chaining | Acceso seguro a datos de API |
 | Closures | La Composition API está construida sobre ellas |
 | Proxy (concepto) | Entender la reactividad de Vue |
+
+Ver también: [¿Qué es Vue y cuáles son sus características principales?](/es/q/what-is-vue)
+
+## Referencias
+
+- [JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) - MDN
+- [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) - MDN
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs

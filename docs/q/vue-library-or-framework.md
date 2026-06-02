@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-Vue is officially described as a "progressive framework." The core package (`vue`) is a view library focused on rendering UI, comparable in scope to React. But unlike a pure library, Vue ships an official ecosystem (Vue Router, Pinia, Vite scaffolding, DevTools, SSR) that gives it framework-level capabilities. You start with just the view layer and adopt more pieces as your project needs them.
+Vue is officially described as a "[progressive framework](https://vuejs.org/guide/introduction.html)." The core package (`vue`) is a view library focused on rendering UI, comparable in scope to React. But unlike a pure library, Vue ships an official ecosystem ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Vite](https://vite.dev/) scaffolding, [DevTools](https://devtools.vuejs.org/), SSR) that gives it framework-level capabilities. You start with just the view layer and adopt more pieces as your project needs them.
 
 ## The distinction
 
@@ -56,7 +56,7 @@ my-app/
 └── package.json
 ```
 
-`create-vue` scaffolds this structure. Vue Router handles navigation. Pinia manages state. Vite runs the dev server and production build. The ecosystem dictates conventions, which makes it a framework in practice.
+[`create-vue`](https://github.com/vuejs/create-vue) scaffolds this structure. Vue Router handles navigation. Pinia manages state. Vite runs the dev server and production build. The ecosystem dictates conventions, which makes it a framework in practice.
 
 ## Nuxt makes it even clearer
 
@@ -97,3 +97,11 @@ React calls itself a library because it only handles rendering. Angular calls it
 ## The interview answer
 
 Vue is a progressive framework. The core is a view library (reactivity + rendering), but the official ecosystem (router, state management, build tooling, SSR with Nuxt) provides a complete framework experience. Unlike Angular, none of these pieces are mandatory. Unlike React, they're all official and designed to work together. That's what "progressive" means: start minimal, adopt incrementally.
+
+See also: [What is Vue and what are its main features?](/q/what-is-vue)
+
+## References
+
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs
+- [Quick Start](https://vuejs.org/guide/quick-start.html) - Vue.js docs
+- [Tooling](https://vuejs.org/guide/scaling-up/tooling.html) - Vue.js docs

@@ -9,7 +9,7 @@ You need solid fundamentals in modern JavaScript (ES6+) before Vue will make sen
 
 ## Essential concepts
 
-### ES Modules (import/export)
+### [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) (import/export)
 
 Every Vue file uses modules. You need to understand named vs default exports, re-exports, and how the module system resolves paths.
 
@@ -25,7 +25,7 @@ import { useCounter } from './composables/useCounter'
 import MyComponent from './components/MyComponent.vue'
 ```
 
-### Destructuring
+### [Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 Used everywhere in Vue: props, composable return values, reactive state.
 
@@ -41,7 +41,7 @@ const { page = 1, limit = 20 } = options
 const [first, ...rest] = items
 ```
 
-### Arrow functions
+### [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 Event handlers, computed properties, watchers, composables all use arrow functions.
 
@@ -79,7 +79,7 @@ function setup(...args) { /* ... */ }
 const newItems = [...items, newItem]
 ```
 
-### Promises and async/await
+### [Promises and async/await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises)
 
 Data fetching, API calls, and Nuxt's `useFetch` all deal with async code.
 
@@ -163,7 +163,7 @@ function useCounter() {
 }
 ```
 
-### Proxy
+### [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
 Vue 3's reactivity system uses `Proxy` to intercept property access and mutation. You don't need to write proxies yourself, but understanding the concept helps debug reactivity issues.
 
@@ -219,3 +219,11 @@ Not required to start, but most Vue 3 projects use TypeScript. Interfaces, gener
 | Optional chaining | Safe access to API data |
 | Closures | Composition API is built on them |
 | Proxy (concept) | Understand Vue's reactivity |
+
+See also: [What is Vue and what are its main features?](/q/what-is-vue)
+
+## References
+
+- [JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) - MDN
+- [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) - MDN
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs

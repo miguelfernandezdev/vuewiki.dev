@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core", "reactivity"]
 ---
 
-The Virtual DOM is a lightweight JavaScript representation of the real DOM. Instead of manipulating the browser's DOM directly on every change, Vue builds a tree of plain objects (vnodes), diffs the new tree against the previous one, and applies only the minimal set of real DOM operations needed.
+The [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) is a lightweight JavaScript representation of the real DOM. Instead of manipulating the browser's DOM directly on every change, Vue builds a tree of plain objects (vnodes), diffs the new tree against the previous one, and applies only the minimal set of real DOM operations needed.
 
 ## How it works
 
@@ -50,7 +50,7 @@ function addItem() {
 
 ## Vue's optimizations over a naive diff
 
-Vue's compiler analyzes your templates at build time and adds hints that make the runtime diff faster:
+Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom) analyzes your templates at build time and adds hints that make the runtime diff faster:
 
 - **Static hoisting.** Elements that never change are created once and reused across re-renders.
 - **Patch flags.** Dynamic bindings are tagged so the diff skips static parts entirely.
@@ -74,3 +74,10 @@ Some frameworks (Svelte, SolidJS) skip the Virtual DOM entirely and compile temp
 |---|---|---|
 | Virtual DOM | Vue, React | Flexible API, slight overhead from diffing |
 | No Virtual DOM | Svelte, SolidJS | Less overhead, but limited programmatic control |
+
+See also: [What is the difference between a component and an element?](/q/component-vs-element-vnode), [What is Vue and what are its main features?](/q/what-is-vue)
+
+## References
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs

@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-Vue se describe oficialmente como un "framework progresivo". El paquete principal (`vue`) es una librería de vistas centrada en renderizar la interfaz, comparable en alcance a React. Pero a diferencia de una librería pura, Vue incluye un ecosistema oficial (Vue Router, Pinia, scaffolding con Vite, DevTools, SSR) que le da capacidades de framework completo. Empiezas solo con la capa de vista y adoptas más piezas a medida que tu proyecto las necesita.
+Vue se describe oficialmente como un "[framework progresivo](https://vuejs.org/guide/introduction.html)". El paquete principal (`vue`) es una librería de vistas centrada en renderizar la interfaz, comparable en alcance a React. Pero a diferencia de una librería pura, Vue incluye un ecosistema oficial ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), scaffolding con [Vite](https://vite.dev/), [DevTools](https://devtools.vuejs.org/), SSR) que le da capacidades de framework completo. Empiezas solo con la capa de vista y adoptas más piezas a medida que tu proyecto las necesita.
 
 ## La distinción
 
@@ -56,7 +56,7 @@ my-app/
 └── package.json
 ```
 
-`create-vue` genera esta estructura. Vue Router gestiona la navegación. Pinia gestiona el estado. Vite ejecuta el servidor de desarrollo y la compilación en producción. El ecosistema dicta las convenciones, lo que lo convierte en un framework en la práctica.
+[`create-vue`](https://github.com/vuejs/create-vue) genera esta estructura. Vue Router gestiona la navegación. Pinia gestiona el estado. Vite ejecuta el servidor de desarrollo y la compilación en producción. El ecosistema dicta las convenciones, lo que lo convierte en un framework en la práctica.
 
 ## Nuxt lo deja aún más claro
 
@@ -97,3 +97,11 @@ React se llama a sí mismo una librería porque solo gestiona el render. Angular
 ## La respuesta para una entrevista
 
 Vue es un framework progresivo. El núcleo es una librería de vistas (reactividad + render), pero el ecosistema oficial (router, gestión de estado, herramientas de compilación, SSR con Nuxt) ofrece una experiencia de framework completo. A diferencia de Angular, ninguna de estas piezas es obligatoria. A diferencia de React, todas son oficiales y están diseñadas para funcionar juntas. Eso es lo que significa "progresivo": empieza mínimo, adopta de forma incremental.
+
+Ver también: [¿Qué es Vue y cuáles son sus características principales?](/es/q/what-is-vue)
+
+## Referencias
+
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs
+- [Quick Start](https://vuejs.org/guide/quick-start.html) - Vue.js docs
+- [Tooling](https://vuejs.org/guide/scaling-up/tooling.html) - Vue.js docs

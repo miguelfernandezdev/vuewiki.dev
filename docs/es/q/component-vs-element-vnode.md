@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["components", "core"]
 ---
 
-Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un componente es una pieza de UI reutilizable definida por ti (`<UserCard>`, `<Modal>`, `<AppHeader>`). Ambos producen VNodes (nodos del Virtual DOM) en tiempo de renderizado, pero Vue los gestiona de forma diferente: los elementos se corresponden directamente con nodos del DOM, mientras que los componentes pasan por un ciclo de vida de instancia (props, setup, estado reactivo, slots, emit) antes de renderizar su propio árbol de elementos.
+Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un componente es una pieza de UI reutilizable definida por ti (`<UserCard>`, `<Modal>`, `<AppHeader>`). Ambos producen [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (nodos del Virtual DOM) en tiempo de renderizado, pero Vue los gestiona de forma diferente: los elementos se corresponden directamente con nodos del DOM, mientras que los componentes pasan por un ciclo de vida de instancia (props, setup, estado reactivo, slots, emit) antes de renderizar su propio árbol de elementos.
 
 ## En los templates
 
@@ -27,7 +27,7 @@ El compilador de templates de Vue los trata de forma diferente. Cuando ve una et
 
 ## Qué es un VNode
 
-Un VNode (Virtual Node) es un objeto JavaScript simple que describe lo que debe renderizarse. Vue construye un árbol de VNodes (el Virtual DOM), lo compara con el árbol anterior y aplica los cambios mínimos al DOM.
+Un VNode (Virtual Node) es un objeto JavaScript simple que describe lo que debe renderizarse. Vue construye un árbol de VNodes (el Virtual DOM), lo compara con el árbol anterior y aplica los cambios mínimos al DOM. Puedes crear VNodes manualmente usando el [helper `h()`](https://vuejs.org/api/render-function.html#h).
 
 ```js
 import { h } from 'vue'
@@ -94,3 +94,11 @@ Vue DevTools muestra ambos niveles. La pestaña Components muestra el árbol de 
 | Aparece en el DOM | Sí | No (su output del template sí) |
 | Visibilidad en DevTools | Pestaña Elements | Pestaña Components |
 | Coste | Bajo (solo un nodo DOM) | Mayor (instancia + setup de reactividad) |
+
+Ver también: [¿Qué es el Virtual DOM y cómo lo usa Vue?](/es/q/virtual-dom)
+
+## Referencias
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs
+- [Components Basics](https://vuejs.org/guide/essentials/component-basics.html) - Vue.js docs

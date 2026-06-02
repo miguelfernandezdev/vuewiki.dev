@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["core"]
 ---
 
-Vue es un framework JavaScript para construir interfaces de usuario. Extiende HTML, CSS y JavaScript estándar con un modelo declarativo y basado en componentes, y un sistema de reactividad que actualiza el DOM automáticamente cuando cambian tus datos.
+Vue es un framework JavaScript para construir interfaces de usuario. Extiende HTML, CSS y JavaScript estándar con un modelo declarativo y basado en componentes, y un [sistema de reactividad](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) que actualiza el DOM automáticamente cuando cambian tus datos.
 
 ## Características principales
 
@@ -43,7 +43,7 @@ App
     └── Pagination
 ```
 
-**Single-File Components.** Cada archivo `.vue` agrupa template, script y estilos en un solo lugar, con CSS con ámbito opcional.
+**[Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html).** Cada archivo `.vue` agrupa template, script y estilos en un solo lugar, con CSS con ámbito opcional.
 
 ```vue
 <script setup>
@@ -69,4 +69,12 @@ App
 | Tamaño del bundle | ~33 KB min+gzip | ~40 KB min+gzip | ~90 KB min+gzip |
 | Curva de aprendizaje | Suave | Moderada | Pronunciada |
 
-La filosofía de diseño de Vue es la adopción progresiva: empieza solo con la librería principal para el render de vistas, luego añade paquetes oficiales (Vue Router, Pinia, Nuxt) a medida que tu proyecto crece. No tienes que comprometerte con el stack completo desde el principio.
+La filosofía de diseño de Vue es la adopción progresiva: empieza solo con la librería principal para el render de vistas, luego añade paquetes oficiales ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Nuxt](https://nuxt.com/)) a medida que tu proyecto crece. No tienes que comprometerte con el stack completo desde el principio.
+
+Ver también: [¿Qué es el Virtual DOM y cómo lo usa Vue?](/es/q/virtual-dom), [¿Vue es una librería o un framework?](/es/q/vue-library-or-framework)
+
+## Referencias
+
+- [Introduction](https://vuejs.org/guide/introduction.html) - Vue.js docs
+- [Quick Start](https://vuejs.org/guide/quick-start.html) - Vue.js docs
+- [Single-File Components](https://vuejs.org/guide/scaling-up/sfc.html) - Vue.js docs

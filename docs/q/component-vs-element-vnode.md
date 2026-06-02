@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["components", "core"]
 ---
 
-An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is a reusable piece of UI defined by you (`<UserCard>`, `<Modal>`, `<AppHeader>`). Both produce VNodes (Virtual DOM nodes) at render time, but Vue handles them differently: elements map directly to DOM nodes, while components go through an instance lifecycle (props, setup, reactive state, slots, emit) before eventually rendering their own tree of elements.
+An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is a reusable piece of UI defined by you (`<UserCard>`, `<Modal>`, `<AppHeader>`). Both produce [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (Virtual DOM nodes) at render time, but Vue handles them differently: elements map directly to DOM nodes, while components go through an instance lifecycle (props, setup, reactive state, slots, emit) before eventually rendering their own tree of elements.
 
 ## In templates
 
@@ -27,7 +27,7 @@ Vue's template compiler treats them differently. When it sees a lowercase tag (`
 
 ## What is a VNode
 
-A VNode (Virtual Node) is a plain JavaScript object that describes what should be rendered. Vue builds a tree of VNodes (the Virtual DOM), diffs it against the previous tree, and applies the minimal DOM changes.
+A VNode (Virtual Node) is a plain JavaScript object that describes what should be rendered. Vue builds a tree of VNodes (the Virtual DOM), diffs it against the previous tree, and applies the minimal DOM changes. You can create VNodes manually using the [`h()` helper](https://vuejs.org/api/render-function.html#h).
 
 ```js
 import { h } from 'vue'
@@ -94,3 +94,11 @@ Vue DevTools shows both levels. The Components tab displays the component tree (
 | Appears in DOM | Yes | No (its template output does) |
 | DevTools visibility | Elements tab | Components tab |
 | Cost | Cheap (just a DOM node) | Higher (instance + reactivity setup) |
+
+See also: [What is the Virtual DOM and how does Vue use it?](/q/virtual-dom)
+
+## References
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs
+- [Components Basics](https://vuejs.org/guide/essentials/component-basics.html) - Vue.js docs
