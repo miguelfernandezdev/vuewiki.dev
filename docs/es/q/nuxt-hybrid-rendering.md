@@ -114,3 +114,11 @@ routeRules: {
 | Se muestra contenido desactualizado | Nunca (hasta el próximo despliegue) | Solo mientras se regenera | Siempre (actualiza en segundo plano) |
 | Requiere servidor | No (archivos estáticos) | Sí | Sí |
 | Adecuado para | Landing pages, documentación | Posts de blog, páginas de producto | Feeds, dashboards |
+
+Ver también: [¿Cuáles son los modos de renderizado en Nuxt?](/es/q/nuxt-rendering-modes) · [¿Cómo desplegar una app Nuxt?](/es/q/nuxt-deployment) · [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching)
+
+## Referencias
+
+- [Hybrid Rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Nuxt docs
+- [Route Rules](https://nuxt.com/docs/api/nuxt-config#routerules) - Nuxt docs
+- [Nitro Route Rules](https://nitro.build/config#routerules) - Nitro docs

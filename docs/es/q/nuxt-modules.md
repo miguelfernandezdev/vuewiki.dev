@@ -135,3 +135,11 @@ El directorio `runtime/` contiene el código que se ejecuta en la app. Todo lo q
 | Lógica reutilizable para componentes individuales | Composable |
 | Compartir funcionalidad entre varios proyectos Nuxt | Módulo (publicable en npm) |
 | Integración puntual específica del proyecto | Plugin o composable suele ser suficiente |
+
+Ver también: [¿Qué son las layers de Nuxt?](/es/q/nuxt-layers) · [¿Cómo funcionan los auto-imports en Nuxt?](/es/q/nuxt-auto-imports) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure)
+
+## Referencias
+
+- [Modules](https://nuxt.com/docs/guide/concepts/modules) - Nuxt docs
+- [Module Author Guide](https://nuxt.com/docs/guide/going-further/modules) - Nuxt docs
+- [@nuxt/kit](https://nuxt.com/docs/api/kit) - Nuxt docs

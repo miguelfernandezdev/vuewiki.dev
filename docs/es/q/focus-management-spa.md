@@ -193,3 +193,11 @@ El enlace está oculto hasta que recibe el foco, momento en que salta a la parte
 | Elemento eliminado | Mover el foco al siguiente elemento o al contenedor de la lista |
 | Contenido cargado | Enfocar el nuevo contenido o anunciarlo con `aria-live` |
 | Saltar navegación | Proporcionar un skip link como primer elemento enfocable |
+
+Ver también: [¿Cómo manejar la accesibilidad en Vue?](/es/q/accessibility-in-vue) · [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Qué son teleport, fragments y Suspense?](/es/q/teleport-fragments-suspense)
+
+## Referencias
+
+- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) - W3C
+- [Managing Focus in Single Page Applications](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Focus_management) - MDN
+- [The dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog) - MDN

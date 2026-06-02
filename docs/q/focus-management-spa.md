@@ -193,3 +193,11 @@ The link is hidden until it receives focus, then it jumps to the top of the scre
 | Item deleted | Move focus to the next item or the list container |
 | Content loaded | Focus the new content or announce it with `aria-live` |
 | Skip navigation | Provide a skip link as the first focusable element |
+
+See also: [How do you handle accessibility in Vue?](/q/accessibility-in-vue) · [How does Vue Router work?](/q/vue-router-navigation-guards) · [What are teleport, fragments, and Suspense?](/q/teleport-fragments-suspense)
+
+## References
+
+- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) - W3C
+- [Managing Focus in Single Page Applications](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Focus_management) - MDN
+- [The dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog) - MDN

@@ -116,3 +116,11 @@ Si tu app es de una sola página sin enrutamiento (un widget, un dashboard), pue
 | `posts/[id].vue` | `/posts/:id` | `/posts/42` |
 | `posts/[...slug].vue` | `/posts/*` | `/posts/2024/mi-articulo` |
 | `[[lang]]/index.vue` | `/:lang?` | `/` o `/es` |
+
+Ver también: [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure) · [¿Qué es el middleware de Nuxt?](/es/q/nuxt-middleware)
+
+## Referencias
+
+- [Routing](https://nuxt.com/docs/getting-started/routing) - Nuxt docs
+- [pages/ Directory](https://nuxt.com/docs/guide/directory-structure/pages) - Nuxt docs
+- [Getting Started](https://router.vuejs.org/guide/) - Vue Router docs

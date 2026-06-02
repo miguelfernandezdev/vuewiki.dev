@@ -171,3 +171,11 @@ The recommended approach is incremental, not a big-bang rewrite:
 8. **Remove deprecated APIs**: `$listeners`, `$on`/`$off` event bus, filters, `$set`/`$delete`.
 
 Testing at every step is critical. Add e2e tests for critical flows before starting the migration so you have a safety net.
+
+See also: [What are the differences between Nuxt 2 and Nuxt 3?](/q/nuxt2-vs-nuxt3) · [How do auto-imports work in Nuxt?](/q/nuxt-auto-imports) · [How does data fetching work in Nuxt?](/q/nuxt-data-fetching)
+
+## References
+
+- [Nuxt 2 to Nuxt 3 Migration](https://nuxt.com/docs/migration/overview) - Nuxt docs
+- [Nuxt Bridge](https://nuxt.com/docs/bridge/overview) - Nuxt docs
+- [Configuration](https://nuxt.com/docs/migration/configuration) - Nuxt docs

@@ -147,3 +147,11 @@ Tras el build, todo reside en `.output/`:
 ```
 
 Este directorio es autocontenido. Cópialo a cualquier servidor y ejecútalo.
+
+Ver también: [¿Cuáles son los modos de renderizado en Nuxt?](/es/q/nuxt-rendering-modes) · [¿Cómo funcionan las rutas de servidor de Nitro?](/es/q/nuxt-nitro-server-routes) · [¿Cómo funciona el renderizado híbrido en Nuxt?](/es/q/nuxt-hybrid-rendering)
+
+## Referencias
+
+- [Deployment](https://nuxt.com/docs/getting-started/deployment) - Nuxt docs
+- [Nitro Deploy Presets](https://nitro.build/deploy) - Nitro docs
+- [nuxt build](https://nuxt.com/docs/api/commands/build) - Nuxt docs

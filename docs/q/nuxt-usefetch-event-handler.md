@@ -144,3 +144,11 @@ async function handleDelete(id: number) {
 | Load data on demand (lazy) | `useFetch` with `immediate: false` + `execute()` |
 | Reload existing data after mutation | `refresh()` on the existing `useFetch` |
 | Fetch in a utility function | `$fetch` (no component context needed) |
+
+See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [How does the SSR payload work in Nuxt?](/q/nuxt-payload) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes)
+
+## References
+
+- [useFetch](https://nuxt.com/docs/api/composables/use-fetch) - Nuxt docs
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
+- [$fetch](https://nuxt.com/docs/api/utils/dollarfetch) - Nuxt docs

@@ -146,3 +146,11 @@ npx nuxi init --template layer my-layer
 | Fusión | Basada en archivos, automática | Programática, explícita |
 | Sobreescribir | Reemplaza el archivo en tu proyecto | Configura mediante opciones del módulo |
 | Úsalo cuando | Compartas una app base, sistema de diseño o preset entre proyectos | Añadas una capacidad (analíticas, autenticación, optimización de imágenes) |
+
+Ver también: [¿Cómo funcionan los módulos de Nuxt?](/es/q/nuxt-modules) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure) · [¿Cómo desplegar una app Nuxt?](/es/q/nuxt-deployment)
+
+## Referencias
+
+- [Layers](https://nuxt.com/docs/getting-started/layers) - Nuxt docs
+- [Extending a Layer](https://nuxt.com/docs/guide/going-further/layers) - Nuxt docs
+- [nuxt.config extends](https://nuxt.com/docs/api/nuxt-config#extends) - Nuxt docs

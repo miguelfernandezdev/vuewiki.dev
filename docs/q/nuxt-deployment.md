@@ -147,3 +147,11 @@ After building, everything lives in `.output/`:
 ```
 
 This directory is self-contained. Copy it to any server and run it.
+
+See also: [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes) · [How does hybrid rendering work in Nuxt?](/q/nuxt-hybrid-rendering)
+
+## References
+
+- [Deployment](https://nuxt.com/docs/getting-started/deployment) - Nuxt docs
+- [Nitro Deploy Presets](https://nitro.build/deploy) - Nitro docs
+- [nuxt build](https://nuxt.com/docs/api/commands/build) - Nuxt docs

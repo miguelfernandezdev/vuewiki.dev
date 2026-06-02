@@ -139,3 +139,11 @@ If you fetch a huge dataset during SSR, the entire dataset ends up in the HTML. 
 | Pinia stores | Server state serialized, client hydrates |
 | Raw `$fetch` in setup | Runs on both server and client (double fetch) |
 | `$fetch` in event handlers | Client-only, no SSR involvement |
+
+See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes) · [What is cross-request state pollution in SSR?](/q/ssr-cross-request-state-pollution)
+
+## References
+
+- [Payload](https://nuxt.com/docs/api/composables/use-nuxt-data) - Nuxt docs
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
+- [useState](https://nuxt.com/docs/api/composables/use-state) - Nuxt docs

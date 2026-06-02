@@ -130,3 +130,11 @@ Actualiza los datos cacheados desde cualquier lugar:
 ```ts
 await refreshNuxtData('current-user')
 ```
+
+Ver también: [¿Cómo funciona el payload de SSR en Nuxt?](/es/q/nuxt-payload) · [¿Qué pasa si llamas a useFetch dentro de un event handler?](/es/q/nuxt-usefetch-event-handler) · [¿Cómo funcionan las rutas de servidor de Nitro?](/es/q/nuxt-nitro-server-routes)
+
+## Referencias
+
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
+- [useFetch](https://nuxt.com/docs/api/composables/use-fetch) - Nuxt docs
+- [useAsyncData](https://nuxt.com/docs/api/composables/use-async-data) - Nuxt docs

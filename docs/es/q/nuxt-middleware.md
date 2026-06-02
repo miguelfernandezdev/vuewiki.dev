@@ -124,3 +124,11 @@ Los archivos de middleware de servidor en `server/middleware/` se ejecutan autom
 | Usar para | Guards de autenticación, redirecciones, analíticas | CORS, logging, cabeceras, rate limiting |
 | Se aplica a | Páginas específicas o globalmente | Todas las peticiones al servidor |
 | Puede redirigir a rutas Vue | Sí (`navigateTo`) | No (solo redirecciones HTTP) |
+
+Ver también: [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware) · [¿Cómo implementar autenticación en Nuxt?](/es/q/nuxt-authentication) · [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards)
+
+## Referencias
+
+- [middleware/ Directory](https://nuxt.com/docs/guide/directory-structure/middleware) - Nuxt docs
+- [server/middleware/ Directory](https://nuxt.com/docs/guide/directory-structure/server#server-middleware) - Nuxt docs
+- [Route Middleware](https://nuxt.com/docs/getting-started/routing#route-middleware) - Nuxt docs

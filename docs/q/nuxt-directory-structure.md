@@ -166,3 +166,11 @@ public/robots.txt            → /robots.txt
 ## Everything is optional
 
 You only create the directories you need. A minimal Nuxt app can be just `app.vue` and `nuxt.config.ts`. Add `pages/` when you need routing, `server/api/` when you need API endpoints, `components/` when you have shared components.
+
+See also: [How does file-based routing work in Nuxt?](/q/nuxt-file-based-routing) · [How do auto-imports work in Nuxt?](/q/nuxt-auto-imports) · [What are Nuxt layers?](/q/nuxt-layers)
+
+## References
+
+- [Directory Structure](https://nuxt.com/docs/guide/directory-structure) - Nuxt docs
+- [app.vue](https://nuxt.com/docs/guide/directory-structure/app) - Nuxt docs
+- [nuxt.config.ts](https://nuxt.com/docs/guide/directory-structure/nuxt-config) - Nuxt docs

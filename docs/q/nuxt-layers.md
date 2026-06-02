@@ -146,3 +146,11 @@ npx nuxi init --template layer my-layer
 | Merging | File-based, automatic | Programmatic, explicit |
 | Override | Replace the file in your project | Configure via module options |
 | Use when | Sharing a base app, design system, or preset across projects | Adding a capability (analytics, auth, image optimization) |
+
+See also: [How do Nuxt modules work?](/q/nuxt-modules) · [What is the Nuxt directory structure?](/q/nuxt-directory-structure) · [How do you deploy a Nuxt app?](/q/nuxt-deployment)
+
+## References
+
+- [Layers](https://nuxt.com/docs/getting-started/layers) - Nuxt docs
+- [Extending a Layer](https://nuxt.com/docs/guide/going-further/layers) - Nuxt docs
+- [nuxt.config extends](https://nuxt.com/docs/api/nuxt-config#extends) - Nuxt docs

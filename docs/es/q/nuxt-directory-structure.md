@@ -166,3 +166,11 @@ Los archivos de `assets/` son procesados por el bundler (con hash, optimizados):
 ## Todo es opcional
 
 Solo creas los directorios que necesitas. Una app Nuxt mínima puede ser solo `app.vue` y `nuxt.config.ts`. Añade `pages/` cuando necesites enrutamiento, `server/api/` cuando necesites endpoints de API, `components/` cuando tengas componentes compartidos.
+
+Ver también: [¿Cómo funciona el routing basado en archivos en Nuxt?](/es/q/nuxt-file-based-routing) · [¿Cómo funcionan los auto-imports en Nuxt?](/es/q/nuxt-auto-imports) · [¿Qué son las layers de Nuxt?](/es/q/nuxt-layers)
+
+## Referencias
+
+- [Directory Structure](https://nuxt.com/docs/guide/directory-structure) - Nuxt docs
+- [app.vue](https://nuxt.com/docs/guide/directory-structure/app) - Nuxt docs
+- [nuxt.config.ts](https://nuxt.com/docs/guide/directory-structure/nuxt-config) - Nuxt docs

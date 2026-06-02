@@ -162,3 +162,11 @@ server/
 └── utils/            ← utilidades de servidor con auto-importación
     └── db.ts
 ```
+
+Ver también: [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware) · [¿Cómo desplegar una app Nuxt?](/es/q/nuxt-deployment) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure)
+
+## Referencias
+
+- [Server Routes](https://nuxt.com/docs/guide/directory-structure/server) - Nuxt docs
+- [Nitro](https://nitro.build/) - Nitro docs
+- [Server API and Routes](https://nuxt.com/docs/getting-started/server) - Nuxt docs

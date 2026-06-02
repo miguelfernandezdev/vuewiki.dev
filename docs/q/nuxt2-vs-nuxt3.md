@@ -187,3 +187,11 @@ export default defineNuxtModule({
 ```
 
 `@nuxt/kit` provides typed helpers (`addPlugin`, `addComponent`, `addImports`, `addServerHandler`) that replace the ad-hoc `this.addX` methods from Nuxt 2.
+
+See also: [What are the friction points migrating from Nuxt 2 to Nuxt 3?](/q/nuxt2-to-nuxt3-friction) · [How do auto-imports work in Nuxt?](/q/nuxt-auto-imports) · [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes)
+
+## References
+
+- [Nuxt 2 to Nuxt 3 Migration](https://nuxt.com/docs/migration/overview) - Nuxt docs
+- [Introduction](https://nuxt.com/docs/getting-started/introduction) - Nuxt 3 docs
+- [Module Author Guide](https://nuxt.com/docs/guide/going-further/modules) - Nuxt docs

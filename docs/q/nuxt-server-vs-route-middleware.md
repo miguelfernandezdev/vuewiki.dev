@@ -162,3 +162,11 @@ export default defineEventHandler((event) => {
 ```
 
 Always protect data at the API layer, not just at the page layer.
+
+See also: [What is Nuxt middleware?](/q/nuxt-middleware) · [How do you implement authentication in Nuxt?](/q/nuxt-authentication) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes)
+
+## References
+
+- [middleware/ Directory](https://nuxt.com/docs/guide/directory-structure/middleware) - Nuxt docs
+- [server/middleware/ Directory](https://nuxt.com/docs/guide/directory-structure/server#server-middleware) - Nuxt docs
+- [Route Middleware](https://nuxt.com/docs/getting-started/routing#route-middleware) - Nuxt docs

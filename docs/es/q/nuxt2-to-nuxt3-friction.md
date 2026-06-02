@@ -171,3 +171,11 @@ El enfoque recomendado es incremental, no una reescritura total:
 8. **Eliminar APIs obsoletas**: `$listeners`, el bus de eventos `$on`/`$off`, los filtros, `$set`/`$delete`.
 
 Las pruebas en cada paso son fundamentales. Añade tests end-to-end para los flujos críticos antes de empezar la migración, para tener una red de seguridad.
+
+Ver también: [¿Cuáles son las diferencias entre Nuxt 2 y Nuxt 3?](/es/q/nuxt2-vs-nuxt3) · [¿Cómo funcionan los auto-imports en Nuxt?](/es/q/nuxt-auto-imports) · [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching)
+
+## Referencias
+
+- [Nuxt 2 to Nuxt 3 Migration](https://nuxt.com/docs/migration/overview) - Nuxt docs
+- [Nuxt Bridge](https://nuxt.com/docs/bridge/overview) - Nuxt docs
+- [Configuration](https://nuxt.com/docs/migration/configuration) - Nuxt docs

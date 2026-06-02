@@ -114,3 +114,11 @@ routeRules: {
 | Stale content shown | Never (until next deploy) | Only while regenerating | Always (refreshes in background) |
 | Needs a server | No (static files) | Yes | Yes |
 | Good for | Landing pages, docs | Blog posts, product pages | Feeds, dashboards |
+
+See also: [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes) · [How do you deploy a Nuxt app?](/q/nuxt-deployment) · [How does data fetching work in Nuxt?](/q/nuxt-data-fetching)
+
+## References
+
+- [Hybrid Rendering](https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering) - Nuxt docs
+- [Route Rules](https://nuxt.com/docs/api/nuxt-config#routerules) - Nuxt docs
+- [Nitro Route Rules](https://nitro.build/config#routerules) - Nitro docs

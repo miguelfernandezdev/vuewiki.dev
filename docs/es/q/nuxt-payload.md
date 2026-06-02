@@ -139,3 +139,11 @@ Si obtienes un conjunto de datos enorme durante SSR, todo ese conjunto acaba en 
 | Stores de Pinia | El estado del servidor se serializa, el cliente hace la hydration |
 | `$fetch` en bruto en setup | Se ejecuta tanto en el servidor como en el cliente (doble petición) |
 | `$fetch` en event handlers | Solo en el cliente, sin intervención de SSR |
+
+Ver también: [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching) · [¿Cuáles son los modos de renderizado en Nuxt?](/es/q/nuxt-rendering-modes) · [¿Qué es la contaminación de estado entre peticiones en SSR?](/es/q/ssr-cross-request-state-pollution)
+
+## Referencias
+
+- [Payload](https://nuxt.com/docs/api/composables/use-nuxt-data) - Nuxt docs
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
+- [useState](https://nuxt.com/docs/api/composables/use-state) - Nuxt docs

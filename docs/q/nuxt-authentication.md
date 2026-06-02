@@ -210,3 +210,11 @@ User clicks logout
 | Server middleware | `server/middleware/` | Protect API routes, validate tokens |
 | Server API routes | `server/api/auth/` | Login, logout, token management |
 | Cookie | Sent with every request | Token storage (SSR-safe, httpOnly) |
+
+See also: [How do you implement authentication with Vue Router?](/q/auth-with-vue-router) · [What is Nuxt middleware?](/q/nuxt-middleware) · [What is the difference between server and route middleware?](/q/nuxt-server-vs-route-middleware)
+
+## References
+
+- [nuxt-auth-utils](https://github.com/atinux/nuxt-auth-utils) - GitHub
+- [middleware/ Directory](https://nuxt.com/docs/guide/directory-structure/middleware) - Nuxt docs
+- [useCookie](https://nuxt.com/docs/api/composables/use-cookie) - Nuxt docs

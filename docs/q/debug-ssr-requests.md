@@ -146,3 +146,11 @@ Then open `chrome://inspect` in Chrome and connect to the Node process. You can 
 | Nuxt DevTools server tab | Requests with full detail | Development, visual inspection |
 | Charles Proxy / mitmproxy | Full HTTP traffic capture | Auth flows, SSL issues, redirects |
 | Node.js inspector | Breakpoints, step-through | Complex logic bugs |
+
+See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [How does the SSR payload work in Nuxt?](/q/nuxt-payload) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes)
+
+## References
+
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
+- [Debugging](https://nodejs.org/en/learn/getting-started/debugging) - Node.js docs
+- [Nuxt DevTools](https://devtools.nuxt.com/) - Nuxt DevTools docs

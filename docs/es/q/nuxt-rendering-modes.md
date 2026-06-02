@@ -111,3 +111,11 @@ if (import.meta.client) {
 | Dashboard detrás de login | SPA (`ssr: false`) |
 | Páginas dinámicas con SEO importante | SSR (por defecto) |
 | Combinación de todo lo anterior | Híbrido con `routeRules` |
+
+Ver también: [¿Cómo funciona el renderizado híbrido en Nuxt?](/es/q/nuxt-hybrid-rendering) · [¿Cómo desplegar una app Nuxt?](/es/q/nuxt-deployment) · [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching)
+
+## Referencias
+
+- [Rendering](https://nuxt.com/docs/getting-started/rendering) - Nuxt docs
+- [Route Rules](https://nuxt.com/docs/api/nuxt-config#routerules) - Nuxt docs
+- [Prerendering](https://nuxt.com/docs/getting-started/prerendering) - Nuxt docs

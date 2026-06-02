@@ -185,3 +185,11 @@ export default defineNuxtConfig({
 ```
 
 After disabling, you must import everything manually, including Vue APIs.
+
+See also: [What is the Nuxt directory structure?](/q/nuxt-directory-structure) · [How do Nuxt modules work?](/q/nuxt-modules) · [What is a composable?](/q/what-is-a-composable)
+
+## References
+
+- [Auto-imports](https://nuxt.com/docs/guide/concepts/auto-imports) - Nuxt docs
+- [composables/ Directory](https://nuxt.com/docs/guide/directory-structure/composables) - Nuxt docs
+- [unimport](https://github.com/unjs/unimport) - GitHub

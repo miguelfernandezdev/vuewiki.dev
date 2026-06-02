@@ -185,3 +185,11 @@ export default defineNuxtConfig({
 ```
 
 Tras desactivarlo, debes importar todo manualmente, incluidas las APIs de Vue.
+
+Ver también: [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure) · [¿Cómo funcionan los módulos de Nuxt?](/es/q/nuxt-modules) · [¿Qué es un composable?](/es/q/what-is-a-composable)
+
+## Referencias
+
+- [Auto-imports](https://nuxt.com/docs/guide/concepts/auto-imports) - Nuxt docs
+- [composables/ Directory](https://nuxt.com/docs/guide/directory-structure/composables) - Nuxt docs
+- [unimport](https://github.com/unjs/unimport) - GitHub

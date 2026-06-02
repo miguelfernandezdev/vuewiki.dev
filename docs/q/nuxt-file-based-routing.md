@@ -116,3 +116,11 @@ If your app is a single-page without routing (a widget, a dashboard), you can sk
 | `posts/[id].vue` | `/posts/:id` | `/posts/42` |
 | `posts/[...slug].vue` | `/posts/*` | `/posts/2024/my-article` |
 | `[[lang]]/index.vue` | `/:lang?` | `/` or `/es` |
+
+See also: [How does Vue Router work?](/q/vue-router-navigation-guards) · [What is the Nuxt directory structure?](/q/nuxt-directory-structure) · [What is Nuxt middleware?](/q/nuxt-middleware)
+
+## References
+
+- [Routing](https://nuxt.com/docs/getting-started/routing) - Nuxt docs
+- [pages/ Directory](https://nuxt.com/docs/guide/directory-structure/pages) - Nuxt docs
+- [Getting Started](https://router.vuejs.org/guide/) - Vue Router docs

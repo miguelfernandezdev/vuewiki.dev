@@ -209,3 +209,11 @@ const token = useCookie('auth-token')
 6. El router navega a /dashboard (desde el parámetro redirect)
 7. El guard comprueba isAuthenticated → true → permite la navegación
 ```
+
+Ver también: [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Cómo implementar autenticación en Nuxt?](/es/q/nuxt-authentication) · [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware)
+
+## Referencias
+
+- [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) - Vue Router docs
+- [Route Meta Fields](https://router.vuejs.org/guide/advanced/meta.html) - Vue Router docs
+- [Per-Route Guard](https://router.vuejs.org/guide/advanced/navigation-guards.html#Per-Route-Guard) - Vue Router docs
