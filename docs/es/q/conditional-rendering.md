@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives"]
 ---
 
-El renderizado condicional controla si los elementos aparecen en el DOM según el estado reactivo. Vue ofrece dos mecanismos: `v-if` (añade o elimina elementos) y `v-show` (alterna la propiedad CSS `display`).
+El renderizado condicional controla si los elementos aparecen en el DOM según el estado reactivo. Vue ofrece dos mecanismos: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (añade o elimina elementos) y [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (alterna la propiedad CSS `display`).
 
 ## v-if, v-else-if, v-else
 
@@ -90,3 +90,11 @@ Nunca pongas `v-if` y `v-for` en el mismo elemento. En Vue 3, `v-if` tiene mayor
 ```ts
 const activeItems = computed(() => items.value.filter(i => i.active))
 ```
+
+Ver también: [¿Cuál es la diferencia entre v-if y v-show?](/es/q/v-if-vs-v-show) · [¿Por qué no debes usar v-if con v-for?](/es/q/v-if-with-v-for)
+
+## Referencias
+
+- [Renderizado Condicional](https://vuejs.org/guide/essentials/conditional.html) - Docs de Vue.js
+- [v-if](https://vuejs.org/api/built-in-directives.html#v-if) - Docs de Vue.js
+- [v-show](https://vuejs.org/api/built-in-directives.html#v-show) - Docs de Vue.js

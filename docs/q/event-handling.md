@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives", "components"]
 ---
 
-Vue listens to DOM events with the `v-on` directive, shortened to `@`. You bind a handler directly in the template, and Vue takes care of attaching and removing the listener with the component's lifecycle.
+Vue listens to DOM events with the [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on) directive, shortened to `@`. You bind a handler directly in the template, and Vue takes care of attaching and removing the listener with the component's lifecycle.
 
 ```vue
 <template>
@@ -115,3 +115,10 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 | `.self` | Only fire if `event.target === element` |
 | `.passive` | `addEventListener({ passive: true })` for scroll performance |
 | `.capture` | Use capture mode instead of bubbling |
+
+See also: [What order should event modifiers go in?](/q/event-modifier-order) · [What is conditional rendering in Vue?](/q/conditional-rendering)
+
+## References
+
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs
+- [v-on](https://vuejs.org/api/built-in-directives.html#v-on) - Vue.js docs

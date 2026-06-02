@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["directives"]
 ---
 
-Las directivas personalizadas te dan acceso de bajo nivel a los elementos del DOM cuando las directivas integradas (`v-if`, `v-show`, `v-model`) no son suficientes. Son ideales para cosas como auto-focus, intersection observers o integración con librerías de terceros.
+Las [directivas personalizadas](https://vuejs.org/guide/reusability/custom-directives.html) te dan acceso de bajo nivel a los elementos del DOM cuando las directivas integradas (`v-if`, `v-show`, `v-model`) no son suficientes. Son ideales para cosas como auto-focus, intersection observers o integración con librerías de terceros.
 
 ## Sintaxis básica
 
@@ -129,3 +129,9 @@ app.directive('focus', {
 | UI reutilizable con template/estructura | Componente |
 
 Las directivas deben mantenerse simples. Si te encuentras gestionando estado complejo o emitiendo eventos dentro de una directiva, probablemente quieras un composable o un componente.
+
+Ver también: [¿Qué es un composable?](/es/q/what-is-a-composable)
+
+## Referencias
+
+- [Directivas Personalizadas](https://vuejs.org/guide/reusability/custom-directives.html) - Docs de Vue.js

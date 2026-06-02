@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["directives"]
 ---
 
-Custom directives give you low-level access to DOM elements when built-in directives (`v-if`, `v-show`, `v-model`) aren't enough. They're ideal for things like auto-focus, intersection observers, or third-party library integration.
+[Custom directives](https://vuejs.org/guide/reusability/custom-directives.html) give you low-level access to DOM elements when built-in directives (`v-if`, `v-show`, `v-model`) aren't enough. They're ideal for things like auto-focus, intersection observers, or third-party library integration.
 
 ## Basic syntax
 
@@ -129,3 +129,9 @@ app.directive('focus', {
 | Reusable UI with template/structure | Component |
 
 Directives should stay simple. If you find yourself managing complex state or emitting events inside a directive, you probably want a composable or a component instead.
+
+See also: [What is a composable?](/q/what-is-a-composable)
+
+## References
+
+- [Custom Directives](https://vuejs.org/guide/reusability/custom-directives.html) - Vue.js docs

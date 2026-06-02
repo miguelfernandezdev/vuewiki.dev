@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives"]
 ---
 
-Conditional rendering controls whether elements appear in the DOM based on reactive state. Vue provides two mechanisms: `v-if` (adds/removes elements) and `v-show` (toggles CSS `display`).
+Conditional rendering controls whether elements appear in the DOM based on reactive state. Vue provides two mechanisms: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (adds/removes elements) and [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (toggles CSS `display`).
 
 ## v-if, v-else-if, v-else
 
@@ -90,3 +90,11 @@ Never put `v-if` and `v-for` on the same element. In Vue 3, `v-if` has higher pr
 ```ts
 const activeItems = computed(() => items.value.filter(i => i.active))
 ```
+
+See also: [What's the difference between v-if and v-show?](/q/v-if-vs-v-show) · [Why shouldn't you use v-if with v-for?](/q/v-if-with-v-for)
+
+## References
+
+- [Conditional Rendering](https://vuejs.org/guide/essentials/conditional.html) - Vue.js docs
+- [v-if](https://vuejs.org/api/built-in-directives.html#v-if) - Vue.js docs
+- [v-show](https://vuejs.org/api/built-in-directives.html#v-show) - Vue.js docs

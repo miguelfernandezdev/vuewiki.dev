@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["directives", "migration"]
 ---
 
-`v-model` crea un enlace bidireccional entre los datos del padre y un componente hijo (o un elemento de formulario). En elementos nativos es azúcar sintáctico para un binding `:value` más un listener `@input`. En componentes, vincula un prop y escucha un evento de actualización.
+[`v-model`](https://vuejs.org/guide/components/v-model.html) crea un enlace bidireccional entre los datos del padre y un componente hijo (o un elemento de formulario). En elementos nativos es azúcar sintáctico para un binding `:value` más un listener `@input`. En componentes, vincula un prop y escucha un evento de actualización.
 
 ## v-model en elementos nativos
 
@@ -103,7 +103,7 @@ Los modificadores integrados funcionan en elementos nativos:
 <input v-model.trim="name" />   <!-- elimina espacios en blanco -->
 ```
 
-Los componentes pueden definir modificadores personalizados con `defineModel`:
+Los componentes pueden definir modificadores personalizados con [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
 ```vue
 <script setup>
@@ -122,3 +122,11 @@ const [model, modifiers] = defineModel<string>({
 <!-- Padre -->
 <CustomInput v-model.capitalize="text" />
 ```
+
+Ver también: [Usar múltiples bindings v-model](/es/q/multiple-v-model) · [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Cómo se crean modificadores v-model personalizados?](/es/q/custom-v-model-modifiers)
+
+## Referencias
+
+- [v-model en componentes](https://vuejs.org/guide/components/v-model.html) - Docs de Vue.js
+- [defineModel](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Docs de Vue.js
+- [Bindings de formularios](https://vuejs.org/guide/essentials/forms.html) - Docs de Vue.js

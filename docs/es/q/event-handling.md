@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives", "components"]
 ---
 
-Vue escucha eventos del DOM con la directiva `v-on`, abreviada como `@`. Enlazas un manejador directamente en el template, y Vue se encarga de adjuntar y eliminar el listener con el lifecycle del componente.
+Vue escucha eventos del DOM con la directiva [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on), abreviada como `@`. Enlazas un manejador directamente en el template, y Vue se encarga de adjuntar y eliminar el listener con el lifecycle del componente.
 
 ```vue
 <template>
@@ -115,3 +115,10 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 | `.self` | Solo dispara si `event.target === element` |
 | `.passive` | `addEventListener({ passive: true })` para rendimiento en scroll |
 | `.capture` | Usa el modo de captura en lugar de bubbling |
+
+Ver también: [¿En qué orden deben ir los modificadores de evento?](/es/q/event-modifier-order) · [¿Qué es el renderizado condicional en Vue?](/es/q/conditional-rendering)
+
+## Referencias
+
+- [Manejo de Eventos](https://vuejs.org/guide/essentials/event-handling.html) - Docs de Vue.js
+- [v-on](https://vuejs.org/api/built-in-directives.html#v-on) - Docs de Vue.js

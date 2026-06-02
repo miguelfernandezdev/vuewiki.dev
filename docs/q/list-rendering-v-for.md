@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives"]
 ---
 
-`v-for` iterates over arrays, objects, numbers, and strings to render a list of elements. It works like a `for...of` loop in JavaScript, but inside the template.
+[`v-for`](https://vuejs.org/guide/essentials/list.html) iterates over arrays, objects, numbers, and strings to render a list of elements. It works like a `for...of` loop in JavaScript, but inside the template.
 
 ## Arrays
 
@@ -111,3 +111,10 @@ items.value.push({ id: 4, name: 'Date' })
 // Replacement: assign the new array
 items.value = items.value.filter(i => i.name !== 'Banana')
 ```
+
+See also: [What's the purpose of :key in v-for?](/q/v-for-key)
+
+## References
+
+- [List Rendering](https://vuejs.org/guide/essentials/list.html) - Vue.js docs
+- [v-for](https://vuejs.org/api/built-in-directives.html#v-for) - Vue.js docs

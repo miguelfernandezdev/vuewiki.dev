@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["directives"]
 ---
 
-`v-for` itera sobre arrays, objetos, números y strings para renderizar una lista de elementos. Funciona como un bucle `for...of` en JavaScript, pero dentro del template.
+[`v-for`](https://vuejs.org/guide/essentials/list.html) itera sobre arrays, objetos, números y strings para renderizar una lista de elementos. Funciona como un bucle `for...of` en JavaScript, pero dentro del template.
 
 ## Arrays
 
@@ -111,3 +111,10 @@ items.value.push({ id: 4, name: 'Date' })
 // Reemplazo: asigna el nuevo array
 items.value = items.value.filter(i => i.name !== 'Banana')
 ```
+
+Ver también: [¿Para qué sirve :key en v-for?](/es/q/v-for-key)
+
+## Referencias
+
+- [Renderizado de Listas](https://vuejs.org/guide/essentials/list.html) - Docs de Vue.js
+- [v-for](https://vuejs.org/api/built-in-directives.html#v-for) - Docs de Vue.js

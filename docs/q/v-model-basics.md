@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["directives", "migration"]
 ---
 
-`v-model` creates a two-way binding between a parent's data and a child component (or a form element). On native elements it's syntactic sugar for a `:value` binding plus an `@input` listener. On components, it binds a prop and listens for an update event.
+[`v-model`](https://vuejs.org/guide/components/v-model.html) creates a two-way binding between a parent's data and a child component (or a form element). On native elements it's syntactic sugar for a `:value` binding plus an `@input` listener. On components, it binds a prop and listens for an update event.
 
 ## v-model on native elements
 
@@ -103,7 +103,7 @@ Built-in modifiers work on native elements:
 <input v-model.trim="name" />   <!-- trim whitespace -->
 ```
 
-Components can define custom modifiers with `defineModel`:
+Components can define custom modifiers with [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
 ```vue
 <script setup>
@@ -122,3 +122,11 @@ const [model, modifiers] = defineModel<string>({
 <!-- Parent -->
 <CustomInput v-model.capitalize="text" />
 ```
+
+See also: [Using multiple v-model bindings](/q/multiple-v-model) · [How does v-model work on custom components?](/q/v-model-custom-components) · [How do you create custom v-model modifiers?](/q/custom-v-model-modifiers)
+
+## References
+
+- [Component v-model](https://vuejs.org/guide/components/v-model.html) - Vue.js docs
+- [defineModel](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs
+- [Form Input Bindings](https://vuejs.org/guide/essentials/forms.html) - Vue.js docs
