@@ -1,17 +1,25 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
-import { computed } from 'vue'
+import { computed, watch, onMounted } from 'vue'
 import { useI18n } from './i18n'
 import { useReadTracker } from './useReadTracker'
 
 const { frontmatter, lang } = useData()
 const { t } = useI18n()
 const route = useRoute()
-const { isRead, toggleRead } = useReadTracker()
+const { isRead, markRead, toggleRead } = useReadTracker()
 
 const isQuestion = computed(() => !!frontmatter.value.difficulty)
 const backUrl = computed(() => lang.value === 'es' ? '/es/' : '/')
 const questionUrl = computed(() => route.path)
+
+onMounted(() => {
+  if (isQuestion.value) markRead(questionUrl.value)
+})
+
+watch(() => route.path, () => {
+  if (isQuestion.value) markRead(questionUrl.value)
+})
 
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',

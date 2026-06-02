@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
 import { useReadTracker } from './useReadTracker'
+import FooterCta from './FooterCta.vue'
 
 const { lang } = useData()
 const { t } = useI18n()
@@ -122,10 +123,14 @@ const difficultyClass: Record<string, string> = {
     </div>
 
     <section class="content">
-      <div class="read-counter">
-        <span class="read-badge">
-          {{ t('header.read', { read: readCount, total: questions.length }) }}
-        </span>
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            :style="{ width: questions.length ? `${(readCount / questions.length) * 100}%` : '0%' }"
+          />
+        </div>
+        <span class="progress-label">{{ readCount }}/{{ questions.length }}</span>
       </div>
 
       <div class="filters">
@@ -202,7 +207,11 @@ const difficultyClass: Record<string, string> = {
         >
           <div class="question-content">
             <div class="question-title-row">
-              <span :class="['read-dot', { read: isRead(q.url) }]" />
+              <span :class="['read-check', { read: isRead(q.url) }]">
+                <svg v-if="isRead(q.url)" width="12" height="12" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <span class="question-title">{{ q.title }}</span>
             </div>
             <div class="question-tags">
@@ -225,6 +234,8 @@ const difficultyClass: Record<string, string> = {
         {{ t('home.noResults') }}
       </p>
     </section>
+
+    <FooterCta />
   </div>
 </template>
 
@@ -264,20 +275,33 @@ const difficultyClass: Record<string, string> = {
   margin-top: 1rem;
 }
 
-.read-counter {
+.progress-bar-wrapper {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 0.625rem;
   margin-bottom: 0.75rem;
 }
 
-.read-badge {
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--vp-c-bg-soft);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--vp-c-green-2);
+  transition: width 0.3s ease;
+}
+
+.progress-label {
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.25rem 0.625rem;
-  border-radius: 9999px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
-  border: 1px solid var(--vp-c-border);
+  color: var(--vp-c-text-3);
+  white-space: nowrap;
 }
 
 .filters {
@@ -567,17 +591,23 @@ const difficultyClass: Record<string, string> = {
   gap: 0.5rem;
 }
 
-.read-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--vp-c-border);
+.read-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--vp-c-border);
   flex-shrink: 0;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  color: transparent;
 }
 
-.read-dot.read {
+.read-check.read {
   background: var(--vp-c-green-2);
+  border-color: var(--vp-c-green-2);
+  color: white;
 }
 
 .question-card.is-read .question-title {

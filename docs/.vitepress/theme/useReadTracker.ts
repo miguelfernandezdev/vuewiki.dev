@@ -24,6 +24,14 @@ export function useReadTracker() {
     return readSet.value.has(url)
   }
 
+  function markRead(url: string) {
+    if (readSet.value.has(url)) return
+    const next = new Set(readSet.value)
+    next.add(url)
+    readSet.value = next
+    saveToStorage()
+  }
+
   function toggleRead(url: string) {
     const next = new Set(readSet.value)
     if (next.has(url)) {
@@ -54,5 +62,5 @@ export function useReadTracker() {
     window.removeEventListener('vuewiki-read-change', onCustomChange)
   })
 
-  return { readCount, isRead, toggleRead }
+  return { readCount, isRead, markRead, toggleRead }
 }
