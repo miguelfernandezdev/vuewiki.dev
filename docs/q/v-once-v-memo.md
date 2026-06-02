@@ -114,3 +114,11 @@ The item re-renders only when its selection or editing state changes.
 | Small, simple elements | Neither, the optimization isn't worth it |
 
 Profile with Vue DevTools before adding these directives. They're a targeted optimization for measured bottlenecks, not something to sprinkle everywhere.
+
+See also: [How would you optimize performance in a Vue app?](/q/performance-optimization) · [How would you diagnose a slow page?](/q/diagnose-slow-page) · [How do props stability optimizations work?](/q/perf-props-stability)
+
+## References
+
+- [v-once](https://vuejs.org/api/built-in-directives.html#v-once) - Vue.js docs
+- [v-memo](https://vuejs.org/api/built-in-directives.html#v-memo) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs

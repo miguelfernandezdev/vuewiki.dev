@@ -57,3 +57,11 @@ Otra limitación: `v-show` no admite `v-else`.
 | Alternado frecuente, elemento único | `v-show` en el elemento |
 | Alternado frecuente, necesitas "else" | Dos `v-show` con condiciones negadas |
 | Ramas v-else / v-else-if | `v-if` / `v-else` |
+
+Ver también: [¿Por qué no se puede usar v-if y v-for en el mismo elemento?](/es/q/v-if-with-v-for) · [¿Qué son los modificadores de eventos?](/es/q/event-modifier-order) · [¿Qué es v-once y v-memo?](/es/q/v-once-v-memo)
+
+## Referencias
+
+- [v-show](https://vuejs.org/api/built-in-directives.html#v-show) - Vue.js docs
+- [v-if vs v-show](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show) - Vue.js docs
+- [Conditional Rendering](https://vuejs.org/guide/essentials/conditional.html) - Vue.js docs

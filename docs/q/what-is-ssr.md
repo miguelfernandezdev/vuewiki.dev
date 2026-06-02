@@ -114,3 +114,11 @@ No manual server setup, no separate entry files, no state serialization code. Th
 | Dashboard behind login | No (CSR is simpler, no SEO needed) |
 | Real-time collaborative app | Maybe (SSR for initial load, then CSR) |
 | Static site with no dynamic data | SSG (prerender at build time) |
+
+See also: [What is hydration?](/q/what-is-hydration) · [What causes SSR hydration mismatches?](/q/ssr-hydration-mismatch) · [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes)
+
+## References
+
+- [Server-Side Rendering](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Rendering](https://nuxt.com/docs/getting-started/rendering) - Nuxt docs
+- [Vite SSR](https://vite.dev/guide/ssr.html) - Vite docs

@@ -165,3 +165,11 @@ function renderItems(items: string[]): VNode[] {
 | `InjectionKey<T>` | Type-safe provide/inject key |
 | `Ref<T>` / `ComputedRef<T>` | Explicit ref types for function signatures |
 | `VNode` | Virtual DOM node (render functions) |
+
+See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [What is the Virtual DOM?](/q/virtual-dom) · [What is a composable?](/q/what-is-a-composable)
+
+## References
+
+- [TypeScript with Composition API](https://vuejs.org/guide/typescript/composition-api.html) - Vue.js docs
+- [Utility Types](https://vuejs.org/api/utility-types.html) - Vue.js docs
+- [TypeScript](https://vuejs.org/guide/typescript/overview.html) - Vue.js docs

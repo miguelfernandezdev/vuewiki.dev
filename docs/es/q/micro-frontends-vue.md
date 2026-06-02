@@ -170,3 +170,11 @@ apps/
 ## Ventajas e inconvenientes
 
 Los micro-frontends añaden complejidad: gestión de dependencias compartidas, comunicación entre apps, coordinación del enrutamiento, sistema de diseño consistente y orquestación de despliegues. Para la mayoría de los equipos, un monolito bien estructurado con rutas cargadas de forma diferida y límites de módulos claros es más sencillo y rinde mejor. Los micro-frontends tienen sentido cuando el escalado organizativo (muchos equipos, despliegues independientes) supera el coste técnico.
+
+Ver también: [¿Cómo arquitecturar una app Vue 3 para escalar entre múltiples equipos?](/es/q/scale-vue-multiple-teams) · [¿Cómo estructurar un proyecto Vue grande?](/es/q/large-project-structure) · [¿Qué son las layers de Nuxt?](/es/q/nuxt-layers)
+
+## Referencias
+
+- [Web Components](https://vuejs.org/guide/extras/web-components.html) - Vue.js docs
+- [Module Federation](https://module-federation.io/) - Module Federation docs
+- [Micro Frontends](https://micro-frontends.org/) - micro-frontends.org

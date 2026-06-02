@@ -186,3 +186,11 @@ Prefer composable components over configurable ones: slots for customization, sm
 | Business logic in components | Extract to pure functions or composables |
 | Event bus | Use props/emit, provide/inject, or Pinia |
 | Mega-config components | Composition with slots and smaller components |
+
+See also: [How would you structure a large Vue project?](/q/large-project-structure) · [How do you architect a Vue 3 app to scale across multiple teams?](/q/scale-vue-multiple-teams) · [What is a composable?](/q/what-is-a-composable)
+
+## References
+
+- [Style Guide](https://vuejs.org/style-guide/) - Vue.js docs
+- [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs

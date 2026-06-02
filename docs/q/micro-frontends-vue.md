@@ -170,3 +170,11 @@ apps/
 ## Tradeoffs
 
 Micro-frontends add complexity: shared dependency management, inter-app communication, routing coordination, consistent design system, and deployment orchestration. For most teams, a well-structured monolith with lazy-loaded routes and clear module boundaries is simpler and performs better. Micro-frontends make sense when organizational scaling (many teams, independent deploys) outweighs the technical cost.
+
+See also: [How do you architect a Vue 3 app to scale across multiple teams?](/q/scale-vue-multiple-teams) · [How would you structure a large Vue project?](/q/large-project-structure) · [What are Nuxt layers?](/q/nuxt-layers)
+
+## References
+
+- [Web Components](https://vuejs.org/guide/extras/web-components.html) - Vue.js docs
+- [Module Federation](https://module-federation.io/) - Module Federation docs
+- [Micro Frontends](https://micro-frontends.org/) - micro-frontends.org

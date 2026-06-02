@@ -89,3 +89,11 @@ If the modifier chain gets confusing, split the logic into explicit handlers:
 ```
 
 Clarity beats cleverness.
+
+See also: [How do you inject raw HTML in Vue?](/q/v-html-xss) · [Why can't you use v-if and v-for on the same element?](/q/v-if-with-v-for) · [Why doesn't v-show work on template elements?](/q/v-show-template-limitation)
+
+## References
+
+- [Event Modifiers](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers) - Vue.js docs
+- [Key Modifiers](https://vuejs.org/guide/essentials/event-handling.html#key-modifiers) - Vue.js docs
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs

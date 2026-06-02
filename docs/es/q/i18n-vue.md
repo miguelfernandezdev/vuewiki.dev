@@ -232,3 +232,11 @@ Es más sencillo, pero carece de pluralización, interpolación, formateo de fec
 | Nuxt con rutas localizadas y SEO | @nuxtjs/i18n |
 | App pequeña, pocas cadenas, sin reglas de plural | Composable DIY |
 | Sitio estático con pocas páginas por idioma | Archivos markdown separados por locale |
+
+Ver también: [¿Cómo funciona el sistema de plugins de Vue?](/es/q/plugin-system) · [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo funciona el routing basado en archivos en Nuxt?](/es/q/nuxt-file-based-routing)
+
+## Referencias
+
+- [vue-i18n](https://vue-i18n.intlify.dev/) - vue-i18n docs
+- [@nuxtjs/i18n](https://i18n.nuxtjs.org/) - Nuxt i18n docs
+- [Intl API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) - MDN

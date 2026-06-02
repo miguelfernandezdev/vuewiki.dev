@@ -89,3 +89,11 @@ Si la cadena de modificadores se vuelve confusa, divide la lógica en manejadore
 ```
 
 La claridad es más valiosa que la brevedad.
+
+Ver también: [¿Cómo inyectar HTML crudo en Vue?](/es/q/v-html-xss) · [¿Por qué no se puede usar v-if y v-for en el mismo elemento?](/es/q/v-if-with-v-for) · [¿Por qué v-show no funciona en elementos template?](/es/q/v-show-template-limitation)
+
+## Referencias
+
+- [Event Modifiers](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers) - Vue.js docs
+- [Key Modifiers](https://vuejs.org/guide/essentials/event-handling.html#key-modifiers) - Vue.js docs
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs

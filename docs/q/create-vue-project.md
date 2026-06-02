@@ -121,3 +121,11 @@ createApp(App).mount('#app')
 ```
 
 That's four files. Everything else (`create-vue` adds) is optional tooling on top.
+
+See also: [What is Vite?](/q/what-is-vite) · [How would you structure a large Vue project?](/q/large-project-structure) · [How do Vue DevTools help with debugging?](/q/vue-devtools)
+
+## References
+
+- [Quick Start](https://vuejs.org/guide/quick-start.html) - Vue.js docs
+- [Getting Started](https://vite.dev/guide/) - Vite docs
+- [create-vue](https://github.com/vuejs/create-vue) - GitHub

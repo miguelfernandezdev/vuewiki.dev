@@ -114,3 +114,11 @@ Sin configuración manual del servidor, sin archivos de entrada separados, sin c
 | Panel de control detrás de login | No (CSR es más simple, sin SEO necesario) |
 | App colaborativa en tiempo real | Quizás (SSR para la carga inicial, luego CSR) |
 | Sitio estático sin datos dinámicos | SSG (prerenderizar en tiempo de compilación) |
+
+Ver también: [¿Qué es la hidratación?](/es/q/what-is-hydration) · [¿Cómo se resuelven los desajustes de hidratación?](/es/q/ssr-hydration-mismatch) · [¿Cuáles son los modos de renderizado en Nuxt?](/es/q/nuxt-rendering-modes)
+
+## Referencias
+
+- [Server-Side Rendering](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Rendering Modes](https://nuxt.com/docs/guide/concepts/rendering) - Nuxt docs
+- [Vue Server Renderer](https://vuejs.org/api/ssr.html) - Vue.js docs

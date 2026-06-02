@@ -157,3 +157,11 @@ Después de cada corrección, vuelve a ejecutar el trace de rendimiento y la aud
 ## La estructura para la entrevista
 
 Al responder esta pregunta en una entrevista, sigue el proceso en orden: mide, red, bundle, reactividad, renderizado, mide de nuevo. Recorrer un proceso de diagnóstico estructurado demuestra más madurez técnica que enumerar optimizaciones al azar.
+
+Ver también: [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization) · [¿Qué es v-once y v-memo?](/es/q/v-once-v-memo) · [¿Cómo virtualizar una lista?](/es/q/list-virtualization) · [¿Qué es el tree-shaking?](/es/q/tree-shaking-vue3)
+
+## Referencias
+
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [Lighthouse](https://developer.chrome.com/docs/lighthouse/) - Chrome docs
+- [Web Vitals](https://web.dev/articles/vitals) - web.dev

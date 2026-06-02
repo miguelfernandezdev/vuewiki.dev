@@ -122,3 +122,11 @@ export default defineConfig({
 ```
 
 This generates an interactive treemap showing each module's size in the final bundle, making it easy to spot unused code that wasn't tree-shaken.
+
+See also: [What is Vite?](/q/what-is-vite) · [How would you implement lazy loading and code splitting?](/q/lazy-loading-code-splitting) · [How would you optimize performance in a Vue app?](/q/performance-optimization)
+
+## References
+
+- [Tree-shaking](https://vuejs.org/guide/best-practices/performance.html#reduce-bundle-size) - Vue.js docs
+- [Build Optimizations](https://vite.dev/guide/build.html) - Vite docs
+- [Tooling](https://vuejs.org/guide/scaling-up/tooling.html) - Vue.js docs

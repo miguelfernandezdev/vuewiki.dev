@@ -122,3 +122,11 @@ export default defineConfig({
 ```
 
 Genera un mapa de árbol interactivo que muestra el tamaño de cada módulo en el bundle final, facilitando la detección de código no utilizado que no fue eliminado por el tree-shaking.
+
+Ver también: [¿Qué es Vite?](/es/q/what-is-vite) · [¿Cómo implementar lazy loading y code splitting?](/es/q/lazy-loading-code-splitting) · [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization)
+
+## Referencias
+
+- [Tree-shaking](https://vuejs.org/guide/best-practices/performance.html#reduce-bundle-size) - Vue.js docs
+- [Build Optimizations](https://vite.dev/guide/build.html) - Vite docs
+- [Tooling](https://vuejs.org/guide/scaling-up/tooling.html) - Vue.js docs

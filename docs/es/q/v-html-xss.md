@@ -136,3 +136,11 @@ div :deep(p) { color: red; }
 | Texto enriquecido de tu CMS | `v-html` (fuente de confianza) |
 | Texto enriquecido generado por el usuario | DOMPurify + `v-html` |
 | Templates Vue dinámicos | Funciones render o compilador en tiempo de ejecución |
+
+Ver también: [¿Qué son los modificadores de eventos?](/es/q/event-modifier-order) · [¿Cómo implementar manejo global de errores?](/es/q/global-error-handling) · [¿Qué es el Virtual DOM?](/es/q/virtual-dom)
+
+## Referencias
+
+- [v-html](https://vuejs.org/api/built-in-directives.html#v-html) - Vue.js docs
+- [Security](https://vuejs.org/guide/best-practices/security.html) - Vue.js docs
+- [DOMPurify](https://github.com/cure53/DOMPurify) - GitHub

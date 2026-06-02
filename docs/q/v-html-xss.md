@@ -136,3 +136,11 @@ div :deep(p) { color: red; }
 | Rich text from your CMS | `v-html` (trusted source) |
 | User-generated rich text | DOMPurify + `v-html` |
 | Dynamic Vue templates | Render functions or runtime compiler |
+
+See also: [What are event modifiers?](/q/event-modifier-order) · [How would you implement global error handling?](/q/global-error-handling) · [What is the Virtual DOM?](/q/virtual-dom)
+
+## References
+
+- [v-html](https://vuejs.org/api/built-in-directives.html#v-html) - Vue.js docs
+- [Security](https://vuejs.org/guide/best-practices/security.html) - Vue.js docs
+- [DOMPurify](https://github.com/cure53/DOMPurify) - GitHub

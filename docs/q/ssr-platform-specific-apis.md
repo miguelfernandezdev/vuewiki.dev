@@ -167,3 +167,11 @@ export function loadConfig() {
 | `onUnmounted` | No | Yes |
 
 `setup` runs everywhere, so that's where browser API access is dangerous. Everything from `onBeforeMount` onward is client-only.
+
+See also: [What is SSR?](/q/what-is-ssr) · [What causes SSR hydration mismatches?](/q/ssr-hydration-mismatch) · [What is hydration?](/q/what-is-hydration)
+
+## References
+
+- [SSR](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Lifecycle Hooks](https://vuejs.org/api/composition-api-lifecycle.html) - Vue.js docs
+- [Client-Only Components](https://nuxt.com/docs/api/components/client-only) - Nuxt docs

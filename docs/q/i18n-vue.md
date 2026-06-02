@@ -232,3 +232,11 @@ This is simpler but lacks pluralization, interpolation, date formatting, and the
 | Nuxt with localized routes and SEO | @nuxtjs/i18n |
 | Small app, few strings, no plural rules | DIY composable |
 | Static site with a few pages per language | Separate markdown files per locale |
+
+See also: [How does the Vue plugin system work?](/q/plugin-system) · [What is a composable?](/q/what-is-a-composable) · [How does Nuxt file-based routing work?](/q/nuxt-file-based-routing)
+
+## References
+
+- [vue-i18n](https://vue-i18n.intlify.dev/) - vue-i18n docs
+- [@nuxtjs/i18n](https://i18n.nuxtjs.org/) - Nuxt i18n docs
+- [Intl API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) - MDN

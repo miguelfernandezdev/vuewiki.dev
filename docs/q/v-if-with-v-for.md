@@ -62,3 +62,11 @@ Use `<template v-for>` with `v-if` on a child element:
 ```
 
 The ESLint rule `vue/no-use-v-if-with-v-for` catches this automatically.
+
+See also: [What are event modifiers?](/q/event-modifier-order) · [Why doesn't v-show work on template elements?](/q/v-show-template-limitation) · [What is v-once and v-memo?](/q/v-once-v-memo)
+
+## References
+
+- [v-if with v-for](https://vuejs.org/guide/essentials/list.html#v-for-with-v-if) - Vue.js docs
+- [Style Guide - Priority A](https://vuejs.org/style-guide/rules-essential.html#avoid-v-if-with-v-for) - Vue.js docs
+- [List Rendering](https://vuejs.org/guide/essentials/list.html) - Vue.js docs

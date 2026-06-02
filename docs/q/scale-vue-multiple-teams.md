@@ -155,3 +155,11 @@ Each package has its own `package.json`, tests, and build pipeline. The `app` pa
 | Features don't import each other's internals | Use shared contracts (composables, types, events) |
 | Lazy-loaded routes per feature | Each feature is a separate chunk, reducing initial load |
 | Lint rules enforce boundaries | Humans forget, linters don't |
+
+See also: [How would you structure a large Vue project?](/q/large-project-structure) · [How would you structure a micro-frontend with Vue?](/q/micro-frontends-vue) · [What are common anti-patterns in large Vue codebases?](/q/vue-anti-patterns)
+
+## References
+
+- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs
+- [Style Guide](https://vuejs.org/style-guide/) - Vue.js docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs

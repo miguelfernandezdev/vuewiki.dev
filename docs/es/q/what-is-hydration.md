@@ -147,3 +147,11 @@ Nuxt permite diferir la hidratación de componentes específicos para reducir el
 ```
 
 El HTML del componente es visible desde el SSR, pero Vue solo lo hidrata (adjunta el JS) cuando se activa el trigger. Los componentes por debajo del pliegue o no críticos pueden hidratarse más tarde sin bloquear la página principal.
+
+Ver también: [¿Qué es el Server Side Rendering?](/es/q/what-is-ssr) · [¿Cómo se resuelven los desajustes de hidratación?](/es/q/ssr-hydration-mismatch) · [¿Cómo se gestionan las APIs específicas de la plataforma en SSR?](/es/q/ssr-platform-specific-apis)
+
+## Referencias
+
+- [Server-Side Rendering](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Hydration Mismatch](https://vuejs.org/guide/scaling-up/ssr.html#hydration-mismatch) - Vue.js docs
+- [Lifecycle Hooks in SSR](https://nuxt.com/docs/getting-started/server#lifecycle-hooks) - Nuxt docs

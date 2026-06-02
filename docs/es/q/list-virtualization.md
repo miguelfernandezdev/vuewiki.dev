@@ -126,3 +126,11 @@ const virtualizer = useVirtualizer({
 - Layouts de impresión donde todo el contenido debe renderizarse
 - Contenido crítico para SEO que necesita estar en el HTML inicial
 - Escenarios de accesibilidad donde todos los elementos deben ser alcanzables por lectores de pantalla a la vez
+
+Ver también: [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization) · [¿Cómo funcionan las optimizaciones de estabilidad de props?](/es/q/perf-props-stability) · [¿Cómo diagnosticar una página lenta?](/es/q/diagnose-slow-page)
+
+## Referencias
+
+- [Performance](https://vuejs.org/guide/best-practices/performance.html#virtualize-large-lists) - Vue.js docs
+- [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) - GitHub
+- [@tanstack/virtual](https://tanstack.com/virtual/latest) - TanStack docs

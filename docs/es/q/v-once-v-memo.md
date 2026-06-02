@@ -114,3 +114,11 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 | Elementos pequeños y simples | Ninguno, la optimización no vale la pena |
 
 Perfila con Vue DevTools antes de añadir estas directivas. Son una optimización concreta para cuellos de botella medidos, no algo que debas usar a la ligera.
+
+Ver también: [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization) · [¿Cómo diagnosticar una página lenta?](/es/q/diagnose-slow-page) · [¿Cómo funcionan las optimizaciones de estabilidad de props?](/es/q/perf-props-stability)
+
+## Referencias
+
+- [v-once](https://vuejs.org/api/built-in-directives.html#v-once) - Vue.js docs
+- [v-memo](https://vuejs.org/api/built-in-directives.html#v-memo) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs

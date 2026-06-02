@@ -100,3 +100,11 @@ Haz clic en el botón "seleccionar componente" en las DevTools y luego haz clic 
 | La acción de Pinia no funciona | Comprueba la línea de tiempo para llamadas a acciones y errores |
 | El componente se re-renderiza demasiado | Usa la pestaña de rendimiento para encontrar renders excesivos |
 | El evento no llega al padre | Comprueba los eventos emitidos en el componente hijo |
+
+Ver también: [¿Cómo diagnosticar una página lenta?](/es/q/diagnose-slow-page) · [¿Cómo depurar peticiones SSR?](/es/q/debug-ssr-requests) · [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization)
+
+## Referencias
+
+- [Vue DevTools](https://devtools.vuejs.org/) - Vue DevTools docs
+- [Debugging](https://vuejs.org/guide/scaling-up/tooling.html#browser-devtools) - Vue.js docs
+- [Pinia DevTools](https://pinia.vuejs.org/core-concepts/#devtools) - Pinia docs

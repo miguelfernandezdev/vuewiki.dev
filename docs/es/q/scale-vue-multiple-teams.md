@@ -155,3 +155,11 @@ Cada paquete tiene su propio `package.json`, tests y pipeline de build. El paque
 | Las features no importan internos de otras features | Usar contratos compartidos (composables, tipos, eventos) |
 | Rutas con lazy loading por feature | Cada feature es un chunk separado, reduciendo la carga inicial |
 | Las reglas de lint refuerzan los límites | Los humanos olvidan, los linters no |
+
+Ver también: [¿Cómo estructurar un proyecto Vue grande?](/es/q/large-project-structure) · [¿Cómo estructurar un micro-frontend con Vue?](/es/q/micro-frontends-vue) · [¿Cuáles son los anti-patrones comunes en codebases Vue grandes?](/es/q/vue-anti-patterns)
+
+## Referencias
+
+- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs
+- [Style Guide](https://vuejs.org/style-guide/) - Vue.js docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs

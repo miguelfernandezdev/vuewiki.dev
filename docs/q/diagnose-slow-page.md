@@ -157,3 +157,11 @@ After each fix, re-run the Performance trace and Lighthouse audit. Compare TTI, 
 ## The interview structure
 
 When answering this question in an interview, follow the process in order: measure, network, bundle, reactivity, rendering, measure again. Walking through a structured diagnostic process shows more engineering maturity than listing random optimizations.
+
+See also: [How would you optimize performance in a Vue app?](/q/performance-optimization) · [What is v-once and v-memo?](/q/v-once-v-memo) · [How would you virtualize a list?](/q/list-virtualization) · [What is tree-shaking?](/q/tree-shaking-vue3)
+
+## References
+
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [Lighthouse](https://developer.chrome.com/docs/lighthouse/) - Chrome docs
+- [Web Vitals](https://web.dev/articles/vitals) - web.dev

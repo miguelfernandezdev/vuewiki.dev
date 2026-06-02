@@ -57,3 +57,11 @@ Another limitation: `v-show` does not support `v-else`.
 | Frequent toggle, single element | `v-show` on the element |
 | Frequent toggle, need "else" | Two `v-show` with negated conditions |
 | v-else / v-else-if branches | `v-if` / `v-else` |
+
+See also: [Why can't you use v-if and v-for on the same element?](/q/v-if-with-v-for) · [What are event modifiers?](/q/event-modifier-order) · [What is v-once and v-memo?](/q/v-once-v-memo)
+
+## References
+
+- [v-show](https://vuejs.org/api/built-in-directives.html#v-show) - Vue.js docs
+- [v-if vs v-show](https://vuejs.org/guide/essentials/conditional.html#v-if-vs-v-show) - Vue.js docs
+- [Conditional Rendering](https://vuejs.org/guide/essentials/conditional.html) - Vue.js docs

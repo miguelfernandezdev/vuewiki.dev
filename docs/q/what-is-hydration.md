@@ -147,3 +147,11 @@ Nuxt lets you defer hydration of specific components to reduce TTI:
 ```
 
 The component's HTML is visible from SSR, but Vue only hydrates it (attaches JS) when the trigger fires. Content below the fold or non-critical components can hydrate later without blocking the main page.
+
+See also: [What is SSR?](/q/what-is-ssr) · [What causes SSR hydration mismatches?](/q/ssr-hydration-mismatch) · [How do you avoid platform-specific API issues in SSR?](/q/ssr-platform-specific-apis)
+
+## References
+
+- [Client Hydration](https://vuejs.org/guide/scaling-up/ssr.html#client-hydration) - Vue.js docs
+- [Rendering](https://nuxt.com/docs/getting-started/rendering) - Nuxt docs
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs

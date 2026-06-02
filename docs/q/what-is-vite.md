@@ -134,3 +134,11 @@ export default defineNuxtConfig({
   }
 })
 ```
+
+See also: [What is tree-shaking?](/q/tree-shaking-vue3) · [How would you implement lazy loading and code splitting?](/q/lazy-loading-code-splitting) · [How do you create a Vue project?](/q/create-vue-project)
+
+## References
+
+- [Getting Started](https://vite.dev/guide/) - Vite docs
+- [Why Vite](https://vite.dev/guide/why.html) - Vite docs
+- [Tooling](https://vuejs.org/guide/scaling-up/tooling.html) - Vue.js docs

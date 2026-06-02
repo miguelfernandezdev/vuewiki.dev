@@ -77,3 +77,11 @@ export default defineConfig({
 | "Hydration text content mismatch" | Fechas, valores aleatorios, diferencias de zona horaria |
 | "Hydration children mismatch" | HTML anidado inválido, renderizado condicional |
 | "Hydration node mismatch" | Se renderiza un elemento completamente distinto |
+
+Ver también: [¿Qué es la hydration?](/es/q/what-is-hydration) · [¿Qué es SSR?](/es/q/what-is-ssr) · [¿Cómo evitar problemas con APIs específicas de plataforma en SSR?](/es/q/ssr-platform-specific-apis)
+
+## Referencias
+
+- [SSR Hydration Mismatch](https://vuejs.org/guide/scaling-up/ssr.html#hydration) - Vue.js docs
+- [Client-Only Components](https://nuxt.com/docs/api/components/client-only) - Nuxt docs
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs

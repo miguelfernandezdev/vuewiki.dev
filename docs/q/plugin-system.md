@@ -135,3 +135,11 @@ app.use(i18nPlugin, {
 | Global components, directives, or properties | Plugin |
 | Reusable logic consumed by individual components | Composable |
 | Third-party library integration (analytics, i18n, HTTP) | Plugin that provides, composable that consumes |
+
+See also: [What is a composable?](/q/what-is-a-composable) · [How would you handle i18n in Vue?](/q/i18n-vue) · [How would you structure a large Vue project?](/q/large-project-structure)
+
+## References
+
+- [Plugins](https://vuejs.org/guide/reusability/plugins.html) - Vue.js docs
+- [app.use()](https://vuejs.org/api/application.html#app-use) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs

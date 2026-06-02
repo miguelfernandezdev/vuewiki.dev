@@ -203,3 +203,11 @@ app.config.errorHandler (captura global)
         ↓ en Nuxt
 error.vue (errores fatales a nivel de página)
 ```
+
+Ver también: [¿Cómo depurar peticiones SSR?](/es/q/debug-ssr-requests) · [¿Qué causa los errores de hydration mismatch en SSR?](/es/q/ssr-hydration-mismatch) · [¿Cómo funciona el sistema de plugins de Vue?](/es/q/plugin-system)
+
+## Referencias
+
+- [errorHandler](https://vuejs.org/api/application.html#app-config-errorhandler) - Vue.js docs
+- [onErrorCaptured](https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured) - Vue.js docs
+- [Error Handling](https://nuxt.com/docs/getting-started/error-handling) - Nuxt docs

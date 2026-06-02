@@ -208,3 +208,11 @@ test: {
   setupFiles: ['./src/test/setup.ts'] // configuración global (p.ej. matchers personalizados)
 }
 ```
+
+Ver también: [¿Cómo se testean componentes Vue con Vitest?](/es/q/testing-with-vitest) · [¿Qué es Vite?](/es/q/what-is-vite) · [¿Cómo ayudan las Vue DevTools a depurar?](/es/q/vue-devtools)
+
+## Referencias
+
+- [Vitest Configuration](https://vitest.dev/config/) - Vitest docs
+- [Testing](https://vuejs.org/guide/scaling-up/testing.html) - Vue.js docs
+- [Vue Test Utils](https://test-utils.vuejs.org/) - Vue Test Utils docs
