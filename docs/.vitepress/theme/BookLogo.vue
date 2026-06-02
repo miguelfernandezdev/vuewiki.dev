@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const isHovered = ref(false)
 const isVisible = ref(false)
+const tiltX = ref(0)
+const tiltY = ref(0)
 const wrapper = ref<HTMLElement>()
 
 onMounted(() => {
@@ -17,6 +19,26 @@ onMounted(() => {
   onUnmounted(() => observer.disconnect())
 })
 
+function onMouseMove(e: MouseEvent) {
+  if (!wrapper.value) return
+  const rect = wrapper.value.getBoundingClientRect()
+  const x = (e.clientX - rect.left) / rect.width
+  const y = (e.clientY - rect.top) / rect.height
+  tiltY.value = (x - 0.5) * 24
+  tiltX.value = (0.5 - y) * 16
+}
+
+function onMouseLeave() {
+  isHovered.value = false
+  tiltX.value = 0
+  tiltY.value = 0
+}
+
+const svgStyle = computed(() => ({
+  transform: `perspective(600px) rotateX(${tiltX.value}deg) rotateY(${tiltY.value}deg)`,
+  transition: isHovered.value ? 'transform 0.1s ease-out' : 'transform 0.4s ease-out',
+}))
+
 const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z'
 </script>
 
@@ -25,12 +47,14 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
     ref="wrapper"
     :class="['book-wrapper', { animating: isVisible, fast: isHovered }]"
     @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
+    @mousemove="onMouseMove"
+    @mouseleave="onMouseLeave"
   >
     <svg
       viewBox="190 308 644 381"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      :style="svgStyle"
     >
       <defs>
         <linearGradient id="leftPage" x1="214" y1="360" x2="504" y2="640" gradientUnits="userSpaceOnUse">
@@ -138,7 +162,7 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
 }
 
 .book-wrapper.fast {
-  filter: drop-shadow(0 0 24px rgba(14, 191, 155, 0.25));
+  filter: drop-shadow(0 0 32px rgba(14, 191, 155, 0.45));
 }
 
 .page {
