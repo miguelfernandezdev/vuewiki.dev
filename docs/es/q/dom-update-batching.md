@@ -1,5 +1,5 @@
 ---
-order: 82
+order: 85
 title: "¿Cómo agrupa Vue las actualizaciones del DOM?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "watchers"]

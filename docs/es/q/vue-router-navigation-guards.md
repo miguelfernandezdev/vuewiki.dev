@@ -1,5 +1,5 @@
 ---
-order: 18
+order: 103
 title: "¿Cómo funciona Vue Router y qué son los navigation guards?"
 difficulty: "intermediate"
 tags: ["vue-router"]

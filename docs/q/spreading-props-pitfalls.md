@@ -1,5 +1,5 @@
 ---
-order: 134
+order: 44
 title: "Why can spreading all props to a child component be a bad idea?"
 difficulty: "intermediate"
 tags: ["components"]

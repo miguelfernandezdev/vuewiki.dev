@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 68
 title: "¿Cuál es la diferencia entre watch y watchEffect?"
 difficulty: "intermediate"
 tags: ["reactivity", "composition-api", "watchers"]

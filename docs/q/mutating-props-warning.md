@@ -1,5 +1,5 @@
 ---
-order: 34
+order: 20
 title: "Why does mutating props directly cause warnings?"
 difficulty: "beginner"
 tags: ["components", "errors", "v-model"]

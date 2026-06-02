@@ -1,5 +1,5 @@
 ---
-order: 139
+order: 133
 title: "¿Qué es Flux/flujo de datos unidireccional y cómo lo implementa Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "state-management", "pinia", "vuex", "v-model", "provide-inject"]

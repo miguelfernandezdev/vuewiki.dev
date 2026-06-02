@@ -1,5 +1,5 @@
 ---
-order: 158
+order: 76
 title: "¿Qué ocurre cuando usas Object.freeze() en datos reactivos?"
 difficulty: "intermediate"
 tags: ["reactivity"]

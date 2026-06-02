@@ -1,5 +1,5 @@
 ---
-order: 33
+order: 10
 title: "¿Por qué no se pueden usar v-if y v-for en el mismo elemento?"
 difficulty: "beginner"
 tags: ["directives", "errors"]

@@ -1,5 +1,5 @@
 ---
-order: 135
+order: 60
 title: "¿Cuál es el equivalente a los componentes de orden superior (HOC) en Vue?"
 difficulty: "advanced"
 tags: ["composition-api", "architecture", "vueuse", "watchers", "slots"]

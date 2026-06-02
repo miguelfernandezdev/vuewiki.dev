@@ -1,5 +1,5 @@
 ---
-order: 53
+order: 13
 title: "¿Cómo funciona el renderizado de listas con v-for?"
 difficulty: "beginner"
 tags: ["directives"]

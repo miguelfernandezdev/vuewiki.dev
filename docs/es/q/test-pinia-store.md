@@ -1,5 +1,5 @@
 ---
-order: 155
+order: 116
 title: "¿Cómo se prueba un store de Pinia?"
 difficulty: "intermediate"
 tags: ["testing", "state-management", "pinia", "vitest"]

@@ -1,5 +1,5 @@
 ---
-order: 22
+order: 78
 title: "¿Cuándo usarías shallowRef / shallowReactive?"
 difficulty: "advanced"
 tags: ["reactivity", "performance"]

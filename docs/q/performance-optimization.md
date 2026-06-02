@@ -1,5 +1,5 @@
 ---
-order: 24
+order: 122
 title: "How would you optimize performance in a Vue app?"
 difficulty: "advanced"
 tags: ["performance", "vite", "watchers", "slots"]

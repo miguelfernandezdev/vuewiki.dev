@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 9
 title: "What's the purpose of :key in v-for?"
 difficulty: "beginner"
 tags: ["directives"]

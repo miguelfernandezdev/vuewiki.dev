@@ -1,5 +1,5 @@
 ---
-order: 150
+order: 75
 title: "Does reassigning a property on a reactive object break reactivity?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]

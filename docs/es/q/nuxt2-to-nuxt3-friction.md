@@ -1,5 +1,5 @@
 ---
-order: 149
+order: 166
 title: "¿Cuáles son los principales puntos de fricción al migrar de Nuxt 2 a Nuxt 3?"
 difficulty: "advanced"
 tags: ["nuxt", "migration", "pinia", "vueuse", "vuex", "provide-inject"]

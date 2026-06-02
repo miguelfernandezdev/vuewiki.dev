@@ -1,5 +1,5 @@
 ---
-order: 61
+order: 16
 title: "¿Cómo se crean directivas personalizadas en Vue?"
 difficulty: "intermediate"
 tags: ["directives", "v-model"]

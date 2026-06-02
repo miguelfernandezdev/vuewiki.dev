@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 90
 title: "What is a composable?"
 difficulty: "beginner"
 tags: ["composables", "composition-api", "vueuse", "watchers"]

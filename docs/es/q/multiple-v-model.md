@@ -1,5 +1,5 @@
 ---
-order: 64
+order: 37
 title: "¿Cómo funcionan los bindings múltiples de v-model en un componente?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]

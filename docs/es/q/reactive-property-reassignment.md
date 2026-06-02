@@ -1,5 +1,5 @@
 ---
-order: 150
+order: 75
 title: "¿Rompe la reactividad reasignar una propiedad en un objeto reactive?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]

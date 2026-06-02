@@ -1,5 +1,5 @@
 ---
-order: 71
+order: 18
 title: "What are event modifiers and why does order matter?"
 difficulty: "intermediate"
 tags: ["directives"]

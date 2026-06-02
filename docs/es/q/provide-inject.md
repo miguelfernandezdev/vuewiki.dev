@@ -1,5 +1,5 @@
 ---
-order: 14
+order: 26
 title: "¿Qué es Provide/Inject?"
 difficulty: "intermediate"
 tags: ["components", "composition-api", "pinia", "provide-inject"]

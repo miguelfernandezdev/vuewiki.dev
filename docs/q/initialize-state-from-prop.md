@@ -1,5 +1,5 @@
 ---
-order: 131
+order: 66
 title: "Can you initialize state with a prop value? What happens?"
 difficulty: "beginner"
 tags: ["reactivity", "components", "watchers", "v-model"]

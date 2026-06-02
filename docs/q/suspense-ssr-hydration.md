@@ -1,5 +1,5 @@
 ---
-order: 116
+order: 145
 title: "What are Suspense SSR hydration issues and how do you work around them?"
 difficulty: "advanced"
 tags: ["ssr", "components", "vueuse", "suspense"]

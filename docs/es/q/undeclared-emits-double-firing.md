@@ -1,5 +1,5 @@
 ---
-order: 42
+order: 29
 title: "¿Por qué los emits no declarados se disparan dos veces?"
 difficulty: "intermediate"
 tags: ["components", "errors"]

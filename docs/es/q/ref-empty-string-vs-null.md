@@ -1,5 +1,5 @@
 ---
-order: 151
+order: 67
 title: "¿Por qué inicializar un ref de búsqueda con '' en lugar de null?"
 difficulty: "beginner"
 tags: ["reactivity", "errors", "vueuse", "v-model"]

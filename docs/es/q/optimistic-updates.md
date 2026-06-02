@@ -1,5 +1,5 @@
 ---
-order: 123
+order: 87
 title: "¿Cómo implementarías actualizaciones optimistas en Vue?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "pinia"]

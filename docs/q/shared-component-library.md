@@ -1,5 +1,5 @@
 ---
-order: 23
+order: 49
 title: "How would you design a shared component library?"
 difficulty: "advanced"
 tags: ["components", "architecture", "vite", "vitest", "slots"]

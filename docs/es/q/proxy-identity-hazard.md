@@ -1,5 +1,5 @@
 ---
-order: 81
+order: 84
 title: "¿Qué es el problema de identidad del proxy en reactividad?"
 difficulty: "advanced"
 tags: ["reactivity"]

@@ -1,5 +1,5 @@
 ---
-order: 48
+order: 1
 title: "¿Qué es Vue y cuáles son sus características principales?"
 difficulty: "beginner"
 tags: ["core", "pinia"]

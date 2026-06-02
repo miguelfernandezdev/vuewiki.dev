@@ -1,5 +1,5 @@
 ---
-order: 104
+order: 7
 title: "How do Vue DevTools help with debugging?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite"]

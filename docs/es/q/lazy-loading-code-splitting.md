@@ -1,5 +1,5 @@
 ---
-order: 30
+order: 123
 title: "¿Cómo implementarías lazy loading y code splitting?"
 difficulty: "advanced"
 tags: ["performance", "vue-router", "vite"]

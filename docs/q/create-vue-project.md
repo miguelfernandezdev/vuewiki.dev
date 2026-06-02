@@ -1,5 +1,5 @@
 ---
-order: 57
+order: 5
 title: "How do you create a Vue project from scratch?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite", "vitest"]

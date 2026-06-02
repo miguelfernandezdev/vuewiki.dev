@@ -1,5 +1,5 @@
 ---
-order: 69
+order: 40
 title: "¿Cómo funcionan las render functions y JSX en Vue?"
 difficulty: "intermediate"
 tags: ["components", "v-model"]

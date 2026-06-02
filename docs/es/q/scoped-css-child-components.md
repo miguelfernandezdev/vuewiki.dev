@@ -1,5 +1,5 @@
 ---
-order: 43
+order: 30
 title: "¿Por qué el CSS con scoped no afecta a elementos de componentes hijos?"
 difficulty: "intermediate"
 tags: ["components", "errors", "teleport"]

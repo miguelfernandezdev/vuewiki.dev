@@ -1,5 +1,5 @@
 ---
-order: 32
+order: 64
 title: "¿Por qué olvidar .value con ref provoca bugs?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]

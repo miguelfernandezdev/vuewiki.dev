@@ -1,5 +1,5 @@
 ---
-order: 15
+order: 114
 title: "How do you test Vue components with Vitest?"
 difficulty: "intermediate"
 tags: ["testing", "vitest", "v-model"]

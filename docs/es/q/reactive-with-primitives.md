@@ -1,5 +1,5 @@
 ---
-order: 35
+order: 65
 title: "¿Por qué reactive() no funciona con primitivos?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]

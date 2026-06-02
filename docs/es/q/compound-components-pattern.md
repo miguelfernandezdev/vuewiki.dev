@@ -1,5 +1,5 @@
 ---
-order: 118
+order: 135
 title: "¿Qué es el patrón de componentes compuestos en Vue?"
 difficulty: "advanced"
 tags: ["architecture", "components", "vite", "provide-inject"]

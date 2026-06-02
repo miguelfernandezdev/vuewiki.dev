@@ -1,5 +1,5 @@
 ---
-order: 67
+order: 38
 title: "¿Qué son los fallthrough attributes?"
 difficulty: "intermediate"
 tags: ["components", "watchers"]

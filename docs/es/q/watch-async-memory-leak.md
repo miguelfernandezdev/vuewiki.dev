@@ -1,5 +1,5 @@
 ---
-order: 44
+order: 80
 title: "¿Por qué los watchers creados dentro de callbacks asíncronos causan pérdidas de memoria?"
 difficulty: "advanced"
 tags: ["reactivity", "errors", "watchers"]

@@ -1,5 +1,5 @@
 ---
-order: 83
+order: 19
 title: "What is v-once and v-memo? When should you use them?"
 difficulty: "advanced"
 tags: ["directives", "performance", "v-model"]

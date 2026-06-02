@@ -1,5 +1,5 @@
 ---
-order: 164
+order: 121
 title: "What is tree-shaking and how does Vue 3 support it?"
 difficulty: "intermediate"
 tags: ["performance", "tooling", "vite", "watchers", "v-model", "provide-inject", "suspense", "teleport"]

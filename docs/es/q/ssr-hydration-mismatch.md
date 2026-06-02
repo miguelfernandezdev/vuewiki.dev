@@ -1,5 +1,5 @@
 ---
-order: 45
+order: 144
 title: "¿Qué causa los errores de hidratación en SSR y cómo se corrigen?"
 difficulty: "advanced"
 tags: ["ssr", "errors", "vite"]

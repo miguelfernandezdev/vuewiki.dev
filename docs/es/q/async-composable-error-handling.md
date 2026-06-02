@@ -1,5 +1,5 @@
 ---
-order: 170
+order: 95
 title: "¿Cómo se gestionan los errores en composables asíncronos?"
 difficulty: "intermediate"
 tags: ["composables", "error-handling", "watchers"]

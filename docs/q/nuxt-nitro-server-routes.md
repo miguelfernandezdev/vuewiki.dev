@@ -1,5 +1,5 @@
 ---
-order: 91
+order: 154
 title: "What is Nitro and how do server routes work in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "vueuse"]

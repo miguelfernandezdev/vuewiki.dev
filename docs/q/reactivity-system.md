@@ -1,5 +1,5 @@
 ---
-order: 20
+order: 69
 title: "How does Vue 3's reactivity system work?"
 difficulty: "intermediate"
 tags: ["reactivity", "watchers"]

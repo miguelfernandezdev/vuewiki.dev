@@ -1,5 +1,5 @@
 ---
-order: 39
+order: 72
 title: "¿Por qué mi watchEffect pierde dependencias después de un await?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]

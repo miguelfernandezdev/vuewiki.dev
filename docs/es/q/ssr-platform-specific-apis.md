@@ -1,5 +1,5 @@
 ---
-order: 115
+order: 143
 title: "¿Cómo se evitan los problemas con APIs específicas de plataforma en SSR?"
 difficulty: "intermediate"
 tags: ["ssr", "vite"]

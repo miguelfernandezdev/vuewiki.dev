@@ -1,5 +1,5 @@
 ---
-order: 73
+order: 111
 title: "¿Cómo funcionan los componentes genéricos con TypeScript?"
 difficulty: "advanced"
 tags: ["typescript", "components", "v-model", "slots"]

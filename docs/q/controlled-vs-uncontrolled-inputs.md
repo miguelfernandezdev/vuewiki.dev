@@ -1,5 +1,5 @@
 ---
-order: 68
+order: 39
 title: "What is the difference between controlled and uncontrolled inputs?"
 difficulty: "intermediate"
 tags: ["components", "forms", "v-model"]

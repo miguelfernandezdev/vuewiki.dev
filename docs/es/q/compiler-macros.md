@@ -1,5 +1,5 @@
 ---
-order: 77
+order: 58
 title: "¿Cuáles son todas las macros del compilador en Vue?"
 difficulty: "advanced"
 tags: ["composition-api", "typescript", "v-model", "slots"]

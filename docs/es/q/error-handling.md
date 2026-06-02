@@ -1,5 +1,5 @@
 ---
-order: 80
+order: 52
 title: "¿Cómo funciona el manejo de errores en Vue?"
 difficulty: "advanced"
 tags: ["components", "error-handling", "suspense"]

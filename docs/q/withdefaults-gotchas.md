@@ -1,5 +1,5 @@
 ---
-order: 112
+order: 110
 title: "How does withDefaults work and what are its gotchas?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]

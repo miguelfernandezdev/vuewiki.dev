@@ -1,5 +1,5 @@
 ---
-order: 59
+order: 34
 title: "What are dynamic components and how does KeepAlive work?"
 difficulty: "intermediate"
 tags: ["components", "performance", "slots", "suspense", "teleport"]

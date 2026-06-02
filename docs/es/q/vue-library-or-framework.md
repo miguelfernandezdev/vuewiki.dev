@@ -1,5 +1,5 @@
 ---
-order: 136
+order: 3
 title: "¿Vue es una librería o un framework? ¿Por qué?"
 difficulty: "beginner"
 tags: ["core", "pinia", "vite"]

@@ -1,5 +1,5 @@
 ---
-order: 152
+order: 99
 title: "When should you use Pinia vs a composable vs local state?"
 difficulty: "intermediate"
 tags: ["state-management", "architecture", "pinia", "watchers", "provide-inject"]

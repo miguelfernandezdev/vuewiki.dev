@@ -1,5 +1,5 @@
 ---
-order: 120
+order: 136
 title: "How would you build a shopping cart with Vue?"
 difficulty: "advanced"
 tags: ["architecture", "state-management", "pinia"]

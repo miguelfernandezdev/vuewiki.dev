@@ -1,5 +1,5 @@
 ---
-order: 23
+order: 49
 title: "¿Cómo diseñarías una librería de componentes compartida?"
 difficulty: "advanced"
 tags: ["components", "architecture", "vite", "vitest", "slots"]

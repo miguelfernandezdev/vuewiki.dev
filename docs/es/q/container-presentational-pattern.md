@@ -1,5 +1,5 @@
 ---
-order: 117
+order: 131
 title: "¿Qué es el patrón contenedor-presentacional en Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "components", "vueuse"]

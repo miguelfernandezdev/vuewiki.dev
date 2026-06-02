@@ -1,5 +1,5 @@
 ---
-order: 31
+order: 63
 title: "¿Por qué pierdo reactividad al desestructurar un objeto reactive?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]

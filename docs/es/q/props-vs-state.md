@@ -1,5 +1,5 @@
 ---
-order: 55
+order: 22
 title: "¿Cuál es la diferencia entre props y estado en Vue?"
 difficulty: "beginner"
 tags: ["components", "reactivity", "v-model"]

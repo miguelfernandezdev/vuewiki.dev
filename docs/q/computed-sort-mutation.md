@@ -1,5 +1,5 @@
 ---
-order: 41
+order: 73
 title: "Why does sorting an array inside computed mutate the original data?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]

@@ -1,5 +1,5 @@
 ---
-order: 134
+order: 44
 title: "¿Por qué puede ser mala idea pasar todas las props a un componente hijo con spread?"
 difficulty: "intermediate"
 tags: ["components"]

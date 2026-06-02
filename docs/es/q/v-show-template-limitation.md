@@ -1,5 +1,5 @@
 ---
-order: 40
+order: 11
 title: "¿Por qué v-show no funciona en elementos template?"
 difficulty: "beginner"
 tags: ["directives", "errors"]

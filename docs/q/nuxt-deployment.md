@@ -1,5 +1,5 @@
 ---
-order: 97
+order: 157
 title: "How do you deploy a Nuxt app?"
 difficulty: "intermediate"
 tags: ["nuxt", "tooling"]

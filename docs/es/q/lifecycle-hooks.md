@@ -1,5 +1,5 @@
 ---
-order: 50
+order: 55
 title: "¿Cuáles son los lifecycle hooks en Vue 3?"
 difficulty: "beginner"
 tags: ["composition-api", "lifecycle"]

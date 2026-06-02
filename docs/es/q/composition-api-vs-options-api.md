@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 53
 title: "¿Qué es la Composition API y en qué se diferencia de la Options API?"
 difficulty: "beginner"
 tags: ["composition-api"]

@@ -1,5 +1,5 @@
 ---
-order: 99
+order: 150
 title: "¿Cuál es la convención de estructura de directorios en Nuxt?"
 difficulty: "beginner"
 tags: ["nuxt", "architecture", "vite"]

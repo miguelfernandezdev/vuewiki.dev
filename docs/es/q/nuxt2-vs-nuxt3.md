@@ -1,5 +1,5 @@
 ---
-order: 142
+order: 158
 title: "¿Cuáles son las diferencias entre Nuxt 2 y Nuxt 3?"
 difficulty: "intermediate"
 tags: ["nuxt", "migration", "pinia", "vite", "vueuse", "vuex"]

@@ -1,5 +1,5 @@
 ---
-order: 71
+order: 18
 title: "¿Qué son los modificadores de eventos y por qué importa el orden?"
 difficulty: "intermediate"
 tags: ["directives"]

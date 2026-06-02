@@ -1,5 +1,5 @@
 ---
-order: 141
+order: 129
 title: "A page takes 3-4 seconds to become interactive. How do you diagnose and fix it?"
 difficulty: "advanced"
 tags: ["performance", "debugging", "watchers"]

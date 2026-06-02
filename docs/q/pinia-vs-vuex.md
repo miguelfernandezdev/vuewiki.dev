@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 96
 title: "What is Pinia and how does it differ from Vuex?"
 difficulty: "beginner"
 tags: ["state-management", "pinia", "vuex"]

@@ -1,5 +1,5 @@
 ---
-order: 148
+order: 165
 title: "¿Cómo depuras peticiones SSR que no pasan por el navegador?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "debugging", "vueuse"]

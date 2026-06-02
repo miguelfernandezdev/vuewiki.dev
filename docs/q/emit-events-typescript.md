@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 106
 title: "How do you emit events with TypeScript?"
 difficulty: "beginner"
 tags: ["typescript", "components"]

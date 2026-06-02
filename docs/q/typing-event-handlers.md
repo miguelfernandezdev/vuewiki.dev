@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 109
 title: "How do you type event handlers in Vue templates?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]

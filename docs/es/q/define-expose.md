@@ -1,5 +1,5 @@
 ---
-order: 65
+order: 56
 title: "¿Qué es defineExpose y cuándo es necesario?"
 difficulty: "intermediate"
 tags: ["composition-api", "components"]

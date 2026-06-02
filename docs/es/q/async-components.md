@@ -1,5 +1,5 @@
 ---
-order: 60
+order: 35
 title: "¿Qué son los componentes asíncronos y defineAsyncComponent?"
 difficulty: "intermediate"
 tags: ["components", "performance", "vite", "suspense", "teleport"]

@@ -1,5 +1,5 @@
 ---
-order: 96
+order: 162
 title: "What are Nuxt layers and when would you use them?"
 difficulty: "advanced"
 tags: ["nuxt", "architecture"]

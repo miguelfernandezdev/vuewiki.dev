@@ -1,5 +1,5 @@
 ---
-order: 53
+order: 13
 title: "How does list rendering work with v-for?"
 difficulty: "beginner"
 tags: ["directives"]

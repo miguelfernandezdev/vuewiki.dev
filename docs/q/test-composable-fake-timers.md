@@ -1,5 +1,5 @@
 ---
-order: 154
+order: 118
 title: "How do you test a composable that uses setTimeout?"
 difficulty: "advanced"
 tags: ["testing", "composables", "pinia", "vitest", "watchers"]

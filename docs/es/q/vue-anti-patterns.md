@@ -1,5 +1,5 @@
 ---
-order: 163
+order: 140
 title: "¿Cuáles son los antipatrones más comunes en bases de código Vue grandes?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "watchers", "provide-inject"]

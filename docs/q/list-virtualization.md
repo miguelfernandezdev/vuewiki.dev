@@ -1,5 +1,5 @@
 ---
-order: 79
+order: 124
 title: "How would you virtualize a list of thousands of items?"
 difficulty: "advanced"
 tags: ["performance", "slots"]

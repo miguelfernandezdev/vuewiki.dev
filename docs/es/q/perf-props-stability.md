@@ -1,5 +1,5 @@
 ---
-order: 128
+order: 126
 title: "¿Cómo funcionan las optimizaciones de estabilidad de props?"
 difficulty: "advanced"
 tags: ["performance", "components"]

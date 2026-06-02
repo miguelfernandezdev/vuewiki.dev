@@ -1,5 +1,5 @@
 ---
-order: 157
+order: 170
 title: "¿Cómo gestionas el foco en SPAs con Vue?"
 difficulty: "advanced"
 tags: ["accessibility", "vue-router", "watchers", "suspense"]

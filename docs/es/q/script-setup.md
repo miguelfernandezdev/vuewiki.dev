@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 54
 title: "¿Qué es script setup?"
 difficulty: "beginner"
 tags: ["composition-api", "v-model"]

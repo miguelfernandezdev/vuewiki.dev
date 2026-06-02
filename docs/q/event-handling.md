@@ -1,5 +1,5 @@
 ---
-order: 51
+order: 12
 title: "How does event handling work in Vue?"
 difficulty: "beginner"
 tags: ["directives", "components"]

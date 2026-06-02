@@ -1,5 +1,5 @@
 ---
-order: 121
+order: 167
 title: "How would you implement global error handling in a Vue app?"
 difficulty: "advanced"
 tags: ["error-handling", "architecture"]

@@ -1,5 +1,5 @@
 ---
-order: 104
+order: 7
 title: "¿Cómo ayudan las Vue DevTools con la depuración?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite"]

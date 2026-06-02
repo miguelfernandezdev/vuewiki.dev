@@ -1,5 +1,5 @@
 ---
-order: 77
+order: 58
 title: "What are all the compiler macros in Vue?"
 difficulty: "advanced"
 tags: ["composition-api", "typescript", "v-model", "slots"]

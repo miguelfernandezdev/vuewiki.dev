@@ -1,5 +1,5 @@
 ---
-order: 44
+order: 80
 title: "Why do watchers created inside async callbacks cause memory leaks?"
 difficulty: "advanced"
 tags: ["reactivity", "errors", "watchers"]

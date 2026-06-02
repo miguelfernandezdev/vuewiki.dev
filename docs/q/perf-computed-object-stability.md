@@ -1,5 +1,5 @@
 ---
-order: 129
+order: 127
 title: "How does computed object stability affect re-renders?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]

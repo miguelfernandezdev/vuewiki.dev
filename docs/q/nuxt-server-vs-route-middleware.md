@@ -1,5 +1,5 @@
 ---
-order: 146
+order: 161
 title: "What is the difference between server middleware and route middleware in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt"]

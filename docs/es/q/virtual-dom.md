@@ -1,5 +1,5 @@
 ---
-order: 49
+order: 2
 title: "¿Qué es el Virtual DOM y cómo lo usa Vue?"
 difficulty: "beginner"
 tags: ["core", "reactivity"]

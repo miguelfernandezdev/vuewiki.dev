@@ -1,5 +1,5 @@
 ---
-order: 80
+order: 52
 title: "How does error handling work in Vue?"
 difficulty: "advanced"
 tags: ["components", "error-handling", "suspense"]

@@ -1,5 +1,5 @@
 ---
-order: 124
+order: 120
 title: "How would you implement infinite scroll with Vue?"
 difficulty: "intermediate"
 tags: ["performance", "composables", "vueuse", "watchers"]

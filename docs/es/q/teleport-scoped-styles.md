@@ -1,5 +1,5 @@
 ---
-order: 46
+order: 31
 title: "¿Por qué los estilos con scoped no se aplican al contenido teletransportado?"
 difficulty: "intermediate"
 tags: ["components", "errors", "suspense", "teleport"]

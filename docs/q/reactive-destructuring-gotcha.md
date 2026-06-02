@@ -1,5 +1,5 @@
 ---
-order: 31
+order: 63
 title: "Why do I lose reactivity when destructuring a reactive object?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]

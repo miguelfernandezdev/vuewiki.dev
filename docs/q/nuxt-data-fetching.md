@@ -1,5 +1,5 @@
 ---
-order: 87
+order: 151
 title: "What is the difference between useFetch, useAsyncData, and $fetch?"
 difficulty: "intermediate"
 tags: ["nuxt", "data-fetching", "vueuse"]

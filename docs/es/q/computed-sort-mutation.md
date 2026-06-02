@@ -1,5 +1,5 @@
 ---
-order: 41
+order: 73
 title: "¿Por qué ordenar un array dentro de computed muta los datos originales?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]

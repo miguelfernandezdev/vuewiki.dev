@@ -1,5 +1,5 @@
 ---
-order: 156
+order: 169
 title: "¿Cómo se gestiona la accesibilidad en Vue?"
 difficulty: "intermediate"
 tags: ["accessibility", "components", "teleport"]

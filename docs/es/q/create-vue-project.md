@@ -1,5 +1,5 @@
 ---
-order: 57
+order: 5
 title: "¿Cómo se crea un proyecto Vue desde cero?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite", "vitest"]

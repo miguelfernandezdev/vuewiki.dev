@@ -1,5 +1,5 @@
 ---
-order: 120
+order: 136
 title: "¿Cómo construirías un carrito de compra con Vue?"
 difficulty: "advanced"
 tags: ["architecture", "state-management", "pinia"]

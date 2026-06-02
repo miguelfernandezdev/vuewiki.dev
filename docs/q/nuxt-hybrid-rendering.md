@@ -1,5 +1,5 @@
 ---
-order: 92
+order: 155
 title: "How does hybrid rendering (route rules) work in Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "performance"]

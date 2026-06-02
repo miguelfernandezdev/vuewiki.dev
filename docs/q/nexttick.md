@@ -1,5 +1,5 @@
 ---
-order: 63
+order: 74
 title: "What is nextTick and when do you need it?"
 difficulty: "intermediate"
 tags: ["reactivity", "watchers"]

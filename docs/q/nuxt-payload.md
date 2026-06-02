@@ -1,5 +1,5 @@
 ---
-order: 143
+order: 159
 title: "What is the Nuxt payload and how does it prevent double-fetching?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "pinia", "vueuse"]

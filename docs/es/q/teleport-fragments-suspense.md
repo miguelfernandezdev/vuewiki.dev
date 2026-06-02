@@ -1,5 +1,5 @@
 ---
-order: 19
+order: 27
 title: "¿Qué son Teleport, Fragments y Suspense?"
 difficulty: "intermediate"
 tags: ["components", "suspense", "teleport"]

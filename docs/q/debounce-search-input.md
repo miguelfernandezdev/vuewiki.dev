@@ -1,5 +1,5 @@
 ---
-order: 17
+order: 92
 title: "How would you implement debounce on a search input?"
 difficulty: "intermediate"
 tags: ["composables", "performance", "vueuse", "watchers", "v-model"]

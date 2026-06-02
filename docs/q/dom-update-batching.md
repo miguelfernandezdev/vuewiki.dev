@@ -1,5 +1,5 @@
 ---
-order: 82
+order: 85
 title: "How does Vue batch DOM updates?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "watchers"]

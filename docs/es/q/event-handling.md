@@ -1,5 +1,5 @@
 ---
-order: 51
+order: 12
 title: "¿Cómo funciona el manejo de eventos en Vue?"
 difficulty: "beginner"
 tags: ["directives", "components"]

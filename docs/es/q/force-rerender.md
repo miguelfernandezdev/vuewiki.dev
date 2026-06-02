@@ -1,5 +1,5 @@
 ---
-order: 165
+order: 46
 title: "¿Cómo fuerzas el re-renderizado de un componente?"
 difficulty: "intermediate"
 tags: ["components", "reactivity"]

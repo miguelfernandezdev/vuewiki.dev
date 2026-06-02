@@ -1,5 +1,5 @@
 ---
-order: 95
+order: 149
 title: "What are Nuxt layouts and how do they work?"
 difficulty: "beginner"
 tags: ["nuxt", "components"]

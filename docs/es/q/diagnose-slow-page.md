@@ -1,5 +1,5 @@
 ---
-order: 141
+order: 129
 title: "Una página tarda 3-4 segundos en ser interactiva. ¿Cómo la diagnosticas y corriges?"
 difficulty: "advanced"
 tags: ["performance", "debugging", "watchers"]

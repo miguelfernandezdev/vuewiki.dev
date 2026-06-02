@@ -1,5 +1,5 @@
 ---
-order: 72
+order: 41
 title: "How does Suspense work for async components?"
 difficulty: "intermediate"
 tags: ["components", "slots", "suspense", "teleport"]

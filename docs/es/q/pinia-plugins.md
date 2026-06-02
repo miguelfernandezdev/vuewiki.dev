@@ -1,5 +1,5 @@
 ---
-order: 102
+order: 101
 title: "¿Qué son los plugins de Pinia y cómo se crea uno?"
 difficulty: "advanced"
 tags: ["state-management", "architecture", "pinia"]

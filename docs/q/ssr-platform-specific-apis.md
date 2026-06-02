@@ -1,5 +1,5 @@
 ---
-order: 115
+order: 143
 title: "How do you avoid platform-specific API issues in SSR?"
 difficulty: "intermediate"
 tags: ["ssr", "vite"]

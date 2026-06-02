@@ -1,5 +1,5 @@
 ---
-order: 148
+order: 165
 title: "How do you debug SSR requests that don't go through the browser?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "debugging", "vueuse"]

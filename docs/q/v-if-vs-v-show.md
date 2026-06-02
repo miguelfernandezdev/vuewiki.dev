@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 8
 title: "What's the difference between v-if and v-show?"
 difficulty: "beginner"
 tags: ["directives"]

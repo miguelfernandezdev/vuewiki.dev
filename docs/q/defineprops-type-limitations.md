@@ -1,5 +1,5 @@
 ---
-order: 111
+order: 113
 title: "What are the limitations of type-based defineProps?"
 difficulty: "advanced"
 tags: ["typescript", "components"]

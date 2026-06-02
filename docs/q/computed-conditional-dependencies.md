@@ -1,5 +1,5 @@
 ---
-order: 37
+order: 70
 title: "Why does my computed property not update when a dependency changes?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]

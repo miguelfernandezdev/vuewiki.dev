@@ -1,5 +1,5 @@
 ---
-order: 127
+order: 125
 title: "Why should you avoid component abstraction in large lists?"
 difficulty: "advanced"
 tags: ["performance", "components"]

@@ -1,5 +1,5 @@
 ---
-order: 155
+order: 116
 title: "How do you test a Pinia store?"
 difficulty: "intermediate"
 tags: ["testing", "state-management", "pinia", "vitest"]

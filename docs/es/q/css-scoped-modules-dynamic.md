@@ -1,5 +1,5 @@
 ---
-order: 52
+order: 21
 title: "¿Cómo funcionan los estilos con scoped, CSS Modules y clases dinámicas en Vue?"
 difficulty: "beginner"
 tags: ["components", "styling", "teleport"]

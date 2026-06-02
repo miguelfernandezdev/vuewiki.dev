@@ -1,5 +1,5 @@
 ---
-order: 165
+order: 46
 title: "How do you force a component to re-render?"
 difficulty: "intermediate"
 tags: ["components", "reactivity"]

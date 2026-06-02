@@ -1,5 +1,5 @@
 ---
-order: 56
+order: 23
 title: "¿Qué es lifting state up y cuándo deberías hacerlo?"
 difficulty: "beginner"
 tags: ["components", "architecture", "pinia", "provide-inject"]

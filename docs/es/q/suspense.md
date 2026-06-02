@@ -1,5 +1,5 @@
 ---
-order: 72
+order: 41
 title: "¿Cómo funciona Suspense con componentes asíncronos?"
 difficulty: "intermediate"
 tags: ["components", "slots", "suspense", "teleport"]

@@ -1,5 +1,5 @@
 ---
-order: 147
+order: 164
 title: "How do you handle authentication in Nuxt 3?"
 difficulty: "advanced"
 tags: ["nuxt", "architecture"]

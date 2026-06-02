@@ -1,5 +1,5 @@
 ---
-order: 153
+order: 45
 title: "How would you explain v-model to someone coming from React?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]

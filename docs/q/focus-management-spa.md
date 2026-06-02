@@ -1,5 +1,5 @@
 ---
-order: 157
+order: 170
 title: "How do you manage focus in Vue SPAs?"
 difficulty: "advanced"
 tags: ["accessibility", "vue-router", "watchers", "suspense"]

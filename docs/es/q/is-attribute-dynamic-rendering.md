@@ -1,5 +1,5 @@
 ---
-order: 168
+order: 48
 title: "¿Cómo funciona el atributo `is` para el renderizado dinámico de componentes?"
 difficulty: "intermediate"
 tags: ["components", "vite"]

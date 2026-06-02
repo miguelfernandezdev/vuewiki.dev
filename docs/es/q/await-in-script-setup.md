@@ -1,5 +1,5 @@
 ---
-order: 145
+order: 57
 title: "¿Se puede usar await directamente en script setup? ¿Cuándo?"
 difficulty: "intermediate"
 tags: ["composition-api", "nuxt", "vueuse", "watchers", "suspense"]

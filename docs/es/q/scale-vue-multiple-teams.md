@@ -1,5 +1,5 @@
 ---
-order: 162
+order: 139
 title: "¿Cómo se arquitectura una app Vue 3 para escalar con múltiples equipos?"
 difficulty: "advanced"
 tags: ["architecture", "pinia"]

@@ -1,5 +1,5 @@
 ---
-order: 100
+order: 6
 title: "¿Qué es Vite y cómo funciona?"
 difficulty: "beginner"
 tags: ["tooling", "vite"]

@@ -1,5 +1,5 @@
 ---
-order: 167
+order: 47
 title: "¿Qué son los componentes funcionales y cuándo son útiles?"
 difficulty: "intermediate"
 tags: ["components", "performance"]

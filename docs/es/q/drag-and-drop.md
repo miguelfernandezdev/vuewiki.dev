@@ -1,5 +1,5 @@
 ---
-order: 125
+order: 42
 title: "¿Cómo implementarías drag and drop en Vue?"
 difficulty: "intermediate"
 tags: ["components", "v-model"]

@@ -1,5 +1,5 @@
 ---
-order: 163
+order: 140
 title: "What are common anti-patterns in large Vue codebases?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "watchers", "provide-inject"]

@@ -1,5 +1,5 @@
 ---
-order: 114
+order: 142
 title: "¿Qué es la hidratación y cómo funciona en Vue?"
 difficulty: "intermediate"
 tags: ["ssr", "vueuse"]

@@ -1,5 +1,5 @@
 ---
-order: 86
+order: 146
 title: "¿Qué es Nuxt y qué modos de renderizado admite?"
 difficulty: "beginner"
 tags: ["nuxt"]

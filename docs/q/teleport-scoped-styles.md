@@ -1,5 +1,5 @@
 ---
-order: 46
+order: 31
 title: "Why don't scoped styles apply to teleported content?"
 difficulty: "intermediate"
 tags: ["components", "errors", "suspense", "teleport"]

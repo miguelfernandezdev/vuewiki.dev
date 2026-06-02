@@ -1,5 +1,5 @@
 ---
-order: 37
+order: 70
 title: "¿Por qué mi propiedad computed no se actualiza cuando cambia una dependencia?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors"]

@@ -1,5 +1,5 @@
 ---
-order: 86
+order: 146
 title: "What is Nuxt and what rendering modes does it support?"
 difficulty: "beginner"
 tags: ["nuxt"]

@@ -1,5 +1,5 @@
 ---
-order: 138
+order: 94
 title: "How do you cancel an API request in a composable?"
 difficulty: "intermediate"
 tags: ["composables", "vueuse", "watchers", "v-model"]

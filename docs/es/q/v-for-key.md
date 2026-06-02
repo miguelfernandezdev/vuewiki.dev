@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 9
 title: "¿Para qué sirve :key en v-for?"
 difficulty: "beginner"
 tags: ["directives"]

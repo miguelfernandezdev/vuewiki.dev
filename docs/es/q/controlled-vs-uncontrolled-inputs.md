@@ -1,5 +1,5 @@
 ---
-order: 68
+order: 39
 title: "¿Cuál es la diferencia entre inputs controlados y no controlados?"
 difficulty: "intermediate"
 tags: ["components", "forms", "v-model"]

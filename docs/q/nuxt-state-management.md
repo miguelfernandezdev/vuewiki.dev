@@ -1,5 +1,5 @@
 ---
-order: 93
+order: 156
 title: "How does state management work in Nuxt? (useState, Pinia)"
 difficulty: "intermediate"
 tags: ["nuxt", "state-management", "pinia"]

@@ -1,5 +1,5 @@
 ---
-order: 12
+order: 24
 title: "¿Cómo funciona v-model en componentes personalizados?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]

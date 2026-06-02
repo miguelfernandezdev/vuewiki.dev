@@ -1,5 +1,5 @@
 ---
-order: 47
+order: 32
 title: "¿Por qué mutar un objeto a través de defineModel no actualiza al padre?"
 difficulty: "intermediate"
 tags: ["components", "errors", "v-model"]

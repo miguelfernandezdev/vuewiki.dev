@@ -1,5 +1,5 @@
 ---
-order: 90
+order: 153
 title: "¿Cómo funcionan los módulos de Nuxt y cuándo crearías uno?"
 difficulty: "intermediate"
 tags: ["nuxt", "architecture", "vite"]

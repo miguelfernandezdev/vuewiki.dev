@@ -1,5 +1,5 @@
 ---
-order: 70
+order: 17
 title: "What is v-model and how does it differ from .sync in Vue 2?"
 difficulty: "intermediate"
 tags: ["directives", "migration", "v-model"]

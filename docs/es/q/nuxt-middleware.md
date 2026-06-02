@@ -1,5 +1,5 @@
 ---
-order: 89
+order: 152
 title: "¿Qué son los middleware de Nuxt y cómo funcionan?"
 difficulty: "intermediate"
 tags: ["nuxt", "vue-router"]

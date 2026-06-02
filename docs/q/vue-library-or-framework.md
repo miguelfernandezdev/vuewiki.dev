@@ -1,5 +1,5 @@
 ---
-order: 136
+order: 3
 title: "Is Vue a library or a framework? Why?"
 difficulty: "beginner"
 tags: ["core", "pinia", "vite"]

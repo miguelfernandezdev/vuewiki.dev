@@ -1,5 +1,5 @@
 ---
-order: 126
+order: 132
 title: "How would you handle internationalization (i18n) in Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "v-model"]

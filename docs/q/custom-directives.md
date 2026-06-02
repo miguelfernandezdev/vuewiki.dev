@@ -1,5 +1,5 @@
 ---
-order: 61
+order: 16
 title: "How do you create custom directives in Vue?"
 difficulty: "intermediate"
 tags: ["directives", "v-model"]

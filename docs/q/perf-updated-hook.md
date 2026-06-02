@@ -1,5 +1,5 @@
 ---
-order: 130
+order: 128
 title: "When should you use the updated hook and what are its performance implications?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]

@@ -1,5 +1,5 @@
 ---
-order: 78
+order: 51
 title: "How do custom v-model modifiers work?"
 difficulty: "advanced"
 tags: ["components", "directives", "v-model"]

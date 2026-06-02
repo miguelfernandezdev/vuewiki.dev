@@ -1,5 +1,5 @@
 ---
-order: 43
+order: 30
 title: "Why doesn't scoped CSS style child component elements?"
 difficulty: "intermediate"
 tags: ["components", "errors", "teleport"]

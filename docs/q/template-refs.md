@@ -1,5 +1,5 @@
 ---
-order: 58
+order: 33
 title: "How do template refs work?"
 difficulty: "intermediate"
 tags: ["components", "composition-api"]

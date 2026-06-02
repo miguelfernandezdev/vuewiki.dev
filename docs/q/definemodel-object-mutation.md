@@ -1,5 +1,5 @@
 ---
-order: 47
+order: 32
 title: "Why doesn't mutating an object through defineModel update the parent?"
 difficulty: "intermediate"
 tags: ["components", "errors", "v-model"]

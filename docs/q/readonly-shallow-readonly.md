@@ -1,5 +1,5 @@
 ---
-order: 161
+order: 77
 title: "What is readonly and shallowReadonly?"
 difficulty: "intermediate"
 tags: ["reactivity", "provide-inject"]

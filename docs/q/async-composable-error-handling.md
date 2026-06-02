@@ -1,5 +1,5 @@
 ---
-order: 170
+order: 95
 title: "How do you handle errors in async composables?"
 difficulty: "intermediate"
 tags: ["composables", "error-handling", "watchers"]

@@ -1,5 +1,5 @@
 ---
-order: 38
+order: 71
 title: "Why does my watcher receive the same value for old and new?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]

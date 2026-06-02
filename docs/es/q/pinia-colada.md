@@ -1,5 +1,5 @@
 ---
-order: 106
+order: 102
 title: "¿Qué es Pinia Colada y cómo gestiona el estado asíncrono?"
 difficulty: "advanced"
 tags: ["state-management", "data-fetching", "pinia"]

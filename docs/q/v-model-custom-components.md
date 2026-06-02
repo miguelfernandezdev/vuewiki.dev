@@ -1,5 +1,5 @@
 ---
-order: 12
+order: 24
 title: "How does v-model work on custom components?"
 difficulty: "intermediate"
 tags: ["components", "directives", "v-model"]

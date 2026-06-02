@@ -1,5 +1,5 @@
 ---
-order: 84
+order: 86
 title: "How do writable computed properties work?"
 difficulty: "advanced"
 tags: ["reactivity", "pinia", "v-model"]

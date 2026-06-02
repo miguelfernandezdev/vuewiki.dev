@@ -1,5 +1,5 @@
 ---
-order: 84
+order: 86
 title: "¿Cómo funcionan las propiedades computed con escritura?"
 difficulty: "advanced"
 tags: ["reactivity", "pinia", "v-model"]

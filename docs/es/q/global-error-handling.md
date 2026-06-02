@@ -1,5 +1,5 @@
 ---
-order: 121
+order: 167
 title: "¿Cómo implementarías el manejo global de errores en una app Vue?"
 difficulty: "advanced"
 tags: ["error-handling", "architecture"]

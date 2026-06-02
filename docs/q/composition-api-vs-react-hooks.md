@@ -1,5 +1,5 @@
 ---
-order: 85
+order: 59
 title: "What is the difference between Composition API and React Hooks?"
 difficulty: "advanced"
 tags: ["composition-api", "watchers"]

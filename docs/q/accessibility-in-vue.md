@@ -1,5 +1,5 @@
 ---
-order: 156
+order: 169
 title: "How do you handle accessibility in Vue?"
 difficulty: "intermediate"
 tags: ["accessibility", "components", "teleport"]

@@ -1,5 +1,5 @@
 ---
-order: 78
+order: 51
 title: "¿Cómo funcionan los modificadores personalizados de v-model?"
 difficulty: "advanced"
 tags: ["components", "directives", "v-model"]

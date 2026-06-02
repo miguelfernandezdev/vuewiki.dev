@@ -1,5 +1,5 @@
 ---
-order: 10
+order: 97
 title: "¿Cómo funciona Vuex?"
 difficulty: "beginner"
 tags: ["state-management", "pinia", "vuex"]

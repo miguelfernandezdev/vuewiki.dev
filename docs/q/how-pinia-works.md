@@ -1,5 +1,5 @@
 ---
-order: 101
+order: 98
 title: "How does Pinia work internally? (stores, state, getters, actions)"
 difficulty: "intermediate"
 tags: ["state-management", "pinia", "vuex"]

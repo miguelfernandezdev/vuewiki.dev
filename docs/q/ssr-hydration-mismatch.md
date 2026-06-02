@@ -1,5 +1,5 @@
 ---
-order: 45
+order: 144
 title: "What causes SSR hydration mismatches and how do you fix them?"
 difficulty: "advanced"
 tags: ["ssr", "errors", "vite"]

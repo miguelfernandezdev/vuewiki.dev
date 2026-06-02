@@ -1,5 +1,5 @@
 ---
-order: 144
+order: 160
 title: "¿Qué pasa si llamas a useFetch dentro de un event handler?"
 difficulty: "intermediate"
 tags: ["nuxt", "errors", "vueuse"]

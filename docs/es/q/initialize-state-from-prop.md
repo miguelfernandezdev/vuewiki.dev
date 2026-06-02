@@ -1,5 +1,5 @@
 ---
-order: 131
+order: 66
 title: "¿Puedes inicializar el state con el valor de una prop? ¿Qué ocurre?"
 difficulty: "beginner"
 tags: ["reactivity", "components", "watchers", "v-model"]

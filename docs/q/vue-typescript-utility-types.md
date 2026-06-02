@@ -1,5 +1,5 @@
 ---
-order: 109
+order: 112
 title: "What are the key TypeScript utility types for Vue?"
 difficulty: "advanced"
 tags: ["typescript", "watchers", "provide-inject"]

@@ -1,5 +1,5 @@
 ---
-order: 48
+order: 1
 title: "What is Vue and what are its main features?"
 difficulty: "beginner"
 tags: ["core", "pinia"]

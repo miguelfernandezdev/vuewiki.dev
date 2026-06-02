@@ -1,5 +1,5 @@
 ---
-order: 94
+order: 148
 title: "¿Qué son los auto-imports en Nuxt y cómo funcionan?"
 difficulty: "beginner"
 tags: ["nuxt", "tooling", "vueuse", "watchers"]

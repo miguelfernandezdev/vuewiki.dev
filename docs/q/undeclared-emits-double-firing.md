@@ -1,5 +1,5 @@
 ---
-order: 42
+order: 29
 title: "Why do undeclared emits fire twice?"
 difficulty: "intermediate"
 tags: ["components", "errors"]

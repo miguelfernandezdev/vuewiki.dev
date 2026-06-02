@@ -1,5 +1,5 @@
 ---
-order: 98
+order: 163
 title: "What is SSR cross-request state pollution and how do you avoid it?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]

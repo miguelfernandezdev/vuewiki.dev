@@ -1,5 +1,5 @@
 ---
-order: 60
+order: 35
 title: "What are async components and defineAsyncComponent?"
 difficulty: "intermediate"
 tags: ["components", "performance", "vite", "suspense", "teleport"]

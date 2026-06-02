@@ -1,5 +1,5 @@
 ---
-order: 113
+order: 141
 title: "What is Server Side Rendering and what are its advantages?"
 difficulty: "intermediate"
 tags: ["ssr", "vite"]

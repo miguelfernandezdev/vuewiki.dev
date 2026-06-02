@@ -1,5 +1,5 @@
 ---
-order: 13
+order: 25
 title: "¿Qué son los slots y para qué se usan?"
 difficulty: "intermediate"
 tags: ["components", "slots"]

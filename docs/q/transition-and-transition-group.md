@@ -1,5 +1,5 @@
 ---
-order: 62
+order: 36
 title: "How do Transition and TransitionGroup work?"
 difficulty: "intermediate"
 tags: ["components", "animation"]

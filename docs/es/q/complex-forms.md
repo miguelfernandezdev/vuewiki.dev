@@ -1,5 +1,5 @@
 ---
-order: 27
+order: 50
 title: "¿Cómo gestionarías formularios complejos en Vue?"
 difficulty: "advanced"
 tags: ["components", "composables", "v-model"]

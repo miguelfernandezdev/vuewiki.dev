@@ -1,5 +1,5 @@
 ---
-order: 132
+order: 15
 title: "How do you inject raw HTML in Vue and why is it dangerous?"
 difficulty: "beginner"
 tags: ["directives", "security"]

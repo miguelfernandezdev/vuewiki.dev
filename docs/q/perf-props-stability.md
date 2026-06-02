@@ -1,5 +1,5 @@
 ---
-order: 128
+order: 126
 title: "How do props stability optimizations work?"
 difficulty: "advanced"
 tags: ["performance", "components"]

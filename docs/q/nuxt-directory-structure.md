@@ -1,5 +1,5 @@
 ---
-order: 99
+order: 150
 title: "What is the Nuxt directory structure convention?"
 difficulty: "beginner"
 tags: ["nuxt", "architecture", "vite"]

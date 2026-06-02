@@ -1,5 +1,5 @@
 ---
-order: 169
+order: 119
 title: "How do you test components that use async setup and Suspense?"
 difficulty: "advanced"
 tags: ["testing", "components", "vitest", "suspense"]

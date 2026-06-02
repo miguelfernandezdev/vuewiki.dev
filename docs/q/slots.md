@@ -1,5 +1,5 @@
 ---
-order: 13
+order: 25
 title: "What are slots and what are they used for?"
 difficulty: "intermediate"
 tags: ["components", "slots"]

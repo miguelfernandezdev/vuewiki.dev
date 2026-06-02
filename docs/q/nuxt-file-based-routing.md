@@ -1,5 +1,5 @@
 ---
-order: 88
+order: 147
 title: "How does file-based routing work in Nuxt?"
 difficulty: "beginner"
 tags: ["nuxt", "vue-router", "vueuse"]

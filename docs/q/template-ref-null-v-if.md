@@ -1,5 +1,5 @@
 ---
-order: 36
+order: 28
 title: "Why does my template ref return null?"
 difficulty: "intermediate"
 tags: ["components", "errors", "watchers"]

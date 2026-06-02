@@ -1,5 +1,5 @@
 ---
-order: 119
+order: 104
 title: "¿Cómo implementarías la autenticación con Vue Router?"
 difficulty: "advanced"
 tags: ["vue-router", "architecture"]

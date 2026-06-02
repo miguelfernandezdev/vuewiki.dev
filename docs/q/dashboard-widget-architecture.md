@@ -1,5 +1,5 @@
 ---
-order: 140
+order: 138
 title: "How would you architect a dashboard with multiple widgets that each fetch their own data?"
 difficulty: "advanced"
 tags: ["architecture", "composables", "performance", "pinia", "provide-inject", "suspense"]

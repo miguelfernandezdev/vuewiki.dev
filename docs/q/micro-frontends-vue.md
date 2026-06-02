@@ -1,5 +1,5 @@
 ---
-order: 122
+order: 137
 title: "How would you structure a micro-frontend with Vue?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "vite", "provide-inject"]

@@ -1,5 +1,5 @@
 ---
-order: 166
+order: 61
 title: "¿Qué es getCurrentInstance() y por qué deberías evitarlo?"
 difficulty: "advanced"
 tags: ["composition-api", "pinia", "vueuse", "provide-inject"]

@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 96
 title: "¿Qué es Pinia y en qué se diferencia de Vuex?"
 difficulty: "beginner"
 tags: ["state-management", "pinia", "vuex"]

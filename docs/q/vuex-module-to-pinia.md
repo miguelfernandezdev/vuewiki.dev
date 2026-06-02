@@ -1,5 +1,5 @@
 ---
-order: 28
+order: 100
 title: "How would you migrate a Vuex module to Pinia?"
 difficulty: "advanced"
 tags: ["state-management", "migration", "pinia", "vuex"]

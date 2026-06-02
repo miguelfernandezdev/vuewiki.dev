@@ -1,5 +1,5 @@
 ---
-order: 137
+order: 4
 title: "What JavaScript do you need to learn before Vue?"
 difficulty: "beginner"
 tags: ["core", "vueuse", "watchers"]

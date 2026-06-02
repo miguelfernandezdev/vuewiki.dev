@@ -1,5 +1,5 @@
 ---
-order: 127
+order: 125
 title: "¿Por qué deberías evitar la abstracción en componentes dentro de listas grandes?"
 difficulty: "advanced"
 tags: ["performance", "components"]

@@ -1,5 +1,5 @@
 ---
-order: 118
+order: 135
 title: "What is the compound components pattern in Vue?"
 difficulty: "advanced"
 tags: ["architecture", "components", "vite", "provide-inject"]

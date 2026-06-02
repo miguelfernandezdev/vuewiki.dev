@@ -1,5 +1,5 @@
 ---
-order: 130
+order: 128
 title: "¿Cuándo usar el hook updated y cuáles son sus implicaciones de rendimiento?"
 difficulty: "advanced"
 tags: ["performance", "reactivity", "watchers"]

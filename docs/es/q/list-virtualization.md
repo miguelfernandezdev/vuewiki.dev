@@ -1,5 +1,5 @@
 ---
-order: 79
+order: 124
 title: "¿Cómo virtualizarías una lista de miles de elementos?"
 difficulty: "advanced"
 tags: ["performance", "slots"]

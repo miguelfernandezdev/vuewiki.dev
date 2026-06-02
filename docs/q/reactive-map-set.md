@@ -1,5 +1,5 @@
 ---
-order: 160
+order: 89
 title: "How do reactive Maps and Sets work in Vue 3?"
 difficulty: "advanced"
 tags: ["reactivity", "watchers"]

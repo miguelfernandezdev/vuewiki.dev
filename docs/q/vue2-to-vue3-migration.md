@@ -1,5 +1,5 @@
 ---
-order: 21
+order: 168
 title: "How would you plan a Vue 2 to Vue 3 migration?"
 difficulty: "advanced"
 tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]

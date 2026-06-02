@@ -1,5 +1,5 @@
 ---
-order: 143
+order: 159
 title: "¿Qué es el payload de Nuxt y cómo evita la doble petición?"
 difficulty: "intermediate"
 tags: ["nuxt", "ssr", "pinia", "vueuse"]

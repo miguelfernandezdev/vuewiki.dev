@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 105
 title: "¿Cómo se declaran props con TypeScript en Vue 3?"
 difficulty: "beginner"
 tags: ["typescript", "components"]

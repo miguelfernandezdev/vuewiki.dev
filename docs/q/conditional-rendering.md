@@ -1,5 +1,5 @@
 ---
-order: 54
+order: 14
 title: "What is conditional rendering in Vue?"
 difficulty: "beginner"
 tags: ["directives"]

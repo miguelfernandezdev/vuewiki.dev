@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 109
 title: "¿Cómo se tipan los manejadores de eventos en los templates de Vue?"
 difficulty: "intermediate"
 tags: ["typescript", "components"]

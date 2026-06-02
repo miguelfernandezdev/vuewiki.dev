@@ -1,5 +1,5 @@
 ---
-order: 29
+order: 134
 title: "¿Cómo estructurarías un proyecto Vue grande?"
 difficulty: "advanced"
 tags: ["architecture", "pinia", "vite"]

@@ -1,5 +1,5 @@
 ---
-order: 123
+order: 87
 title: "How would you implement optimistic updates in Vue?"
 difficulty: "advanced"
 tags: ["reactivity", "performance", "pinia"]

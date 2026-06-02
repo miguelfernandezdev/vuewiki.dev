@@ -1,5 +1,5 @@
 ---
-order: 106
+order: 102
 title: "What is Pinia Colada and how does it handle async state?"
 difficulty: "advanced"
 tags: ["state-management", "data-fetching", "pinia"]

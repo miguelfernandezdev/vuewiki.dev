@@ -1,5 +1,5 @@
 ---
-order: 98
+order: 163
 title: "¿Qué es la contaminación de estado entre peticiones en SSR y cómo se evita?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]

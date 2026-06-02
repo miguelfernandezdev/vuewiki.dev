@@ -1,5 +1,5 @@
 ---
-order: 39
+order: 72
 title: "Why does my watchEffect miss dependencies after an await?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]

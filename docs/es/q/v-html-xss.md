@@ -1,5 +1,5 @@
 ---
-order: 132
+order: 15
 title: "¿Cómo se inyecta HTML crudo en Vue y por qué es peligroso?"
 difficulty: "beginner"
 tags: ["directives", "security"]

@@ -1,5 +1,5 @@
 ---
-order: 17
+order: 92
 title: "¿Cómo implementarías debounce en un input de búsqueda?"
 difficulty: "intermediate"
 tags: ["composables", "performance", "vueuse", "watchers", "v-model"]

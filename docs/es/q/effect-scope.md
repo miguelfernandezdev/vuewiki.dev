@@ -1,5 +1,5 @@
 ---
-order: 74
+order: 81
 title: "¿Qué es effectScope y cuándo lo usarías?"
 difficulty: "advanced"
 tags: ["reactivity", "composables", "pinia", "watchers"]

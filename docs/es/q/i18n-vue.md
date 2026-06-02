@@ -1,5 +1,5 @@
 ---
-order: 126
+order: 132
 title: "¿Cómo gestionarías la internacionalización (i18n) en Vue?"
 difficulty: "intermediate"
 tags: ["architecture", "v-model"]

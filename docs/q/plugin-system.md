@@ -1,5 +1,5 @@
 ---
-order: 66
+order: 130
 title: "How does the Vue plugin system work?"
 difficulty: "intermediate"
 tags: ["architecture", "provide-inject"]

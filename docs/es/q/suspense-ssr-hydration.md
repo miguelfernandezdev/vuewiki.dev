@@ -1,5 +1,5 @@
 ---
-order: 116
+order: 145
 title: "¿Qué problemas de hidratación SSR causa Suspense y cómo se evitan?"
 difficulty: "advanced"
 tags: ["ssr", "components", "vueuse", "suspense"]

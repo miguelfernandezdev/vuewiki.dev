@@ -1,5 +1,5 @@
 ---
-order: 133
+order: 43
 title: "¿Cuál es la diferencia entre un componente y un elemento en Vue?"
 difficulty: "intermediate"
 tags: ["components", "core"]

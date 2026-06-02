@@ -1,5 +1,5 @@
 ---
-order: 162
+order: 139
 title: "How do you architect a Vue 3 app to scale across multiple teams?"
 difficulty: "advanced"
 tags: ["architecture", "pinia"]

@@ -1,5 +1,5 @@
 ---
-order: 88
+order: 147
 title: "¿Cómo funciona el enrutamiento basado en archivos en Nuxt?"
 difficulty: "beginner"
 tags: ["nuxt", "vue-router", "vueuse"]

@@ -1,5 +1,5 @@
 ---
-order: 168
+order: 48
 title: "How does the `is` attribute work for dynamic component rendering?"
 difficulty: "intermediate"
 tags: ["components", "vite"]

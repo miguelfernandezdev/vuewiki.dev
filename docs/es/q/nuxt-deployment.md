@@ -1,5 +1,5 @@
 ---
-order: 97
+order: 157
 title: "¿Cómo se despliega una aplicación Nuxt?"
 difficulty: "intermediate"
 tags: ["nuxt", "tooling"]

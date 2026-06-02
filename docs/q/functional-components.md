@@ -1,5 +1,5 @@
 ---
-order: 167
+order: 47
 title: "What are functional components and when are they useful?"
 difficulty: "intermediate"
 tags: ["components", "performance"]

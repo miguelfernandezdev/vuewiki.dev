@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 106
 title: "¿Cómo se emiten eventos con TypeScript?"
 difficulty: "beginner"
 tags: ["typescript", "components"]

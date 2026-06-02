@@ -1,5 +1,5 @@
 ---
-order: 105
+order: 115
 title: "¿Cómo se configura Vitest para un proyecto Vue?"
 difficulty: "intermediate"
 tags: ["testing", "tooling", "pinia", "vite", "vitest", "provide-inject"]
