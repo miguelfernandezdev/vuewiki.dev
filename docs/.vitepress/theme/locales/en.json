@@ -18,6 +18,9 @@
   },
   "tags": {
     "label": "Topics",
+    "allTopics": "All topics",
+    "searchTopics": "Search topics...",
+    "clear": "Clear all",
     "accessibility": "Accessibility",
     "composition-api": "Composition API",
     "reactivity": "Reactivity",

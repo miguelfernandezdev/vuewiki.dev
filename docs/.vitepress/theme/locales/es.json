@@ -18,6 +18,9 @@
   },
   "tags": {
     "label": "Temas",
+    "allTopics": "Todos los temas",
+    "searchTopics": "Buscar temas...",
+    "clear": "Limpiar todo",
     "accessibility": "Accesibilidad",
     "composition-api": "Composition API",
     "reactivity": "Reactividad",

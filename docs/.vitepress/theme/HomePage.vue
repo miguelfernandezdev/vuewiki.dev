@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
@@ -13,7 +13,7 @@ const questions = computed(() =>
 
 const search = ref('')
 const activeFilter = ref<string | null>(null)
-const activeTag = ref<string | null>(null)
+const activeTags = ref<Set<string>>(new Set())
 
 const allTags = computed(() => {
   const tags = new Set<string>()
@@ -21,11 +21,39 @@ const allTags = computed(() => {
   return Array.from(tags).sort()
 })
 
+const topicDropdownOpen = ref(false)
+const topicSearch = ref('')
+const dropdownRef = ref<HTMLElement | null>(null)
+
+const filteredTags = computed(() => {
+  if (!topicSearch.value) return allTags.value
+  const q = topicSearch.value.toLowerCase()
+  return allTags.value.filter(tag =>
+    t(`tags.${tag}`).toLowerCase().includes(q) || tag.toLowerCase().includes(q),
+  )
+})
+
+function toggleDropdown() {
+  topicDropdownOpen.value = !topicDropdownOpen.value
+  if (topicDropdownOpen.value) {
+    topicSearch.value = ''
+  }
+}
+
+function onClickOutside(e: MouseEvent) {
+  if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
+    topicDropdownOpen.value = false
+  }
+}
+
+onMounted(() => document.addEventListener('click', onClickOutside))
+onUnmounted(() => document.removeEventListener('click', onClickOutside))
+
 const filteredQuestions = computed(() => {
   return questions.value.filter(q => {
     const matchesSearch = q.title.toLowerCase().includes(search.value.toLowerCase())
     const matchesFilter = !activeFilter.value || q.difficulty === activeFilter.value
-    const matchesTag = !activeTag.value || q.tags.includes(activeTag.value)
+    const matchesTag = activeTags.value.size === 0 || q.tags.some(tag => activeTags.value.has(tag))
     return matchesSearch && matchesFilter && matchesTag
   })
 })
@@ -45,14 +73,31 @@ function showMore() {
   visibleCount.value += PAGE_SIZE
 }
 
-// Reset visible count when filters change
 function setFilter(value: string | null) {
   activeFilter.value = value
   visibleCount.value = PAGE_SIZE
 }
 
-function setTag(value: string | null) {
-  activeTag.value = value
+function toggleTag(tag: string) {
+  const next = new Set(activeTags.value)
+  if (next.has(tag)) {
+    next.delete(tag)
+  } else {
+    next.add(tag)
+  }
+  activeTags.value = next
+  visibleCount.value = PAGE_SIZE
+}
+
+function removeTag(tag: string) {
+  const next = new Set(activeTags.value)
+  next.delete(tag)
+  activeTags.value = next
+  visibleCount.value = PAGE_SIZE
+}
+
+function clearTags() {
+  activeTags.value = new Set()
   visibleCount.value = PAGE_SIZE
 }
 
@@ -75,37 +120,69 @@ const difficultyClass: Record<string, string> = {
     </div>
 
     <section class="content">
-      <div class="filter-row">
-        <button
-          v-for="f in [
-            { label: t('filters.all'), value: null },
-            { label: t('filters.beginner'), value: 'beginner' },
-            { label: t('filters.intermediate'), value: 'intermediate' },
-            { label: t('filters.advanced'), value: 'advanced' },
-          ]"
-          :key="f.label"
-          :class="['filter-btn', { active: activeFilter === f.value }]"
-          @click="setFilter(f.value)"
-        >
-          {{ f.label }}
-        </button>
-      </div>
+      <div class="filters">
+        <div class="filter-row">
+          <button
+            v-for="f in [
+              { label: t('filters.all'), value: null },
+              { label: t('filters.beginner'), value: 'beginner' },
+              { label: t('filters.intermediate'), value: 'intermediate' },
+              { label: t('filters.advanced'), value: 'advanced' },
+            ]"
+            :key="f.label"
+            :class="['filter-btn', { active: activeFilter === f.value }]"
+            @click="setFilter(f.value)"
+          >
+            {{ f.label }}
+          </button>
+        </div>
 
-      <div class="tag-row">
-        <button
-          :class="['tag-btn', { active: activeTag === null }]"
-          @click="setTag(null)"
-        >
-          {{ t('filters.all') }}
-        </button>
-        <button
-          v-for="tag in allTags"
-          :key="tag"
-          :class="['tag-btn', { active: activeTag === tag }]"
-          @click="setTag(tag)"
-        >
-          {{ t(`tags.${tag}`) }}
-        </button>
+        <div ref="dropdownRef" class="topic-dropdown">
+          <button class="dropdown-trigger" @click="toggleDropdown">
+            <span>{{ activeTags.size === 0 ? t('tags.allTopics') : t('tags.label') + ` (${activeTags.size})` }}</span>
+            <svg class="dropdown-chevron" :class="{ open: topicDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div v-show="topicDropdownOpen" class="dropdown-panel">
+            <input
+              v-model="topicSearch"
+              type="text"
+              class="dropdown-search"
+              :placeholder="t('tags.searchTopics')"
+            />
+            <ul class="dropdown-list">
+              <li v-for="tag in filteredTags" :key="tag">
+                <button
+                  :class="['dropdown-option', { active: activeTags.has(tag) }]"
+                  @click="toggleTag(tag)"
+                >
+                  <svg v-if="activeTags.has(tag)" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ t(`tags.${tag}`) }}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div v-if="activeTags.size > 0" class="selected-tags">
+          <button
+            v-for="tag in activeTags"
+            :key="tag"
+            class="selected-tag"
+            @click="removeTag(tag)"
+          >
+            {{ t(`tags.${tag}`) }}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 3L9 9M9 3L3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="clear-tags" @click="clearTags">
+            {{ t('tags.clear') }}
+          </button>
+        </div>
       </div>
 
       <div class="question-list">
@@ -176,10 +253,17 @@ const difficultyClass: Record<string, string> = {
   margin-top: 1rem;
 }
 
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
 .filter-row {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -206,32 +290,144 @@ const difficultyClass: Record<string, string> = {
   border-color: var(--vp-c-brand-1);
 }
 
-.tag-row {
+.topic-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
   display: flex;
+  align-items: center;
   gap: 0.375rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.tag-btn {
-  padding: 0.25rem 0.625rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
-  background: transparent;
-  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
-.tag-btn:hover {
+.dropdown-trigger:hover {
+  border-color: var(--vp-c-brand-1);
   color: var(--vp-c-text-1);
 }
 
-.tag-btn.active {
-  background: var(--vp-c-brand-soft);
+.dropdown-chevron {
+  transition: transform 0.2s;
+}
+
+.dropdown-chevron.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  min-width: 220px;
+  max-height: 320px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown-search {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-bottom: 1px solid var(--vp-c-border);
+  border-radius: 8px 8px 0 0;
+  font-size: 0.8125rem;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  outline: none;
+}
+
+.dropdown-search::placeholder {
+  color: var(--vp-c-text-3);
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  overflow-y: auto;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: none;
+  background: none;
+  font-size: 0.8125rem;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.dropdown-option:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+}
+
+.dropdown-option.active {
   color: var(--vp-c-brand-1);
   font-weight: 500;
+}
+
+.check-icon {
+  flex-shrink: 0;
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+.selected-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  transition: opacity 0.15s;
+}
+
+.selected-tag:hover {
+  opacity: 0.7;
+}
+
+.clear-tags {
+  padding: 0.1875rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  background: none;
+  color: var(--vp-c-text-3);
+  transition: color 0.15s;
+}
+
+.clear-tags:hover {
+  color: var(--vp-c-text-1);
 }
 
 .question-list {
