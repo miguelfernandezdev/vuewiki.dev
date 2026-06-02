@@ -61,6 +61,10 @@
     "suspense": "⏳ Suspense",
     "teleport": "🌀 Teleport"
   },
+  "questionsPage": {
+    "title": "All Questions by Difficulty",
+    "subtitle": "{read} of {total} read"
+  },
   "sort": {
     "recommended": "Recommended",
     "easiest": "Easiest first",

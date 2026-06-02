@@ -85,7 +85,8 @@ Available in English and Spanish.
           copyright: 'Copyright © 2026-present Miguel Fernández',
         },
         nav: [
-          { text: 'Preguntas', link: '/es/', activeMatch: '^/es/' },
+          { text: 'Preguntas', link: '/es/', activeMatch: '^/es/$' },
+          { text: 'Por dificultad', link: '/es/questions' },
           { text: 'Recursos', link: '/es/resources' },
           {
             text: 'Enlaces',
@@ -155,6 +156,7 @@ Available in English and Spanish.
 
     nav: [
       { text: 'Questions', link: '/', activeMatch: '^/$' },
+      { text: 'By Difficulty', link: '/questions' },
       { text: 'Resources', link: '/resources' },
       {
         text: 'Links',
