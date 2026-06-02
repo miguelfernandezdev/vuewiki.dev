@@ -5,7 +5,7 @@ difficulty: "beginner"
 tags: ["composition-api", "lifecycle"]
 ---
 
-Los lifecycle hooks permiten ejecutar código en momentos concretos de la vida de un componente: cuando se crea, cuando se monta en el DOM, cuando se actualiza o cuando se destruye. En la Composition API, los registras como funciones dentro de `<script setup>`.
+Los lifecycle hooks permiten ejecutar código en momentos concretos de la vida de un componente: cuando se crea, cuando se monta en el DOM, cuando se actualiza o cuando se destruye. En la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), los registras como funciones dentro de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html).
 
 ## Los hooks principales
 
@@ -97,3 +97,11 @@ Si ves código antiguo con Options API, la correspondencia es directa:
 | `onUnmounted` | `unmounted` |
 
 No existe `onCreated` ni `onBeforeCreate` en la Composition API. El código que iría ahí se ejecuta directamente en `setup()` (o al nivel superior de `<script setup>`), ya que el propio setup se ejecuta en el momento de la creación.
+
+Ver también: [¿Qué es la Composition API y en qué se diferencia de la Options API?](/es/q/composition-api-vs-options-api) · [¿Se puede usar await directamente en script setup?](/es/q/await-in-script-setup)
+
+## Referencias
+
+- [onMounted](https://vuejs.org/api/composition-api-lifecycle.html#onmounted) - Vue.js docs
+- [Guía de lifecycle hooks](https://vuejs.org/guide/essentials/lifecycle.html) - Vue.js docs
+- [Composition API: Lifecycle Hooks](https://vuejs.org/api/composition-api-lifecycle.html) - Vue.js docs

@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["composition-api", "architecture"]
 ---
 
-En React, un Higher-Order Component (HOC) es una función que recibe un componente y devuelve uno nuevo con comportamiento añadido. Vue no usa este patrón porque la Composition API resuelve el mismo problema de forma más directa. Los equivalentes en Vue son los composables (para reutilizar lógica) y los componentes renderless (para lógica con renderizado basado en slots). Ambos evitan el anidamiento de wrappers, las colisiones de props y los problemas de depuración que causan los HOCs.
+En React, un Higher-Order Component (HOC) es una función que recibe un componente y devuelve uno nuevo con comportamiento añadido. Vue no usa este patrón porque la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) resuelve el mismo problema de forma más directa. Los equivalentes en Vue son los composables (para reutilizar lógica) y los componentes renderless (para lógica con renderizado basado en slots). Ambos evitan el anidamiento de wrappers, las colisiones de props y los problemas de depuración que causan los HOCs.
 
 ## Qué resuelven los HOCs
 
@@ -159,3 +159,11 @@ const { isAuthenticated } = useAuth()
 **Componentes renderless** funcionan bien en librerías de componentes donde quieres proporcionar comportamiento con renderizado personalizable. Ejemplos: librerías headless UI, proveedores de tablas de datos, wrappers de campos de formulario.
 
 **HOCs** no tienen ningún caso de uso recomendado en Vue 3. Si vienes de React y buscas un HOC, usa un composable en su lugar.
+
+Ver también: [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cuál es la diferencia entre la Composition API y los React Hooks?](/es/q/composition-api-vs-react-hooks)
+
+## Referencias
+
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html) - Vue.js docs
+- [Components: Slots](https://vuejs.org/guide/components/slots.html) - Vue.js docs

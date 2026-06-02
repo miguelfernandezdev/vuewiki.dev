@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["components", "composition-api"]
 ---
 
-Template refs give you direct access to a DOM element or child component instance. You add a `ref` attribute in the template and read the corresponding value in script after the component mounts.
+Template refs give you direct access to a DOM element or child component instance. You add a `ref` attribute in the template and read the corresponding value in script after the component mounts. See the [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) guide for full details.
 
 ## Legacy pattern (before Vue 3.5)
 
@@ -32,7 +32,7 @@ The fragile part: rename the variable during refactoring and the connection brea
 
 ## useTemplateRef (Vue 3.5+)
 
-`useTemplateRef` decouples the variable name from the ref attribute. The string argument is the connection point, and the variable can be called anything.
+[`useTemplateRef`](https://vuejs.org/guide/essentials/template-refs.html) decouples the variable name from the ref attribute. The string argument is the connection point, and the variable can be called anything.
 
 ```vue
 <script setup>
@@ -126,3 +126,11 @@ function submit() {
 | Read element dimensions | Yes |
 | Change text or toggle classes | No, use reactive data and bindings |
 | Listen to events | No, use `@event` |
+
+See also: [What is defineExpose and when is it needed?](/q/define-expose) · [Can you use await directly in script setup?](/q/await-in-script-setup)
+
+## References
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [useTemplateRef](https://vuejs.org/api/composition-api-helpers.html#usetemplateref) - Vue.js docs
+- [defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose) - Vue.js docs

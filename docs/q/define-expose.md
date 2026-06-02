@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["composition-api", "components"]
 ---
 
-Components using `<script setup>` are closed by default. A parent that grabs a template ref to a child component gets an empty object unless the child explicitly exposes properties with `defineExpose`. This is a deliberate change from Options API, where `this.$refs.child` gave full access to the entire instance.
+Components using [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) are closed by default. A parent that grabs a template ref to a child component gets an empty object unless the child explicitly exposes properties with [`defineExpose`](https://vuejs.org/api/sfc-script-setup.html#defineexpose). This is a deliberate change from [Options API](https://vuejs.org/guide/introduction.html#options-api), where `this.$refs.child` gave full access to the entire instance.
 
 ## The problem
 
@@ -111,3 +111,11 @@ function openSearch() {
 | Form library needs to call validate() on child inputs | Yes |
 
 Component refs create tight coupling. Prefer props and emit for data flow, and reserve `defineExpose` for genuinely imperative actions that don't fit a declarative pattern.
+
+See also: [How do template refs work?](/q/template-refs) · [What are all the compiler macros in Vue?](/q/compiler-macros)
+
+## References
+
+- [defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose) - Vue.js docs
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [script setup](https://vuejs.org/api/sfc-script-setup.html) - Vue.js docs

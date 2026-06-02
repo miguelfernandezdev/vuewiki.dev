@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["composition-api", "nuxt"]
 ---
 
-Sí, puedes usar `await` en el nivel superior de `<script setup>`. El compilador envuelve el bloque setup en una función `async setup()` automáticamente. El problema: los componentes asíncronos requieren un límite `<Suspense>` en el padre para gestionar el estado pendiente mientras el await se resuelve. Sin `<Suspense>`, el componente nunca se renderiza. Nuxt envuelve cada página en `<Suspense>` por defecto, así que en Nuxt puedes usar `await` libremente en páginas y layouts sin preocuparte por ello.
+Sí, puedes usar `await` en el nivel superior de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). El compilador envuelve el bloque setup en una función `async setup()` automáticamente. El problema: los componentes asíncronos requieren un límite `<Suspense>` en el padre para gestionar el estado pendiente mientras el await se resuelve. Sin `<Suspense>`, el componente nunca se renderiza. Nuxt envuelve cada página en `<Suspense>` por defecto, así que en Nuxt puedes usar `await` libremente en páginas y layouts sin preocuparte por ello.
 
 ## Ejemplo básico
 
@@ -77,7 +77,7 @@ Esto funciona sin configuración adicional porque el `app.vue` de Nuxt contiene 
 
 ## El problema: watchers y lifecycle hooks después de await
 
-Cuando usas `await`, cualquier código después de él se ejecuta en una microtarea diferente. El contexto de `getCurrentInstance()` de Vue puede perderse. Esto significa que los watchers y lifecycle hooks registrados después de un `await` pueden no vincularse correctamente:
+Cuando usas `await`, cualquier código después de él se ejecuta en una microtarea diferente. El contexto de [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) de Vue puede perderse. Esto significa que los watchers y lifecycle hooks registrados después de un `await` pueden no vincularse correctamente:
 
 ```vue
 <script setup>
@@ -154,3 +154,11 @@ const [users, posts] = await Promise.all([
 | Componente Nuxt dentro de una página | Sí | Sí (añade Suspense en el padre) |
 | Vue sin Nuxt | Sí | Sí (debes añadirlo tú) |
 | Dentro de un manejador de eventos | No aplica (usa $fetch) | No |
+
+Ver también: [¿Cuáles son los lifecycle hooks en Vue 3?](/es/q/lifecycle-hooks) · [¿Qué es script setup?](/es/q/script-setup)
+
+## Referencias
+
+- [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html) - Vue.js docs
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs
+- [getCurrentInstance](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) - Vue.js docs

@@ -7,6 +7,8 @@ tags: ["composition-api"]
 
 A primera vista se parecen (ambos extraen lógica reutilizable en funciones), pero tienen una diferencia fundamental: el `setup` de Vue se ejecuta **una vez** por instancia de componente, mientras que la función de componente de React se ejecuta en **cada renderizado**. Esta única diferencia elimina categorías enteras de bugs y patrones innecesarios.
 
+La [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) y los React Hooks resuelven el mismo problema de reutilización de lógica, pero con enfoques radicalmente distintos.
+
 ## setup se ejecuta una vez
 
 ```vue
@@ -121,3 +123,11 @@ Si vienes de React, abandona estos hábitos:
 - No crees arrays de dependencias explícitos para `watchEffect`. Rastrea automáticamente.
 - No te preocupes por la obsolescencia de las closures. `ref.value` siempre es actual.
 - No añadas optimizaciones al estilo `React.memo`. La reactividad de Vue ya es granular.
+
+Ver también: [¿Qué es la Composition API y en qué se diferencia de la Options API?](/es/q/composition-api-vs-options-api) · [¿Qué es un composable?](/es/q/what-is-a-composable)
+
+## Referencias
+
+- [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html) - Vue.js docs
+- [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) - Vue.js docs
+- [computed](https://vuejs.org/api/reactivity-core.html#computed) - Vue.js docs

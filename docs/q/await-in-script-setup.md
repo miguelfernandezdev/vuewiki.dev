@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["composition-api", "nuxt"]
 ---
 
-Yes, you can use top-level `await` in `<script setup>`. The compiler wraps the setup block in an `async setup()` function automatically. The catch: async components require a `<Suspense>` boundary in the parent to handle the pending state while the await resolves. Without `<Suspense>`, the component never renders. Nuxt wraps every page in `<Suspense>` by default, so in Nuxt you can use `await` freely in pages and layouts without thinking about it.
+Yes, you can use top-level `await` in [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). The compiler wraps the setup block in an `async setup()` function automatically. The catch: async components require a `<Suspense>` boundary in the parent to handle the pending state while the await resolves. Without `<Suspense>`, the component never renders. Nuxt wraps every page in `<Suspense>` by default, so in Nuxt you can use `await` freely in pages and layouts without thinking about it.
 
 ## Basic example
 
@@ -77,7 +77,7 @@ This works out of the box because Nuxt's `app.vue` contains `<NuxtPage>`, which 
 
 ## The gotcha: watchers and lifecycle hooks after await
 
-When you use `await`, any code after it runs in a different microtask. Vue's `getCurrentInstance()` context may be lost. This means watchers and lifecycle hooks registered after an `await` might not bind correctly:
+When you use `await`, any code after it runs in a different microtask. Vue's [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) context may be lost. This means watchers and lifecycle hooks registered after an `await` might not bind correctly:
 
 ```vue
 <script setup>
@@ -154,3 +154,11 @@ const [users, posts] = await Promise.all([
 | Nuxt component inside a page | Yes | Yes (add Suspense in parent) |
 | Plain Vue (no Nuxt) | Yes | Yes (you must add it) |
 | Inside event handler | N/A (use $fetch instead) | No |
+
+See also: [What are lifecycle hooks in Vue 3?](/q/lifecycle-hooks) · [What is script setup?](/q/script-setup)
+
+## References
+
+- [\<script setup\>](https://vuejs.org/api/sfc-script-setup.html) - Vue.js docs
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs
+- [getCurrentInstance](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) - Vue.js docs

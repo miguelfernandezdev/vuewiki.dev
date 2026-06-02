@@ -5,8 +5,8 @@ difficulty: "beginner"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`ref`**: wraps any value (primitive or object). Accessed via `.value` in JS/TS, but NOT in templates.
-- **`reactive`**: only for objects/arrays. No `.value` needed, but you CANNOT reassign the entire object.
+- **[`ref`](https://vuejs.org/api/reactivity-core.html#ref)**: wraps any value (primitive or object). Accessed via `.value` in JS/TS, but NOT in templates.
+- **[`reactive`](https://vuejs.org/api/reactivity-core.html#reactive)**: only for objects/arrays. No `.value` needed, but you CANNOT reassign the entire object.
 
 ```ts
 const count = ref(0)          // count.value = 1
@@ -17,3 +17,11 @@ const state = reactive({ count: 0, name: '' })  // state.count = 1
 ```
 
 **Rule of thumb:** Use `ref` for everything (it's more flexible). Use `reactive` only when you have an object with multiple properties that always go together.
+
+See also: [What's the difference between computed and watch?](/q/computed-vs-watch) · [What's the difference between watch and watchEffect?](/q/watch-vs-watcheffect)
+
+## References
+
+- [ref](https://vuejs.org/api/reactivity-core.html#ref) - Vue.js docs
+- [reactive](https://vuejs.org/api/reactivity-core.html#reactive) - Vue.js docs
+- [Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) - Vue.js docs

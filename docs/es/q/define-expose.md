@@ -5,7 +5,7 @@ difficulty: "intermediate"
 tags: ["composition-api", "components"]
 ---
 
-Los componentes que usan `<script setup>` están cerrados por defecto. Un padre que obtiene una template ref a un componente hijo recibe un objeto vacío a menos que el hijo exponga explícitamente propiedades con `defineExpose`. Este es un cambio deliberado respecto a la Options API, donde `this.$refs.child` daba acceso completo a toda la instancia.
+Los componentes que usan [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) están cerrados por defecto. Un padre que obtiene una template ref a un componente hijo recibe un objeto vacío a menos que el hijo exponga explícitamente propiedades con [`defineExpose`](https://vuejs.org/api/sfc-script-setup.html#defineexpose). Este es un cambio deliberado respecto a la [Options API](https://vuejs.org/guide/introduction.html#options-api), donde `this.$refs.child` daba acceso completo a toda la instancia.
 
 ## El problema
 
@@ -111,3 +111,11 @@ function openSearch() {
 | Una librería de formularios necesita llamar a validate() en los inputs hijo | Sí |
 
 Las refs de componentes crean un acoplamiento estrecho. Prefiere props y emit para el flujo de datos, y reserva `defineExpose` para acciones genuinamente imperativas que no encajan en un patrón declarativo.
+
+Ver también: [¿Cómo funcionan los template refs?](/es/q/template-refs) · [¿Cuáles son todas las macros del compilador en Vue?](/es/q/compiler-macros)
+
+## Referencias
+
+- [defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose) - Vue.js docs
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [script setup](https://vuejs.org/api/sfc-script-setup.html) - Vue.js docs

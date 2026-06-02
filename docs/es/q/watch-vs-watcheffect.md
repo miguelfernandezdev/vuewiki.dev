@@ -5,8 +5,8 @@ difficulty: "intermediate"
 tags: ["reactivity", "composition-api"]
 ---
 
-- **`watch`**: observa fuentes específicas. Recibe los valores anterior y nuevo. Solo se ejecuta cuando cambian las fuentes explícitas.
-- **`watchEffect`**: detecta dependencias automáticamente. Se ejecuta de forma inmediata y vuelve a ejecutarse cuando cambia cualquier dependencia reactiva.
+- **[`watch`](https://vuejs.org/api/reactivity-core.html#watch)**: observa fuentes específicas. Recibe los valores anterior y nuevo. Solo se ejecuta cuando cambian las fuentes explícitas.
+- **[`watchEffect`](https://vuejs.org/api/reactivity-core.html#watcheffect)**: detecta dependencias automáticamente. Se ejecuta de forma inmediata y vuelve a ejecutarse cuando cambia cualquier dependencia reactiva.
 
 ```ts
 // watch: explícito
@@ -30,3 +30,11 @@ watchEffect(() => {
 
 - `watch` cuando necesitas el valor anterior, o cuando necesitas controlar exactamente qué observas
 - `watchEffect` para efectos secundarios simples que dependen de datos reactivos
+
+Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-vs-watch) · [¿Cuál es la diferencia entre ref y reactive?](/es/q/ref-vs-reactive)
+
+## Referencias
+
+- [watch](https://vuejs.org/api/reactivity-core.html#watch) - Vue.js docs
+- [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) - Vue.js docs
+- [Watchers](https://vuejs.org/guide/essentials/watchers.html) - Vue.js docs

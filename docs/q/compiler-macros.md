@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["composition-api", "typescript"]
 ---
 
-Compiler macros are special functions that only work inside `<script setup>`. They're processed at compile time and don't need to be imported. Vue 3.5 has six of them.
+Compiler macros are special functions that only work inside [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). They're processed at compile time and don't need to be imported. Vue 3.5 has six of them.
 
 ## defineProps
 
@@ -124,3 +124,11 @@ This doesn't change runtime behavior. It only provides type checking for slot pr
 - Don't import them. The compiler removes them at build time.
 - They must be called at the top level, not inside functions or conditionals.
 - `defineProps` and `defineEmits` can't be used in the same component as their Options API equivalents (`props`, `emits`).
+
+See also: [What is script setup?](/q/script-setup) · [What is defineExpose and when is it needed?](/q/define-expose)
+
+## References
+
+- [defineProps / defineEmits](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) - Vue.js docs
+- [defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose) - Vue.js docs
+- [script setup](https://vuejs.org/api/sfc-script-setup.html) - Vue.js docs

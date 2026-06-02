@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["composition-api"]
 ---
 
-`getCurrentInstance()` devuelve la instancia interna del componente durante `setup()`. Expone internos como `$el`, `$parent`, `$refs`, `$emit`, el proxy del componente y todo el estado interno. Es una vía de escape para autores de librerías, no para código de aplicación. El equipo de Vue la marca explícitamente como API interna, lo que significa que puede cambiar entre versiones menores sin previo aviso. Si la usas en tu app, estás acoplándote a detalles de implementación que pueden romperse en cualquier actualización de Vue.
+[`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) devuelve la instancia interna del componente durante `setup()`. Expone internos como `$el`, `$parent`, `$refs`, `$emit`, el proxy del componente y todo el estado interno. Es una vía de escape para autores de librerías, no para código de aplicación. El equipo de Vue la marca explícitamente como API interna, lo que significa que puede cambiar entre versiones menores sin previo aviso. Si la usas en tu app, estás acoplándote a detalles de implementación que pueden romperse en cualquier actualización de Vue.
 
 ## Qué devuelve
 
@@ -105,3 +105,11 @@ Por ejemplo, `useRouter()` llama internamente a `getCurrentInstance()` para acce
 | Emit desde un composable | Pasa `emit` como parámetro |
 | Contexto de app en una librería | `getCurrentInstance()` es aceptable (envuélvelo) |
 | Código de aplicación | Nunca uses `getCurrentInstance()` |
+
+Ver también: [¿Qué es Provide/Inject?](/es/q/provide-inject) · [¿Cómo funcionan los template refs?](/es/q/template-refs)
+
+## Referencias
+
+- [getCurrentInstance](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) - Vue.js docs
+- [provide](https://vuejs.org/api/composition-api-dependency-injection.html#provide) - Vue.js docs
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs

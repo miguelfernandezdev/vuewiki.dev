@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["composition-api", "architecture"]
 ---
 
-In React, a Higher-Order Component (HOC) is a function that takes a component and returns a new component with added behavior. Vue doesn't use this pattern because the Composition API solves the same problem more directly. The Vue equivalents are composables (for logic reuse) and renderless components (for logic + slot-based rendering). Both avoid the wrapper nesting, prop collision, and debugging pain that HOCs cause.
+In React, a Higher-Order Component (HOC) is a function that takes a component and returns a new component with added behavior. Vue doesn't use this pattern because the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) solves the same problem more directly. The Vue equivalents are composables (for logic reuse) and renderless components (for logic + slot-based rendering). Both avoid the wrapper nesting, prop collision, and debugging pain that HOCs cause.
 
 ## What HOCs solve
 
@@ -159,3 +159,11 @@ const { isAuthenticated } = useAuth()
 **Renderless components** work well in component libraries where you want to provide behavior with customizable rendering. Examples: headless UI libraries, data table providers, form field wrappers.
 
 **HOCs** have no recommended use case in Vue 3. If you're coming from React and reaching for an HOC, use a composable instead.
+
+See also: [What is a composable?](/q/what-is-a-composable) · [What is the difference between Composition API and React Hooks?](/q/composition-api-vs-react-hooks)
+
+## References
+
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html) - Vue.js docs
+- [Components: Slots](https://vuejs.org/guide/components/slots.html) - Vue.js docs

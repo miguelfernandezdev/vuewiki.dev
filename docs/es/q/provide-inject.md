@@ -30,3 +30,13 @@ const user = inject(UserKey, ref({ name: 'Guest' }))
 ```
 
 **Casos de uso:** Tema visual, contexto de autenticación, configuración global, contexto de tablas o formularios.
+
+[`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) hace que los datos estén disponibles para todo el subárbol. [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) los recupera en cualquier descendiente.
+
+Ver también: [¿Qué es getCurrentInstance() y por qué deberías evitarlo?](/es/q/get-current-instance) · [¿Qué es un composable?](/es/q/what-is-a-composable)
+
+## Referencias
+
+- [provide](https://vuejs.org/api/composition-api-dependency-injection.html#provide) - Vue.js docs
+- [inject](https://vuejs.org/api/composition-api-dependency-injection.html#inject) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs
