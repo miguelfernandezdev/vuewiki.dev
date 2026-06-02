@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
+import Fuse from 'fuse.js'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
 import { useReadTracker } from './useReadTracker'
@@ -52,14 +53,49 @@ function onClickOutside(e: MouseEvent) {
 onMounted(() => document.addEventListener('click', onClickOutside))
 onUnmounted(() => document.removeEventListener('click', onClickOutside))
 
+const fuse = computed(() => new Fuse(questions.value, {
+  keys: ['title'],
+  threshold: 0.4,
+  includeMatches: true,
+}))
+
+const fuseResults = computed(() => {
+  if (!search.value) return null
+  return fuse.value.search(search.value)
+})
+
 const filteredQuestions = computed(() => {
-  return questions.value.filter(q => {
-    const matchesSearch = q.title.toLowerCase().includes(search.value.toLowerCase())
+  let results: { title: string; url: string; difficulty: string; tags: string[]; highlights?: [number, number][] }[]
+
+  if (fuseResults.value) {
+    results = fuseResults.value.map(r => ({
+      ...r.item,
+      highlights: r.matches?.[0]?.indices as [number, number][] | undefined,
+    }))
+  } else {
+    results = questions.value.map(q => ({ ...q, highlights: undefined }))
+  }
+
+  return results.filter(q => {
     const matchesFilter = !activeFilter.value || q.difficulty === activeFilter.value
     const matchesTag = activeTags.value.size === 0 || q.tags.some(tag => activeTags.value.has(tag))
-    return matchesSearch && matchesFilter && matchesTag
+    return matchesFilter && matchesTag
   })
 })
+
+function highlightTitle(title: string, indices?: [number, number][]) {
+  if (!indices || !search.value) return title
+  const sorted = [...indices].sort((a, b) => a[0] - b[0])
+  let result = ''
+  let last = 0
+  for (const [start, end] of sorted) {
+    result += title.slice(last, start)
+    result += `<mark>${title.slice(start, end + 1)}</mark>`
+    last = end + 1
+  }
+  result += title.slice(last)
+  return result
+}
 
 const PAGE_SIZE = 30
 const visibleCount = ref(PAGE_SIZE)
@@ -221,7 +257,7 @@ const difficultyClass: Record<string, string> = {
                   <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
-              <span class="question-title">{{ q.title }}</span>
+              <span class="question-title" v-html="highlightTitle(q.title, q.highlights)" />
             </div>
             <div class="question-tags">
               <span v-for="tag in q.tags" :key="tag" class="tag-badge">
@@ -661,6 +697,13 @@ const difficultyClass: Record<string, string> = {
   color: var(--vp-c-text-1);
   font-size: 0.9375rem;
   font-weight: 500;
+}
+
+.question-title :deep(mark) {
+  background: var(--vp-c-yellow-soft);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
 }
 
 .question-tags {
