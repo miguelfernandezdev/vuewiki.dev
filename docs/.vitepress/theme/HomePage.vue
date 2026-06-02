@@ -15,6 +15,8 @@ const questions = computed(() =>
   allQuestions.filter(q => q.locale === lang.value),
 )
 
+const PAGE_SIZE = 30
+const visibleCount = ref(PAGE_SIZE)
 const search = ref('')
 const activeFilter = ref<string | null>(null)
 const activeTags = ref<Set<string>>(new Set())
@@ -23,10 +25,48 @@ const TECHNOLOGY_TAGS = new Set([
   'nuxt', 'typescript', 'vue-router', 'pinia', 'vite', 'vitest', 'vueuse', 'vuex',
 ])
 
+const DIFFICULTY_ORDER: Record<string, number> = {
+  beginner: 0, intermediate: 1, advanced: 2,
+}
+
+type SortKey = 'recommended' | 'easiest' | 'hardest'
+const activeSort = ref<SortKey>('recommended')
+const sortDropdownOpen = ref(false)
+const sortDropdownRef = ref<HTMLElement | null>(null)
+
+function toggleSortDropdown() {
+  sortDropdownOpen.value = !sortDropdownOpen.value
+}
+
+function setSort(key: SortKey) {
+  activeSort.value = key
+  sortDropdownOpen.value = false
+  visibleCount.value = PAGE_SIZE
+}
+
+const tagCounts = computed(() => {
+  const counts = new Map<string, number>()
+  for (const q of questions.value) {
+    for (const tag of q.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1)
+    }
+  }
+  return counts
+})
+
+const difficultyCounts = computed(() => {
+  const counts: Record<string, number> = {}
+  for (const q of questions.value) {
+    counts[q.difficulty] = (counts[q.difficulty] ?? 0) + 1
+  }
+  return counts
+})
+
 const allTags = computed(() => {
   const tags = new Set<string>()
   questions.value.forEach(q => q.tags.forEach(tag => tags.add(tag)))
-  return Array.from(tags).sort()
+  const counts = tagCounts.value
+  return Array.from(tags).sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0))
 })
 
 const groupedTags = computed(() => {
@@ -87,6 +127,9 @@ function onClickOutside(e: MouseEvent) {
   if (techDropdownRef.value && !techDropdownRef.value.contains(e.target as Node)) {
     techDropdownOpen.value = false
   }
+  if (sortDropdownRef.value && !sortDropdownRef.value.contains(e.target as Node)) {
+    sortDropdownOpen.value = false
+  }
 }
 
 onMounted(() => document.addEventListener('click', onClickOutside))
@@ -104,7 +147,7 @@ const fuseResults = computed(() => {
 })
 
 const filteredQuestions = computed(() => {
-  let results: { title: string; url: string; difficulty: string; tags: string[]; highlights?: [number, number][] }[]
+  let results: { title: string; url: string; difficulty: string; tags: string[]; order: number; highlights?: [number, number][] }[]
 
   if (fuseResults.value) {
     results = fuseResults.value.map(r => ({
@@ -115,11 +158,21 @@ const filteredQuestions = computed(() => {
     results = questions.value.map(q => ({ ...q, highlights: undefined }))
   }
 
-  return results.filter(q => {
+  const filtered = results.filter(q => {
     const matchesFilter = !activeFilter.value || q.difficulty === activeFilter.value
     const matchesTag = activeTags.value.size === 0 || q.tags.some(tag => activeTags.value.has(tag))
     return matchesFilter && matchesTag
   })
+
+  if (fuseResults.value) return filtered
+
+  if (activeSort.value === 'easiest') {
+    return filtered.sort((a, b) => (DIFFICULTY_ORDER[a.difficulty] ?? 0) - (DIFFICULTY_ORDER[b.difficulty] ?? 0) || a.order - b.order)
+  }
+  if (activeSort.value === 'hardest') {
+    return filtered.sort((a, b) => (DIFFICULTY_ORDER[b.difficulty] ?? 0) - (DIFFICULTY_ORDER[a.difficulty] ?? 0) || a.order - b.order)
+  }
+  return filtered
 })
 
 function highlightTitle(title: string, indices?: [number, number][]) {
@@ -135,9 +188,6 @@ function highlightTitle(title: string, indices?: [number, number][]) {
   result += title.slice(last)
   return result
 }
-
-const PAGE_SIZE = 30
-const visibleCount = ref(PAGE_SIZE)
 
 const visibleQuestions = computed(() =>
   filteredQuestions.value.slice(0, visibleCount.value),
@@ -221,16 +271,16 @@ const difficultyClass: Record<string, string> = {
         <div class="filter-row">
           <button
             v-for="f in [
-              { label: t('filters.all'), value: null },
-              { label: t('filters.beginner'), value: 'beginner' },
-              { label: t('filters.intermediate'), value: 'intermediate' },
-              { label: t('filters.advanced'), value: 'advanced' },
+              { label: t('filters.all'), value: null, count: questions.length },
+              { label: t('filters.beginner'), value: 'beginner', count: difficultyCounts['beginner'] ?? 0 },
+              { label: t('filters.intermediate'), value: 'intermediate', count: difficultyCounts['intermediate'] ?? 0 },
+              { label: t('filters.advanced'), value: 'advanced', count: difficultyCounts['advanced'] ?? 0 },
             ]"
             :key="f.label"
             :class="['filter-btn', { active: activeFilter === f.value }, f.value ? `filter-${f.value}` : '']"
             @click="setFilter(f.value)"
           >
-            {{ f.label }}
+            {{ f.label }} ({{ f.count }})
           </button>
         </div>
 
@@ -259,6 +309,7 @@ const difficultyClass: Record<string, string> = {
                     <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <span>{{ t(`tags.${tag}`) }}</span>
+                  <span class="tag-count">({{ tagCounts.get(tag) ?? 0 }})</span>
                 </button>
               </li>
             </ul>
@@ -290,6 +341,34 @@ const difficultyClass: Record<string, string> = {
                     <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <span>{{ t(`tags.${tag}`) }}</span>
+                  <span class="tag-count">({{ tagCounts.get(tag) ?? 0 }})</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div ref="sortDropdownRef" class="topic-dropdown">
+          <button class="dropdown-trigger" @click="toggleSortDropdown">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4H12M4 7H10M6 10H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>{{ t(`sort.${activeSort}`) }}</span>
+            <svg class="dropdown-chevron" :class="{ open: sortDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div v-show="sortDropdownOpen" class="dropdown-panel">
+            <ul class="dropdown-list">
+              <li v-for="key in (['recommended', 'easiest', 'hardest'] as const)" :key="key">
+                <button
+                  :class="['dropdown-option', { active: activeSort === key }]"
+                  @click="setSort(key)"
+                >
+                  <svg v-if="activeSort === key" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ t(`sort.${key}`) }}</span>
                 </button>
               </li>
             </ul>
@@ -653,6 +732,13 @@ const difficultyClass: Record<string, string> = {
 
 .check-icon {
   flex-shrink: 0;
+}
+
+.tag-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-3);
+  font-weight: 400;
 }
 
 .selected-tags {

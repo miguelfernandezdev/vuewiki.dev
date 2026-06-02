@@ -61,6 +61,11 @@
     "suspense": "⏳ Suspense",
     "teleport": "🌀 Teleport"
   },
+  "sort": {
+    "recommended": "Recommended",
+    "easiest": "Easiest first",
+    "hardest": "Hardest first"
+  },
   "cta": {
     "missingTitle": "Got a question we haven't covered?",
     "missingDesc": "Suggest it on GitHub — we're always adding new ones",
