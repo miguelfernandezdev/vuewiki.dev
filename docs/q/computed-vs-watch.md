@@ -5,21 +5,85 @@ difficulty: "advanced"
 tags: ["reactivity", "composition-api"]
 ---
 
-| | [`computed`](https://vuejs.org/api/reactivity-core.html#computed) | [`watch`](https://vuejs.org/api/reactivity-core.html#watch) |
-|---|---|---|
-| **Purpose** | Derive a value | Execute side effects |
-| **Returns** | Yes, returns a value | No |
-| **Caching** | Yes (recalculates only if deps change) | No |
-| **Timing** | Synchronous, lazy | Can be async |
-| **Example** | `fullName = computed(() => first + last)` | `watch(route, () => fetchData())` |
+Both react to changes in reactive data, but they serve fundamentally different purposes. Getting this wrong leads to either duplicated state (using `watch` where `computed` would suffice) or unexpected side effects (using `computed` for things that shouldn't be pure).
 
-**Rule:** If you need a derived value → `computed`. If you need to DO something when a value changes (API call, localStorage, logging) → `watch`.
+## computed: deriving values
+
+A [`computed`](https://vuejs.org/api/reactivity-core.html#computed) calculates a value from other reactive data. It's cached — Vue only recalculates it when its dependencies actually change. You read it like a variable, never call it like a function.
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const firstName = ref('Ana')
+const lastName = ref('García')
+
+const fullName = computed(() => `${firstName.value} ${lastName.value}`)
+// fullName.value === 'Ana García'
+// Recalculates only when firstName or lastName changes
+</script>
+
+<template>
+  <p>{{ fullName }}</p>
+</template>
+```
+
+Think of `computed` as a formula in a spreadsheet cell. Cell C1 = A1 + B1. You don't "run" it — it just always has the right answer.
+
+## watch: reacting to changes
+
+A [`watch`](https://vuejs.org/api/reactivity-core.html#watch) runs code **in response** to a change. It doesn't return a value — it performs side effects like API calls, DOM manipulation, localStorage writes, or analytics events.
+
+```ts
+import { ref, watch } from 'vue'
+
+const searchQuery = ref('')
+
+watch(searchQuery, async (newQuery, oldQuery) => {
+  if (newQuery.length < 3) return
+  const results = await fetch(`/api/search?q=${newQuery}`)
+  // Update results, log analytics, etc.
+})
+```
+
+You get both the new and old value, and you can do async work inside. A `computed` can't do either of those things.
+
+## The decision rule
+
+Ask yourself: **"Am I calculating a value, or doing something?"**
+
+| Question | Answer | Use |
+|---|---|---|
+| Do I need a derived value in the template? | Yes | `computed` |
+| Do I need to fetch data when something changes? | Yes | `watch` |
+| Do I need the previous value? | Yes | `watch` |
+| Do I need to write to localStorage/cookies? | Yes | `watch` |
+| Can the result be expressed as a pure function of inputs? | Yes | `computed` |
+
+## The common mistake
+
+Using `watch` + `ref` to do what `computed` does for free:
+
+```ts
+// ❌ Manual sync with watch — duplicated state, easy to desync
+const items = ref<Item[]>([])
+const activeCount = ref(0)
+
+watch(items, (val) => {
+  activeCount.value = val.filter(i => i.active).length
+}, { deep: true })
+
+// ✅ Just use computed — always in sync, cached, no extra state
+const activeCount = computed(() => items.value.filter(i => i.active).length)
+```
+
+If you find yourself writing a `watch` that sets a `ref` to a derived value, replace it with a `computed`.
 
 See also: [What's the difference between watch and watchEffect?](/q/watch-vs-watcheffect) · [What's the difference between ref and reactive?](/q/ref-vs-reactive)
 
 ## References
 
-- [computed](https://vuejs.org/api/reactivity-core.html#computed) - Vue.js docs
-- [watch](https://vuejs.org/api/reactivity-core.html#watch) - Vue.js docs
 - [Computed Properties](https://vuejs.org/guide/essentials/computed.html) - Vue.js docs
 - [Watchers](https://vuejs.org/guide/essentials/watchers.html) - Vue.js docs
+- [computed()](https://vuejs.org/api/reactivity-core.html#computed) - Vue.js docs
+- [watch()](https://vuejs.org/api/reactivity-core.html#watch) - Vue.js docs

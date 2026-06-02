@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-Vue 3's [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) supports `Map`, `Set`, `WeakMap`, and `WeakSet` out of the box. The [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepts collection methods like `get`, `set`, `add`, `delete`, `has`, and `forEach`, tracking reads and triggering updates on writes. You use the standard JavaScript API, and Vue handles reactivity transparently. The main limitation is that you can't use `ref()` with them, only `reactive()`.
+Vue 3's [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) supports `Map`, `Set`, `WeakMap`, and `WeakSet` out of the box. The [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepts collection methods like `get`, `set`, `add`, `delete`, `has`, and `forEach`, tracking reads and triggering updates on writes. You use the standard JavaScript API, and Vue handles reactivity transparently. You can use either `reactive()` or `ref()` — both work. With `reactive()` you interact with the collection directly; with `ref()` you access it through `.value`.
 
 ## Basic usage
 
@@ -60,19 +60,21 @@ Vue intercepts these operations:
 
 This means computed properties and watchers that read from a reactive Map or Set will re-run when the collection is modified.
 
-## ref() doesn't work, use reactive()
+## reactive() vs ref() with collections
+
+Both work. `reactive()` proxies the Map/Set directly, so you call methods without `.value`. `ref()` wraps it — you access the collection through `.value`, and Vue makes the inner value reactive automatically.
 
 ```ts
-// WRONG: ref wraps the Map in { value: Map }, doesn't proxy the Map's methods
-const map = ref(new Map())
-map.value.set('key', 'val') // Vue won't track this properly
-
-// RIGHT: reactive proxies the Map directly
+// reactive(): interact with the Map directly
 const map = reactive(new Map())
-map.set('key', 'val') // fully reactive
+map.set('key', 'val') // reactive ✅
+
+// ref(): access through .value
+const map = ref(new Map())
+map.value.set('key', 'val') // also reactive ✅
 ```
 
-If you need to replace the entire collection (like swapping it for fresh data from an API), wrap it in a [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) and replace `.value` with a new Map/Set:
+`reactive()` is more ergonomic when you only mutate entries. `ref()` is better when you might need to replace the entire collection (like swapping it for fresh data from an API):
 
 ```ts
 const scores = shallowRef(new Map<string, number>())

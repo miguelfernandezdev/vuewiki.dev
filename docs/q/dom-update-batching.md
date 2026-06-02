@@ -48,17 +48,18 @@ Vue schedules three types of effect flush:
 
 | Flush | When it runs | Used by |
 |---|---|---|
-| `'pre'` (default for `watch`) | Before DOM update | Watchers that need to run before render |
-| `'post'` (default for `watchEffect`) | After DOM update | Effects that read from the DOM |
+| `'pre'` (default for both `watch` and `watchEffect`) | Before DOM update | Most watchers and effects |
+| `'post'` | After DOM update | Effects that need to read from the updated DOM |
 | `'sync'` | Immediately on each change | Debugging, rare edge cases |
 
 ```ts
 // Default: fires once per tick, before DOM update
 watch(source, handler)
+watchEffect(handler) // also 'pre' by default
 
 // Post: fires once per tick, after DOM update
 watch(source, handler, { flush: 'post' })
-watchEffect(handler) // post by default
+watchEffect(handler, { flush: 'post' })
 
 // Sync: fires on EVERY change, no batching
 watch(source, handler, { flush: 'sync' })

@@ -5,7 +5,7 @@ difficulty: "advanced"
 tags: ["reactivity"]
 ---
 
-[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. La limitación principal es que no se puede usar `ref()` con ellos, solo `reactive()`.
+[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. Puedes usar tanto `reactive()` como `ref()` — ambos funcionan. Con `reactive()` interactúas con la colección directamente; con `ref()` accedes a ella a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
 
 ## Uso básico
 
@@ -60,19 +60,21 @@ Vue intercepta estas operaciones:
 
 Esto significa que las propiedades computed y los watchers que leen de un Map o Set reactivo se volverán a ejecutar cuando se modifique la colección.
 
-## ref() no funciona, usar reactive()
+## reactive() vs ref() con colecciones
+
+Ambos funcionan. `reactive()` hace proxy del Map/Set directamente, así que llamas a los métodos sin `.value`. `ref()` lo envuelve — accedes a la colección a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
 
 ```ts
-// MAL: ref envuelve el Map en { value: Map }, no hace proxy de los métodos del Map
-const map = ref(new Map())
-map.value.set('key', 'val') // Vue no lo registrará correctamente
-
-// BIEN: reactive hace proxy del Map directamente
+// reactive(): interactúa con el Map directamente
 const map = reactive(new Map())
-map.set('key', 'val') // completamente reactivo
+map.set('key', 'val') // reactivo ✅
+
+// ref(): accede a través de .value
+const map = ref(new Map())
+map.value.set('key', 'val') // también reactivo ✅
 ```
 
-Si se necesita reemplazar toda la colección (por ejemplo, al obtener datos frescos de una API), envolver en [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) y reemplazar `.value` con un nuevo Map/Set:
+`reactive()` es más ergonómico cuando solo mutas entradas. `ref()` es mejor cuando puede que necesites reemplazar toda la colección (como cuando la intercambias por datos frescos de una API):
 
 ```ts
 const scores = shallowRef(new Map<string, number>())

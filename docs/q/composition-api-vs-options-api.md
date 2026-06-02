@@ -5,10 +5,13 @@ difficulty: "beginner"
 tags: ["composition-api"]
 ---
 
-The **[Options API](https://vuejs.org/guide/introduction.html#options-api)** (Vue 2) organizes code by option type (`data`, `methods`, `computed`, `watch`). The **[Composition API](https://vuejs.org/guide/extras/composition-api-faq.html)** (Vue 3) organizes code by logic/feature, using functions like `ref()`, `computed()`, `watch()` inside `setup()` or `<script setup>`.
+Vue gives you two ways to write component logic. Understanding both matters because you'll see Options API in legacy codebases and Composition API in everything new.
+
+## Options API
+
+The [Options API](https://vuejs.org/guide/introduction.html#options-api) is the original Vue style. You export an object with predefined keys — `data` for state, `methods` for functions, `computed` for derived values, `watch` for side effects. Vue reads those keys and wires everything together behind the scenes.
 
 ```vue
-<!-- Options API (Vue 2 style) -->
 <script>
 export default {
   data() {
@@ -22,8 +25,15 @@ export default {
   }
 }
 </script>
+```
 
-<!-- Composition API (Vue 3) -->
+This works fine for small components. The problem appears when a component grows: logic for a single feature (say, search) gets scattered across `data`, `computed`, `methods`, and `watch`. You end up jumping between sections to understand one feature.
+
+## Composition API
+
+The [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) (Vue 3) lets you write logic as plain JavaScript functions. Instead of splitting by option type, you group code by what it does.
+
+```vue
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
@@ -33,7 +43,24 @@ function increment() { count.value++ }
 </script>
 ```
 
-**Key advantage:** In the Composition API, related logic stays together (instead of being scattered across `data`, `methods`, etc.), making it easy to extract into reusable **composables**.
+The reactive state (`ref`), derived values (`computed`), and functions all live together. When the component grows, you can extract related logic into a [composable](/q/what-is-a-composable) — a plain function that returns reactive state — and reuse it across components.
+
+## Why the Composition API wins for real projects
+
+In a component with search, pagination, and filters using Options API, each feature's code is fragmented:
+
+```txt
+data()      → searchQuery, page, filters
+computed    → filteredResults, totalPages, activeFilterCount
+methods     → search(), nextPage(), toggleFilter()
+watch       → searchQuery watcher, filters watcher
+```
+
+With the Composition API, each feature is a self-contained block (or composable) that you can read top-to-bottom without jumping around. That's the core difference: **organization by feature instead of by option type**.
+
+## Which should you learn?
+
+Both. The Composition API with [`<script setup>`](/q/script-setup) is the recommended default for new projects. But you need to read Options API code because most existing Vue 2 apps use it, and many Vue 3 codebases mix both styles during migration.
 
 See also: [What is script setup?](/q/script-setup) · [What is a composable?](/q/what-is-a-composable)
 
