@@ -23,9 +23,11 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: 'VueWiki' }],
     ['meta', { property: 'og:description', content: ogDescription }],
     ['meta', { property: 'og:url', content: siteUrl }],
+    ['meta', { property: 'og:image', content: `${siteUrl}/og-image.png` }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'VueWiki' }],
     ['meta', { name: 'twitter:description', content: ogDescription }],
+    ['meta', { name: 'twitter:image', content: `${siteUrl}/og-image.png` }],
   ],
 
   markdown: {
