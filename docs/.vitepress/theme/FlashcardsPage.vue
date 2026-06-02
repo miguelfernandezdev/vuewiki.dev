@@ -301,17 +301,17 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
             <p v-if="currentCard.summary" class="card-excerpt">{{ currentCard.summary }}</p>
             <p class="self-assess-label">{{ t('flashcards.selfAssess') }}</p>
             <div class="answer-buttons">
-              <button class="answer-btn got-it" @click="answer('got-it')">
-                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                {{ t('flashcards.gotIt') }}
-              </button>
               <button class="answer-btn review" @click="answer('review')">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
                   <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 {{ t('flashcards.reviewAgain') }}
+              </button>
+              <button class="answer-btn got-it" @click="answer('got-it')">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ t('flashcards.gotIt') }}
               </button>
             </div>
             <a :href="currentCard.url" class="full-answer-link">
