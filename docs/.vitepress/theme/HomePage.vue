@@ -3,9 +3,11 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
+import { useReadTracker } from './useReadTracker'
 
 const { lang } = useData()
 const { t } = useI18n()
+const { readCount, isRead } = useReadTracker()
 
 const questions = computed(() =>
   allQuestions.filter(q => q.locale === lang.value),
@@ -120,6 +122,12 @@ const difficultyClass: Record<string, string> = {
     </div>
 
     <section class="content">
+      <div class="read-counter">
+        <span class="read-badge">
+          {{ t('header.read', { read: readCount, total: questions.length }) }}
+        </span>
+      </div>
+
       <div class="filters">
         <div class="filter-row">
           <button
@@ -190,10 +198,13 @@ const difficultyClass: Record<string, string> = {
           v-for="q in visibleQuestions"
           :key="q.url"
           :href="q.url"
-          :class="['question-card', `card-${q.difficulty}`]"
+          :class="['question-card', `card-${q.difficulty}`, { 'is-read': isRead(q.url) }]"
         >
           <div class="question-content">
-            <span class="question-title">{{ q.title }}</span>
+            <div class="question-title-row">
+              <span :class="['read-dot', { read: isRead(q.url) }]" />
+              <span class="question-title">{{ q.title }}</span>
+            </div>
             <div class="question-tags">
               <span v-for="tag in q.tags" :key="tag" class="tag-badge">
                 {{ t(`tags.${tag}`) }}
@@ -251,6 +262,22 @@ const difficultyClass: Record<string, string> = {
 
 .content {
   margin-top: 1rem;
+}
+
+.read-counter {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.read-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-border);
 }
 
 .filters {
@@ -534,11 +561,33 @@ const difficultyClass: Record<string, string> = {
   min-width: 0;
 }
 
+.question-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.read-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vp-c-border);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.read-dot.read {
+  background: var(--vp-c-green-2);
+}
+
+.question-card.is-read .question-title {
+  color: var(--vp-c-text-3);
+}
+
 .question-title {
   color: var(--vp-c-text-1);
   font-size: 0.9375rem;
   font-weight: 500;
-  display: block;
 }
 
 .question-tags {

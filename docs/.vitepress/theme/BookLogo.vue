@@ -1,14 +1,44 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 
 const isHovered = ref(false)
 const isVisible = ref(false)
 const tiltX = ref(0)
 const tiltY = ref(0)
 const wrapper = ref<HTMLElement>()
+const svgEl = ref<SVGSVGElement>()
+
+const SPLINE = '0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1'
+const KEY_TIMES = '0;0.1;0.35;0.5;0.6;0.85;1'
+const VALUES = [
+  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z',
+  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z',
+  'M512 358C512 330 512 310 512 311C512 313 512 345 512 410V650C512 661 512 668 512 663C512 626 512 606 512 607C512 607 512 595 512 578V358Z',
+  'M190 358C190 330 212 310 244 311C342 313 442 345 512 410V650C512 661 496 668 484 663C404 626 308 606 222 607C205 607 190 595 190 578V358Z',
+  'M190 358C190 330 212 310 244 311C342 313 442 345 512 410V650C512 661 496 668 484 663C404 626 308 606 222 607C205 607 190 595 190 578V358Z',
+  'M512 358C512 330 512 310 512 311C512 313 512 345 512 410V650C512 661 512 668 512 663C512 626 512 606 512 607C512 607 512 595 512 578V358Z',
+  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z',
+].join(';')
+
+const pages = [
+  { dur: '5s', begin: '1.5s', fill: '#D8D2C6', opacity: '0.65', fastDur: '3.2s' },
+  { dur: '4.5s', begin: '0s', fill: '#E0DBD0', opacity: '0.7', fastDur: '2.8s' },
+  { dur: '3.8s', begin: '0.8s', fill: '#E8E2D5', opacity: '0.75', fastDur: '2.5s' },
+  { dur: '4s', begin: '2.8s', fill: '#EDE8DC', opacity: '0.8', fastDur: '2.6s' },
+  { dur: '4.2s', begin: '2s', fill: '#F2ECE2', opacity: '0.7', fastDur: '2.9s' },
+]
+
+const activeDurs = computed(() =>
+  pages.map(p => isHovered.value ? p.fastDur : p.dur)
+)
 
 onMounted(() => {
   if (!wrapper.value) return
+
+  const svg = wrapper.value.querySelector('svg') as SVGSVGElement
+  svgEl.value = svg
+  svg?.pauseAnimations()
+
   const observer = new IntersectionObserver(
     ([entry]) => {
       isVisible.value = entry.isIntersecting
@@ -17,6 +47,19 @@ onMounted(() => {
   )
   observer.observe(wrapper.value)
   onUnmounted(() => observer.disconnect())
+})
+
+watch(isVisible, (visible) => {
+  if (!svgEl.value) return
+  if (visible) svgEl.value.unpauseAnimations()
+  else svgEl.value.pauseAnimations()
+})
+
+const prefersReducedMotion = ref(false)
+onMounted(() => {
+  const mq = globalThis.matchMedia('(prefers-reduced-motion: reduce)')
+  prefersReducedMotion.value = mq.matches
+  mq.addEventListener('change', (e) => { prefersReducedMotion.value = e.matches })
 })
 
 function onMouseMove(e: MouseEvent) {
@@ -45,7 +88,7 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
 <template>
   <div
     ref="wrapper"
-    :class="['book-wrapper', { animating: isVisible, fast: isHovered }]"
+    :class="['book-wrapper', { fast: isHovered }]"
     @mouseenter="isHovered = true"
     @mousemove="onMouseMove"
     @mouseleave="onMouseLeave"
@@ -87,12 +130,21 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
         </linearGradient>
       </defs>
 
-      <!-- turning pages (behind book) -->
-      <path class="page page-1" :d="RIGHT" fill="#D8D2C6" opacity="0.65" />
-      <path class="page page-2" :d="RIGHT" fill="#E0DBD0" opacity="0.7" />
-      <path class="page page-3" :d="RIGHT" fill="#E8E2D5" opacity="0.75" />
-      <path class="page page-4" :d="RIGHT" fill="#EDE8DC" opacity="0.8" />
-      <path class="page page-5" :d="RIGHT" fill="#F2ECE2" opacity="0.7" />
+      <!-- turning pages (behind book) with SMIL animation -->
+      <path v-for="(page, i) in pages" :key="i" :fill="page.fill" :opacity="page.opacity">
+        <animate
+          v-if="!prefersReducedMotion"
+          attributeName="d"
+          :dur="activeDurs[i]"
+          repeatCount="indefinite"
+          :begin="page.begin"
+          calcMode="spline"
+          :keyTimes="KEY_TIMES"
+          :keySplines="SPLINE"
+          :values="VALUES"
+        />
+        <set v-else attributeName="d" :to="RIGHT" />
+      </path>
 
       <!-- bottom thickness -->
       <path d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V604C824 621 811 633 793 634C697 638 598 655 530 679C518 684 506 684 494 679C426 655 327 638 231 634C213 633 200 621 200 604V594C200 579 211 569 228 569Z" fill="#012F4D" opacity="0.9" />
@@ -163,47 +215,5 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
 
 .book-wrapper.fast {
   filter: drop-shadow(0 0 32px rgba(14, 191, 155, 0.45));
-}
-
-.page {
-  animation: pageTurn 5s ease-in-out infinite paused;
-}
-
-.animating .page {
-  animation-play-state: running;
-}
-
-.page-1 { animation-duration: 5s; animation-delay: 1.5s; }
-.page-2 { animation-duration: 4.5s; animation-delay: 0s; }
-.page-3 { animation-duration: 3.8s; animation-delay: 0.8s; }
-.page-4 { animation-duration: 4s; animation-delay: 2.8s; }
-.page-5 { animation-duration: 4.2s; animation-delay: 2s; }
-
-.fast .page-1 { animation-duration: 3.2s; }
-.fast .page-2 { animation-duration: 2.8s; }
-.fast .page-3 { animation-duration: 2.5s; }
-.fast .page-4 { animation-duration: 2.6s; }
-.fast .page-5 { animation-duration: 2.9s; }
-
-@keyframes pageTurn {
-  0%, 10% {
-    d: path("M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z");
-  }
-  35% {
-    d: path("M512 358C512 330 512 310 512 311C512 313 512 345 512 410V650C512 661 512 668 512 663C512 626 512 606 512 607C512 607 512 595 512 578V358Z");
-  }
-  50%, 60% {
-    d: path("M190 358C190 330 212 310 244 311C342 313 442 345 512 410V650C512 661 496 668 484 663C404 626 308 606 222 607C205 607 190 595 190 578V358Z");
-  }
-  85% {
-    d: path("M512 358C512 330 512 310 512 311C512 313 512 345 512 410V650C512 661 512 668 512 663C512 626 512 606 512 607C512 607 512 595 512 578V358Z");
-  }
-  100% {
-    d: path("M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z");
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page { animation: none; }
 }
 </style>

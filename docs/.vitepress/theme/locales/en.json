@@ -1,6 +1,7 @@
 {
   "header": {
-    "questions": "{count} questions"
+    "questions": "{count} questions",
+    "read": "Read {read}/{total}"
   },
   "footer": {},
   "home": {
@@ -49,6 +50,8 @@
     "security": "🔒 Security"
   },
   "detail": {
-    "back": "← All questions"
+    "back": "← All questions",
+    "markRead": "Mark as read",
+    "read": "Read"
   }
 }
