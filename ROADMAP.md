@@ -33,7 +33,7 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [x] SVG book logo with hero glow effect
 - [x] Favicon and navbar logo
 - [x] Brand rename from VueWiki.dev to VueWiki
-- [ ] Open Graph image for social sharing
+- [x] Open Graph image for social sharing
 
 ## Phase 4 — Community
 
