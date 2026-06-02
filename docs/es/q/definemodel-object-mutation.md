@@ -67,3 +67,10 @@ model.value = { ...model.value, b: '2' }
 // seguro: asignación única
 model.value = { ...model.value, a: '1', b: '2' }
 ```
+
+Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Cómo funcionan los bindings múltiples de v-model?](/es/q/multiple-v-model) · [¿Por qué mutar props causa warnings?](/es/q/mutating-props-warning)
+
+## Referencias
+
+- [defineModel()](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs
+- [Component v-model](https://vuejs.org/guide/components/v-model.html) - Vue.js docs

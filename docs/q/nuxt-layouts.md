@@ -174,3 +174,11 @@ layouts/
 | Wrapper that only a few components use | Regular component |
 | Different structure for public vs admin pages | Multiple layouts |
 | No wrapper at all (embed, widget) | `layout: false` |
+
+See also: [How does Nuxt handle state management?](/q/nuxt-state-management) · [How do slots work?](/q/slots)
+
+## References
+
+- [Layouts](https://nuxt.com/docs/guide/directory-structure/layouts) - Nuxt docs
+- [Pages](https://nuxt.com/docs/guide/directory-structure/pages) - Nuxt docs
+- [Transitions](https://nuxt.com/docs/getting-started/transitions) - Nuxt docs

@@ -214,3 +214,10 @@ El enfoque solo con props pasa todos los datos a un único componente:
 ```
 
 Los componentes compuestos ganan cuando los hijos tienen contenido complejo (componentes, slots, lógica condicional) que no encaja bien en un array de datos.
+
+Ver también: [¿Cómo funciona provide/inject?](/es/q/provide-inject) · [¿Qué son los slots?](/es/q/slots) · [¿Qué es el patrón container-presentational?](/es/q/container-presentational-pattern)
+
+## Referencias
+
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs
+- [Slots](https://vuejs.org/guide/components/slots.html) - Vue.js docs

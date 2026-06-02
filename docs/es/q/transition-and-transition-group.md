@@ -155,3 +155,10 @@ function onEnter(el: HTMLElement, done: () => void) {
 | Prop `mode` | Compatible (`out-in`, `in-out`) | No compatible |
 | Clase `.move` | No | Sí (anima reordenaciones) |
 | Prop `tag` | No (no renderiza un wrapper) | Sí (renderiza un elemento wrapper) |
+
+Ver también: [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive) · [¿Cómo funcionan los estilos scoped?](/es/q/css-scoped-modules-dynamic)
+
+## Referencias
+
+- [Transition](https://vuejs.org/guide/built-ins/transition.html) - Vue.js docs
+- [TransitionGroup](https://vuejs.org/guide/built-ins/transition-group.html) - Vue.js docs

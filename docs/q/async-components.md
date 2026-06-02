@@ -104,3 +104,11 @@ This reduces the JavaScript the browser has to process before the page becomes i
 | Use case | Conditional UI, heavy widgets | Page-level code splitting |
 
 Route-level splitting (`() => import('./views/Page.vue')`) is the most common form of code splitting. `defineAsyncComponent` is for splitting within a page.
+
+See also: [How does Suspense work for async components?](/q/suspense) · [What are dynamic components and KeepAlive?](/q/dynamic-components-keepalive) · [What are Teleport, Fragments, and Suspense?](/q/teleport-fragments-suspense)
+
+## References
+
+- [defineAsyncComponent()](https://vuejs.org/api/general.html#defineasynccomponent) - Vue.js docs
+- [Async Components](https://vuejs.org/guide/components/async.html) - Vue.js docs
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs

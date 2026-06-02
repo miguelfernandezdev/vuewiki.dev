@@ -165,3 +165,10 @@ export default defineComponent({
 ```
 
 `defineSlots` reemplazó esto con una macro de una sola línea dentro de `<script setup>`.
+
+Ver también: [¿Qué son los slots?](/es/q/slots) · [¿Cómo funcionan los componentes genéricos?](/es/q/generic-components)
+
+## Referencias
+
+- [defineSlots()](https://vuejs.org/api/sfc-script-setup.html#defineslots) - Vue.js docs
+- [Slots](https://vuejs.org/guide/components/slots.html) - Vue.js docs

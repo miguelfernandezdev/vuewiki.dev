@@ -235,3 +235,11 @@ Checkout    → cart.items, cart.clear()
                     ↓
               localStorage (persistence plugin)
 ```
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [What are Pinia plugins?](/q/pinia-plugins) · [When should state live in Pinia vs a composable vs a local ref?](/q/pinia-vs-composable-vs-local)
+
+## References
+
+- [Defining Stores](https://pinia.vuejs.org/core-concepts/) - Pinia docs
+- [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/) - Persisted state plugin docs
+- [Computed Properties](https://vuejs.org/guide/essentials/computed.html) - Vue.js docs

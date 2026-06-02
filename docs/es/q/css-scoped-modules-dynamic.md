@@ -85,3 +85,11 @@ Vue añade automáticamente prefijos de vendor para propiedades CSS específicas
 | Alternar una clase según el estado | `:class="{ active: isActive }"` |
 | Combinar clases estáticas y dinámicas | `:class="['base', { active: isActive }]"` |
 | Sobrescrituras inline puntuales | `:style="{ color: x }"` |
+
+Ver también: [¿Por qué el CSS scoped no estila elementos de componentes hijos?](/es/q/scoped-css-child-components) · [¿Cómo interactúan los estilos scoped con Teleport?](/es/q/teleport-scoped-styles)
+
+## Referencias
+
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs
+- [CSS Modules](https://vuejs.org/api/sfc-css-features.html#css-modules) - Vue.js docs
+- [v-bind() in CSS](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css) - Vue.js docs

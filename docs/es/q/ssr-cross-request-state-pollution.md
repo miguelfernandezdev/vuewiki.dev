@@ -116,3 +116,10 @@ Nunca declares estado mutable en el ámbito de módulo en código que se ejecuta
 | Factory function + provide/inject | Vue SSR sin Nuxt |
 
 Los valores inmutables a nivel de módulo (constantes, definiciones de tipos, funciones puras) son seguros porque no cambian entre peticiones.
+
+Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cómo maneja Nuxt la gestión de estado?](/es/q/nuxt-state-management)
+
+## Referencias
+
+- [SSR](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Pinia SSR](https://pinia.vuejs.org/ssr/) - Pinia docs

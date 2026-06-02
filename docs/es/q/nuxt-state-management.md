@@ -151,3 +151,11 @@ Los valores de `useState` se serializan a JSON al transferirse del servidor al c
 useState('fn', () => () => {})           // fallará
 useState('data', () => ({ name: 'Vue' })) // funciona bien
 ```
+
+Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cuándo usar Pinia vs composable vs ref local?](/es/q/pinia-vs-composable-vs-local) · [¿Qué es la contaminación de estado entre peticiones en SSR?](/es/q/ssr-cross-request-state-pollution)
+
+## Referencias
+
+- [State Management](https://nuxt.com/docs/getting-started/state-management) - Nuxt docs
+- [useState](https://nuxt.com/docs/api/composables/use-state) - Nuxt docs
+- [Pinia with Nuxt](https://pinia.vuejs.org/ssr/nuxt.html) - Pinia docs

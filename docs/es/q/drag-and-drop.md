@@ -223,3 +223,10 @@ Los pointer events funcionan tanto en ratón como en dispositivos táctiles sin 
 | Arrastre en posición libre (tipo canvas) | Pointer events |
 | Handles de redimensión, restricciones personalizadas | Pointer events |
 | Soltar archivos desde el escritorio | API nativa (`@drop` + `dataTransfer.files`) |
+
+Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Cómo funciona el manejo de eventos?](/es/q/event-handling)
+
+## Referencias
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs

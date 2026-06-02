@@ -222,3 +222,10 @@ Así cargas datos de forma incremental Y solo renderizas los elementos visibles.
 | SEO | Más difícil (contenido no en el HTML inicial) | Cada página tiene una URL |
 | Rendimiento | Riesgo de DOM grande con el tiempo | Tamaño de DOM constante |
 | Ideal para | Feeds sociales, galerías de imágenes | Resultados de búsqueda, tablas de datos |
+
+Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Qué es VueUse?](/es/q/vueuse)
+
+## Referencias
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [useIntersectionObserver](https://vueuse.org/core/useIntersectionObserver/) - VueUse docs

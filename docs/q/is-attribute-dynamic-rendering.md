@@ -135,3 +135,11 @@ If the string doesn't match any component or HTML element, Vue renders nothing a
 ```
 
 Add `:key` when using `<Transition>` so Vue treats each component switch as a transition between distinct elements rather than patching the same component.
+
+See also: [What are dynamic components and KeepAlive?](/q/dynamic-components-keepalive) · [How do render functions work?](/q/render-functions-jsx)
+
+## References
+
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs
+- [component](https://vuejs.org/api/built-in-special-elements.html#component) - Vue.js docs
+- [is attribute](https://vuejs.org/api/built-in-special-attributes.html#is) - Vue.js docs

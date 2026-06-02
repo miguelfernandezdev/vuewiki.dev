@@ -143,3 +143,11 @@ Setting a proper `staleTime` prevents the client from refetching data that was a
 | "Hydration mismatch" warning | Server and client render different content | Match fallback structure to server output |
 | Data fetched twice | staleTime not set, client refetches | Set staleTime on queries |
 | "Cannot access composable" after await | useQuery called after await | Move all composable calls before await |
+
+See also: [How does Suspense work?](/q/suspense) · [What are async components?](/q/async-components)
+
+## References
+
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs
+- [SSR](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Client Hydration](https://vuejs.org/guide/scaling-up/ssr.html#client-hydration) - Vue.js docs

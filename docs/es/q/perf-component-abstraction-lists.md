@@ -108,3 +108,11 @@ Mantén como componentes:
 Abre Vue DevTools y mira la pestaña Componentes. Cuenta cuántas instancias existen cuando se renderiza tu lista. Si ves miles, comprueba si aplanar los elementos de lista reduce esa cifra de forma significativa.
 
 La pestaña Performance de DevTools también muestra el tiempo de renderizado por componente. Ordena por tiempo total para encontrar los componentes más costosos en tu lista.
+
+Ver también: [¿Qué es la estabilidad de props y por qué importa para el rendimiento?](/es/q/perf-props-stability) · [¿Qué es el Virtual DOM y cómo lo usa Vue?](/es/q/virtual-dom) · [¿Cuál es la diferencia entre un VNode de componente y un VNode de elemento?](/es/q/component-vs-element-vnode)
+
+## Referencias
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) - Virtual scrolling library

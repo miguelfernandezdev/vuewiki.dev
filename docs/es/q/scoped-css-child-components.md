@@ -74,3 +74,10 @@ El **elemento raíz** de un componente hijo SÍ se ve afectado por el CSS con sc
 ```
 
 En Vue 3, `:deep()` es la única sintaxis soportada.
+
+Ver también: [¿Cómo funcionan los estilos scoped, CSS Modules y clases dinámicas?](/es/q/css-scoped-modules-dynamic) · [¿Cómo interactúan los estilos scoped con Teleport?](/es/q/teleport-scoped-styles)
+
+## Referencias
+
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs
+- [Deep Selectors](https://vuejs.org/api/sfc-css-features.html#deep-selectors) - Vue.js docs

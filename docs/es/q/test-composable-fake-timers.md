@@ -174,3 +174,10 @@ Si lo olvidas, los timers falsos se filtran a otros tests. Las promesas que depe
 | `vi.advanceTimersByTime(ms)` | Avanza el tiempo falso | Para disparar callbacks de setTimeout/setInterval |
 | `vi.runAllTimers()` | Ejecuta todos los timers pendientes inmediatamente | Cuando no importa el timing específico |
 | `vi.useRealTimers()` | Restaura las funciones de timer reales | En afterEach, siempre |
+
+Ver también: [¿Cómo testear un store de Pinia?](/es/q/test-pinia-store) · [¿Cómo testear un composable que usa fetch?](/es/q/testing-composable-fetch)
+
+## Referencias
+
+- [vi.useFakeTimers](https://vitest.dev/api/vi.html#vi-usefaketimers) - Vitest docs
+- [Testing Composables](https://vuejs.org/guide/reusability/composables.html#testing-composables) - Vue.js docs

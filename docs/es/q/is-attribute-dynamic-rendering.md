@@ -135,3 +135,11 @@ Si el string no coincide con ningún componente ni elemento HTML, Vue no renderi
 ```
 
 Añade `:key` al usar `<Transition>` para que Vue trate cada cambio de componente como una transición entre elementos distintos, en lugar de parchear el mismo componente.
+
+Ver también: [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive) · [¿Cómo funcionan las render functions?](/es/q/render-functions-jsx)
+
+## Referencias
+
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs
+- [component](https://vuejs.org/api/built-in-special-elements.html#component) - Vue.js docs
+- [is attribute](https://vuejs.org/api/built-in-special-attributes.html#is) - Vue.js docs

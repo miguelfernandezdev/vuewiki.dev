@@ -161,3 +161,10 @@ El enfoque de Vue es más conciso. El de React es más trazable. Por debajo, amb
 ## Qué decirle a un desarrollador de React
 
 `v-model` no es magia de binding bidireccional. Es un atajo en tiempo de compilación que genera el mismo patrón `value` + `onChange` que ya escribes en React. La diferencia es que el compilador de Vue escribe el código repetitivo por ti. Si necesitas ver qué está pasando, expande el azúcar: `:modelValue` + `@update:modelValue` es el mismo patrón que `value` + `onChange`.
+
+Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Cuál es la diferencia entre Composition API y React Hooks?](/es/q/composition-api-vs-react-hooks)
+
+## Referencias
+
+- [Component v-model](https://vuejs.org/guide/components/v-model.html) - Vue.js docs
+- [Form Input Bindings](https://vuejs.org/guide/essentials/forms.html) - Vue.js docs

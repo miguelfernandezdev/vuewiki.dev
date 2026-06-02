@@ -143,3 +143,11 @@ Configurar un `staleTime` adecuado evita que el cliente vuelva a pedir datos que
 | Aviso "Hydration mismatch" | El servidor y el cliente renderizan contenido diferente | Haz coincidir la estructura del fallback con la salida del servidor |
 | Los datos se piden dos veces | staleTime no configurado, el cliente vuelve a pedir | Configura staleTime en las queries |
 | "Cannot access composable" tras await | useQuery llamado después de await | Mueve todas las llamadas a composables antes del await |
+
+Ver también: [¿Cómo funciona Suspense?](/es/q/suspense) · [¿Qué son los componentes asíncronos?](/es/q/async-components)
+
+## Referencias
+
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs
+- [SSR](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Client Hydration](https://vuejs.org/guide/scaling-up/ssr.html#client-hydration) - Vue.js docs

@@ -68,3 +68,11 @@ watchEffect(() => {
 ```
 
 The null check is still needed, but the typing and naming are more explicit.
+
+See also: [How do template refs work?](/q/template-refs) · [How do you type template refs?](/q/typing-template-refs)
+
+## References
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [nextTick()](https://vuejs.org/api/general.html#nexttick) - Vue.js docs
+- [v-if](https://vuejs.org/api/built-in-directives.html#v-if) - Vue.js docs

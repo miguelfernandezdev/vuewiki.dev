@@ -136,3 +136,10 @@ Wrap independent sections so one failure doesn't take down the whole page:
   </aside>
 </template>
 ```
+
+See also: [What are async components?](/q/async-components) · [How does Suspense work?](/q/suspense)
+
+## References
+
+- [onErrorCaptured()](https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured) - Vue.js docs
+- [app.config.errorHandler](https://vuejs.org/api/application.html#app-config-errorhandler) - Vue.js docs

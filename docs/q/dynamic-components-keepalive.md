@@ -127,3 +127,10 @@ Using `route.fullPath` as the key means `/users/1` and `/users/2` are cached sep
 | Sensitive data (auth forms, payment flows) | Data should be cleared on exit |
 | Components with background timers you can't pause | They keep running while hidden |
 | Pages where users expect fresh results | Stale cached data confuses users |
+
+See also: [What are async components?](/q/async-components) · [What are Teleport, Fragments, and Suspense?](/q/teleport-fragments-suspense) · [How does the `is` attribute work?](/q/is-attribute-dynamic-rendering)
+
+## References
+
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs
+- [KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.html) - Vue.js docs

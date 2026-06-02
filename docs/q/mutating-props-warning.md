@@ -62,3 +62,10 @@ const count = ref(props.initialCount)
 ```
 
 Name the prop `initialX` to signal that it's only used once and won't stay in sync with the parent.
+
+See also: [What is the difference between props and state?](/q/props-vs-state) · [What is lifting state up?](/q/lifting-state-up) · [What is unidirectional data flow?](/q/flux-unidirectional-data-flow)
+
+## References
+
+- [One-Way Data Flow](https://vuejs.org/guide/components/props.html#one-way-data-flow) - Vue.js docs
+- [Component Events](https://vuejs.org/guide/components/events.html) - Vue.js docs

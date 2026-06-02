@@ -135,3 +135,10 @@ const {
 ```
 
 Both approaches are valid. `withDefaults` gives you a single `props` object. Destructuring gives you individual variables. On Vue 3.5+, destructuring is simpler and avoids the factory function footgun entirely.
+
+See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [What are the limitations of defineProps types?](/q/defineprops-type-limitations)
+
+## References
+
+- [Default Props Values](https://vuejs.org/api/sfc-script-setup.html#default-props-values-when-using-type-declaration) - Vue.js docs
+- [Reactive Props Destructure](https://vuejs.org/guide/components/props.html#reactive-props-destructure) - Vue.js docs

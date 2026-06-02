@@ -141,3 +141,10 @@ function handleInput(e: Event) {
 ```
 
 `defineModel` elimina todo este código repetitivo.
+
+Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Cómo funcionan los bindings múltiples de v-model?](/es/q/multiple-v-model)
+
+## Referencias
+
+- [Handling v-model Modifiers](https://vuejs.org/guide/components/v-model.html#handling-v-model-modifiers) - Vue.js docs
+- [defineModel()](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs

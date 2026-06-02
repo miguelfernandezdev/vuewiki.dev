@@ -163,3 +163,10 @@ The regular script block has full TypeScript access. The resolved type is then s
 | 3.2 | Only inline types (no imports) |
 | 3.3 | Imported interfaces, type aliases, enums |
 | 3.4+ | Better support for `Pick`, `Omit`, cross-file generics |
+
+See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [How do generic components work?](/q/generic-components) · [What are the gotchas with withDefaults?](/q/withdefaults-gotchas)
+
+## References
+
+- [Typing Component Props](https://vuejs.org/guide/typescript/composition-api.html#typing-component-props) - Vue.js docs
+- [defineProps()](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) - Vue.js docs

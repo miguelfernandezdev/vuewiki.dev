@@ -183,3 +183,10 @@ it('renders user data', async () => {
 ```
 
 The `mountAsync` helper handles the Suspense wrapping and promise flushing in one call, so tests stay focused on assertions.
+
+See also: [How does Suspense work?](/q/suspense) · [How do you test a composable that uses fetch?](/q/testing-composable-fetch)
+
+## References
+
+- [Testing Async Components](https://test-utils.vuejs.org/guide/advanced/async-suspense.html) - Vue Test Utils docs
+- [flushPromises](https://test-utils.vuejs.org/api/#flushpromises) - Vue Test Utils docs

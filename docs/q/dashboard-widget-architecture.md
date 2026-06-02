@@ -232,3 +232,11 @@ Each `Suspense` boundary is independent, so widgets still load at their own pace
 | Reactivity depth | `shallowRef` (replaced wholesale) | `ref` or `shallowRef` |
 | Refresh strategy | Per-widget (poll, manual, WebSocket) | Store action triggers all dependents |
 | Error handling | Per-widget (local error state) | Store-level or per-widget |
+
+See also: [What are async components?](/q/async-components) · [How does provide/inject work?](/q/provide-inject) · [What are dynamic components and KeepAlive?](/q/dynamic-components-keepalive)
+
+## References
+
+- [defineAsyncComponent()](https://vuejs.org/api/general.html#defineasynccomponent) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs

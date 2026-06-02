@@ -227,3 +227,10 @@ it('notifies on state change', () => {
 | Assert state AND getters | Getters are computed, verify they react to state changes |
 | Test error paths | Verify the store handles API failures correctly |
 | Restore mocks in `afterEach` if needed | Prevent mock leaks between test files |
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [How do you test a composable that uses fetch?](/q/testing-composable-fetch)
+
+## References
+
+- [Testing Stores](https://pinia.vuejs.org/cookbook/testing.html) - Pinia docs
+- [createTestingPinia](https://pinia.vuejs.org/cookbook/testing.html#Unit-testing-a-store) - Pinia docs

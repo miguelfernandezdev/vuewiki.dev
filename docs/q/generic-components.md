@@ -141,3 +141,10 @@ The `generic` attribute makes this pattern accessible with normal SFC templates.
 | Form field wrapper with typed v-model | Yes |
 | Component that always works with a known type | No, use concrete types |
 | Simple UI components (buttons, cards, modals) | No |
+
+See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [How do you type slots with defineSlots?](/q/define-slots-typing) · [What are the limitations of defineProps types?](/q/defineprops-type-limitations)
+
+## References
+
+- [Generic Components](https://vuejs.org/api/sfc-script-setup.html#generics) - Vue.js docs
+- [Typing Component Props](https://vuejs.org/guide/typescript/composition-api.html#typing-component-props) - Vue.js docs

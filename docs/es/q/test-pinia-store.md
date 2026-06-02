@@ -227,3 +227,10 @@ it('notifica cuando cambia el estado', () => {
 | Comprobar el estado Y los getters | Los getters son computed, verifica que reaccionan a los cambios de estado |
 | Probar los caminos de error | Verifica que el store gestiona los fallos de la API correctamente |
 | Restaurar los mocks en `afterEach` si es necesario | Evitar que los mocks se filtren entre archivos de test |
+
+Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cómo testear un composable que usa fetch?](/es/q/testing-composable-fetch)
+
+## Referencias
+
+- [Testing Stores](https://pinia.vuejs.org/cookbook/testing.html) - Pinia docs
+- [createTestingPinia](https://pinia.vuejs.org/cookbook/testing.html#Unit-testing-a-store) - Pinia docs

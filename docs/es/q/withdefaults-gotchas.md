@@ -135,3 +135,10 @@ const {
 ```
 
 Ambos enfoques son válidos. `withDefaults` te da un único objeto `props`. La desestructuración te da variables individuales. En Vue 3.5+, la desestructuración es más simple y evita por completo el error habitual de las funciones factory.
+
+Ver también: [¿Cómo declarar props con TypeScript?](/es/q/props-with-typescript) · [¿Cuáles son las limitaciones de los tipos en defineProps?](/es/q/defineprops-type-limitations)
+
+## Referencias
+
+- [Default Props Values](https://vuejs.org/api/sfc-script-setup.html#default-props-values-when-using-type-declaration) - Vue.js docs
+- [Reactive Props Destructure](https://vuejs.org/guide/components/props.html#reactive-props-destructure) - Vue.js docs

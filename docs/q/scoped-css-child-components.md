@@ -74,3 +74,10 @@ A child component's **root element** IS affected by parent scoped CSS. Vue does 
 ```
 
 In Vue 3, `:deep()` is the only supported syntax.
+
+See also: [How do scoped styles, CSS Modules, and dynamic classes work?](/q/css-scoped-modules-dynamic) · [How do scoped styles interact with Teleport?](/q/teleport-scoped-styles)
+
+## References
+
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs
+- [Deep Selectors](https://vuejs.org/api/sfc-css-features.html#deep-selectors) - Vue.js docs

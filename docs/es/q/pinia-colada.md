@@ -169,3 +169,11 @@ const { mutate } = useMutation({
 | SSR (Nuxt) | Compatible | Compatible | Manual |
 | Tamaño del bundle | Pequeño | Mayor | Cero |
 | Ideal para | Proyectos Vue/Pinia que quieren estado asíncrono integrado | Equipos familiarizados con TanStack desde React | Apps sencillas con pocas llamadas a la API |
+
+Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Qué son los plugins de Pinia?](/es/q/pinia-plugins) · [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching)
+
+## Referencias
+
+- [Pinia Colada](https://pinia-colada.esm.dev/) - Pinia Colada docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs

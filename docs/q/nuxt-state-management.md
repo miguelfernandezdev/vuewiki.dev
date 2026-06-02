@@ -151,3 +151,11 @@ const cart = useCartStore()
 useState('fn', () => () => {})           // will break
 useState('data', () => ({ name: 'Vue' })) // works fine
 ```
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [When should state live in Pinia vs a composable vs a local ref?](/q/pinia-vs-composable-vs-local) · [What is SSR cross-request state pollution?](/q/ssr-cross-request-state-pollution)
+
+## References
+
+- [State Management](https://nuxt.com/docs/getting-started/state-management) - Nuxt docs
+- [useState](https://nuxt.com/docs/api/composables/use-state) - Nuxt docs
+- [Pinia with Nuxt](https://pinia.vuejs.org/ssr/nuxt.html) - Pinia docs

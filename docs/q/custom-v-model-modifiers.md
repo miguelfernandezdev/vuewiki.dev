@@ -141,3 +141,10 @@ function handleInput(e: Event) {
 ```
 
 `defineModel` eliminates all this boilerplate.
+
+See also: [How does v-model work on custom components?](/q/v-model-custom-components) · [How do multiple v-model bindings work?](/q/multiple-v-model)
+
+## References
+
+- [Handling v-model Modifiers](https://vuejs.org/guide/components/v-model.html#handling-v-model-modifiers) - Vue.js docs
+- [defineModel()](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs

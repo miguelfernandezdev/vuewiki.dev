@@ -125,3 +125,10 @@ withDirectives(h('input'), [[vFocus]])
 | Use case | Most components | Highly dynamic rendering logic |
 
 Prefer templates by default. Use render functions when the template would be awkward or impossible to express declaratively.
+
+See also: [What are functional components?](/q/functional-components) · [What are slots?](/q/slots)
+
+## References
+
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs
+- [h()](https://vuejs.org/api/render-function.html#h) - Vue.js docs

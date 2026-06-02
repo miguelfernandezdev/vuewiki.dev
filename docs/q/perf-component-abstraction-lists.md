@@ -108,3 +108,11 @@ Keep as components:
 Open Vue DevTools, look at the Components tab. Count how many instances exist when your list renders. If you see thousands, investigate whether flattening list items reduces that number meaningfully.
 
 The Performance tab in DevTools also shows render time per component. Sort by total time to find the most expensive components in your list.
+
+See also: [What is props stability and why does it matter for performance?](/q/perf-props-stability) · [What is the Virtual DOM and how does Vue use it?](/q/virtual-dom) · [What is the difference between a component VNode and an element VNode?](/q/component-vs-element-vnode)
+
+## References
+
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) - Virtual scrolling library

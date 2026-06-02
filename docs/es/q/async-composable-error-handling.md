@@ -211,3 +211,10 @@ Esto captura cualquier error lanzado durante el renderizado o los lifecycle hook
 | Expone una función `retry` | Permite a los usuarios recuperarse de fallos transitorios |
 | Tipifica los errores por categoría | Diferentes errores necesitan diferente UI |
 | Usa `onErrorCaptured` para errores inesperados | Evita fallos totales de la aplicación |
+
+Ver también: [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching) · [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo funciona el manejo de errores en Vue?](/es/q/error-handling)
+
+## Referencias
+
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [onErrorCaptured()](https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured) - Vue.js docs

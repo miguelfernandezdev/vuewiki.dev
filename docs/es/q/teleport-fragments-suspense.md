@@ -5,15 +5,54 @@ difficulty: "intermediate"
 tags: ["components"]
 ---
 
-**Teleport** renderiza el DOM en otra parte del árbol (similar a los Portals de React):
+Estas son tres funcionalidades integradas introducidas en Vue 3. Cada una resuelve un problema diferente: renderizar contenido fuera del árbol de componentes, permitir múltiples elementos raíz, y manejar dependencias asíncronas con estados de carga.
+
+## Teleport
+
+[`<Teleport>`](https://vuejs.org/guide/built-ins/teleport.html) renderiza sus hijos en una parte diferente del DOM, fuera del elemento del componente padre. La lógica del componente (props, eventos, reactividad) permanece en su lugar — solo la salida DOM se mueve.
+
 ```vue
-<Teleport to="body">
-  <Modal v-if="showModal" @close="showModal = false" />
-</Teleport>
+<script setup>
+import { ref } from 'vue'
+const showModal = ref(false)
+</script>
+
+<template>
+  <button @click="showModal = true">Abrir</button>
+
+  <Teleport to="body">
+    <div v-if="showModal" class="modal-overlay">
+      <div class="modal">
+        <p>Esto se renderiza como hijo directo de body</p>
+        <button @click="showModal = false">Cerrar</button>
+      </div>
+    </div>
+  </Teleport>
+</template>
 ```
 
-**Fragments** permite múltiples nodos raíz (Vue 2 exigía un único nodo raíz):
+Sin Teleport, un modal dentro de un componente profundamente anidado hereda todo el CSS del padre (`overflow: hidden`, `z-index`, `transform`), lo cual puede recortar o posicionar mal el modal. Teleportar a `<body>` evita esos problemas. La prop `to` acepta cualquier selector CSS o elemento DOM.
+
+Usos comunes: modales, tooltips, menús dropdown, notificaciones — cualquier cosa que necesite escapar visualmente del layout de su padre.
+
+## Fragments
+
+En Vue 2, cada componente necesitaba un único elemento raíz. Esto forzaba `<div>` wrapper innecesarios:
+
 ```vue
+<!-- Vue 2: requería un único raíz -->
+<template>
+  <div>
+    <header>Header</header>
+    <main>Content</main>
+  </div>
+</template>
+```
+
+Vue 3 soporta **fragments** — múltiples elementos raíz sin wrapper:
+
+```vue
+<!-- Vue 3: múltiples raíces, sin wrapper necesario -->
 <template>
   <header>Header</header>
   <main>Content</main>
@@ -21,14 +60,33 @@ tags: ["components"]
 </template>
 ```
 
-**Suspense** gestiona componentes asíncronos con un fallback mientras cargan:
+Un detalle: los [atributos fallthrough](/es/q/fallthrough-attrs) no funcionan automáticamente con componentes multi-raíz porque Vue no sabe a qué raíz aplicarlos. Necesitas vincular `$attrs` explícitamente.
+
+## Suspense
+
+[`<Suspense>`](https://vuejs.org/guide/built-ins/suspense.html) muestra contenido fallback mientras espera a que los componentes hijos asíncronos se resuelvan. Funciona con componentes que tienen un `async setup()` o que se cargan con [`defineAsyncComponent`](/es/q/async-components).
+
 ```vue
-<Suspense>
-  <template #default>
-    <AsyncComponent />
-  </template>
-  <template #fallback>
-    <LoadingSpinner />
-  </template>
-</Suspense>
+<template>
+  <Suspense>
+    <template #default>
+      <UserDashboard />
+    </template>
+    <template #fallback>
+      <LoadingSpinner />
+    </template>
+  </Suspense>
+</template>
 ```
+
+Si `UserDashboard` tiene un `setup` asíncrono (devuelve una promise), Suspense muestra `LoadingSpinner` hasta que la promise se resuelve. También puedes manejar errores con [`onErrorCaptured`](/es/q/error-handling) en el padre.
+
+> **Nota:** Suspense sigue siendo una API experimental a partir de Vue 3.5. El comportamiento base es estable, pero la API puede tener cambios menores.
+
+Ver también: [¿Cómo funciona Suspense para componentes asíncronos?](/es/q/suspense) · [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Qué son los atributos fallthrough?](/es/q/fallthrough-attrs)
+
+## Referencias
+
+- [Teleport](https://vuejs.org/guide/built-ins/teleport.html) - Vue.js docs
+- [Fragments](https://v3-migration.vuejs.org/new/fragments.html) - Vue 3 Migration Guide
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs

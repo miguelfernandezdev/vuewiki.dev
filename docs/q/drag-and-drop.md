@@ -223,3 +223,10 @@ Pointer events work on both mouse and touch devices without extra handling.
 | Free-position dragging (like a canvas) | Pointer events |
 | Resize handles, custom drag constraints | Pointer events |
 | File drop from desktop | Native API (`@drop` + `dataTransfer.files`) |
+
+See also: [How do template refs work?](/q/template-refs) · [How does event handling work?](/q/event-handling)
+
+## References
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs

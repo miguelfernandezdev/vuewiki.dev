@@ -186,3 +186,11 @@ Without the visually hidden text, a screen reader would just announce "button" w
 | Keyboard | Ensure all interactive elements are reachable and operable with keyboard |
 | Color contrast | Minimum 4.5:1 for text, 3:1 for large text (WCAG AA) |
 | Labels | Every form input needs a visible `<label>` or `aria-label` |
+
+See also: [How do you handle complex forms?](/q/complex-forms) · [How does Teleport work?](/q/teleport-fragments-suspense) · [How do template refs work?](/q/template-refs)
+
+## References
+
+- [Accessibility](https://vuejs.org/guide/best-practices/accessibility.html) - Vue.js docs
+- [WAI-ARIA Practices](https://www.w3.org/WAI/ARIA/apg/) - W3C
+- [Vue A11y](https://vue-a11y.com/) - Vue accessibility community resources

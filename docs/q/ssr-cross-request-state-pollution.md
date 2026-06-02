@@ -116,3 +116,10 @@ Never declare mutable state at module scope in code that runs on the server. Alw
 | Factory function + provide/inject | Vanilla Vue SSR without Nuxt |
 
 Immutable module-level values (constants, type definitions, pure functions) are safe because they don't change between requests.
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [How does Nuxt handle state management?](/q/nuxt-state-management)
+
+## References
+
+- [SSR](https://vuejs.org/guide/scaling-up/ssr.html) - Vue.js docs
+- [Pinia SSR](https://pinia.vuejs.org/ssr/) - Pinia docs

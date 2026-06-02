@@ -87,3 +87,11 @@ Esto evita el re-renderizado en cada pulsación mientras mantiene el valor en es
 ## En Vue frente a React
 
 En React, esta distinción es más importante porque los inputs no controlados necesitan `useRef` y los inputs controlados causan re-renderizados de todo el árbol de componentes. En Vue, el sistema de reactividad es granular, así que los inputs controlados solo actualizan las partes del DOM que dependen del valor. La diferencia de rendimiento entre controlados y no controlados es insignificante en Vue. Por defecto, usa `v-model` salvo que tengas un motivo concreto para no hacerlo.
+
+Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Cómo manejar formularios complejos?](/es/q/complex-forms)
+
+## Referencias
+
+- [Form Input Bindings](https://vuejs.org/guide/essentials/forms.html) - Vue.js docs
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [v-model](https://vuejs.org/api/built-in-directives.html#v-model) - Vue.js docs

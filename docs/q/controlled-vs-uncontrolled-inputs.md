@@ -87,3 +87,11 @@ This avoids re-rendering on every keystroke while still keeping the value in rea
 ## In Vue vs React
 
 In React, this distinction is a bigger deal because uncontrolled inputs need `useRef` and controlled inputs cause re-renders of the entire component tree. In Vue, the reactivity system is fine-grained, so controlled inputs only update the parts of the DOM that depend on the value. The performance difference between controlled and uncontrolled is negligible in Vue. Default to `v-model` unless you have a specific reason not to.
+
+See also: [How does v-model work on custom components?](/q/v-model-custom-components) · [How do template refs work?](/q/template-refs) · [How would you handle complex forms?](/q/complex-forms)
+
+## References
+
+- [Form Input Bindings](https://vuejs.org/guide/essentials/forms.html) - Vue.js docs
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [v-model](https://vuejs.org/api/built-in-directives.html#v-model) - Vue.js docs

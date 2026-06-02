@@ -72,3 +72,10 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 ```
 
 Esto funciona pero anula el propósito del scoped. CSS Modules o un bloque dedicado sin scoped son soluciones más limpias para el contenido teletransportado.
+
+Ver también: [¿Qué son Teleport, Fragments y Suspense?](/es/q/teleport-fragments-suspense) · [¿Cómo funcionan los estilos scoped?](/es/q/css-scoped-modules-dynamic) · [¿Por qué el CSS scoped no estila componentes hijos?](/es/q/scoped-css-child-components)
+
+## Referencias
+
+- [Teleport](https://vuejs.org/guide/built-ins/teleport.html) - Vue.js docs
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs

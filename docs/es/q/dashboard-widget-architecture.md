@@ -232,3 +232,11 @@ Cada límite `Suspense` es independiente, por lo que los widgets siguen cargando
 | Profundidad de reactividad | `shallowRef` (reemplazado completo) | `ref` o `shallowRef` |
 | Estrategia de refresco | Por widget (poll, manual, WebSocket) | La acción del store activa todos los dependientes |
 | Manejo de errores | Por widget (estado de error local) | A nivel de store o por widget |
+
+Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Cómo funciona provide/inject?](/es/q/provide-inject) · [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive)
+
+## Referencias
+
+- [defineAsyncComponent()](https://vuejs.org/api/general.html#defineasynccomponent) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs

@@ -183,3 +183,10 @@ it('renderiza los datos del usuario', async () => {
 ```
 
 El helper `mountAsync` gestiona el envoltorio con Suspense y el flush de promesas en una sola llamada, para que los tests se centren en las comprobaciones.
+
+Ver también: [¿Cómo funciona Suspense?](/es/q/suspense) · [¿Cómo testear un composable que usa fetch?](/es/q/testing-composable-fetch)
+
+## Referencias
+
+- [Testing Async Components](https://test-utils.vuejs.org/guide/advanced/async-suspense.html) - Vue Test Utils docs
+- [flushPromises](https://test-utils.vuejs.org/api/#flushpromises) - Vue Test Utils docs

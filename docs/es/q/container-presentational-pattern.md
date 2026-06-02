@@ -126,3 +126,10 @@ El componente de página es más delgado porque el composable posee la lógica. 
 | Componente de página con lógica específica de ruta | La página ES el contenedor |
 
 No dividas todos los componentes. Aplica el patrón cuando un componente mezcla carga de datos con renderizado de UI y quieres reutilizar la parte de UI o probarla de forma independiente.
+
+Ver también: [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Qué es el patrón de componentes compuestos?](/es/q/compound-components-pattern) · [¿Qué es lifting state up?](/es/q/lifting-state-up)
+
+## Referencias
+
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Props](https://vuejs.org/guide/components/props.html) - Vue.js docs

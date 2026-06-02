@@ -91,3 +91,10 @@ Vue 3 optimized stateful components so heavily (faster instance creation, compil
 ## Should you use them?
 
 For application code, almost never. A standard SFC with `<script setup>` is more readable, supports scoped styles, has better tooling support, and the performance difference doesn't justify the tradeoff. Use functional components when you're building a library that needs programmatic component generation, or when a component truly has no state and a render function is clearer than a template.
+
+See also: [How do render functions and JSX work?](/q/render-functions-jsx) · [What are slots?](/q/slots)
+
+## References
+
+- [Render Functions](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs
+- [Functional Components](https://vuejs.org/guide/extras/render-function.html#functional-components) - Vue.js docs

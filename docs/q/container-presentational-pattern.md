@@ -126,3 +126,10 @@ The page component is thinner because the composable owns the logic. The present
 | Page-level component with route-specific logic | The page IS the container |
 
 Don't split every component. Apply the pattern when a component mixes data fetching with UI rendering and you want to reuse the UI part or test it independently.
+
+See also: [What is a composable?](/q/what-is-a-composable) · [What is the compound components pattern?](/q/compound-components-pattern) · [What is lifting state up?](/q/lifting-state-up)
+
+## References
+
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Props](https://vuejs.org/guide/components/props.html) - Vue.js docs

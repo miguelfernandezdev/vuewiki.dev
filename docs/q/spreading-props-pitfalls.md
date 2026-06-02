@@ -165,3 +165,10 @@ const userSummary = computed<UserSummary>(() => ({
 ```
 
 Now the spread is intentional and typed. The object contains exactly what `UserCard` expects, nothing more.
+
+See also: [What are fallthrough attributes?](/q/fallthrough-attrs) · [How do you declare props with TypeScript?](/q/props-with-typescript)
+
+## References
+
+- [Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html) - Vue.js docs
+- [v-bind](https://vuejs.org/api/built-in-directives.html#v-bind) - Vue.js docs

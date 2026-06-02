@@ -137,3 +137,11 @@ La optimización tiene un coste constante (siempre 2) independientemente del tam
 ## La regla
 
 Si el valor de una prop cambia para TODOS los hijos pero solo ALGUNOS necesitan reaccionar, pre-calcular el valor derivado en el padre y pasar el resultado. El hijo debe recibir únicamente valores específicos de su propio estado.
+
+Ver también: [¿Cómo mejora el rendimiento reducir la abstracción de componentes en listas?](/es/q/perf-component-abstraction-lists) · [¿Qué es el Virtual DOM y cómo lo usa Vue?](/es/q/virtual-dom) · [¿Cómo declarar props con TypeScript?](/es/q/props-with-typescript)
+
+## Referencias
+
+- [Props Stability](https://vuejs.org/guide/best-practices/performance.html#props-stability) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs

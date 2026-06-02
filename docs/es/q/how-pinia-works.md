@@ -180,3 +180,11 @@ export const useCartStore = defineStore('cart', () => {
 3. Las llamadas posteriores devuelven la misma instancia (por raíz de Pinia, lo que significa por petición en SSR)
 4. `$patch`, `$subscribe` y `$onAction` se añaden automáticamente a cada instancia de store
 5. El plugin de Vue Devtools se engancha a estos para mostrar cambios de state, líneas de tiempo de actions y depuración con viaje en el tiempo
+
+Ver también: [¿Qué es Pinia y en qué se diferencia de Vuex?](/es/q/pinia-vs-vuex) · [¿Qué son los plugins de Pinia?](/es/q/pinia-plugins) · [¿Cómo testear un store de Pinia?](/es/q/test-pinia-store)
+
+## Referencias
+
+- [Defining a Store](https://pinia.vuejs.org/core-concepts/) - Pinia docs
+- [Getters](https://pinia.vuejs.org/core-concepts/getters.html) - Pinia docs
+- [Actions](https://pinia.vuejs.org/core-concepts/actions.html) - Pinia docs

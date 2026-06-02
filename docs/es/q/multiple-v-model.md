@@ -131,3 +131,11 @@ const emit = defineEmits<{
 | Formulario con varios campos relacionados | Múltiples `v-model` con nombre |
 | Objeto complejo como valor único | `v-model` único con un tipo de objeto |
 | Valores no relacionados que cambian de forma independiente | Múltiples `v-model` con nombre |
+
+Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Qué son los modificadores personalizados de v-model?](/es/q/custom-v-model-modifiers) · [¿Por qué mutar un objeto a través de defineModel no actualiza el padre?](/es/q/definemodel-object-mutation)
+
+## Referencias
+
+- [Component v-model](https://vuejs.org/guide/components/v-model.html) - Vue.js docs
+- [defineModel()](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs
+- [Multiple v-model bindings](https://vuejs.org/guide/components/v-model.html#multiple-v-model-bindings) - Vue.js docs

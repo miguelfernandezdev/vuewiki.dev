@@ -173,3 +173,11 @@ export const useSelectedUserStore = defineStore('selectedUser', () => {
 ```
 
 If you can solve it with a ref, a prop, or an emit, you don't need a store.
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [What is a composable?](/q/what-is-a-composable) · [What is lifting state up?](/q/lifting-state-up)
+
+## References
+
+- [Defining Stores](https://pinia.vuejs.org/core-concepts/) - Pinia docs
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs

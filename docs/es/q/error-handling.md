@@ -136,3 +136,10 @@ Envuelve secciones independientes para que un fallo no derrumbe toda la página:
   </aside>
 </template>
 ```
+
+Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Cómo funciona Suspense?](/es/q/suspense)
+
+## Referencias
+
+- [onErrorCaptured()](https://vuejs.org/api/composition-api-lifecycle.html#onerrorcaptured) - Vue.js docs
+- [app.config.errorHandler](https://vuejs.org/api/application.html#app-config-errorhandler) - Vue.js docs

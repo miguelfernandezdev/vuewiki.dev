@@ -58,3 +58,10 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
 ```
 
 The rule is simple: if you explicitly `$emit` a native event name, you must declare it in `defineEmits`. Otherwise the listener exists in two places.
+
+See also: [How do you emit events with TypeScript?](/q/emit-events-typescript) · [What are fallthrough attributes?](/q/fallthrough-attrs)
+
+## References
+
+- [defineEmits()](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) - Vue.js docs
+- [Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html) - Vue.js docs

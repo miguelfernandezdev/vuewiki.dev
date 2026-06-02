@@ -186,3 +186,11 @@ Sin el texto visualmente oculto, un lector de pantalla solo anunciaría "botón"
 | Teclado | Asegura que todos los elementos interactivos son alcanzables y operables con el teclado |
 | Contraste de color | Mínimo 4.5:1 para texto, 3:1 para texto grande (WCAG AA) |
 | Etiquetas | Cada campo de formulario necesita un `<label>` visible o `aria-label` |
+
+Ver también: [¿Cómo manejar formularios complejos?](/es/q/complex-forms) · [¿Cómo funciona Teleport?](/es/q/teleport-fragments-suspense) · [¿Cómo funcionan las template refs?](/es/q/template-refs)
+
+## Referencias
+
+- [Accessibility](https://vuejs.org/guide/best-practices/accessibility.html) - Vue.js docs
+- [WAI-ARIA Practices](https://www.w3.org/WAI/ARIA/apg/) - W3C
+- [Vue A11y](https://vue-a11y.com/) - Vue accessibility community resources

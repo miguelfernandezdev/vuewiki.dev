@@ -165,3 +165,10 @@ Data still flows one way: state to view (`:value`), and events back up (`@input`
 | Boilerplate | More (actions, stores) | Less (direct mutation) |
 | Vue implementation | Props/emit, Pinia, Vuex | v-model (sugar over unidirectional) |
 | Best for | Shared state, complex apps | Local form state |
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [How does Vuex work?](/q/how-vuex-works) · [How does provide/inject work?](/q/provide-inject)
+
+## References
+
+- [State Management](https://vuejs.org/guide/scaling-up/state-management.html) - Vue.js docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs

@@ -137,3 +137,11 @@ The optimization has a constant cost (always 2) regardless of list size. The nai
 ## The rule
 
 If a prop value changes for ALL children but only SOME children need to react, pre-compute the derived value in the parent and pass the result. The child should receive only values that are specific to its own state.
+
+See also: [How does reducing component abstraction improve list performance?](/q/perf-component-abstraction-lists) · [What is the Virtual DOM and how does Vue use it?](/q/virtual-dom) · [How do you declare props with TypeScript?](/q/props-with-typescript)
+
+## References
+
+- [Props Stability](https://vuejs.org/guide/best-practices/performance.html#props-stability) - Vue.js docs
+- [Performance](https://vuejs.org/guide/best-practices/performance.html) - Vue.js docs
+- [Rendering Mechanism](https://vuejs.org/guide/extras/rendering-mechanism.html) - Vue.js docs

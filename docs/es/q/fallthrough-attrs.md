@@ -103,3 +103,11 @@ Si necesitas reaccionar al cambio de un atributo específico, promuévelo a prop
 | Componente con múltiples raíces | Establecer `inheritAttrs: false`, vincular `$attrs` explícitamente |
 | Necesitas interceptar un evento antes de reenviarlo | Leer `attrs.onClick`, llamarlo después de tu lógica |
 | Necesitas acceso reactivo a un attr específico | Promuévelo a prop declarada |
+
+Ver también: [¿Qué es defineExpose?](/es/q/define-expose) · [¿Qué son los slots?](/es/q/slots) · [¿Qué son los componentes funcionales?](/es/q/functional-components)
+
+## Referencias
+
+- [Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html) - Vue.js docs
+- [useAttrs()](https://vuejs.org/api/composition-api-helpers.html#useattrs) - Vue.js docs
+- [inheritAttrs](https://vuejs.org/api/options-misc.html#inheritattrs) - Vue.js docs

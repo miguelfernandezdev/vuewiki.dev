@@ -49,3 +49,10 @@ describe('useFetch', () => {
   })
 })
 ```
+
+Ver también: [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching) · [¿Cómo testear un composable con fake timers?](/es/q/test-composable-fake-timers)
+
+## Referencias
+
+- [Testing Composables](https://vuejs.org/guide/reusability/composables.html#testing-composables) - Vue.js docs
+- [vi.fn](https://vitest.dev/api/vi.html#vi-fn) - Vitest docs

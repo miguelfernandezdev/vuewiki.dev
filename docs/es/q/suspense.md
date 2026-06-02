@@ -130,3 +130,10 @@ El orden correcto de anidamiento es RouterView, luego Transition, luego KeepAliv
 ## Suspense sigue siendo experimental
 
 A partir de Vue 3.5, Suspense funciona pero está marcado como experimental. La API podría cambiar en versiones futuras. En producción, mantén los límites Suspense al mínimo y documenta dónde los usas.
+
+Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Qué son Teleport, Fragments y Suspense?](/es/q/teleport-fragments-suspense) · [¿Cómo funciona el manejo de errores?](/es/q/error-handling)
+
+## Referencias
+
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs
+- [Async Components](https://vuejs.org/guide/components/async.html) - Vue.js docs

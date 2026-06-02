@@ -85,3 +85,11 @@ Vue auto-prefixes vendor-specific CSS properties at runtime, so you don't need t
 | Toggle a class based on state | `:class="{ active: isActive }"` |
 | Combine static and dynamic classes | `:class="['base', { active: isActive }]"` |
 | One-off inline overrides | `:style="{ color: x }"` |
+
+See also: [Why doesn't scoped CSS style child component elements?](/q/scoped-css-child-components) · [How do scoped styles interact with Teleport?](/q/teleport-scoped-styles)
+
+## References
+
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs
+- [CSS Modules](https://vuejs.org/api/sfc-css-features.html#css-modules) - Vue.js docs
+- [v-bind() in CSS](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css) - Vue.js docs

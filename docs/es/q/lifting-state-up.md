@@ -96,3 +96,11 @@ App                         App (con provide)
 ```
 
 La regla: sube el state al ancestro común más cercano que haga que el flujo de datos sea simple y obvio. Si ese ancestro queda demasiado lejos, usa un mecanismo de compartición diferente.
+
+Ver también: [¿Cómo funciona provide/inject?](/es/q/provide-inject) · [¿Cuál es la diferencia entre props y state?](/es/q/props-vs-state) · [¿Qué es el flujo de datos unidireccional?](/es/q/flux-unidirectional-data-flow)
+
+## Referencias
+
+- [Props](https://vuejs.org/guide/components/props.html) - Vue.js docs
+- [Events](https://vuejs.org/guide/components/events.html) - Vue.js docs
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs

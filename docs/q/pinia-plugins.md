@@ -187,3 +187,11 @@ export default defineNuxtPlugin(({ $pinia }) => {
 | Behavior added to ALL stores (logging, persistence, shared state) | Plugin |
 | Business logic for one specific store | Store action |
 | Reusable logic not tied to a store | Composable |
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [What is Pinia Colada?](/q/pinia-colada) · [When should state live in Pinia vs a composable vs a local ref?](/q/pinia-vs-composable-vs-local)
+
+## References
+
+- [Plugins](https://pinia.vuejs.org/core-concepts/plugins.html) - Pinia docs
+- [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/) - Persisted state plugin docs
+- [Defining Stores](https://pinia.vuejs.org/core-concepts/) - Pinia docs

@@ -72,3 +72,10 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 ```
 
 This works but defeats the purpose of scoping. CSS Modules or a dedicated non-scoped block are cleaner solutions for teleported content.
+
+See also: [What are Teleport, Fragments, and Suspense?](/q/teleport-fragments-suspense) · [How do scoped styles work?](/q/css-scoped-modules-dynamic) · [Why doesn't scoped CSS style child components?](/q/scoped-css-child-components)
+
+## References
+
+- [Teleport](https://vuejs.org/guide/built-ins/teleport.html) - Vue.js docs
+- [Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css) - Vue.js docs

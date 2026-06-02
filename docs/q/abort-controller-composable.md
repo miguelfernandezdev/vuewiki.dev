@@ -198,3 +198,12 @@ No manual `AbortController` needed. This is one of the reasons to prefer Nuxt's 
 | Route navigation | Stop fetching data for a page the user left |
 | Timeout | Fail fast instead of waiting indefinitely |
 | User clicks "cancel" | Respect explicit user intent |
+
+See also: [How would you build a composable for data fetching?](/q/composable-data-fetching) · [What is a composable?](/q/what-is-a-composable) · [How do async composables handle errors and loading state?](/q/async-composable-error-handling)
+
+## References
+
+- [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) - MDN
+- [AbortSignal.timeout()](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static) - MDN
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs
+- [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs

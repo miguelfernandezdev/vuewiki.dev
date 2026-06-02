@@ -158,3 +158,10 @@ onMounted(async () => {
 | Componente hijo | `ref<InstanceType<typeof MyComponent> \| null>(null)` |
 | Array desde v-for | `ref<(HTMLLIElement \| null)[]>([])` |
 | useTemplateRef (3.5+) | `useTemplateRef<HTMLInputElement>('nombre')` |
+
+Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Por qué una template ref es null dentro de v-if?](/es/q/template-ref-null-v-if) · [¿Qué es defineExpose?](/es/q/define-expose)
+
+## Referencias
+
+- [Typing Template Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-template-refs) - Vue.js docs
+- [useTemplateRef()](https://vuejs.org/api/composition-api-helpers.html#usetemplateref) - Vue.js docs

@@ -153,3 +153,10 @@ function handleClick(event: MouseEvent) {
 ```
 
 Si tienes un botón con un span dentro, al clicar el span, `target` es el span y `currentTarget` es el botón. Usa `currentTarget` cuando quieras el elemento al que está adjunto el manejador.
+
+Ver también: [¿Cómo emitir eventos con TypeScript?](/es/q/emit-events-typescript) · [¿Cómo funciona el manejo de eventos?](/es/q/event-handling)
+
+## Referencias
+
+- [Typing Component Emits](https://vuejs.org/guide/typescript/composition-api.html#typing-component-emits) - Vue.js docs
+- [Event Handling](https://vuejs.org/guide/essentials/event-handling.html) - Vue.js docs

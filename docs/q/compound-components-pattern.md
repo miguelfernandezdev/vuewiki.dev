@@ -214,3 +214,10 @@ The props-only approach passes all data to a single component:
 ```
 
 Compound components win when the children have complex content (components, slots, conditional logic) that doesn't fit cleanly in a data array.
+
+See also: [How does provide/inject work?](/q/provide-inject) · [What are slots?](/q/slots) · [What is the container-presentational pattern?](/q/container-presentational-pattern)
+
+## References
+
+- [Provide / Inject](https://vuejs.org/guide/components/provide-inject.html) - Vue.js docs
+- [Slots](https://vuejs.org/guide/components/slots.html) - Vue.js docs

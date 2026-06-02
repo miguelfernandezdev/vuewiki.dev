@@ -222,3 +222,10 @@ This way you load data incrementally AND only render visible items.
 | SEO | Harder (content not in initial HTML) | Each page is a URL |
 | Performance | Risk of large DOM over time | Constant DOM size |
 | Best for | Social feeds, image galleries | Search results, data tables |
+
+See also: [How do template refs work?](/q/template-refs) · [What is VueUse?](/q/vueuse)
+
+## References
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [useIntersectionObserver](https://vueuse.org/core/useIntersectionObserver/) - VueUse docs

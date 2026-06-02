@@ -127,3 +127,10 @@ Usar `route.fullPath` como key significa que `/users/1` y `/users/2` se almacena
 | Datos sensibles (formularios de autenticación, flujos de pago) | Los datos deben limpiarse al salir |
 | Componentes con temporizadores en segundo plano que no puedes pausar | Siguen ejecutándose mientras están ocultos |
 | Páginas donde los usuarios esperan resultados frescos | Los datos en caché desactualizados confunden a los usuarios |
+
+Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Qué son Teleport, Fragments y Suspense?](/es/q/teleport-fragments-suspense) · [¿Cómo funciona el atributo `is`?](/es/q/is-attribute-dynamic-rendering)
+
+## Referencias
+
+- [Dynamic Components](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components) - Vue.js docs
+- [KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.html) - Vue.js docs

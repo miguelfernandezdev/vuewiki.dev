@@ -131,3 +131,11 @@ const emit = defineEmits<{
 | Form with several related fields | Multiple named `v-model` |
 | Complex object as a single value | Single `v-model` with an object type |
 | Unrelated values that change independently | Multiple named `v-model` |
+
+See also: [How does v-model work on custom components?](/q/v-model-custom-components) · [What are custom v-model modifiers?](/q/custom-v-model-modifiers) · [Why doesn't mutating an object through defineModel update the parent?](/q/definemodel-object-mutation)
+
+## References
+
+- [Component v-model](https://vuejs.org/guide/components/v-model.html) - Vue.js docs
+- [defineModel()](https://vuejs.org/api/sfc-script-setup.html#definemodel) - Vue.js docs
+- [Multiple v-model bindings](https://vuejs.org/guide/components/v-model.html#multiple-v-model-bindings) - Vue.js docs

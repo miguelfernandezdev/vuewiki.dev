@@ -104,3 +104,11 @@ Esto reduce el JavaScript que el navegador tiene que procesar antes de que la p�
 | Caso de uso | UI condicional, widgets pesados | División de código a nivel de página |
 
 La división a nivel de ruta (`() => import('./views/Page.vue')`) es la forma más común de dividir el código. `defineAsyncComponent` es para dividir dentro de una página.
+
+Ver también: [¿Cómo funciona Suspense con componentes asíncronos?](/es/q/suspense) · [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive) · [¿Qué son Teleport, Fragments y Suspense?](/es/q/teleport-fragments-suspense)
+
+## Referencias
+
+- [defineAsyncComponent()](https://vuejs.org/api/general.html#defineasynccomponent) - Vue.js docs
+- [Async Components](https://vuejs.org/guide/components/async.html) - Vue.js docs
+- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) - Vue.js docs

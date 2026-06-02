@@ -125,3 +125,10 @@ withDirectives(h('input'), [[vFocus]])
 | Caso de uso | La mayoría de componentes | Lógica de render muy dinámica |
 
 Preferir templates por defecto. Usar render functions cuando el template sería incómodo o imposible de expresar de forma declarativa.
+
+Ver también: [¿Qué son los componentes funcionales?](/es/q/functional-components) · [¿Qué son los slots?](/es/q/slots)
+
+## Referencias
+
+- [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html) - Vue.js docs
+- [h()](https://vuejs.org/api/render-function.html#h) - Vue.js docs

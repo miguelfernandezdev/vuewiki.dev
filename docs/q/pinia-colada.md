@@ -169,3 +169,11 @@ const { mutate } = useMutation({
 | SSR (Nuxt) | Supported | Supported | Manual |
 | Bundle size | Small | Larger | Zero |
 | Best for | Vue/Pinia projects wanting integrated async state | Teams familiar with TanStack from React | Simple apps with few API calls |
+
+See also: [How does Pinia work?](/q/how-pinia-works) · [What are Pinia plugins?](/q/pinia-plugins) · [How would you build a composable for data fetching?](/q/composable-data-fetching)
+
+## References
+
+- [Pinia Colada](https://pinia-colada.esm.dev/) - Pinia Colada docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs

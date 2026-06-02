@@ -180,3 +180,10 @@ watch(searchQuery, (q) => debouncedSearch(q))
 ## VueUse vs writing your own
 
 Write your own composable when the logic is specific to your domain. Use VueUse when the problem is generic (debounce, storage, media queries, clipboard, intersection observer). VueUse composables handle edge cases, SSR compatibility, and cleanup that you would otherwise have to implement yourself.
+
+See also: [What is a composable?](/q/what-is-a-composable) · [How would you build a composable for data fetching?](/q/composable-data-fetching) · [How would you implement debounce?](/q/debounce-search-input)
+
+## References
+
+- [VueUse](https://vueuse.org/) - VueUse docs
+- [Composables](https://vuejs.org/guide/reusability/composables.html) - Vue.js docs

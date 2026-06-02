@@ -68,3 +68,11 @@ watchEffect(() => {
 ```
 
 La comprobación de null sigue siendo necesaria, pero el tipado y el nombre son más explícitos.
+
+Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Cómo tipar template refs en TypeScript?](/es/q/typing-template-refs)
+
+## Referencias
+
+- [Template Refs](https://vuejs.org/guide/essentials/template-refs.html) - Vue.js docs
+- [nextTick()](https://vuejs.org/api/general.html#nexttick) - Vue.js docs
+- [v-if](https://vuejs.org/api/built-in-directives.html#v-if) - Vue.js docs

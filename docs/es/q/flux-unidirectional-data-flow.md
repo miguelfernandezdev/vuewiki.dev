@@ -165,3 +165,10 @@ Los datos siguen fluyendo en una sola dirección: estado a vista (`:value`), y e
 | Boilerplate | Más (acciones, stores) | Menos (mutación directa) |
 | Implementación en Vue | Props/emit, Pinia, Vuex | v-model (azúcar sobre unidireccional) |
 | Mejor para | Estado compartido, apps complejas | Estado local de formularios |
+
+Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cómo funciona Vuex?](/es/q/how-vuex-works) · [¿Cómo funciona provide/inject?](/es/q/provide-inject)
+
+## Referencias
+
+- [State Management](https://vuejs.org/guide/scaling-up/state-management.html) - Vue.js docs
+- [Pinia](https://pinia.vuejs.org/) - Pinia docs
