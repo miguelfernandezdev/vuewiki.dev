@@ -130,7 +130,7 @@ const difficultyClass: Record<string, string> = {
               { label: t('filters.advanced'), value: 'advanced' },
             ]"
             :key="f.label"
-            :class="['filter-btn', { active: activeFilter === f.value }]"
+            :class="['filter-btn', { active: activeFilter === f.value }, f.value ? `filter-${f.value}` : '']"
             @click="setFilter(f.value)"
           >
             {{ f.label }}
@@ -190,7 +190,7 @@ const difficultyClass: Record<string, string> = {
           v-for="q in visibleQuestions"
           :key="q.url"
           :href="q.url"
-          class="question-card"
+          :class="['question-card', `card-${q.difficulty}`]"
         >
           <div class="question-content">
             <span class="question-title">{{ q.title }}</span>
@@ -288,6 +288,57 @@ const difficultyClass: Record<string, string> = {
   background: var(--vp-c-brand-1);
   color: var(--vp-c-white);
   border-color: var(--vp-c-brand-1);
+}
+
+.filter-btn.filter-beginner {
+  color: var(--vp-c-green-2);
+  border-color: var(--vp-c-green-soft);
+  background: var(--vp-c-bg);
+}
+
+.filter-btn.filter-beginner:hover {
+  background: var(--vp-c-green-soft);
+  border-color: var(--vp-c-green-2);
+}
+
+.filter-btn.filter-beginner.active {
+  background: var(--vp-c-green-2);
+  border-color: var(--vp-c-green-2);
+  color: var(--vp-c-white);
+}
+
+.filter-btn.filter-intermediate {
+  color: var(--vp-c-yellow-2);
+  border-color: var(--vp-c-yellow-soft);
+  background: var(--vp-c-bg);
+}
+
+.filter-btn.filter-intermediate:hover {
+  background: var(--vp-c-yellow-soft);
+  border-color: var(--vp-c-yellow-2);
+}
+
+.filter-btn.filter-intermediate.active {
+  background: var(--vp-c-yellow-2);
+  border-color: var(--vp-c-yellow-2);
+  color: var(--vp-c-white);
+}
+
+.filter-btn.filter-advanced {
+  color: var(--vp-c-red-2);
+  border-color: var(--vp-c-red-soft);
+  background: var(--vp-c-bg);
+}
+
+.filter-btn.filter-advanced:hover {
+  background: var(--vp-c-red-soft);
+  border-color: var(--vp-c-red-2);
+}
+
+.filter-btn.filter-advanced.active {
+  background: var(--vp-c-red-2);
+  border-color: var(--vp-c-red-2);
+  color: var(--vp-c-white);
 }
 
 .topic-dropdown {
@@ -443,14 +494,40 @@ const difficultyClass: Record<string, string> = {
   gap: 1rem;
   padding: 1rem 1.25rem;
   border: 1px solid var(--vp-c-border);
+  border-left: 3px solid var(--vp-c-border);
   border-radius: 8px;
   background: var(--vp-c-bg);
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
 }
 
 .question-card:hover {
-  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-border);
+}
+
+.card-beginner {
+  border-left-color: var(--vp-c-green-2);
+}
+
+.card-intermediate {
+  border-left-color: var(--vp-c-yellow-2);
+}
+
+.card-advanced {
+  border-left-color: var(--vp-c-red-2);
+}
+
+.card-beginner:hover {
+  border-left-color: var(--vp-c-green-2);
+}
+
+.card-intermediate:hover {
+  border-left-color: var(--vp-c-yellow-2);
+}
+
+.card-advanced:hover {
+  border-left-color: var(--vp-c-red-2);
 }
 
 .question-content {
@@ -476,7 +553,7 @@ const difficultyClass: Record<string, string> = {
   padding: 0.125rem 0.375rem;
   border-radius: 3px;
   background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   border: 1px solid var(--vp-c-border);
 }
 
