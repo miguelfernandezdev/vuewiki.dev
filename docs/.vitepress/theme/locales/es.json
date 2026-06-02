@@ -80,7 +80,9 @@
     "reviewCount": "{count} para repasar",
     "reviewPile": "Repasar {count} de nuevo",
     "restart": "Reiniciar todas",
-    "backToSetup": "Volver al inicio"
+    "backToSetup": "Volver al inicio",
+    "swipeHint": "desliza o usa las flechas",
+    "spaceHint": "pulsa Espacio para revelar"
   },
   "sort": {
     "recommended": "Recomendado",

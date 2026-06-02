@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
@@ -16,14 +16,17 @@ type Result = 'got-it' | 'review'
 
 const phase = ref<Phase>('setup')
 const difficultyFilter = ref<string | null>(null)
+const tagFilter = ref<Set<string>>(new Set())
 const currentIndex = ref(0)
 const revealed = ref(false)
 const results = ref<Map<string, Result>>(new Map())
 const deck = ref<typeof questions.value>([])
 
 const filteredQuestions = computed(() => {
-  if (!difficultyFilter.value) return questions.value
-  return questions.value.filter(q => q.difficulty === difficultyFilter.value)
+  let qs = questions.value
+  if (difficultyFilter.value) qs = qs.filter(q => q.difficulty === difficultyFilter.value)
+  if (tagFilter.value.size > 0) qs = qs.filter(q => q.tags.some(tag => tagFilter.value.has(tag)))
+  return qs
 })
 
 const difficultyOptions = computed(() => {
@@ -38,6 +41,23 @@ const difficultyOptions = computed(() => {
     { value: 'advanced', count: counts.advanced ?? 0 },
   ]
 })
+
+const availableTags = computed(() => {
+  const counts = new Map<string, number>()
+  for (const q of questions.value) {
+    for (const tag of q.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1)
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([tag, count]) => ({ tag, count }))
+})
+
+function toggleTag(tag: string) {
+  const next = new Set(tagFilter.value)
+  if (next.has(tag)) next.delete(tag)
+  else next.add(tag)
+  tagFilter.value = next
+}
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -72,12 +92,13 @@ const progress = computed(() => ({
   review: [...results.value.values()].filter(r => r === 'review').length,
 }))
 
-function reveal() {
+function doReveal() {
   revealed.value = true
 }
 
 function answer(result: Result) {
   results.value.set(currentCard.value.url, result)
+  dragX.value = 0
   if (currentIndex.value < deck.value.length - 1) {
     currentIndex.value++
     revealed.value = false
@@ -89,6 +110,7 @@ function answer(result: Result) {
 function backToSetup() {
   phase.value = 'setup'
   difficultyFilter.value = null
+  tagFilter.value = new Set()
 }
 
 const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
@@ -98,6 +120,79 @@ const difficultyClass: Record<string, string> = {
   intermediate: 'badge-intermediate',
   advanced: 'badge-advanced',
 }
+
+// --- Swipe gestures ---
+const dragX = ref(0)
+const dragging = ref(false)
+let startX = 0
+let startY = 0
+let pointerLocked = false
+const SWIPE_THRESHOLD = 80
+
+function onPointerDown(e: PointerEvent) {
+  if (!revealed.value) return
+  dragging.value = true
+  pointerLocked = false
+  startX = e.clientX
+  startY = e.clientY
+  ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+}
+
+function onPointerMove(e: PointerEvent) {
+  if (!dragging.value) return
+  const dx = e.clientX - startX
+  const dy = e.clientY - startY
+  if (!pointerLocked) {
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) {
+      dragging.value = false
+      dragX.value = 0
+      return
+    }
+    if (Math.abs(dx) > 10) pointerLocked = true
+    else return
+  }
+  e.preventDefault()
+  dragX.value = dx
+}
+
+function onPointerUp() {
+  if (!dragging.value) return
+  dragging.value = false
+  if (Math.abs(dragX.value) >= SWIPE_THRESHOLD) {
+    answer(dragX.value > 0 ? 'got-it' : 'review')
+  } else {
+    dragX.value = 0
+  }
+}
+
+const swipeStyle = computed(() => {
+  if (dragX.value === 0) return {}
+  const rotate = dragX.value * 0.08
+  return {
+    transform: `translateX(${dragX.value}px) rotate(${rotate}deg)`,
+    transition: dragging.value ? 'none' : 'transform 0.3s ease',
+  }
+})
+
+const swipeOverlayClass = computed(() => {
+  if (Math.abs(dragX.value) < 30) return ''
+  return dragX.value > 0 ? 'swipe-right' : 'swipe-left'
+})
+
+// --- Keyboard shortcuts ---
+function onKeydown(e: KeyboardEvent) {
+  if (phase.value !== 'active') return
+  if (e.key === ' ' || e.key === 'Spacebar') {
+    e.preventDefault()
+    if (!revealed.value) doReveal()
+  } else if (revealed.value) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); answer('got-it') }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); answer('review') }
+  }
+}
+
+onMounted(() => globalThis.addEventListener('keydown', onKeydown))
+onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
@@ -119,7 +214,25 @@ const difficultyClass: Record<string, string> = {
         </button>
       </div>
 
-      <button class="start-btn" @click="startDeck()">
+      <div class="tag-picker">
+        <p class="tag-picker-label">{{ t('tags.label') }}</p>
+        <div class="tag-picker-list">
+          <button
+            v-for="{ tag, count } in availableTags"
+            :key="tag"
+            :class="['tag-pick-btn', { active: tagFilter.has(tag) }]"
+            @click="toggleTag(tag)"
+          >
+            {{ t(`tags.${tag}`) }}
+            <span class="pick-count">({{ count }})</span>
+          </button>
+        </div>
+        <button v-if="tagFilter.size > 0" class="tag-clear" @click="tagFilter = new Set()">
+          {{ t('tags.clear') }}
+        </button>
+      </div>
+
+      <button class="start-btn" :disabled="filteredQuestions.length === 0" @click="startDeck()">
         {{ t('flashcards.start', { count: filteredQuestions.length }) }}
       </button>
     </div>
@@ -133,47 +246,61 @@ const difficultyClass: Record<string, string> = {
         <span class="progress-text">{{ progress.current }} / {{ progress.total }}</span>
       </div>
 
-      <div class="card" :class="{ revealed }">
-        <div class="card-front">
-          <span :class="['difficulty-badge', difficultyClass[currentCard.difficulty]]">
-            {{ t(`filters.${currentCard.difficulty}`) }}
-          </span>
-          <h2 class="card-title">{{ currentCard.title }}</h2>
-          <div class="card-tags">
-            <span v-for="tag in currentCard.tags" :key="tag" class="tag-badge">
-              {{ t(`tags.${tag}`) }}
+      <div class="card-hint">
+        {{ revealed ? '← → ' + t('flashcards.swipeHint') : t('flashcards.spaceHint') }}
+      </div>
+
+      <div
+        class="card-wrapper"
+        :class="swipeOverlayClass"
+        :style="swipeStyle"
+        @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerUp"
+        @pointercancel="onPointerUp"
+      >
+        <div class="card-flipper" :class="{ flipped: revealed }">
+          <!-- Front -->
+          <div class="card card-face-front">
+            <span :class="['difficulty-badge', difficultyClass[currentCard.difficulty]]">
+              {{ t(`filters.${currentCard.difficulty}`) }}
             </span>
+            <h2 class="card-title">{{ currentCard.title }}</h2>
+            <div class="card-tags">
+              <span v-for="tag in currentCard.tags" :key="tag" class="tag-badge">
+                {{ t(`tags.${tag}`) }}
+              </span>
+            </div>
+            <button class="reveal-btn" @click="doReveal">
+              {{ t('flashcards.reveal') }}
+            </button>
+            <p class="reveal-hint">{{ t('flashcards.revealHint') }}</p>
+          </div>
+          <!-- Back -->
+          <div class="card card-face-back">
+            <p v-if="currentCard.summary" class="card-excerpt">{{ currentCard.summary }}</p>
+            <p class="self-assess-label">{{ t('flashcards.selfAssess') }}</p>
+            <div class="answer-buttons">
+              <button class="answer-btn got-it" @click="answer('got-it')">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ t('flashcards.gotIt') }}
+              </button>
+              <button class="answer-btn review" @click="answer('review')">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                  <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                {{ t('flashcards.reviewAgain') }}
+              </button>
+            </div>
+            <a :href="currentCard.url" class="full-answer-link">
+              {{ t('flashcards.seeAnswer') }} →
+            </a>
           </div>
         </div>
-
-        <div v-if="!revealed" class="card-action">
-          <button class="reveal-btn" @click="reveal">
-            {{ t('flashcards.reveal') }}
-          </button>
-          <p class="reveal-hint">{{ t('flashcards.revealHint') }}</p>
-        </div>
-
-        <div v-else class="card-back">
-          <p v-if="currentCard.summary" class="card-excerpt">{{ currentCard.summary }}</p>
-          <p class="self-assess-label">{{ t('flashcards.selfAssess') }}</p>
-          <div class="answer-buttons">
-            <button class="answer-btn got-it" @click="answer('got-it')">
-              <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              {{ t('flashcards.gotIt') }}
-            </button>
-            <button class="answer-btn review" @click="answer('review')">
-              <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              {{ t('flashcards.reviewAgain') }}
-            </button>
-          </div>
-          <a :href="currentCard.url" class="full-answer-link">
-            {{ t('flashcards.seeAnswer') }} →
-          </a>
-        </div>
+        <div class="swipe-indicator swipe-indicator-left">✗</div>
+        <div class="swipe-indicator swipe-indicator-right">✓</div>
       </div>
 
       <div class="card-stats">
@@ -253,7 +380,7 @@ const difficultyClass: Record<string, string> = {
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .pick-btn {
@@ -298,6 +425,68 @@ const difficultyClass: Record<string, string> = {
   opacity: 0.7;
 }
 
+/* Tag picker */
+.tag-picker {
+  margin-bottom: 2rem;
+}
+
+.tag-picker-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  margin: 0 0 0.75rem;
+}
+
+.tag-picker-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.375rem;
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+
+.tag-pick-btn {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.tag-pick-btn:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
+}
+
+.tag-pick-btn.active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+}
+
+.tag-clear {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  background: none;
+  color: var(--vp-c-text-3);
+  text-decoration: underline;
+}
+
+.tag-clear:hover {
+  color: var(--vp-c-text-1);
+}
+
 .start-btn {
   padding: 0.75rem 2rem;
   border: none;
@@ -312,6 +501,11 @@ const difficultyClass: Record<string, string> = {
 
 .start-btn:hover {
   opacity: 0.9;
+}
+
+.start-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .start-btn.secondary {
@@ -329,7 +523,7 @@ const difficultyClass: Record<string, string> = {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .progress-bar {
@@ -354,25 +548,58 @@ const difficultyClass: Record<string, string> = {
   white-space: nowrap;
 }
 
+.card-hint {
+  text-align: center;
+  font-size: 0.6875rem;
+  color: var(--vp-c-text-3);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* Card flip */
+.card-wrapper {
+  perspective: 800px;
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.card-flipper {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
 .card {
+  grid-area: 1 / 1;
   border: 1px solid var(--vp-c-border);
   border-radius: 12px;
   background: var(--vp-c-bg);
   padding: 2rem;
   text-align: center;
-  min-height: 280px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
+  backface-visibility: hidden;
 }
 
-.card-front {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
+.card-flipper:not(.flipped) .card-face-back {
+  pointer-events: none;
+}
+
+.card-flipper.flipped .card-face-front {
+  pointer-events: none;
 }
 
 .card-title {
@@ -399,13 +626,6 @@ const difficultyClass: Record<string, string> = {
   border: 1px solid var(--vp-c-border);
 }
 
-.card-action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .reveal-btn {
   padding: 0.625rem 2rem;
   border: 1px solid var(--vp-c-border);
@@ -429,14 +649,6 @@ const difficultyClass: Record<string, string> = {
   margin: 0;
 }
 
-.card-back {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
 .card-excerpt {
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -447,6 +659,8 @@ const difficultyClass: Record<string, string> = {
   background: var(--vp-c-bg-soft);
   border-radius: 8px;
   border-left: 3px solid var(--vp-c-brand-1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .self-assess-label {
@@ -504,6 +718,49 @@ const difficultyClass: Record<string, string> = {
 
 .full-answer-link:hover {
   color: var(--vp-c-brand-1);
+}
+
+/* Swipe indicators */
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipe-indicator-left {
+  left: 12px;
+  color: var(--vp-c-red-2);
+  background: var(--vp-c-red-soft);
+}
+
+.swipe-indicator-right {
+  right: 12px;
+  color: var(--vp-c-green-2);
+  background: var(--vp-c-green-soft);
+}
+
+.swipe-left .swipe-indicator-left,
+.swipe-right .swipe-indicator-right {
+  opacity: 1;
+}
+
+.swipe-left .card {
+  border-color: var(--vp-c-red-2);
+}
+
+.swipe-right .card {
+  border-color: var(--vp-c-green-2);
 }
 
 .card-stats {

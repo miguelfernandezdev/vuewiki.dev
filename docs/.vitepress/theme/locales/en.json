@@ -80,7 +80,9 @@
     "reviewCount": "{count} to review",
     "reviewPile": "Review {count} again",
     "restart": "Restart all",
-    "backToSetup": "Back to setup"
+    "backToSetup": "Back to setup",
+    "swipeHint": "swipe or use arrow keys",
+    "spaceHint": "press Space to reveal"
   },
   "sort": {
     "recommended": "Recommended",
