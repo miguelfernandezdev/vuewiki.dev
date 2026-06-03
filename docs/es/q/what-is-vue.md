@@ -24,7 +24,6 @@ const name = ref('World')
 ```
 
 <PlaygroundLink code="<template>
-
   <p>Hello, {{ name }}</p>
 </template>
 &#10;<script setup>
@@ -73,7 +72,6 @@ App
 // lógica
 </script>
 &#10;<template>
-
   <!-- marcado -->
 </template>
 &#10;<style scoped>

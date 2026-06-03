@@ -26,7 +26,6 @@ El sistema de reactividad de Vue es eficiente por diseño, pero no puede saber q
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Se renderiza una vez, nunca vuelve a ser diffeado -->
   <footer v-once>
     <p>© 2024 Acme Corp. Todos los derechos reservados.</p>
@@ -61,16 +60,15 @@ defineProps<{
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 interface Item {
-id: number
-label: string
+  id: number
+  label: string
 }
 &#10;defineProps<{
-items: Item[]
-selectedId: number
+  items: Item[]
+  selectedId: number
 }>()
 </script>
 &#10;<template>
-
   <ul>
     <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
       {{ item.label }}
@@ -237,6 +235,9 @@ import { defineAsyncComponent } from 'vue'
   <ChartWidget />
 </template>" />
 
+  <ChartWidget />
+</template>" />
+
 ### Lazy hydration en Nuxt
 
 En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el componente entra en el viewport (o se necesita). El componente sigue siendo renderizado por el servidor como HTML, pero la hidratación del lado del cliente (que es lo que lo hace interactivo) se retrasa. Esto mejora directamente el Time to Interactive en páginas con mucho contenido.
@@ -253,9 +254,13 @@ En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el co
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Se hidrata de inmediato -->
   <HeroSection />
+&#10;  <!-- La hidratación se difiere hasta que el componente se necesite -->
+  <LazyCommentSection />
+  <LazyRecommendedArticles />
+</template>" />
+
 &#10;  <!-- La hidratación se difiere hasta que el componente se necesite -->
   <LazyCommentSection />
   <LazyRecommendedArticles />
@@ -297,22 +302,22 @@ defineProps<{ users: User[] }>()
 import { RecycleScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 &#10;interface User {
-id: number
-name: string
-email: string
+  id: number
+  name: string
+  email: string
 }
 &#10;defineProps<{ users: User[] }>()
 </script>
 &#10;<template>
-<RecycleScroller
-:items=&quot;users&quot;
-:item-size=&quot;56&quot;
-key-field=&quot;id&quot;
-v-slot=&quot;{ item }&quot;
-
->
-
+  <RecycleScroller
+    :items=&quot;users&quot;
+    :item-size=&quot;56&quot;
+    key-field=&quot;id&quot;
+    v-slot=&quot;{ item }&quot;
+  >
     <UserRow :user=&quot;item&quot; />
+  </RecycleScroller>
+</template>" />
 
   </RecycleScroller>
 </template>" />
@@ -344,6 +349,14 @@ La **estabilidad de props** es un patrón relacionado. Cuando pasas valores deri
   :user=&quot;user&quot;
   :active-id=&quot;activeId&quot;
 />
+&#10;<!-- Estable: solo el elemento cuyo valor `active` cambia se re-renderiza -->
+<UserRow
+  v-for=&quot;user in users&quot;
+  :key=&quot;user.id&quot;
+  :user=&quot;user&quot;
+  :active=&quot;user.id === activeId&quot;
+/>" />
+
 &#10;<!-- Estable: solo el elemento cuyo valor `active` cambia se re-renderiza -->
 <UserRow
   v-for=&quot;user in users&quot;

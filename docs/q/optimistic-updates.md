@@ -63,28 +63,27 @@ async function toggleTodo(todo: Todo) {
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 interface Todo {
-id: string
-text: string
-done: boolean
+  id: string
+  text: string
+  done: boolean
 }
 &#10;const todos = ref<Todo[]>([])
 &#10;async function toggleTodo(todo: Todo) {
-const previousValue = todo.done
-&#10; // Optimistic: update immediately
-todo.done = !todo.done
-&#10; try {
-await $fetch(`/api/todos/${todo.id}`, {
-method: 'PATCH',
-body: { done: todo.done }
-})
-} catch {
-// Rollback on failure
-todo.done = previousValue
-}
+  const previousValue = todo.done
+&#10;  // Optimistic: update immediately
+  todo.done = !todo.done
+&#10;  try {
+    await $fetch(`/api/todos/${todo.id}`, {
+      method: 'PATCH',
+      body: { done: todo.done }
+    })
+  } catch {
+    // Rollback on failure
+    todo.done = previousValue
+  }
 }
 </script>
 &#10;<template>
-
   <ul>
     <li v-for=&quot;todo in todos&quot; :key=&quot;todo.id&quot;>
       <label>
@@ -93,6 +92,12 @@ todo.done = previousValue
           :checked=&quot;todo.done&quot;
           @change=&quot;toggleTodo(todo)&quot;
         />
+        {{ todo.text }}
+      </label>
+    </li>
+  </ul>
+</template>" />
+
         {{ todo.text }}
       </label>
     </li>

@@ -123,19 +123,28 @@ const { data, error, isLoading, formattedRevenue, refresh } = useSalesWidget()
 ```
 
 <PlaygroundLink code="<!-- SalesWidget.vue -->
-
 <script setup>
 const { data, error, isLoading, formattedRevenue, refresh } = useSalesWidget()
 </script>
-
 &#10;<template>
-
   <div class=&quot;widget&quot;>
     <div class=&quot;widget-header&quot;>
       <h3>Sales</h3>
       <button @click=&quot;refresh&quot;>Refresh</button>
     </div>
 &#10;    <div v-if=&quot;isLoading&quot; class=&quot;skeleton&quot; />
+&#10;    <div v-else-if=&quot;error&quot; class=&quot;widget-error&quot;>
+      <p>Failed to load sales data</p>
+      <button @click=&quot;refresh&quot;>Retry</button>
+    </div>
+&#10;    <div v-else-if=&quot;data&quot;>
+      <p class=&quot;metric&quot;>{{ formattedRevenue }}</p>
+      <p>{{ data.ordersToday }} orders today</p>
+      <p>Top: {{ data.topProduct }}</p>
+    </div>
+  </div>
+</template>" />
+
 &#10;    <div v-else-if=&quot;error&quot; class=&quot;widget-error&quot;>
       <p>Failed to load sales data</p>
       <button @click=&quot;refresh&quot;>Retry</button>
@@ -175,9 +184,22 @@ Each widget handles its own three states (loading, error, data) independently.
 
 <PlaygroundLink code="<!-- DashboardPage.vue -->
 <template>
-
   <div class=&quot;dashboard-grid&quot;>
     <SalesWidget />
+    <ActivityFeed />
+    <PerformanceChart />
+    <RecentOrders />
+    <UserStats />
+  </div>
+</template>
+&#10;<style scoped>
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+</style>" />
+
     <ActivityFeed />
     <PerformanceChart />
     <RecentOrders />
@@ -283,10 +305,16 @@ Instead of each widget managing its own loading state, you can use `Suspense` wi
 
 <PlaygroundLink code="<!-- DashboardPage.vue -->
 <template>
-
   <div class=&quot;dashboard-grid&quot;>
     <Suspense v-for=&quot;Widget in widgets&quot; :key=&quot;Widget.name&quot;>
       <component :is=&quot;Widget&quot; />
+      <template #fallback>
+        <WidgetSkeleton />
+      </template>
+    </Suspense>
+  </div>
+</template>" />
+
       <template #fallback>
         <WidgetSkeleton />
       </template>

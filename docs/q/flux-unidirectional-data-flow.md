@@ -56,19 +56,17 @@ function increment() {
 ```
 
 <PlaygroundLink code="<!-- Parent: owns the state, passes it down -->
-
 <script setup>
 const count = ref(0)
 function increment() {
   count.value++
 }
 </script>
-
 &#10;<template>
-
   <!-- Props go DOWN -->
+  <Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
+</template>" />
 
-<Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
 </template>" />
 
 ```vue
@@ -84,14 +82,12 @@ const emit = defineEmits<{ increment: [] }>()
 ```
 
 <PlaygroundLink code="<!-- Counter.vue: receives props, emits events UP -->
-
 <script setup>
 defineProps<{ count: number }>()
 const emit = defineEmits<{ increment: [] }>()
 </script>
-
 &#10;<template>
-<button @click=&quot;emit('increment')&quot;>{{ count }}</button>
+  <button @click=&quot;emit('increment')&quot;>{{ count }}</button>
 </template>" />
 
 The child cannot mutate `count` directly. It emits an event (action), the parent handles it (updates state), and the new value flows down as a prop (view update). This is Flux at the component level.
@@ -136,13 +132,10 @@ const counter = useCounterStore()
 ```
 
 <PlaygroundLink code="<!-- Any component -->
-
 <script setup>
 const counter = useCounterStore()
 </script>
-
 &#10;<template>
-
   <p>{{ counter.count }} (doubled: {{ counter.doubled }})</p>
   <button @click=&quot;counter.increment()&quot;>+1</button>
   <button @click=&quot;counter.reset()&quot;>Reset</button>
@@ -208,6 +201,9 @@ Vue's `v-model` looks like two-way binding, but it's syntactic sugar over the un
 
 <PlaygroundLink code="<!-- This -->
 <input v-model=&quot;name&quot; />
+&#10;<!-- Is equivalent to this -->
+<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
+
 &#10;<!-- Is equivalent to this -->
 <input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 

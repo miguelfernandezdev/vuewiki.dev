@@ -58,7 +58,6 @@ const { data: users, error, isLoading, retry } = useFetchData<User[]>('/api/user
 const { data: users, error, isLoading, retry } = useFetchData<User[]>('/api/users')
 </script>
 &#10;<template>
-
   <div v-if=&quot;isLoading&quot;>Loading...</div>
   <div v-else-if=&quot;error&quot;>
     <p>Failed to load: {{ error.message }}</p>
@@ -189,7 +188,6 @@ function toFetchError(e: unknown): FetchError {
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-if=&quot;error?.isNetworkError&quot;>
     Check your connection.
     <button @click=&quot;retry&quot;>Retry</button>
@@ -225,7 +223,6 @@ onErrorCaptured((err) => {
 ```
 
 <PlaygroundLink code="<!-- ErrorBoundary.vue -->
-
 <script setup>
 const error = (ref < Error) | (null > null)
 &#10;onErrorCaptured((err) => {
@@ -233,14 +230,14 @@ const error = (ref < Error) | (null > null)
   return false
 })
 </script>
-
 &#10;<template>
-
   <div v-if=&quot;error&quot;>
     <p>Something went wrong: {{ error.message }}</p>
     <button @click=&quot;error = null&quot;>Dismiss</button>
   </div>
   <slot v-else />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -253,6 +250,8 @@ const error = (ref < Error) | (null > null)
 <PlaygroundLink code="<!-- Usage -->
 <ErrorBoundary>
   <UserProfile :user-id=&quot;1&quot; />
+</ErrorBoundary>" />
+
 </ErrorBoundary>" />
 
 This catches errors from descendant components thrown during: renders, watchers, lifecycle hooks, event handlers, `setup()`, custom directive hooks, and transition hooks. It prevents the entire app from crashing.

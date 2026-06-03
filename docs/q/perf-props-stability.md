@@ -30,21 +30,21 @@ const activeId = (ref < number) | (null > null)
 ```
 
 <PlaygroundLink code="<!-- Parent -->
-
 <script setup>
 const items = ref([
   /* 100 items */
 ])
 const activeId = (ref < number) | (null > null)
 </script>
-
 &#10;<template>
-<ListItem
-v-for=&quot;item in items&quot;
-:key=&quot;item.id&quot;
-:id=&quot;item.id&quot;
-:active-id=&quot;activeId&quot;
-/>
+  <ListItem
+    v-for=&quot;item in items&quot;
+    :key=&quot;item.id&quot;
+    :id=&quot;item.id&quot;
+    :active-id=&quot;activeId&quot;
+  />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -59,13 +59,10 @@ const props = defineProps<{ id: number; activeId: number | null }>()
 ```
 
 <PlaygroundLink code="<!-- ListItem.vue -->
-
 <script setup>
 const props = defineProps<{ id: number; activeId: number | null }>()
 </script>
-
 &#10;<template>
-
   <div :class=&quot;{ active: id === activeId }&quot;>{{ id }}</div>
 </template>" />
 
@@ -95,6 +92,8 @@ When `activeId` changes from 1 to 2, the `activeId` prop changes for ALL 100 ite
   />
 </template>" />
 
+</template>" />
+
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -107,13 +106,10 @@ defineProps<{ id: number; active: boolean }>()
 ```
 
 <PlaygroundLink code="<!-- ListItem.vue -->
-
 <script setup>
 defineProps<{ id: number; active: boolean }>()
 </script>
-
 &#10;<template>
-
   <div :class=&quot;{ active }&quot;>{{ id }}</div>
 </template>" />
 
@@ -150,6 +146,13 @@ Now when `activeId` changes from 1 to 2:
   :selected=&quot;selectedIds.has(item.id)&quot;
 />" />
 
+&#10;<!-- GOOD: only affected items re-render -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :selected=&quot;selectedIds.has(item.id)&quot;
+/>" />
+
 **Passing the list length or index:**
 
 ```vue
@@ -176,6 +179,13 @@ Now when `activeId` changes from 1 to 2:
   :index=&quot;index&quot;
   :total=&quot;items.length&quot;
 />
+&#10;<!-- GOOD: pass only what the child actually needs -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :is-last=&quot;item === items[items.length - 1]&quot;
+/>" />
+
 &#10;<!-- GOOD: pass only what the child actually needs -->
 <Item
   v-for=&quot;item in items&quot;

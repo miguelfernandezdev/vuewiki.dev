@@ -28,7 +28,6 @@ const data = ref(null)
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-if=&quot;status === 'loading'&quot;>Loading...</div>
   <div v-else-if=&quot;status === 'error'&quot;>Something went wrong</div>
   <div v-else>{{ data }}</div>
@@ -53,9 +52,13 @@ Los elementos deben ser hermanos. No puedes poner otros elementos entre `v-if` y
 ```
 
 <PlaygroundLink code="<!-- Incorrecto: el <hr> rompe la cadena -->
-
 <div v-if=&quot;ok&quot;>Yes</div>
 <hr />
+<div v-else>No</div>
+&#10;<!-- Correcto: hermanos, sin separación -->
+<div v-if=&quot;ok&quot;>Yes</div>
+<div v-else>No</div>" />
+
 <div v-else>No</div>
 &#10;<!-- Correcto: hermanos, sin separación -->
 <div v-if=&quot;ok&quot;>Yes</div>
@@ -73,7 +76,6 @@ Para renderizar condicionalmente varios elementos sin añadir un wrapper al DOM:
 ```
 
 <PlaygroundLink code="<template v-if=&quot;loggedIn&quot;>
-
   <h1>Welcome back</h1>
   <p>Your dashboard is ready</p>
 </template>" />
@@ -118,7 +120,6 @@ Nunca pongas `v-if` y `v-for` en el mismo elemento. En Vue 3, `v-if` tiene mayor
 ```
 
 <PlaygroundLink code="<!-- Incorrecto: v-if no puede ver &quot;item&quot; -->
-
 <li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
   {{ item.name }}
 </li>

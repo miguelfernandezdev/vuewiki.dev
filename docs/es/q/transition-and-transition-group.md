@@ -206,18 +206,15 @@ function onEnter(el: HTMLElement, done: () => void) {
 ```
 
 <PlaygroundLink code="<template>
-<TransitionGroup
-tag=&quot;ul&quot;
-:css=&quot;false&quot;
-@before-enter=&quot;onBeforeEnter&quot;
-@enter=&quot;onEnter&quot;
-
->
-
+  <TransitionGroup
+    tag=&quot;ul&quot;
+    :css=&quot;false&quot;
+    @before-enter=&quot;onBeforeEnter&quot;
+    @enter=&quot;onEnter&quot;
+  >
     <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot; :data-index=&quot;index&quot;>
       {{ item.name }}
     </li>
-
   </TransitionGroup>
 </template>
 &#10;<script setup>

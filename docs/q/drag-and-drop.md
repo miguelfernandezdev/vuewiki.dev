@@ -65,23 +65,22 @@ function onDragOver(event: DragEvent) {
 const items = ref(['Item 1', 'Item 2', 'Item 3'])
 const dropped = ref<string[]>([])
 &#10;function onDragStart(event: DragEvent, item: string) {
-event.dataTransfer!.setData('text/plain', item)
-event.dataTransfer!.effectAllowed = 'move'
+  event.dataTransfer!.setData('text/plain', item)
+  event.dataTransfer!.effectAllowed = 'move'
 }
 &#10;function onDrop(event: DragEvent) {
-const item = event.dataTransfer!.getData('text/plain')
-if (!dropped.value.includes(item)) {
-dropped.value.push(item)
-items.value = items.value.filter((i) => i !== item)
-}
+  const item = event.dataTransfer!.getData('text/plain')
+  if (!dropped.value.includes(item)) {
+    dropped.value.push(item)
+    items.value = items.value.filter((i) => i !== item)
+  }
 }
 &#10;function onDragOver(event: DragEvent) {
-event.preventDefault()
-event.dataTransfer!.dropEffect = 'move'
+  event.preventDefault()
+  event.dataTransfer!.dropEffect = 'move'
 }
 </script>
 &#10;<template>
-
   <div class=&quot;columns&quot;>
     <div class=&quot;column&quot;>
       <h3>Available</h3>
@@ -203,16 +202,15 @@ const columns = ref({
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { VueDraggable } from 'vue-draggable-plus'
 &#10;const columns = ref({
-todo: [
-{ id: 1, title: 'Research' },
-{ id: 2, title: 'Design' }
-],
-doing: [{ id: 3, title: 'Implement API' }],
-done: [{ id: 4, title: 'Write docs' }]
+  todo: [
+    { id: 1, title: 'Research' },
+    { id: 2, title: 'Design' }
+  ],
+  doing: [{ id: 3, title: 'Implement API' }],
+  done: [{ id: 4, title: 'Write docs' }]
 })
 </script>
 &#10;<template>
-
   <div class=&quot;kanban&quot;>
     <div v-for=&quot;(tasks, status) in columns&quot; :key=&quot;status&quot; class=&quot;kanban-column&quot;>
       <h3>{{ status }}</h3>
@@ -315,26 +313,25 @@ const position = ref({ x: 100, y: 100 })
 const isDragging = ref(false)
 const offset = ref({ x: 0, y: 0 })
 &#10;function onPointerDown(event: PointerEvent) {
-isDragging.value = true
-offset.value = {
-x: event.clientX - position.value.x,
-y: event.clientY - position.value.y
-}
-;(event.target as HTMLElement).setPointerCapture(event.pointerId)
+  isDragging.value = true
+  offset.value = {
+    x: event.clientX - position.value.x,
+    y: event.clientY - position.value.y
+  }
+  ;(event.target as HTMLElement).setPointerCapture(event.pointerId)
 }
 &#10;function onPointerMove(event: PointerEvent) {
-if (!isDragging.value) return
-position.value = {
-x: event.clientX - offset.value.x,
-y: event.clientY - offset.value.y
-}
+  if (!isDragging.value) return
+  position.value = {
+    x: event.clientX - offset.value.x,
+    y: event.clientY - offset.value.y
+  }
 }
 &#10;function onPointerUp() {
-isDragging.value = false
+  isDragging.value = false
 }
 </script>
 &#10;<template>
-
   <div
     class=&quot;draggable-box&quot;
     :style=&quot;{ left: position.x + 'px', top: position.y + 'px' }&quot;

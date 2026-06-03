@@ -52,6 +52,9 @@ const debouncedQuery = ref('')
   <SearchResults :query=&quot;debouncedQuery&quot; />
 </template>" />
 
+  <SearchResults :query=&quot;debouncedQuery&quot; />
+</template>" />
+
 The user types into `searchQuery` (instant feedback). After 300ms of no typing, `debouncedQuery` updates and triggers the actual search. Each new keystroke resets the timer.
 
 ## Extract a reusable composable
@@ -99,6 +102,9 @@ const debouncedQuery = useDebouncedRef(searchQuery, 300)
 </script>
 &#10;<template>
   <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <SearchResults :query=&quot;debouncedQuery&quot; />
+</template>" />
+
   <SearchResults :query=&quot;debouncedQuery&quot; />
 </template>" />
 

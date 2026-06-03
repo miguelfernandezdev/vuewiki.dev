@@ -67,6 +67,8 @@ import { defineAsyncComponent } from 'vue'
   <HeavyChart v-if=&quot;showChart&quot; />
 </template>" />
 
+</template>" />
+
 `delay` prevents showing the loading component for fast loads (avoids a flash). `timeout` shows the error component if loading takes too long.
 
 For simple cases without loading/error states:
@@ -112,6 +114,8 @@ import { defineAsyncComponent, shallowRef } from 'vue'
 &#10;<template>
   <button @click=&quot;loadAdmin&quot;>Open Admin</button>
   <component :is=&quot;AdminPanel&quot; v-if=&quot;AdminPanel&quot; />
+</template>" />
+
 </template>" />
 
 ## Prefetching and preloading

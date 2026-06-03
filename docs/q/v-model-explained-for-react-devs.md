@@ -30,13 +30,13 @@ const name = ref('')
 ```
 
 <PlaygroundLink code="<!-- Vue: declarative, bidirectional -->
-
 <script setup>
 const name = ref('')
 </script>
-
 &#10;<template>
-<input v-model=&quot;name&quot; />
+  <input v-model=&quot;name&quot; />
+</template>" />
+
 </template>" />
 
 Both achieve the same result. React requires you to wire `value` and `onChange` explicitly. Vue's `v-model` wires both for you.
@@ -55,6 +55,9 @@ On native elements, `v-model` is sugar for a value binding and an input event li
 
 <PlaygroundLink code="<!-- This -->
 <input v-model=&quot;name&quot; />
+&#10;<!-- Compiles to this -->
+<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
+
 &#10;<!-- Compiles to this -->
 <input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 
@@ -88,6 +91,9 @@ In Vue 3, `v-model` on a component uses `modelValue` as the prop and `update:mod
 &#10;<!-- Which is equivalent to -->
 <CustomInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; />" />
 
+&#10;<!-- Which is equivalent to -->
+<CustomInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; />" />
+
 ```vue
 <!-- CustomInput.vue -->
 <script setup>
@@ -104,17 +110,17 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 ```
 
 <PlaygroundLink code="<!-- CustomInput.vue -->
-
 <script setup>
 defineProps<{ modelValue: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>
-
 &#10;<template>
-<input
-:value=&quot;modelValue&quot;
-@input=&quot;emit('update:modelValue', $event.target.value)&quot;
-/>
+  <input
+    :value=&quot;modelValue&quot;
+    @input=&quot;emit('update:modelValue', $event.target.value)&quot;
+  />
+</template>" />
+
 </template>" />
 
 Or with Vue 3.4+'s `defineModel` macro, which removes the boilerplate:
@@ -131,13 +137,13 @@ const model = defineModel<string>()
 ```
 
 <PlaygroundLink code="<!-- CustomInput.vue -->
-
 <script setup>
 const model = defineModel<string>()
 </script>
-
 &#10;<template>
-<input v-model=&quot;model&quot; />
+  <input v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 ## Multiple v-model bindings
@@ -178,14 +184,15 @@ const email = defineModel < string > 'email'
 ```
 
 <PlaygroundLink code="<!-- UserForm.vue -->
-
 <script setup>
 const name = defineModel < string > 'name'
 const email = defineModel < string > 'email'
 </script>
-
 &#10;<template>
-<input v-model=&quot;name&quot; placeholder=&quot;Name&quot; />
+  <input v-model=&quot;name&quot; placeholder=&quot;Name&quot; />
+  <input v-model=&quot;email&quot; placeholder=&quot;Email&quot; />
+</template>" />
+
 <input v-model=&quot;email&quot; placeholder=&quot;Email&quot; />
 </template>" />
 
@@ -208,6 +215,11 @@ Vue's `v-model` supports modifiers that transform the value automatically:
 
 <PlaygroundLink code="<!-- .trim removes whitespace -->
 <input v-model.trim=&quot;name&quot; />
+&#10;<!-- .number converts to number -->
+<input v-model.number=&quot;age&quot; type=&quot;number&quot; />
+&#10;<!-- .lazy syncs on the change event instead of input — updates when the user leaves the field, not on every keystroke -->
+<input v-model.lazy=&quot;query&quot; />" />
+
 &#10;<!-- .number converts to number -->
 <input v-model.number=&quot;age&quot; type=&quot;number&quot; />
 &#10;<!-- .lazy syncs on the change event instead of input — updates when the user leaves the field, not on every keystroke -->

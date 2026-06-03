@@ -81,7 +81,6 @@ Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compile
 ```
 
 <PlaygroundLink code="<template>
-
   <div>
     <h1>Static title</h1>
     <!-- hoisted, skipped during diff -->

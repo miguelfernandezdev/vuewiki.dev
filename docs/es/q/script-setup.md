@@ -38,7 +38,6 @@ export default defineComponent({
 ```
 
 <PlaygroundLink code="<!-- Sin <script setup> — mucho código repetitivo -->
-
 <script lang=&quot;ts&quot;>
 import { defineComponent, ref, computed } from 'vue'
 &#10;export default defineComponent({
@@ -79,7 +78,6 @@ function increment() {
 ```
 
 <PlaygroundLink code="<!-- Con <script setup> — mismo resultado, la mitad del código -->
-
 <script setup lang=&quot;ts&quot;>
 import { ref, computed } from 'vue'
 &#10;const props = defineProps<{ initialCount?: number }>()

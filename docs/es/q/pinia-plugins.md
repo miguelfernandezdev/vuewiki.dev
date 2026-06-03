@@ -144,6 +144,8 @@ const userStore = useUserStore()
   <Spinner v-if=&quot;userStore.isLoading&quot; />
 </template>" />
 
+</template>" />
+
 ## Aplicar lógica solo a stores específicos
 
 Comprobar `store.$id` o usar el objeto options para aplicar lógica de forma selectiva:

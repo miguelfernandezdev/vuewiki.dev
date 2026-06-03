@@ -56,7 +56,6 @@ watch(
 ```
 
 <PlaygroundLink code="<!-- App.vue -->
-
 <script setup>
 const route = useRoute()
 const announcement = ref('')
@@ -69,13 +68,13 @@ const announcement = ref('')
   }
 )
 </script>
-
 &#10;<template>
-
   <div aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot; class=&quot;sr-only&quot;>
     {{ announcement }}
   </div>
   <RouterView />
+</template>" />
+
 </template>" />
 
 This announces the new page title to screen readers without disrupting visual focus, which can be better for sighted keyboard users who don't want their scroll position to jump.
@@ -117,20 +116,25 @@ function close() {
 const dialogRef = ref<HTMLDialogElement>()
 const triggerRef = ref<HTMLElement>()
 &#10;function open() {
-dialogRef.value?.showModal()
+  dialogRef.value?.showModal()
 }
 &#10;function close() {
-dialogRef.value?.close()
-triggerRef.value?.focus()
+  dialogRef.value?.close()
+  triggerRef.value?.focus()
 }
 </script>
 &#10;<template>
-<button ref=&quot;triggerRef&quot; @click=&quot;open&quot;>Settings</button>
-&#10; <dialog ref=&quot;dialogRef&quot; @close=&quot;triggerRef?.focus()&quot;>
-<h2>Settings</h2>
-<label>
-Name
-<input type=&quot;text&quot; />
+  <button ref=&quot;triggerRef&quot; @click=&quot;open&quot;>Settings</button>
+&#10;  <dialog ref=&quot;dialogRef&quot; @close=&quot;triggerRef?.focus()&quot;>
+    <h2>Settings</h2>
+    <label>
+      Name
+      <input type=&quot;text&quot; />
+    </label>
+    <button @click=&quot;close&quot;>Done</button>
+  </dialog>
+</template>" />
+
 </label>
 <button @click=&quot;close&quot;>Done</button>
 
@@ -205,16 +209,15 @@ async function deleteItem(id: number) {
 const items = ref([...])
 const listRef = ref<HTMLElement>()
 &#10;async function deleteItem(id: number) {
-const index = items.value.findIndex(i => i.id === id)
-items.value = items.value.filter(i => i.id !== id)
-&#10; await nextTick()
-&#10; if (items.value.length === 0) {
-listRef.value?.focus()
-}
+  const index = items.value.findIndex(i => i.id === id)
+  items.value = items.value.filter(i => i.id !== id)
+&#10;  await nextTick()
+&#10;  if (items.value.length === 0) {
+    listRef.value?.focus()
+  }
 }
 </script>
 &#10;<template>
-
   <ul ref=&quot;listRef&quot; tabindex=&quot;-1&quot; aria-label=&quot;Items&quot;>
     <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
       {{ item.name }}
@@ -257,8 +260,25 @@ Let keyboard users bypass repetitive navigation:
 
 <PlaygroundLink code="<!-- App.vue -->
 <template>
-<a href=&quot;#main-content&quot; class=&quot;skip-link&quot;>Skip to content</a>
-<TheNavbar />
+  <a href=&quot;#main-content&quot; class=&quot;skip-link&quot;>Skip to content</a>
+  <TheNavbar />
+  <main id=&quot;main-content&quot; tabindex=&quot;-1&quot;>
+    <RouterView />
+  </main>
+</template>
+&#10;<style>
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: white;
+}
+.skip-link:focus {
+  top: 0;
+}
+</style>" />
 
   <main id=&quot;main-content&quot; tabindex=&quot;-1&quot;>
     <RouterView />

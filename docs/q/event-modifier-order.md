@@ -43,7 +43,6 @@ In practice:
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- .prevent.self: prevents default on children too -->
   <div @click.prevent.self=&quot;handleClick&quot;>
     <a href=&quot;/page&quot;>Link</a>
@@ -86,12 +85,9 @@ In practice:
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Stop propagation AND prevent default (order doesn't matter here) -->
-
-<a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
-&#10; <!-- Fire only once, in capture phase -->
-
+  <a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
+&#10;  <!-- Fire only once, in capture phase -->
   <div @click.capture.once=&quot;handleOnce&quot;>...</div>
 &#10;  <!-- Only fire if EXACTLY Ctrl is held (no Shift, no Alt) -->
   <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl+Click</button>
@@ -118,7 +114,6 @@ If the modifier chain gets confusing, split the logic into explicit handlers:
 ```
 
 <PlaygroundLink code="<template>
-
   <div @click.self=&quot;handleSelfClick&quot;>
     <button @click.prevent=&quot;handleChildClick&quot;>Child</button>
   </div>

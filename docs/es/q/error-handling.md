@@ -36,7 +36,6 @@ onErrorCaptured((err, instance, info) => {
 ```
 
 <PlaygroundLink code="<!-- ErrorBoundary.vue -->
-
 <script setup>
 import { ref, onErrorCaptured } from 'vue'
 &#10;const error = (ref < Error) | (null > null)
@@ -46,14 +45,14 @@ import { ref, onErrorCaptured } from 'vue'
   return false // detiene la propagación a los manejadores de errores padre
 })
 </script>
-
 &#10;<template>
-
   <div v-if=&quot;error&quot; class=&quot;error-state&quot;>
     <p>Something went wrong: {{ error.message }}</p>
     <button @click=&quot;error = null&quot;>Try again</button>
   </div>
   <slot v-else />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -69,6 +68,9 @@ import { ref, onErrorCaptured } from 'vue'
 <template>
   <ErrorBoundary>
     <DashboardWidget />
+  </ErrorBoundary>
+</template>" />
+
   </ErrorBoundary>
 </template>" />
 
@@ -167,10 +169,23 @@ Envuelve secciones independientes para que un fallo no derrumbe toda la página:
 ```
 
 <PlaygroundLink code="<template>
-
   <header>
     <ErrorBoundary>
       <Navigation />
+    </ErrorBoundary>
+  </header>
+&#10;  <main>
+    <ErrorBoundary>
+      <RouterView />
+    </ErrorBoundary>
+  </main>
+&#10;  <aside>
+    <ErrorBoundary>
+      <Sidebar />
+    </ErrorBoundary>
+  </aside>
+</template>" />
+
     </ErrorBoundary>
   </header>
 &#10;  <main>

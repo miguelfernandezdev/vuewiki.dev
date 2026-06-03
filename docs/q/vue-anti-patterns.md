@@ -58,7 +58,6 @@ function sendInvitation(email) {
 ```
 
 <PlaygroundLink code="<!-- BAD: UserDashboard.vue doing everything -->
-
 <script setup>
 const users = ref([])
 const searchQuery = ref('')
@@ -93,11 +92,8 @@ function sendInvitation(email) {
   /* ... */
 }
 </script>
-
 &#10;<template>
-
   <!-- 200 lines of template -->
-
 </template>" />
 
 The fix: extract data fetching into a composable, split into container and presentational components, move business logic out of the component entirely.

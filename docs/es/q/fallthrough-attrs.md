@@ -56,10 +56,13 @@ defineOptions({ inheritAttrs: false })
 defineOptions({ inheritAttrs: false })
 </script>
 &#10;<template>
-
   <div class=&quot;wrapper&quot;>
     <!-- Reenviar todos los attrs al input interior, no al wrapper -->
     <input v-bind=&quot;$attrs&quot; />
+    <span class=&quot;icon&quot;>🔍</span>
+  </div>
+</template>" />
+
     <span class=&quot;icon&quot;>🔍</span>
   </div>
 </template>" />

@@ -24,11 +24,15 @@ An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Element: maps to a real <div> in the DOM -->
   <div class=&quot;container&quot;>
     <!-- Component: Vue creates an instance, runs setup, renders its template -->
     <UserCard :user=&quot;user&quot; @click=&quot;selectUser&quot; />
+&#10;    <!-- Element: maps to a real <p> -->
+    <p>{{ user.bio }}</p>
+  </div>
+</template>" />
+
 &#10;    <!-- Element: maps to a real <p> -->
     <p>{{ user.bio }}</p>
   </div>

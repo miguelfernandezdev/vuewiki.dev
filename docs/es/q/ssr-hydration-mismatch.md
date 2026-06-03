@@ -22,7 +22,6 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- El navegador lo divide en <p></p><div>...</div><p></p> -->
   <p>
     <div>Esto rompe la hidratación</div>
@@ -42,10 +41,12 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Servidor: &quot;field-0.847...&quot; / Cliente: &quot;field-0.231...&quot; -->
+  <input :id=&quot;'field-' + Math.random()&quot; />
+&#10;  <!-- La zona horaria del servidor != zona horaria del cliente -->
+  <span>{{ new Date().toLocaleTimeString() }}</span>
+</template>" />
 
-<input :id=&quot;'field-' + Math.random()&quot; />
 &#10; <!-- La zona horaria del servidor != zona horaria del cliente -->
 <span>{{ new Date().toLocaleTimeString() }}</span>
 </template>" />

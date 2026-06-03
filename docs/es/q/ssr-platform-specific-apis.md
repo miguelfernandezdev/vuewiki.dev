@@ -125,6 +125,12 @@ Envuelve los componentes exclusivos del navegador para que solo se rendericen en
   </ClientOnly>
 </template>" />
 
+    <template #fallback>
+      <div class=&quot;skeleton&quot; />
+    </template>
+  </ClientOnly>
+</template>" />
+
 El slot `#fallback` se renderiza durante el SSR para que el layout no salte cuando el componente carga.
 
 ## Solución 5: importación dinámica para librerías solo de navegador
@@ -153,6 +159,9 @@ const MapView = defineAsyncComponent(() =>
 &#10;<template>
   <ClientOnly>
     <MapView :center=&quot;[40, -3]&quot; />
+  </ClientOnly>
+</template>" />
+
   </ClientOnly>
 </template>" />
 

@@ -43,14 +43,13 @@ function setScore(name: string, score: number) {
 const tags = reactive(new Set<string>())
 const scores = reactive(new Map<string, number>())
 &#10;function addTag(tag: string) {
-tags.add(tag)
+  tags.add(tag)
 }
 &#10;function setScore(name: string, score: number) {
-scores.set(name, score)
+  scores.set(name, score)
 }
 </script>
 &#10;<template>
-
   <div>
     <button @click=&quot;addTag('vue')&quot;>Add tag</button>
     <span v-for=&quot;tag in tags&quot; :key=&quot;tag&quot;>{{ tag }}</span>
@@ -140,22 +139,21 @@ const activePermissions = computed(() =>
 
 <PlaygroundLink code="<script setup>
 const permissions = reactive(
-new Map() < string,
-boolean >
-[
-['read', true],
-['write', false],
-['admin', false]
-]
+  new Map() < string,
+  boolean >
+    [
+      ['read', true],
+      ['write', false],
+      ['admin', false]
+    ]
 )
 &#10;const activePermissions = computed(() =>
-[...permissions.entries()]
-.filter(([, enabled]) => enabled)
-.map(([name]) => name)
+  [...permissions.entries()]
+    .filter(([, enabled]) => enabled)
+    .map(([name]) => name)
 )
 </script>
 &#10;<template>
-
   <p>Active: {{ activePermissions.join(', ') }}</p>
   <button @click=&quot;permissions.set('write', true)&quot;>Grant write</button>
 </template>" />

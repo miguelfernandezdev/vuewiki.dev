@@ -90,7 +90,6 @@ provide('updateConfig', (patch: Partial<typeof config>) => {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup>
 const config = reactive({
   theme: 'dark',
@@ -114,7 +113,6 @@ updateConfig({ theme: 'light' }) // works — goes through the parent's function
 ```
 
 <PlaygroundLink code="<!-- DeepChild.vue -->
-
 <script setup>
 const config = inject<Readonly<{ theme: string; locale: string }>>('config')
 const updateConfig = inject<(patch: any) => void>('updateConfig')

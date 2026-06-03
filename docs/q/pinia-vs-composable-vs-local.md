@@ -90,13 +90,10 @@ const { query, results, isLoading } = useSearch('/api/users')
 ```
 
 <PlaygroundLink code="<!-- ProductSearch.vue — gets its own query, results, loading -->
-
 <script setup>
 const { query, results, isLoading } = useSearch('/api/products')
 </script>
-
 &#10;<!-- UserSearch.vue — completely independent instance -->
-
 <script setup>
 const { query, results, isLoading } = useSearch('/api/users')
 </script>" />

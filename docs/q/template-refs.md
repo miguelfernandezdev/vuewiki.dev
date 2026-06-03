@@ -33,13 +33,14 @@ onMounted(() => {
 import { ref, onMounted } from 'vue'
 &#10;const inputEl = (ref < HTMLInputElement) | (null > null)
 &#10;onMounted(() => {
-inputEl.value?.focus()
+  inputEl.value?.focus()
 })
 </script>
 &#10;<template>
-
   <!-- name MUST be &quot;inputEl&quot; to match the variable -->
   <input ref=&quot;inputEl&quot; />
+</template>" />
+
 </template>" />
 
 The fragile part: rename the variable during refactoring and the connection breaks silently.
@@ -73,6 +74,8 @@ import { useTemplateRef, onMounted } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;search-box&quot; type=&quot;search&quot; />
+</template>" />
+
 </template>" />
 
 Benefits: IDE auto-completion for ref names, better TypeScript inference, and typos cause visible errors instead of silent nulls.
@@ -111,13 +114,12 @@ onMounted(() => {
 import { useTemplateRef, onMounted } from 'vue'
 &#10;const itemRefs = useTemplateRef<HTMLLIElement[]>('items')
 &#10;onMounted(() => {
-itemRefs.value?.forEach(el => {
-console.log(el.textContent)
-})
+  itemRefs.value?.forEach(el => {
+    console.log(el.textContent)
+  })
 })
 </script>
 &#10;<template>
-
   <ul>
     <li v-for=&quot;item in items&quot; ref=&quot;items&quot; :key=&quot;item.id&quot;>
       {{ item.text }}
@@ -153,13 +155,12 @@ onMounted(() => {
 import { ref, onMounted } from 'vue'
 &#10;const itemRefs = ref<HTMLLIElement[]>([])
 &#10;onMounted(() => {
-itemRefs.value.forEach(el => {
-console.log(el.textContent)
-})
+  itemRefs.value.forEach(el => {
+    console.log(el.textContent)
+  })
 })
 </script>
 &#10;<template>
-
   <ul>
     <li v-for=&quot;item in items&quot; ref=&quot;itemRefs&quot; :key=&quot;item.id&quot;>
       {{ item.text }}
@@ -187,7 +188,6 @@ defineExpose({ validate })
 ```
 
 <PlaygroundLink code="<!-- ChildForm.vue -->
-
 <script setup>
 import { ref } from 'vue'
 &#10;const formData = ref({ name: '' })
@@ -218,7 +218,6 @@ function submit() {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup>
 import { useTemplateRef } from 'vue'
 &#10;const formRef = useTemplateRef('child-form')
@@ -228,9 +227,11 @@ import { useTemplateRef } from 'vue'
   }
 }
 </script>
-
 &#10;<template>
-<ChildForm ref=&quot;child-form&quot; />
+  <ChildForm ref=&quot;child-form&quot; />
+  <button @click=&quot;submit&quot;>Submit</button>
+</template>" />
+
 <button @click=&quot;submit&quot;>Submit</button>
 </template>" />
 

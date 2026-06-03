@@ -47,6 +47,10 @@ const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
   </Suspense>
 </template>" />
 
+    <template #fallback>Cargando...</template>
+  </Suspense>
+</template>" />
+
 Esto funciona en CSR pero provoca parpadeo de hidratación en SSR porque el chunk puede no estar listo cuando comienza la hidratación.
 
 ## Solución 1: usar async setup en lugar de defineAsyncComponent
@@ -65,13 +69,10 @@ const { data } = await useFetch('/api/dashboard')
 ```
 
 <PlaygroundLink code="<!-- Dashboard.vue -->
-
 <script setup>
 const { data } = await useFetch('/api/dashboard')
 </script>
-
 &#10;<template>
-
   <div>{{ data }}</div>
 </template>" />
 
@@ -89,6 +90,10 @@ const { data } = await useFetch('/api/dashboard')
 <template>
   <Suspense>
     <Dashboard />
+    <template #fallback><DashboardSkeleton /></template>
+  </Suspense>
+</template>" />
+
     <template #fallback><DashboardSkeleton /></template>
   </Suspense>
 </template>" />
@@ -125,6 +130,14 @@ Para componentes donde el SSR no es crítico, omite el renderizado en el servido
   </ClientOnly>
 </template>" />
 
+      <template #fallback>Cargando panel...</template>
+    </Suspense>
+    <template #fallback>
+      <DashboardSkeleton />
+    </template>
+  </ClientOnly>
+</template>" />
+
 El servidor renderiza el esqueleto. El cliente carga y resuelve el componente asíncrono. No hay error de hidratación porque el servidor nunca renderizó el contenido real.
 
 ## Solución 3: Suspense separado por componente
@@ -153,10 +166,22 @@ En lugar de un Suspense que envuelva todo, dale a cada sección asíncrona su pr
 ```
 
 <PlaygroundLink code="<template>
-
   <div class=&quot;dashboard&quot;>
     <Suspense>
       <AsyncHeader />
+      <template #fallback><HeaderSkeleton /></template>
+    </Suspense>
+&#10;    <Suspense>
+      <AsyncStats />
+      <template #fallback><StatsSkeleton /></template>
+    </Suspense>
+&#10;    <Suspense>
+      <AsyncTable />
+      <template #fallback><TableSkeleton /></template>
+    </Suspense>
+  </div>
+</template>" />
+
       <template #fallback><HeaderSkeleton /></template>
     </Suspense>
 &#10;    <Suspense>

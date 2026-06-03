@@ -28,9 +28,15 @@ La forma más simple. El hijo define un placeholder `<slot />`, y cualquier cosa
 
 <PlaygroundLink code="<!-- Card.vue -->
 <template>
-
   <div class=&quot;card&quot;>
     <slot />
+  </div>
+</template>
+&#10;<!-- Uso -->
+<Card>
+  <p>Este párrafo reemplaza el slot</p>
+</Card>" />
+
   </div>
 </template>
 &#10;<!-- Uso -->
@@ -68,7 +74,6 @@ Cuando un componente tiene múltiples puntos de inserción, dale un nombre a cad
 
 <PlaygroundLink code="<!-- PageLayout.vue -->
 <template>
-
   <header><slot name=&quot;header&quot; /></header>
   <main><slot /></main>
   <footer><slot name=&quot;footer&quot; /></footer>
@@ -113,16 +118,23 @@ defineProps<{ items: string[] }>()
 ```
 
 <PlaygroundLink code="<!-- ItemList.vue -->
-
 <script setup lang=&quot;ts&quot;>
 defineProps<{ items: string[] }>()
 </script>
-
 &#10;<template>
-
   <ul>
     <li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
       <slot name=&quot;item&quot; :value=&quot;item&quot; :index=&quot;index&quot; />
+    </li>
+  </ul>
+</template>
+&#10;<!-- Uso: el padre decide cómo se ve cada item -->
+<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
+  <template #item=&quot;{ value, index }&quot;>
+    <strong>{{ index + 1 }}.</strong> {{ value }}
+  </template>
+</ItemList>" />
+
     </li>
   </ul>
 </template>

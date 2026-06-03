@@ -29,6 +29,11 @@ Porque cuando re-emites un evento nativo (como `click`) sin declararlo en `defin
 &#10;<!-- Parent.vue -->
 <MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
 
+  </button>
+</template>
+&#10;<!-- Parent.vue -->
+<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
+
 Lo que ocurre en cada clic:
 
 1. El clic nativo se dispara en el `<button>`
@@ -62,6 +67,9 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
   </button>
 </template>" />
 
+  </button>
+</template>" />
+
 **Opción 2:** No re-emitas. Si el componente tiene un único elemento raíz, el evento nativo cae a través automáticamente.
 
 ```vue
@@ -80,6 +88,11 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
 <template>
   <button>
     <slot />
+  </button>
+</template>
+&#10;<!-- Parent.vue — funciona, se dispara una vez -->
+<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
+
   </button>
 </template>
 &#10;<!-- Parent.vue — funciona, se dispara una vez -->

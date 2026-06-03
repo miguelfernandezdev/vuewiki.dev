@@ -24,9 +24,17 @@ Porque el CSS con scoped en Vue funciona añadiendo un atributo único `data-v-x
 ```
 
 <PlaygroundLink code="<template>
-
   <div class=&quot;wrapper&quot;>
     <DatePicker />
+  </div>
+</template>
+&#10;<style scoped>
+/* Esto no funcionará — .calendar-popup está dentro del template de DatePicker */
+.wrapper .calendar-popup {
+  background: white;
+}
+</style>" />
+
   </div>
 </template>
 &#10;<style scoped>

@@ -122,7 +122,11 @@ const searchUrl = computed(() => `/api/search?q=${query.value}`)
 &#10;const { data: results, isLoading } = useFetch(searchUrl)
 </script>
 &#10;<template>
-<input v-model=&quot;query&quot; placeholder=&quot;Search...&quot; />
+  <input v-model=&quot;query&quot; placeholder=&quot;Search...&quot; />
+  <ul v-if=&quot;results&quot;>
+    <li v-for=&quot;item in results&quot; :key=&quot;item.id&quot;>{{ item.name }}</li>
+  </ul>
+</template>" />
 
   <ul v-if=&quot;results&quot;>
     <li v-for=&quot;item in results&quot; :key=&quot;item.id&quot;>{{ item.name }}</li>

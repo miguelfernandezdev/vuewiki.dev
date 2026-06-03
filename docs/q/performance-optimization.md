@@ -26,7 +26,6 @@ Vue's reactivity system is efficient by design, but it cannot know which parts o
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Rendered once, never diffed again -->
   <footer v-once>
     <p>© 2024 Acme Corp. All rights reserved.</p>
@@ -61,16 +60,15 @@ defineProps<{
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 interface Item {
-id: number
-label: string
+  id: number
+  label: string
 }
 &#10;defineProps<{
-items: Item[]
-selectedId: number
+  items: Item[]
+  selectedId: number
 }>()
 </script>
 &#10;<template>
-
   <ul>
     <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
       {{ item.label }}
@@ -237,6 +235,9 @@ import { defineAsyncComponent } from 'vue'
   <ChartWidget />
 </template>" />
 
+  <ChartWidget />
+</template>" />
+
 ### Lazy hydration in Nuxt
 
 In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the component enters the viewport (or is needed). The component is still server-rendered as HTML, but the client-side hydration (which is what makes it interactive) is delayed. This directly improves Time to Interactive on content-heavy pages.
@@ -253,9 +254,13 @@ In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the compo
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Hydrated immediately -->
   <HeroSection />
+&#10;  <!-- Hydration deferred until the component is needed -->
+  <LazyCommentSection />
+  <LazyRecommendedArticles />
+</template>" />
+
 &#10;  <!-- Hydration deferred until the component is needed -->
   <LazyCommentSection />
   <LazyRecommendedArticles />
@@ -297,22 +302,22 @@ defineProps<{ users: User[] }>()
 import { RecycleScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 &#10;interface User {
-id: number
-name: string
-email: string
+  id: number
+  name: string
+  email: string
 }
 &#10;defineProps<{ users: User[] }>()
 </script>
 &#10;<template>
-<RecycleScroller
-:items=&quot;users&quot;
-:item-size=&quot;56&quot;
-key-field=&quot;id&quot;
-v-slot=&quot;{ item }&quot;
-
->
-
+  <RecycleScroller
+    :items=&quot;users&quot;
+    :item-size=&quot;56&quot;
+    key-field=&quot;id&quot;
+    v-slot=&quot;{ item }&quot;
+  >
     <UserRow :user=&quot;item&quot; />
+  </RecycleScroller>
+</template>" />
 
   </RecycleScroller>
 </template>" />
@@ -344,6 +349,14 @@ v-slot=&quot;{ item }&quot;
   :user=&quot;user&quot;
   :active-id=&quot;activeId&quot;
 />
+&#10;<!-- Stable: only the item whose `active` value changes re-renders -->
+<UserRow
+  v-for=&quot;user in users&quot;
+  :key=&quot;user.id&quot;
+  :user=&quot;user&quot;
+  :active=&quot;user.id === activeId&quot;
+/>" />
+
 &#10;<!-- Stable: only the item whose `active` value changes re-renders -->
 <UserRow
   v-for=&quot;user in users&quot;

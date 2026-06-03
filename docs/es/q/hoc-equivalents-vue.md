@@ -60,13 +60,10 @@ const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
 ```
 
 <PlaygroundLink code="<!-- UserList.vue -->
-
 <script setup>
 const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
 </script>
-
 &#10;<template>
-
   <p v-if=&quot;isLoading&quot;>Cargando...</p>
   <p v-else-if=&quot;error&quot;>{{ error.message }}</p>
   <ul v-else>
@@ -82,7 +79,6 @@ const { data: products, isLoading } = useFetch<Product[]>('/api/products')
 ```
 
 <PlaygroundLink code="<!-- ProductList.vue — mismo composable, componente diferente -->
-
 <script setup>
 const { data: products, isLoading } = useFetch<Product[]>('/api/products')
 </script>" />
@@ -106,14 +102,14 @@ const { data, error, isLoading } = useFetch<T>(props.url)
 ```
 
 <PlaygroundLink code="<!-- FetchProvider.vue -->
-
 <script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
 const props = defineProps<{ url: string }>()
 const { data, error, isLoading } = useFetch<T>(props.url)
 </script>
-
 &#10;<template>
-<slot :data=&quot;data&quot; :error=&quot;error&quot; :is-loading=&quot;isLoading&quot; />
+  <slot :data=&quot;data&quot; :error=&quot;error&quot; :is-loading=&quot;isLoading&quot; />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -128,7 +124,6 @@ const { data, error, isLoading } = useFetch<T>(props.url)
 
 <PlaygroundLink code="<!-- Uso -->
 <FetchProvider url=&quot;/api/users&quot; v-slot=&quot;{ data: users, isLoading }&quot;>
-
   <p v-if=&quot;isLoading&quot;>Cargando...</p>
   <ul v-else>
     <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
@@ -170,7 +165,6 @@ Funciona, pero tiene problemas:
 ```
 
 <PlaygroundLink code="<!-- El árbol de componentes muestra ProtectedDashboard > Dashboard -->
-
 <!-- En DevTools, el wrapper oculta el componente real -->
 <!-- Las props deben pasar a través del wrapper manualmente -->
 <!-- TypeScript no puede inferir las props del componente envuelto -->" />
@@ -192,7 +186,9 @@ const { isAuthenticated } = useAuth()
 const { isAuthenticated } = useAuth()
 </script>
 &#10;<template>
-<Dashboard v-if=&quot;isAuthenticated&quot; />
+  <Dashboard v-if=&quot;isAuthenticated&quot; />
+  <p v-else>No autorizado</p>
+</template>" />
 
   <p v-else>No autorizado</p>
 </template>" />

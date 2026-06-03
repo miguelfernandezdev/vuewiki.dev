@@ -60,25 +60,30 @@ function handleSubmit(event: SubmitEvent) {
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 function handleInput(event: Event) {
-const target = event.target as HTMLInputElement
-console.log(target.value)
+  const target = event.target as HTMLInputElement
+  console.log(target.value)
 }
 &#10;function handleClick(event: MouseEvent) {
-console.log(event.clientX, event.clientY)
+  console.log(event.clientX, event.clientY)
 }
 &#10;function handleKeydown(event: KeyboardEvent) {
-if (event.key === 'Enter') {
-submit()
-}
+  if (event.key === 'Enter') {
+    submit()
+  }
 }
 &#10;function handleSubmit(event: SubmitEvent) {
-event.preventDefault()
-const form = event.target as HTMLFormElement
-const data = new FormData(form)
+  event.preventDefault()
+  const form = event.target as HTMLFormElement
+  const data = new FormData(form)
 }
 </script>
 &#10;<template>
-<input @input=&quot;handleInput&quot; />
+  <input @input=&quot;handleInput&quot; />
+  <button @click=&quot;handleClick&quot;>Click</button>
+  <input @keydown=&quot;handleKeydown&quot; />
+  <form @submit=&quot;handleSubmit&quot;>...</form>
+</template>" />
+
 <button @click=&quot;handleClick&quot;>Click</button>
 <input @keydown=&quot;handleKeydown&quot; />
 
@@ -138,6 +143,8 @@ Para casos simples, haz el cast directamente en el template:
   <input @input=&quot;name = ($event.target as HTMLInputElement).value&quot; />
 </template>" />
 
+</template>" />
+
 O usa una arrow function inline:
 
 ```vue
@@ -148,6 +155,8 @@ O usa una arrow function inline:
 
 <PlaygroundLink code="<template>
   <input @input=&quot;(e: Event) => name = (e.target as HTMLInputElement).value&quot; />
+</template>" />
+
 </template>" />
 
 ## Eventos de componentes personalizados
@@ -164,7 +173,6 @@ const emit = defineEmits<{
 ```
 
 <PlaygroundLink code="<!-- ChildComponent.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const emit = defineEmits<{
   select: [item: { id: number; name: string }]
@@ -185,15 +193,15 @@ function handleSelect(item: { id: number; name: string }) {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup lang=&quot;ts&quot;>
 function handleSelect(item: { id: number; name: string }) {
   console.log(item.id) // completamente tipado
 }
 </script>
-
 &#10;<template>
-<ChildComponent @select=&quot;handleSelect&quot; />
+  <ChildComponent @select=&quot;handleSelect&quot; />
+</template>" />
+
 </template>" />
 
 ## target vs currentTarget

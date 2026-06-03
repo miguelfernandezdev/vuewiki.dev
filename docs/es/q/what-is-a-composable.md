@@ -52,14 +52,11 @@ const { count, increment, reset } = useCounter(10)
 ```
 
 <PlaygroundLink code="<!-- Cualquier componente que necesite un contador -->
-
 <script setup>
 import { useCounter } from '@/composables/useCounter'
 &#10;const { count, increment, reset } = useCounter(10)
 </script>
-
 &#10;<template>
-
   <p>{{ count }}</p>
   <button @click=&quot;increment&quot;>+</button>
   <button @click=&quot;reset&quot;>Reset</button>

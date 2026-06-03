@@ -35,6 +35,13 @@ summary: '<Suspense> renders fallback content while async children resolve. Work
   </Suspense>
 </template>" />
 
+&#10;    <!-- Fallback slot: shown while loading -->
+    <template #fallback>
+      <LoadingSkeleton />
+    </template>
+  </Suspense>
+</template>" />
+
 `Suspense` waits for all async dependencies inside the default slot to resolve before swapping from the fallback to the real content.
 
 ## Async setup
@@ -55,16 +62,15 @@ const posts = await fetchPosts(user.id)
 ```
 
 <PlaygroundLink code="<!-- UserProfile.vue -->
-
 <script setup>
 const user = await fetchUser() // top-level await
 const posts = await fetchPosts(user.id)
 </script>
-
 &#10;<template>
-
   <h1>{{ user.name }}</h1>
   <PostList :posts=&quot;posts&quot; />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -81,6 +87,10 @@ const posts = await fetchPosts(user.id)
 <template>
   <Suspense>
     <UserProfile />
+    <template #fallback>Loading profile...</template>
+  </Suspense>
+</template>" />
+
     <template #fallback>Loading profile...</template>
   </Suspense>
 </template>" />
@@ -122,6 +132,17 @@ Suspense tracks one immediate child per slot. Wrap multiple elements:
   </Suspense>
 </template>" />
 
+      <AsyncContent />
+    </div>
+&#10;    <template #fallback>
+      <div>
+        <LoadingSpinner />
+        <p>Loading...</p>
+      </div>
+    </template>
+  </Suspense>
+</template>" />
+
 ## Timeout for re-triggers
 
 When Suspense is already resolved and new async work starts (e.g., switching views), the old content stays visible until a timeout elapses. Set `timeout` to control when the fallback reappears:
@@ -137,10 +158,13 @@ When Suspense is already resolved and new async work starts (e.g., switching vie
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Show fallback after 200ms if the new view hasn't resolved -->
   <Suspense :timeout=&quot;200&quot;>
     <component :is=&quot;currentView&quot; :key=&quot;currentView&quot; />
+    <template #fallback>Loading...</template>
+  </Suspense>
+</template>" />
+
     <template #fallback>Loading...</template>
   </Suspense>
 </template>" />
@@ -177,6 +201,12 @@ const isLoading = ref(false)
   </Suspense>
 </template>" />
 
+&#10;  <Suspense @pending=&quot;isLoading = true&quot; @resolve=&quot;isLoading = false&quot;>
+    <AsyncPage />
+    <template #fallback><PageSkeleton /></template>
+  </Suspense>
+</template>" />
+
 ## Nesting with RouterView, Transition, KeepAlive
 
 The correct nesting order is RouterView, then Transition, then KeepAlive, then Suspense:
@@ -202,6 +232,13 @@ The correct nesting order is RouterView, then Transition, then KeepAlive, then S
       <KeepAlive>
         <Suspense>
           <component :is=&quot;Component&quot; />
+          <template #fallback>Loading...</template>
+        </Suspense>
+      </KeepAlive>
+    </Transition>
+  </RouterView>
+</template>" />
+
           <template #fallback>Loading...</template>
         </Suspense>
       </KeepAlive>

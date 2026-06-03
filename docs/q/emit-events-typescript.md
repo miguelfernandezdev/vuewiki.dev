@@ -80,6 +80,16 @@ function handleUpdate(value: string) {
 }
 </script>" />
 
+</template>
+&#10;<script setup lang=&quot;ts&quot;>
+function handleUpdate(value: string) {
+  // `value` is correctly typed as string
+}
+&#10;function handleDelete(id: number) {
+  // `id` is correctly typed as number
+}
+</script>" />
+
 ## Emits with validation (runtime syntax)
 
 If you need runtime validation, not just type checking, use the object syntax instead:

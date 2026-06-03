@@ -33,14 +33,13 @@ const frozenList = reactive(
 
 <PlaygroundLink code="<script setup>
 const frozenList = reactive(
-Object.freeze([
-{ id: 1, name: 'Alice' },
-{ id: 2, name: 'Bob' }
-])
+  Object.freeze([
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' }
+  ])
 )
 </script>
 &#10;<template>
-
   <!-- Renders fine on first load -->
   <p v-for=&quot;item in frozenList&quot; :key=&quot;item.id&quot;>
     {{ item.name }}

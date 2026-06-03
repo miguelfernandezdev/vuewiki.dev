@@ -27,6 +27,8 @@ const search = (ref < string) | (null > null)
   <input v-model=&quot;search&quot; placeholder=&quot;Search...&quot; />
 </template>" />
 
+</template>" />
+
 En el momento en que el usuario escribe algo, `search` se convierte en un string. Pero antes de que el usuario interactúe, es `null`. Cada computed o watcher que lo use debe gestionar ambos casos:
 
 ```ts
@@ -58,6 +60,8 @@ const search = ref('')
 </script>
 &#10;<template>
   <input v-model=&quot;search&quot; placeholder=&quot;Search...&quot; />
+</template>" />
+
 </template>" />
 
 ```ts

@@ -27,7 +27,6 @@ function reset() {
 ```
 
 <PlaygroundLink code="<!-- Counter.vue -->
-
 <script setup>
 import { ref } from 'vue'
 &#10;const count = ref(0)
@@ -35,9 +34,8 @@ function reset() {
   count.value = 0
 }
 </script>
-
 &#10;<template>
-<span>{{ count }}</span>
+  <span>{{ count }}</span>
 </template>" />
 
 ```vue
@@ -58,7 +56,6 @@ onMounted(() => {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup>
 import { useTemplateRef, onMounted } from 'vue'
 const counterRef = useTemplateRef('counter')
@@ -67,9 +64,10 @@ const counterRef = useTemplateRef('counter')
   counterRef.value.reset() // TypeError: not a function
 })
 </script>
-
 &#10;<template>
-<Counter ref=&quot;counter&quot; />
+  <Counter ref=&quot;counter&quot; />
+</template>" />
+
 </template>" />
 
 The parent sees `{}` because nothing was exposed.
@@ -94,7 +92,6 @@ defineExpose({ count, reset })
 ```
 
 <PlaygroundLink code="<!-- Counter.vue -->
-
 <script setup>
 import { ref } from 'vue'
 &#10;const count = ref(0)
@@ -131,7 +128,6 @@ defineExpose({
 ```
 
 <PlaygroundLink code="<!-- BaseInput.vue -->
-
 <script setup>
 import { ref } from 'vue'
 &#10;const inputEl = (ref < HTMLInputElement) | (null > null)
@@ -140,9 +136,10 @@ import { ref } from 'vue'
   blur: () => inputEl.value?.blur()
 })
 </script>
-
 &#10;<template>
-<input ref=&quot;inputEl&quot; v-bind=&quot;$attrs&quot; />
+  <input ref=&quot;inputEl&quot; v-bind=&quot;$attrs&quot; />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -164,7 +161,6 @@ function openSearch() {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup>
 import { useTemplateRef } from 'vue'
 &#10;const input = useTemplateRef('search')
@@ -172,9 +168,11 @@ import { useTemplateRef } from 'vue'
   input.value?.focus()
 }
 </script>
-
 &#10;<template>
-<BaseInput ref=&quot;search&quot; placeholder=&quot;Search...&quot; />
+  <BaseInput ref=&quot;search&quot; placeholder=&quot;Search...&quot; />
+  <button @click=&quot;openSearch&quot;>Search</button>
+</template>" />
+
 <button @click=&quot;openSearch&quot;>Search</button>
 </template>" />
 

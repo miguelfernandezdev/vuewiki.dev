@@ -192,7 +192,6 @@ const { items = [], label = 'Default' } = defineProps<{
 ```
 
 <PlaygroundLink code="<!-- Vue 3.4 e inferior: withDefaults -->
-
 <script setup lang=&quot;ts&quot;>
 const props = withDefaults(
   defineProps<{
@@ -206,9 +205,7 @@ const props = withDefaults(
 )
 // acceso: props.items, props.label
 </script>
-
 &#10;<!-- Vue 3.5+: defaults con desestructuración -->
-
 <script setup lang=&quot;ts&quot;>
 const { items = [], label = 'Default' } = defineProps<{
   items?: string[]

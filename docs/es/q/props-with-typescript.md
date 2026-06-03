@@ -31,14 +31,13 @@ const props = defineProps<Props>()
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 interface Props {
-title: string
-count?: number
-items: string[]
+  title: string
+  count?: number
+  items: string[]
 }
 &#10;const props = defineProps<Props>()
 </script>
 &#10;<template>
-
   <h2>{{ props.title }}</h2>
   <span>{{ props.count }} items</span>
 </template>" />
@@ -107,17 +106,16 @@ const {
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const {
-title,
-count = 0,
-tags = ['vue']
+  title,
+  count = 0,
+  tags = ['vue']
 } = defineProps<{
-title: string
-count?: number
-tags?: string[]
+  title: string
+  count?: number
+  tags?: string[]
 }>()
 </script>
 &#10;<template>
-
   <!-- `title` y `count` son reactivos — no necesitan `.value` en el template -->
   <h2>{{ title }}</h2>
 </template>" />

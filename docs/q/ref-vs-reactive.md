@@ -33,7 +33,6 @@ items.value.push('new item')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- No .value needed in templates -->
   <p>{{ count }}</p>
   <p>{{ user.name }}</p>

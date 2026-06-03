@@ -22,7 +22,13 @@ Vue tiene tres modificadores integrados para `v-model` en inputs nativos (`.lazy
 ```
 
 <PlaygroundLink code="<template>
-<input v-model.lazy=&quot;msg&quot; />
+  <input v-model.lazy=&quot;msg&quot; />
+  <!-- sincroniza en change, no en input -->
+  <input v-model.number=&quot;age&quot; />
+  <!-- convierte a número con parseFloat -->
+  <input v-model.trim=&quot;name&quot; />
+  <!-- elimina espacios en blanco -->
+</template>" />
 
   <!-- sincroniza en change, no en input -->
   <input v-model.number=&quot;age&quot; />
@@ -56,7 +62,6 @@ const [model, modifiers] = defineModel<number>({
 ```
 
 <PlaygroundLink code="<!-- CurrencyInput.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const [model, modifiers] = defineModel<number>({
   set(value) {
@@ -67,9 +72,10 @@ const [model, modifiers] = defineModel<number>({
   }
 })
 </script>
-
 &#10;<template>
-<input type=&quot;number&quot; v-model=&quot;model&quot; />
+  <input type=&quot;number&quot; v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -82,6 +88,8 @@ const [model, modifiers] = defineModel<number>({
 <PlaygroundLink code="<!-- Parent.vue -->
 <template>
   <CurrencyInput v-model.round=&quot;price&quot; />
+</template>" />
+
 </template>" />
 
 Cuando el usuario escribe `9.7`, el padre recibe `10`.
@@ -239,6 +247,8 @@ const props = defineProps<{
 </script>
 &#10;<template>
   <input :value=&quot;modelValue&quot; @input=&quot;handleInput&quot; />
+</template>" />
+
 </template>" />
 
 `defineModel` elimina todo este código repetitivo.

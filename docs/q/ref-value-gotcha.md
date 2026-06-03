@@ -45,7 +45,6 @@ In `<template>`, Vue unwraps refs automatically. You do NOT write `.value` there
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- .value is NOT needed here -->
   <p>{{ count }}</p>
   <button @click=&quot;count++&quot;>Increment</button>

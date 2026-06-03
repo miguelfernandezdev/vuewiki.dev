@@ -34,7 +34,6 @@ The most impactful accessibility decision has nothing to do with Vue:
 
 <PlaygroundLink code="<!-- BAD: div soup with ARIA band-aids -->
 <template>
-
   <div role=&quot;navigation&quot;>
     <div role=&quot;list&quot;>
       <div role=&quot;listitem&quot; @click=&quot;navigate&quot;>Home</div>
@@ -79,15 +78,12 @@ const isExpanded = ref(false)
 const panelId = useId()
 </script>
 &#10;<template>
-<button
-:aria-expanded=&quot;isExpanded&quot;
-:aria-controls=&quot;panelId&quot;
-@click=&quot;isExpanded = !isExpanded&quot;
-
->
-
+  <button
+    :aria-expanded=&quot;isExpanded&quot;
+    :aria-controls=&quot;panelId&quot;
+    @click=&quot;isExpanded = !isExpanded&quot;
+  >
     Details
-
   </button>
   <div v-show=&quot;isExpanded&quot; :id=&quot;panelId&quot; role=&quot;region&quot;>Panel content</div>
 </template>" />
@@ -151,28 +147,25 @@ function closeModal() {
 const triggerRef = ref<HTMLElement>()
 const dialogRef = ref<HTMLElement>()
 &#10;function openModal() {
-isOpen.value = true
-nextTick(() => dialogRef.value?.focus())
+  isOpen.value = true
+  nextTick(() => dialogRef.value?.focus())
 }
 &#10;function closeModal() {
-isOpen.value = false
-triggerRef.value?.focus()
+  isOpen.value = false
+  triggerRef.value?.focus()
 }
 </script>
 &#10;<template>
-<button ref=&quot;triggerRef&quot; @click=&quot;openModal&quot;>Open</button>
-&#10; <dialog
-v-if=&quot;isOpen&quot;
-ref=&quot;dialogRef&quot;
-tabindex=&quot;-1&quot;
-@keydown.escape=&quot;closeModal&quot;
-
->
-
+  <button ref=&quot;triggerRef&quot; @click=&quot;openModal&quot;>Open</button>
+&#10;  <dialog
+    v-if=&quot;isOpen&quot;
+    ref=&quot;dialogRef&quot;
+    tabindex=&quot;-1&quot;
+    @keydown.escape=&quot;closeModal&quot;
+  >
     <h2>Dialog title</h2>
     <p>Content here</p>
     <button @click=&quot;closeModal&quot;>Close</button>
-
   </dialog>
 </template>" />
 
@@ -207,12 +200,11 @@ async function save() {
 <PlaygroundLink code="<script setup>
 const notification = ref('')
 &#10;async function save() {
-await submitForm()
-notification.value = 'Changes saved successfully'
+  await submitForm()
+  notification.value = 'Changes saved successfully'
 }
 </script>
 &#10;<template>
-
   <form @submit.prevent=&quot;save&quot;>
     <!-- form fields -->
     <button type=&quot;submit&quot;>Save</button>
@@ -254,6 +246,10 @@ Content that should be available to screen readers but not visible on screen:
 <PlaygroundLink code="<template>
   <button @click=&quot;removeItem(item)&quot;>
     <TrashIcon />
+    <span class=&quot;sr-only&quot;>Remove {{ item.name }}</span>
+  </button>
+</template>" />
+
     <span class=&quot;sr-only&quot;>Remove {{ item.name }}</span>
   </button>
 </template>" />

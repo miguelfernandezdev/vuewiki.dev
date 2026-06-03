@@ -36,6 +36,13 @@ Every Vue component instance has a cost: reactive setup, vnode creation, lifecyc
   </Card>
 </template>" />
 
+    </CardHeader>
+    <CardBody>
+      <Text>{{ user.name }}</Text>
+    </CardBody>
+  </Card>
+</template>" />
+
 ```vue
 <!-- 100 users = 500+ component instances -->
 <UserCard v-for="user in users" :key="user.id" :user="user" />
@@ -69,16 +76,20 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
 ```
 
 <PlaygroundLink code="<!-- UserCard.vue — flattened -->
-
 <script setup lang=&quot;ts&quot;>
 defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </script>
-
 &#10;<template>
-
   <div class=&quot;card&quot;>
     <div class=&quot;card-header&quot;>
       <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
+    </div>
+    <div class=&quot;card-body&quot;>
+      <span>{{ user.name }}</span>
+    </div>
+  </div>
+</template>" />
+
     </div>
     <div class=&quot;card-body&quot;>
       <span>{{ user.name }}</span>
@@ -120,6 +131,9 @@ Not every list needs flattening. Keep component abstractions when:
   <template #default=&quot;{ item }&quot;>
     <!-- OK — only ~20 instances exist regardless of list length -->
     <ComplexItemCard :item=&quot;item&quot; />
+  </template>
+</RecycleScroller>" />
+
   </template>
 </RecycleScroller>" />
 

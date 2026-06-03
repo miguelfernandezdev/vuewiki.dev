@@ -40,10 +40,6 @@ Wrap a single element (or component) that toggles with `v-if` or `v-show`. Vue a
     <p v-if=&quot;show&quot;>Hello</p>
   </Transition>
 </template>
-&#10;<script setup>
-import { ref } from 'vue'
-const show = ref(true)
-</script>
 &#10;<style>
 .fade-enter-active,
 .fade-leave-active {
@@ -210,18 +206,15 @@ function onEnter(el: HTMLElement, done: () => void) {
 ```
 
 <PlaygroundLink code="<template>
-<TransitionGroup
-tag=&quot;ul&quot;
-:css=&quot;false&quot;
-@before-enter=&quot;onBeforeEnter&quot;
-@enter=&quot;onEnter&quot;
-
->
-
+  <TransitionGroup
+    tag=&quot;ul&quot;
+    :css=&quot;false&quot;
+    @before-enter=&quot;onBeforeEnter&quot;
+    @enter=&quot;onEnter&quot;
+  >
     <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot; :data-index=&quot;index&quot;>
       {{ item.name }}
     </li>
-
   </TransitionGroup>
 </template>
 &#10;<script setup>

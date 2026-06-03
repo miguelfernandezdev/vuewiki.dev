@@ -60,15 +60,16 @@ const name = ref(props.initialName)
 ```
 
 <PlaygroundLink code="<!-- UserForm.vue -->
-
 <script setup>
 const props = defineProps<{ initialName: string }>()
 const emit = defineEmits<{ save: [name: string] }>()
 &#10;const name = ref(props.initialName)
 </script>
-
 &#10;<template>
-<input v-model=&quot;name&quot; />
+  <input v-model=&quot;name&quot; />
+  <button @click=&quot;emit('save', name)&quot;>Guardar</button>
+</template>" />
+
 <button @click=&quot;emit('save', name)&quot;>Guardar</button>
 </template>" />
 

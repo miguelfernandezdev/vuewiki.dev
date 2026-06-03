@@ -24,11 +24,15 @@ Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un com
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Elemento: se corresponde con un <div> real en el DOM -->
   <div class=&quot;container&quot;>
     <!-- Componente: Vue crea una instancia, ejecuta setup, renderiza su template -->
     <UserCard :user=&quot;user&quot; @click=&quot;selectUser&quot; />
+&#10;    <!-- Elemento: se corresponde con un <p> real -->
+    <p>{{ user.bio }}</p>
+  </div>
+</template>" />
+
 &#10;    <!-- Elemento: se corresponde con un <p> real -->
     <p>{{ user.bio }}</p>
   </div>

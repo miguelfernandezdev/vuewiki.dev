@@ -19,7 +19,6 @@ Because `v-show` works by toggling the CSS `display` property, and `<template>` 
 
 <PlaygroundLink code="<!-- v-show on <template> silently does nothing -->
 <template v-show=&quot;isVisible&quot;>
-
   <h1>Title</h1>
   <p>Content</p>
 </template>
@@ -35,7 +34,6 @@ Another limitation: `v-show` does not support `v-else`.
 ```
 
 <PlaygroundLink code="<!-- v-else does NOT work with v-show -->
-
 <div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
 <div v-else>Please log in</div>
 <!-- broken -->" />
@@ -60,7 +58,6 @@ Another limitation: `v-show` does not support `v-else`.
 
 <PlaygroundLink code="<!-- v-if works on <template> -->
 <template v-if=&quot;isVisible&quot;>
-
   <h1>Title</h1>
   <p>Content</p>
 </template>
@@ -78,7 +75,6 @@ Another limitation: `v-show` does not support `v-else`.
 ```
 
 <PlaygroundLink code="<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
-
 <div v-show=&quot;!isLoggedIn&quot;>Please log in</div>" />
 
 ## Quick reference

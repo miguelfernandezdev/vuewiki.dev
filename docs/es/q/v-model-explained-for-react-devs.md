@@ -30,13 +30,13 @@ const name = ref('')
 ```
 
 <PlaygroundLink code="<!-- Vue: declarativo, bidireccional -->
-
 <script setup>
 const name = ref('')
 </script>
-
 &#10;<template>
-<input v-model=&quot;name&quot; />
+  <input v-model=&quot;name&quot; />
+</template>" />
+
 </template>" />
 
 Ambos logran el mismo resultado. React requiere que conectes `value` y `onChange` explícitamente. `v-model` de Vue conecta ambos por ti.
@@ -55,6 +55,9 @@ En elementos nativos, `v-model` es azúcar para un binding de valor y un listene
 
 <PlaygroundLink code="<!-- Esto -->
 <input v-model=&quot;name&quot; />
+&#10;<!-- Se compila en esto -->
+<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
+
 &#10;<!-- Se compila en esto -->
 <input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 
@@ -88,6 +91,9 @@ En Vue 3, `v-model` en un componente usa `modelValue` como prop y `update:modelV
 &#10;<!-- Que es equivalente a -->
 <CustomInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; />" />
 
+&#10;<!-- Que es equivalente a -->
+<CustomInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; />" />
+
 ```vue
 <!-- CustomInput.vue -->
 <script setup>
@@ -104,17 +110,17 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 ```
 
 <PlaygroundLink code="<!-- CustomInput.vue -->
-
 <script setup>
 defineProps<{ modelValue: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>
-
 &#10;<template>
-<input
-:value=&quot;modelValue&quot;
-@input=&quot;emit('update:modelValue', $event.target.value)&quot;
-/>
+  <input
+    :value=&quot;modelValue&quot;
+    @input=&quot;emit('update:modelValue', $event.target.value)&quot;
+  />
+</template>" />
+
 </template>" />
 
 O con el macro `defineModel` de Vue 3.4+, que elimina el código repetitivo:
@@ -131,13 +137,13 @@ const model = defineModel<string>()
 ```
 
 <PlaygroundLink code="<!-- CustomInput.vue -->
-
 <script setup>
 const model = defineModel<string>()
 </script>
-
 &#10;<template>
-<input v-model=&quot;model&quot; />
+  <input v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 ## Múltiples bindings v-model
@@ -178,14 +184,15 @@ const email = defineModel < string > 'email'
 ```
 
 <PlaygroundLink code="<!-- UserForm.vue -->
-
 <script setup>
 const name = defineModel < string > 'name'
 const email = defineModel < string > 'email'
 </script>
-
 &#10;<template>
-<input v-model=&quot;name&quot; placeholder=&quot;Name&quot; />
+  <input v-model=&quot;name&quot; placeholder=&quot;Name&quot; />
+  <input v-model=&quot;email&quot; placeholder=&quot;Email&quot; />
+</template>" />
+
 <input v-model=&quot;email&quot; placeholder=&quot;Email&quot; />
 </template>" />
 
@@ -208,6 +215,11 @@ Cada `v-model` con nombre se mapea a su propio par prop/evento: `:name` + `@upda
 
 <PlaygroundLink code="<!-- .trim elimina espacios en blanco -->
 <input v-model.trim=&quot;name&quot; />
+&#10;<!-- .number convierte a número -->
+<input v-model.number=&quot;age&quot; type=&quot;number&quot; />
+&#10;<!-- .lazy sincroniza con el evento change en lugar de input — actualiza cuando el usuario sale del campo, no en cada pulsación de tecla -->
+<input v-model.lazy=&quot;query&quot; />" />
+
 &#10;<!-- .number convierte a número -->
 <input v-model.number=&quot;age&quot; type=&quot;number&quot; />
 &#10;<!-- .lazy sincroniza con el evento change en lugar de input — actualiza cuando el usuario sale del campo, no en cada pulsación de tecla -->

@@ -34,6 +34,13 @@ import { ref } from 'vue'
 const last = ref('García')
 </script>" />
 
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const first = ref('Ana')
+const last = ref('García')
+</script>" />
+
 ```vue
 <!-- UserForm.vue -->
 <script setup>
@@ -48,14 +55,15 @@ const lastName = defineModel('lastName')
 ```
 
 <PlaygroundLink code="<!-- UserForm.vue -->
-
 <script setup>
 const firstName = defineModel('firstName')
 const lastName = defineModel('lastName')
 </script>
-
 &#10;<template>
-<input v-model=&quot;firstName&quot; placeholder=&quot;First name&quot; />
+  <input v-model=&quot;firstName&quot; placeholder=&quot;First name&quot; />
+  <input v-model=&quot;lastName&quot; placeholder=&quot;Last name&quot; />
+</template>" />
+
 <input v-model=&quot;lastName&quot; placeholder=&quot;Last name&quot; />
 </template>" />
 
@@ -112,6 +120,8 @@ The default `v-model` (without a name) uses `modelValue` as the prop name:
   <SearchInput v-model=&quot;query&quot; v-model:filters=&quot;activeFilters&quot; />
 </template>" />
 
+</template>" />
+
 ```vue
 <!-- SearchInput.vue -->
 <script setup>
@@ -121,7 +131,6 @@ const filters = defineModel('filters') // maps to v-model:filters
 ```
 
 <PlaygroundLink code="<!-- SearchInput.vue -->
-
 <script setup>
 const query = defineModel() // maps to v-model (modelValue)
 const filters = defineModel('filters') // maps to v-model:filters
@@ -185,6 +194,12 @@ const props = defineProps<{
     :value=&quot;firstName&quot;
     @input=&quot;emit('update:firstName', ($event.target as HTMLInputElement).value)&quot;
   />
+  <input
+    :value=&quot;lastName&quot;
+    @input=&quot;emit('update:lastName', ($event.target as HTMLInputElement).value)&quot;
+  />
+</template>" />
+
   <input
     :value=&quot;lastName&quot;
     @input=&quot;emit('update:lastName', ($event.target as HTMLInputElement).value)&quot;

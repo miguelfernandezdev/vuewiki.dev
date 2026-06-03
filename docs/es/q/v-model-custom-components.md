@@ -20,6 +20,8 @@ Cuando escribes `v-model` en un `<input>` nativo, Vue vincula su valor y escucha
 <SearchInput v-model=&quot;query&quot; />
 <SearchInput :modelValue=&quot;query&quot; @update:modelValue=&quot;query = $event&quot; />" />
 
+<SearchInput :modelValue=&quot;query&quot; @update:modelValue=&quot;query = $event&quot; />" />
+
 El padre proporciona los datos a través de una prop. El hijo emite un evento cuando los datos deberían cambiar. El padre decide si acepta el cambio. Esto preserva el [flujo de datos unidireccional](/es/q/flux-unidirectional-data-flow).
 
 ## defineModel (Vue 3.4+)
@@ -41,16 +43,16 @@ const model = defineModel<string>()
 ```
 
 <PlaygroundLink code="<!-- SearchInput.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const model = defineModel<string>()
 </script>
-
 &#10;<template>
-<input
-:value=&quot;model&quot;
-@input=&quot;model = ($event.target as HTMLInputElement).value&quot;
-/>
+  <input
+    :value=&quot;model&quot;
+    @input=&quot;model = ($event.target as HTMLInputElement).value&quot;
+  />
+</template>" />
+
 </template>" />
 
 O vincúlalo directamente con `v-model` en un input nativo:
@@ -63,6 +65,8 @@ O vincúlalo directamente con `v-model` en un input nativo:
 
 <PlaygroundLink code="<template>
   <input v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 Antes de Vue 3.4, tenías que declarar la prop y el emit por separado. `defineModel` elimina ese boilerplate.
@@ -93,14 +97,15 @@ const lastName = defineModel<string>('lastName')
 ```
 
 <PlaygroundLink code="<!-- UserForm.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const firstName = defineModel<string>('firstName')
 const lastName = defineModel<string>('lastName')
 </script>
-
 &#10;<template>
-<input v-model=&quot;firstName&quot; placeholder=&quot;First name&quot; />
+  <input v-model=&quot;firstName&quot; placeholder=&quot;First name&quot; />
+  <input v-model=&quot;lastName&quot; placeholder=&quot;Last name&quot; />
+</template>" />
+
 <input v-model=&quot;lastName&quot; placeholder=&quot;Last name&quot; />
 </template>" />
 
@@ -137,7 +142,6 @@ const [model, modifiers] = defineModel<string>({
 ```
 
 <PlaygroundLink code="<!-- SearchInput.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const [model, modifiers] = defineModel<string>({
   set(value) {
@@ -148,9 +152,10 @@ const [model, modifiers] = defineModel<string>({
   }
 })
 </script>
-
 &#10;<template>
-<input v-model=&quot;model&quot; />
+  <input v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 Ver también: [¿Cómo funcionan múltiples bindings v-model?](/es/q/multiple-v-model) · [¿Qué son los modificadores personalizados de v-model?](/es/q/custom-v-model-modifiers) · [¿Por qué mutar un objeto a través de defineModel no actualiza al padre?](/es/q/definemodel-object-mutation)

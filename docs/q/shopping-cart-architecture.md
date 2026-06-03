@@ -105,7 +105,6 @@ function addToCart() {
 ```
 
 <PlaygroundLink code="<!-- components/ProductCard.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const props = defineProps<{
   id: string
@@ -123,11 +122,15 @@ const props = defineProps<{
   })
 }
 </script>
-
 &#10;<template>
-
   <div class=&quot;product-card&quot;>
     <img :src=&quot;image&quot; :alt=&quot;name&quot; />
+    <h3>{{ name }}</h3>
+    <p>{{ price.toFixed(2) }} €</p>
+    <button @click=&quot;addToCart&quot;>Add to cart</button>
+  </div>
+</template>" />
+
     <h3>{{ name }}</h3>
     <p>{{ price.toFixed(2) }} €</p>
     <button @click=&quot;addToCart&quot;>Add to cart</button>
@@ -171,18 +174,33 @@ const cart = useCartStore()
 ```
 
 <PlaygroundLink code="<!-- components/CartDrawer.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const cart = useCartStore()
 </script>
-
 &#10;<template>
-
   <aside class=&quot;cart-drawer&quot;>
     <h2>Cart ({{ cart.totalItems }})</h2>
 &#10;    <p v-if=&quot;!cart.items.length&quot;>Your cart is empty.</p>
 &#10;    <div v-for=&quot;item in cart.items&quot; :key=&quot;item.id&quot; class=&quot;cart-item&quot;>
       <img :src=&quot;item.image&quot; :alt=&quot;item.name&quot; />
+      <div>
+        <p>{{ item.name }}</p>
+        <p>{{ item.price.toFixed(2) }} € × {{ item.qty }}</p>
+      </div>
+      <div class=&quot;qty-controls&quot;>
+        <button @click=&quot;cart.updateQty(item.id, item.qty - 1)&quot;>−</button>
+        <span>{{ item.qty }}</span>
+        <button @click=&quot;cart.updateQty(item.id, item.qty + 1)&quot;>+</button>
+      </div>
+      <button @click=&quot;cart.removeItem(item.id)&quot;>Remove</button>
+    </div>
+&#10;    <div v-if=&quot;cart.items.length&quot; class=&quot;cart-total&quot;>
+      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
+      <NuxtLink to=&quot;/checkout&quot;>Checkout</NuxtLink>
+    </div>
+  </aside>
+</template>" />
+
       <div>
         <p>{{ item.name }}</p>
         <p>{{ item.price.toFixed(2) }} € × {{ item.qty }}</p>
@@ -257,16 +275,14 @@ const cart = useCartStore()
 ```
 
 <PlaygroundLink code="<!-- components/CartBadge.vue -->
-
 <script setup>
 const cart = useCartStore()
 </script>
-
 &#10;<template>
-<button class=&quot;cart-icon&quot;>
-🛒
-<span v-if=&quot;cart.totalItems&quot; class=&quot;badge&quot;>{{ cart.totalItems }}</span>
-</button>
+  <button class=&quot;cart-icon&quot;>
+    🛒
+    <span v-if=&quot;cart.totalItems&quot; class=&quot;badge&quot;>{{ cart.totalItems }}</span>
+  </button>
 </template>" />
 
 The badge updates reactively from any page because all components share the same Pinia store instance.
@@ -314,7 +330,6 @@ async function placeOrder() {
 ```
 
 <PlaygroundLink code="<!-- pages/checkout.vue -->
-
 <script setup>
 const cart = useCartStore()
 const isSubmitting = ref(false)
@@ -334,9 +349,7 @@ const isSubmitting = ref(false)
   }
 }
 </script>
-
 &#10;<template>
-
   <div>
     <h1>Checkout</h1>
     <div v-for=&quot;item in cart.items&quot; :key=&quot;item.id&quot;>

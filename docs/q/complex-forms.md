@@ -71,23 +71,23 @@ const isValid = computed(
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { reactive, computed } from 'vue'
 &#10;interface UserForm {
-name: string
-email: string
-role: 'admin' | 'user'
+  name: string
+  email: string
+  role: 'admin' | 'user'
 }
 &#10;const form = reactive<UserForm>({
-name: '',
-email: '',
-role: 'user'
+  name: '',
+  email: '',
+  role: 'user'
 })
 &#10;const errors = reactive<Partial<Record<keyof UserForm, string>>>({})
 &#10;function validate(field: keyof UserForm) {
-switch (field) {
-case 'name':
-errors.name = form.name.trim() ? undefined : 'Name is required'
-break
-case 'email':
-errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+  switch (field) {
+    case 'name':
+      errors.name = form.name.trim() ? undefined : 'Name is required'
+      break
+    case 'email':
+      errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
         ? undefined
         : 'Invalid email'
       break
@@ -97,14 +97,23 @@ errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
   () =>
     form.name.trim().length > 0 &amp;&amp;
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &amp;&amp;
-Object.values(errors).every((e) => !e)
+    Object.values(errors).every((e) => !e)
 )
 </script>
 &#10;<template>
-
   <form @submit.prevent=&quot;handleSubmit&quot;>
     <div>
       <input v-model=&quot;form.name&quot; @blur=&quot;validate('name')&quot; />
+      <span v-if=&quot;errors.name&quot;>{{ errors.name }}</span>
+    </div>
+&#10;    <div>
+      <input v-model=&quot;form.email&quot; @blur=&quot;validate('email')&quot; />
+      <span v-if=&quot;errors.email&quot;>{{ errors.email }}</span>
+    </div>
+&#10;    <button :disabled=&quot;!isValid&quot;>Submit</button>
+  </form>
+</template>" />
+
       <span v-if=&quot;errors.name&quot;>{{ errors.name }}</span>
     </div>
 &#10;    <div>

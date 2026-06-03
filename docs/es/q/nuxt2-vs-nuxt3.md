@@ -49,7 +49,6 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 ```
 
 <PlaygroundLink code="<!-- Nuxt 3: composable en script setup -->
-
 <script setup>
 const route = useRoute()
 const { data: user } = await useFetch(`/api/users/${route.params.id}`)

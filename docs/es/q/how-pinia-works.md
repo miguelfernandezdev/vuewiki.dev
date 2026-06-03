@@ -88,7 +88,6 @@ const counter = useCounterStore()
 const counter = useCounterStore()
 </script>
 &#10;<template>
-
   <p>{{ counter.count }} (doble: {{ counter.doubled }})</p>
   <button @click=&quot;counter.increment()&quot;>+1</button>
 </template>" />

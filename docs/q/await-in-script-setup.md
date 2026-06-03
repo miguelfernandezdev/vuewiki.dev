@@ -23,14 +23,11 @@ const user = await response.json()
 ```
 
 <PlaygroundLink code="<!-- UserProfile.vue -->
-
 <script setup>
 const response = await fetch('/api/user/1')
 const user = await response.json()
 </script>
-
 &#10;<template>
-
   <h1>{{ user.name }}</h1>
 </template>" />
 
@@ -70,9 +67,17 @@ An async component must have a `<Suspense>` ancestor. Without it, the component 
 
 <PlaygroundLink code="<!-- Parent.vue -->
 <template>
-
   <!-- BAD: no Suspense → UserProfile never appears -->
   <UserProfile />
+&#10;  <!-- GOOD: Suspense handles the pending state -->
+  <Suspense>
+    <UserProfile />
+    <template #fallback>
+      <p>Loading profile...</p>
+    </template>
+  </Suspense>
+</template>" />
+
 &#10;  <!-- GOOD: Suspense handles the pending state -->
   <Suspense>
     <UserProfile />
@@ -101,14 +106,11 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 ```
 
 <PlaygroundLink code="<!-- pages/users/[id].vue — Nuxt page -->
-
 <script setup>
 const route = useRoute()
 const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 </script>
-
 &#10;<template>
-
   <h1>{{ user.name }}</h1>
 </template>" />
 

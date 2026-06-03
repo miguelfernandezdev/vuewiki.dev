@@ -47,7 +47,6 @@ function increment() {
 ```
 
 <PlaygroundLink code="<!-- Hijo -->
-
 <script setup lang=&quot;ts&quot;>
 const props = defineProps<{ count: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
@@ -55,7 +54,6 @@ const emit = defineEmits<{ update: [value: number] }>()
   emit('update', props.count + 1)
 }
 </script>
-
 &#10;<!-- Padre -->
 <Counter :count=&quot;count&quot; @update=&quot;count = $event&quot; />" />
 
@@ -76,13 +74,11 @@ const count = defineModel<number>()
 ```
 
 <PlaygroundLink code="<!-- Hijo -->
-
 <script setup lang=&quot;ts&quot;>
 const count = defineModel<number>()
 </script>
-
 &#10;<template>
-<button @click=&quot;count++&quot;>{{ count }}</button>
+  <button @click=&quot;count++&quot;>{{ count }}</button>
 </template>
 &#10;<!-- Padre -->
 <Counter v-model=&quot;count&quot; />" />

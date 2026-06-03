@@ -58,7 +58,6 @@ function sendInvitation(email) {
 ```
 
 <PlaygroundLink code="<!-- MAL: UserDashboard.vue haciendo todo -->
-
 <script setup>
 const users = ref([])
 const searchQuery = ref('')
@@ -93,11 +92,8 @@ function sendInvitation(email) {
   /* ... */
 }
 </script>
-
 &#10;<template>
-
   <!-- 200 líneas de template -->
-
 </template>" />
 
 La solución: extrae la obtención de datos a un composable, divide en componentes contenedor y presentacional, saca la lógica de negocio del componente por completo.

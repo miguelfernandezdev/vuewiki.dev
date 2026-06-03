@@ -27,7 +27,6 @@ const company = 'Acme Corp'
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Se renderiza una vez, nunca se vuelve a evaluar -->
   <footer v-once>
     <p>Copyright {{ year }} {{ company }}</p>
@@ -66,10 +65,20 @@ const selectedId = (ref < number) | (null > null)
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
     <div :class=&quot;{ selected: item.id === selectedId }&quot;>
       <ExpensiveComponent :data=&quot;item&quot; />
+    </div>
+  </div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const items = ref([
+  /* 1.000 elementos */
+])
+const selectedId = (ref < number) | (null > null)
+</script>" />
+
     </div>
   </div>
 </template>
@@ -102,7 +111,6 @@ Cuando cambia `selectedId`, solo dos elementos se re-renderizan: el que estaba s
 ```
 
 <PlaygroundLink code="<template>
-
   <div
     v-for=&quot;item in items&quot;
     :key=&quot;item.id&quot;
@@ -113,6 +121,9 @@ Cuando cambia `selectedId`, solo dos elementos se re-renderizan: el que estaba s
       :selected=&quot;item.id === selectedId&quot;
       :editing=&quot;item.id === editingId&quot;
     />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -129,8 +140,7 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 ```
 
 <PlaygroundLink code="<div v-for=&quot;item in staticList&quot; :key=&quot;item.id&quot; v-memo=&quot;[]&quot;>
-{{ item.name }}
-
+  {{ item.name }}
 </div>" />
 
 ## Cuándo NO usarlos
@@ -153,7 +163,6 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Error: count nunca se actualizará en la interfaz -->
   <div v-once>
     <span>Count: {{ count }}</span>
@@ -161,6 +170,11 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 &#10;  <!-- Error: v-model dentro de un subárbol memoizado no funcionará correctamente -->
   <div v-memo=&quot;[selected]&quot;>
     <input v-model=&quot;item.name&quot; />
+  </div>
+&#10;  <!-- Innecesario: el coste de la memoización supera al del re-render de un <span> -->
+  <span v-once>{{ label }}</span>
+</template>" />
+
   </div>
 &#10;  <!-- Innecesario: el coste de la memoización supera al del re-render de un <span> -->
   <span v-once>{{ label }}</span>

@@ -34,6 +34,8 @@ const inputRef = ref<HTMLInputElement | null>(null)
   <input ref=&quot;inputRef&quot; />
 </template>" />
 
+</template>" />
+
 The type is `HTMLInputElement | null` because the ref is `null` during setup and becomes the element only after the component mounts.
 
 ## useTemplateRef (Vue 3.5+)
@@ -62,6 +64,8 @@ const input = useTemplateRef<HTMLInputElement>('my-input')
 </script>
 &#10;<template>
   <input ref=&quot;my-input&quot; />
+</template>" />
+
 </template>" />
 
 The string `'my-input'` matches the `ref` attribute in the template. The variable name `input` is independent.
@@ -97,6 +101,8 @@ import ChildForm from './ChildForm.vue'
   <ChildForm ref=&quot;formRef&quot; />
 </template>" />
 
+</template>" />
+
 The child must expose the method with `defineExpose`:
 
 ```vue
@@ -112,7 +118,6 @@ defineExpose({ validate })
 ```
 
 <PlaygroundLink code="<!-- ChildForm.vue -->
-
 <script setup lang=&quot;ts&quot;>
 function validate() {
   // validation logic
@@ -148,13 +153,12 @@ watch(modalRef, (el) => {
 const showModal = ref(false)
 const modalRef = ref<HTMLDivElement | null>(null)
 &#10;watch(modalRef, (el) => {
-if (el) {
-el.focus() // element just mounted
-}
+  if (el) {
+    el.focus() // element just mounted
+  }
 })
 </script>
 &#10;<template>
-
   <div v-if=&quot;showModal&quot; ref=&quot;modalRef&quot; tabindex=&quot;-1&quot;>Modal content</div>
 </template>" />
 
@@ -195,11 +199,10 @@ onMounted(() => {
 const items = ref(['a', 'b', 'c'])
 const itemRefs = ref<(HTMLLIElement | null)[]>([])
 &#10;onMounted(() => {
-itemRefs.value[0]?.focus()
+  itemRefs.value[0]?.focus()
 })
 </script>
 &#10;<template>
-
   <ul>
     <li
       v-for=&quot;(item, index) in items&quot;

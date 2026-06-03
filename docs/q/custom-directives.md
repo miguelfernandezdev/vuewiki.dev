@@ -37,6 +37,8 @@ const vFocus = {
   <input v-focus />
 </template>" />
 
+</template>" />
+
 In `<script setup>`, any variable starting with `v` followed by an uppercase letter is automatically available as a directive in the template.
 
 ## Function shorthand
@@ -58,6 +60,8 @@ const vFocus = (el: HTMLElement) => el.focus()
 </script>
 &#10;<template>
   <input v-focus />
+</template>" />
+
 </template>" />
 
 ## Directive hooks
@@ -109,19 +113,18 @@ const vHighlight = {
 
 <PlaygroundLink code="<script setup>
 const vHighlight = {
-mounted(el: HTMLElement, binding) {
-const color = binding.value || 'yellow'
-const isBold = binding.modifiers.bold
-&#10; el.style.backgroundColor = color
-if (isBold) el.style.fontWeight = 'bold'
-},
-updated(el: HTMLElement, binding) {
-el.style.backgroundColor = binding.value || 'yellow'
-}
+  mounted(el: HTMLElement, binding) {
+    const color = binding.value || 'yellow'
+    const isBold = binding.modifiers.bold
+&#10;    el.style.backgroundColor = color
+    if (isBold) el.style.fontWeight = 'bold'
+  },
+  updated(el: HTMLElement, binding) {
+    el.style.backgroundColor = binding.value || 'yellow'
+  }
 }
 </script>
 &#10;<template>
-
   <p v-highlight=&quot;'lightblue'&quot;>Highlighted</p>
   <p v-highlight.bold=&quot;'pink'&quot;>Bold and highlighted</p>
 </template>" />

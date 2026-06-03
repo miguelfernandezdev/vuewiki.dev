@@ -67,16 +67,20 @@ import { ref, computed } from 'vue'
 &#10;const price = ref(100)
 const taxRate = ref(0.21)
 &#10;const priceWithTax = computed({
-get: () => price.value \* (1 + taxRate.value),
-set: (total: number) => {
-price.value = total / (1 + taxRate.value)
-}
+  get: () => price.value * (1 + taxRate.value),
+  set: (total: number) => {
+    price.value = total / (1 + taxRate.value)
+  }
 })
 </script>
 &#10;<template>
-<label>
-Price (with tax):
-<input v-model.number=&quot;priceWithTax&quot; type=&quot;number&quot; />
+  <label>
+    Price (with tax):
+    <input v-model.number=&quot;priceWithTax&quot; type=&quot;number&quot; />
+  </label>
+  <p>Base price: {{ price.toFixed(2) }}</p>
+</template>" />
+
 </label>
 
   <p>Base price: {{ price.toFixed(2) }}</p>

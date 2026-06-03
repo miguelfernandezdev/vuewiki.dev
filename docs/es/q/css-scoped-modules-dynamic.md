@@ -48,7 +48,6 @@ CSS Modules hace hash de los nombres de clase en tiempo de compilación. Los enl
 ```
 
 <PlaygroundLink code="<template>
-
   <h1 :class=&quot;$style.title&quot;>Hello</h1>
 </template>
 &#10;<style module>
@@ -86,7 +85,6 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Sintaxis de objeto: la clave es el nombre de clase, el valor es la condición -->
   <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
 &#10;  <!-- Sintaxis de array: combina varias fuentes -->
@@ -114,7 +112,6 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Sintaxis de objeto -->
   <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
 &#10;  <!-- Sintaxis de array: combina varios objetos de estilo -->

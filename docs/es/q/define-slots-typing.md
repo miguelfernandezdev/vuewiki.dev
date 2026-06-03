@@ -37,7 +37,6 @@ defineSlots<{
 ```
 
 <PlaygroundLink code="<!-- DataList.vue -->
-
 <script setup lang=&quot;ts&quot;>
 interface Item {
   id: number
@@ -49,12 +48,15 @@ interface Item {
   empty(): any
 }>()
 </script>
-
 &#10;<template>
-
   <ul v-if=&quot;items.length&quot;>
     <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot;>
       <slot :item=&quot;item&quot; :index=&quot;index&quot; />
+    </li>
+  </ul>
+  <slot v-else name=&quot;empty&quot; />
+</template>" />
+
     </li>
   </ul>
   <slot v-else name=&quot;empty&quot; />
@@ -76,15 +78,13 @@ Ahora cuando un padre usa este componente, las props del slot tienen tipo:
 ```
 
 <PlaygroundLink code="<DataList :items=&quot;products&quot;>
-
   <!-- 'item' tiene tipo Item, 'index' tiene tipo number -->
-
-<template #default=&quot;{ item, index }&quot;>
-<span>{{ index + 1 }}. {{ item.label }}</span>
-</template>
-&#10; <template #empty>
-<p>No items found.</p>
-</template>
+  <template #default=&quot;{ item, index }&quot;>
+    <span>{{ index + 1 }}. {{ item.label }}</span>
+  </template>
+&#10;  <template #empty>
+    <p>No items found.</p>
+  </template>
 </DataList>" />
 
 ## Sintaxis
@@ -159,7 +159,6 @@ defineSlots<{
 ```
 
 <PlaygroundLink code="<!-- DataTable.vue -->
-
 <script setup lang=&quot;ts&quot; generic=&quot;T extends { id: string | number }&quot;>
 defineProps<{
   rows: T[]
@@ -171,9 +170,7 @@ defineProps<{
   empty(): any
 }>()
 </script>
-
 &#10;<template>
-
   <table>
     <thead>
       <slot name=&quot;header&quot; :columns=&quot;columns&quot;>
@@ -238,16 +235,25 @@ defineSlots<{
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 defineSlots<{
-header(): any
-default(): any
-footer(): any
+  header(): any
+  default(): any
+  footer(): any
 }>()
 </script>
 &#10;<template>
-
   <div class=&quot;card&quot;>
     <header v-if=&quot;$slots.header&quot; class=&quot;card-header&quot;>
       <slot name=&quot;header&quot; />
+    </header>
+    <div class=&quot;card-body&quot;>
+      <slot />
+    </div>
+    <footer v-if=&quot;$slots.footer&quot; class=&quot;card-footer&quot;>
+      <slot name=&quot;footer&quot; />
+    </footer>
+  </div>
+</template>" />
+
     </header>
     <div class=&quot;card-body&quot;>
       <slot />

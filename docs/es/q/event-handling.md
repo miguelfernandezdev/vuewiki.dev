@@ -63,28 +63,26 @@ function log(msg: string, event: MouseEvent) {
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Inline: la expresión se evalúa directamente -->
-
-<button @click=&quot;count++&quot;>+1</button>
-&#10; <!-- Método: referencia a una función -->
-<button @click=&quot;increment&quot;>+1</button>
-&#10; <!-- Método con argumentos -->
-<button @click=&quot;addAmount(5)&quot;>+5</button>
-&#10; <!-- Acceder al evento nativo junto con argumentos personalizados -->
-<button @click=&quot;log('clicked', $event)&quot;>Log</button>
+  <button @click=&quot;count++&quot;>+1</button>
+&#10;  <!-- Método: referencia a una función -->
+  <button @click=&quot;increment&quot;>+1</button>
+&#10;  <!-- Método con argumentos -->
+  <button @click=&quot;addAmount(5)&quot;>+5</button>
+&#10;  <!-- Acceder al evento nativo junto con argumentos personalizados -->
+  <button @click=&quot;log('clicked', $event)&quot;>Log</button>
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
 const count = ref(0)
 &#10;function increment() {
-count.value++
+  count.value++
 }
 &#10;function addAmount(n: number) {
-count.value += n
+  count.value += n
 }
 &#10;function log(msg: string, event: MouseEvent) {
-console.log(msg, event.target)
+  console.log(msg, event.target)
 }
 </script>" />
 
@@ -114,7 +112,6 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Prevenir el comportamiento predeterminado del navegador -->
   <form @submit.prevent=&quot;onSubmit&quot;>...</form>
 &#10;  <!-- Detener la propagación a elementos padre -->
@@ -147,10 +144,16 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Teclas específicas -->
+  <input @keyup.enter=&quot;submit&quot; />
+  <input @keyup.escape=&quot;cancel&quot; />
+&#10;  <!-- Teclas modificadoras del sistema -->
+  <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
+  <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
+&#10;  <!-- .exact: solo disparar cuando estén presionados EXACTAMENTE estos modificadores -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
+</template>" />
 
-<input @keyup.enter=&quot;submit&quot; />
 <input @keyup.escape=&quot;cancel&quot; />
 &#10; <!-- Teclas modificadoras del sistema -->
 <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
@@ -171,7 +174,6 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 ```
 
 <PlaygroundLink code="<template>
-
   <div @click.left=&quot;onLeftClick&quot;>Left click</div>
   <div @click.right.prevent=&quot;onRightClick&quot;>Right click (no context menu)</div>
   <div @click.middle=&quot;onMiddleClick&quot;>Middle click</div>

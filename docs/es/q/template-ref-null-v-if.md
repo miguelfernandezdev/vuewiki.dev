@@ -36,6 +36,9 @@ const showInput = ref(true)
   <button @click=&quot;showInput = !showInput&quot;>Alternar</button>
 </template>" />
 
+  <button @click=&quot;showInput = !showInput&quot;>Alternar</button>
+</template>" />
+
 Cuando `showInput` se vuelve `false`, Vue elimina el `<input>` del DOM y establece `inputEl.value` a `null`. El `watchEffect` se vuelve a ejecutar y falla.
 
 ## Cómo solucionarlo
@@ -90,6 +93,8 @@ const input = useTemplateRef<HTMLInputElement>('my-input')
 </script>
 &#10;<template>
   <input v-if=&quot;showInput&quot; ref=&quot;my-input&quot; />
+</template>" />
+
 </template>" />
 
 La comprobación de null sigue siendo necesaria, pero el tipado y el nombre son más explícitos.

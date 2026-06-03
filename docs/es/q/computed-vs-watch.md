@@ -38,7 +38,6 @@ const lastName = ref('García')
 // Se recalcula solo cuando firstName o lastName cambian
 </script>
 &#10;<template>
-
   <p>{{ fullName }}</p>
 </template>" />
 

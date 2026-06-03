@@ -47,6 +47,8 @@ const currentTab = shallowRef(TabHome)
   <component :is=&quot;currentTab&quot; />
 </template>" />
 
+</template>" />
+
 Without `KeepAlive`, any local state in `TabSettings` (form inputs, scroll position, expanded sections) resets every time you switch away and back.
 
 ## Adding KeepAlive
@@ -64,6 +66,9 @@ Wrap `<component>` in `<KeepAlive>` to cache instances instead of destroying the
 <PlaygroundLink code="<template>
   <KeepAlive>
     <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+</template>" />
+
   </KeepAlive>
 </template>" />
 
@@ -93,10 +98,20 @@ Use `include`, `exclude`, and `max` to limit caching.
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Only cache these two -->
   <KeepAlive include=&quot;TabHome,TabSettings&quot;>
     <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+&#10;  <!-- Cache everything except this one -->
+  <KeepAlive exclude=&quot;TabProfile&quot;>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+&#10;  <!-- Cache at most 5 instances (LRU eviction) -->
+  <KeepAlive :max=&quot;5&quot;>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+</template>" />
+
   </KeepAlive>
 &#10;  <!-- Cache everything except this one -->
   <KeepAlive exclude=&quot;TabProfile&quot;>
@@ -176,6 +191,10 @@ onMounted → onActivated → (user switches away) → onDeactivated
   <router-view v-slot=&quot;{ Component, route }&quot;>
     <KeepAlive>
       <component :is=&quot;Component&quot; :key=&quot;route.fullPath&quot; />
+    </KeepAlive>
+  </router-view>
+</template>" />
+
     </KeepAlive>
   </router-view>
 </template>" />

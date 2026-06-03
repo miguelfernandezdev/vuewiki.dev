@@ -22,10 +22,12 @@ Both hide and show elements based on a condition, but they do it in completely d
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-if=&quot;showPanel&quot;>
     <!-- This entire component is destroyed when showPanel is false -->
     <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -45,10 +47,12 @@ This means toggling `v-if` is expensive: Vue has to tear down and rebuild the DO
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-show=&quot;showPanel&quot;>
     <!-- Always in the DOM, just hidden via CSS when showPanel is false -->
     <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 

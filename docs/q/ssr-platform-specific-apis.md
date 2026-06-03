@@ -125,6 +125,12 @@ Wrap browser-only components so they render only on the client:
   </ClientOnly>
 </template>" />
 
+    <template #fallback>
+      <div class=&quot;skeleton&quot; />
+    </template>
+  </ClientOnly>
+</template>" />
+
 The `#fallback` slot renders during SSR so the layout doesn't shift when the component loads.
 
 ## Solution 5: dynamic import for browser-only libraries
@@ -153,6 +159,9 @@ const MapView = defineAsyncComponent(() =>
 &#10;<template>
   <ClientOnly>
     <MapView :center=&quot;[40, -3]&quot; />
+  </ClientOnly>
+</template>" />
+
   </ClientOnly>
 </template>" />
 

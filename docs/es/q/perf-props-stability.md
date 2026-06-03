@@ -30,21 +30,21 @@ const activeId = (ref < number) | (null > null)
 ```
 
 <PlaygroundLink code="<!-- Parent -->
-
 <script setup>
 const items = ref([
   /* 100 items */
 ])
 const activeId = (ref < number) | (null > null)
 </script>
-
 &#10;<template>
-<ListItem
-v-for=&quot;item in items&quot;
-:key=&quot;item.id&quot;
-:id=&quot;item.id&quot;
-:active-id=&quot;activeId&quot;
-/>
+  <ListItem
+    v-for=&quot;item in items&quot;
+    :key=&quot;item.id&quot;
+    :id=&quot;item.id&quot;
+    :active-id=&quot;activeId&quot;
+  />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -59,13 +59,10 @@ const props = defineProps<{ id: number; activeId: number | null }>()
 ```
 
 <PlaygroundLink code="<!-- ListItem.vue -->
-
 <script setup>
 const props = defineProps<{ id: number; activeId: number | null }>()
 </script>
-
 &#10;<template>
-
   <div :class=&quot;{ active: id === activeId }&quot;>{{ id }}</div>
 </template>" />
 
@@ -95,6 +92,8 @@ Cuando `activeId` cambia de 1 a 2, la prop `activeId` cambia para los 100 elemen
   />
 </template>" />
 
+</template>" />
+
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -107,13 +106,10 @@ defineProps<{ id: number; active: boolean }>()
 ```
 
 <PlaygroundLink code="<!-- ListItem.vue -->
-
 <script setup>
 defineProps<{ id: number; active: boolean }>()
 </script>
-
 &#10;<template>
-
   <div :class=&quot;{ active }&quot;>{{ id }}</div>
 </template>" />
 
@@ -150,6 +146,13 @@ Ahora cuando `activeId` cambia de 1 a 2:
   :selected=&quot;selectedIds.has(item.id)&quot;
 />" />
 
+&#10;<!-- BIEN: solo los elementos afectados se re-renderizan -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :selected=&quot;selectedIds.has(item.id)&quot;
+/>" />
+
 **Pasar la longitud de la lista o el índice:**
 
 ```vue
@@ -176,6 +179,13 @@ Ahora cuando `activeId` cambia de 1 a 2:
   :index=&quot;index&quot;
   :total=&quot;items.length&quot;
 />
+&#10;<!-- BIEN: pasar solo lo que el hijo realmente necesita -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :is-last=&quot;item === items[items.length - 1]&quot;
+/>" />
+
 &#10;<!-- BIEN: pasar solo lo que el hijo realmente necesita -->
 <Item
   v-for=&quot;item in items&quot;

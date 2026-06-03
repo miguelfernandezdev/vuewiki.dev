@@ -31,7 +31,6 @@ const items = ref([
 ```
 
 <PlaygroundLink code="<template>
-
   <ul>
     <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
       {{ item.name }}
@@ -56,8 +55,7 @@ El segundo argumento te da el índice:
 ```
 
 <PlaygroundLink code="<li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot;>
-{{ index }}. {{ item.name }}
-
+  {{ index }}. {{ item.name }}
 </li>" />
 
 ## Objetos
@@ -75,7 +73,6 @@ const user = { name: 'Ana', role: 'Dev', level: 'Senior' }
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-for=&quot;(value, key, index) in user&quot; :key=&quot;key&quot;>
     {{ index }}. {{ key }}: {{ value }}
   </div>
@@ -107,7 +104,6 @@ Sin `:key`, Vue reutiliza los elementos del DOM por posición. Esto falla cuando
 ```
 
 <PlaygroundLink code="<!-- Incorrecto: el índice como key tiene el mismo problema que ninguna key al reordenar -->
-
 <li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>...</li>
 &#10;<!-- Correcto: identificador único y estable -->
 <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>...</li>" />
@@ -128,7 +124,6 @@ Cuando necesitas renderizar varios elementos por iteración sin un wrapper:
 ```
 
 <PlaygroundLink code="<template>
-
   <ul>
     <template v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
       <li>{{ item.name }}</li>
@@ -157,6 +152,8 @@ Cuando necesitas renderizar varios elementos por iteración sin un wrapper:
     :user=&quot;user&quot;
     @remove=&quot;removeUser(user.id)&quot;
   />
+</template>" />
+
 </template>" />
 
 Las props no se inyectan automáticamente desde la iteración. Tienes que enlazarlas explícitamente.

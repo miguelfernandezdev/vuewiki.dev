@@ -61,7 +61,6 @@ Un desajuste ocurre cuando el HTML que el cliente renderizaría difiere del que 
 ```
 
 <PlaygroundLink code="<!-- El servidor envía esto -->
-
 <p><div>Content</div></p>
 &#10;<!-- El navegador lo corrige a esto -->
 <p></p>
@@ -79,10 +78,8 @@ Un desajuste ocurre cuando el HTML que el cliente renderizaría difiere del que 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Servidor: &quot;6/1/2026&quot; — Cliente: &quot;01/06/2026&quot; (configuración regional diferente) -->
-
-<span>{{ new Date().toLocaleDateString() }}</span>
+  <span>{{ new Date().toLocaleDateString() }}</span>
 </template>" />
 
 **APIs solo del navegador usadas durante SSR.** Acceder a `window.innerWidth` en el servidor devuelve `undefined`, pero devuelve un número en el cliente.
@@ -131,6 +128,12 @@ const now = ref('')
 <PlaygroundLink code="<template>
   <ClientOnly>
     <BrowserOnlyChart />
+    <template #fallback>
+      <p>Loading chart...</p>
+    </template>
+  </ClientOnly>
+</template>" />
+
     <template #fallback>
       <p>Loading chart...</p>
     </template>
@@ -190,6 +193,11 @@ Nuxt permite diferir la hidratación de componentes específicos para reducir el
 
 <PlaygroundLink code="<template>
   <LazyComments hydrate-on-visible />
+  <LazyAnalytics hydrate-on-idle />
+  <LazyDropdown hydrate-on-interaction />
+  <LazyStaticFooter hydrate-never />
+</template>" />
+
   <LazyAnalytics hydrate-on-idle />
   <LazyDropdown hydrate-on-interaction />
   <LazyStaticFooter hydrate-never />

@@ -62,7 +62,6 @@ function retry() {
 ```
 
 <PlaygroundLink code="<!-- components/ErrorBoundary.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const error = ref<Error | null>(null)
 &#10;onErrorCaptured((err) => {
@@ -73,15 +72,15 @@ const error = ref<Error | null>(null)
   error.value = null
 }
 </script>
-
 &#10;<template>
-
   <div v-if=&quot;error&quot; class=&quot;error-state&quot;>
     <h3>Algo salió mal</h3>
     <p>{{ error.message }}</p>
     <button @click=&quot;retry&quot;>Intentar de nuevo</button>
   </div>
   <slot v-else />
+</template>" />
+
 </template>" />
 
 Envuelve las secciones de tu app que pueden fallar:
@@ -98,6 +97,12 @@ Envuelve las secciones de tu app que pueden fallar:
 
 <PlaygroundLink code="<template>
   <AppHeader />
+  <ErrorBoundary>
+    <RouterView />
+  </ErrorBoundary>
+  <AppFooter />
+</template>" />
+
   <ErrorBoundary>
     <RouterView />
   </ErrorBoundary>
@@ -146,20 +151,19 @@ async function submitForm(data: FormData) {
 const error = ref<string | null>(null)
 const isLoading = ref(false)
 &#10;async function submitForm(data: FormData) {
-error.value = null
-isLoading.value = true
-try {
-await $fetch('/api/submit', { method: 'POST', body: data })
-navigateTo('/success')
-} catch (e) {
-error.value = e instanceof Error ? e.message : 'Algo salió mal'
-} finally {
-isLoading.value = false
-}
+  error.value = null
+  isLoading.value = true
+  try {
+    await $fetch('/api/submit', { method: 'POST', body: data })
+    navigateTo('/success')
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : 'Algo salió mal'
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 &#10;<template>
-
   <div v-if=&quot;error&quot; class=&quot;alert-error&quot;>{{ error }}</div>
   <form @submit.prevent=&quot;submitForm&quot;>...</form>
 </template>" />
@@ -240,16 +244,13 @@ function goHome() {
 ```
 
 <PlaygroundLink code="<!-- error.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const props = defineProps<{ error: { statusCode: number; message: string } }>()
 &#10;function goHome() {
   clearError({ redirect: '/' })
 }
 </script>
-
 &#10;<template>
-
   <div class=&quot;error-page&quot;>
     <h1>{{ error.statusCode }}</h1>
     <p>{{ error.message }}</p>
@@ -281,6 +282,13 @@ throw createError({ statusCode: 404, statusMessage: 'Página no encontrada' })
 <PlaygroundLink code="<template>
   <NuxtErrorBoundary>
     <SomeRiskyComponent />
+    <template #error=&quot;{ error, clearError }&quot;>
+      <p>{{ error.message }}</p>
+      <button @click=&quot;clearError&quot;>Reintentar</button>
+    </template>
+  </NuxtErrorBoundary>
+</template>" />
+
     <template #error=&quot;{ error, clearError }&quot;>
       <p>{{ error.message }}</p>
       <button @click=&quot;clearError&quot;>Reintentar</button>

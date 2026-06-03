@@ -54,7 +54,6 @@ provide('tabs', {
 ```
 
 <PlaygroundLink code="<!-- components/Tabs.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const activeTab = ref(0)
 const tabs = ref<string[]>([])
@@ -71,9 +70,7 @@ const tabs = ref<string[]>([])
   select
 })
 </script>
-
 &#10;<template>
-
   <div class=&quot;tabs&quot;>
     <div class=&quot;tabs-header&quot;>
       <button
@@ -87,6 +84,10 @@ const tabs = ref<string[]>([])
     </div>
     <div class=&quot;tabs-body&quot;>
       <slot />
+    </div>
+  </div>
+</template>" />
+
     </div>
   </div>
 </template>" />
@@ -110,18 +111,18 @@ const isActive = computed(() => activeTab.value === index)
 ```
 
 <PlaygroundLink code="<!-- components/Tab.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const props = defineProps<{ label: string }>()
 &#10;const { activeTab, register } = inject('tabs')!
 const index = register(props.label)
 &#10;const isActive = computed(() => activeTab.value === index)
 </script>
-
 &#10;<template>
-
   <div v-show=&quot;isActive&quot;>
     <slot />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -147,6 +148,16 @@ const index = register(props.label)
   <Tabs>
     <Tab label=&quot;Profile&quot;>
       <UserProfile />
+    </Tab>
+    <Tab label=&quot;Settings&quot;>
+      <UserSettings />
+    </Tab>
+    <Tab label=&quot;Billing&quot;>
+      <BillingInfo />
+    </Tab>
+  </Tabs>
+</template>" />
+
     </Tab>
     <Tab label=&quot;Settings&quot;>
       <UserSettings />
@@ -185,7 +196,6 @@ provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
 ```
 
 <PlaygroundLink code="<!-- Tabs.vue -->
-
 <script setup>
 import { TABS_KEY } from '@/composables/useTabs'
 provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
@@ -201,7 +211,6 @@ if (!ctx) throw new Error('Tab must be used inside Tabs')
 ```
 
 <PlaygroundLink code="<!-- Tab.vue -->
-
 <script setup>
 import { TABS_KEY } from '@/composables/useTabs'
 const ctx = inject(TABS_KEY)
@@ -238,7 +247,6 @@ provide('accordion', { toggle, isOpen })
 ```
 
 <PlaygroundLink code="<!-- components/Accordion.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const openItems = ref<Set<string>>(new Set())
 &#10;function toggle(id: string) {
@@ -253,11 +261,12 @@ const openItems = ref<Set<string>>(new Set())
 }
 &#10;provide('accordion', { toggle, isOpen })
 </script>
-
 &#10;<template>
-
   <div class=&quot;accordion&quot;>
     <slot />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -282,14 +291,11 @@ const { toggle, isOpen } = inject('accordion')!
 ```
 
 <PlaygroundLink code="<!-- components/AccordionItem.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const props = defineProps<{ id: string; title: string }>()
 const { toggle, isOpen } = inject('accordion')!
 </script>
-
 &#10;<template>
-
   <div class=&quot;accordion-item&quot;>
     <button @click=&quot;toggle(id)&quot;>
       {{ title }}
@@ -297,6 +303,10 @@ const { toggle, isOpen } = inject('accordion')!
     </button>
     <div v-show=&quot;isOpen(id)&quot;>
       <slot />
+    </div>
+  </div>
+</template>" />
+
     </div>
   </div>
 </template>" />
@@ -361,6 +371,12 @@ The props-only approach passes all data to a single component:
     { label: 'Settings', content: '...' }
   ]&quot;
 />
+&#10;<!-- Compound: more flexible, consumer controls layout -->
+<Tabs>
+  <Tab label=&quot;Profile&quot;><UserProfile /></Tab>
+  <Tab label=&quot;Settings&quot;><UserSettings /></Tab>
+</Tabs>" />
+
 &#10;<!-- Compound: more flexible, consumer controls layout -->
 <Tabs>
   <Tab label=&quot;Profile&quot;><UserProfile /></Tab>

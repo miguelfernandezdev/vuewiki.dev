@@ -63,28 +63,26 @@ function log(msg: string, event: MouseEvent) {
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Inline: expression evaluated directly -->
-
-<button @click=&quot;count++&quot;>+1</button>
-&#10; <!-- Method: reference to a function -->
-<button @click=&quot;increment&quot;>+1</button>
-&#10; <!-- Method with arguments -->
-<button @click=&quot;addAmount(5)&quot;>+5</button>
-&#10; <!-- Access the native event alongside custom args -->
-<button @click=&quot;log('clicked', $event)&quot;>Log</button>
+  <button @click=&quot;count++&quot;>+1</button>
+&#10;  <!-- Method: reference to a function -->
+  <button @click=&quot;increment&quot;>+1</button>
+&#10;  <!-- Method with arguments -->
+  <button @click=&quot;addAmount(5)&quot;>+5</button>
+&#10;  <!-- Access the native event alongside custom args -->
+  <button @click=&quot;log('clicked', $event)&quot;>Log</button>
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
 const count = ref(0)
 &#10;function increment() {
-count.value++
+  count.value++
 }
 &#10;function addAmount(n: number) {
-count.value += n
+  count.value += n
 }
 &#10;function log(msg: string, event: MouseEvent) {
-console.log(msg, event.target)
+  console.log(msg, event.target)
 }
 </script>" />
 
@@ -114,7 +112,6 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Prevent default browser behavior -->
   <form @submit.prevent=&quot;onSubmit&quot;>...</form>
 &#10;  <!-- Stop propagation to parent elements -->
@@ -147,10 +144,16 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Specific keys -->
+  <input @keyup.enter=&quot;submit&quot; />
+  <input @keyup.escape=&quot;cancel&quot; />
+&#10;  <!-- System modifier keys -->
+  <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
+  <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
+&#10;  <!-- .exact: only fire when EXACTLY these modifiers are pressed -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
+</template>" />
 
-<input @keyup.enter=&quot;submit&quot; />
 <input @keyup.escape=&quot;cancel&quot; />
 &#10; <!-- System modifier keys -->
 <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
@@ -171,7 +174,6 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 ```
 
 <PlaygroundLink code="<template>
-
   <div @click.left=&quot;onLeftClick&quot;>Left click</div>
   <div @click.right.prevent=&quot;onRightClick&quot;>Right click (no context menu)</div>
   <div @click.middle=&quot;onMiddleClick&quot;>Middle click</div>

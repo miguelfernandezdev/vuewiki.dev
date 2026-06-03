@@ -48,7 +48,6 @@ CSS Modules hash class names at build time. You bind them via `$style` instead o
 ```
 
 <PlaygroundLink code="<template>
-
   <h1 :class=&quot;$style.title&quot;>Hello</h1>
 </template>
 &#10;<style module>
@@ -86,7 +85,6 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Object syntax: key is class name, value is condition -->
   <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
 &#10;  <!-- Array syntax: combine multiple sources -->
@@ -114,7 +112,6 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Object syntax -->
   <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
 &#10;  <!-- Array syntax: merges multiple style objects -->

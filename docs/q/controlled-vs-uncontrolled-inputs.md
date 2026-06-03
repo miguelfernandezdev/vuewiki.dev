@@ -28,7 +28,9 @@ import { ref } from 'vue'
 &#10;const name = ref('')
 </script>
 &#10;<template>
-<input v-model=&quot;name&quot; />
+  <input v-model=&quot;name&quot; />
+  <p>Current value: {{ name }}</p>
+</template>" />
 
   <p>Current value: {{ name }}</p>
 </template>" />
@@ -65,6 +67,9 @@ import { useTemplateRef } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;name-input&quot; />
+  <button @click=&quot;handleSubmit&quot;>Submit</button>
+</template>" />
+
   <button @click=&quot;handleSubmit&quot;>Submit</button>
 </template>" />
 
@@ -109,9 +114,10 @@ Uncontrolled inputs use the HTML `value` attribute:
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Updates only when the user leaves the field after changing it -->
   <input v-model.lazy=&quot;search&quot; />
+</template>" />
+
 </template>" />
 
 This avoids re-rendering on every keystroke while still keeping the value in reactive state.

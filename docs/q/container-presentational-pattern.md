@@ -37,7 +37,6 @@ defineEmits<{
 ```
 
 <PlaygroundLink code="<!-- components/UserCard.vue -->
-
 <script setup lang=&quot;ts&quot;>
 defineProps<{
   name: string
@@ -49,11 +48,16 @@ defineProps<{
   delete: []
 }>()
 </script>
-
 &#10;<template>
-
   <div class=&quot;user-card&quot;>
     <img :src=&quot;avatar&quot; :alt=&quot;name&quot; />
+    <h3>{{ name }}</h3>
+    <p>{{ email }}</p>
+    <button @click=&quot;$emit('edit')&quot;>Edit</button>
+    <button @click=&quot;$emit('delete')&quot;>Delete</button>
+  </div>
+</template>" />
+
     <h3>{{ name }}</h3>
     <p>{{ email }}</p>
     <button @click=&quot;$emit('edit')&quot;>Edit</button>
@@ -97,7 +101,6 @@ function handleEdit(userId: string) {
 ```
 
 <PlaygroundLink code="<!-- views/UserListView.vue -->
-
 <script setup lang=&quot;ts&quot;>
 const { data: users, refresh } = await useFetch('/api/users')
 &#10;async function handleDelete(userId: string) {
@@ -108,9 +111,7 @@ const { data: users, refresh } = await useFetch('/api/users')
   navigateTo(`/users/${userId}/edit`)
 }
 </script>
-
 &#10;<template>
-
   <div>
     <h1>Users</h1>
     <UserCard
@@ -122,6 +123,9 @@ const { data: users, refresh } = await useFetch('/api/users')
       @edit=&quot;handleEdit(user.id)&quot;
       @delete=&quot;handleDelete(user.id)&quot;
     />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -170,18 +174,18 @@ const { users, deleteUser } = useUsers()
 ```
 
 <PlaygroundLink code="<!-- views/UserListView.vue -->
-
 <script setup>
 const { users, deleteUser } = useUsers()
 </script>
-
 &#10;<template>
-<UserCard
-v-for=&quot;user in users&quot;
-:key=&quot;user.id&quot;
-v-bind=&quot;user&quot;
-@delete=&quot;deleteUser(user.id)&quot;
-/>
+  <UserCard
+    v-for=&quot;user in users&quot;
+    :key=&quot;user.id&quot;
+    v-bind=&quot;user&quot;
+    @delete=&quot;deleteUser(user.id)&quot;
+  />
+</template>" />
+
 </template>" />
 
 The page component is thinner because the composable owns the logic. The presentational component stays the same.

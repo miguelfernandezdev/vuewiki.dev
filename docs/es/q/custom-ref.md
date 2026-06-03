@@ -52,10 +52,12 @@ const searchQuery = useDebouncedRef('', 500)
 const searchQuery = useDebouncedRef('', 500)
 </script>
 &#10;<template>
-
   <!-- Escribir actualiza el valor interno inmediatamente,
        pero los watchers y computed solo se disparan tras 500ms sin actividad -->
   <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <p>Debounced value: {{ searchQuery }}</p>
+</template>" />
+
   <p>Debounced value: {{ searchQuery }}</p>
 </template>" />
 

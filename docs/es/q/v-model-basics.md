@@ -27,9 +27,18 @@ const text = ref('')
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Estas dos formas son equivalentes -->
   <input v-model=&quot;text&quot; />
+  <input
+    :value=&quot;text&quot;
+    @input=&quot;text = ($event.target as HTMLInputElement).value&quot;
+  />
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const text = ref('')
+</script>" />
+
   <input
     :value=&quot;text&quot;
     @input=&quot;text = ($event.target as HTMLInputElement).value&quot;
@@ -65,6 +74,9 @@ Distintos tipos de elementos usan diferentes pares prop/evento internamente:
 &#10;<!-- Equivalente a: -->
 <CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
 
+&#10;<!-- Equivalente a: -->
+<CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
+
 El componente recibe un prop `modelValue` y emite `update:modelValue`:
 
 ```vue
@@ -79,13 +91,13 @@ const model = defineModel<string>()
 ```
 
 <PlaygroundLink code="<!-- CustomInput.vue (Vue 3.4+ con defineModel) -->
-
 <script setup>
 const model = defineModel<string>()
 </script>
-
 &#10;<template>
-<input v-model=&quot;model&quot; />
+  <input v-model=&quot;model&quot; />
+</template>" />
+
 </template>" />
 
 ## Qué cambió respecto a Vue 2
@@ -107,6 +119,14 @@ En Vue 2, `v-model` usaba `value` + `input` y solo podías tener uno por compone
 
 <PlaygroundLink code="<!-- Vue 2 -->
 <MyDialog v-model=&quot;isOpen&quot; :title.sync=&quot;dialogTitle&quot; />
+&#10;<!-- Vue 2 internamente: -->
+<MyDialog
+  :value=&quot;isOpen&quot;
+  @input=&quot;isOpen = $event&quot;
+  :title=&quot;dialogTitle&quot;
+  @update:title=&quot;dialogTitle = $event&quot;
+/>" />
+
 &#10;<!-- Vue 2 internamente: -->
 <MyDialog
   :value=&quot;isOpen&quot;
@@ -140,6 +160,14 @@ En Vue 3, `.sync` fue eliminado. `v-model` ahora admite argumentos con nombre, p
   @update:title=&quot;dialogTitle = $event&quot;
 />" />
 
+&#10;<!-- Vue 3 internamente: -->
+<MyDialog
+  :modelValue=&quot;isOpen&quot;
+  @update:modelValue=&quot;isOpen = $event&quot;
+  :title=&quot;dialogTitle&quot;
+  @update:title=&quot;dialogTitle = $event&quot;
+/>" />
+
 ## Resumen de la migración
 
 | Vue 2                                        | Vue 3                                   |
@@ -164,6 +192,11 @@ Los modificadores integrados funcionan en elementos nativos:
 ```
 
 <PlaygroundLink code="<input v-model.lazy=&quot;msg&quot; />
+<!-- sincroniza en change, no en input -->
+<input v-model.number=&quot;age&quot; />
+<!-- convierte a número -->
+<input v-model.trim=&quot;name&quot; />
+<!-- elimina espacios en blanco -->" />
 
 <!-- sincroniza en change, no en input -->
 <input v-model.number=&quot;age&quot; />

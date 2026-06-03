@@ -37,7 +37,6 @@ defineEmits<{
 ```
 
 <PlaygroundLink code="<!-- GenericList.vue -->
-
 <script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
 defineProps<{
   items: T[]
@@ -47,9 +46,7 @@ defineProps<{
   select: [item: T]
 }>()
 </script>
-
 &#10;<template>
-
   <ul>
     <li
       v-for=&quot;(item, index) in items&quot;
@@ -57,6 +54,10 @@ defineProps<{
       @click=&quot;$emit('select', item)&quot;
     >
       <slot :item=&quot;item&quot; />
+    </li>
+  </ul>
+</template>" />
+
     </li>
   </ul>
 </template>" />
@@ -93,7 +94,6 @@ function onSelect(user: User) {
 ```
 
 <PlaygroundLink code="<!-- Parent.vue -->
-
 <script setup lang=&quot;ts&quot;>
 import { ref } from 'vue'
 &#10;interface User {
@@ -109,14 +109,13 @@ import { ref } from 'vue'
   console.log(user.name)
 }
 </script>
-
 &#10;<template>
-<GenericList :items=&quot;users&quot; @select=&quot;onSelect&quot;>
-<template #default=&quot;{ item }&quot;>
-<!-- item tiene tipo User -->
-{{ item.name }}
-</template>
-</GenericList>
+  <GenericList :items=&quot;users&quot; @select=&quot;onSelect&quot;>
+    <template #default=&quot;{ item }&quot;>
+      <!-- item tiene tipo User -->
+      {{ item.name }}
+    </template>
+  </GenericList>
 </template>" />
 
 TypeScript infiere `T = User` a partir de la prop `items`. El evento `select` y el `item` del slot tienen ambos tipo `User` automáticamente.
@@ -160,14 +159,16 @@ defineProps<{
 
 <PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T extends { id: number }&quot;>
 defineProps<{
-items: T[]
+  items: T[]
 }>()
 </script>
 &#10;<template>
-
   <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
     <!-- TypeScript sabe que item.id existe -->
     <slot :item=&quot;item&quot; />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 

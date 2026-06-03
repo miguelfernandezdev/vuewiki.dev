@@ -90,7 +90,6 @@ import { useI18n } from 'vue-i18n'
 &#10;const { t, locale } = useI18n()
 </script>
 &#10;<template>
-
   <p>{{ t('greeting', { name: 'Miguel' }) }}</p>
   <p>{{ t('items', 5) }}</p>
 &#10;  <nav>
@@ -125,7 +124,6 @@ vue-i18n uses pipe-separated forms: zero | one | many.
 ```
 
 <PlaygroundLink code="<p>{{ t('messages', 0) }}</p>
-
 <!-- No messages -->
 <p>{{ t('messages', 1) }}</p>
 <!-- 1 message -->
@@ -164,7 +162,6 @@ const i18n = createI18n({
 ```
 
 <PlaygroundLink code="<p>{{ d(new Date(), 'short') }}</p>
-
 <!-- Jun 1, 2026 / 1 jun 2026 -->
 <p>{{ n(99.99, 'currency') }}</p>
 <!-- $99.99 / 99,99 € -->" />
@@ -190,7 +187,6 @@ async function loadLocale(locale: string) {
 ```
 
 <PlaygroundLink code="<select @change=&quot;loadLocale(($event.target as HTMLSelectElement).value)&quot;>
-
   <option value=&quot;en&quot;>English</option>
   <option value=&quot;es&quot;>Español</option>
   <option value=&quot;fr&quot;>Français</option>

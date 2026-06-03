@@ -68,7 +68,6 @@ En Vue 2, cada componente necesitaba un único elemento raíz. Esto forzaba `<di
 
 <PlaygroundLink code="<!-- Vue 2: requería un único raíz -->
 <template>
-
   <div>
     <header>Header</header>
     <main>Content</main>
@@ -88,7 +87,6 @@ Vue 3 soporta **fragments**, es decir, múltiples elementos raíz sin wrapper:
 
 <PlaygroundLink code="<!-- Vue 3: múltiples raíces, sin wrapper necesario -->
 <template>
-
   <header>Header</header>
   <main>Content</main>
   <footer>Footer</footer>
@@ -117,6 +115,13 @@ Un detalle: los [atributos fallthrough](/es/q/fallthrough-attrs) no funcionan au
   <Suspense>
     <template #default>
       <UserDashboard />
+    </template>
+    <template #fallback>
+      <LoadingSpinner />
+    </template>
+  </Suspense>
+</template>" />
+
     </template>
     <template #fallback>
       <LoadingSpinner />

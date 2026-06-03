@@ -19,7 +19,6 @@ En **Vue 2**, `v-for` se ejecuta primero. En **Vue 3**, `v-if` se ejecuta primer
 ```
 
 <PlaygroundLink code="<!-- Vue 2: itera todos los usuarios, luego filtra por isActive (funciona pero es ineficiente) -->
-
 <!-- Vue 3: comprueba user.isActive ANTES del bucle, pero user aún no existe → error -->
 <li v-for=&quot;user in users&quot; v-if=&quot;user.isActive&quot; :key=&quot;user.id&quot;>
   {{ user.name }}
@@ -45,7 +44,6 @@ const activeUsers = computed(() => props.users.filter((user) => user.isActive))
 const activeUsers = computed(() => props.users.filter((user) => user.isActive))
 </script>
 &#10;<template>
-
   <li v-for=&quot;user in activeUsers&quot; :key=&quot;user.id&quot;>
     {{ user.name }}
   </li>
@@ -66,7 +64,6 @@ Envuelve con `<template v-if>`:
 ```
 
 <PlaygroundLink code="<template v-if=&quot;shouldShowList&quot;>
-
   <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
     {{ user.name }}
   </li>
@@ -85,7 +82,6 @@ Usa `<template v-for>` con `v-if` en un elemento hijo:
 ```
 
 <PlaygroundLink code="<template v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
-
   <li v-if=&quot;user.isActive&quot;>
     {{ user.name }}
   </li>

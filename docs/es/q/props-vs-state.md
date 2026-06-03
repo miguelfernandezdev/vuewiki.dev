@@ -31,6 +31,13 @@ const userName = ref('Ana')
 const userRole = ref('Developer')
 </script>" />
 
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const userName = ref('Ana')
+const userRole = ref('Developer')
+</script>" />
+
 ```vue
 <!-- UserCard.vue -->
 <script setup>
@@ -56,7 +63,6 @@ const isExpanded = ref(false)
 ```
 
 <PlaygroundLink code="<!-- UserCard.vue -->
-
 <script setup>
 // Props: recibidas del padre, solo lectura
 const props = defineProps<{
@@ -66,9 +72,7 @@ const props = defineProps<{
 &#10;// Estado: propiedad de este componente, lectura y escritura
 const isExpanded = ref(false)
 </script>
-
 &#10;<template>
-
   <div>
     <h2>{{ name }} ({{ role }})</h2>
     <button @click=&quot;isExpanded = !isExpanded&quot;>
@@ -115,14 +119,12 @@ const emit = defineEmits<{ update: [value: number] }>()
 ```
 
 <PlaygroundLink code="<!-- Child -->
-
 <script setup>
 const props = defineProps<{ count: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
 </script>
-
 &#10;<template>
-<button @click=&quot;emit('update', count + 1)&quot;>+1</button>
+  <button @click=&quot;emit('update', count + 1)&quot;>+1</button>
 </template>
 &#10;<!-- Parent -->
 <Counter :count=&quot;total&quot; @update=&quot;total = $event&quot; />" />

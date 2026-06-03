@@ -30,7 +30,6 @@ const user = ref({
 ```
 
 <PlaygroundLink code="<!-- Padre -->
-
 <script setup>
 const user = ref({
   id: 1,
@@ -41,11 +40,11 @@ const user = ref({
   passwordHash: '...'
 })
 </script>
-
 &#10;<template>
-
   <!-- MAL: pasa todo, incluyendo datos que el hijo no debería ver -->
   <UserCard v-bind=&quot;user&quot; />
+</template>" />
+
 </template>" />
 
 ```vue
@@ -57,7 +56,6 @@ defineProps<{ name: string; email: string }>()
 ```
 
 <PlaygroundLink code="<!-- UserCard.vue -->
-
 <script setup>
 defineProps<{ name: string; email: string }>()
 // Solo usa name y email, pero recibe id, role, internalNotes, passwordHash también
@@ -101,9 +99,12 @@ Cada propiedad del spread se convierte en una prop. Cuando cualquier propiedad c
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Cada vez que user.lastLoginAt cambia, UserCard se re-renderiza -->
   <UserCard v-bind=&quot;user&quot; />
+&#10;  <!-- Solo se re-renderiza cuando name o email cambian -->
+  <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />
+</template>" />
+
 &#10;  <!-- Solo se re-renderiza cuando name o email cambian -->
   <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />
 </template>" />
@@ -122,6 +123,9 @@ Las props explícitas documentan la interfaz del componente. Con spread, no pued
 
 <PlaygroundLink code="<!-- ¿Qué necesita ProfileHeader exactamente? No hay manera de saberlo. -->
 <ProfileHeader v-bind=&quot;user&quot; />
+&#10;<!-- Claro: necesita name, avatar y role -->
+<ProfileHeader :name=&quot;user.name&quot; :avatar=&quot;user.avatar&quot; :role=&quot;user.role&quot; />" />
+
 &#10;<!-- Claro: necesita name, avatar y role -->
 <ProfileHeader :name=&quot;user.name&quot; :avatar=&quot;user.avatar&quot; :role=&quot;user.role&quot; />" />
 
@@ -160,6 +164,9 @@ Cuando haces spread de un objeto genérico, TypeScript no puede validar que el h
 &#10;<!-- TypeScript valida cada prop -->
 <UserCard :name=&quot;someObject.name&quot; :email=&quot;someObject.email&quot; />" />
 
+&#10;<!-- TypeScript valida cada prop -->
+<UserCard :name=&quot;someObject.name&quot; :email=&quot;someObject.email&quot; />" />
+
 ## Cuándo es apropiado v-bind="$attrs"
 
 Reenviar atributos intencionalmente en componentes envolventes es el caso de uso válido:
@@ -180,16 +187,17 @@ defineProps<{ label: string }>()
 ```
 
 <PlaygroundLink code="<!-- BaseInput.vue: un wrapper fino que reenvía todos los attrs al input real -->
-
 <script setup>
 defineOptions({ inheritAttrs: false })
 defineProps<{ label: string }>()
 </script>
-
 &#10;<template>
-<label>
-{{ label }}
-<input v-bind=&quot;$attrs&quot; />
+  <label>
+    {{ label }}
+    <input v-bind=&quot;$attrs&quot; />
+  </label>
+</template>" />
+
 </label>
 </template>" />
 
@@ -215,6 +223,9 @@ Aquí el wrapper existe específicamente para reenviar atributos. El `type`, `pl
 
 <PlaygroundLink code="<!-- MAL -->
 <UserCard v-bind=&quot;user&quot; />
+&#10;<!-- BIEN -->
+<UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />" />
+
 &#10;<!-- BIEN -->
 <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />" />
 
@@ -250,6 +261,8 @@ interface UserSummary {
 </script>
 &#10;<template>
   <UserCard v-bind=&quot;userSummary&quot; />
+</template>" />
+
 </template>" />
 
 Ahora el spread es intencional y tiene tipado. El objeto contiene exactamente lo que `UserCard` espera, nada más.

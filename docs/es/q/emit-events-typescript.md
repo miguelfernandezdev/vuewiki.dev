@@ -80,6 +80,16 @@ function handleUpdate(value: string) {
 }
 </script>" />
 
+</template>
+&#10;<script setup lang=&quot;ts&quot;>
+function handleUpdate(value: string) {
+  // `value` está correctamente tipado como string
+}
+&#10;function handleDelete(id: number) {
+  // `id` está correctamente tipado como number
+}
+</script>" />
+
 ## Emits con validación (sintaxis runtime)
 
 Si necesitas validación en runtime, no solo verificación de tipos, usa la sintaxis de objeto:

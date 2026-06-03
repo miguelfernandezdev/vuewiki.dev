@@ -113,7 +113,6 @@ const cart = useCartStore()
 ```
 
 <PlaygroundLink code="<!-- Before: Vuex -->
-
 <script>
 import { mapGetters, mapActions } from 'vuex'
 &#10;export default {
@@ -125,17 +124,14 @@ import { mapGetters, mapActions } from 'vuex'
   }
 }
 </script>
-
 &#10;<!-- After: Pinia -->
-
 <script setup lang=&quot;ts&quot;>
 import { useCartStore } from '@/stores/cart'
 &#10;const cart = useCartStore()
 </script>
-
 &#10;<template>
-<span>{{ cart.itemCount }} items</span>
-<button @click=&quot;cart.checkout()&quot;>Checkout</button>
+  <span>{{ cart.itemCount }} items</span>
+  <button @click=&quot;cart.checkout()&quot;>Checkout</button>
 </template>" />
 
 ## Migration strategy for large apps

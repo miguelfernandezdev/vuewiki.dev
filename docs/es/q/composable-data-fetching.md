@@ -78,13 +78,12 @@ import { computed } from 'vue'
 import { useFetch } from '@/composables/useFetch'
 &#10;const props = defineProps<{ userId: number }>()
 &#10;const {
-data: user,
-error,
-loading
+  data: user,
+  error,
+  loading
 } = useFetch<User>(() => `/api/users/${props.userId}`)
 </script>
 &#10;<template>
-
   <div v-if=&quot;loading&quot;>Cargando...</div>
   <div v-else-if=&quot;error&quot;>Error: {{ error }}</div>
   <div v-else-if=&quot;user&quot;>

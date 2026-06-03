@@ -36,6 +36,13 @@ Cada instancia de componente Vue tiene un coste: configuración reactiva, creaci
   </Card>
 </template>" />
 
+    </CardHeader>
+    <CardBody>
+      <Text>{{ user.name }}</Text>
+    </CardBody>
+  </Card>
+</template>" />
+
 ```vue
 <!-- 100 usuarios = 500+ instancias de componentes -->
 <UserCard v-for="user in users" :key="user.id" :user="user" />
@@ -69,16 +76,20 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
 ```
 
 <PlaygroundLink code="<!-- UserCard.vue — aplanado -->
-
 <script setup lang=&quot;ts&quot;>
 defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </script>
-
 &#10;<template>
-
   <div class=&quot;card&quot;>
     <div class=&quot;card-header&quot;>
       <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
+    </div>
+    <div class=&quot;card-body&quot;>
+      <span>{{ user.name }}</span>
+    </div>
+  </div>
+</template>" />
+
     </div>
     <div class=&quot;card-body&quot;>
       <span>{{ user.name }}</span>
@@ -120,6 +131,9 @@ No todas las listas necesitan aplanarse. Mantén las abstracciones de componente
   <template #default=&quot;{ item }&quot;>
     <!-- Bien: solo existen ~20 instancias independientemente del tamaño de la lista -->
     <ComplexItemCard :item=&quot;item&quot; />
+  </template>
+</RecycleScroller>" />
+
   </template>
 </RecycleScroller>" />
 

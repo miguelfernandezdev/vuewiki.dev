@@ -72,6 +72,21 @@ import { ref, computed } from 'vue'
 }
 </script>" />
 
+  <TemperatureInput
+    label=&quot;Fahrenheit&quot;
+    :value=&quot;fahrenheit&quot;
+    @update=&quot;updateFromFahrenheit&quot;
+  />
+</template>
+&#10;<script setup>
+import { ref, computed } from 'vue'
+&#10;const celsius = ref(0)
+&#10;const fahrenheit = computed(() => celsius.value * 9 / 5 + 32)
+&#10;function updateFromFahrenheit(f: number) {
+  celsius.value = (f - 32) * 5 / 9
+}
+</script>" />
+
 ```vue
 <!-- TemperatureInput.vue -->
 <script setup>
@@ -92,20 +107,21 @@ const emit = defineEmits<{ update: [value: number] }>()
 ```
 
 <PlaygroundLink code="<!-- TemperatureInput.vue -->
-
 <script setup>
 defineProps<{ label: string; value: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
 </script>
-
 &#10;<template>
-<label>
-{{ label }}
-<input
-type=&quot;number&quot;
-:value=&quot;value&quot;
-@input=&quot;emit('update', Number(($event.target as HTMLInputElement).value))&quot;
-/>
+  <label>
+    {{ label }}
+    <input
+      type=&quot;number&quot;
+      :value=&quot;value&quot;
+      @input=&quot;emit('update', Number(($event.target as HTMLInputElement).value))&quot;
+    />
+  </label>
+</template>" />
+
 </label>
 </template>" />
 

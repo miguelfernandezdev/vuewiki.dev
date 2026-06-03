@@ -203,13 +203,12 @@ onUpdated(() => {
 import { ref, onUpdated } from 'vue'
 &#10;const chatContainer = (ref < HTMLElement) | (null > null)
 &#10;onUpdated(() => {
-if (chatContainer.value) {
-chatContainer.value.scrollTop = chatContainer.value.scrollHeight
-}
+  if (chatContainer.value) {
+    chatContainer.value.scrollTop = chatContainer.value.scrollHeight
+  }
 })
 </script>
 &#10;<template>
-
   <div ref=&quot;chatContainer&quot; class=&quot;chat&quot;>
     <div v-for=&quot;msg in messages&quot; :key=&quot;msg.id&quot;>{{ msg.text }}</div>
   </div>

@@ -66,13 +66,13 @@ import CheckoutForm from 'checkout/CheckoutForm'
 ```
 
 <PlaygroundLink code="<!-- En la app shell -->
-
 <script setup>
 import CheckoutForm from 'checkout/CheckoutForm'
 </script>
-
 &#10;<template>
-<CheckoutForm />
+  <CheckoutForm />
+</template>" />
+
 </template>" />
 
 La configuración `shared` garantiza que ambas apps usen la misma instancia de Vue, de modo que la reactividad y provide/inject funcionan entre límites.
@@ -102,6 +102,8 @@ customElements.define('checkout-form', CheckoutElement)
 
 <PlaygroundLink code="<template>
   <checkout-form :cart-id=&quot;cartId&quot; @order-placed=&quot;handleOrder&quot; />
+</template>" />
+
 </template>" />
 
 Ventajas: agnóstico al framework, aislamiento real. Desventajas: sin contexto Vue compartido (provide/inject, devtools), el aislamiento CSS puede ser complicado.

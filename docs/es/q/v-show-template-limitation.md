@@ -19,7 +19,6 @@ Porque `v-show` funciona alternando la propiedad CSS `display`, y los elementos 
 
 <PlaygroundLink code="<!-- v-show en <template> no hace nada en silencio -->
 <template v-show=&quot;isVisible&quot;>
-
   <h1>Title</h1>
   <p>Content</p>
 </template>
@@ -35,7 +34,6 @@ Otra limitación: `v-show` no admite `v-else`.
 ```
 
 <PlaygroundLink code="<!-- v-else NO funciona con v-show -->
-
 <div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
 <div v-else>Please log in</div>
 <!-- roto -->" />
@@ -60,7 +58,6 @@ Otra limitación: `v-show` no admite `v-else`.
 
 <PlaygroundLink code="<!-- v-if funciona en <template> -->
 <template v-if=&quot;isVisible&quot;>
-
   <h1>Title</h1>
   <p>Content</p>
 </template>
@@ -78,7 +75,6 @@ Otra limitación: `v-show` no admite `v-else`.
 ```
 
 <PlaygroundLink code="<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
-
 <div v-show=&quot;!isLoggedIn&quot;>Please log in</div>" />
 
 ## Referencia rápida

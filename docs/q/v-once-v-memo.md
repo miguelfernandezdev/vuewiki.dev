@@ -27,7 +27,6 @@ const company = 'Acme Corp'
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Rendered once, never re-evaluated -->
   <footer v-once>
     <p>Copyright {{ year }} {{ company }}</p>
@@ -66,10 +65,20 @@ const selectedId = (ref < number) | (null > null)
 ```
 
 <PlaygroundLink code="<template>
-
   <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
     <div :class=&quot;{ selected: item.id === selectedId }&quot;>
       <ExpensiveComponent :data=&quot;item&quot; />
+    </div>
+  </div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const items = ref([
+  /* 1,000 items */
+])
+const selectedId = (ref < number) | (null > null)
+</script>" />
+
     </div>
   </div>
 </template>
@@ -102,7 +111,6 @@ When `selectedId` changes, only two items re-render: the previously selected one
 ```
 
 <PlaygroundLink code="<template>
-
   <div
     v-for=&quot;item in items&quot;
     :key=&quot;item.id&quot;
@@ -113,6 +121,9 @@ When `selectedId` changes, only two items re-render: the previously selected one
       :selected=&quot;item.id === selectedId&quot;
       :editing=&quot;item.id === editingId&quot;
     />
+  </div>
+</template>" />
+
   </div>
 </template>" />
 
@@ -129,8 +140,7 @@ The item re-renders only when its selection or editing state changes.
 ```
 
 <PlaygroundLink code="<div v-for=&quot;item in staticList&quot; :key=&quot;item.id&quot; v-memo=&quot;[]&quot;>
-{{ item.name }}
-
+  {{ item.name }}
 </div>" />
 
 ## When NOT to use them
@@ -153,7 +163,6 @@ The item re-renders only when its selection or editing state changes.
 ```
 
 <PlaygroundLink code="<template>
-
   <!-- Wrong: count will never update in the UI -->
   <div v-once>
     <span>Count: {{ count }}</span>
@@ -161,6 +170,11 @@ The item re-renders only when its selection or editing state changes.
 &#10;  <!-- Wrong: v-model inside memoized subtree won't work properly -->
   <div v-memo=&quot;[selected]&quot;>
     <input v-model=&quot;item.name&quot; />
+  </div>
+&#10;  <!-- Pointless: overhead of memoization exceeds the cost of re-rendering a <span> -->
+  <span v-once>{{ label }}</span>
+</template>" />
+
   </div>
 &#10;  <!-- Pointless: overhead of memoization exceeds the cost of re-rendering a <span> -->
   <span v-once>{{ label }}</span>

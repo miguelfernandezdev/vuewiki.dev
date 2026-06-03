@@ -81,7 +81,6 @@ El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#c
 ```
 
 <PlaygroundLink code="<template>
-
   <div>
     <h1>Static title</h1>
     <!-- elevado, omitido en la comparación -->
