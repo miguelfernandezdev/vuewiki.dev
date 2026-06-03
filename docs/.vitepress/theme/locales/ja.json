@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} 問"
+  },
+  "footer": {},
+  "home": {
+    "title": "Vue.js 面接質問集",
+    "subtitle": "回答とコード例付き {count} 問",
+    "searchPlaceholder": "質問を検索...",
+    "noResults": "検索に一致する質問が見つかりません。",
+    "showMore": "さらに表示（残り {remaining} 問）"
+  },
+  "filters": {
+    "all": "📋 すべて",
+    "beginner": "🌱 初級",
+    "intermediate": "⚡ 中級",
+    "advanced": "🔥 上級"
+  },
+  "tags": {
+    "label": "トピック",
+    "allTopics": "すべてのトピック",
+    "searchTopics": "トピックを検索...",
+    "clear": "すべてクリア",
+    "topicsGroup": "📚 トピック",
+    "techGroup": "🛠️ テクノロジー",
+    "accessibility": "♿ アクセシビリティ",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ リアクティビティ",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 ディレクティブ",
+    "components": "🧩 コンポーネント",
+    "state-management": "📦 状態管理",
+    "testing": "🧪 テスト",
+    "composables": "🪝 コンポーザブル",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ パフォーマンス",
+    "architecture": "🏗️ アーキテクチャ",
+    "migration": "🚚 マイグレーション",
+    "animation": "✨ アニメーション",
+    "core": "⚙️ コア",
+    "data-fetching": "📡 データフェッチ",
+    "error-handling": "🛡️ エラーハンドリング",
+    "errors": "❌ よくあるエラー",
+    "forms": "📝 フォーム",
+    "lifecycle": "🔄 ライフサイクル",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 スタイリング",
+    "tooling": "🔧 ツール",
+    "debugging": "🐛 デバッグ",
+    "security": "🔒 セキュリティ",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ ウォッチャー",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "難易度別 全質問一覧",
+    "subtitle": "{total} 問中 {read} 問読了"
+  },
+  "flashcards": {
+    "title": "フラッシュカード",
+    "description": "記憶を試そう：質問を見て答えを考え、その後で答え合わせをしましょう。",
+    "start": "スタート（{count} 枚）",
+    "reveal": "答えを見る",
+    "revealHint": "まず自分で答えを考えてみましょう",
+    "selfAssess": "答えはわかりましたか？",
+    "gotIt": "わかった",
+    "reviewAgain": "もう一度復習",
+    "seeAnswer": "完全な回答を見る",
+    "completeTitle": "セッション完了！",
+    "gotItCount": "{count} 問 正解",
+    "reviewCount": "{count} 問 要復習",
+    "reviewPile": "{count} 問 再復習",
+    "restart": "最初からやり直す",
+    "backToSetup": "設定に戻る",
+    "swipeHint": "スワイプまたは矢印キーを使用",
+    "swipeHintTouch": "左右にスワイプ",
+    "spaceHint": "スペースキーで答えを表示",
+    "tapHint": "「答えを見る」をタップしてめくる"
+  },
+  "sort": {
+    "recommended": "おすすめ順",
+    "easiest": "易しい順",
+    "hardest": "難しい順"
+  },
+  "cta": {
+    "missingTitle": "まだ取り上げていない質問がありますか？",
+    "missingDesc": "GitHub で提案してください。随時新しい質問を追加しています",
+    "missingAction": "提案する",
+    "contribute": "貢献する"
+  },
+  "detail": {
+    "back": "← 全質問",
+    "markRead": "既読にする",
+    "read": "既読"
+  },
+  "quiz": {
+    "title": "クイズ",
+    "startBtn": "テストを開始（{count} 問）",
+    "perfect": "満点！",
+    "good": "よくできました！",
+    "tryAgain": "引き続き学習しましょう！",
+    "retry": "もう一度挑戦",
+    "close": "閉じる",
+    "correctLabel": "正解",
+    "wrongLabel": "不正解"
+  }
+}

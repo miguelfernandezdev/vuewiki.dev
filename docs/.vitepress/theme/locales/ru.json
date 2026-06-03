@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} вопросов"
+  },
+  "footer": {},
+  "home": {
+    "title": "Вопросы для собеседования по Vue.js",
+    "subtitle": "{count} вопросов с ответами и примерами кода",
+    "searchPlaceholder": "Поиск вопросов...",
+    "noResults": "Нет вопросов, соответствующих вашему запросу.",
+    "showMore": "Показать больше (осталось {remaining})"
+  },
+  "filters": {
+    "all": "📋 Все",
+    "beginner": "🌱 Начинающий",
+    "intermediate": "⚡ Средний",
+    "advanced": "🔥 Продвинутый"
+  },
+  "tags": {
+    "label": "Темы",
+    "allTopics": "Все темы",
+    "searchTopics": "Поиск тем...",
+    "clear": "Сбросить всё",
+    "topicsGroup": "📚 Темы",
+    "techGroup": "🛠️ Технологии",
+    "accessibility": "♿ Доступность",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ Реактивность",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 Директивы",
+    "components": "🧩 Компоненты",
+    "state-management": "📦 Управление состоянием",
+    "testing": "🧪 Тестирование",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ Производительность",
+    "architecture": "🏗️ Архитектура",
+    "migration": "🚚 Миграция",
+    "animation": "✨ Анимация",
+    "core": "⚙️ Ядро",
+    "data-fetching": "📡 Загрузка данных",
+    "error-handling": "🛡️ Обработка ошибок",
+    "errors": "❌ Частые ошибки",
+    "forms": "📝 Формы",
+    "lifecycle": "🔄 Жизненный цикл",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 Стилизация",
+    "tooling": "🔧 Инструменты",
+    "debugging": "🐛 Отладка",
+    "security": "🔒 Безопасность",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ Наблюдатели",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "Все вопросы по уровню сложности",
+    "subtitle": "{read} из {total} прочитано"
+  },
+  "flashcards": {
+    "title": "Карточки",
+    "description": "Проверьте свою память: прочитайте вопрос, подумайте над ответом, затем проверьте себя.",
+    "start": "Начать ({count} карточек)",
+    "reveal": "Показать",
+    "revealHint": "Сначала подумайте над своим ответом",
+    "selfAssess": "Вы знали ответ?",
+    "gotIt": "Знаю",
+    "reviewAgain": "Повторить снова",
+    "seeAnswer": "Посмотреть полный ответ",
+    "completeTitle": "Сессия завершена!",
+    "gotItCount": "{count} знаю",
+    "reviewCount": "{count} на повторение",
+    "reviewPile": "Повторить {count} снова",
+    "restart": "Начать заново",
+    "backToSetup": "Вернуться к настройкам",
+    "swipeHint": "свайпайте или используйте клавиши со стрелками",
+    "swipeHintTouch": "свайпайте влево или вправо",
+    "spaceHint": "нажмите Пробел для показа",
+    "tapHint": "нажмите Показать для переворота"
+  },
+  "sort": {
+    "recommended": "Рекомендуемые",
+    "easiest": "Сначала лёгкие",
+    "hardest": "Сначала сложные"
+  },
+  "cta": {
+    "missingTitle": "Есть вопрос, который мы не рассмотрели?",
+    "missingDesc": "Предложите его на GitHub. Мы постоянно добавляем новые",
+    "missingAction": "Предложить",
+    "contribute": "Внести вклад"
+  },
+  "detail": {
+    "back": "← Все вопросы",
+    "markRead": "Отметить как прочитанное",
+    "read": "Прочитано"
+  },
+  "quiz": {
+    "title": "Тест",
+    "startBtn": "Проверить себя ({count} вопросов)",
+    "perfect": "Идеальный результат!",
+    "good": "Хорошая работа!",
+    "tryAgain": "Продолжайте учиться!",
+    "retry": "Попробовать снова",
+    "close": "Закрыть",
+    "correctLabel": "верно",
+    "wrongLabel": "неверно"
+  }
+}

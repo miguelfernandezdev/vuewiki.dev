@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} 道题目"
+  },
+  "footer": {},
+  "home": {
+    "title": "Vue.js 面试题",
+    "subtitle": "{count} 道题目，含答案和代码示例",
+    "searchPlaceholder": "搜索题目...",
+    "noResults": "没有找到匹配的题目。",
+    "showMore": "显示更多（剩余 {remaining} 道）"
+  },
+  "filters": {
+    "all": "📋 全部",
+    "beginner": "🌱 初级",
+    "intermediate": "⚡ 中级",
+    "advanced": "🔥 高级"
+  },
+  "tags": {
+    "label": "主题",
+    "allTopics": "所有主题",
+    "searchTopics": "搜索主题...",
+    "clear": "清除全部",
+    "topicsGroup": "📚 主题",
+    "techGroup": "🛠️ 技术",
+    "accessibility": "♿ 无障碍访问",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ 响应性",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 指令",
+    "components": "🧩 组件",
+    "state-management": "📦 状态管理",
+    "testing": "🧪 测试",
+    "composables": "🪝 可组合函数",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ 性能",
+    "architecture": "🏗️ 架构",
+    "migration": "🚚 迁移",
+    "animation": "✨ 动画",
+    "core": "⚙️ 核心",
+    "data-fetching": "📡 数据请求",
+    "error-handling": "🛡️ 错误处理",
+    "errors": "❌ 常见错误",
+    "forms": "📝 表单",
+    "lifecycle": "🔄 生命周期",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 样式",
+    "tooling": "🔧 工具链",
+    "debugging": "🐛 调试",
+    "security": "🔒 安全",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ 侦听器",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "按难度查看所有题目",
+    "subtitle": "已读 {read} / 共 {total} 道"
+  },
+  "flashcards": {
+    "title": "闪卡",
+    "description": "测试你的记忆：看到题目后先思考答案，再核对结果。",
+    "start": "开始（共 {count} 张）",
+    "reveal": "揭晓",
+    "revealHint": "请先思考你的答案",
+    "selfAssess": "你知道答案吗？",
+    "gotIt": "掌握了",
+    "reviewAgain": "再次复习",
+    "seeAnswer": "查看完整答案",
+    "completeTitle": "本轮完成！",
+    "gotItCount": "已掌握 {count} 道",
+    "reviewCount": "待复习 {count} 道",
+    "reviewPile": "再复习 {count} 道",
+    "restart": "重新开始",
+    "backToSetup": "返回设置",
+    "swipeHint": "滑动或使用方向键",
+    "swipeHintTouch": "向左或向右滑动",
+    "spaceHint": "按空格键揭晓",
+    "tapHint": "点击揭晓按钮翻转"
+  },
+  "sort": {
+    "recommended": "推荐顺序",
+    "easiest": "由易到难",
+    "hardest": "由难到易"
+  },
+  "cta": {
+    "missingTitle": "有我们还没涵盖的题目？",
+    "missingDesc": "在 GitHub 上提交建议，我们会持续添加新题目",
+    "missingAction": "提交建议",
+    "contribute": "参与贡献"
+  },
+  "detail": {
+    "back": "← 所有题目",
+    "markRead": "标记为已读",
+    "read": "已读"
+  },
+  "quiz": {
+    "title": "测验",
+    "startBtn": "开始测验（共 {count} 道题）",
+    "perfect": "满分！",
+    "good": "做得不错！",
+    "tryAgain": "继续加油！",
+    "retry": "再试一次",
+    "close": "关闭",
+    "correctLabel": "正确",
+    "wrongLabel": "错误"
+  }
+}

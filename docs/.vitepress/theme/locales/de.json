@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} Fragen"
+  },
+  "footer": {},
+  "home": {
+    "title": "Vue.js Interview-Fragen",
+    "subtitle": "{count} Fragen mit Antworten und Code-Beispielen",
+    "searchPlaceholder": "Fragen suchen...",
+    "noResults": "Keine Fragen entsprechen Ihrer Suche.",
+    "showMore": "Mehr anzeigen ({remaining} verbleibend)"
+  },
+  "filters": {
+    "all": "📋 Alle",
+    "beginner": "🌱 Anfänger",
+    "intermediate": "⚡ Fortgeschritten",
+    "advanced": "🔥 Experte"
+  },
+  "tags": {
+    "label": "Themen",
+    "allTopics": "Alle Themen",
+    "searchTopics": "Themen suchen...",
+    "clear": "Alle löschen",
+    "topicsGroup": "📚 Themen",
+    "techGroup": "🛠️ Technologien",
+    "accessibility": "♿ Barrierefreiheit",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ Reaktivität",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 Direktiven",
+    "components": "🧩 Komponenten",
+    "state-management": "📦 Zustandsverwaltung",
+    "testing": "🧪 Testen",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ Performance",
+    "architecture": "🏗️ Architektur",
+    "migration": "🚚 Migration",
+    "animation": "✨ Animation",
+    "core": "⚙️ Kern",
+    "data-fetching": "📡 Datenabruf",
+    "error-handling": "🛡️ Fehlerbehandlung",
+    "errors": "❌ Häufige Fehler",
+    "forms": "📝 Formulare",
+    "lifecycle": "🔄 Lebenszyklus",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 Gestaltung",
+    "tooling": "🔧 Werkzeuge",
+    "debugging": "🐛 Debugging",
+    "security": "🔒 Sicherheit",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ Beobachter",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "Alle Fragen nach Schwierigkeitsgrad",
+    "subtitle": "{read} von {total} gelesen"
+  },
+  "flashcards": {
+    "title": "Lernkarten",
+    "description": "Testen Sie Ihr Gedächtnis: Sehen Sie die Frage, denken Sie über die Antwort nach und überprüfen Sie sich selbst.",
+    "start": "Starten ({count} Karten)",
+    "reveal": "Aufdecken",
+    "revealHint": "Denken Sie zuerst über Ihre Antwort nach",
+    "selfAssess": "Wussten Sie die Antwort?",
+    "gotIt": "Verstanden",
+    "reviewAgain": "Nochmals wiederholen",
+    "seeAnswer": "Vollständige Antwort anzeigen",
+    "completeTitle": "Sitzung abgeschlossen!",
+    "gotItCount": "{count} verstanden",
+    "reviewCount": "{count} zu wiederholen",
+    "reviewPile": "{count} nochmals wiederholen",
+    "restart": "Alle neu starten",
+    "backToSetup": "Zurück zur Einrichtung",
+    "swipeHint": "wischen oder Pfeiltasten verwenden",
+    "swipeHintTouch": "nach links oder rechts wischen",
+    "spaceHint": "Leertaste drücken zum Aufdecken",
+    "tapHint": "auf Aufdecken tippen zum Umblättern"
+  },
+  "sort": {
+    "recommended": "Empfohlen",
+    "easiest": "Leichteste zuerst",
+    "hardest": "Schwerste zuerst"
+  },
+  "cta": {
+    "missingTitle": "Haben Sie eine Frage, die wir noch nicht behandelt haben?",
+    "missingDesc": "Schlagen Sie sie auf GitHub vor. Wir fügen ständig neue hinzu",
+    "missingAction": "Vorschlagen",
+    "contribute": "Beitragen"
+  },
+  "detail": {
+    "back": "← Alle Fragen",
+    "markRead": "Als gelesen markieren",
+    "read": "Gelesen"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "startBtn": "Selbst testen ({count} Fragen)",
+    "perfect": "Perfekte Punktzahl!",
+    "good": "Gute Arbeit!",
+    "tryAgain": "Weiter lernen!",
+    "retry": "Nochmal versuchen",
+    "close": "Schließen",
+    "correctLabel": "richtig",
+    "wrongLabel": "falsch"
+  }
+}

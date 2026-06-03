@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} câu hỏi"
+  },
+  "footer": {},
+  "home": {
+    "title": "Câu hỏi phỏng vấn Vue.js",
+    "subtitle": "{count} câu hỏi với câu trả lời và ví dụ code",
+    "searchPlaceholder": "Tìm kiếm câu hỏi...",
+    "noResults": "Không có câu hỏi nào khớp với tìm kiếm của bạn.",
+    "showMore": "Xem thêm (còn {remaining} câu)"
+  },
+  "filters": {
+    "all": "📋 Tất cả",
+    "beginner": "🌱 Người mới bắt đầu",
+    "intermediate": "⚡ Trung cấp",
+    "advanced": "🔥 Nâng cao"
+  },
+  "tags": {
+    "label": "Chủ đề",
+    "allTopics": "Tất cả chủ đề",
+    "searchTopics": "Tìm kiếm chủ đề...",
+    "clear": "Xóa tất cả",
+    "topicsGroup": "📚 Chủ đề",
+    "techGroup": "🛠️ Công nghệ",
+    "accessibility": "♿ Khả năng tiếp cận",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ Tính phản ứng",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 Chỉ thị",
+    "components": "🧩 Thành phần",
+    "state-management": "📦 Quản lý trạng thái",
+    "testing": "🧪 Kiểm thử",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ Hiệu suất",
+    "architecture": "🏗️ Kiến trúc",
+    "migration": "🚚 Di chuyển",
+    "animation": "✨ Hoạt ảnh",
+    "core": "⚙️ Cốt lõi",
+    "data-fetching": "📡 Tải dữ liệu",
+    "error-handling": "🛡️ Xử lý lỗi",
+    "errors": "❌ Lỗi phổ biến",
+    "forms": "📝 Biểu mẫu",
+    "lifecycle": "🔄 Vòng đời",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 Định dạng",
+    "tooling": "🔧 Công cụ",
+    "debugging": "🐛 Gỡ lỗi",
+    "security": "🔒 Bảo mật",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ Bộ theo dõi",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "Tất cả câu hỏi theo độ khó",
+    "subtitle": "{read} trong {total} đã đọc"
+  },
+  "flashcards": {
+    "title": "Thẻ ghi nhớ",
+    "description": "Kiểm tra trí nhớ của bạn: xem câu hỏi, suy nghĩ về câu trả lời, rồi tự kiểm tra.",
+    "start": "Bắt đầu ({count} thẻ)",
+    "reveal": "Hiển thị",
+    "revealHint": "Hãy suy nghĩ về câu trả lời của bạn trước",
+    "selfAssess": "Bạn có biết câu trả lời không?",
+    "gotIt": "Đã hiểu",
+    "reviewAgain": "Ôn lại",
+    "seeAnswer": "Xem câu trả lời đầy đủ",
+    "completeTitle": "Hoàn thành phiên học!",
+    "gotItCount": "{count} đã hiểu",
+    "reviewCount": "{count} cần ôn lại",
+    "reviewPile": "Ôn lại {count} câu",
+    "restart": "Bắt đầu lại tất cả",
+    "backToSetup": "Quay lại cài đặt",
+    "swipeHint": "vuốt hoặc dùng phím mũi tên",
+    "swipeHintTouch": "vuốt trái hoặc phải",
+    "spaceHint": "nhấn Cách để hiển thị",
+    "tapHint": "nhấn Hiển thị để lật"
+  },
+  "sort": {
+    "recommended": "Được đề xuất",
+    "easiest": "Dễ nhất trước",
+    "hardest": "Khó nhất trước"
+  },
+  "cta": {
+    "missingTitle": "Bạn có câu hỏi nào chúng tôi chưa đề cập?",
+    "missingDesc": "Đề xuất trên GitHub. Chúng tôi luôn thêm câu hỏi mới",
+    "missingAction": "Đề xuất",
+    "contribute": "Đóng góp"
+  },
+  "detail": {
+    "back": "← Tất cả câu hỏi",
+    "markRead": "Đánh dấu đã đọc",
+    "read": "Đã đọc"
+  },
+  "quiz": {
+    "title": "Bài kiểm tra",
+    "startBtn": "Tự kiểm tra ({count} câu hỏi)",
+    "perfect": "Điểm hoàn hảo!",
+    "good": "Làm tốt lắm!",
+    "tryAgain": "Tiếp tục học nhé!",
+    "retry": "Thử lại",
+    "close": "Đóng",
+    "correctLabel": "đúng",
+    "wrongLabel": "sai"
+  }
+}

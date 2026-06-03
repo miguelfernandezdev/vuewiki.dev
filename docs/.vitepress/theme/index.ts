@@ -9,13 +9,14 @@ import QuestionMeta from './QuestionMeta.vue'
 import BookLogo from './BookLogo.vue'
 import FooterCta from './FooterCta.vue'
 import QuizSection from './QuizSection.vue'
+import TranslationBanner from './TranslationBanner.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'doc-before': () => h(QuestionMeta),
+      'doc-before': () => [h(TranslationBanner), h(QuestionMeta)],
       'doc-after': () => [h(QuizSection), h(FooterCta)],
       'home-hero-image': () => h(BookLogo)
     })

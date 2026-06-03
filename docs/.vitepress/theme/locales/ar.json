@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} أسئلة"
+  },
+  "footer": {},
+  "home": {
+    "title": "أسئلة مقابلات Vue.js",
+    "subtitle": "{count} سؤال مع إجابات وأمثلة على الكود",
+    "searchPlaceholder": "ابحث في الأسئلة...",
+    "noResults": "لا توجد أسئلة تطابق بحثك.",
+    "showMore": "عرض المزيد ({remaining} متبقية)"
+  },
+  "filters": {
+    "all": "📋 الكل",
+    "beginner": "🌱 مبتدئ",
+    "intermediate": "⚡ متوسط",
+    "advanced": "🔥 متقدم"
+  },
+  "tags": {
+    "label": "المواضيع",
+    "allTopics": "جميع المواضيع",
+    "searchTopics": "ابحث في المواضيع...",
+    "clear": "مسح الكل",
+    "topicsGroup": "📚 المواضيع",
+    "techGroup": "🛠️ التقنيات",
+    "accessibility": "♿ إمكانية الوصول",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ التفاعلية",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 التوجيهات",
+    "components": "🧩 المكونات",
+    "state-management": "📦 إدارة الحالة",
+    "testing": "🧪 الاختبار",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ الأداء",
+    "architecture": "🏗️ البنية المعمارية",
+    "migration": "🚚 الترحيل",
+    "animation": "✨ الحركة",
+    "core": "⚙️ الأساسيات",
+    "data-fetching": "📡 جلب البيانات",
+    "error-handling": "🛡️ معالجة الأخطاء",
+    "errors": "❌ الأخطاء الشائعة",
+    "forms": "📝 النماذج",
+    "lifecycle": "🔄 دورة الحياة",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 التنسيق",
+    "tooling": "🔧 الأدوات",
+    "debugging": "🐛 تصحيح الأخطاء",
+    "security": "🔒 الأمان",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ المراقبون",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "جميع الأسئلة حسب مستوى الصعوبة",
+    "subtitle": "{read} من {total} مقروءة"
+  },
+  "flashcards": {
+    "title": "بطاقات التعلم",
+    "description": "اختبر ذاكرتك: اقرأ السؤال، فكر في الإجابة، ثم تحقق من نفسك.",
+    "start": "ابدأ ({count} بطاقة)",
+    "reveal": "اكشف",
+    "revealHint": "فكر في إجابتك أولاً",
+    "selfAssess": "هل كنت تعرف الإجابة؟",
+    "gotIt": "فهمتها",
+    "reviewAgain": "مراجعة مجدداً",
+    "seeAnswer": "عرض الإجابة الكاملة",
+    "completeTitle": "انتهت الجلسة!",
+    "gotItCount": "{count} فهمتها",
+    "reviewCount": "{count} للمراجعة",
+    "reviewPile": "مراجعة {count} مجدداً",
+    "restart": "إعادة البدء من الكل",
+    "backToSetup": "العودة إلى الإعداد",
+    "swipeHint": "اسحب أو استخدم مفاتيح الأسهم",
+    "swipeHintTouch": "اسحب لليسار أو لليمين",
+    "spaceHint": "اضغط مسافة للكشف",
+    "tapHint": "اضغط كشف للقلب"
+  },
+  "sort": {
+    "recommended": "موصى به",
+    "easiest": "الأسهل أولاً",
+    "hardest": "الأصعب أولاً"
+  },
+  "cta": {
+    "missingTitle": "هل لديك سؤال لم نتناوله؟",
+    "missingDesc": "اقترحه على GitHub. نحن نضيف أسئلة جديدة باستمرار",
+    "missingAction": "اقترح",
+    "contribute": "ساهم"
+  },
+  "detail": {
+    "back": "← جميع الأسئلة",
+    "markRead": "وضع علامة مقروء",
+    "read": "مقروء"
+  },
+  "quiz": {
+    "title": "اختبار",
+    "startBtn": "اختبر نفسك ({count} أسئلة)",
+    "perfect": "نتيجة مثالية!",
+    "good": "عمل رائع!",
+    "tryAgain": "واصل الدراسة!",
+    "retry": "حاول مجدداً",
+    "close": "إغلاق",
+    "correctLabel": "صحيح",
+    "wrongLabel": "خطأ"
+  }
+}

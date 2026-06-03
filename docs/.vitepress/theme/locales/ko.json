@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count}개 질문"
+  },
+  "footer": {},
+  "home": {
+    "title": "Vue.js 면접 질문",
+    "subtitle": "답변과 코드 예제가 포함된 {count}개 질문",
+    "searchPlaceholder": "질문 검색...",
+    "noResults": "검색 결과와 일치하는 질문이 없습니다.",
+    "showMore": "더 보기 (남은 {remaining}개)"
+  },
+  "filters": {
+    "all": "📋 전체",
+    "beginner": "🌱 초급",
+    "intermediate": "⚡ 중급",
+    "advanced": "🔥 고급"
+  },
+  "tags": {
+    "label": "주제",
+    "allTopics": "모든 주제",
+    "searchTopics": "주제 검색...",
+    "clear": "전체 초기화",
+    "topicsGroup": "📚 주제",
+    "techGroup": "🛠️ 기술",
+    "accessibility": "♿ 접근성",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ 반응성",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 디렉티브",
+    "components": "🧩 컴포넌트",
+    "state-management": "📦 상태 관리",
+    "testing": "🧪 테스트",
+    "composables": "🪝 컴포저블",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ 성능",
+    "architecture": "🏗️ 아키텍처",
+    "migration": "🚚 마이그레이션",
+    "animation": "✨ 애니메이션",
+    "core": "⚙️ 코어",
+    "data-fetching": "📡 데이터 패칭",
+    "error-handling": "🛡️ 에러 처리",
+    "errors": "❌ 일반적인 에러",
+    "forms": "📝 폼",
+    "lifecycle": "🔄 라이프사이클",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 스타일링",
+    "tooling": "🔧 툴링",
+    "debugging": "🐛 디버깅",
+    "security": "🔒 보안",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ 와처",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "난이도별 전체 질문",
+    "subtitle": "{total}개 중 {read}개 읽음"
+  },
+  "flashcards": {
+    "title": "플래시카드",
+    "description": "기억력을 테스트하세요: 질문을 보고 답을 떠올린 후 정답을 확인하세요.",
+    "start": "시작하기 ({count}장)",
+    "reveal": "정답 보기",
+    "revealHint": "먼저 스스로 답을 생각해 보세요",
+    "selfAssess": "정답을 알고 있었나요?",
+    "gotIt": "알고 있었어요",
+    "reviewAgain": "다시 복습",
+    "seeAnswer": "전체 답변 보기",
+    "completeTitle": "세션 완료!",
+    "gotItCount": "{count}개 알고 있음",
+    "reviewCount": "{count}개 복습 필요",
+    "reviewPile": "{count}개 다시 복습",
+    "restart": "전체 다시 시작",
+    "backToSetup": "설정으로 돌아가기",
+    "swipeHint": "스와이프하거나 화살표 키 사용",
+    "swipeHintTouch": "왼쪽 또는 오른쪽으로 스와이프",
+    "spaceHint": "스페이스바를 눌러 정답 보기",
+    "tapHint": "정답 보기를 탭하여 뒤집기"
+  },
+  "sort": {
+    "recommended": "추천순",
+    "easiest": "쉬운 것 먼저",
+    "hardest": "어려운 것 먼저"
+  },
+  "cta": {
+    "missingTitle": "아직 다루지 않은 질문이 있나요?",
+    "missingDesc": "GitHub에서 제안해 주세요. 계속해서 새 질문을 추가하고 있습니다",
+    "missingAction": "제안하기",
+    "contribute": "기여하기"
+  },
+  "detail": {
+    "back": "← 전체 질문",
+    "markRead": "읽음으로 표시",
+    "read": "읽음"
+  },
+  "quiz": {
+    "title": "퀴즈",
+    "startBtn": "테스트 시작 ({count}문제)",
+    "perfect": "만점!",
+    "good": "잘했어요!",
+    "tryAgain": "계속 공부하세요!",
+    "retry": "다시 도전",
+    "close": "닫기",
+    "correctLabel": "정답",
+    "wrongLabel": "오답"
+  }
+}

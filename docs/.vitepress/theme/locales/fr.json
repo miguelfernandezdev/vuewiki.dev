@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} questions"
+  },
+  "footer": {},
+  "home": {
+    "title": "Questions d'entretien Vue.js",
+    "subtitle": "{count} questions avec réponses et exemples de code",
+    "searchPlaceholder": "Rechercher des questions...",
+    "noResults": "Aucune question ne correspond à votre recherche.",
+    "showMore": "Afficher plus ({remaining} restantes)"
+  },
+  "filters": {
+    "all": "📋 Toutes",
+    "beginner": "🌱 Débutant",
+    "intermediate": "⚡ Intermédiaire",
+    "advanced": "🔥 Avancé"
+  },
+  "tags": {
+    "label": "Sujets",
+    "allTopics": "Tous les sujets",
+    "searchTopics": "Rechercher des sujets...",
+    "clear": "Tout effacer",
+    "topicsGroup": "📚 Sujets",
+    "techGroup": "🛠️ Technologies",
+    "accessibility": "♿ Accessibilité",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ Réactivité",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 Directives",
+    "components": "🧩 Composants",
+    "state-management": "📦 Gestion d'état",
+    "testing": "🧪 Tests",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ Performance",
+    "architecture": "🏗️ Architecture",
+    "migration": "🚚 Migration",
+    "animation": "✨ Animation",
+    "core": "⚙️ Core",
+    "data-fetching": "📡 Récupération de données",
+    "error-handling": "🛡️ Gestion des erreurs",
+    "errors": "❌ Erreurs courantes",
+    "forms": "📝 Formulaires",
+    "lifecycle": "🔄 Cycle de vie",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 Styles",
+    "tooling": "🔧 Outils",
+    "debugging": "🐛 Débogage",
+    "security": "🔒 Sécurité",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ Watchers",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "Toutes les questions par difficulté",
+    "subtitle": "{read} sur {total} lues"
+  },
+  "flashcards": {
+    "title": "Flashcards",
+    "description": "Testez votre mémoire : lisez la question, réfléchissez à la réponse, puis vérifiez.",
+    "start": "Commencer ({count} cartes)",
+    "reveal": "Révéler",
+    "revealHint": "Réfléchissez d'abord à votre réponse",
+    "selfAssess": "Connaissiez-vous la réponse ?",
+    "gotIt": "Je savais",
+    "reviewAgain": "Revoir",
+    "seeAnswer": "Voir la réponse complète",
+    "completeTitle": "Session terminée !",
+    "gotItCount": "{count} connues",
+    "reviewCount": "{count} à revoir",
+    "reviewPile": "Revoir {count}",
+    "restart": "Recommencer",
+    "backToSetup": "Retour à la configuration",
+    "swipeHint": "glisser ou utiliser les touches fléchées",
+    "swipeHintTouch": "glisser à gauche ou à droite",
+    "spaceHint": "appuyer sur Espace pour révéler",
+    "tapHint": "appuyer sur Révéler pour retourner"
+  },
+  "sort": {
+    "recommended": "Recommandé",
+    "easiest": "Plus facile d'abord",
+    "hardest": "Plus difficile d'abord"
+  },
+  "cta": {
+    "missingTitle": "Vous avez une question que nous n'avons pas couverte ?",
+    "missingDesc": "Proposez-la sur GitHub. Nous en ajoutons régulièrement de nouvelles",
+    "missingAction": "Proposer",
+    "contribute": "Contribuer"
+  },
+  "detail": {
+    "back": "← Toutes les questions",
+    "markRead": "Marquer comme lue",
+    "read": "Lu"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "startBtn": "Se tester ({count} questions)",
+    "perfect": "Score parfait !",
+    "good": "Bon travail !",
+    "tryAgain": "Continuez à étudier !",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "correctLabel": "correctes",
+    "wrongLabel": "incorrectes"
+  }
+}

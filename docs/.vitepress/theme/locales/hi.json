@@ -1,0 +1,116 @@
+{
+  "header": {
+    "questions": "{count} प्रश्न"
+  },
+  "footer": {},
+  "home": {
+    "title": "Vue.js साक्षात्कार प्रश्न",
+    "subtitle": "{count} प्रश्न उत्तरों और कोड उदाहरणों के साथ",
+    "searchPlaceholder": "प्रश्न खोजें...",
+    "noResults": "आपकी खोज से कोई प्रश्न मेल नहीं खाता।",
+    "showMore": "और दिखाएं ({remaining} बाकी)"
+  },
+  "filters": {
+    "all": "📋 सभी",
+    "beginner": "🌱 शुरुआती",
+    "intermediate": "⚡ मध्यम",
+    "advanced": "🔥 उन्नत"
+  },
+  "tags": {
+    "label": "विषय",
+    "allTopics": "सभी विषय",
+    "searchTopics": "विषय खोजें...",
+    "clear": "सब हटाएं",
+    "topicsGroup": "📚 विषय",
+    "techGroup": "🛠️ तकनीकें",
+    "accessibility": "♿ पहुंच-योग्यता",
+    "composition-api": "🔗 Composition API",
+    "reactivity": "⚛️ प्रतिक्रियाशीलता",
+    "typescript": "🔷 TypeScript",
+    "directives": "📌 निर्देश",
+    "components": "🧩 घटक",
+    "state-management": "📦 स्टेट प्रबंधन",
+    "testing": "🧪 परीक्षण",
+    "composables": "🪝 Composables",
+    "vue-router": "🧭 Vue Router",
+    "performance": "⚡ प्रदर्शन",
+    "architecture": "🏗️ आर्किटेक्चर",
+    "migration": "🚚 माइग्रेशन",
+    "animation": "✨ एनिमेशन",
+    "core": "⚙️ मूल",
+    "data-fetching": "📡 डेटा प्राप्ति",
+    "error-handling": "🛡️ त्रुटि प्रबंधन",
+    "errors": "❌ सामान्य त्रुटियां",
+    "forms": "📝 फॉर्म",
+    "lifecycle": "🔄 जीवनचक्र",
+    "nuxt": "💚 Nuxt",
+    "ssr": "🖥️ SSR",
+    "styling": "🎨 स्टाइलिंग",
+    "tooling": "🔧 उपकरण",
+    "debugging": "🐛 डीबगिंग",
+    "security": "🔒 सुरक्षा",
+    "pinia": "🍍 Pinia",
+    "vite": "⚡ Vite",
+    "vitest": "🧪 Vitest",
+    "vueuse": "🧰 VueUse",
+    "vuex": "🗃️ Vuex",
+    "watchers": "👁️ वॉचर्स",
+    "v-model": "🔄 v-model",
+    "provide-inject": "💉 Provide/Inject",
+    "slots": "🎰 Slots",
+    "suspense": "⏳ Suspense",
+    "teleport": "🌀 Teleport"
+  },
+  "questionsPage": {
+    "title": "कठिनाई स्तर के अनुसार सभी प्रश्न",
+    "subtitle": "{total} में से {read} पढ़े गए"
+  },
+  "flashcards": {
+    "title": "फ्लैशकार्ड",
+    "description": "अपनी याददाश्त परखें: प्रश्न देखें, उत्तर सोचें, फिर खुद जांचें।",
+    "start": "शुरू करें ({count} कार्ड)",
+    "reveal": "उत्तर देखें",
+    "revealHint": "पहले अपना उत्तर सोचें",
+    "selfAssess": "क्या आप उत्तर जानते थे?",
+    "gotIt": "समझ आया",
+    "reviewAgain": "फिर से देखें",
+    "seeAnswer": "पूरा उत्तर देखें",
+    "completeTitle": "सत्र पूरा हुआ!",
+    "gotItCount": "{count} समझ आया",
+    "reviewCount": "{count} दोबारा देखने हैं",
+    "reviewPile": "{count} फिर से देखें",
+    "restart": "सब फिर से शुरू करें",
+    "backToSetup": "सेटअप पर वापस जाएं",
+    "swipeHint": "स्वाइप करें या एरो कीज़ उपयोग करें",
+    "swipeHintTouch": "बाएं या दाएं स्वाइप करें",
+    "spaceHint": "उत्तर देखने के लिए स्पेस दबाएं",
+    "tapHint": "पलटने के लिए उत्तर देखें पर टैप करें"
+  },
+  "sort": {
+    "recommended": "अनुशंसित",
+    "easiest": "सबसे आसान पहले",
+    "hardest": "सबसे कठिन पहले"
+  },
+  "cta": {
+    "missingTitle": "क्या आपके पास कोई प्रश्न है जो हमने शामिल नहीं किया?",
+    "missingDesc": "GitHub पर सुझाएं। हम हमेशा नए प्रश्न जोड़ते रहते हैं",
+    "missingAction": "सुझाएं",
+    "contribute": "योगदान करें"
+  },
+  "detail": {
+    "back": "← सभी प्रश्न",
+    "markRead": "पढ़ा हुआ चिह्नित करें",
+    "read": "पढ़ा गया"
+  },
+  "quiz": {
+    "title": "क्विज़",
+    "startBtn": "खुद परखें ({count} प्रश्न)",
+    "perfect": "परफेक्ट स्कोर!",
+    "good": "बहुत अच्छे!",
+    "tryAgain": "पढ़ाई जारी रखें!",
+    "retry": "फिर कोशिश करें",
+    "close": "बंद करें",
+    "correctLabel": "सही",
+    "wrongLabel": "गलत"
+  }
+}
