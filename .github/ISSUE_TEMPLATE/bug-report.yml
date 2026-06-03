@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a site bug, broken link, or incorrect answer
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of issue
+      options:
+        - Incorrect or outdated answer
+        - Broken link
+        - Site bug (UI, layout, functionality)
+        - Typo or grammar
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Affected page
+      description: URL or question title where you found the issue.
+      placeholder: "https://vuewiki.dev/q/what-is-vue"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong?
+      description: Describe the issue and what the correct behavior or content should be.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: If applicable, add a screenshot.

@@ -1,0 +1,24 @@
+name: Improve an answer
+description: Suggest an improvement to an existing question or answer
+labels: ["content", "improvement"]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: Which question?
+      description: The title or URL of the question you want to improve.
+      placeholder: "https://vuewiki.dev/q/what-is-pinia"
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What should change?
+      description: Describe what's missing, unclear, or could be better. Include code examples if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Links to official docs, RFCs, or articles that support your suggestion.

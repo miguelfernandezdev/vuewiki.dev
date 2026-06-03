@@ -1,0 +1,33 @@
+name: Suggest a question
+description: Suggest a new Vue.js interview question
+labels: ["content", "new question"]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: Question
+      description: The interview question you'd like to see answered.
+      placeholder: "How does Vue's reactivity system track dependencies?"
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options:
+        - beginner
+        - intermediate
+        - advanced
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated topics this question relates to.
+      placeholder: "reactivity, composition-api"
+  - type: textarea
+    id: context
+    attributes:
+      label: Why is this question useful?
+      description: Where have you seen this asked? Why would it help others?
