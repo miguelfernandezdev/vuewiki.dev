@@ -750,10 +750,10 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
   transform: translateY(-50%);
   font-size: 1.25rem;
   font-weight: 700;
-  opacity: 0.4;
-  transition: all 0.15s;
-  width: 40px;
-  height: 40px;
+  opacity: 0.35;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
   display: flex;
@@ -764,25 +764,36 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 }
 
 .swipe-indicator:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.15);
+  opacity: 0.8;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .swipe-indicator.dragging {
   opacity: 1;
-  transform: translateY(-50%) scale(1.15);
+  font-size: 1.75rem;
+  width: 52px;
+  height: 52px;
+  transform: translateY(-50%) scale(1);
 }
 
 .swipe-indicator-left {
-  left: -20px;
+  left: -18px;
   color: var(--vp-c-red-2);
   background: var(--vp-c-red-soft);
 }
 
+.swipe-indicator-left.dragging {
+  left: 12px;
+}
+
 .swipe-indicator-right {
-  right: -20px;
+  right: -18px;
   color: var(--vp-c-green-2);
   background: var(--vp-c-green-soft);
+}
+
+.swipe-indicator-right.dragging {
+  right: 12px;
 }
 
 .swipe-left .card {
@@ -894,7 +905,9 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 }
 
 @media (max-width: 640px) {
-  .swipe-indicator-left { left: -10px; }
-  .swipe-indicator-right { right: -10px; }
+  .swipe-indicator-left { left: -8px; }
+  .swipe-indicator-right { right: -8px; }
+  .swipe-indicator-left.dragging { left: 8px; }
+  .swipe-indicator-right.dragging { right: 8px; }
 }
 </style>
