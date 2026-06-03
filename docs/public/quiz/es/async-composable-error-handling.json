@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué un composable asíncrono debería devolver una `error` ref en lugar de lanzar una excepción?",
+      "options": [
+        "Lanzar una excepción hace que el `setup()` del componente falle sin forma de capturarla de manera declarativa",
+        "El sistema de reactividad de Vue no puede rastrear errores lanzados",
+        "Lanzar una excepción impide que TypeScript infiera el tipo de retorno",
+        "Los errores lanzados dentro de `onMounted` son silenciados por Vue"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Cuál es el propósito de exponer una función `retry` desde un composable de fetching de datos?",
+      "options": [
+        "Para aplicar debounce a llamadas repetidas a la misma URL",
+        "Para reiniciar completamente el estado reactivo del componente",
+        "Para que los usuarios puedan recuperarse de fallos transitorios sin remontar el componente",
+        "Para volver a hacer fetch automáticamente cada 30 segundos"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué lifecycle hook de Vue se usa como error boundary para capturar errores inesperados en tiempo de ejecución en componentes hijos?",
+      "options": [
+        "onErrorCaptured",
+        "onBeforeUnmount",
+        "onUpdated",
+        "onServerPrefetch"
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia entre mount() y shallowMount() en Vue Test Utils?",
+      "options": [
+        "mount() es para tests unitarios; shallowMount() es para tests end-to-end",
+        "mount() renderiza el árbol completo de componentes incluyendo los hijos; shallowMount() reemplaza los hijos con stubs",
+        "shallowMount() es más rápido porque omite el sistema de reactividad de Vue",
+        "mount() solo funciona con la Options API; shallowMount() soporta la Composition API"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué hay que usar await wrapper.find('button').trigger('click') en los tests de componentes?",
+      "options": [
+        "trigger() devuelve una Promise que se resuelve después de que el evento se propaga",
+        "Vue agrupa las actualizaciones del DOM de forma asíncrona, por lo que hay que esperar al siguiente ciclo de renderizado",
+        "El evento click se procesa en un Web Worker y debe ser esperado",
+        "Sin await, el click del botón se dispara dos veces"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué devuelve wrapper.emitted('update:modelValue')?",
+      "options": [
+        "El valor emitido más recientemente",
+        "Un booleano que indica si el evento se emitió al menos una vez",
+        "Un array de arrays: un array interno por cada emisión, cada uno con los argumentos pasados",
+        "Un ref que se actualiza reactivamente cada vez que el evento se emite"
+      ],
+      "answer": 2
+    }
+  ]
+}

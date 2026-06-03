@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuáles son los dos argumentos que recibe una función de componente funcional?",
+      "options": [
+        "template y context",
+        "props y un objeto context con slots, emit y attrs",
+        "data y methods",
+        "setup y render"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En Vue 3, ¿por qué es despreciable la ventaja de rendimiento de los componentes funcionales frente a los con estado?",
+      "options": [
+        "Vue 3 deshabilitó los componentes funcionales para simplificar la API",
+        "Los componentes funcionales ahora usan la misma creación de instancia que los con estado",
+        "Vue 3 optimizó intensamente los componentes con estado con una creación de instancia más rápida y optimizaciones del compilador",
+        "Ambos tipos usan ahora el mismo pipeline de renderizado basado en Proxy"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué características soportan los componentes funcionales que también soportan los componentes con estado (SFC)?",
+      "options": [
+        "Estado reactivo y hooks de ciclo de vida",
+        "Sintaxis de template y estilos con scope",
+        "Slots y validación de props",
+        "watch/computed e instancia del componente"
+      ],
+      "answer": 2
+    }
+  ]
+}

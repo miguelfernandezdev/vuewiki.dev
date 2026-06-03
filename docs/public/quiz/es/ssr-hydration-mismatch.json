@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué causa un desajuste de hydration al usar Date.now() en una plantilla?",
+      "options": [
+        "Date.now() no está disponible en Node.js",
+        "El servidor y el cliente renderizan en momentos distintos, produciendo valores diferentes",
+        "Vue SSR serializa las fechas como strings, causando un desajuste de tipos",
+        "Date.now() dispara una operación asíncrona que Suspense no puede gestionar"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué atributo se introdujo en Vue 3.5 para suprimir desajustes de hydration intencionales?",
+      "options": [
+        "v-client-only",
+        "data-allow-mismatch",
+        ":hydration-skip=\"true\"",
+        "v-no-hydration"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué opción de configuración de Vite habilita los avisos detallados de desajuste de hydration en producción?",
+      "options": [
+        "ssr.verboseHydration: true",
+        "define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true }",
+        "build.ssrDebug: true",
+        "plugins: [vueHydrationDebug()]"
+      ],
+      "answer": 1
+    }
+  ]
+}

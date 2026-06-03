@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What syntax does defineEmits use to declare typed events with named parameters?",
+      "options": [
+        "An array of event name strings",
+        "A type parameter with event names as properties and tuples as values",
+        "A plain object with event names mapping to handler functions",
+        "A generic function that accepts an event name and payload"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What happens when you call emit('typo') for an event not declared in defineEmits with TypeScript?",
+      "options": [
+        "Vue logs a runtime warning in development",
+        "The event is silently ignored at runtime",
+        "A TypeScript compile-time error is thrown",
+        "The parent receives undefined as the payload"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which syntax enables runtime validation in addition to TypeScript type checking for emits?",
+      "options": [
+        "The named tuple syntax: [value: string]",
+        "Passing a type parameter to defineEmits<{}>",
+        "The object syntax with validation functions returning boolean",
+        "Using defineOptions with emits validation"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Pinia's setup syntax, what do ref, computed, and plain functions map to respectively?",
+      "options": [
+        "Actions, getters, and state",
+        "State, actions, and getters",
+        "State, getters, and actions",
+        "Getters, state, and actions"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why must you use storeToRefs when destructuring a Pinia store?",
+      "options": [
+        "Direct destructuring calls the store factory again and creates a new instance",
+        "Direct destructuring breaks reactivity since properties are extracted as plain values",
+        "storeToRefs adds TypeScript type safety that plain destructuring lacks",
+        "Vue's Proxy cannot track destructured store properties without storeToRefs"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Pinia method allows you to update multiple state properties atomically in one call?",
+      "options": [
+        "store.$commit()",
+        "store.$update()",
+        "store.$patch()",
+        "store.$set()"
+      ],
+      "answer": 2
+    }
+  ]
+}

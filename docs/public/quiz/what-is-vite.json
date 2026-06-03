@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "question": "How does Vite achieve an instant dev server start regardless of project size?",
+      "options": [
+        "It pre-compiles all files to a binary cache on first run",
+        "It bundles only the entry file and lazy-loads the rest",
+        "It serves files via native ES modules on demand instead of bundling upfront",
+        "It uses a persistent worker process that pre-warms all files"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which bundler does Vite use for production builds?",
+      "options": ["Webpack", "Parcel", "esbuild", "Rollup"],
+      "answer": 3
+    },
+    {
+      "question": "What tool does Vite use to pre-bundle dependencies like `vue` and `lodash`?",
+      "options": ["Rollup", "Babel", "esbuild", "SWC"],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se mockea el fetch global en un test de composable para evitar llamadas reales a la red?",
+      "options": [
+        "import { mockFetch } from '@vue/test-utils'",
+        "Establecer global.fetch = vi.fn() y configurar las respuestas por test",
+        "Usar fetch.intercept() del módulo de red integrado de Vitest",
+        "Envolver la llamada al composable en un bloque vi.isolate()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué valor debería tener loading.value inmediatamente después de llamar al composable (antes de que el fetch se resuelva)?",
+      "options": [
+        "false: loading solo pasa a true después de la primera petición fallida",
+        "null: no está definido hasta que el fetch empieza",
+        "true: el fetch está pendiente",
+        "undefined: depende de la implementación del composable"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué se llama a mockFetch.mockReset() en beforeEach?",
+      "options": [
+        "Para volver a registrar el mock con la API global de fetch",
+        "Para limpiar el historial de llamadas y las respuestas configuradas, evitando que los tests se interfieran entre sí",
+        "Para resetear el estado loading del composable entre tests",
+        "mockReset() es obligatorio antes de cada uso de vi.fn() en Vitest"
+      ],
+      "answer": 1
+    }
+  ]
+}

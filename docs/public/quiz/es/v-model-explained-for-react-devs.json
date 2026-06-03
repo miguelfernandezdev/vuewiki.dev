@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿A qué equivale `v-model` de Vue en el patrón de input controlado de React?",
+      "options": [
+        "Al hook `ref` por sí solo",
+        "A la prop `value` y el handler `onChange` combinados",
+        "Al hook `useModel` de React",
+        "A pasar un callback mediante `onInput`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿A qué se compila `<input v-model=\"name\" />` en Vue?",
+      "options": [
+        "`<input :value=\"name\" @change=\"name = $event.target.value\" />`",
+        "`<input :name=\"name\" @input=\"name = $event\" />`",
+        "`<input :value=\"name\" @input=\"name = $event.target.value\" />`",
+        "`<input v-bind:model=\"name\" />`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cómo gestiona Vue múltiples bindings `v-model` en un componente en comparación con React?",
+      "options": [
+        "Vue usa la sintaxis `v-model:name` y `v-model:email`; React no tiene un equivalente directo",
+        "Vue y React usan el mismo patrón con props separadas",
+        "Vue requiere un store para múltiples bindings bidireccionales",
+        "El múltiple v-model de Vue requiere un plugin; React lo tiene integrado"
+      ],
+      "answer": 0
+    }
+  ]
+}

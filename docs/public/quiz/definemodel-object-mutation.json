@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does mutating a property inside a `defineModel` object (e.g., `model.value.name = 'x'`) not notify the parent?",
+      "options": [
+        "Vue does not allow writing to props that originate from `defineModel`",
+        "Mutating a property changes the object in place without changing the reference, so no `update:modelValue` event is emitted",
+        "Vue batches all property mutations and emits them at the end of the next tick",
+        "The parent's `v-model` binding only listens to `input` DOM events, not Vue events"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the correct way to update a single property inside a `defineModel` object?",
+      "options": [
+        "`model.value.name = newName` followed by `triggerRef(model)`",
+        "Replace the entire object: `model.value = { ...model.value, name: newName }`",
+        "Use `reactive(model.value)` and mutate the reactive copy",
+        "Call `emit('update:modelValue', { name: newName })` directly"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the issue with two consecutive spread assignments like `model.value = { ...model.value, a: '1' }` then `model.value = { ...model.value, b: '2' }`?",
+      "options": [
+        "The second assignment overwrites the first because both read the same stale snapshot",
+        "It emits `update:modelValue` twice, causing unnecessary parent re-renders",
+        "Vue batches them into one update so `b` is lost",
+        "TypeScript fails to infer the merged type, causing a compile error"
+      ],
+      "answer": 1
+    }
+  ]
+}

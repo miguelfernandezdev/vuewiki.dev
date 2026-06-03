@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does `useId()` (Vue 3.5+) provide when used for ARIA attributes?",
+      "options": [
+        "A globally unique user session identifier",
+        "A unique ID per component instance to avoid duplicate IDs on reuse",
+        "An auto-incrementing integer for list items",
+        "A hashed class name for CSS modules"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When using `aria-live` for dynamic content, when should you use `assertive` instead of `polite`?",
+      "options": [
+        "For all notifications to ensure they are always announced",
+        "When the content updates more than once per second",
+        "Only for urgent messages like errors, not general status updates",
+        "When the notification is visually hidden with `.sr-only`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why do SPAs need manual focus management on route changes?",
+      "options": [
+        "Because Vue Router does not support the History API",
+        "Because Vue removes `tabindex` from elements on navigation",
+        "Because the browser's default behavior of moving focus to the page top does not fire",
+        "Because `nextTick` delays focus until the next microtask"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In the `useForm` composable pattern, what does the `touched` object track?",
+      "options": [
+        "Which fields have been modified since the form was last submitted",
+        "Which fields the user has interacted with (visited and left)",
+        "Which fields currently have validation errors",
+        "Which fields are required versus optional"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When should you use VeeValidate or FormKit instead of a custom composable?",
+      "options": [
+        "Whenever the form has more than 3 fields",
+        "When you need schema-based validation, dynamic array fields, or async validation",
+        "Only for forms that submit to a REST API",
+        "When the form uses `v-model` instead of template refs"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the core data structure recommended for holding form state in Vue?",
+      "options": [
+        "A `ref` containing a plain string for each field",
+        "A `reactive` object containing all field values",
+        "A Pinia store with individual state properties",
+        "An array of `ref` values matching the field order"
+      ],
+      "answer": 1
+    }
+  ]
+}

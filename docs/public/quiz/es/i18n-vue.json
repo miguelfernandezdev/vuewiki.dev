@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En vue-i18n, ¿cómo se separan las formas de pluralización en una cadena de mensaje?",
+      "options": [
+        "Con comas: \"No hay elementos, Un elemento, {count} elementos\"",
+        "Con caracteres pipe: \"No hay elementos | Un elemento | {count} elementos\"",
+        "Con claves numeradas: \"0:No hay elementos|1:Un elemento|n:{count} elementos\"",
+        "Con sintaxis de array en el archivo JSON"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué consigue cambiar el ref de locale devuelto por useI18n() en una app Vue?",
+      "options": [
+        "Recarga la página con el nuevo idioma desde el servidor",
+        "Solo actualiza las traducciones del componente actual",
+        "Cambia reactivamente todas las traducciones en toda la aplicación",
+        "Guarda la preferencia en localStorage para futuras visitas"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué estrategia de rutas usa @nuxtjs/i18n con la configuración 'prefix_except_default'?",
+      "options": [
+        "Todas las rutas tienen prefijo de locale incluyendo el idioma por defecto",
+        "Ninguna ruta tiene prefijo de locale — se usa el header Accept-Language",
+        "Los locales no predeterminados tienen prefijo (p. ej., /es/about) mientras el predeterminado no lo tiene",
+        "Las rutas usan parámetros de query como ?lang=es en lugar de prefijos de ruta"
+      ],
+      "answer": 2
+    }
+  ]
+}

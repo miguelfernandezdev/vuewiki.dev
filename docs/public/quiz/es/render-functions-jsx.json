@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué significa la 'h' en la función h() de Vue?",
+      "options": [
+        "handler",
+        "hyperscript",
+        "html",
+        "hook"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se gestionan los modificadores de eventos como .stop y .prevent en las funciones de render?",
+      "options": [
+        "No están soportados en funciones de render",
+        "Usando withModifiers(handler, ['stop', 'prevent'])",
+        "Pasándolos como un array directamente en el manejador del evento",
+        "Prefijando el nombre del evento con el modificador: 'onClick.stop'"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo tiene más sentido usar una función de render en lugar de una plantilla?",
+      "options": [
+        "Siempre: las funciones de render son más rápidas porque omiten la compilación",
+        "Cuando el componente usa TypeScript",
+        "Cuando la salida es demasiado dinámica para la sintaxis de plantilla, como un nivel de etiqueta variable",
+        "Cuando necesitas usar propiedades computadas"
+      ],
+      "answer": 2
+    }
+  ]
+}

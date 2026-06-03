@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué define a un input controlado en Vue?",
+      "options": [
+        "Un input cuyo valor se almacena en un store de Pinia",
+        "Un input cuyo valor está manejado por estado reactivo mediante `v-model`",
+        "Un input que valida su propio valor sin lógica externa",
+        "Un input renderizado por una librería de formularios como VeeValidate"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Para qué tipo de input es el patrón no controlado la única opción práctica?",
+      "options": [
+        "Inputs de texto con conteo de caracteres en tiempo real",
+        "Inputs select con opciones dinámicas cargadas desde una API",
+        "Inputs de archivo, porque `<input type=\"file\">` es de solo lectura y `v-model` no aplica",
+        "Inputs de contraseña, porque Vue impide enlazar valores sensibles de forma reactiva"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué hace `v-model.lazy` en comparación con el `v-model` por defecto?",
+      "options": [
+        "Difiere el renderizado inicial hasta que el input recibe el foco",
+        "Sincroniza el valor en el evento `change` (blur/enter) en lugar de en cada evento `input`",
+        "Impide que el input dispare un re-render hasta el envío del formulario",
+        "Elimina los espacios en blanco del valor antes de actualizar el ref reactivo"
+      ],
+      "answer": 1
+    }
+  ]
+}

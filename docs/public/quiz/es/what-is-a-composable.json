@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué convención de nomenclatura deben seguir las funciones composable?",
+      "options": [
+        "Deben empezar con `compose`",
+        "Deben empezar con `use`",
+        "Deben terminar con `Composable`",
+        "Deben empezar con `$`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Cuando dos componentes llaman al mismo composable, ¿qué ocurre con su estado?",
+      "options": [
+        "Comparten el mismo estado reactivo por defecto",
+        "Cada componente obtiene su propia instancia independiente del estado",
+        "El segundo componente hereda el estado del primero",
+        "Vue muestra una advertencia sobre el uso duplicado de un composable"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué problema de los mixins de Vue 2 resuelven los composables?",
+      "options": [
+        "Los mixins no soportaban TypeScript; los composables sí",
+        "Los mixins causaban colisiones de nombres de propiedades, fuentes de datos poco claras y dependencias implícitas",
+        "Los mixins eran muy verbosos; los composables son más cortos de escribir",
+        "Los mixins no podían usar hooks del ciclo de vida; los composables sí"
+      ],
+      "answer": 1
+    }
+  ]
+}

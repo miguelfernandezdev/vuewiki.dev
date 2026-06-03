@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se establecen valores por defecto para las props cuando se usa la sintaxis de genérico TypeScript con defineProps?",
+      "options": [
+        "Añadir una propiedad default directamente dentro de la interfaz TypeScript",
+        "Usar withDefaults(defineProps<Props>(), { count: 0 })",
+        "Pasar un segundo argumento a defineProps: defineProps<Props>({ defaults: {...} })",
+        "Desestructurar dentro de una propiedad computed con valores de fallback"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Desde Vue 3.5, ¿cómo se desestructuran las props manteniendo la reactividad?",
+      "options": [
+        "Usando toRefs(props) antes de desestructurar",
+        "Usando storeToRefs(props) de Pinia",
+        "Desestructurando directamente desde defineProps — la desestructuración reactiva está soportada de forma nativa",
+        "Usando computed(() => props.title) para cada prop individualmente"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué se prefiere la sintaxis de genérico TypeScript sobre la sintaxis de objeto en tiempo de ejecución para defineProps?",
+      "options": [
+        "La sintaxis de genérico genera comprobaciones en tiempo de ejecución más rápidas",
+        "La sintaxis en tiempo de ejecución no soporta arrays u objetos como tipos de prop",
+        "La sintaxis de genérico ofrece inferencia completa en el IDE, sin duplicación y soporta tipos complejos",
+        "La sintaxis en tiempo de ejecución está deprecada en Vue 3.5+"
+      ],
+      "answer": 2
+    }
+  ]
+}

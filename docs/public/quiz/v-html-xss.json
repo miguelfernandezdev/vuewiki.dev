@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "question": "What does `v-html` use internally to inject content into the DOM?",
+      "options": ["textContent", "innerText", "innerHTML", "insertAdjacentHTML"],
+      "answer": 2
+    },
+    {
+      "question": "Why do scoped styles NOT apply to elements injected via `v-html`?",
+      "options": [
+        "Scoped styles only work on the root element",
+        "Injected elements don't receive the `data-v-xxxxx` scoping attribute",
+        "`v-html` disables CSS processing for the element",
+        "Scoped styles are removed in production builds"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which library is recommended for sanitizing user-provided HTML before using `v-html`?",
+      "options": ["sanitize-html", "xss-filters", "DOMPurify", "helmet"],
+      "answer": 2
+    }
+  ]
+}

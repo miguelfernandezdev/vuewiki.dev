@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el problema central que resuelve elevar el estado (lifting state up)?",
+      "options": [
+        "Las props no se pueden pasar más de dos niveles en Vue",
+        "Dos componentes hermanos que gestionan cada uno su propia copia de datos compartidos se dessincronizan",
+        "Los componentes hijos no pueden comunicarse directamente sin un padre",
+        "Los stores de Pinia son demasiado pesados para escenarios simples de estado compartido"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo se convierte elevar el estado en la solución incorrecta y empieza el prop drilling?",
+      "options": [
+        "Cuando más de dos componentes comparten el mismo estado",
+        "Cuando el estado necesita persistirse entre navegaciones de página",
+        "Cuando se pasan props a través de 3 o más niveles de componentes que no usan los datos",
+        "Cuando el componente padre tiene más de 5 componentes hijo"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En el patrón de lifting state up, ¿cuál es la responsabilidad del componente hijo?",
+      "options": [
+        "Poseer y gestionar el estado compartido localmente",
+        "Recibir datos mediante props y comunicar cambios mediante eventos emitidos",
+        "Modificar directamente los datos reactivos del padre usando inject",
+        "Clonar el estado del padre y sincronizar los cambios periódicamente"
+      ],
+      "answer": 1
+    }
+  ]
+}

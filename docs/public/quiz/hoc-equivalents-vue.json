@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the primary Vue equivalent of React's Higher-Order Components for logic reuse?",
+      "options": [
+        "Mixins",
+        "Composables",
+        "Renderless components with scoped slots",
+        "Component wrappers with defineComponent"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a renderless component in Vue?",
+      "options": [
+        "A component with no template that renders nothing at all",
+        "A component that provides logic through a scoped slot, letting consumers decide rendering",
+        "A functional component that uses h() instead of a template",
+        "A component that only renders on the server"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a key problem with HOC patterns in Vue that composables avoid?",
+      "options": [
+        "HOCs cannot access the Vue Router or Pinia",
+        "HOCs are incompatible with TypeScript generics",
+        "HOCs add wrapper nesting that obscures the real component in DevTools",
+        "HOCs cannot pass event listeners to wrapped components"
+      ],
+      "answer": 2
+    }
+  ]
+}

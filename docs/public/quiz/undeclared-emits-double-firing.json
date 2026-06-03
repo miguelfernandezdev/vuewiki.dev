@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does a parent handler fire twice when a component re-emits a native event without `defineEmits`?",
+      "options": [
+        "Vue has a bug with native event re-emission",
+        "The event fires via `$attrs` fallthrough AND via the explicit `$emit()` call",
+        "The browser fires the event twice for component elements",
+        "Native events always bubble twice in Vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which of these fixes the double-firing issue when a component has a single root element?",
+      "options": [
+        "Add `.stop` modifier to the parent listener",
+        "Use `v-once` on the child component",
+        "Remove the explicit `$emit` and let the event fall through automatically",
+        "Declare `inheritAttrs: false` on the child"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does declaring a native event name in `defineEmits` prevent?",
+      "options": [
+        "The native event from firing at all",
+        "The event from reaching child elements",
+        "The listener from falling through via `$attrs` to the root element",
+        "The event from being passed to scoped slots"
+      ],
+      "answer": 2
+    }
+  ]
+}

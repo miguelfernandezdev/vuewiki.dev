@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What does returning a route object from `router.beforeEach` do?",
+      "options": [
+        "Cancels the navigation and stays on the current route",
+        "Logs the route for debugging",
+        "Redirects to the returned route",
+        "Registers the route as an alias"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which navigation guard runs last and cannot cancel a navigation?",
+      "options": ["beforeEach", "beforeResolve", "afterEach", "beforeEnter"],
+      "answer": 2
+    },
+    {
+      "question": "What is the correct in-component guard composable to use when warning users about unsaved changes before leaving?",
+      "options": [
+        "onBeforeRouteEnter",
+        "onBeforeRouteLeave",
+        "onRouteChange",
+        "onBeforeUnmount"
+      ],
+      "answer": 1
+    }
+  ]
+}

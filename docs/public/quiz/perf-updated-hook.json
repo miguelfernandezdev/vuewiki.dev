@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the key danger of mutating reactive state inside the updated hook?",
+      "options": [
+        "It runs asynchronously and misses the render cycle",
+        "It causes an infinite loop: mutation → re-render → updated → mutation",
+        "The DOM may not be fully painted when the hook runs",
+        "Vue throws a runtime warning and blocks the mutation"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a valid use case for onUpdated that cannot be replaced by watch or computed?",
+      "options": [
+        "Syncing a third-party library or auto-scrolling after DOM changes",
+        "Deriving a computed sum from a reactive array",
+        "Sending an API request when a specific data property changes",
+        "Initializing component state on first render"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "The onUpdated hook fires when ANY reactive state changes. What should you use to react to a specific property?",
+      "options": [
+        "onUpdated with a guard condition (only valid approach)",
+        "The beforeUpdate lifecycle hook instead",
+        "watch or watchEffect targeting the specific property",
+        "A reactive() deep observer"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace `v-memo=\"[]\"` a un subárbol del template?",
+      "options": [
+        "Omite el render en el primer montaje",
+        "Actúa como `v-once` — el contenido nunca se vuelve a renderizar",
+        "Memoiza basándose en todas las dependencias reactivas",
+        "Limpia el subárbol en cada render"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿En qué escenario es más útil `v-memo` para el rendimiento?",
+      "options": [
+        "Etiquetas de texto estático pequeño",
+        "Componentes de layout global de la aplicación",
+        "Listas grandes donde solo cambian unos pocos elementos a la vez",
+        "Componentes con propiedades computed costosas"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo NO debes usar `v-once`?",
+      "options": [
+        "En contenido del footer con un año de copyright fijo",
+        "En elementos que contienen datos reactivos que pueden cambiar tras el montaje",
+        "En el nombre o branding de la empresa",
+        "En valores de configuración estáticos mostrados en la UI"
+      ],
+      "answer": 1
+    }
+  ]
+}

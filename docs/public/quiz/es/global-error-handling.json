@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el orden correcto de las capas de manejo de errores en una app Vue/Nuxt?",
+      "options": [
+        "app.config.errorHandler → onErrorCaptured → try/catch",
+        "try/catch → onErrorCaptured → app.config.errorHandler → error.vue",
+        "onErrorCaptured → app.config.errorHandler → try/catch",
+        "error.vue → app.config.errorHandler → onErrorCaptured"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué archivo específico de Nuxt captura errores fatales y renderiza una pantalla de error a página completa?",
+      "options": [
+        "pages/_error.vue",
+        "layouts/error.vue",
+        "error.vue en la raíz del proyecto",
+        "app/error.vue"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Captura app.config.errorHandler los errores lanzados dentro de fetch() en el event handler de un componente?",
+      "options": [
+        "Sí, captura todos los errores asíncronos automáticamente",
+        "No, fetch y otras promesas en event handlers necesitan try/catch explícito",
+        "Solo si usas $fetch en lugar de la API fetch nativa",
+        "Sí, pero solo en builds de producción"
+      ],
+      "answer": 1
+    }
+  ]
+}

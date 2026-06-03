@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué devuelve reactive() cuando le pasas un objeto plano?",
+      "options": [
+        "Un clon profundo del objeto original",
+        "El objeto original con propiedades no enumerables añadidas",
+        "Un Proxy que envuelve el objeto original",
+        "Un snapshot de solo lectura del objeto original"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué utilidad desenvuelve un Proxy reactivo de vuelta al objeto plano original para comparaciones de identidad?",
+      "options": [
+        "markRaw()",
+        "unref()",
+        "toRaw()",
+        "readonly()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la forma recomendada de rastrear qué elemento está 'seleccionado' de una lista reactiva para evitar el problema de identidad del Proxy?",
+      "options": [
+        "Almacenar una referencia al objeto Proxy reactivo",
+        "Usar toRaw() en ambos lados de cada comparación",
+        "Comparar mediante un identificador primitivo único como un ID de cadena",
+        "Usar un WeakMap con los objetos reactivos como claves"
+      ],
+      "answer": 2
+    }
+  ]
+}

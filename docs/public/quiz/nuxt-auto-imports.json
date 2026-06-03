@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Nuxt, how does directory structure affect auto-imported component names?",
+      "options": [
+        "All components are registered with their filename only, regardless of folder",
+        "The folder path becomes a prefix (e.g., base/Button.vue becomes <BaseButton />)",
+        "Components are named using the full path with slashes replaced by dashes",
+        "Sub-folder names are ignored — only the filename matters"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you lazy-load an auto-imported component in Nuxt?",
+      "options": [
+        "Import it with defineAsyncComponent() in the script setup",
+        "Add it to the lazyComponents array in nuxt.config.ts",
+        "Prefix its name with 'Lazy' in the template (e.g., <LazyHeavyChart />)",
+        "Set lazy: true in the component's defineOptions"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which directory structure in composables/ is NOT auto-imported by default in Nuxt?",
+      "options": [
+        "composables/useAuth.ts — a top-level file",
+        "composables/useCounter.ts — a top-level file",
+        "composables/helpers/validate.ts — a nested file",
+        "composables/useSearch.ts — a top-level file"
+      ],
+      "answer": 2
+    }
+  ]
+}

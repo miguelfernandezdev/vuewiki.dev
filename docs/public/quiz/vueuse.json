@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What does `useEventListener` from VueUse do automatically when a component unmounts?",
+      "options": [
+        "It re-emits the event to the parent component",
+        "It saves the last event to localStorage",
+        "It removes the event listener automatically",
+        "It replays the last event on remount"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which VueUse composable creates shared state across components without Pinia?",
+      "options": ["useSharedState()", "createGlobalState()", "useGlobal()", "sharedRef()"],
+      "answer": 1
+    },
+    {
+      "question": "When should you write your own composable instead of using VueUse?",
+      "options": [
+        "Always — custom composables are faster than VueUse",
+        "When the logic is domain-specific to your application",
+        "When you need SSR compatibility",
+        "When the VueUse composable uses TypeScript"
+      ],
+      "answer": 1
+    }
+  ]
+}

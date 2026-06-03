@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does route middleware return to redirect the user to another page?",
+      "options": [
+        "redirect('/login')",
+        "return { redirect: '/login' }",
+        "navigateTo('/login')",
+        "useRouter().push('/login')"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Where does server middleware live and what does it have access to?",
+      "options": [
+        "middleware/ — Vue composables and the route object",
+        "server/middleware/ — raw HTTP request/response via Nitro",
+        "plugins/ — the Nuxt app instance",
+        "server/api/ — the event context only"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does returning nothing (undefined) from a route middleware do?",
+      "options": [
+        "Throws a navigation error",
+        "Cancels the navigation and stays on the current page",
+        "Redirects to the home page",
+        "Continues the navigation normally"
+      ],
+      "answer": 3
+    }
+  ]
+}

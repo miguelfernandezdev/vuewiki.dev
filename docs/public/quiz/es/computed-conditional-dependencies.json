@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuándo añade Vue una propiedad reactiva como dependencia de un getter computed?",
+      "options": [
+        "Cuando la propiedad se declara dentro de la opción `data()` del componente",
+        "Solo la primera vez que se ejecuta el getter computed",
+        "Cuando el `.value` de la propiedad se lee realmente durante la ejecución del getter",
+        "Cuando la propiedad se pasa como argumento a la función computed"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En un computed con retorno anticipado, si `data.value` está detrás de una condición que impide que se lea, ¿qué ocurre cuando `data` cambia?",
+      "options": [
+        "El computed se reevalúa inmediatamente porque Vue observa todos los refs en el ámbito",
+        "El computed no se reevalúa porque `data` no fue rastreado en la última ejecución",
+        "Vue lanza un aviso sobre dependencias no rastreadas en propiedades computed",
+        "El computed se reevalúa pero devuelve un valor en caché obsoleto"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la solución para una propiedad computed que pierde dependencias por lógica condicional?",
+      "options": [
+        "Reemplazar `computed` con un `watch` que liste todas las dependencias explícitamente",
+        "Acceder a todas las propiedades `.value` de dependencias al inicio del getter, antes de cualquier condicional",
+        "Añadir `{ immediate: true }` como segundo argumento a la llamada computed",
+        "Usar `triggerRef` después de cada bloque condicional para forzar la reevaluación"
+      ],
+      "answer": 1
+    }
+  ]
+}

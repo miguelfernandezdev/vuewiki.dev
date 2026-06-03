@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué el composable `useFetch` acepta `MaybeRefOrGetter<string>` en lugar de un string simple?",
+      "options": [
+        "Para soportar URLs opcionales que pueden ser undefined al montar",
+        "Para que la URL pueda ser un string simple, un ref o un getter, permitiendo re-fetch automático al cambiar la URL",
+        "Para permitir que la URL se calcule desde una acción de un store de Pinia",
+        "Porque TypeScript requiere este tipo para todos los parámetros asíncronos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué se usa `watchEffect` dentro del composable `useFetch` básico en lugar de una llamada a función simple?",
+      "options": [
+        "Porque las funciones asíncronas no pueden llamarse directamente en `<script setup>`",
+        "Porque se ejecuta inmediatamente Y vuelve a ejecutarse automáticamente cuando cambian las dependencias reactivas de la URL",
+        "Porque provee manejo de errores integrado para peticiones de red",
+        "Porque `watch` requiere un array de dependencias explícito para rastrear cambios en la URL"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué permite hacer al consumidor la propiedad `refetch` expuesta por el composable?",
+      "options": [
+        "Cambiar la URL usada para la siguiente petición",
+        "Cancelar una petición en vuelo antes de que complete",
+        "Disparar manualmente un nuevo fetch, por ejemplo ante un reintento iniciado por el usuario",
+        "Suscribirse a eventos server-sent en tiempo real"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What directory organization strategy is recommended for scaling Vue apps across multiple teams?",
+      "options": [
+        "Group all components together, all stores together, all composables together",
+        "Organize by business domain with feature modules, each owning its vertical slice",
+        "Use a single global store with namespaced modules per team",
+        "Separate frontend and backend code into different repos per team"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the purpose of each feature's index.ts barrel export file?",
+      "options": [
+        "To auto-generate TypeScript types for external consumers",
+        "To define the feature's public API — what other features are allowed to import",
+        "To register the feature's components globally with Vue",
+        "To configure the feature's Pinia store with initial state"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which tool is mentioned for enforcing module boundaries between features?",
+      "options": [
+        "TypeScript strict mode",
+        "Vue DevTools",
+        "ESLint with no-restricted-imports rules",
+        "Vite's module federation plugin"
+      ],
+      "answer": 2
+    }
+  ]
+}

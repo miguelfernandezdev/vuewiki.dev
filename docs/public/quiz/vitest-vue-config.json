@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What package provides DOM simulation for Vitest Vue tests, and is faster than jsdom?",
+      "options": ["fake-dom", "happy-dom", "jsdom-lite", "vue-dom"],
+      "answer": 1
+    },
+    {
+      "question": "What does setting `globals: true` in Vitest config enable?",
+      "options": [
+        "Sharing test state between all test files",
+        "Auto-importing `describe`, `it`, and `expect` without explicit imports",
+        "Running tests in a global browser environment",
+        "Enabling global mocks for all modules"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When testing a Pinia store with Vitest, what should you call in `beforeEach`?",
+      "options": [
+        "`resetStore()` from the store module",
+        "`clearPinia()` from the test utilities",
+        "`setActivePinia(createPinia())` to create a fresh instance per test",
+        "`pinia.reset()` on the global pinia instance"
+      ],
+      "answer": 2
+    }
+  ]
+}

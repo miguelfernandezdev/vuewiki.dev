@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why should you use shallowRef instead of ref when storing a component definition for :is?",
+      "options": [
+        "ref cannot hold non-primitive values like component objects",
+        "ref would attempt to deeply unwrap the component object, causing issues",
+        "shallowRef is required for performance when switching components frequently",
+        "Vue Router requires shallowRef for dynamic component rendering"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the 'vue:' prefix on a native HTML element's is attribute do?",
+      "options": [
+        "Creates a web component that wraps a Vue component",
+        "Tells the browser to upgrade the element with a custom element class",
+        "Renders a Vue component instead of following the HTML spec's customized built-in behavior",
+        "Enables Vue-specific directives on that native element"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why is the is='vue:' workaround only needed for in-DOM templates, not SFCs compiled by Vite?",
+      "options": [
+        "Vite automatically adds the vue: prefix during compilation",
+        "SFC templates are compiled at build time, not parsed as HTML by the browser",
+        "Vite uses a virtual DOM that bypasses HTML parsing restrictions",
+        "SFCs use JSX internally which has no HTML parsing restrictions"
+      ],
+      "answer": 1
+    }
+  ]
+}

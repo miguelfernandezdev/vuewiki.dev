@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why doesn't scoped CSS from a parent component style elements inside a child component?",
+      "options": [
+        "Scoped CSS is disabled for third-party components by default",
+        "Vue adds a data-v-xxxxx attribute only to the current component's elements, not child elements",
+        "Child components have higher CSS specificity and override parent styles",
+        "CSS inheritance is blocked by the Shadow DOM encapsulation"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the correct CSS selector syntax to style a child component's internal elements from a scoped parent?",
+      "options": [
+        ".parent >>> .child-element",
+        ".parent /deep/ .child-element",
+        ".parent ::v-deep .child-element",
+        ".parent :deep(.child-element)"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "Which child component element IS affected by parent scoped CSS without needing :deep()?",
+      "options": [
+        "All elements with a matching class name",
+        "The child component's root element",
+        "Elements with the data-scoped attribute",
+        "Slotted content passed from the parent"
+      ],
+      "answer": 1
+    }
+  ]
+}

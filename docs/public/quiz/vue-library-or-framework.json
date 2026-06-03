@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What is Vue's official self-description regarding its classification?",
+      "options": [
+        "A full-stack framework like Angular",
+        "A UI library like React",
+        "A progressive framework",
+        "A micro-framework for SPA development"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the key difference between a library and a framework?",
+      "options": [
+        "Libraries are open source; frameworks are commercial",
+        "A library provides tools you call; a framework controls the flow and calls your code",
+        "Frameworks require TypeScript; libraries do not",
+        "Libraries are smaller in bundle size than frameworks"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which tool scaffolds a full Vue framework structure with Router, Pinia, and Vite?",
+      "options": ["vue-init", "vue-cli", "create-vue", "@vue/create"],
+      "answer": 2
+    }
+  ]
+}

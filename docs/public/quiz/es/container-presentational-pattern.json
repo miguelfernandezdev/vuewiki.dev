@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el rol de un componente presentacional en este patrón?",
+      "options": [
+        "Obtiene datos y los pasa a componentes contenedor mediante props",
+        "Recibe datos a través de props y emite eventos, sin conocimiento de las fuentes de datos",
+        "Gestiona el estado compartido de la aplicación usando stores de Pinia",
+        "Maneja el enrutamiento y redirige al usuario según el estado de autenticación"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En Vue 3 moderno, ¿qué reemplaza habitualmente el rol del componente contenedor?",
+      "options": [
+        "Un store de Pinia con acciones que los componentes llaman directamente",
+        "Un composable que encapsula el fetching de datos y la lógica",
+        "Un componente `<RouterView>` padre que inyecta datos mediante `provide`",
+        "Un plugin registrado en `main.ts` que inyecta datos globalmente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el principal beneficio de testing de los componentes presentacionales?",
+      "options": [
+        "Pueden probarse con tests unitarios que se ejecutan en Node sin navegador",
+        "Pueden montarse con props y eventos sin necesidad de simular APIs o stores",
+        "Generan fixtures de test automáticamente a partir de sus tipos de props",
+        "Omiten el overhead de reactividad, haciendo que los tests sean 10 veces más rápidos"
+      ],
+      "answer": 1
+    }
+  ]
+}

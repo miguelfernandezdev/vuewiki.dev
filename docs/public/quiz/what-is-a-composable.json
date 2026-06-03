@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What naming convention must composable functions follow?",
+      "options": [
+        "They must start with `compose`",
+        "They must start with `use`",
+        "They must end with `Composable`",
+        "They must start with `$`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When two components call the same composable, what happens to their state?",
+      "options": [
+        "They share the same reactive state by default",
+        "Each component gets its own independent instance of the state",
+        "The second component inherits the first component's state",
+        "Vue throws a warning about duplicate composable usage"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What problem do composables solve that Vue 2 mixins had?",
+      "options": [
+        "Mixins didn't support TypeScript; composables do",
+        "Mixins caused property name collisions, unclear data sources, and implicit dependencies",
+        "Mixins were too verbose; composables are shorter to write",
+        "Mixins couldn't use lifecycle hooks; composables can"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Si cada elemento de una lista tiene 5 componentes anidados y renderizas 100 elementos, ¿cuántas instancias se crean en total?",
+      "options": [
+        "100",
+        "200",
+        "500",
+        "1000"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo es aceptable el anidamiento profundo de componentes dentro de un elemento de lista según la guía de rendimiento?",
+      "options": [
+        "Cuando la lista tiene menos de 500 elementos",
+        "Cuando se usa virtual scrolling (solo ~20 elementos renderizados a la vez)",
+        "Cuando los componentes usan la Options API en lugar de la Composition API",
+        "Cuando cada componente usa v-once en su template"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué tipos de componentes deberías reemplazar con elementos HTML planos en elementos de lista en rutas críticas?",
+      "options": [
+        "Componentes con tooltips y estado de interacción",
+        "Componentes que gestionan su propio estado de edición",
+        "Wrappers de layout/estilo puros como <Card>, <Text>, <Flex>",
+        "Componentes que usan intersection observers"
+      ],
+      "answer": 2
+    }
+  ]
+}

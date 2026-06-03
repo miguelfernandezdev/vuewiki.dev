@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the official command to scaffold a new Vue project?",
+      "options": [
+        "vue create my-app",
+        "npx create-vue my-app",
+        "npm create vue@latest",
+        "npm init vue my-app"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why is Vite recommended over Vue CLI (Webpack) for new Vue projects?",
+      "options": [
+        "Vite supports TypeScript natively; Webpack requires a separate loader",
+        "Vite uses native ES modules for instant dev server startup; Webpack bundles everything first",
+        "Vite ships a built-in router; Webpack requires manual configuration",
+        "Vite is the only tool that supports Vue 3 Single-File Components"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the minimum set of files needed to manually set up a Vue + Vite project?",
+      "options": [
+        "package.json, vite.config.ts, index.html, and src/main.ts",
+        "package.json, webpack.config.js, index.html, and src/main.ts",
+        "vite.config.ts and src/App.vue only",
+        "package.json, tsconfig.json, vite.config.ts, and src/router/index.ts"
+      ],
+      "answer": 0
+    }
+  ]
+}

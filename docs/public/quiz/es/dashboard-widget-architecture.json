@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué se recomienda `shallowRef` para los datos de widgets en una arquitectura de dashboard?",
+      "options": [
+        "Evita que otros widgets lean accidentalmente los mismos datos",
+        "Los datos de los widgets se reemplazan en bloque desde una respuesta de API, por lo que el overhead de reactividad profunda es innecesario",
+        "Es obligatorio cuando se usa `useFetch` con URLs dinámicas de un store de Pinia",
+        "Los shallow refs se serializan automáticamente a JSON para persistencia en localStorage"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Dónde deberían almacenarse los datos compartidos entre múltiples widgets del dashboard (p. ej., un filtro de rango de fechas)?",
+      "options": [
+        "En el `ref` local del componente `DashboardPage` y pasado hacia abajo como props",
+        "En un store de Pinia para que todos los widgets dependientes reaccionen automáticamente cuando cambie",
+        "En el query string de la URL para que los widgets lo lean al montar",
+        "En un composable que cada widget instancia de forma independiente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el beneficio de que cada widget gestione su propio estado de carga y error de forma independiente?",
+      "options": [
+        "Permite que la página use un único boundary `<Suspense>` para todos los widgets simultáneamente",
+        "Una API lenta o con fallos no bloquea ni rompe los demás widgets de la página",
+        "Reduce el número de refs reactivos necesarios en el componente padre",
+        "Garantiza que todos los widgets terminen de cargar al mismo tiempo para consistencia visual"
+      ],
+      "answer": 1
+    }
+  ]
+}

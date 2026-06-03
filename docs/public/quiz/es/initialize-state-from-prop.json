@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Cuando inicializas un ref con el valor de una prop usando ref(props.value), ¿qué ocurre cuando la prop cambia después?",
+      "options": [
+        "El ref local se actualiza automáticamente para coincidir con el nuevo valor de la prop",
+        "Vue lanza un warning sobre la mutación de props",
+        "El ref local permanece en su valor inicial — el cambio de prop no tiene efecto",
+        "El componente se vuelve a montar con el nuevo valor de la prop"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué convención de nomenclatura indica que una prop se usa solo como semilla inicial y no como binding en vivo?",
+      "options": [
+        "Prefijo con default o initial (p. ej., initialQuery)",
+        "Sufijo con Seed (p. ej., querySeed)",
+        "Usar SCREAMING_CASE para el nombre de la prop",
+        "Definir la prop como type: 'initial' en defineProps"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Cuál es el riesgo al copiar una prop de tipo objeto con ref(props.initialFilters) sin hacer spreading?",
+      "options": [
+        "El ref no será reactivo porque los objetos necesitan reactive() en su lugar",
+        "Tanto el ref local como la prop apuntan a la misma referencia de objeto",
+        "Vue hará una copia profunda del objeto causando problemas de rendimiento",
+        "Los tipos de TypeScript no se preservarán en el ref local"
+      ],
+      "answer": 1
+    }
+  ]
+}

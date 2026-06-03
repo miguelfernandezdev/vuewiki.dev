@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What does Vue do during hydration that differs from a normal SPA mount?",
+      "options": [
+        "It re-renders all components from scratch to ensure consistency",
+        "It reuses existing server-rendered DOM nodes instead of creating new ones",
+        "It downloads a separate hydration bundle from the server",
+        "It runs SSR a second time on the client to verify correctness"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which function should you use on the client for an SSR application instead of `createApp`?",
+      "options": ["createClientApp()", "createSSRApp()", "hydrateApp()", "mountSSR()"],
+      "answer": 1
+    },
+    {
+      "question": "What causes a hydration mismatch warning in Vue?",
+      "options": [
+        "Using `v-if` with server-only conditions",
+        "Using Pinia stores during SSR",
+        "The client would render different HTML than what the server sent",
+        "Accessing `window` after the component mounts"
+      ],
+      "answer": 2
+    }
+  ]
+}

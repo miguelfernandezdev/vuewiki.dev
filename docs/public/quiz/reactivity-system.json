@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What mechanism does Vue 3 use to intercept reads and writes on reactive objects?",
+      "options": [
+        "Object.defineProperty on each property",
+        "A JavaScript Proxy wrapping the object",
+        "MutationObserver watching the object",
+        "Polling with setInterval for changes"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Vue 3's reactivity system, what happens when a reactive property is READ inside a watchEffect?",
+      "options": [
+        "The value is cached for performance",
+        "A dependency link is created between the effect and that property (tracking)",
+        "The effect is immediately re-run",
+        "Nothing — reads are not tracked"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What was the key limitation of Vue 2's reactivity system that Vue 3's Proxy approach solved?",
+      "options": [
+        "Vue 2 could not track array mutations at all",
+        "Vue 2's Object.defineProperty could not detect new property additions",
+        "Vue 2 required TypeScript for reactivity to work",
+        "Vue 2 reactivity was synchronous and blocked the main thread"
+      ],
+      "answer": 1
+    }
+  ]
+}

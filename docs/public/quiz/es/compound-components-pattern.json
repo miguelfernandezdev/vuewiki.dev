@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo comparten estado los componentes compuestos entre el padre y los hijos?",
+      "options": [
+        "A través de un store de Pinia que tanto el padre como los hijos importan",
+        "Mediante `provide` en el padre e `inject` en los componentes hijos",
+        "A través de un event bus global adjunto a `app.config.globalProperties`",
+        "Pasando todo el estado hacia abajo como props a través de cada componente intermedio"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la ventaja de usar un símbolo `InjectionKey` en lugar de un string como clave en provide/inject?",
+      "options": [
+        "Los símbolos son más rápidos de buscar que los strings en tiempo de ejecución",
+        "Proporciona seguridad de tipos y evita colisiones de nombres entre distintas claves de inyección",
+        "Los símbolos impiden que los componentes hijos sobreescriban accidentalmente el valor inyectado",
+        "Lo exige Vue cuando se usa TypeScript en modo strict"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo es el patrón de componentes compuestos una mejor opción que un enfoque solo con props?",
+      "options": [
+        "Cuando el componente solo necesita una o dos opciones de configuración simples",
+        "Cuando el padre y los hijos están en módulos distintos de la aplicación",
+        "Cuando los hijos tienen contenido complejo como sub-componentes o lógica condicional que no cabe en un array de datos",
+        "Cuando la librería de componentes necesita publicarse como paquete npm"
+      ],
+      "answer": 2
+    }
+  ]
+}

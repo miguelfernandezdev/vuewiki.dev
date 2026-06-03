@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does reactive() actually return when you pass it a plain object?",
+      "options": [
+        "A deep clone of the original object",
+        "The original object with added non-enumerable properties",
+        "A Proxy wrapping the original object",
+        "A readonly snapshot of the original object"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which utility unwraps a reactive proxy back to the original plain object for identity comparison?",
+      "options": [
+        "markRaw()",
+        "unref()",
+        "toRaw()",
+        "readonly()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the recommended way to track which item is 'selected' from a reactive list to avoid the proxy identity hazard?",
+      "options": [
+        "Store a reference to the reactive proxy object",
+        "Use toRaw() on both sides of every comparison",
+        "Compare by a unique primitive identifier like an ID string",
+        "Use a WeakMap with the reactive objects as keys"
+      ],
+      "answer": 2
+    }
+  ]
+}

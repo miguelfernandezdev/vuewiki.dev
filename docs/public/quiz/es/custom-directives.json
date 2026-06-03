@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En `<script setup>`, ¿cómo reconoce Vue una variable como directiva personalizada?",
+      "options": [
+        "Debe registrarse con `app.directive()` antes de que el componente se monte",
+        "Debe exportarse desde un archivo `.directive.ts`",
+        "Cualquier variable que empiece por `v` seguida de una letra mayúscula se trata automáticamente como directiva",
+        "Debe declararse dentro de un bloque `directives: {}` en la función setup"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué información contiene la propiedad `binding.arg`?",
+      "options": [
+        "El valor actual pasado a la directiva",
+        "El argumento después de los dos puntos en `v-directive:arg`",
+        "La lista de flags modificadores como objeto",
+        "El valor anterior del último ciclo de actualización"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué los efectos secundarios como ResizeObserver deben limpiarse en el hook `unmounted`?",
+      "options": [
+        "Vue lo exige para pasar los verificaciones de tipos de TypeScript",
+        "Para prevenir fugas de memoria cuando el elemento se elimina del DOM",
+        "Porque los observers se pausan automáticamente pero no se detienen al ocultarse",
+        "Para que la directiva pueda reutilizarse en otro elemento sin conflictos"
+      ],
+      "answer": 1
+    }
+  ]
+}

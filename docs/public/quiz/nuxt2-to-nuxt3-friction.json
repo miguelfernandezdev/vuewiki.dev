@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the recommended incremental migration path from Nuxt 2 to Nuxt 3?",
+      "options": [
+        "Rewrite the entire app from scratch in a new repository",
+        "Install @nuxt/bridge first, then migrate incrementally",
+        "Upgrade the nuxt package directly to v3 and fix errors",
+        "Use a code-mod CLI to convert all files automatically"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Nuxt 3, what replaces the context object parameter in asyncData?",
+      "options": [
+        "A $context global available in all components",
+        "The useNuxtApp() composable for everything",
+        "Separate composables like useRoute, useFetch, navigateTo",
+        "Props passed automatically to page components"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which Nuxt 2 library has NO official Nuxt 3 version according to the migration docs?",
+      "options": [
+        "@nuxtjs/axios",
+        "vuetify",
+        "@nuxtjs/auth",
+        "vue-class-component"
+      ],
+      "answer": 2
+    }
+  ]
+}

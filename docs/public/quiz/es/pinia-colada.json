@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En Pinia Colada, ¿para qué sirve la opción key en useQuery?",
+      "options": [
+        "Establece un nombre único de módulo de store en Pinia",
+        "Identifica la entrada de caché y deduplica peticiones entre componentes",
+        "Es un token de seguridad para peticiones autenticadas",
+        "Mapea a una ruta específica de endpoint de la API"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hook de Pinia Colada se usa para implementar actualizaciones optimistas antes de que el servidor responda?",
+      "options": [
+        "onSuccess",
+        "onSettled",
+        "onMutate",
+        "beforeMutation"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué ocurre con una entrada de caché de useQuery cuando se llama a queryCache.invalidateQueries con su clave?",
+      "options": [
+        "La entrada de caché se elimina permanentemente",
+        "La entrada se marca como obsoleta (stale), disparando una nueva petición en los componentes que usan esa query",
+        "La query se pausa y no se ejecutará hasta que se reanude manualmente",
+        "Todos los componentes que usan esa query se desmontan y remontan"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does reading the DOM immediately after changing reactive state return stale values?",
+      "options": [
+        "Vue's reactivity system debounces all updates by 16ms for animation frame alignment",
+        "Vue batches DOM updates asynchronously — the update happens in the next microtask",
+        "Template refs are only refreshed during the component's update lifecycle hook",
+        "The browser's rendering pipeline delays DOM reflection until the next paint"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which of these use cases genuinely requires nextTick?",
+      "options": [
+        "Computing a derived value from reactive state",
+        "Watching for changes to a ref's value",
+        "Focusing an input element after setting showInput to true",
+        "Filtering a reactive array before rendering"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In addition to await nextTick(), what other form does nextTick support?",
+      "options": [
+        "nextTick.then(() => {}) using the Promise API",
+        "nextTick(() => {}) with a callback function",
+        "Vue.nextTick() as a static method on the Vue object",
+        "this.$nextTick() only in the Options API"
+      ],
+      "answer": 1
+    }
+  ]
+}

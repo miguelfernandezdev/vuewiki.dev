@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En el patrón anterior (antes de Vue 3.5), ¿qué debe ser cierto para que un template ref funcione?",
+      "options": [
+        "El ref debe declararse con letra mayúscula",
+        "El nombre de la variable en el script debe coincidir exactamente con el string del atributo ref en la plantilla",
+        "El elemento debe tener un atributo id que coincida con el nombre del ref",
+        "El ref debe declararse dentro de onMounted"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué mejora useTemplateRef() de Vue 3.5+ respecto al patrón antiguo con ref()?",
+      "options": [
+        "Hace foco automáticamente en el elemento tras el montaje",
+        "Desacopla el nombre de la variable del atributo ref, mejorando el soporte del IDE y evitando bugs silenciosos de null",
+        "Hace que el template ref sea reactivo a los cambios de atributos del DOM",
+        "Proporciona limpieza automática sin necesitar onUnmounted"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Cuando colocas un template ref en un componente hijo que usa <script setup>, ¿qué obtienes por defecto?",
+      "options": [
+        "El elemento DOM raíz del hijo",
+        "El objeto de estado reactivo completo del hijo",
+        "Nada: los componentes con <script setup> no exponen nada por defecto; usa defineExpose()",
+        "Un proxy a todos los métodos y datos públicos"
+      ],
+      "answer": 2
+    }
+  ]
+}

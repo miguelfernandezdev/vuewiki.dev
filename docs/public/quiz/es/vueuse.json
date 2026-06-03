@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace `useEventListener` de VueUse automáticamente cuando un componente se desmonta?",
+      "options": [
+        "Re-emite el evento al componente padre",
+        "Guarda el último evento en localStorage",
+        "Elimina el event listener automáticamente",
+        "Reproduce el último evento al volver a montar"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué composable de VueUse crea estado compartido entre componentes sin necesidad de Pinia?",
+      "options": ["useSharedState()", "createGlobalState()", "useGlobal()", "sharedRef()"],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo debes escribir tu propio composable en lugar de usar VueUse?",
+      "options": [
+        "Siempre — los composables personalizados son más rápidos que VueUse",
+        "Cuando la lógica es específica del dominio de tu aplicación",
+        "Cuando necesitas compatibilidad con SSR",
+        "Cuando el composable de VueUse usa TypeScript"
+      ],
+      "answer": 1
+    }
+  ]
+}

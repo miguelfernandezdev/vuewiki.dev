@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the role of a presentational component in this pattern?",
+      "options": [
+        "It fetches data and passes it down to container components via props",
+        "It receives data through props and emits events, with no knowledge of data sources",
+        "It manages shared application state using Pinia stores",
+        "It handles routing and redirects the user based on authentication state"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In modern Vue 3, what often replaces the container component role?",
+      "options": [
+        "A Pinia store with actions that components call directly",
+        "A composable that encapsulates the data-fetching and logic",
+        "A parent `<RouterView>` component that injects data via `provide`",
+        "A plugin registered in `main.ts` that injects data globally"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the main testing benefit of presentational components?",
+      "options": [
+        "They can be tested with unit tests that run in Node without a browser",
+        "They can be mounted with props and events without needing to mock APIs or stores",
+        "They automatically generate test fixtures from their prop types",
+        "They skip reactivity overhead, making tests run 10x faster"
+      ],
+      "answer": 1
+    }
+  ]
+}

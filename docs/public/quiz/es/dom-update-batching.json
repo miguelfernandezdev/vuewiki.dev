@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Si estableces `count.value = 1`, `count.value = 2`, `count.value = 3` de forma síncrona, ¿cuántas veces se dispara un watcher sobre `count`?",
+      "options": [
+        "Tres veces: una por cada asignación",
+        "Una vez, con el valor final de `3`",
+        "Dos veces: una durante la cola de microtareas y otra tras la actualización del DOM",
+        "Cero veces: los watchers solo se disparan después de esperar a `nextTick`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué opción de flush hace que un watcher se dispare en CADA cambio de estado individual, saltándose el batching?",
+      "options": [
+        "`flush: 'post'`",
+        "`flush: 'immediate'`",
+        "`flush: 'sync'`",
+        "`flush: 'eager'`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo se ejecuta un watcher con `flush: 'post'` en relación al DOM?",
+      "options": [
+        "Antes de que Vue aplique la actualización del DOM para poder cancelar el render",
+        "Inmediatamente en cada cambio síncrono sin ningún aplazamiento",
+        "Después de que Vue haya aplicado la actualización del DOM, permitiendo que los efectos lean el DOM actualizado",
+        "En la siguiente microtarea tras dispararse el hook `onMounted` del componente"
+      ],
+      "answer": 2
+    }
+  ]
+}

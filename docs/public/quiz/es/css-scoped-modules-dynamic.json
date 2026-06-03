@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo implementa Vue los estilos con scope para evitar que el CSS se filtre a otros componentes?",
+      "options": [
+        "Envuelve todas las plantillas de componentes en una raíz Shadow DOM",
+        "Añade un atributo único `data-v-xxxxx` a los elementos y lo añade a cada selector",
+        "Genera nombres de clase aleatorios y reemplaza todas las referencias de clases en tiempo de compilación",
+        "Usa custom properties CSS (variables) con namespace por componente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué los CSS Modules son una mejor opción que los estilos con scope para contenido teletransportado?",
+      "options": [
+        "Los estilos con scope no están soportados dentro de `<Teleport>` por el compilador de Vue",
+        "Los CSS Modules hashean los nombres de clase globalmente, por lo que funcionan en cualquier parte del DOM, no solo dentro del árbol de componentes",
+        "Teleport requiere que los nombres de clase empiecen con un prefijo específico",
+        "Los CSS Modules añaden `!important` automáticamente para sobrescribir los estilos del contenedor de teleport"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué sintaxis enlaza una clase condicionalmente usando el objeto shorthand?",
+      "options": [
+        "`:class=\"isActive ? 'active' : null\"`",
+        "`:class=\"{ active: isActive }\"`",
+        "`:class=\"'active'\"` con `v-if=\"isActive\"`",
+        "`:class=\"[isActive && 'active']\"`"
+      ],
+      "answer": 1
+    }
+  ]
+}

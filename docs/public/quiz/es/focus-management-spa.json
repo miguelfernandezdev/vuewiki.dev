@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué las SPAs necesitan gestionar el foco manualmente después de los cambios de ruta?",
+      "options": [
+        "Vue Router elimina todo el foco en la navegación por razones de seguridad",
+        "El navegador nunca recarga la página, por lo que el foco permanece donde estaba antes",
+        "Los lectores de pantalla requieren JavaScript para anunciar los cambios de página",
+        "La History API de HTML5 restablece la posición del scroll pero no el foco"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué logra tabindex=\"-1\" aplicado a un elemento h1 para la gestión del foco?",
+      "options": [
+        "Añade el encabezado al final del orden de tabulación",
+        "Elimina el encabezado de toda la navegación por teclado",
+        "Hace que el encabezado sea enfocable por programación sin añadirlo al orden de tabulación",
+        "Otorga al encabezado la máxima prioridad de tabulación"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué tres cosas gestiona automáticamente showModal() del elemento nativo `<dialog>`?",
+      "options": [
+        "Añade roles ARIA, cierra con Escape y dispara un evento close",
+        "Mueve el foco al interior, atrapa el ciclo de tabulación y restaura el foco al cerrar con Escape",
+        "Previene el scroll, centra el diálogo y añade un backdrop",
+        "Anuncia a los lectores de pantalla, atrapa el foco y oculta el contenido de fondo"
+      ],
+      "answer": 1
+    }
+  ]
+}

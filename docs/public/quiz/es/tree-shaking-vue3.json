@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué la API global de Vue 2 (Vue.component, Vue.use) impedía el tree-shaking?",
+      "options": [
+        "Vue 2 usaba módulos CommonJS que no se pueden analizar estáticamente",
+        "Importar Vue incluía todo el runtime porque el bundler no podía saber a qué accedería Vue.use()",
+        "Los componentes de Vue 2 usaban importaciones dinámicas por defecto",
+        "El compilador de templates de Vue 2 incluía todas las funcionalidades en el bundle de forma incondicional"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el tamaño aproximado del runtime core de Vue 3 cuando se aplica tree-shaking correctamente?",
+      "options": [
+        "Aproximadamente 50 KB comprimido con gzip",
+        "Aproximadamente 23 KB comprimido con gzip (igual que Vue 2)",
+        "Aproximadamente 10 KB comprimido con gzip",
+        "Aproximadamente 2 KB comprimido con gzip"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué campo de package.json debe declarar una librería para que los bundlers puedan eliminar sus exports no usados?",
+      "options": [
+        "\"treeshakeable\": true",
+        "\"sideEffects\": false",
+        "\"module\": \"esm\"",
+        "\"exports\": { \"treeshake\": true }"
+      ],
+      "answer": 1
+    }
+  ]
+}

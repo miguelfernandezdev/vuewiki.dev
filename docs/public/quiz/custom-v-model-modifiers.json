@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How does `defineModel` expose custom modifiers to the component's logic?",
+      "options": [
+        "Via a `useModifiers()` composable imported from 'vue'",
+        "As a second element in the destructured tuple: `const [model, modifiers] = defineModel()`",
+        "As a prop named `modelModifiers` that must be declared with `defineProps`",
+        "As a parameter injected automatically into the `setup` function"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a known gotcha of the built-in `.number` modifier on native inputs?",
+      "options": [
+        "It parses using `parseInt` instead of `parseFloat`, losing decimal values",
+        "It returns an empty string (not `0`) when the input is cleared, and `parseFloat('123abc')` returns `123`",
+        "It requires `type=\"number\"` on the input or it has no effect",
+        "It conflicts with `.trim` when both are applied to the same input"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Where does custom modifier logic run when using `defineModel` with a `set` transform?",
+      "options": [
+        "In the parent component before the value is bound to the child prop",
+        "Inside the child component's `set` function before emitting `update:modelValue`",
+        "In a Vue compiler plugin that transforms the template at build time",
+        "In the parent's `v-model` directive handler after the child emits"
+      ],
+      "answer": 1
+    }
+  ]
+}

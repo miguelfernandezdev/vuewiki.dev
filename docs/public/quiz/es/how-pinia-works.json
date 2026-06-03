@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En la sintaxis setup de Pinia, ¿a qué se mapean respectivamente ref, computed y las funciones planas?",
+      "options": [
+        "Acciones, getters y estado",
+        "Estado, acciones y getters",
+        "Estado, getters y acciones",
+        "Getters, estado y acciones"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué hay que usar storeToRefs al desestructurar un store de Pinia?",
+      "options": [
+        "La desestructuración directa vuelve a llamar a la factory del store y crea una nueva instancia",
+        "La desestructuración directa rompe la reactividad ya que las propiedades se extraen como valores planos",
+        "storeToRefs añade seguridad de tipos en TypeScript que la desestructuración simple no tiene",
+        "El Proxy de Vue no puede rastrear las propiedades desestructuradas del store sin storeToRefs"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué método de Pinia permite actualizar múltiples propiedades del estado de forma atómica en una sola llamada?",
+      "options": [
+        "store.$commit()",
+        "store.$update()",
+        "store.$patch()",
+        "store.$set()"
+      ],
+      "answer": 2
+    }
+  ]
+}

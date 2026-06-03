@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace el compilador de Vue cuando encuentra `await` en `<script setup>`?",
+      "options": [
+        "Lanza un error en tiempo de compilación que obliga a añadir Suspense primero",
+        "Envuelve el bloque setup en una función `async setup()` automáticamente",
+        "Difiere la ejecución al hook `onMounted`",
+        "Convierte el `await` en una llamada a `watchEffect`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En Vue puro (sin Nuxt), ¿qué ocurre si un componente usa `await` a nivel superior pero no tiene un ancestro `<Suspense>`?",
+      "options": [
+        "El componente lanza un error en tiempo de ejecución y la página falla",
+        "El componente se renderiza con datos vacíos y muestra un aviso en la consola",
+        "El componente queda en estado pendiente y nunca se renderiza",
+        "Vue vuelve al renderizado síncrono e ignora el await"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué es preferible usar `useFetch` en lugar de un `await fetch()` directo en páginas Nuxt?",
+      "options": [
+        "`fetch` nativo no soporta async/await en Nuxt",
+        "`useFetch` se integra con el sistema de payload de Nuxt y evita el doble fetch durante la hydration",
+        "`useFetch` añade automáticamente cabeceras de autenticación de la sesión",
+        "`fetch` nativo no funciona dentro de `<script setup>`"
+      ],
+      "answer": 1
+    }
+  ]
+}

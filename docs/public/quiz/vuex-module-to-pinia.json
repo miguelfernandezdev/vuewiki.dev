@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens to Vuex mutations when migrating a module to Pinia?",
+      "options": [
+        "They become Pinia actions with the same string-key API",
+        "They are replaced with regular functions — Pinia has no mutations layer",
+        "They become getters in Pinia",
+        "They must be prefixed with `commit_` to work in Pinia"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In the Pinia equivalent of a Vuex module, how is a derived value like `total` best represented?",
+      "options": [
+        "As a getter that receives `rootState`",
+        "As a regular `ref` that is manually updated in actions",
+        "As a `computed()` that derives from the store's `ref` state",
+        "As a separate store that subscribes to the main store"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the recommended migration strategy for a large app with many Vuex modules?",
+      "options": [
+        "Rewrite all modules to Pinia at once before deploying",
+        "Migrate one module at a time — Pinia and Vuex can coexist",
+        "Use the `@pinia/vuex-compat` adapter layer permanently",
+        "Convert only the modules used in new features; leave old ones in Vuex"
+      ],
+      "answer": 1
+    }
+  ]
+}

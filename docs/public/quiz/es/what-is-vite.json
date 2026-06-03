@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo consigue Vite un inicio instantáneo del servidor de desarrollo independientemente del tamaño del proyecto?",
+      "options": [
+        "Pre-compila todos los archivos a una caché binaria en el primer arranque",
+        "Empaqueta solo el archivo de entrada y carga el resto de forma lazy",
+        "Sirve los archivos como módulos ES nativos bajo demanda en lugar de empaquetarlos de antemano",
+        "Usa un proceso worker persistente que pre-carga todos los archivos"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué bundler usa Vite para los builds de producción?",
+      "options": ["Webpack", "Parcel", "esbuild", "Rollup"],
+      "answer": 3
+    },
+    {
+      "question": "¿Qué herramienta usa Vite para pre-empaquetar dependencias como `vue` o `lodash`?",
+      "options": ["Rollup", "Babel", "esbuild", "SWC"],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es una limitación clave de reactive() que ref() no tiene?",
+      "options": [
+        "reactive() no puede rastrear propiedades computadas",
+        "reactive() no puede usarse con genéricos de TypeScript",
+        "reactive() no puede reasignarse de forma segura: rompe el enlace reactivo",
+        "reactive() requiere declaración explícita de dependencias"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Cuando desestructuras un objeto reactive() con const { count } = state, ¿qué le ocurre a count?",
+      "options": [
+        "count es un ref reactivo que permanece vinculado a state",
+        "count es un valor plano que ya no es reactivo",
+        "count se convierte en una propiedad computada",
+        "Vue lanza un aviso y devuelve un ref automáticamente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Según las buenas prácticas de Vue, ¿cuál es la opción más segura por defecto para crear estado reactivo?",
+      "options": [
+        "reactive() para objetos, ref() solo para primitivos",
+        "reactive() para todo: evita la sintaxis .value",
+        "ref() para todo: maneja cualquier tipo y soporta reasignación",
+        "computed() para estado derivado, reactive() para todo lo demás"
+      ],
+      "answer": 2
+    }
+  ]
+}

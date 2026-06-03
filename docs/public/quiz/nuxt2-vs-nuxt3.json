@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which build tool does Nuxt 3 use by default, replacing Webpack from Nuxt 2?",
+      "options": [
+        "Rollup",
+        "esbuild",
+        "Parcel",
+        "Vite"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "What replaced the Connect server from Nuxt 2 as the server engine in Nuxt 3?",
+      "options": [
+        "Express",
+        "Nitro (built on h3)",
+        "Fastify",
+        "Hono"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Nuxt 2 auto-imports were limited to components only. What does Nuxt 3 auto-import additionally?",
+      "options": [
+        "Only Vue APIs like ref and computed",
+        "Only your local composables from composables/",
+        "Components, composables, utils, Vue APIs, and server utils",
+        "Third-party npm packages are also auto-imported"
+      ],
+      "answer": 2
+    }
+  ]
+}

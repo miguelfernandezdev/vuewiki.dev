@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What prop and event does `v-model` use on a component in Vue 3?",
+      "options": [
+        "`value` prop + `input` event",
+        "`modelValue` prop + `update:modelValue` event",
+        "`model` prop + `change` event",
+        "`value` prop + `update:value` event"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the `.lazy` modifier do to a `v-model` binding on an `<input>`?",
+      "options": [
+        "Debounces the update by 300ms",
+        "Syncs on the `change` event instead of `input`",
+        "Trims whitespace before syncing",
+        "Delays the first sync until the component mounts"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Vue 2, what was used alongside `v-model` to support multiple two-way bindings on a component?",
+      "options": [
+        "The `binding` modifier",
+        "Multiple `v-bind` with event listeners",
+        "The `.sync` modifier",
+        "Named slots"
+      ],
+      "answer": 2
+    }
+  ]
+}

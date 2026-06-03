@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia fundamental entre `v-if` y `v-show`?",
+      "options": [
+        "`v-if` solo funciona en elementos nativos; `v-show` también funciona en componentes",
+        "`v-if` añade/elimina elementos del DOM; `v-show` alterna `display: none` en CSS",
+        "`v-if` se evalúa una vez al montar; `v-show` se reevalúa en cada render",
+        "`v-if` soporta múltiples condiciones; `v-show` solo soporta un booleano"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En Vue 3, ¿qué precedencia tiene cuando `v-if` y `v-for` están en el mismo elemento?",
+      "options": [
+        "`v-for` tiene mayor prioridad y se ejecuta antes que `v-if`",
+        "`v-if` tiene mayor prioridad y se ejecuta antes que `v-for`, por lo que no puede acceder a la variable del bucle",
+        "Tienen la misma prioridad y Vue los procesa de izquierda a derecha",
+        "Vue 3 lanza un error de compilación cuando ambas directivas están en el mismo elemento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo es preferible `v-show` frente a `v-if`?",
+      "options": [
+        "Cuando el elemento solo debería renderizarse una vez en el montaje inicial",
+        "Cuando el elemento no debe existir en el DOM por razones de seguridad",
+        "Cuando el usuario alterna el elemento con frecuencia, ya que cambiar `display` es más barato que eliminar/recrear el DOM",
+        "Cuando el elemento contiene un `<template>` con múltiples hijos"
+      ],
+      "answer": 2
+    }
+  ]
+}

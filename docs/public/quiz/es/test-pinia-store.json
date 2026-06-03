@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué debes llamar en beforeEach para garantizar que cada test de Pinia tenga un estado de store aislado?",
+      "options": [
+        "store.$reset() antes de cada test",
+        "setActivePinia(createPinia())",
+        "vi.clearAllMocks() y pinia.clear()",
+        "createTestingPinia({ initialState: {} })"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Cuando se testea un store Pinia que usa otro store, ¿cómo comparten el mismo estado?",
+      "options": [
+        "Debes vincularlos manualmente con store.$patch()",
+        "Ambas llamadas al composable del store usan la misma instancia de Pinia creada en beforeEach",
+        "Debes importar el segundo store en el test y llamar a setActivePinia() de nuevo",
+        "Pinia crea automáticamente un contexto compartido cuando se usan dos stores en el mismo test"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué permite store.$onAction() en los tests?",
+      "options": [
+        "Observar qué acciones se despacharon y con qué argumentos",
+        "Reemplazar acciones del store con implementaciones mock",
+        "Suscribirse a los cambios de estado antes de que se apliquen",
+        "Evitar que las acciones modifiquen el estado durante los tests"
+      ],
+      "answer": 0
+    }
+  ]
+}

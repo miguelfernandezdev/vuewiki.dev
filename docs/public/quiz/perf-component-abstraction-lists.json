@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "If each list item has 5 nested components and you render 100 items, how many total instances are created?",
+      "options": [
+        "100",
+        "200",
+        "500",
+        "1000"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When is deep component nesting inside a list item acceptable according to the performance guide?",
+      "options": [
+        "When the list has fewer than 500 items",
+        "When using virtual scrolling (only ~20 items rendered at a time)",
+        "When components use the Options API instead of Composition API",
+        "When each component uses v-once for its template"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which types of components should you replace with plain HTML elements in hot-path list items?",
+      "options": [
+        "Components with tooltips and interaction state",
+        "Components that manage their own editing state",
+        "Pure layout/styling wrappers like <Card>, <Text>, <Flex>",
+        "Components using intersection observers"
+      ],
+      "answer": 2
+    }
+  ]
+}

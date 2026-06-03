@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la forma recomendada de forzar que un componente se reinicialice completamente en Vue?",
+      "options": [
+        "Llamar a this.$forceUpdate() en la Composition API",
+        "Usar v-if para alternar el componente entre activado y desactivado",
+        "Cambiar el atributo :key del componente a un nuevo valor",
+        "Llamar a component.reload() desde una ref del padre"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué ocurre con los hooks de ciclo de vida cuando cambia el :key de un componente?",
+      "options": [
+        "No se ejecuta ningún hook — Vue parchea el componente en su lugar",
+        "Solo se ejecuta onUpdated ya que el DOM es reemplazado",
+        "Todos los hooks del ciclo de vida se ejecutan de nuevo desde onMounted",
+        "Se disparan onBeforeUnmount y onUnmounted, pero no onMounted"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué $forceUpdate no está disponible en la Composition API?",
+      "options": [
+        "Fue deprecado y eliminado por razones de rendimiento",
+        "La suposición es que un estado reactivo correcto lo hace innecesario",
+        "Entra en conflicto con el sistema de reactividad basado en Proxy de Vue 3",
+        "Fue reemplazado por el mecanismo de cleanup de watchEffect"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In a feature-based Vue project structure, where should code that is used by two or more features live?",
+      "options": [
+        "In the first feature that needed it, imported by others",
+        "In a shared/ folder separate from all feature folders",
+        "Duplicated in each feature to maintain independence",
+        "In the root src/ folder alongside the router and App.vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the purpose of an index.ts barrel export in a feature folder?",
+      "options": [
+        "It registers all feature components globally with app.component()",
+        "It defines the feature's public API — what other features are allowed to import",
+        "It lazy-loads all feature routes for code splitting",
+        "It merges the feature's Pinia store with the global store"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What naming convention does the style guide recommend for Vue components?",
+      "options": [
+        "kebab-case to match HTML element conventions",
+        "camelCase to match JavaScript variable naming",
+        "PascalCase to distinguish them from native HTML elements in templates",
+        "SCREAMING_CASE to identify them as constants"
+      ],
+      "answer": 2
+    }
+  ]
+}

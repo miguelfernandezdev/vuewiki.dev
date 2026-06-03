@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the main performance advantage SSR has over CSR (Client Side Rendering)?",
+      "options": [
+        "SSR uses less JavaScript overall",
+        "SSR eliminates the need for hydration",
+        "Users see content before JavaScript loads — faster first contentful paint",
+        "SSR servers cache responses indefinitely with no invalidation needed"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is a key development constraint when writing SSR code in Vue?",
+      "options": [
+        "You cannot use TypeScript in SSR projects",
+        "You cannot use `window`, `document`, or browser-only APIs in server-executed code",
+        "Pinia stores must be declared differently for SSR",
+        "Components must use the Options API for SSR compatibility"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "For which use case would SSR NOT be recommended?",
+      "options": [
+        "A marketing site that needs SEO",
+        "An e-commerce product page",
+        "A dashboard behind a login that has no SEO requirements",
+        "A blog with public content"
+      ],
+      "answer": 2
+    }
+  ]
+}

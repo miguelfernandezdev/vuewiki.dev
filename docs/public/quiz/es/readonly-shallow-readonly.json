@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia clave entre readonly() y shallowReadonly()?",
+      "options": [
+        "readonly() solo funciona con ref; shallowReadonly() funciona con reactive",
+        "readonly() hace inmutables todas las propiedades anidadas; shallowReadonly() solo protege las propiedades raíz",
+        "readonly() lanza errores; shallowReadonly() falla silenciosamente",
+        "No hay diferencia práctica entre ellos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Cuando mutas una propiedad de un objeto readonly() en desarrollo, ¿qué ocurre?",
+      "options": [
+        "Se lanza un TypeError y la ejecución se detiene",
+        "La mutación se aplica pero la interfaz no se actualiza",
+        "Vue muestra un aviso y la mutación falla silenciosamente",
+        "La mutación se aplica y el origen también se actualiza"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es el caso de uso principal de envolver estado en readonly() al usar provide/inject?",
+      "options": [
+        "Mejorar el rendimiento omitiendo la reactividad profunda",
+        "Evitar que los componentes hijos muten el estado proporcionado por el padre",
+        "Permitir al hijo crear una copia local del estado",
+        "Serializar el estado para persistirlo en localStorage"
+      ],
+      "answer": 1
+    }
+  ]
+}

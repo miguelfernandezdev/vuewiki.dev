@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What must you call in beforeEach to ensure each Pinia test gets isolated store state?",
+      "options": [
+        "store.$reset() before each test",
+        "setActivePinia(createPinia())",
+        "vi.clearAllMocks() and pinia.clear()",
+        "createTestingPinia({ initialState: {} })"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When testing a Pinia store that uses another store, how do they share the same state?",
+      "options": [
+        "You must manually link them with store.$patch()",
+        "Both store composable calls use the same Pinia instance created in beforeEach",
+        "You must import the second store inside the test and call setActivePinia() again",
+        "Pinia automatically creates a shared context when two stores are used in the same test"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does store.$onAction() enable in tests?",
+      "options": [
+        "Observing which actions were dispatched and with what arguments",
+        "Replacing store actions with mock implementations",
+        "Subscribing to state changes before they are applied",
+        "Preventing actions from modifying state during testing"
+      ],
+      "answer": 0
+    }
+  ]
+}

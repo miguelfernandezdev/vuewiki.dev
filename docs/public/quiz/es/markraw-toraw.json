@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué flag interno añade markRaw para evitar que un objeto sea envuelto con Proxy?",
+      "options": [
+        "__v_raw",
+        "__v_skip",
+        "__v_readonly",
+        "__v_noProxy"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el patrón recomendado para almacenar una instancia de librería de terceros como un gráfico en estado reactivo?",
+      "options": [
+        "Usar reactive() directamente ya que gestiona bien los objetos complejos",
+        "Almacenarla en una variable plana fuera del componente",
+        "Usar shallowRef combinado con markRaw en la instancia",
+        "Usar ref() que automáticamente evita la proxificación profunda de instancias de clase"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo usarías toRaw en lugar de markRaw?",
+      "options": [
+        "Antes de almacenar un objeto en estado reactivo para evitar el envoltorio con Proxy",
+        "Cuando algo ya es reactivo y necesitas el objeto plano detrás del Proxy",
+        "Cuando quieres eliminar permanentemente la reactividad de un ref",
+        "Cuando comparas dos objetos reactivos por igualdad de referencia"
+      ],
+      "answer": 1
+    }
+  ]
+}

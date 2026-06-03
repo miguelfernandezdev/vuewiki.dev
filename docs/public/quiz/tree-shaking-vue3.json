@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why did Vue 2's global API (Vue.component, Vue.use) prevent tree-shaking?",
+      "options": [
+        "Vue 2 used CommonJS modules which cannot be statically analyzed",
+        "Importing Vue pulled in the entire runtime since the bundler couldn't know what Vue.use() would access",
+        "Vue 2 components used dynamic imports by default",
+        "Vue 2's template compiler included all features in the bundle unconditionally"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is Vue 3's approximate runtime core size when properly tree-shaken?",
+      "options": [
+        "About 50 KB gzipped",
+        "About 23 KB gzipped (same as Vue 2)",
+        "About 10 KB gzipped",
+        "About 2 KB gzipped"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What package.json field must a library set to allow bundlers to remove unused exports?",
+      "options": [
+        "\"treeshakeable\": true",
+        "\"sideEffects\": false",
+        "\"module\": \"esm\"",
+        "\"exports\": { \"treeshake\": true }"
+      ],
+      "answer": 1
+    }
+  ]
+}

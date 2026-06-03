@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace devolver un objeto de ruta desde `router.beforeEach`?",
+      "options": [
+        "Cancela la navegación y permanece en la ruta actual",
+        "Registra la ruta para depuración",
+        "Redirige a la ruta devuelta",
+        "Registra la ruta como alias"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué guard de navegación se ejecuta en último lugar y no puede cancelar una navegación?",
+      "options": ["beforeEach", "beforeResolve", "afterEach", "beforeEnter"],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué composable de guard en el componente debes usar para avisar al usuario sobre cambios no guardados antes de abandonar la ruta?",
+      "options": [
+        "onBeforeRouteEnter",
+        "onBeforeRouteLeave",
+        "onRouteChange",
+        "onBeforeUnmount"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el propósito de rootMargin: '200px' en la configuración de IntersectionObserver para el scroll infinito?",
+      "options": [
+        "Añade 200px de padding al contenedor de scroll",
+        "Activa la carga 200px antes de que el elemento sentinel sea visible",
+        "Impide la carga hasta que el usuario haya hecho scroll 200px más allá del sentinel",
+        "Establece la altura mínima del elemento sentinel"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo determina la implementación básica de scroll infinito que no hay más páginas que cargar?",
+      "options": [
+        "La API devuelve un campo nextPage con valor null",
+        "La longitud del array obtenido es menor que el tamaño de página esperado",
+        "La API devuelve un booleano hasMore dedicado",
+        "El código de estado de la respuesta es 204 No Content"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué se debe combinar el scroll infinito con la virtualización de listas para listas muy largas?",
+      "options": [
+        "El scroll infinito solo no puede gestionar la paginación basada en cursor",
+        "Todos los elementos cargados permanecen en el DOM causando problemas de rendimiento con el tiempo",
+        "IntersectionObserver deja de funcionar cuando se renderizan demasiados elementos",
+        "La virtualización es necesaria para que el elemento sentinel funcione correctamente"
+      ],
+      "answer": 1
+    }
+  ]
+}

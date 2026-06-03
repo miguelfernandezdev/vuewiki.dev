@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why can't you see SSR API calls in the browser's Network tab?",
+      "options": [
+        "Nuxt blocks outgoing requests during server rendering for security reasons",
+        "SSR requests are made from the Node.js server process, not from the browser",
+        "The browser Network tab only shows WebSocket connections, not HTTP requests",
+        "SSR requests use a private channel that requires enabling developer mode in Nuxt"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the recommended first step for adding SSR request visibility in a Nuxt project?",
+      "options": [
+        "Set `DEBUG=*` before every `nuxt dev` command",
+        "Create a server-only plugin (`.server.ts`) using `$fetch.create` with `onRequest`/`onResponse` interceptors",
+        "Attach a Node.js inspector and add breakpoints inside `useFetch` calls",
+        "Route all traffic through Charles Proxy with a self-signed SSL certificate"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Nuxt tool provides a visual panel showing all SSR HTTP requests with headers, status, and timing during development?",
+      "options": [
+        "The Vue DevTools Performance tab",
+        "The browser Network tab filtered by XHR requests",
+        "The Nuxt DevTools Server API panel",
+        "The `DEBUG=ofetch` environment variable output"
+      ],
+      "answer": 2
+    }
+  ]
+}

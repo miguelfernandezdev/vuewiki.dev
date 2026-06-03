@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In the legacy pattern (before Vue 3.5), what must be true for a template ref to work?",
+      "options": [
+        "The ref must be declared with a capital letter",
+        "The variable name in script must exactly match the ref attribute string in the template",
+        "The element must have an id attribute matching the ref name",
+        "The ref must be declared inside onMounted"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does useTemplateRef() in Vue 3.5+ improve over the old ref() pattern?",
+      "options": [
+        "It automatically focuses the element after mount",
+        "It decouples the variable name from the ref attribute, improving IDE support and avoiding silent null bugs",
+        "It makes the template ref reactive to DOM attribute changes",
+        "It provides automatic cleanup without needing onUnmounted"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When placing a template ref on a child component using <script setup>, what do you get by default?",
+      "options": [
+        "The child's root DOM element",
+        "The child's entire reactive state object",
+        "Nothing — <script setup> components expose nothing by default; use defineExpose()",
+        "A proxy to all public methods and data"
+      ],
+      "answer": 2
+    }
+  ]
+}

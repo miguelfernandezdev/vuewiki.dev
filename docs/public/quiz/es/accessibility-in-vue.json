@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué proporciona `useId()` (Vue 3.5+) cuando se usa para atributos ARIA?",
+      "options": [
+        "Un identificador de sesión de usuario globalmente único",
+        "Un ID único por instancia de componente para evitar IDs duplicados al reutilizarlo",
+        "Un entero autoincremental para elementos de lista",
+        "Un nombre de clase hasheado para CSS modules"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Al usar `aria-live` para contenido dinámico, ¿cuándo deberías usar `assertive` en lugar de `polite`?",
+      "options": [
+        "Para todas las notificaciones, para asegurarte de que siempre se anuncien",
+        "Cuando el contenido se actualiza más de una vez por segundo",
+        "Solo para mensajes urgentes como errores, no para actualizaciones de estado generales",
+        "Cuando la notificación está oculta visualmente con `.sr-only`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué las SPAs necesitan gestión manual del foco en los cambios de ruta?",
+      "options": [
+        "Porque Vue Router no soporta la History API",
+        "Porque Vue elimina `tabindex` de los elementos al navegar",
+        "Porque el comportamiento predeterminado del navegador de mover el foco al inicio de la página no se dispara",
+        "Porque `nextTick` retrasa el foco hasta la siguiente microtarea"
+      ],
+      "answer": 2
+    }
+  ]
+}

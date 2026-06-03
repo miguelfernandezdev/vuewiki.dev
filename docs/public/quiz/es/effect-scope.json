@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace llamar a `scope.stop()` en un `effectScope`?",
+      "options": [
+        "Pausa todos los efectos hasta que se llame a `scope.run()` de nuevo",
+        "Elimina de golpe todos los watchers, propiedades computadas y llamadas a watchEffect creados dentro del scope",
+        "Impide que se añadan nuevos efectos al scope",
+        "Ejecuta de forma síncrona todos los callbacks de efectos pendientes"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿A qué hook del ciclo de vida de un componente es análogo `onScopeDispose`?",
+      "options": [
+        "`onBeforeMount` — se ejecuta antes de que el scope empiece a correr",
+        "`onUnmounted` — registra un callback de limpieza que se ejecuta cuando el scope se detiene",
+        "`onUpdated` — se ejecuta cada vez que los efectos del scope vuelven a correr",
+        "`onErrorCaptured` — captura los errores lanzados dentro del scope"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo resulta más útil `effectScope` frente a usar handles de stop individuales en cada `watch`?",
+      "options": [
+        "Cuando necesitas compartir estado reactivo entre componentes hermanos",
+        "Cuando un composable crea muchos efectos y quieres una sola llamada `cleanup()` en lugar de rastrear cada handle de stop",
+        "Cuando quieres que los efectos se vuelvan a ejecutar en cada render del componente",
+        "Cuando necesitas que los watchers se disparen de forma síncrona sin batching"
+      ],
+      "answer": 1
+    }
+  ]
+}

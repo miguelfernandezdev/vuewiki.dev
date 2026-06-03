@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo oculta `v-show` un elemento cuando su condición es falsa?",
+      "options": [
+        "Elimina el elemento del DOM",
+        "Aplica `visibility: hidden` al elemento",
+        "Aplica `display: none` al elemento",
+        "Aplica `opacity: 0` al elemento"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué directiva tiene coste de render cero cuando su condición es falsa en el render inicial?",
+      "options": [
+        "v-show, porque CSS es más barato que las operaciones de DOM",
+        "v-if, porque el elemento nunca se crea",
+        "Ambas tienen el mismo coste de render inicial",
+        "Ninguna — ambas siempre se renderizan al montar"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué directiva soporta cadenas `v-else` y `v-else-if`?",
+      "options": ["v-show", "v-if", "Ambas soportan v-else", "Ninguna soporta v-else"],
+      "answer": 1
+    }
+  ]
+}

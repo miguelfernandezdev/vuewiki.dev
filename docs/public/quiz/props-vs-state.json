@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens when a child component tries to mutate a prop directly?",
+      "options": [
+        "Vue silently ignores the mutation",
+        "The parent state is updated correctly",
+        "Vue throws a compile-time error",
+        "Vue triggers a runtime warning: Attempting to mutate prop"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "Which API is used to declare local reactive state owned by the component?",
+      "options": [
+        "defineProps",
+        "ref() or reactive()",
+        "useState()",
+        "defineModel()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the correct pattern when a child needs to change a value owned by the parent?",
+      "options": [
+        "Use toRef() to create a writable ref from the prop",
+        "Mutate the prop — Vue 3 allows it with a warning suppression",
+        "Emit an event from the child; the parent updates its own state",
+        "Use a Pinia store as an intermediary for all prop changes"
+      ],
+      "answer": 2
+    }
+  ]
+}

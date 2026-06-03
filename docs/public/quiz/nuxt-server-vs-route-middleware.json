@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "During a client-side navigation (clicking a NuxtLink), which middleware type runs?",
+      "options": [
+        "Only server middleware",
+        "Both server middleware and route middleware",
+        "Only route middleware",
+        "Neither — no middleware runs on client navigation"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Can route middleware protect an API endpoint from unauthorized access?",
+      "options": [
+        "Yes, route middleware blocks all requests including API calls",
+        "No — route middleware only affects page navigations, not direct API calls",
+        "Yes, but only if marked as .global",
+        "Yes, if placed in server/middleware/"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In server middleware, how do you read cookies from the incoming request?",
+      "options": [
+        "useCookie(name)",
+        "getCookie(event, name)",
+        "event.headers.cookie",
+        "readCookie(event, name)"
+      ],
+      "answer": 1
+    }
+  ]
+}

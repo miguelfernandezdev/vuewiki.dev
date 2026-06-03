@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why don't Vue 3 Composition API composables use 'this', unlike the Options API?",
+      "options": [
+        "Vue 3 removed class-based components entirely",
+        "Arrow functions don't have their own 'this', and Composition API uses closures instead",
+        "TypeScript requires avoiding 'this' for proper type inference",
+        "The Proxy-based reactivity system is incompatible with 'this' binding"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which JavaScript concept is Vue 3's reactivity system built on for intercepting property access?",
+      "options": [
+        "Object.defineProperty with getters and setters",
+        "WeakMap for storing dependency tracking data",
+        "Proxy to intercept get and set operations",
+        "Symbol.observable for reactive stream integration"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which JavaScript concept does NOT need to be learned before starting with Vue 3?",
+      "options": [
+        "Promises and async/await",
+        "ES Modules (import/export)",
+        "Classes and decorators",
+        "Destructuring assignment"
+      ],
+      "answer": 2
+    }
+  ]
+}

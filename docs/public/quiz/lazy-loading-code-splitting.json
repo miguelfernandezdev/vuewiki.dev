@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How do you enable route-level code splitting in Vue Router?",
+      "options": [
+        "Adding splitChunks: true to the route configuration",
+        "Using () => import('./views/Page.vue') as the component definition",
+        "Setting lazy: true on the route object",
+        "Wrapping the component in defineAsyncComponent in the router"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the delay option in defineAsyncComponent do?",
+      "options": [
+        "Delays the initial component load by a set number of milliseconds",
+        "Prevents showing the loading component for fast loads to avoid a flash",
+        "Sets the debounce time before retrying a failed load",
+        "Controls how long the component stays cached before reloading"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you group multiple routes into the same chunk in Vite (not Webpack)?",
+      "options": [
+        "Using /* webpackChunkName: \"name\" */ magic comments",
+        "Setting chunkName in the route definition object",
+        "Using manualChunks in the Vite Rollup output config",
+        "Adding a chunkGroup field to the Vite plugin configuration"
+      ],
+      "answer": 2
+    }
+  ]
+}

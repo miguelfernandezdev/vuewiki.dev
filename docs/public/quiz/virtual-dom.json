@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What is a vnode in Vue's Virtual DOM?",
+      "options": [
+        "A compiled HTML string representation of a component",
+        "A plain JavaScript object representing a DOM node",
+        "A reactive proxy wrapping a real DOM element",
+        "A TypeScript interface describing component props"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What Vue compiler optimization tags dynamic bindings so the diff can skip static parts?",
+      "options": ["Tree flattening", "Static hoisting", "Patch flags", "Node memoization"],
+      "answer": 2
+    },
+    {
+      "question": "Which frameworks skip the Virtual DOM and compile templates to direct DOM instructions?",
+      "options": [
+        "Angular and Ember",
+        "Svelte and SolidJS",
+        "Preact and Inferno",
+        "Alpine.js and Petite-Vue"
+      ],
+      "answer": 1
+    }
+  ]
+}

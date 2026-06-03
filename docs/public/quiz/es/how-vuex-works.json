@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En Vuex, ¿cuál es la ÚNICA forma de cambiar el estado y qué restricción deben seguir?",
+      "options": [
+        "Las acciones — deben ser síncronas",
+        "Los getters — derivan nuevo estado de forma síncrona",
+        "Las mutations — deben ser síncronas",
+        "Los dispatches — pueden ser asíncronos o síncronos"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es el orden del flujo de datos en Vuex desde una interacción del componente hasta la actualización del estado?",
+      "options": [
+        "Componente → commit(Mutation) → Estado",
+        "Componente → dispatch(Action) → commit(Mutation) → Estado",
+        "Componente → Action → Estado → Getter → Componente",
+        "Componente → Mutation → Action → Estado"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál fue la razón principal por la que se creó Pinia para reemplazar a Vuex?",
+      "options": [
+        "Vuex tenía problemas de rendimiento con árboles de estado grandes",
+        "Vuex no se podía usar con la Composition API",
+        "La API basada en strings de Vuex no tenía seguridad de tipos en TypeScript",
+        "Vuex no soportaba el renderizado SSR"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What are the two valid shapes a Vue plugin can take?",
+      "options": [
+        "A class with a static install method, or a constructor function",
+        "An object with an install method, or a plain function",
+        "A Vue component with an install lifecycle hook, or a composable",
+        "A Proxy object or an ES module with a default export"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why should you use InjectionKey<T> symbols instead of string keys when providing values from a plugin?",
+      "options": [
+        "Symbol keys are faster to look up at runtime",
+        "String keys don't work with the Vue Composition API",
+        "Symbols guarantee uniqueness and provide TypeScript type safety",
+        "InjectionKey is required by the Vue compiler for tree-shaking"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which plugin install action makes a value available to all descendant components via inject()?",
+      "options": [
+        "app.config.globalProperties.$value = ...",
+        "app.component('GlobalValue', ...)",
+        "app.provide(key, value)",
+        "app.mixin({ data: () => ({ value }) })"
+      ],
+      "answer": 2
+    }
+  ]
+}

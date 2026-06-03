@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué el estado reactivo a nivel de módulo es peligroso en SSR?",
+      "options": [
+        "Aumenta el uso de memoria por componente",
+        "El proceso del servidor comparte singletons a nivel de módulo entre todas las peticiones, filtrando datos entre usuarios",
+        "El estado a nivel de módulo no es serializable a JSON para la hydration",
+        "El sistema de reactividad de Vue no funciona fuera del navegador"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la solución integrada de Nuxt para el estado aislado por petición?",
+      "options": [
+        "ref() con un argumento de clave único",
+        "reactive() llamado dentro de onServerPrefetch",
+        "useState(), que crea una instancia aislada por petición",
+        "provide() a nivel de entrada del servidor"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En Vue SSR puro (sin Nuxt), ¿qué patrón evita la contaminación de estado entre peticiones?",
+      "options": [
+        "Usar Object.freeze() en todo el estado reactivo",
+        "Declarar todo el estado dentro de propiedades computadas",
+        "Una función factory que crea instancias de estado frescas por petición, proporcionadas vía app.provide()",
+        "Resetear el estado global en un guard de navegación beforeEach"
+      ],
+      "answer": 2
+    }
+  ]
+}

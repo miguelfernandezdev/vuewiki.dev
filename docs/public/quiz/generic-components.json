@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What attribute on <script setup> enables generic type parameters in Vue 3.3+?",
+      "options": [
+        "type=\"generic\"",
+        "generic=\"T\"",
+        "generics=\"T\"",
+        "typescript=\"generic\""
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How does TypeScript infer the type T when using a generic component?",
+      "options": [
+        "You must explicitly specify T using the component's generic prop",
+        "T is inferred from the runtime value passed to the first prop",
+        "T is inferred from the types of props like items at the call site",
+        "T defaults to unknown unless you annotate the parent component"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "How did you implement generic components in Vue before the generic attribute (pre-3.3)?",
+      "options": [
+        "Using a special @generic decorator on the component class",
+        "Wrapping defineComponent in a factory function with a type parameter",
+        "Using the type: 'generic' option in defineComponent",
+        "Adding a generics section to the component's <docs> block"
+      ],
+      "answer": 1
+    }
+  ]
+}

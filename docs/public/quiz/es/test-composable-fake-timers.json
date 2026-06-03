@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué se necesita await nextTick() antes de vi.advanceTimersByTime() al testear un composable de debounce?",
+      "options": [
+        "nextTick garantiza que el DOM se actualice antes de que avance el tiempo",
+        "La cola de reactividad de Vue debe vaciarse primero para que el watcher se ejecute y registre el setTimeout",
+        "advanceTimersByTime requiere un punto de sincronización antes de poder ejecutarse",
+        "nextTick restablece el estado del temporizador falso a cero"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué debes llamar en afterEach para evitar que los temporizadores falsos se filtren a otros tests?",
+      "options": [
+        "vi.clearAllTimers()",
+        "vi.resetAllMocks()",
+        "vi.useRealTimers()",
+        "vi.restoreAllMocks()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Al testear un composable que llama a start() para iniciar setInterval directamente, ¿se necesita await nextTick() antes de avanzar el tiempo?",
+      "options": [
+        "Sí: nextTick siempre es necesario antes de avanzar temporizadores",
+        "No: start() crea el setInterval síncronamente sin que intervenga un watcher reactivo",
+        "Sí: setInterval es asíncrono y necesita un tick para registrarse",
+        "No: vi.useFakeTimers() vacía automáticamente la cola de reactividad"
+      ],
+      "answer": 1
+    }
+  ]
+}

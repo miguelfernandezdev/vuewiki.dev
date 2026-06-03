@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre si escribes count++ en lugar de count.value++ cuando count es un ref(0)?",
+      "options": [
+        "count se convierte en NaN",
+        "Estás incrementando el objeto envolvente, no el valor real",
+        "Vue redirige automáticamente la operación a .value",
+        "Un error de TypeScript lo impide en tiempo de compilación"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Dónde NO necesitas escribir .value para acceder a los datos de un ref?",
+      "options": [
+        "Dentro de un callback de watchEffect",
+        "Dentro de un getter de computed",
+        "Dentro de la plantilla",
+        "Dentro de una función setup asíncrona"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es el resultado de llamar items.push(4) cuando items = ref([1, 2, 3])?",
+      "options": [
+        "El elemento se añade y la interfaz se actualiza de forma reactiva",
+        "TypeError: push no es una función",
+        "El push se ignora silenciosamente",
+        "items pasa a ser undefined"
+      ],
+      "answer": 1
+    }
+  ]
+}

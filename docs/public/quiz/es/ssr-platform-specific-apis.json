@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué las APIs del navegador como window y localStorage lanzan errores en SSR?",
+      "options": [
+        "Están bloqueadas por la política de seguridad de Vue",
+        "No existen en el entorno de servidor de Node.js",
+        "SSR serializa todas las llamadas a API y las reproduce en el cliente",
+        "Requieren flags de funcionalidad explícitos para habilitarlas en Vite"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿En qué hook del ciclo de vida es seguro usar APIs exclusivas del navegador, y por qué?",
+      "options": [
+        "setup(): se ejecuta primero y tiene contexto completo",
+        "onServerPrefetch(): se ejecuta en el servidor con acceso completo",
+        "onMounted(): solo se ejecuta en el cliente, nunca en el servidor",
+        "onBeforeCreate(): se ejecuta antes de que el componente se renderice"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la ventaja de usar import.meta.client sobre typeof window !== 'undefined'?",
+      "options": [
+        "import.meta.client tiene mejor compatibilidad de navegadores",
+        "import.meta.client es un flag en tiempo de compilación que hace tree-shaking del código muerto, reduciendo el tamaño del bundle",
+        "Las comprobaciones de typeof window causan desajustes de hydration",
+        "import.meta.client funciona dentro de plantillas mientras que typeof window no"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué funcionalidad de depuración única ofrece la integración de Pinia en Vue DevTools?",
+      "options": [
+        "Diff en tiempo real del estado del store entre renders",
+        "Time-travel debugging — haz clic en un snapshot de estado anterior para revertir la UI",
+        "Generación automática de tests unitarios a partir de las acciones del store",
+        "Flamegraph de rendimiento en vivo para los getters del store"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué método de instalación de Vue DevTools abre un panel integrado dentro de la propia aplicación?",
+      "options": [
+        "La extensión del navegador en Chrome Web Store",
+        "La extensión de Firefox Add-ons",
+        "El plugin de Vite `vite-plugin-vue-devtools`",
+        "El paquete npm `@vue/devtools`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué debes revisar en Vue DevTools cuando la UI no se actualiza como se espera?",
+      "options": [
+        "La pestaña de router para el historial de navegación",
+        "El log de eventos emitidos del componente",
+        "La pestaña de estado para confirmar si el estado reactivo realmente cambió",
+        "La pestaña de rendimiento para el tiempo de render"
+      ],
+      "answer": 2
+    }
+  ]
+}

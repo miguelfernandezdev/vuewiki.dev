@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace fundamentalmente la virtualización de listas para mejorar el rendimiento?",
+      "options": [
+        "Comprime los elementos de la lista para reducir la huella de memoria",
+        "Renderiza solo los elementos visibles en el viewport en lugar de todos los elementos",
+        "Pagina la lista automáticamente para limitar los nodos del DOM a 100",
+        "Usa Web Workers para renderizar los elementos de la lista fuera del hilo principal"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué requisito CSS debe tener el contenedor al usar RecycleScroller de vue-virtual-scroller?",
+      "options": [
+        "overflow: hidden para evitar que los eventos de scroll hagan bubbling",
+        "display: grid para el posicionamiento correcto de los elementos",
+        "Una altura fija en el elemento contenedor",
+        "position: relative para el posicionamiento absoluto de los elementos"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo NO se debe usar la virtualización de listas?",
+      "options": [
+        "Cuando los elementos tienen alturas dinámicas",
+        "Para contenido crítico para SEO que necesita estar en el HTML inicial",
+        "Cuando la lista tiene controles de paginación",
+        "Cuando la lista usa v-for con un binding :key"
+      ],
+      "answer": 1
+    }
+  ]
+}

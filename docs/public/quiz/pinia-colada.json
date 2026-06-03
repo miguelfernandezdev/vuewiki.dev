@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Pinia Colada, what does the key option in useQuery serve?",
+      "options": [
+        "It sets a unique store module name in Pinia",
+        "It identifies the cache entry and deduplicates requests across components",
+        "It is a security token for authenticated requests",
+        "It maps to a specific API endpoint path"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Pinia Colada hook is used to implement optimistic updates before the server responds?",
+      "options": [
+        "onSuccess",
+        "onSettled",
+        "onMutate",
+        "beforeMutation"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What happens to a useQuery cache entry when queryCache.invalidateQueries is called on its key?",
+      "options": [
+        "The cache entry is permanently deleted",
+        "The entry is marked as stale, triggering a refetch in components using that query",
+        "The query is paused and won't run until manually resumed",
+        "All components using that query are unmounted and remounted"
+      ],
+      "answer": 1
+    }
+  ]
+}

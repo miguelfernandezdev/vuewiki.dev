@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which @nuxt/kit helper registers a server route (Nitro endpoint) from a module?",
+      "options": [
+        "addPlugin",
+        "addComponent",
+        "addServerHandler",
+        "addImports"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In a Nuxt module's directory structure, what does the runtime/ folder contain?",
+      "options": [
+        "Build-time configuration and helpers",
+        "Code that runs in the app (components, composables, plugins)",
+        "TypeScript type declarations only",
+        "Server middleware exclusively"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which property in the defineNuxtModule meta object sets the config key used in nuxt.config.ts?",
+      "options": [
+        "key",
+        "name",
+        "id",
+        "configKey"
+      ],
+      "answer": 3
+    }
+  ]
+}

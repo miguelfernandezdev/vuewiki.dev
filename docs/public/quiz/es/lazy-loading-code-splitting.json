@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se habilita el code splitting a nivel de ruta en Vue Router?",
+      "options": [
+        "Añadiendo splitChunks: true a la configuración de la ruta",
+        "Usando () => import('./views/Page.vue') como definición del componente",
+        "Estableciendo lazy: true en el objeto de ruta",
+        "Envolviendo el componente en defineAsyncComponent en el router"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hace la opción delay en defineAsyncComponent?",
+      "options": [
+        "Retrasa la carga inicial del componente un número determinado de milisegundos",
+        "Evita mostrar el componente de carga en cargas rápidas para no producir un flash",
+        "Establece el tiempo de debounce antes de reintentar una carga fallida",
+        "Controla cuánto tiempo permanece el componente en caché antes de recargarse"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se agrupan varias rutas en el mismo chunk en Vite (no en Webpack)?",
+      "options": [
+        "Usando los comentarios mágicos /* webpackChunkName: \"name\" */",
+        "Estableciendo chunkName en el objeto de definición de la ruta",
+        "Usando manualChunks en la configuración de output de Rollup en Vite",
+        "Añadiendo un campo chunkGroup a la configuración del plugin de Vite"
+      ],
+      "answer": 2
+    }
+  ]
+}

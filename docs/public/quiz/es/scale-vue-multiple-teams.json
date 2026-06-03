@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué estrategia de organización de directorios se recomienda para escalar aplicaciones Vue entre múltiples equipos?",
+      "options": [
+        "Agrupar todos los componentes juntos, todos los stores juntos, todos los composables juntos",
+        "Organizar por dominio de negocio con módulos de funcionalidad, cada uno con su propia capa vertical",
+        "Usar un store global único con módulos con namespace por equipo",
+        "Separar el código frontend y backend en repositorios distintos por equipo"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el propósito del archivo barrel index.ts de exportación de cada funcionalidad?",
+      "options": [
+        "Generar automáticamente tipos TypeScript para los consumidores externos",
+        "Definir la API pública de la funcionalidad: lo que otros módulos tienen permitido importar",
+        "Registrar los componentes de la funcionalidad globalmente en Vue",
+        "Configurar el store Pinia de la funcionalidad con el estado inicial"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué herramienta se menciona para hacer cumplir los límites de módulos entre funcionalidades?",
+      "options": [
+        "El modo strict de TypeScript",
+        "Vue DevTools",
+        "ESLint con reglas no-restricted-imports",
+        "El plugin de module federation de Vite"
+      ],
+      "answer": 2
+    }
+  ]
+}

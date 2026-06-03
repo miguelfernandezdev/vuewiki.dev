@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué deberías evitar usar $fetch solo en <script setup> para datos iniciales?",
+      "options": [
+        "No soporta TypeScript",
+        "Se ejecuta tanto en el servidor COMO en el cliente, causando una petición doble",
+        "No puede manejar peticiones POST",
+        "Requiere configurar el caché manualmente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué composable envuelve cualquier función async (no solo $fetch) y acepta una clave de caché única?",
+      "options": [
+        "useFetch",
+        "useNuxtData",
+        "useAsyncData",
+        "$fetch"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué opción de useFetch impide que haga la petición hasta que llamas a execute() manualmente?",
+      "options": [
+        "lazy: true",
+        "server: false",
+        "immediate: false",
+        "defer: true"
+      ],
+      "answer": 2
+    }
+  ]
+}

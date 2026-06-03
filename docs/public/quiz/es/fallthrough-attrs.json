@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se representa un listener @click en el objeto $attrs?",
+      "options": [
+        "Como attrs['click']",
+        "Como attrs['on-click']",
+        "Como attrs.onClick",
+        "Como attrs['@click']"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué opción debes configurar para evitar que Vue reenvíe automáticamente los fallthrough attrs al elemento raíz?",
+      "options": [
+        "defineOptions({ inheritAttrs: false })",
+        "defineProps({ forwardAttrs: false })",
+        "defineOptions({ passthrough: false })",
+        "Establecer attrs: false en las opciones del componente"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Por qué no puedes usar un watcher para rastrear cambios en los attrs devueltos por useAttrs()?",
+      "options": [
+        "useAttrs() devuelve un objeto congelado que nunca se actualiza",
+        "Los watchers solo pueden rastrear refs y objetos reactivos, no attrs",
+        "useAttrs() siempre devuelve los valores más recientes pero los watchers no lo rastrean",
+        "Vue elimina los fallthrough attrs antes de que se ejecute el watcher"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In the shopping cart Pinia store, what does the totalPrice getter compute?",
+      "options": [
+        "The number of unique products in the cart",
+        "The sum of price × qty for all items",
+        "The average price of all items",
+        "The price after applying a discount code"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What happens when updateQty() is called with qty <= 0 in the cart store?",
+      "options": [
+        "The qty is set to 0 and the item remains in the cart",
+        "A validation error is thrown",
+        "The item is removed from the cart by calling removeItem()",
+        "The qty is reset to 1 as the minimum"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which method is recommended for persisting the cart state across page refreshes?",
+      "options": [
+        "Using a computed property that reads from localStorage",
+        "Calling $subscribe on the store and writing to localStorage on each mutation",
+        "Saving state in a cookie on every action",
+        "Using Vuex's built-in persistence plugin"
+      ],
+      "answer": 1
+    }
+  ]
+}

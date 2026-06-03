@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué mecanismo usa Vue para actualizar el DOM automáticamente cuando cambian los datos?",
+      "options": [
+        "Un intervalo de polling que comprueba los cambios de datos",
+        "Un sistema de reactividad basado en Proxy que rastrea las dependencias en tiempo de ejecución",
+        "Zone.js interceptando todas las operaciones asíncronas",
+        "Re-renders manuales disparados por `setState`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el tamaño aproximado del bundle JavaScript de Vue comparado con React?",
+      "options": [
+        "~10 KB (mucho más pequeño que los ~42 KB de React)",
+        "~33 KB (comparado con los ~42 KB de React)",
+        "~50 KB (más grande que los ~42 KB de React)",
+        "~42 KB (igual que React)"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuáles son las tres secciones de un Single-File Component (SFC) de Vue?",
+      "options": [
+        "model, view, controller",
+        "data, methods, computed",
+        "script, template, style",
+        "setup, render, cleanup"
+      ],
+      "answer": 2
+    }
+  ]
+}

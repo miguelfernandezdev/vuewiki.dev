@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does Vue warn when a child component mutates a prop directly?",
+      "options": [
+        "Props are frozen objects that cannot be mutated for performance reasons",
+        "The parent doesn't know about it and will overwrite the change on next re-render",
+        "Direct mutation bypasses Vue's reactivity system entirely",
+        "It violates the component lifecycle by triggering updates out of order"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the cleanest Vue 3.4+ approach for a component that needs to read and write a single value from the parent?",
+      "options": [
+        "Define the prop with required: false and emit events manually",
+        "Use defineModel() to create an automatic two-way binding",
+        "Use v-model:value with explicit prop and emit declarations",
+        "Copy the prop to a local ref and watch for changes"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is it acceptable to copy a prop to local state with ref(props.initialCount)?",
+      "options": [
+        "When the child and parent need to stay in sync at all times",
+        "When using the Composition API instead of the Options API",
+        "When the prop is truly an initial seed and doesn't need to stay in sync",
+        "When the prop is a primitive type like number or string"
+      ],
+      "answer": 2
+    }
+  ]
+}

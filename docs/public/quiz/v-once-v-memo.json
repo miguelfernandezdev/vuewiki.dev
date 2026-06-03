@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does `v-memo=\"[]\"` do to a template subtree?",
+      "options": [
+        "Skips rendering on first mount",
+        "Acts like `v-once` — the content is never re-rendered",
+        "Memoizes based on all reactive dependencies",
+        "Clears the subtree on each render"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In which scenario is `v-memo` most useful for performance?",
+      "options": [
+        "Small static text labels",
+        "Global app layout components",
+        "Large lists where only a few items change at a time",
+        "Components with heavy computed properties"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When should you NOT use `v-once`?",
+      "options": [
+        "On footer content with a fixed copyright year",
+        "On elements that contain reactive data that may change after mount",
+        "On company name or branding text",
+        "On static configuration values displayed in the UI"
+      ],
+      "answer": 1
+    }
+  ]
+}

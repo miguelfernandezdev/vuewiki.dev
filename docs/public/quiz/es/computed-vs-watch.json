@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia de comportamiento clave entre `computed` y `watch`?",
+      "options": [
+        "`computed` es síncrono; `watch` es siempre asíncrono",
+        "`computed` deriva un valor en caché; `watch` ejecuta efectos secundarios en respuesta a cambios",
+        "`computed` puede observar múltiples fuentes; `watch` solo rastrea una",
+        "`computed` se vuelve a ejecutar en cada render; `watch` solo se dispara al montar"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál de las siguientes es una señal de que deberías reemplazar un `watch` por un `computed`?",
+      "options": [
+        "El watcher hace una llamada API asíncrona cuando cambia un valor",
+        "El watcher establece un `ref` a un valor derivado de otra fuente reactiva",
+        "El watcher necesita acceder tanto al valor anterior como al nuevo",
+        "El watcher escribe en `localStorage` cuando el usuario cambia una configuración"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué proporciona `watch` que `computed` no puede?",
+      "options": [
+        "Cacheo automático del valor derivado entre renders",
+        "Acceso tanto al valor nuevo como al valor anterior",
+        "La capacidad de depender de múltiples fuentes reactivas a la vez",
+        "Una forma síncrona de derivar un valor para usar en plantillas"
+      ],
+      "answer": 1
+    }
+  ]
+}

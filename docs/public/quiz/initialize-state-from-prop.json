@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "When you initialize a ref with a prop value using ref(props.value), what happens when the prop changes later?",
+      "options": [
+        "The local ref automatically updates to match the new prop value",
+        "Vue throws a warning about prop mutation",
+        "The local ref stays at its initial value — the prop change has no effect",
+        "The component re-mounts with the new prop value"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What naming convention signals that a prop is used only as an initial seed, not a live binding?",
+      "options": [
+        "Prefixing with default or initial (e.g., initialQuery)",
+        "Suffixing with Seed (e.g., querySeed)",
+        "Using SCREAMING_CASE for the prop name",
+        "Defining the prop as type: 'initial' in defineProps"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "What is the risk when copying an object prop with ref(props.initialFilters) without spreading?",
+      "options": [
+        "The ref won't be reactive because objects need reactive() instead",
+        "Both the local ref and the prop point to the same object reference",
+        "Vue will deep-clone the object causing performance issues",
+        "The TypeScript types won't be preserved in the local ref"
+      ],
+      "answer": 1
+    }
+  ]
+}

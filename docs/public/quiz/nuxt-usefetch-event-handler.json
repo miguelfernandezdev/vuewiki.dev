@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the recommended way to trigger a network request from a button click handler in Nuxt?",
+      "options": [
+        "useFetch inside the handler function",
+        "useAsyncData inside the handler function",
+        "$fetch directly inside the handler",
+        "fetch() from the browser Fetch API"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "How can you get the reactive loading/error state of useFetch without it firing immediately?",
+      "options": [
+        "Pass lazy: true and call refresh() later",
+        "Pass immediate: false and call execute() later",
+        "Pass server: false and wait for mount",
+        "Wrap it in a watchEffect"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why does calling useFetch inside an event handler break its functionality?",
+      "options": [
+        "Event handlers run in a different JavaScript thread",
+        "useFetch requires the component context available during setup to register payload/lifecycle hooks",
+        "useFetch only works with async/await at the module level",
+        "The Nitro server cannot process requests from client event handlers"
+      ],
+      "answer": 1
+    }
+  ]
+}

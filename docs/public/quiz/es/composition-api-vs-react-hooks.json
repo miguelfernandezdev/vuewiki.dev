@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia fundamental de ejecución entre `setup()` de Vue y la función de componente de React?",
+      "options": [
+        "`setup()` de Vue se ejecuta en cada render; la función de componente de React se ejecuta una vez por instancia",
+        "`setup()` de Vue se ejecuta una vez por instancia; la función de componente de React se ejecuta en cada render",
+        "Ambas se ejecutan una vez por instancia, pero la de Vue se ejecuta de forma asíncrona",
+        "Ambas se ejecutan en cada render, pero Vue agrupa las actualizaciones del DOM"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué los stale closures no son un problema en la Composition API de Vue?",
+      "options": [
+        "Vue clona todos los valores de estado antes de cada render para garantizar que estén actualizados",
+        "Vue usa objetos Proxy para que `ref.value` siempre lea el valor reactivo actual",
+        "El `watch` de Vue recrea automáticamente los closures cuando cambian las dependencias",
+        "Vue compila las plantillas para evitar closures por completo"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué patrón de React NO es necesario en Vue porque `setup()` solo se ejecuta una vez?",
+      "options": [
+        "Pasar props de componentes padre a hijo",
+        "Usar `computed` para valores derivados",
+        "Envolver funciones en `useCallback` para evitar re-renders de componentes hijos",
+        "Suscribirse a stores externos con un hook personalizado"
+      ],
+      "answer": 2
+    }
+  ]
+}

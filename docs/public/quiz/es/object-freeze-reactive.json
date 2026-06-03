@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre cuando se muta un objeto reactivo congelado en modo no estricto?",
+      "options": [
+        "Vue lanza una advertencia y vuelve a renderizar",
+        "La mutación falla silenciosamente, sin re-render",
+        "El Proxy lanza un TypeError",
+        "Vue elimina el wrapper del Proxy"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué Vue no puede hacer reactivos los objetos congelados?",
+      "options": [
+        "Proxy no soporta objetos congelados en absoluto",
+        "Object.freeze establece writable:false, bloqueando el trap set del Proxy",
+        "Vue usa Object.defineProperty, no Proxy",
+        "Los objetos congelados no pueden tener getters"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo es útil Object.freeze() sobre datos reactivos?",
+      "options": [
+        "Para hacer los datos profundamente reactivos",
+        "Para prevenir ataques XSS",
+        "Como optimización de rendimiento para grandes conjuntos de datos de solo lectura",
+        "Para habilitar el renderizado en el servidor"
+      ],
+      "answer": 2
+    }
+  ]
+}

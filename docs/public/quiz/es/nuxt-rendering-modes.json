@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué configuración de Nuxt desactiva SSR globalmente, convirtiendo la app en una SPA?",
+      "options": [
+        "mode: 'spa'",
+        "ssr: false",
+        "static: true",
+        "render: 'client'"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué modo de renderizado se recomienda para dashboards privados detrás de autenticación donde el SEO no importa?",
+      "options": [
+        "SSR (por defecto)",
+        "ISR con un TTL corto",
+        "SPA (ssr: false)",
+        "SSG con prerender: true"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué componente integrado envuelve contenido que solo puede ejecutarse en el navegador (ej: widgets de terceros)?",
+      "options": [
+        "<BrowserOnly>",
+        "<ClientSide>",
+        "<LazyLoad>",
+        "<ClientOnly>"
+      ],
+      "answer": 3
+    }
+  ]
+}

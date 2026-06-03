@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué configuración de build de Vite permite construir una librería de componentes Vue como paquete distribuible?",
+      "options": [
+        "build.target: 'library'",
+        "Modo librería mediante la configuración build.lib en vite.config.ts",
+        "output.format: 'esm' en la configuración de rollup",
+        "Establecer sideEffects: true en package.json"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué debería una librería de componentes compartida usar propiedades CSS personalizadas para los temas?",
+      "options": [
+        "Las variables CSS tienen mejor soporte de navegadores que las variables de Sass",
+        "Los consumidores pueden sobreescribir los tokens a nivel de aplicación sin tocar el código de la librería",
+        "Reduce significativamente el tamaño del bundle de CSS",
+        "Vue requiere variables CSS para la herencia de estilos con scope"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué configuración de package.json permite a los bundlers eliminar componentes no usados de una librería compartida?",
+      "options": [
+        "\"treeshakeable\": true",
+        "\"module\": \"esm\"",
+        "\"sideEffects\": false",
+        "\"exports\": \"auto\""
+      ],
+      "answer": 2
+    }
+  ]
+}

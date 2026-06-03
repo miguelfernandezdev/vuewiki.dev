@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why should you avoid using $fetch alone in <script setup> for initial data?",
+      "options": [
+        "It doesn't support TypeScript",
+        "It runs on the server AND client, causing a double fetch",
+        "It can't handle POST requests",
+        "It requires manual caching setup"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which composable wraps any async function (not just $fetch) and accepts a unique cache key?",
+      "options": [
+        "useFetch",
+        "useNuxtData",
+        "useAsyncData",
+        "$fetch"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which useFetch option prevents it from fetching until you call execute() manually?",
+      "options": [
+        "lazy: true",
+        "server: false",
+        "immediate: false",
+        "defer: true"
+      ],
+      "answer": 2
+    }
+  ]
+}

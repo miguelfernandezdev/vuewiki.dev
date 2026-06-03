@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el tipo TypeScript de `event.target` en un handler estándar de `Event`?",
+      "options": ["HTMLElement | null", "EventTarget | null", "Element | null", "Node | null"],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué tipo TypeScript debes usar para un handler del evento `@keydown`?",
+      "options": ["Event", "InputEvent", "KeyboardEvent", "FocusEvent"],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la diferencia entre `event.target` y `event.currentTarget`?",
+      "options": [
+        "Son alias del mismo elemento",
+        "`target` es el elemento que tiene el listener; `currentTarget` es el elemento clickado",
+        "`target` es el elemento que recibió el click; `currentTarget` es el elemento que tiene el listener",
+        "`currentTarget` solo está disponible en eventos de teclado"
+      ],
+      "answer": 2
+    }
+  ]
+}

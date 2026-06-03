@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What defines a controlled input in Vue?",
+      "options": [
+        "An input whose value is stored in a Pinia store",
+        "An input whose value is driven by reactive state via `v-model`",
+        "An input that validates its own value without external logic",
+        "An input rendered by a form library like VeeValidate"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "For which type of input is the uncontrolled pattern the only practical option?",
+      "options": [
+        "Text inputs with real-time character count",
+        "Select inputs with dynamic options loaded from an API",
+        "File inputs, because `<input type=\"file\">` is read-only and `v-model` does not apply",
+        "Password inputs, because Vue prevents binding sensitive values reactively"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does `v-model.lazy` do compared to the default `v-model`?",
+      "options": [
+        "It defers the initial render until the input is focused",
+        "It syncs the value on the `change` event (blur/enter) instead of on every `input` event",
+        "It prevents the input from triggering a re-render until submit",
+        "It trims whitespace from the value before updating the reactive ref"
+      ],
+      "answer": 1
+    }
+  ]
+}

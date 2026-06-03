@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué sintaxis usa defineEmits para declarar eventos tipados con parámetros con nombre?",
+      "options": [
+        "Un array de strings con los nombres de los eventos",
+        "Un parámetro de tipo con los nombres de eventos como propiedades y tuplas como valores",
+        "Un objeto plano con los nombres de eventos mapeados a funciones handler",
+        "Una función genérica que acepta un nombre de evento y un payload"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué ocurre cuando llamas a emit('typo') para un evento no declarado en defineEmits con TypeScript?",
+      "options": [
+        "Vue registra un warning en tiempo de ejecución en desarrollo",
+        "El evento se ignora silenciosamente en tiempo de ejecución",
+        "Se lanza un error de TypeScript en tiempo de compilación",
+        "El padre recibe undefined como payload"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué sintaxis habilita la validación en tiempo de ejecución además de la comprobación de tipos de TypeScript para los emits?",
+      "options": [
+        "La sintaxis de tupla con nombre: [value: string]",
+        "Pasando un parámetro de tipo a defineEmits<{}>",
+        "La sintaxis de objeto con funciones de validación que devuelven boolean",
+        "Usar defineOptions con validación de emits"
+      ],
+      "answer": 2
+    }
+  ]
+}

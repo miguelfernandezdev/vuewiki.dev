@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does the 'h' stand for in Vue's h() render function?",
+      "options": [
+        "handler",
+        "hyperscript",
+        "html",
+        "hook"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you handle event modifiers like .stop and .prevent in render functions?",
+      "options": [
+        "They are not supported in render functions",
+        "Use withModifiers(handler, ['stop', 'prevent'])",
+        "Pass them as an array in the event handler directly",
+        "Prefix the event name with the modifier: 'onClick.stop'"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When does using a render function make more sense than a template?",
+      "options": [
+        "Always — render functions are faster because they skip compilation",
+        "When the component uses TypeScript",
+        "When the output is too dynamic for template syntax, like a variable tag level",
+        "When you need to use computed properties"
+      ],
+      "answer": 2
+    }
+  ]
+}

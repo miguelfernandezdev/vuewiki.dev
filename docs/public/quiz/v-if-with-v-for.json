@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Vue 3, which directive takes precedence when `v-if` and `v-for` are on the same element?",
+      "options": [
+        "v-for runs first, then v-if filters",
+        "v-if runs first, before the loop variable exists",
+        "They run simultaneously",
+        "Vue 3 throws a compile error — neither runs"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the recommended way to render only active users from a list?",
+      "options": [
+        "Use `v-for` and `v-if` on the same `<li>` element",
+        "Use a `computed` property that filters the list, then use `v-for`",
+        "Use `v-show` inside the `v-for` loop",
+        "Filter inside the template using a ternary"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you apply a per-item condition inside a `v-for` loop without combining directives?",
+      "options": [
+        "Use `v-if` and `v-for` on the same element with a guard expression",
+        "Use `<template v-for>` with `v-if` on a child element",
+        "Use a `filter()` call directly in the `v-for` expression",
+        "Use `v-show` on the element with `v-for`"
+      ],
+      "answer": 1
+    }
+  ]
+}

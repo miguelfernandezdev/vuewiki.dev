@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why should a search input ref be initialized with '' instead of null?",
+      "options": [
+        "null causes a runtime error when bound with v-model",
+        "v-model on inputs always produces strings, so '' matches the output type and avoids null checks",
+        "Vue's template compiler rejects null as a ref initial value",
+        "null disables v-model two-way binding"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When IS null the appropriate initial value for a ref?",
+      "options": [
+        "Always — it is the Vue recommended default",
+        "Only for number inputs",
+        "When 'no value' is semantically different from 'empty', such as data not yet loaded",
+        "When you want to skip TypeScript type checking"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What TypeScript problem arises from initializing ref<string | null>(null) used with a text input?",
+      "options": [
+        "The template will not compile without explicit typing",
+        "String methods like .toLowerCase() cause TS errors because the value is possibly null",
+        "TypeScript infers the type as unknown instead of string",
+        "v-model refuses to bind to a nullable ref"
+      ],
+      "answer": 1
+    }
+  ]
+}

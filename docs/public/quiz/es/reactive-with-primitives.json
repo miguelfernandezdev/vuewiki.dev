@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué reactive() no funciona con valores primitivos como números o strings?",
+      "options": [
+        "Es una limitación de Vue que podría corregirse en una versión futura",
+        "Proxy solo puede envolver objetos, no primitivos",
+        "Los primitivos requieren una sobrecarga especial de reactive()",
+        "Vue 3 eliminó el soporte de reactividad para primitivos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hace Vue cuando llamas a reactive(0)?",
+      "options": [
+        "Lanza un TypeError de inmediato",
+        "Envuelve el 0 en un objeto automáticamente",
+        "Muestra un aviso y devuelve el valor crudo sin reactividad",
+        "Devuelve ref(0) en su lugar"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué API deberías usar para hacer reactivo un valor primitivo?",
+      "options": [
+        "reactive() con un objeto envolvente como { value: 0 }",
+        "ref()",
+        "shallowReactive()",
+        "computed()"
+      ],
+      "answer": 1
+    }
+  ]
+}

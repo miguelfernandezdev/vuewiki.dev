@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué `newValue` y `oldValue` apuntan al mismo objeto cuando se observa en profundidad un objeto reactivo?",
+      "options": [
+        "Vue clona el objeto pero el clon es superficial",
+        "Vue no clona el objeto antes de mutarlo, por lo que ambas referencias reflejan el estado mutado",
+        "El watching profundo solo está soportado para arrays, no para objetos planos",
+        "Ambos valores se proxizan a través del mismo handler de Proxy"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo difieren realmente `newValue` y `oldValue` al observar un objeto?",
+      "options": [
+        "Cuando se usa `{ deep: true }` con un número elevado de propiedades anidadas",
+        "Cuando el objeto completo se reemplaza (nueva referencia), no solo se muta",
+        "Cuando se usa `watch` en lugar de `watchEffect`",
+        "Siempre difieren cuando se establece `immediate: true`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué técnica captura un snapshot de un objeto para que los valores old/new difieran en el callback del watch?",
+      "options": [
+        "Pasar `{ clone: true }` a las opciones del watch",
+        "Usar `JSON.parse(JSON.stringify(obj))` como fuente del watch",
+        "Devolver un clon superficial `() => ({ ...state.user })` desde el getter",
+        "Usar `shallowRef` en lugar de `reactive` para el objeto"
+      ],
+      "answer": 2
+    }
+  ]
+}

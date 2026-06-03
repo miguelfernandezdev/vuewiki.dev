@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hooks de ciclo de vida debe usar un componente en caché en lugar de `onMounted`/`onUnmounted` al cambiar de pestaña?",
+      "options": [
+        "`onBeforeMount` y `onBeforeUnmount`",
+        "`onActivated` y `onDeactivated`",
+        "`onUpdated` y `onBeforeUpdate`",
+        "`onShow` y `onHide`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué controla la prop `max` en `<KeepAlive>`?",
+      "options": [
+        "El número máximo de componentes que se pueden renderizar simultáneamente",
+        "El número máximo de instancias en caché, eliminando la menos usada recientemente al superarse",
+        "El tiempo máximo en milisegundos antes de que se invalide una instancia en caché",
+        "La profundidad máxima del árbol de componentes que KeepAlive recorrerá"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué se recomienda `shallowRef` al almacenar el componente de la pestaña activa?",
+      "options": [
+        "Porque las definiciones de componentes no son reactivas y `ref` lanzaría un error",
+        "Para evitar que Vue cree proxies reactivos profundos para el propio objeto del componente",
+        "Porque `ref` no puede contener valores de tipo objeto, solo primitivos",
+        "Para permitir que el componente sea recolectado por el garbage collector al cambiar de pestaña"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "When your project and a layer both provide the same component file, which one takes precedence?",
+      "options": [
+        "The layer always wins",
+        "The first entry in the extends array wins",
+        "Your project files always take precedence",
+        "Vue merges both and the last one wins"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which key in nuxt.config.ts is used to extend from a local or npm layer?",
+      "options": [
+        "plugins",
+        "modules",
+        "layers",
+        "extends"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "What is the key difference between a Nuxt layer and a Nuxt module?",
+      "options": [
+        "Layers run at runtime, modules run at build time",
+        "A layer is a partial Nuxt app (files); a module is a build-time plugin using @nuxt/kit",
+        "Modules can provide components but layers cannot",
+        "Layers require npm publishing; modules must be local"
+      ],
+      "answer": 1
+    }
+  ]
+}

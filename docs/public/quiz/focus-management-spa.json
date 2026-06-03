@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why do SPAs need to manage focus manually after route changes?",
+      "options": [
+        "Vue Router removes all focus on navigation for security reasons",
+        "The browser never reloads the page, so focus stays wherever it was before",
+        "Screen readers require JavaScript to announce page changes",
+        "HTML5 history API resets the scroll position but not focus"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does tabindex=\"-1\" accomplish when applied to an h1 element for focus management?",
+      "options": [
+        "It adds the heading to the end of the tab order",
+        "It removes the heading from all keyboard navigation entirely",
+        "It makes the heading programmatically focusable without adding it to the tab order",
+        "It gives the heading the highest tab priority"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What three things does the native <dialog> element's showModal() handle automatically?",
+      "options": [
+        "Adds ARIA roles, closes on Escape, and fires a close event",
+        "Moves focus inside, traps tab cycling, and restores focus on Escape close",
+        "Prevents scrolling, centers the dialog, and adds a backdrop",
+        "Announces to screen readers, traps focus, and hides background content"
+      ],
+      "answer": 1
+    }
+  ]
+}

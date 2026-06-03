@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué sintaxis de nombre de archivo crea una ruta catch-all que coincide con /posts/2024/my-article?",
+      "options": [
+        "[slug].vue",
+        "[[slug]].vue",
+        "[...slug].vue",
+        "*slug.vue"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué ocurre si no creas el directorio pages/ en una aplicación Nuxt?",
+      "options": [
+        "Nuxt lanza un error de compilación",
+        "Se genera automáticamente una ruta index por defecto",
+        "vue-router no se incluye en el bundle en absoluto",
+        "Todas las rutas recaen en app.vue"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué macro permite configurar el layout y el middleware para una página concreta?",
+      "options": [
+        "definePageConfig",
+        "usePageMeta",
+        "definePageMeta",
+        "defineRouteMeta"
+      ],
+      "answer": 2
+    }
+  ]
+}

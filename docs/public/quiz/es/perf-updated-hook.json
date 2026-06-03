@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el principal peligro de mutar estado reactivo dentro del hook updated?",
+      "options": [
+        "Se ejecuta de forma asíncrona y se pierde el ciclo de render",
+        "Provoca un bucle infinito: mutación → re-render → updated → mutación",
+        "El DOM puede no estar completamente pintado cuando se ejecuta el hook",
+        "Vue lanza una advertencia en tiempo de ejecución y bloquea la mutación"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es un caso de uso válido para onUpdated que no se puede reemplazar con watch o computed?",
+      "options": [
+        "Sincronizar una librería de terceros o hacer auto-scroll después de cambios en el DOM",
+        "Derivar una suma calculada de un array reactivo",
+        "Enviar una petición a la API cuando cambia una propiedad de datos específica",
+        "Inicializar el estado del componente en el primer render"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "El hook onUpdated se dispara cuando cambia CUALQUIER estado reactivo. ¿Qué deberías usar para reaccionar a una propiedad específica?",
+      "options": [
+        "onUpdated con una condición de guardia (único enfoque válido)",
+        "El hook de ciclo de vida beforeUpdate en su lugar",
+        "watch o watchEffect apuntando a la propiedad específica",
+        "Un observador profundo de reactive()"
+      ],
+      "answer": 2
+    }
+  ]
+}

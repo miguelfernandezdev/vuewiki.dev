@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "When deleting an item optimistically from a list, what must you save before removing it?",
+      "options": [
+        "A deep clone of the entire array",
+        "The item reference and its original index",
+        "Only the item's ID for rollback",
+        "The item's serialized JSON string"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When adding an item optimistically before the server responds, what ID strategy is recommended?",
+      "options": [
+        "Use 0 as a placeholder ID",
+        "Leave the ID undefined until the server responds",
+        "Use a temporary ID (e.g., temp-${Date.now()}) and replace it on success",
+        "Use a UUID from the client permanently"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which utility is used in the useOptimistic composable to snapshot the current state without reactivity?",
+      "options": [
+        "JSON.parse(JSON.stringify(...))",
+        "structuredClone(toRaw(stateRef.value))",
+        "Object.assign({}, stateRef.value)",
+        "markRaw(stateRef.value)"
+      ],
+      "answer": 1
+    }
+  ]
+}

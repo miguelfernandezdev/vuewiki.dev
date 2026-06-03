@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo expone `defineModel` los modificadores personalizados a la lógica del componente?",
+      "options": [
+        "Mediante un composable `useModifiers()` importado desde 'vue'",
+        "Como segundo elemento en la tupla desestructurada: `const [model, modifiers] = defineModel()`",
+        "Como una prop llamada `modelModifiers` que debe declararse con `defineProps`",
+        "Como un parámetro inyectado automáticamente en la función `setup`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es un gotcha conocido del modificador `.number` integrado en inputs nativos?",
+      "options": [
+        "Parsea usando `parseInt` en lugar de `parseFloat`, perdiendo los valores decimales",
+        "Devuelve un string vacío (no `0`) cuando el input se vacía, y `parseFloat('123abc')` devuelve `123`",
+        "Requiere `type=\"number\"` en el input o no tiene efecto",
+        "Entra en conflicto con `.trim` cuando ambos se aplican al mismo input"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Dónde se ejecuta la lógica de modificadores personalizados al usar `defineModel` con una transformación `set`?",
+      "options": [
+        "En el componente padre antes de que el valor se enlace a la prop del hijo",
+        "Dentro de la función `set` del componente hijo, antes de emitir `update:modelValue`",
+        "En un plugin del compilador de Vue que transforma la plantilla en tiempo de compilación",
+        "En el manejador de la directiva `v-model` del padre después de que el hijo emita"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why do conditional types like `T extends string ? A : B` fail when used directly in `defineProps`?",
+      "options": [
+        "Vue's compiler resolves types statically and cannot evaluate conditional type branching at compile time",
+        "TypeScript does not allow conditional types inside `.vue` files",
+        "Conditional types produce union types that Vue's runtime props validator cannot handle",
+        "The Vite plugin strips conditional types before passing them to the Vue compiler"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "Which of these type utilities DOES work with type-based `defineProps`?",
+      "options": [
+        "Deeply recursive mapped types",
+        "Conditional types (`T extends X ? A : B`)",
+        "`Pick`, `Omit`, `Partial`, and `Required`",
+        "Ambient global interfaces declared in `.d.ts` files without exports"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Starting from which Vue version can `defineProps` accept imported interfaces from external files?",
+      "options": [
+        "Vue 3.0",
+        "Vue 3.2",
+        "Vue 3.3",
+        "Vue 3.5"
+      ],
+      "answer": 2
+    }
+  ]
+}

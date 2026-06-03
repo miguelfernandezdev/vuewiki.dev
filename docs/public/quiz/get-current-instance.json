@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does getCurrentInstance() return when called inside a setTimeout after setup completes?",
+      "options": [
+        "The component instance, stored in a closure",
+        "A stale reference to the previous instance",
+        "null",
+        "An error is thrown"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the correct alternative to getCurrentInstance() for accessing the router inside a component?",
+      "options": [
+        "instance.appContext.config.globalProperties.$router",
+        "Using the useRouter() composable provided by Vue Router",
+        "Importing the router instance directly from the router file",
+        "Accessing window.$router set by the router plugin"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why do library authors like Vue Router legitimately use getCurrentInstance()?",
+      "options": [
+        "It's the only way to access reactive state from outside a component",
+        "Libraries need to hook into lifecycle, access app context, and read the component tree",
+        "It provides better TypeScript types than composables",
+        "It's required to support the Options API alongside Composition API"
+      ],
+      "answer": 1
+    }
+  ]
+}

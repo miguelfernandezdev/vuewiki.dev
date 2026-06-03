@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el gotcha crítico al usar `withDefaults` con props de tipo array u objeto?",
+      "options": [
+        "Los arrays y objetos no se pueden usar como valores por defecto de props",
+        "Los valores por defecto mutables deben usar factory functions o todas las instancias compartirán la misma referencia",
+        "Los valores por defecto de tipo objeto deben declararse fuera del componente",
+        "Los arrays deben tiparse como `readonly` para funcionar como valores por defecto"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué tipos primitivos NO necesitan factory functions en `withDefaults`?",
+      "options": [
+        "Todos los tipos necesitan factory functions para mayor seguridad",
+        "Solo `string` y `number` — `boolean` sigue necesitando una",
+        "Strings, numbers, booleans y null — son valores inmutables",
+        "Solo los tipos que son serializables a JSON"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué funcionalidad de Vue 3.5+ hace innecesarios `withDefaults` y las factory functions?",
+      "options": [
+        "El macro `defineDefaults()`",
+        "La desestructuración reactiva de props con valores por defecto en `defineProps`",
+        "La opción `defaultProps` en la definición del componente",
+        "La directiva `v-defaults` en el componente"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué los estilos con scope no se aplican al contenido dentro de <Teleport>?",
+      "options": [
+        "Teleport crea una nueva instancia de aplicación Vue que ignora los estilos del padre",
+        "Los elementos teleportados se mueven a una ubicación DOM diferente, abandonando el subárbol del componente donde se hacen coincidir los atributos con scope",
+        "El CSS con scope se deshabilita cuando se detecta Teleport en el mismo componente",
+        "El navegador bloquea la herencia de estilos entre diferentes subárboles del DOM"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el enfoque recomendado para aplicar estilos al contenido teleportado sin contaminar los estilos globales?",
+      "options": [
+        "Usar estilos en línea en todos los elementos teleportados",
+        "Usar !important en los estilos con scope",
+        "Usar CSS Modules: los nombres de clase se hashean en tiempo de compilación, por lo que el scope no depende de la posición en el DOM",
+        "Añadir el atributo data-v manualmente a los elementos teleportados"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué opción funciona pero se considera una mala práctica para aplicar estilos al contenido teleportado?",
+      "options": [
+        "Usar un bloque <style> sin scope separado con nombres de clase prefijados",
+        "Usar :deep() en un bloque con scope: funciona pero anula el propósito del scope",
+        "Usar CSS Modules para los elementos teleportados",
+        "Mover el contenido teleportado a su propio componente con sus propios estilos"
+      ],
+      "answer": 1
+    }
+  ]
+}

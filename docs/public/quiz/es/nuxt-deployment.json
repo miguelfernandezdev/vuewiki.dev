@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué comando prerenderiza todas las páginas a HTML estático en Nuxt?",
+      "options": [
+        "nuxt build",
+        "nuxt start",
+        "nuxt export",
+        "nuxt generate"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "¿Dónde se encuentra el punto de entrada del servidor tras ejecutar nuxt build?",
+      "options": [
+        ".output/server/index.mjs",
+        "dist/server.js",
+        ".nuxt/server/index.mjs",
+        "build/server/main.js"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Cómo mapea Nuxt las variables de entorno a las claves de runtimeConfig automáticamente?",
+      "options": [
+        "A través de un archivo .env.production exclusivamente",
+        "Usando el prefijo NUXT_ en los nombres de las variables de entorno",
+        "A través de la sección env en nuxt.config.ts",
+        "Usando un plugin dotenv en tiempo de ejecución"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens to undeclared props when you spread an object with v-bind onto a component?",
+      "options": [
+        "They are silently ignored",
+        "Vue throws a warning listing the unknown props",
+        "They become fallthrough attributes and appear as HTML attributes on the root element",
+        "They are automatically added to the component's props definition"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why does spreading all props cause unnecessary re-renders?",
+      "options": [
+        "Vue cannot diff objects passed with v-bind",
+        "Every property in the spread is tracked as a prop, so any change triggers a re-render",
+        "Object spreading disables Vue's virtual DOM optimization",
+        "The spread operator creates a new object reference on every render"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In what scenario is v-bind=\"$attrs\" the correct and intended pattern?",
+      "options": [
+        "When passing a user object from an API to a display component",
+        "When building a thin wrapper component that intentionally forwards all attributes to an inner element",
+        "When you want to avoid declaring props for performance",
+        "When sharing state between sibling components"
+      ],
+      "answer": 1
+    }
+  ]
+}

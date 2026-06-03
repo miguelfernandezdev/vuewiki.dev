@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En una estructura de proyecto Vue basada en funcionalidades, ¿dónde debe vivir el código que usan dos o más funcionalidades?",
+      "options": [
+        "En la primera funcionalidad que lo necesitó, importado por las demás",
+        "En una carpeta shared/ separada de todas las carpetas de funcionalidad",
+        "Duplicado en cada funcionalidad para mantener la independencia",
+        "En la carpeta raíz src/ junto al router y App.vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el propósito de una exportación barrel index.ts en una carpeta de funcionalidad?",
+      "options": [
+        "Registra globalmente todos los componentes de la funcionalidad con app.component()",
+        "Define la API pública de la funcionalidad — qué pueden importar otras funcionalidades",
+        "Carga de forma lazy todas las rutas de la funcionalidad para code splitting",
+        "Fusiona el store de Pinia de la funcionalidad con el store global"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué convención de nomenclatura recomienda la guía de estilo para los componentes Vue?",
+      "options": [
+        "kebab-case para seguir las convenciones de los elementos HTML",
+        "camelCase para seguir la nomenclatura de variables de JavaScript",
+        "PascalCase para distinguirlos de los elementos HTML nativos en los templates",
+        "SCREAMING_CASE para identificarlos como constantes"
+      ],
+      "answer": 2
+    }
+  ]
+}

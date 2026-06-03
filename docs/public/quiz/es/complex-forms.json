@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En el patrón del composable `useForm`, ¿qué rastrea el objeto `touched`?",
+      "options": [
+        "Qué campos se han modificado desde que se envió el formulario por última vez",
+        "Qué campos ha interactuado el usuario (visitado y abandonado)",
+        "Qué campos tienen actualmente errores de validación",
+        "Qué campos son obligatorios frente a opcionales"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo deberías usar VeeValidate o FormKit en lugar de un composable personalizado?",
+      "options": [
+        "Cuando el formulario tiene más de 3 campos",
+        "Cuando necesitas validación basada en esquemas, campos de array dinámicos o validación asíncrona",
+        "Solo para formularios que envían a una REST API",
+        "Cuando el formulario usa `v-model` en lugar de template refs"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la estructura de datos principal recomendada para almacenar el estado de un formulario en Vue?",
+      "options": [
+        "Un `ref` con un string simple por cada campo",
+        "Un objeto `reactive` que contiene todos los valores de los campos",
+        "Un store de Pinia con propiedades de estado individuales",
+        "Un array de valores `ref` que coincide con el orden de los campos"
+      ],
+      "answer": 1
+    }
+  ]
+}

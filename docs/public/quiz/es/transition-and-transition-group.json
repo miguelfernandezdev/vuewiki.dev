@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Al intercambiar dos elementos del mismo tipo dentro de <Transition>, ¿qué debes añadir para disparar la animación?",
+      "options": [
+        "Una prop name única en cada Transition",
+        "Un atributo :key en cada elemento; de lo contrario, Vue reutiliza el nodo del DOM",
+        "La prop appear para forzar la re-animación",
+        "mode='in-out' para secuenciar las animaciones"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hace la clase CSS .list-move en un <TransitionGroup>?",
+      "options": [
+        "Aplica estilos al elemento envolvente generado por la prop tag",
+        "Anima los elementos que cambian de posición cuando un hermano entra o sale",
+        "Define el estado inicial de los elementos antes de entrar en la lista",
+        "Controla el retraso escalonado entre la animación de cada elemento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué propiedades CSS deberías preferir para las transiciones y evitar costosos recálculos de layout?",
+      "options": [
+        "height, width y margin para transiciones de layout naturales",
+        "top, left, right, bottom para animaciones de posición",
+        "transform y opacity: están aceleradas por GPU y no disparan el layout",
+        "display y visibility para transiciones de mostrar/ocultar"
+      ],
+      "answer": 2
+    }
+  ]
+}

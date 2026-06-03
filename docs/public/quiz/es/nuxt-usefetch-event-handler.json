@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la forma recomendada de lanzar una petición de red desde un handler de clic en Nuxt?",
+      "options": [
+        "useFetch dentro de la función del handler",
+        "useAsyncData dentro de la función del handler",
+        "$fetch directamente dentro del handler",
+        "fetch() de la Fetch API del navegador"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cómo se obtiene el estado reactivo de carga/error de useFetch sin que se dispare inmediatamente?",
+      "options": [
+        "Pasando lazy: true y llamando a refresh() más tarde",
+        "Pasando immediate: false y llamando a execute() más tarde",
+        "Pasando server: false y esperando al mount",
+        "Envolviéndolo en un watchEffect"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué llamar a useFetch dentro de un event handler rompe su funcionalidad?",
+      "options": [
+        "Los event handlers se ejecutan en un hilo de JavaScript diferente",
+        "useFetch requiere el contexto del componente disponible durante el setup para registrar los hooks de payload/lifecycle",
+        "useFetch solo funciona con async/await a nivel de módulo",
+        "El servidor de Nitro no puede procesar peticiones desde event handlers del cliente"
+      ],
+      "answer": 1
+    }
+  ]
+}

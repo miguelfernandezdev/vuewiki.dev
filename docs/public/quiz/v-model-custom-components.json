@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What does `<SearchInput v-model=\"query\" />` expand to in Vue 3?",
+      "options": [
+        "`<SearchInput :value=\"query\" @input=\"query = $event\" />`",
+        "`<SearchInput :modelValue=\"query\" @update:modelValue=\"query = $event\" />`",
+        "`<SearchInput :model=\"query\" @change=\"query = $event\" />`",
+        "`<SearchInput :query=\"query\" @update:query=\"query = $event\" />`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Vue 3.4+ macro simplifies implementing `v-model` in a child component?",
+      "options": ["useModel()", "defineModel()", "modelRef()", "bindModel()"],
+      "answer": 1
+    },
+    {
+      "question": "How do you support multiple `v-model` bindings on a single component in Vue 3?",
+      "options": [
+        "Use the `.sync` modifier for extra bindings",
+        "Each named `v-model` is not supported — only one allowed",
+        "Use named `v-model:propName` syntax for each binding",
+        "Pass additional bindings as an object prop"
+      ],
+      "answer": 2
+    }
+  ]
+}

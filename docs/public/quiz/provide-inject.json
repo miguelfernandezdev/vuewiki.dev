@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What problem does provide/inject solve compared to passing props?",
+      "options": [
+        "It allows child components to mutate parent state directly",
+        "It avoids prop drilling through intermediate components that don't use the data",
+        "It replaces Pinia for global state management",
+        "It makes component communication synchronous instead of event-based"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "If a parent provides a ref to a descendant via provide, what happens when the parent updates the ref?",
+      "options": [
+        "The descendant must call inject again to get the updated value",
+        "The descendant receives the updated value automatically since provided refs are reactive",
+        "The descendant gets a snapshot — provide/inject is not reactive",
+        "The parent must call update() to push the new value to descendants"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is provide/inject NOT a good choice for sharing data?",
+      "options": [
+        "For sharing theme or locale across the entire app",
+        "For table/form context between a container and deeply nested children",
+        "For global state that many unrelated components both read and write",
+        "For auth/user state accessible deep in the component tree"
+      ],
+      "answer": 2
+    }
+  ]
+}

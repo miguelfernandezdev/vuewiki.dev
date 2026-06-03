@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What problem does <Teleport> solve for modals and tooltips?",
+      "options": [
+        "It lazy-loads the modal component to reduce initial bundle size",
+        "It renders content outside the component's DOM subtree, avoiding parent CSS issues like overflow:hidden",
+        "It allows modals to share state with their parent component",
+        "It prevents modals from triggering Vue's reactivity system"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a Fragment in Vue 3?",
+      "options": [
+        "A lazy-loaded component that loads on demand",
+        "A component wrapper that provides error boundaries",
+        "The ability to have multiple root elements in a template without a wrapping div",
+        "A virtual node used internally by the virtual DOM"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What caveat exists when using Fragments (multiple root elements) with fallthrough attributes?",
+      "options": [
+        "Fallthrough attributes are completely disabled for multi-root components",
+        "Attributes don't apply automatically — you must bind $attrs explicitly since Vue doesn't know which root to target",
+        "All fallthrough attributes are applied to the first root element",
+        "Multi-root components cannot receive fallthrough attributes at all"
+      ],
+      "answer": 1
+    }
+  ]
+}

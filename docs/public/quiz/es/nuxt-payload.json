@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Desde Nuxt 3.4+, ¿qué librería de serialización gestiona el payload, soportando Date, Map, Set, etc.?",
+      "options": [
+        "JSON.stringify con un replacer personalizado",
+        "superjson",
+        "devalue",
+        "msgpack"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué usar $fetch directamente en <script setup> provoca una petición doble durante SSR?",
+      "options": [
+        "Omite la resolución de módulos de Vite",
+        "No tiene integración con el payload y se ejecuta tanto en el servidor como en el cliente",
+        "Usa un cliente HTTP distinto al de useFetch",
+        "No soporta la ejecución en el lado del servidor"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el ID del elemento HTML que contiene el payload SSR serializado de Nuxt?",
+      "options": [
+        "__NUXT_STATE__",
+        "__NUXT_DATA__",
+        "__NUXT_PAYLOAD__",
+        "__VUE_SSR_CONTEXT__"
+      ],
+      "answer": 1
+    }
+  ]
+}

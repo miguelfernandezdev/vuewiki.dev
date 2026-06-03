@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Vuex, what is the ONLY way to change state, and what constraint must they follow?",
+      "options": [
+        "Actions — they must be synchronous",
+        "Getters — they derive new state synchronously",
+        "Mutations — they must be synchronous",
+        "Dispatches — they can be async or sync"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the Vuex data flow order from a component interaction to state update?",
+      "options": [
+        "Component → commit(Mutation) → State",
+        "Component → dispatch(Action) → commit(Mutation) → State",
+        "Component → Action → State → Getter → Component",
+        "Component → Mutation → Action → State"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What was the main reason Pinia was created to replace Vuex?",
+      "options": [
+        "Vuex had performance issues with large state trees",
+        "Vuex could not be used with the Composition API",
+        "Vuex's string-based API had no TypeScript type safety",
+        "Vuex did not support SSR rendering"
+      ],
+      "answer": 2
+    }
+  ]
+}

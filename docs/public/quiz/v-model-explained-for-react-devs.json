@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is Vue's `v-model` equivalent to in React's controlled input pattern?",
+      "options": [
+        "The `ref` hook alone",
+        "The `value` prop and `onChange` handler combined",
+        "React's `useModel` hook",
+        "Passing a callback via `onInput`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does `<input v-model=\"name\" />` compile to in Vue?",
+      "options": [
+        "`<input :value=\"name\" @change=\"name = $event.target.value\" />`",
+        "`<input :name=\"name\" @input=\"name = $event\" />`",
+        "`<input :value=\"name\" @input=\"name = $event.target.value\" />`",
+        "`<input v-bind:model=\"name\" />`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "How does Vue handle multiple `v-model` bindings on a component compared to React?",
+      "options": [
+        "Vue uses `v-model:name` and `v-model:email` syntax; React has no direct equivalent",
+        "Vue and React both use the same pattern with separate props",
+        "Vue requires a store for multiple two-way bindings",
+        "Vue's multiple v-model requires a plugin; React has this built-in"
+      ],
+      "answer": 0
+    }
+  ]
+}

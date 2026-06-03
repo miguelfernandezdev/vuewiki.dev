@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What problem does debouncing solve for a search input?",
+      "options": [
+        "It prevents the browser from blocking the main thread during heavy filtering",
+        "It stops the input from firing an API call on every keystroke when the user hasn't finished typing",
+        "It batches multiple simultaneous searches into a single network request",
+        "It cancels in-flight requests when a new character is typed"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In the inline debounce pattern, what triggers the actual search (e.g., updates `debouncedQuery`)?",
+      "options": [
+        "The `@input` event on the text field after each keystroke",
+        "A `setTimeout` callback that fires after a period of inactivity in typing",
+        "A `watchEffect` that re-runs whenever `searchQuery` changes",
+        "A computed property that compares the raw and debounced values"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When would you choose throttle over debounce?",
+      "options": [
+        "For search inputs where you want to fire once when the user finishes typing",
+        "For scroll or resize handlers where you want periodic updates during continuous activity",
+        "When the event fires at most once and debouncing would add unnecessary delay",
+        "When you need to cancel a pending API call before firing a new one"
+      ],
+      "answer": 1
+    }
+  ]
+}

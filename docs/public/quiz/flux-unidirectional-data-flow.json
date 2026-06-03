@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the key constraint of Flux unidirectional data flow?",
+      "options": [
+        "State must be stored in a single global object",
+        "The view never modifies state directly — it always goes through an action",
+        "Actions must be synchronous to maintain traceability",
+        "Components cannot share state directly"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why did Pinia drop mutations compared to Vuex?",
+      "options": [
+        "Mutations caused performance issues in large applications",
+        "TypeScript doesn't support the mutation pattern",
+        "The extra indirection wasn't worth the boilerplate",
+        "Mutations were incompatible with the Composition API"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does Vue's v-model actually expand to under the hood?",
+      "options": [
+        "A reactive proxy that writes directly to component state",
+        "A :value binding plus an @input event that updates the source",
+        "A two-way reactive binding using computed getters and setters",
+        "A watcher that syncs the DOM value with the data model"
+      ],
+      "answer": 1
+    }
+  ]
+}

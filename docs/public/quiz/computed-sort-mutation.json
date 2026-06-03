@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does calling `.sort()` inside a `computed` mutate the original array?",
+      "options": [
+        "Vue's reactivity system unwraps the array before passing it to the getter",
+        "`.sort()` modifies the array in place, so the computed getter and the source share the same mutated array",
+        "Computed getters run in a separate reactive context that merges back on completion",
+        "Vue clones all reactive values on read, causing the sorted version to replace the original"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which ES2023 method is the non-mutating equivalent of `.sort()`?",
+      "options": [
+        "`.sortCopy()`",
+        "`.toArray().sort()`",
+        "`.toSorted()`",
+        "`.cloneSort()`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which of these correctly creates a sorted copy inside a computed without mutating the source?",
+      "options": [
+        "`return items.value.sort((a, b) => a - b)`",
+        "`return [...items.value].sort((a, b) => a - b)`",
+        "`return items.value.map(i => i).sort((a, b) => a - b)` only",
+        "`return Array.from(items.value)` without calling sort"
+      ],
+      "answer": 1
+    }
+  ]
+}

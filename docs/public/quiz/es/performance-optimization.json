@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace v-memo en una lista con v-for?",
+      "options": [
+        "Memoriza toda la lista y la vuelve a renderizar solo una vez",
+        "Omite el re-render del subárbol de un elemento de lista cuando los valores del array de dependencias no han cambiado",
+        "Cachea los datos de la lista en localStorage entre renders",
+        "Impide que se añadan nuevos elementos a la lista de forma reactiva"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo deberías usar shallowRef en lugar de ref para un objeto?",
+      "options": [
+        "Cuando necesitas rastrear mutaciones profundas en propiedades anidadas",
+        "Cuando trabajas únicamente con valores primitivos",
+        "Cuando reemplazas el objeto por completo y no mutes propiedades anidadas",
+        "Cuando el objeto se usa dentro de un store de Pinia"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué pestaña de Vue DevTools es el mejor punto de partida para diagnosticar problemas de rendimiento de re-renders en tiempo de ejecución?",
+      "options": [
+        "La pestaña Components que muestra el árbol",
+        "La pestaña Performance que muestra los tiempos de render de componentes y los conteos de re-renders",
+        "La pestaña Timeline que muestra los hooks de ciclo de vida",
+        "La pestaña State que muestra los datos reactivos"
+      ],
+      "answer": 1
+    }
+  ]
+}

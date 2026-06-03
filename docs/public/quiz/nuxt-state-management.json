@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why is using a plain ref at module scope in a Nuxt composable dangerous during SSR?",
+      "options": [
+        "It causes TypeScript errors in strict mode",
+        "It is not reactive inside templates",
+        "The ref is shared across all requests, leaking data between users",
+        "It cannot be serialized into the Nuxt payload"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which composable runs initialization logic only once on the server and never replays it on the client?",
+      "options": [
+        "useOnce",
+        "callOnce",
+        "useSingleRun",
+        "useState with a flag"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which useState serialization limitation is explicitly mentioned in the docs?",
+      "options": [
+        "Arrays with more than 100 items cannot be serialized",
+        "useState cannot hold objects with more than 10 keys",
+        "Functions, class instances, and symbols cannot be stored in useState",
+        "useState values must be primitive types only"
+      ],
+      "answer": 2
+    }
+  ]
+}

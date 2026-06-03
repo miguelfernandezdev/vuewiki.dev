@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia clave en el campo `type` entre un VNode de elemento y uno de componente?",
+      "options": [
+        "Los VNodes de elemento usan `null`; los de componente usan un string",
+        "Los VNodes de elemento usan un string como `'div'`; los de componente usan el objeto de definición del componente",
+        "Los VNodes de elemento usan un ID numérico; los de componente usan un Symbol",
+        "Ambos usan strings, pero los de elemento son en minúsculas y los de componente en PascalCase"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Aparece un componente como etiqueta en el DOM real del navegador?",
+      "options": [
+        "Sí, Vue añade un elemento personalizado con el nombre del componente como etiqueta",
+        "Sí, pero solo si `inheritAttrs` está en true",
+        "No, solo la salida renderizada del componente (VNodes de elemento) aparece en el DOM",
+        "No, a menos que el componente use `<Teleport>` para montarse a sí mismo"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En comparación con los elementos, ¿qué hace que los VNodes de componente sean más costosos?",
+      "options": [
+        "Los componentes siempre deben obtener datos de una API antes de renderizarse",
+        "Los componentes requieren una instancia reactiva, la ejecución de `setup()` y su propio árbol de VNodes",
+        "Los componentes bloquean el hilo principal mientras se ejecuta el diffing del virtual DOM",
+        "Los componentes no se pueden reutilizar, por lo que Vue crea una nueva clase por cada ocurrencia"
+      ],
+      "answer": 1
+    }
+  ]
+}

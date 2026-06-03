@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why don't scoped styles apply to content inside <Teleport>?",
+      "options": [
+        "Teleport creates a new Vue application instance that ignores parent styles",
+        "Teleported elements move to a different DOM location, leaving the component's subtree where scoped attributes are matched",
+        "Scoped CSS is disabled when Teleport is detected in the same component",
+        "The browser blocks style inheritance across different DOM subtrees"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the recommended approach for styling teleported content without polluting global styles?",
+      "options": [
+        "Use inline styles on all teleported elements",
+        "Use !important in the scoped styles",
+        "Use CSS Modules — class names are hashed at build time, so scoping doesn't depend on DOM position",
+        "Add the data-v attribute manually to teleported elements"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which option works but is considered a poor practice for styling teleported content?",
+      "options": [
+        "Using a separate non-scoped <style> block with prefixed class names",
+        "Using :deep() in a scoped block — it works but defeats the purpose of scoping",
+        "Using CSS Modules for the teleported elements",
+        "Moving teleported content into its own component with its own styles"
+      ],
+      "answer": 1
+    }
+  ]
+}

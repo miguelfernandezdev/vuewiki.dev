@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué los tipos condicionales como `T extends string ? A : B` fallan cuando se usan directamente en `defineProps`?",
+      "options": [
+        "El compilador de Vue resuelve los tipos estáticamente y no puede evaluar la ramificación de tipos condicionales en tiempo de compilación",
+        "TypeScript no permite tipos condicionales dentro de archivos `.vue`",
+        "Los tipos condicionales producen tipos unión que el validador de props en tiempo de ejecución de Vue no puede manejar",
+        "El plugin de Vite elimina los tipos condicionales antes de pasarlos al compilador de Vue"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Cuál de estas utilidades de tipos SÍ funciona con `defineProps` basado en tipos?",
+      "options": [
+        "Tipos mapeados recursivos profundos",
+        "Tipos condicionales (`T extends X ? A : B`)",
+        "`Pick`, `Omit`, `Partial` y `Required`",
+        "Interfaces globales ambientales declaradas en archivos `.d.ts` sin exports"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿A partir de qué versión de Vue puede `defineProps` aceptar interfaces importadas de archivos externos?",
+      "options": [
+        "Vue 3.0",
+        "Vue 3.2",
+        "Vue 3.3",
+        "Vue 3.5"
+      ],
+      "answer": 2
+    }
+  ]
+}

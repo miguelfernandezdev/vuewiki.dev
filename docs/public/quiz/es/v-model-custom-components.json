@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿A qué se expande `<SearchInput v-model=\"query\" />` en Vue 3?",
+      "options": [
+        "`<SearchInput :value=\"query\" @input=\"query = $event\" />`",
+        "`<SearchInput :modelValue=\"query\" @update:modelValue=\"query = $event\" />`",
+        "`<SearchInput :model=\"query\" @change=\"query = $event\" />`",
+        "`<SearchInput :query=\"query\" @update:query=\"query = $event\" />`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué macro de Vue 3.4+ simplifica la implementación de `v-model` en un componente hijo?",
+      "options": ["useModel()", "defineModel()", "modelRef()", "bindModel()"],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se soportan múltiples bindings `v-model` en un mismo componente en Vue 3?",
+      "options": [
+        "Usar el modificador `.sync` para los bindings adicionales",
+        "Los `v-model` con nombre no están soportados — solo se permite uno",
+        "Usar la sintaxis `v-model:propName` para cada binding",
+        "Pasar los bindings adicionales como un prop de tipo objeto"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How does Vue implement scoped styles to prevent CSS from leaking to other components?",
+      "options": [
+        "It wraps all component templates in a Shadow DOM root",
+        "It adds a unique `data-v-xxxxx` attribute to elements and appends it to each selector",
+        "It generates random class names and replaces all class references at build time",
+        "It uses CSS custom properties (variables) namespaced per component"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why are CSS Modules a better choice than scoped styles for teleported content?",
+      "options": [
+        "Scoped styles are not supported inside `<Teleport>` by Vue's compiler",
+        "CSS Modules hash class names globally so they work anywhere in the DOM, not just inside the component tree",
+        "Teleport requires class names to start with a specific prefix",
+        "CSS Modules automatically add `!important` to override teleport container styles"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What syntax binds a class conditionally using the object shorthand?",
+      "options": [
+        "`:class=\"isActive ? 'active' : null\"`",
+        "`:class=\"{ active: isActive }\"`",
+        "`:class=\"'active'\"` with `v-if=\"isActive\"`",
+        "`:class=\"[isActive && 'active']\"`"
+      ],
+      "answer": 1
+    }
+  ]
+}

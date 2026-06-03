@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la principal diferencia organizativa entre la Options API y la Composition API?",
+      "options": [
+        "La Options API usa clases; la Composition API usa funciones simples",
+        "La Options API organiza el código por tipo de opción (data, methods, computed); la Composition API organiza por responsabilidad lógica",
+        "La Options API solo funciona en Vue 2; la Composition API es solo para Vue 3",
+        "La Options API requiere TypeScript; la Composition API funciona con JavaScript puro"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué es un composable en el contexto de la Composition API?",
+      "options": [
+        "Un componente Vue especial que envuelve a otros componentes",
+        "Un módulo de store de Pinia que contiene estado compartido",
+        "Una función simple que devuelve estado reactivo y puede reutilizarse entre componentes",
+        "Una directiva integrada de Vue que reemplaza `v-if` y `v-for`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En un componente grande con búsqueda, paginación y filtros, ¿qué problema crea la Options API?",
+      "options": [
+        "Obliga a toda la lógica a una única función `data()` sin separación",
+        "La lógica de una sola funcionalidad queda dispersa entre `data`, `computed`, `methods` y `watch`",
+        "No puede usar tipos TypeScript para propiedades reactivas",
+        "Vuelve a renderizar todo el árbol de componentes en cada cambio de estado"
+      ],
+      "answer": 1
+    }
+  ]
+}

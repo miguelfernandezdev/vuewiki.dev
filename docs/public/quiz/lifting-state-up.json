@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the core problem that lifting state up solves?",
+      "options": [
+        "Props cannot be passed more than two levels deep in Vue",
+        "Two sibling components each managing their own copy of shared data get out of sync",
+        "Child components cannot communicate directly without a parent",
+        "Pinia stores are too heavy for simple shared state scenarios"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When does lifting state become the wrong solution and prop drilling begins?",
+      "options": [
+        "When more than two components share the same state",
+        "When state needs to be persisted between page navigations",
+        "When passing props through 3+ levels of components that don't use the data",
+        "When the parent component has more than 5 child components"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In the lifting state up pattern, what is the child component's responsibility?",
+      "options": [
+        "To own and manage the shared state locally",
+        "To receive data via props and communicate changes via emitted events",
+        "To directly modify the parent's reactive data using inject",
+        "To clone the parent state and sync changes periodically"
+      ],
+      "answer": 1
+    }
+  ]
+}

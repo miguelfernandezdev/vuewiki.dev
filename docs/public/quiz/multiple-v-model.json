@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What emit event name does v-model:firstName generate under the hood?",
+      "options": [
+        "'input:firstName'",
+        "'change:firstName'",
+        "'update:firstName'",
+        "'model:firstName'"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When using defineModel without a name (the default v-model), what prop name does it map to?",
+      "options": [
+        "value",
+        "modelValue",
+        "model",
+        "defaultValue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What Vue 3 feature did multiple v-model replace from Vue 2?",
+      "options": [
+        "The .sync modifier pattern alongside a single v-model",
+        "The model option in the component definition",
+        "The .prop modifier for passing data as DOM properties",
+        "The $attrs forwarding mechanism for event listeners"
+      ],
+      "answer": 0
+    }
+  ]
+}

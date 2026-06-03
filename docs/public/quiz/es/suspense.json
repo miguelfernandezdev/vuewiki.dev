@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Con qué dos tipos de dependencias asíncronas funciona <Suspense>?",
+      "options": [
+        "Llamadas fetch() y callbacks de setTimeout",
+        "defineAsyncComponent y componentes con async setup()",
+        "Acciones de stores Pinia y guards de navegación de Vue Router",
+        "Callbacks de computed() y watchEffect()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué controla la prop timeout en <Suspense>?",
+      "options": [
+        "Cuánto tiempo esperar antes de mostrar un estado de error",
+        "El tiempo máximo permitido para que async setup se resuelva",
+        "Cuánto tiempo permanece visible el contenido resuelto anterior antes de que el fallback reaparezca al re-dispararse",
+        "El retraso antes del primer intento de renderizado"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es el orden correcto al combinar RouterView, Transition, KeepAlive y Suspense?",
+      "options": [
+        "Suspense > KeepAlive > Transition > RouterView",
+        "RouterView > Transition > KeepAlive > Suspense",
+        "KeepAlive > Suspense > RouterView > Transition",
+        "Transition > RouterView > Suspense > KeepAlive"
+      ],
+      "answer": 1
+    }
+  ]
+}

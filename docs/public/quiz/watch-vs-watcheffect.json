@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What is the key behavioral difference between `watch` and `watchEffect` regarding when they first run?",
+      "options": [
+        "`watch` runs immediately; `watchEffect` is lazy by default",
+        "`watchEffect` runs immediately; `watch` is lazy by default",
+        "Both run immediately on creation",
+        "Both are lazy — neither runs until a dependency changes"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which composable provides both `newVal` and `oldVal` in its callback?",
+      "options": ["watchEffect", "watch", "watchPostEffect", "watchSyncEffect"],
+      "answer": 1
+    },
+    {
+      "question": "Why might `watchEffect` miss a reactive dependency in an async callback?",
+      "options": [
+        "Async functions disable dependency tracking globally",
+        "Only the first `await` statement is tracked",
+        "Vue stops tracking dependencies after the first `await` yields control",
+        "`watchEffect` doesn't support async callbacks at all"
+      ],
+      "answer": 2
+    }
+  ]
+}

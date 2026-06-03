@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "When does a Pinia plugin function run?",
+      "options": [
+        "Once per component that uses the store",
+        "Once per store creation",
+        "Once when the Pinia instance is created",
+        "On every state mutation"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does $subscribe provide inside a Pinia plugin?",
+      "options": [
+        "A way to subscribe to Pinia devtools events",
+        "A callback that fires on every store state change",
+        "An observable stream of action calls",
+        "A hook that fires when the store is destroyed"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you add TypeScript types for custom properties added to all stores via a plugin?",
+      "options": [
+        "Export an interface from the plugin file and import it in each store",
+        "Use declare module 'pinia' { export interface PiniaCustomProperties {...} }",
+        "Pass a TypeScript generic to defineStore: defineStore<CustomProps>(...)",
+        "Add the property to the global Window interface"
+      ],
+      "answer": 1
+    }
+  ]
+}

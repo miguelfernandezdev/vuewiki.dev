@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué problema resuelve provide/inject en comparación con el paso de props?",
+      "options": [
+        "Permite que los componentes hijos muten el estado del padre directamente",
+        "Evita el prop drilling a través de componentes intermedios que no usan los datos",
+        "Reemplaza a Pinia para la gestión de estado global",
+        "Hace que la comunicación entre componentes sea síncrona en lugar de basada en eventos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Si un padre provee un ref a un descendiente mediante provide, ¿qué ocurre cuando el padre actualiza el ref?",
+      "options": [
+        "El descendiente debe llamar a inject de nuevo para obtener el valor actualizado",
+        "El descendiente recibe el valor actualizado automáticamente, ya que los refs proveídos son reactivos",
+        "El descendiente obtiene un snapshot — provide/inject no es reactivo",
+        "El padre debe llamar a update() para enviar el nuevo valor a los descendientes"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo NO es una buena elección provide/inject para compartir datos?",
+      "options": [
+        "Para compartir tema o idioma en toda la app",
+        "Para el contexto de una tabla/formulario entre un contenedor y sus hijos profundamente anidados",
+        "Para estado global que muchos componentes no relacionados leen y escriben",
+        "Para estado de autenticación/usuario accesible en lo profundo del árbol de componentes"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why do `newValue` and `oldValue` point to the same object when deep-watching a reactive object?",
+      "options": [
+        "Vue clones the object but the clone is shallow",
+        "Vue doesn't clone the object before mutation, so both references reflect the mutated state",
+        "Deep watching is only supported for arrays, not plain objects",
+        "Both values are proxied through the same Proxy handler"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When do `newValue` and `oldValue` actually differ when watching an object?",
+      "options": [
+        "When using `{ deep: true }` with a large number of nested properties",
+        "When the entire object is replaced (new reference), not just mutated",
+        "When `watch` is used instead of `watchEffect`",
+        "They always differ when `immediate: true` is set"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which technique captures a snapshot of an object so old/new values differ in the watch callback?",
+      "options": [
+        "Pass `{ clone: true }` to the watch options",
+        "Use `JSON.parse(JSON.stringify(obj))` as the watch source",
+        "Return a shallow clone `() => ({ ...state.user })` from the getter",
+        "Use `shallowRef` instead of `reactive` for the object"
+      ],
+      "answer": 2
+    }
+  ]
+}

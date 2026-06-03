@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does a parent component receive when it holds a template ref to a `<script setup>` child that has NOT called `defineExpose`?",
+      "options": [
+        "The full component instance, identical to the Options API behavior",
+        "An empty object `{}` because `<script setup>` components are closed by default",
+        "A Proxy that throws when any property is accessed",
+        "The component's DOM root element instead of the instance"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a common use case for `defineExpose` in a `BaseInput` wrapper component?",
+      "options": [
+        "To make the input's `v-model` binding available to grandparent components",
+        "To expose imperative methods like `focus()` and `blur()` so parents can call them via a template ref",
+        "To allow the parent to override the input's scoped CSS styles",
+        "To broadcast input events to sibling components without using a store"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When should you prefer `defineExpose` over props and emit for parent-child communication?",
+      "options": [
+        "Whenever performance requires avoiding reactive data flow",
+        "For genuinely imperative actions (like `reset()` or `focus()`) that don't fit a declarative prop/emit pattern",
+        "When the child component has more than five props to pass back",
+        "When the parent and child are in different route views"
+      ],
+      "answer": 1
+    }
+  ]
+}

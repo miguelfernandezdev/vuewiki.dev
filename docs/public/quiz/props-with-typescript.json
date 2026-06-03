@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How do you set default values for props when using the TypeScript generic syntax with defineProps?",
+      "options": [
+        "Add a default property directly inside the TypeScript interface",
+        "Use withDefaults(defineProps<Props>(), { count: 0 })",
+        "Pass a second argument to defineProps: defineProps<Props>({ defaults: {...} })",
+        "Destructure inside a computed property with fallback values"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Since Vue 3.5, how do you destructure props while keeping reactivity?",
+      "options": [
+        "Use toRefs(props) before destructuring",
+        "Use storeToRefs(props) from Pinia",
+        "Destructure directly from defineProps — reactive destructure is supported natively",
+        "Use computed(() => props.title) for each prop individually"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why is the TypeScript generic syntax preferred over the runtime object syntax for defineProps?",
+      "options": [
+        "The generic syntax generates faster runtime checks",
+        "The runtime syntax doesn't support arrays or objects as prop types",
+        "The generic syntax gives full IDE inference, no duplication, and supports complex types",
+        "The runtime syntax is deprecated in Vue 3.5+"
+      ],
+      "answer": 2
+    }
+  ]
+}

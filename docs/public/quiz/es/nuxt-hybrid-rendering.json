@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué opción de routeRules sirve la página cacheada de inmediato mientras la regenera en segundo plano?",
+      "options": [
+        "isr: 3600",
+        "prerender: true",
+        "swr: true",
+        "cache: { maxAge: 60 }"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué opción de routeRules hace que una ruta sea solo del lado del cliente (modo SPA)?",
+      "options": [
+        "static: true",
+        "ssr: false",
+        "client: true",
+        "prerender: false"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo puedes definir una regla de ruta directamente dentro de un componente de página en lugar de en nuxt.config.ts?",
+      "options": [
+        "definePageMeta({ routeRule: ... })",
+        "useRouteRule({ prerender: true })",
+        "defineRouteRules({ prerender: true })",
+        "setPageRule({ prerender: true })"
+      ],
+      "answer": 2
+    }
+  ]
+}

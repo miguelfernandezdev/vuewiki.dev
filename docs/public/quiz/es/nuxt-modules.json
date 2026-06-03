@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué helper de @nuxt/kit registra una ruta de servidor (endpoint de Nitro) desde un módulo?",
+      "options": [
+        "addPlugin",
+        "addComponent",
+        "addServerHandler",
+        "addImports"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En la estructura de directorios de un módulo Nuxt, ¿qué contiene la carpeta runtime/?",
+      "options": [
+        "Configuración y helpers de build-time",
+        "Código que se ejecuta en la aplicación (componentes, composables, plugins)",
+        "Solo declaraciones de tipos TypeScript",
+        "Exclusivamente middleware de servidor"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué propiedad del objeto meta de defineNuxtModule establece la clave de configuración usada en nuxt.config.ts?",
+      "options": [
+        "key",
+        "name",
+        "id",
+        "configKey"
+      ],
+      "answer": 3
+    }
+  ]
+}

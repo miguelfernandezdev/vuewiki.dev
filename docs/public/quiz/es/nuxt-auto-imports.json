@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En Nuxt, ¿cómo afecta la estructura de directorios al nombre de los componentes auto-importados?",
+      "options": [
+        "Todos los componentes se registran solo con su nombre de archivo, sin importar la carpeta",
+        "La ruta de la carpeta se convierte en prefijo (ej: base/Button.vue se usa como <BaseButton />)",
+        "Los componentes se nombran con la ruta completa usando guiones en lugar de barras",
+        "Los nombres de las subcarpetas se ignoran — solo importa el nombre del archivo"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se carga de forma diferida un componente auto-importado en Nuxt?",
+      "options": [
+        "Importándolo con defineAsyncComponent() en el script setup",
+        "Añadiéndolo al array lazyComponents en nuxt.config.ts",
+        "Añadiendo el prefijo 'Lazy' en el template (ej: <LazyHeavyChart />)",
+        "Estableciendo lazy: true en el defineOptions del componente"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué estructura de directorios en composables/ NO se auto-importa por defecto en Nuxt?",
+      "options": [
+        "composables/useAuth.ts — un archivo en el nivel raíz",
+        "composables/useCounter.ts — un archivo en el nivel raíz",
+        "composables/helpers/validate.ts — un archivo anidado",
+        "composables/useSearch.ts — un archivo en el nivel raíz"
+      ],
+      "answer": 2
+    }
+  ]
+}

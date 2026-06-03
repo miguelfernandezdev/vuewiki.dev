@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace Vue durante la hydration que difiere de un montaje normal de SPA?",
+      "options": [
+        "Vuelve a renderizar todos los componentes desde cero para garantizar la consistencia",
+        "Reutiliza los nodos DOM renderizados por el servidor en lugar de crear nuevos",
+        "Descarga un bundle de hydration separado desde el servidor",
+        "Ejecuta el SSR una segunda vez en el cliente para verificar la corrección"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué función debes usar en el cliente para una aplicación SSR en lugar de `createApp`?",
+      "options": ["createClientApp()", "createSSRApp()", "hydrateApp()", "mountSSR()"],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué causa una advertencia de hydration mismatch en Vue?",
+      "options": [
+        "Usar `v-if` con condiciones solo del servidor",
+        "Usar stores de Pinia durante el SSR",
+        "El cliente renderizaría un HTML diferente al que envió el servidor",
+        "Acceder a `window` después de que el componente se monta"
+      ],
+      "answer": 2
+    }
+  ]
+}

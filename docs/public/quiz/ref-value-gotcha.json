@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens if you write count++ instead of count.value++ when count is a ref(0)?",
+      "options": [
+        "count becomes NaN",
+        "You are incrementing the wrapper object, not the actual value",
+        "Vue automatically redirects the operation to .value",
+        "A TypeScript error prevents this at compile time"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Where do you NOT need to write .value to access a ref's data?",
+      "options": [
+        "Inside a watchEffect callback",
+        "Inside a computed getter",
+        "Inside the template",
+        "Inside an async setup function"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the result of calling items.push(4) when items = ref([1, 2, 3])?",
+      "options": [
+        "The item is added and the UI updates reactively",
+        "TypeError: push is not a function",
+        "The push is ignored silently",
+        "items becomes undefined"
+      ],
+      "answer": 1
+    }
+  ]
+}

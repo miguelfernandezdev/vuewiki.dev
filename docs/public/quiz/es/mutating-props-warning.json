@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué Vue avisa cuando un componente hijo muta una prop directamente?",
+      "options": [
+        "Las props son objetos congelados que no se pueden mutar por razones de rendimiento",
+        "El padre no sabe nada al respecto y sobreescribirá el cambio en el siguiente re-render",
+        "La mutación directa evita por completo el sistema de reactividad de Vue",
+        "Viola el ciclo de vida del componente al desencadenar actualizaciones fuera de orden"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el enfoque más limpio en Vue 3.4+ para un componente que necesita leer y escribir un único valor del padre?",
+      "options": [
+        "Definir la prop con required: false y emitir eventos manualmente",
+        "Usar defineModel() para crear un binding bidireccional automático",
+        "Usar v-model:value con declaraciones explícitas de prop y emit",
+        "Copiar la prop a un ref local y observar los cambios"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo es aceptable copiar una prop al estado local con ref(props.initialCount)?",
+      "options": [
+        "Cuando el hijo y el padre necesitan estar sincronizados en todo momento",
+        "Cuando se usa la Composition API en lugar de la Options API",
+        "Cuando la prop es verdaderamente una semilla inicial y no necesita mantenerse sincronizada",
+        "Cuando la prop es un tipo primitivo como number o string"
+      ],
+      "answer": 2
+    }
+  ]
+}

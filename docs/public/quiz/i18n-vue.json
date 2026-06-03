@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In vue-i18n, how are pluralization forms separated in a message string?",
+      "options": [
+        "Using commas: \"No items, One item, {count} items\"",
+        "Using pipe characters: \"No items | One item | {count} items\"",
+        "Using numbered keys: \"0:No items|1:One item|n:{count} items\"",
+        "Using array syntax in the JSON file"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does changing the locale ref from useI18n() accomplish in a Vue app?",
+      "options": [
+        "It reloads the page with the new language from the server",
+        "It only updates the current component's translations",
+        "It reactively switches all translations across the entire app",
+        "It stores the preference in localStorage for future visits"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What routing strategy does @nuxtjs/i18n use with 'prefix_except_default' config?",
+      "options": [
+        "All routes have a locale prefix including the default language",
+        "No routes have a locale prefix — the Accept-Language header is used",
+        "Non-default locales get a prefix (e.g., /es/about) while default has no prefix",
+        "Routes use query parameters like ?lang=es instead of path prefixes"
+      ],
+      "answer": 2
+    }
+  ]
+}

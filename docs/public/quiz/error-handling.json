@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does returning false from onErrorCaptured do?",
+      "options": [
+        "It re-throws the error to the parent component",
+        "It stops error propagation to parent handlers and app.config.errorHandler",
+        "It triggers the global errorHandler immediately",
+        "It causes Vue to display the default error page"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which error sources does Vue's onErrorCaptured NOT catch?",
+      "options": [
+        "Errors in render/template functions",
+        "Errors in lifecycle hooks",
+        "Errors in setTimeout and setInterval callbacks",
+        "Errors in watcher callbacks"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In defineAsyncComponent's onError callback, what does calling retry() do when attempts <= 3?",
+      "options": [
+        "Shows the errorComponent immediately",
+        "Cancels the async component load entirely",
+        "Attempts to load the component again",
+        "Logs a warning and continues with a placeholder"
+      ],
+      "answer": 2
+    }
+  ]
+}

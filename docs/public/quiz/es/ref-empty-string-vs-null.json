@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué un ref de campo de búsqueda debería inicializarse con '' en lugar de null?",
+      "options": [
+        "null provoca un error en tiempo de ejecución al vincularse con v-model",
+        "v-model en inputs siempre produce strings, por lo que '' coincide con el tipo de salida y evita comprobaciones de null",
+        "El compilador de plantillas de Vue rechaza null como valor inicial de un ref",
+        "null deshabilita el enlace bidireccional de v-model"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo es null el valor inicial apropiado para un ref?",
+      "options": [
+        "Siempre: es el valor por defecto recomendado por Vue",
+        "Solo para inputs numéricos",
+        "Cuando 'sin valor' es semánticamente distinto de 'vacío', como datos aún no cargados",
+        "Cuando quieres omitir la verificación de tipos de TypeScript"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué problema de TypeScript surge al inicializar ref<string | null>(null) para usar con un input de texto?",
+      "options": [
+        "La plantilla no compilará sin tipado explícito",
+        "Métodos de string como .toLowerCase() provocan errores de TS porque el valor podría ser null",
+        "TypeScript infiere el tipo como unknown en lugar de string",
+        "v-model se niega a vincularse a un ref que puede ser null"
+      ],
+      "answer": 1
+    }
+  ]
+}

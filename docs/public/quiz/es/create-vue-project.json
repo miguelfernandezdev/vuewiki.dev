@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el comando oficial para crear un nuevo proyecto Vue?",
+      "options": [
+        "vue create my-app",
+        "npx create-vue my-app",
+        "npm create vue@latest",
+        "npm init vue my-app"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué se recomienda Vite sobre Vue CLI (Webpack) para nuevos proyectos Vue?",
+      "options": [
+        "Vite soporta TypeScript de forma nativa; Webpack requiere un loader adicional",
+        "Vite usa módulos ES nativos para un arranque instantáneo del servidor de desarrollo; Webpack lo empaqueta todo primero",
+        "Vite incluye un router integrado; Webpack requiere configuración manual",
+        "Vite es la única herramienta que soporta los Single-File Components de Vue 3"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el conjunto mínimo de archivos para configurar manualmente un proyecto Vue + Vite?",
+      "options": [
+        "package.json, vite.config.ts, index.html y src/main.ts",
+        "package.json, webpack.config.js, index.html y src/main.ts",
+        "vite.config.ts y src/App.vue únicamente",
+        "package.json, tsconfig.json, vite.config.ts y src/router/index.ts"
+      ],
+      "answer": 0
+    }
+  ]
+}

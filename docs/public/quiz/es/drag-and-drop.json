@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué debes llamar dentro de `@dragover` para que un drop target pueda aceptar un elemento arrastrado?",
+      "options": [
+        "`event.stopPropagation()`",
+        "`event.preventDefault()`",
+        "`event.dataTransfer.setData('text/plain', '')`",
+        "`event.dataTransfer.clearData()`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la librería recomendada para listas ordenables y tableros kanban en Vue 3?",
+      "options": [
+        "vue-smooth-dnd",
+        "interact.js",
+        "vue-draggable-plus",
+        "Sortable.js usado directamente mediante una directiva personalizada"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué enfoque soporta tanto ratón como dispositivos táctiles sin código adicional de manejo de eventos?",
+      "options": [
+        "La API nativa de Drag and Drop de HTML",
+        "Pointer events (`pointerdown`, `pointermove`, `pointerup`)",
+        "Eventos de ratón combinados con un polyfill de `touchstart`",
+        "`vue-draggable-plus` con `touch-start-threshold` a `0`"
+      ],
+      "answer": 1
+    }
+  ]
+}

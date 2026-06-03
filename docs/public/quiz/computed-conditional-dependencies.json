@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "When does Vue add a reactive property as a dependency of a computed getter?",
+      "options": [
+        "When the property is declared inside the component's `data()` option",
+        "Only on the first time the computed getter runs",
+        "When the property's `.value` is actually read during the getter's execution",
+        "When the property is passed as an argument to the computed function"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In a computed with an early return, if `data.value` is behind a conditional that prevents it from being read, what happens when `data` changes?",
+      "options": [
+        "The computed re-evaluates immediately because Vue watches all refs in scope",
+        "The computed does not re-evaluate because `data` was not tracked in the last run",
+        "Vue throws a warning about untracked dependencies in computed properties",
+        "The computed re-evaluates but returns a stale cached value"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the fix for a computed property that misses dependencies due to conditional logic?",
+      "options": [
+        "Replace `computed` with a `watch` that lists all dependencies explicitly",
+        "Access all dependency `.value` properties at the top of the getter before any conditionals",
+        "Add `{ immediate: true }` as a second argument to the computed call",
+        "Use `triggerRef` after each conditional block to force re-evaluation"
+      ],
+      "answer": 1
+    }
+  ]
+}

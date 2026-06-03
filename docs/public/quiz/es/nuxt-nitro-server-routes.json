@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se restringe un archivo de server/api/ para que solo maneje peticiones GET?",
+      "options": [
+        "Exportar una propiedad method: export const method = 'GET'",
+        "Añadir .get al nombre del archivo: users.get.ts",
+        "Llamar a setMethod(event, 'GET') dentro del handler",
+        "Usar una configuración routeRules: { method: 'GET' }"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿En qué se diferencian los archivos en server/routes/ de los de server/api/?",
+      "options": [
+        "Solo soportan peticiones GET",
+        "Se ejecutan antes que el middleware de servidor",
+        "Exponen rutas sin el prefijo /api",
+        "No se auto-importan"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué utilidad de Nitro lanza un error HTTP apropiado desde una ruta de servidor?",
+      "options": [
+        "throw new HttpError(404)",
+        "throw createError({ statusCode: 404 })",
+        "return sendError(event, 404)",
+        "setResponseStatus(event, 404)"
+      ],
+      "answer": 1
+    }
+  ]
+}

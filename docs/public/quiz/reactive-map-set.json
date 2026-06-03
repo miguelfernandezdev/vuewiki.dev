@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In a v-for loop over a reactive Map, how does each entry destructure?",
+      "options": [
+        "As a single value — Map keys are not exposed in v-for",
+        "As [key, value] — Vue iterates Map entries the same way as arrays",
+        "As { key, value } — Vue uses object destructuring for Maps",
+        "As an index-value pair identical to array iteration"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which approach is better when you need to replace an entire reactive Map with fresh data from an API?",
+      "options": [
+        "reactive(new Map()) — call .clear() then re-add all entries",
+        "ref(new Map()) — replace scores.value with a new Map instance",
+        "Both are identical in performance and syntax",
+        "Use a plain object instead; Maps can't be replaced wholesale"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How do you watch a specific key in a reactive Map without watching the entire collection?",
+      "options": [
+        "watch(map.get('key'), handler)",
+        "watch(() => map.get('key'), handler)",
+        "watchEffect(() => map.has('key'))",
+        "watch(map, handler, { key: 'theme' })"
+      ],
+      "answer": 1
+    }
+  ]
+}

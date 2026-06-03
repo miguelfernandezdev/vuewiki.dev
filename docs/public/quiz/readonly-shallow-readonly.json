@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the key difference between readonly() and shallowReadonly()?",
+      "options": [
+        "readonly() only works with ref, shallowReadonly() works with reactive",
+        "readonly() makes all nested properties immutable; shallowReadonly() only protects root properties",
+        "readonly() throws errors; shallowReadonly() silently fails",
+        "There is no practical difference between them"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When you mutate a property on a readonly() object in development, what happens?",
+      "options": [
+        "A TypeError is thrown and execution stops",
+        "The mutation succeeds but the UI does not update",
+        "Vue logs a warning and the mutation fails silently",
+        "The mutation succeeds and the original source is also updated"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the primary use case for wrapping state in readonly() when using provide/inject?",
+      "options": [
+        "To improve performance by skipping deep reactivity",
+        "To prevent child components from mutating the parent's provided state",
+        "To allow the child to create a local copy of the state",
+        "To serialize the state for localStorage persistence"
+      ],
+      "answer": 1
+    }
+  ]
+}

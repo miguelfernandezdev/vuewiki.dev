@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la descripción oficial de Vue respecto a su clasificación?",
+      "options": [
+        "Un framework full-stack como Angular",
+        "Una librería de UI como React",
+        "Un framework progresivo",
+        "Un micro-framework para el desarrollo de SPAs"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la diferencia clave entre una librería y un framework?",
+      "options": [
+        "Las librerías son open source; los frameworks son comerciales",
+        "Una librería ofrece herramientas que tú llamas; un framework controla el flujo y llama a tu código",
+        "Los frameworks requieren TypeScript; las librerías no",
+        "Las librerías son más pequeñas en tamaño de bundle que los frameworks"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué herramienta genera un proyecto Vue completo con Router, Pinia y Vite?",
+      "options": ["vue-init", "vue-cli", "create-vue", "@vue/create"],
+      "answer": 2
+    }
+  ]
+}

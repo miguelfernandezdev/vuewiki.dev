@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuándo es necesario `PropType<T>` de Vue para tipar las props de un componente?",
+      "options": [
+        "Siempre, cuando se usa `<script setup>` con TypeScript",
+        "Solo con la Options API o declaraciones de props en tiempo de ejecución, no con `defineProps` basado en tipos",
+        "Cuando se usan composables que aceptan props como argumentos",
+        "Solo cuando el tipo de la prop es genérico"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la diferencia entre `MaybeRef<T>` y `MaybeRefOrGetter<T>`?",
+      "options": [
+        "Son idénticos — solo son convenciones de nomenclatura distintas",
+        "`MaybeRef<T>` acepta `T | Ref<T>`; `MaybeRefOrGetter<T>` también acepta `() => T`",
+        "`MaybeRefOrGetter<T>` solo acepta funciones getter, no valores simples",
+        "`MaybeRef<T>` es para computed refs; `MaybeRefOrGetter<T>` es para fuentes de watch"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué tipo de utilidad habilita `provide`/`inject` con tipado seguro en Vue?",
+      "options": ["ProviderKey<T>", "InjectToken<T>", "InjectionKey<T>", "ProvideType<T>"],
+      "answer": 2
+    }
+  ]
+}

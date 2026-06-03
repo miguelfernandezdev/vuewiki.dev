@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the fundamental execution difference between Vue's `setup()` and React's component function?",
+      "options": [
+        "Vue's `setup()` runs on every render; React's component function runs once per instance",
+        "Vue's `setup()` runs once per instance; React's component function runs on every render",
+        "Both run once per instance, but Vue's runs asynchronously",
+        "Both run on every render, but Vue batches the DOM updates"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why are stale closures not a problem in Vue's Composition API?",
+      "options": [
+        "Vue clones all state values before each render to ensure freshness",
+        "Vue uses Proxy objects so `ref.value` always reads the current reactive value",
+        "Vue's `watch` automatically re-creates closures when dependencies change",
+        "Vue compiles templates to avoid closures entirely"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which React pattern is NOT needed in Vue because `setup()` only runs once?",
+      "options": [
+        "Passing props from parent to child components",
+        "Using `computed` for derived values",
+        "Wrapping functions in `useCallback` to prevent child re-renders",
+        "Subscribing to external stores with a custom hook"
+      ],
+      "answer": 2
+    }
+  ]
+}

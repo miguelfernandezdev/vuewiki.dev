@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "If activeId changes in a list of 1000 items and each item receives :active-id='activeId', how many re-renders occur?",
+      "options": [
+        "2 (only the previously active and newly active items)",
+        "1 (only the newly active item)",
+        "1000 (every list item re-renders)",
+        "0 (Vue batches and deduplicates)"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the props stability fix for passing an active selection to list items?",
+      "options": [
+        "Use v-memo on each list item with the activeId dependency",
+        "Pre-compute a boolean :active='item.id === activeId' in the parent",
+        "Move activeId into a Pinia store accessed directly by each item",
+        "Use shallowRef for the activeId to reduce reactivity overhead"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why do inline object props like :style=\"{ color: item.color }\" hurt performance?",
+      "options": [
+        "Inline styles are processed slower by the browser",
+        "They create a new object reference on every render, so Vue always sees a changed prop",
+        "Vue doesn't support reactive inline style objects",
+        "They bypass the virtual DOM diffing algorithm"
+      ],
+      "answer": 1
+    }
+  ]
+}

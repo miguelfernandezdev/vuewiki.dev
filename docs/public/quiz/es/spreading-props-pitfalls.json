@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre con las props no declaradas cuando distribuyes un objeto con v-bind en un componente?",
+      "options": [
+        "Se ignoran silenciosamente",
+        "Vue lanza un aviso listando las props desconocidas",
+        "Se convierten en atributos fallthrough y aparecen como atributos HTML en el elemento raíz",
+        "Se añaden automáticamente a la definición de props del componente"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué distribuir todas las props provoca rerenderizados innecesarios?",
+      "options": [
+        "Vue no puede hacer diff de objetos pasados con v-bind",
+        "Cada propiedad en el spread se rastrea como una prop, por lo que cualquier cambio dispara un rerenderizado",
+        "La distribución de objetos deshabilita la optimización del DOM virtual de Vue",
+        "El operador spread crea una nueva referencia de objeto en cada renderizado"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿En qué escenario es v-bind=\"$attrs\" el patrón correcto e intencionado?",
+      "options": [
+        "Cuando se pasa un objeto de usuario de una API a un componente de visualización",
+        "Cuando se construye un componente envolvente fino que intencionalmente reenvía todos los atributos a un elemento interno",
+        "Cuando quieres evitar declarar props por rendimiento",
+        "Cuando se comparte estado entre componentes hermanos"
+      ],
+      "answer": 1
+    }
+  ]
+}

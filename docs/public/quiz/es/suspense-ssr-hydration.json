@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué combinar defineAsyncComponent con <Suspense> causa parpadeo de hydration en SSR?",
+      "options": [
+        "Los componentes asíncronos no están soportados en SSR en absoluto",
+        "El chunk JS del componente asíncrono puede no estar cargado cuando comienza la hydration, haciendo que Vue muestre el fallback",
+        "defineAsyncComponent omite el algoritmo de hydration de Vue",
+        "El contenido del slot fallback no se serializa en el HTML del servidor"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué usar async setup() (top-level await) es una mejor alternativa SSR a defineAsyncComponent con Suspense?",
+      "options": [
+        "Los componentes con async setup() quedan excluidos de la hydration por completo",
+        "Nuxt serializa los datos obtenidos en el payload, por lo que la hydration tiene todo disponible sin esperar a un chunk",
+        "Los componentes con async setup() se renderizan síncronamente en el servidor",
+        "Omiten el boundary de Suspense durante SSR"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En TanStack Query con Suspense, ¿por qué deben realizarse todas las llamadas useQuery ANTES de cualquier await?",
+      "options": [
+        "TanStack Query usa un registro global que no es seguro con asincronía",
+        "El contexto de composición de Vue se pierde después de un await, por lo que las queries configuradas después no funcionarán correctamente",
+        "await dentro de setup() cancela automáticamente las queries pendientes",
+        "El boundary de Suspense captura las llamadas await pero ignora useQuery"
+      ],
+      "answer": 1
+    }
+  ]
+}

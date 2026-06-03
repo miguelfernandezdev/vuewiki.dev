@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What lifecycle hooks should a cached component use instead of `onMounted`/`onUnmounted` when switching tabs?",
+      "options": [
+        "`onBeforeMount` and `onBeforeUnmount`",
+        "`onActivated` and `onDeactivated`",
+        "`onUpdated` and `onBeforeUpdate`",
+        "`onShow` and `onHide`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the `max` prop on `<KeepAlive>` control?",
+      "options": [
+        "The maximum number of components that can be rendered simultaneously",
+        "The maximum number of cached instances, evicting the least recently used when exceeded",
+        "The maximum time in milliseconds before a cached instance is invalidated",
+        "The maximum component tree depth that KeepAlive will traverse"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why is `shallowRef` recommended when storing the currently active tab component?",
+      "options": [
+        "Because component definitions are not reactive and `ref` would throw",
+        "To avoid Vue creating deep reactive proxies for the component object itself",
+        "Because `ref` cannot hold object values, only primitives",
+        "To allow the component to be garbage-collected immediately on tab switch"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué concepto principal de Vuex elimina Pinia por completo?",
+      "options": [
+        "Getters",
+        "Actions",
+        "Mutations",
+        "Modules"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cómo se compara el tamaño del bundle de Pinia con el de Vuex según la tabla comparativa?",
+      "options": [
+        "Pinia pesa ~6kb, Vuex ~1.5kb",
+        "Ambos tienen aproximadamente el mismo tamaño, ~3kb",
+        "Pinia pesa ~1.5kb, Vuex ~6kb",
+        "Pinia es más grande porque incluye soporte para DevTools"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "En Pinia, ¿cómo se despacha una acción en el store del carrito comparado con Vuex?",
+      "options": [
+        "store.dispatch('cart/checkout') vs cartStore.checkout()",
+        "cartStore.commit('checkout') vs store.dispatch('checkout')",
+        "Ambos usan store.dispatch() con diferente namespacing",
+        "cartStore.actions.checkout() vs store.checkout()"
+      ],
+      "answer": 0
+    }
+  ]
+}

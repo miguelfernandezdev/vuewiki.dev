@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How do you access the native DOM event alongside custom arguments in a Vue handler?",
+      "options": [
+        "By declaring an 'event' parameter in the method signature automatically",
+        "Using $event as a special variable in the inline handler expression",
+        "Calling this.$nativeEvent inside the handler method",
+        "Using the .native modifier on the v-on directive"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the .self event modifier do?",
+      "options": [
+        "Calls event.stopPropagation() to prevent bubbling",
+        "Removes the listener after the first trigger",
+        "Only fires if event.target is the element itself, not a child",
+        "Uses capture phase instead of bubbling"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which modifier combination listens in capture phase AND only fires once?",
+      "options": [
+        "@click.once.stop",
+        "@click.capture.once",
+        "@click.prevent.capture",
+        "@click.self.once"
+      ],
+      "answer": 1
+    }
+  ]
+}

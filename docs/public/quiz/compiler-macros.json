@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which compiler macro was introduced in Vue 3.4 to create two-way v-model bindings?",
+      "options": [
+        "defineExpose",
+        "defineOptions",
+        "defineModel",
+        "defineSlots"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does `defineExpose` do in a `<script setup>` component?",
+      "options": [
+        "It exports the component for use in other files",
+        "It controls which properties and methods are accessible to parent template refs",
+        "It declares which props should be passed through to child elements",
+        "It enables the component to receive v-model bindings from a parent"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a rule that applies to ALL compiler macros in Vue?",
+      "options": [
+        "They must be imported from 'vue' before use",
+        "They can only be used inside the `mounted` lifecycle hook",
+        "They must be called at the top level, not inside functions or conditionals",
+        "They require TypeScript to be enabled in the project"
+      ],
+      "answer": 2
+    }
+  ]
+}

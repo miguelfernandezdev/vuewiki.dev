@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué nombre de error lanza un fetch cancelado?",
+      "options": [
+        "CancelError",
+        "AbortError",
+        "TimeoutError",
+        "NetworkError"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué le pasas a fetch() para que sea cancelable?",
+      "options": [
+        "La instancia de AbortController",
+        "Un cancel token",
+        "La propiedad signal del controller",
+        "Un valor de timeout"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué cancelar peticiones al desmontar el componente?",
+      "options": [
+        "Para ahorrar ancho de banda del servidor",
+        "Para prevenir fugas de memoria al actualizar estado en componentes destruidos",
+        "Para acelerar las transiciones de página",
+        "Para limpiar la caché del navegador"
+      ],
+      "answer": 1
+    }
+  ]
+}

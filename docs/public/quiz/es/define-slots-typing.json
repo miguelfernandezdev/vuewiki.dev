@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué añade `defineSlots` en tiempo de ejecución en comparación con lo que proporciona en tiempo de desarrollo?",
+      "options": [
+        "Añade validación en tiempo de ejecución que lanza un error si faltan slots obligatorios",
+        "No añade nada en tiempo de ejecución: solo proporciona verificación de tipos y autocompletado para las props de los slots",
+        "Registra los nombres de los slots en Vue DevTools para una mejor inspección del componente",
+        "Genera contenido predeterminado para el slot cuando el padre no proporciona ninguno"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En una declaración `defineSlots`, ¿qué significa la firma de función `default(props: { item: Item; index: number }): any`?",
+      "options": [
+        "El slot `default` acepta un callback que devuelve un `Item` con su índice",
+        "El scoped slot `default` recibe `{ item: Item, index: number }` como props del slot",
+        "El padre debe pasar exactamente un elemento hijo con los atributos `item` e `index`",
+        "El tipo de retorno del slot es `any` para que TypeScript ignore los tipos de sus hijos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo evitas que un elemento wrapper de un slot (p. ej., `<header>`) se renderice cuando no se proporciona contenido?",
+      "options": [
+        "Usar `v-show=\"$slots.header\"` en el elemento wrapper",
+        "Usar `v-if=\"$slots.header\"` para comprobar si el slot ha sido proporcionado antes de renderizar el wrapper",
+        "Establecer un valor predeterminado en `defineSlots` para que el slot siempre se considere proporcionado",
+        "Usar un `watch` en `$slots` para añadir o eliminar el wrapper de forma reactiva"
+      ],
+      "answer": 1
+    }
+  ]
+}

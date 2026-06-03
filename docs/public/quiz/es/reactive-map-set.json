@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En un bucle v-for sobre un Map reactive, ¿cómo se desestructura cada entrada?",
+      "options": [
+        "Como un único valor: las claves del Map no se exponen en v-for",
+        "Como [key, value]: Vue itera las entradas del Map igual que los arrays",
+        "Como { key, value }: Vue usa desestructuración de objeto para los Maps",
+        "Como un par índice-valor idéntico a la iteración de arrays"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué enfoque es mejor cuando necesitas reemplazar un Map reactive completo con datos frescos de una API?",
+      "options": [
+        "reactive(new Map()): llama a .clear() y luego vuelve a añadir todas las entradas",
+        "ref(new Map()): reemplaza scores.value con una nueva instancia de Map",
+        "Ambos son idénticos en rendimiento y sintaxis",
+        "Usa un objeto plano; los Maps no pueden reemplazarse de una sola vez"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo observas una clave específica de un Map reactive sin observar toda la colección?",
+      "options": [
+        "watch(map.get('key'), handler)",
+        "watch(() => map.get('key'), handler)",
+        "watchEffect(() => map.has('key'))",
+        "watch(map, handler, { key: 'theme' })"
+      ],
+      "answer": 1
+    }
+  ]
+}

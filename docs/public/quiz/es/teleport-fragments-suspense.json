@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué problema resuelve <Teleport> para modales y tooltips?",
+      "options": [
+        "Carga el componente modal de forma diferida para reducir el tamaño del bundle inicial",
+        "Renderiza el contenido fuera del subárbol DOM del componente, evitando problemas con CSS del padre como overflow:hidden",
+        "Permite que los modales compartan estado con su componente padre",
+        "Evita que los modales activen el sistema de reactividad de Vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué es un Fragment en Vue 3?",
+      "options": [
+        "Un componente de carga diferida que carga bajo demanda",
+        "Un componente envolvente que proporciona límites de error",
+        "La posibilidad de tener múltiples elementos raíz en una plantilla sin un div envolvente",
+        "Un nodo virtual usado internamente por el DOM virtual"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué advertencia existe al usar Fragments (múltiples elementos raíz) con atributos fallthrough?",
+      "options": [
+        "Los atributos fallthrough están completamente deshabilitados para componentes con múltiples raíces",
+        "Los atributos no se aplican automáticamente: debes vincular $attrs explícitamente ya que Vue no sabe a qué raíz apuntar",
+        "Todos los atributos fallthrough se aplican al primer elemento raíz",
+        "Los componentes con múltiples raíces no pueden recibir atributos fallthrough en absoluto"
+      ],
+      "answer": 1
+    }
+  ]
+}

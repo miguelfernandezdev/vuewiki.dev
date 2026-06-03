@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which build command pre-renders every page to static HTML in Nuxt?",
+      "options": [
+        "nuxt build",
+        "nuxt start",
+        "nuxt export",
+        "nuxt generate"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "Where is the server entry point located after running nuxt build?",
+      "options": [
+        ".output/server/index.mjs",
+        "dist/server.js",
+        ".nuxt/server/index.mjs",
+        "build/server/main.js"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "How does Nuxt map environment variables to runtimeConfig keys automatically?",
+      "options": [
+        "Through a .env.production file only",
+        "Using the NUXT_ prefix on env var names",
+        "Through the nuxt.config.ts env section",
+        "Using a dotenv plugin at runtime"
+      ],
+      "answer": 1
+    }
+  ]
+}

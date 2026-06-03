@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which routeRules option serves the cached page immediately while regenerating in the background?",
+      "options": [
+        "isr: 3600",
+        "prerender: true",
+        "swr: true",
+        "cache: { maxAge: 60 }"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What routeRules option makes a route client-side only (SPA mode)?",
+      "options": [
+        "static: true",
+        "ssr: false",
+        "client: true",
+        "prerender: false"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "How can you define a route rule directly inside a page component instead of nuxt.config.ts?",
+      "options": [
+        "definePageMeta({ routeRule: ... })",
+        "useRouteRule({ prerender: true })",
+        "defineRouteRules({ prerender: true })",
+        "setPageRule({ prerender: true })"
+      ],
+      "answer": 2
+    }
+  ]
+}

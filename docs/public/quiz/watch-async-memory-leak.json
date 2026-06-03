@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does a watcher created inside an async callback cause a memory leak?",
+      "options": [
+        "Async callbacks run in a separate thread that Vue cannot track",
+        "Vue only auto-cleans watchers created synchronously during `setup()`",
+        "Watchers inside callbacks always watch too many reactive dependencies",
+        "Async watchers skip the `onUnmounted` hook"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does `watch()` return that allows manual cleanup of a watcher?",
+      "options": [
+        "A Promise that resolves when the watcher stops",
+        "A stop function that can be called to stop the watcher",
+        "A `ref` whose value you set to `false` to stop it",
+        "An unsubscribe token passed to `watchOff()`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the preferred fix when a watcher must depend on data loaded asynchronously?",
+      "options": [
+        "Create the watcher inside the `then()` callback and accept the leak",
+        "Create the watcher synchronously with the async condition checked inside the callback",
+        "Use `watchEffect` instead, which handles async creation safely",
+        "Delay the async operation until after the watcher is registered"
+      ],
+      "answer": 1
+    }
+  ]
+}

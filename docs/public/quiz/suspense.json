@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What two types of async dependencies does <Suspense> work with?",
+      "options": [
+        "fetch() calls and setTimeout callbacks",
+        "defineAsyncComponent and components with async setup()",
+        "Pinia store actions and Vue Router navigation guards",
+        "computed() and watchEffect() callbacks"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the timeout prop on <Suspense> control?",
+      "options": [
+        "How long to wait before showing an error state",
+        "The maximum time allowed for async setup to resolve",
+        "How long the old resolved content stays visible before the fallback reappears on re-trigger",
+        "The delay before the first render attempt"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the correct nesting order when combining RouterView, Transition, KeepAlive, and Suspense?",
+      "options": [
+        "Suspense > KeepAlive > Transition > RouterView",
+        "RouterView > Transition > KeepAlive > Suspense",
+        "KeepAlive > Suspense > RouterView > Transition",
+        "Transition > RouterView > Suspense > KeepAlive"
+      ],
+      "answer": 1
+    }
+  ]
+}

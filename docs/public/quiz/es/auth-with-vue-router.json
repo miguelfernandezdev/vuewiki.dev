@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué navigation guard se usa para proteger rutas globalmente?",
+      "options": [
+        "beforeRouteEnter",
+        "beforeEach",
+        "afterEach",
+        "beforeResolve"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Dónde deberías declarar que una ruta requiere autenticación?",
+      "options": [
+        "En la función setup del componente",
+        "En los campos meta de la ruta",
+        "En el store de Vuex",
+        "En la plantilla de App.vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Para compatibilidad con SSR, ¿dónde deberían almacenarse los tokens de autenticación?",
+      "options": [
+        "localStorage",
+        "sessionStorage",
+        "Cookies",
+        "Parámetros query de la URL"
+      ],
+      "answer": 2
+    }
+  ]
+}

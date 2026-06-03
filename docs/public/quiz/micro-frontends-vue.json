@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Module Federation, why is 'vue' listed in the shared config of both host and remote apps?",
+      "options": [
+        "To reduce bundle size by deduplicating the Vue library",
+        "To ensure both apps use the same Vue instance so reactivity and provide/inject work across boundaries",
+        "It's required by the federation plugin to resolve component imports",
+        "To enable Vue DevTools to connect to both apps simultaneously"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the main advantage of the Web Components approach for micro-frontends over Module Federation?",
+      "options": [
+        "It supports shared Pinia stores between micro-frontends",
+        "It provides better TypeScript support across team boundaries",
+        "It is framework-agnostic — the shell doesn't need to know it's Vue",
+        "It enables Vue DevTools integration across all micro-frontends"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "For most teams, what is the recommended alternative to micro-frontends?",
+      "options": [
+        "Splitting the app into multiple Nuxt projects with shared modules",
+        "A well-structured monolith with lazy-loaded routes and clear module boundaries",
+        "Using iframes to isolate team boundaries",
+        "Building each feature as a separate npm package"
+      ],
+      "answer": 1
+    }
+  ]
+}

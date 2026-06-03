@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Con @click.prevent.self, ¿cuándo se ejecuta preventDefault() respecto a la comprobación de self?",
+      "options": [
+        "Solo después de confirmar que el click fue en el propio elemento",
+        "Antes de la comprobación de self, por lo que se ejecuta en TODOS los clicks incluyendo los de hijos",
+        "Se ejecutan simultáneamente en la misma microtarea",
+        "En la fase de captura antes de cualquier comprobación"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo importa el ORDEN de los modificadores en las directivas de evento de Vue?",
+      "options": [
+        "Siempre — cada combinación de modificadores es sensible al orden",
+        "Solo cuando se usan los modificadores .capture o .passive",
+        "Cuando un modificador es condicional (.self) y otro tiene efectos secundarios",
+        "Solo cuando se encadenan más de tres modificadores juntos"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Con @click.self.prevent en un div que contiene un anchor, ¿qué ocurre al hacer click en el anchor?",
+      "options": [
+        "Se previene la navegación por defecto en el anchor",
+        "La comprobación de self falla primero, por lo que preventDefault nunca se ejecuta en el anchor",
+        "Tanto el handler como el comportamiento por defecto son prevenidos",
+        "El evento se propaga hacia el padre"
+      ],
+      "answer": 1
+    }
+  ]
+}

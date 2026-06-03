@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What type should a template ref for an `<input>` element have in TypeScript?",
+      "options": [
+        "ref<HTMLElement>(null)",
+        "ref<HTMLInputElement | null>(null)",
+        "ref<InputElement | null>(null)",
+        "ref<HTMLInputElement>()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which helper type is used to type a ref pointing to a child component instance?",
+      "options": [
+        "ComponentRef<typeof MyComp>",
+        "ComponentType<typeof MyComp>",
+        "InstanceType<typeof MyComp>",
+        "ReturnType<typeof MyComp>"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What must a child component do for a parent to access its methods via a template ref?",
+      "options": [
+        "Declare the methods with `public` keyword",
+        "Export the methods from the component file",
+        "Use `defineExpose` to expose the methods",
+        "Pass the methods as emits"
+      ],
+      "answer": 2
+    }
+  ]
+}

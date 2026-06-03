@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Al eliminar un elemento de forma optimista de una lista, ¿qué debes guardar antes de eliminarlo?",
+      "options": [
+        "Un clon profundo de todo el array",
+        "La referencia al elemento y su índice original",
+        "Solo el ID del elemento para el rollback",
+        "La cadena JSON serializada del elemento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Al añadir un elemento de forma optimista antes de que el servidor responda, ¿qué estrategia de ID se recomienda?",
+      "options": [
+        "Usar 0 como ID provisional",
+        "Dejar el ID como undefined hasta que el servidor responda",
+        "Usar un ID temporal (ej: temp-${Date.now()}) y reemplazarlo al tener éxito",
+        "Usar un UUID del cliente de forma permanente"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué utilidad se usa en el composable useOptimistic para hacer un snapshot del estado actual sin reactividad?",
+      "options": [
+        "JSON.parse(JSON.stringify(...))",
+        "structuredClone(toRaw(stateRef.value))",
+        "Object.assign({}, stateRef.value)",
+        "markRaw(stateRef.value)"
+      ],
+      "answer": 1
+    }
+  ]
+}

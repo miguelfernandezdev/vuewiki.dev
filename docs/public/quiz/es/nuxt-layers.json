@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Cuando tu proyecto y una capa comparten el mismo archivo de componente, ¿cuál tiene precedencia?",
+      "options": [
+        "La capa siempre gana",
+        "El primer elemento del array extends gana",
+        "Los archivos de tu proyecto siempre tienen precedencia",
+        "Vue los fusiona y gana el último"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué clave en nuxt.config.ts se usa para extender desde una capa local o de npm?",
+      "options": [
+        "plugins",
+        "modules",
+        "layers",
+        "extends"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "¿Cuál es la diferencia clave entre una capa de Nuxt y un módulo de Nuxt?",
+      "options": [
+        "Las capas se ejecutan en tiempo de ejecución, los módulos en tiempo de compilación",
+        "Una capa es una aplicación Nuxt parcial (archivos); un módulo es un plugin de build-time que usa @nuxt/kit",
+        "Los módulos pueden proveer componentes pero las capas no",
+        "Las capas requieren publicarse en npm; los módulos deben ser locales"
+      ],
+      "answer": 1
+    }
+  ]
+}

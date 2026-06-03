@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does toRefs() do when applied to a reactive object?",
+      "options": [
+        "It creates a deep readonly copy of the reactive object",
+        "It converts each property into an individual ref that stays connected to the source",
+        "It flattens nested reactive objects into a single-level reactive",
+        "It converts the reactive object into a ref with the object as .value"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What new capability did toRef() gain in Vue 3.3?",
+      "options": [
+        "The ability to create writable refs from computed properties",
+        "The ability to accept a getter function and return a read-only ref that tracks it",
+        "The ability to batch multiple property refs into a single update",
+        "Support for deep reactive tracking on nested object properties"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does toValue() return when called with a plain number like toValue(3)?",
+      "options": [
+        "ref(3) — it always wraps the input in a ref",
+        "3 — it passes plain values through unchanged",
+        "computed(() => 3) — it wraps it in a getter",
+        "reactive({ value: 3 }) — it normalizes to reactive"
+      ],
+      "answer": 1
+    }
+  ]
+}

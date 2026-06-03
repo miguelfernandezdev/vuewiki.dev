@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué un watcher creado dentro de un callback asíncrono provoca una fuga de memoria?",
+      "options": [
+        "Los callbacks asíncronos se ejecutan en un hilo separado que Vue no puede rastrear",
+        "Vue solo limpia automáticamente los watchers creados de forma síncrona durante `setup()`",
+        "Los watchers dentro de callbacks siempre observan demasiadas dependencias reactivas",
+        "Los watchers asíncronos omiten el hook `onUnmounted`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué devuelve `watch()` para permitir la limpieza manual de un watcher?",
+      "options": [
+        "Una Promise que se resuelve cuando el watcher se detiene",
+        "Una función stop que se puede llamar para detener el watcher",
+        "Un `ref` cuyo valor se establece a `false` para detenerlo",
+        "Un token de cancelación que se pasa a `watchOff()`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la solución preferida cuando un watcher debe depender de datos cargados de forma asíncrona?",
+      "options": [
+        "Crear el watcher dentro del callback `then()` y aceptar la fuga",
+        "Crear el watcher de forma síncrona con la condición asíncrona comprobada dentro del callback",
+        "Usar `watchEffect` en su lugar, que gestiona la creación asíncrona de forma segura",
+        "Retrasar la operación asíncrona hasta que el watcher esté registrado"
+      ],
+      "answer": 1
+    }
+  ]
+}

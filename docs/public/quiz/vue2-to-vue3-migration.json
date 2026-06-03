@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "What is the purpose of `@vue/compat` (the compatibility build) in a Vue 3 migration?",
+      "options": [
+        "It rewrites Vue 2 components automatically to Vue 3 syntax",
+        "It runs Vue 2 code on the Vue 3 runtime and logs deprecation warnings",
+        "It provides a dual-mode build for serving both Vue 2 and Vue 3 users",
+        "It converts Options API to Composition API at build time"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Vue 2 API was completely removed in Vue 3 (pipe syntax like `{{ price | currency }}`)?",
+      "options": ["Mixins", "Filters", "Event bus ($on/$off)", "Vue.extend"],
+      "answer": 1
+    },
+    {
+      "question": "In Vue 3, what replaced `$listeners` that was removed from Vue 2?",
+      "options": [
+        "`$events` — a new dedicated listeners object",
+        "`$listeners` was merged into `$attrs`",
+        "A new `useListeners()` composable",
+        "Event listeners are now passed as regular props"
+      ],
+      "answer": 1
+    }
+  ]
+}

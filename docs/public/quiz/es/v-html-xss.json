@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué usa `v-html` internamente para inyectar contenido en el DOM?",
+      "options": ["textContent", "innerText", "innerHTML", "insertAdjacentHTML"],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué los estilos con scope NO se aplican a los elementos inyectados con `v-html`?",
+      "options": [
+        "Los estilos con scope solo funcionan en el elemento raíz",
+        "Los elementos inyectados no reciben el atributo de scope `data-v-xxxxx`",
+        "`v-html` desactiva el procesamiento de CSS para el elemento",
+        "Los estilos con scope se eliminan en los builds de producción"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué librería se recomienda para sanitizar HTML proporcionado por el usuario antes de usar `v-html`?",
+      "options": ["sanitize-html", "xss-filters", "DOMPurify", "helmet"],
+      "answer": 2
+    }
+  ]
+}

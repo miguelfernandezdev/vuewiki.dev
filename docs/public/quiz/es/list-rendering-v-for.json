@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué problema ocurre cuando se usa el índice del array como :key en v-for?",
+      "options": [
+        "Vue avisa de que el índice no es un tipo de key válido",
+        "El rendimiento de renderizado se degrada debido al recálculo del índice",
+        "Al reordenar, el estado del componente y el estado del DOM se dessincronizan",
+        "La lista no renderiza elementos después de la primera actualización"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Al iterar un objeto con v-for, ¿cuáles son las tres variables de bucle disponibles?",
+      "options": [
+        "item, key, index",
+        "value, key, index",
+        "property, name, position",
+        "entry, field, order"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué operaciones de array detecta Vue automáticamente para activar actualizaciones del DOM?",
+      "options": [
+        "filter, map y concat ya que devuelven nuevos arrays",
+        "Métodos de mutación como push, pop, splice, sort y reverse",
+        "Cualquier operación que cambie la propiedad length del array",
+        "Todas las operaciones por igual — Vue observa el array completo"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What internal flag does markRaw add to prevent an object from being proxied?",
+      "options": [
+        "__v_raw",
+        "__v_skip",
+        "__v_readonly",
+        "__v_noProxy"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the recommended pattern for storing a third-party library instance like a chart in reactive state?",
+      "options": [
+        "Use reactive() directly since it handles complex objects well",
+        "Store it in a plain variable outside the component",
+        "Use shallowRef combined with markRaw on the instance",
+        "Use ref() which automatically avoids deep proxying of class instances"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When would you use toRaw rather than markRaw?",
+      "options": [
+        "Before storing an object in reactive state to prevent proxy wrapping",
+        "After something is already reactive and you need the plain object behind the Proxy",
+        "When you want to permanently remove reactivity from a ref",
+        "When comparing two reactive objects for reference equality"
+      ],
+      "answer": 1
+    }
+  ]
+}

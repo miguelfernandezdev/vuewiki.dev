@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What are the two arguments a functional component function receives?",
+      "options": [
+        "template and context",
+        "props and a context object with slots, emit, and attrs",
+        "data and methods",
+        "setup and render"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Vue 3, why is the performance advantage of functional components over stateful components negligible?",
+      "options": [
+        "Vue 3 disabled functional components to simplify the API",
+        "Functional components now use the same instance creation as stateful ones",
+        "Vue 3 optimized stateful components heavily with faster instance creation and compiler optimizations",
+        "Both types now use the same Proxy-based rendering pipeline"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which features do functional components support that stateful (SFC) components also support?",
+      "options": [
+        "Reactive state and lifecycle hooks",
+        "Template syntax and scoped styles",
+        "Slots and props validation",
+        "watch/computed and component instance"
+      ],
+      "answer": 2
+    }
+  ]
+}

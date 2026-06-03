@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "How does `v-show` hide an element when its condition is false?",
+      "options": [
+        "It removes the element from the DOM",
+        "It sets `visibility: hidden` on the element",
+        "It sets `display: none` on the element",
+        "It sets `opacity: 0` on the element"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which directive has zero render cost when its condition is false on initial render?",
+      "options": [
+        "v-show, because CSS is cheaper than DOM operations",
+        "v-if, because the element is never created",
+        "Both have the same initial render cost",
+        "Neither — both always render on mount"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which directive supports `v-else` and `v-else-if` chains?",
+      "options": ["v-show", "v-if", "Both support v-else", "Neither supports v-else"],
+      "answer": 1
+    }
+  ]
+}

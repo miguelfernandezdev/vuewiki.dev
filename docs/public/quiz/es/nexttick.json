@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué leer el DOM inmediatamente después de cambiar estado reactivo devuelve valores obsoletos?",
+      "options": [
+        "El sistema de reactividad de Vue hace debounce de todas las actualizaciones 16ms para alinearse con el animation frame",
+        "Vue agrupa las actualizaciones del DOM de forma asíncrona — la actualización ocurre en la siguiente microtarea",
+        "Los template refs solo se refrescan durante el hook del ciclo de vida de actualización del componente",
+        "El pipeline de renderizado del navegador retrasa la reflexión del DOM hasta el siguiente paint"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál de estos casos de uso requiere genuinamente nextTick?",
+      "options": [
+        "Calcular un valor derivado del estado reactivo",
+        "Observar cambios en el valor de un ref",
+        "Enfocar un input después de establecer showInput a true",
+        "Filtrar un array reactivo antes de renderizarlo"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Además de await nextTick(), ¿qué otra forma soporta nextTick?",
+      "options": [
+        "nextTick.then(() => {}) usando la Promise API",
+        "nextTick(() => {}) con una función callback",
+        "Vue.nextTick() como método estático en el objeto Vue",
+        "this.$nextTick() solo en la Options API"
+      ],
+      "answer": 1
+    }
+  ]
+}

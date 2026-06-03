@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué el handler del padre se dispara dos veces cuando un componente re-emite un evento nativo sin `defineEmits`?",
+      "options": [
+        "Vue tiene un bug con la re-emisión de eventos nativos",
+        "El evento se dispara a través del fallthrough de `$attrs` Y a través de la llamada explícita a `$emit()`",
+        "El navegador dispara el evento dos veces para los elementos de componente",
+        "Los eventos nativos siempre hacen bubble dos veces en Vue"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál de estas opciones soluciona el problema del doble disparo cuando un componente tiene un único elemento raíz?",
+      "options": [
+        "Añadir el modificador `.stop` al listener del padre",
+        "Usar `v-once` en el componente hijo",
+        "Eliminar el `$emit` explícito y dejar que el evento fluya automáticamente",
+        "Declarar `inheritAttrs: false` en el componente hijo"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué impide declarar el nombre de un evento nativo en `defineEmits`?",
+      "options": [
+        "Que el evento nativo se dispare por completo",
+        "Que el evento llegue a los elementos hijos",
+        "Que el listener fluya a través de `$attrs` hasta el elemento raíz",
+        "Que el evento se pase a los scoped slots"
+      ],
+      "answer": 2
+    }
+  ]
+}

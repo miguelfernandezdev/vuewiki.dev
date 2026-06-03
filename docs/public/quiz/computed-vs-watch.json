@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the key behavioural distinction between `computed` and `watch`?",
+      "options": [
+        "`computed` is synchronous; `watch` is always asynchronous",
+        "`computed` derives a cached value; `watch` runs side effects in response to changes",
+        "`computed` can watch multiple sources; `watch` only tracks one",
+        "`computed` re-runs on every render; `watch` only fires on mount"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which of the following is a sign that you should replace a `watch` with a `computed`?",
+      "options": [
+        "The watcher performs an async API call when a value changes",
+        "The watcher sets a `ref` to a value derived from another reactive source",
+        "The watcher needs access to both the previous and new values",
+        "The watcher writes to `localStorage` when the user changes a setting"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does `watch` provide that `computed` cannot?",
+      "options": [
+        "Automatic caching of the derived value between renders",
+        "Access to both the new value and the previous value",
+        "The ability to depend on multiple reactive sources at once",
+        "A synchronous way to derive a value for use in templates"
+      ],
+      "answer": 1
+    }
+  ]
+}

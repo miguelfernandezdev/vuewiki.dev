@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the core difference between `v-if` and `v-show`?",
+      "options": [
+        "`v-if` works only on native elements; `v-show` works on components too",
+        "`v-if` adds/removes elements from the DOM; `v-show` toggles CSS `display: none`",
+        "`v-if` is evaluated once at mount; `v-show` is re-evaluated on every render",
+        "`v-if` supports multiple conditions; `v-show` only supports a boolean"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In Vue 3, what is the precedence when `v-if` and `v-for` are on the same element?",
+      "options": [
+        "`v-for` has higher priority and runs before `v-if`",
+        "`v-if` has higher priority and runs before `v-for`, so it cannot access the loop variable",
+        "They have equal priority and Vue processes them left to right",
+        "Vue 3 throws a compile error when both directives are on the same element"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is `v-show` preferable to `v-if`?",
+      "options": [
+        "When the element should only render once on initial mount",
+        "When the element must not exist in the DOM for security reasons",
+        "When the user toggles the element frequently, since toggling `display` is cheaper than DOM removal/recreation",
+        "When the element contains a `<template>` wrapper with multiple children"
+      ],
+      "answer": 2
+    }
+  ]
+}

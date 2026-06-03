@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En Vue 3.4+, ¿cuál es el primer argumento que se pasa a la función getter de un computed?",
+      "options": [
+        "La lista de dependencias reactivas",
+        "El valor previo del computed",
+        "La instancia del componente",
+        "El contador de renders actual"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué debes calcular el nuevo valor ANTES de compararlo con el antiguo dentro de un getter de computed?",
+      "options": [
+        "Vue requiere un orden de ejecución estricto por rendimiento",
+        "Un retorno anticipado omite el rastreo de dependencias reactivas, rompiendo el computed",
+        "La función de comparación solo funciona con valores completamente calculados",
+        "Vue optimiza el orden automáticamente de todas formas"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Vue 3.4+ evita automáticamente re-ejecutar efectos cuando un valor computed no ha cambiado. ¿Cuál es la limitación?",
+      "options": [
+        "Esto solo funciona para propiedades computed, no para watchers",
+        "Esto solo funciona para valores de retorno primitivos, no para objetos",
+        "Esto solo funciona en builds de producción",
+        "Esto requiere la opción deep: true en el computed"
+      ],
+      "answer": 1
+    }
+  ]
+}

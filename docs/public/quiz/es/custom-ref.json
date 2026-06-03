@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hacen los callbacks `track()` y `trigger()` en `customRef`?",
+      "options": [
+        "`track()` registra la lectura en Vue DevTools; `trigger()` fuerza un re-montaje completo del componente",
+        "`track()` le indica a Vue que este ref fue leído para que los dependientes se vuelvan a ejecutar al cambiar; `trigger()` notifica a los dependientes que el valor cambió",
+        "`track()` inicia el registro de mutaciones; `trigger()` las reproduce en orden",
+        "`track()` suscribe un watcher; `trigger()` dispara manualmente el callback del watcher"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En un `customRef` con debounce, ¿cuándo se llama realmente a `trigger()`?",
+      "options": [
+        "En cada pulsación de tecla para mantener la plantilla sincronizada con el valor del input",
+        "Solo después de que el usuario deje de escribir durante el período de retardo especificado",
+        "Una vez al montar y de nuevo en cada hook del ciclo de vida `updated`",
+        "Inmediatamente en `set()`, con la actualización del DOM diferida al siguiente tick"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué regla NUNCA debe romperse al implementar `customRef`?",
+      "options": [
+        "No llamar a `track()` más de una vez por invocación de `get()`",
+        "No llamar a `trigger()` dentro de `get()` porque crea un bucle infinito",
+        "No devolver un valor desde `set()` porque se ignora",
+        "No usar `customRef` dentro de un composable que se llama en `<script setup>`"
+      ],
+      "answer": 1
+    }
+  ]
+}

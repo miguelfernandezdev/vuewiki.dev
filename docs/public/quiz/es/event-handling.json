@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cómo se accede al evento DOM nativo junto con argumentos personalizados en un handler de Vue?",
+      "options": [
+        "Declarando un parámetro 'event' en la firma del método automáticamente",
+        "Usando $event como variable especial en la expresión del handler inline",
+        "Llamando a this.$nativeEvent dentro del método handler",
+        "Usando el modificador .native en la directiva v-on"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hace el modificador de evento .self?",
+      "options": [
+        "Llama a event.stopPropagation() para evitar el bubbling",
+        "Elimina el listener después del primer disparo",
+        "Solo se dispara si event.target es el propio elemento, no un hijo",
+        "Usa la fase de captura en lugar de bubbling"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué combinación de modificadores escucha en fase de captura Y solo se dispara una vez?",
+      "options": [
+        "@click.once.stop",
+        "@click.capture.once",
+        "@click.prevent.capture",
+        "@click.self.once"
+      ],
+      "answer": 1
+    }
+  ]
+}

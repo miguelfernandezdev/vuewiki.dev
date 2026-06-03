@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué el CSS con scope de un componente padre no aplica estilos a los elementos de un componente hijo?",
+      "options": [
+        "El CSS con scope está deshabilitado para componentes de terceros por defecto",
+        "Vue añade un atributo data-v-xxxxx solo a los elementos del componente actual, no a los del hijo",
+        "Los componentes hijos tienen mayor especificidad CSS y sobreescriben los estilos del padre",
+        "La herencia CSS está bloqueada por la encapsulación del Shadow DOM"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la sintaxis CSS correcta para aplicar estilos a los elementos internos de un componente hijo desde un padre con scope?",
+      "options": [
+        ".parent >>> .child-element",
+        ".parent /deep/ .child-element",
+        ".parent ::v-deep .child-element",
+        ".parent :deep(.child-element)"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "¿Qué elemento del componente hijo SÍ se ve afectado por el CSS con scope del padre sin necesitar :deep()?",
+      "options": [
+        "Todos los elementos con un nombre de clase coincidente",
+        "El elemento raíz del componente hijo",
+        "Los elementos con el atributo data-scoped",
+        "El contenido de slot pasado desde el padre"
+      ],
+      "answer": 1
+    }
+  ]
+}

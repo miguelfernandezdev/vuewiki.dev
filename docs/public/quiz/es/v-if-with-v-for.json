@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En Vue 3, ¿qué directiva tiene precedencia cuando `v-if` y `v-for` están en el mismo elemento?",
+      "options": [
+        "v-for se ejecuta primero y luego v-if filtra",
+        "v-if se ejecuta primero, antes de que exista la variable del bucle",
+        "Se ejecutan simultáneamente",
+        "Vue 3 lanza un error de compilación — ninguna se ejecuta"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la forma recomendada de renderizar solo los usuarios activos de una lista?",
+      "options": [
+        "Usar `v-for` y `v-if` en el mismo elemento `<li>`",
+        "Usar una propiedad `computed` que filtre la lista y luego usar `v-for`",
+        "Usar `v-show` dentro del bucle `v-for`",
+        "Filtrar en el template usando un ternario"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se aplica una condición por elemento dentro de un bucle `v-for` sin combinar directivas?",
+      "options": [
+        "Usar `v-if` y `v-for` en el mismo elemento con una expresión de guarda",
+        "Usar `<template v-for>` con `v-if` en un elemento hijo",
+        "Usar una llamada a `filter()` directamente en la expresión de `v-for`",
+        "Usar `v-show` en el elemento con `v-for`"
+      ],
+      "answer": 1
+    }
+  ]
+}

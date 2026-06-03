@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué dos funciones requiere una propiedad computed con escritura?",
+      "options": [
+        "Una función `read` y una función `write`",
+        "Una función `get` y una función `set`",
+        "Una función `value` y una función `update`",
+        "Una función `compute` y una función `mutate`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Para qué caso de uso NO se recomienda un computed con escritura?",
+      "options": [
+        "Enlazar `v-model` a un valor derivado o formateado",
+        "Crear un proxy para el estado de un store de Pinia",
+        "Realizar operaciones asíncronas cuando se establece el valor",
+        "Conversión de unidades como km/millas"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué debe hacer el setter de un computed con escritura para mantener el valor preciso?",
+      "options": [
+        "Llamar a `triggerRef()` para forzar un re-render",
+        "Actualizar las fuentes reactivas que lee el getter",
+        "Devolver el nuevo valor para actualizar la caché interna",
+        "Emitir un evento para que el padre pueda actualizar su propio estado"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el anti-patrón de usar `watch` para derivar un valor que debería manejar `computed`?",
+      "options": [
+        "Provoca bucles infinitos en el sistema de reactividad",
+        "Crea un punto de sincronización manual — un bug de sincronización esperando ocurrir",
+        "Es un error de sintaxis en Vue 3",
+        "Impide que el valor sea reactivo"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué se considera un anti-patrón el event bus en Vue 3?",
+      "options": [
+        "Los event buses son demasiado lentos para uso en producción",
+        "Vue 3 eliminó `$on`/`$off` — hay que usar una librería de terceros",
+        "Crea dependencias invisibles que hacen imposible rastrear quién emite y quién escucha",
+        "Los event buses solo funcionan en Vue 2 con la Options API"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la solución recomendada para `deep: true` en un watcher de un objeto grande cuando solo interesa detectar el cambio de una propiedad?",
+      "options": [
+        "Usar `shallow: true` en lugar de `deep: true`",
+        "Observar solo la propiedad específica con un getter: `() => obj.prop`",
+        "Usar `watchEffect`, que es más eficiente para objetos profundos",
+        "Mover el objeto a un store de Pinia donde el watching profundo es gratuito"
+      ],
+      "answer": 1
+    }
+  ]
+}

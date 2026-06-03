@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What unique debugging feature does Pinia integration in Vue DevTools provide?",
+      "options": [
+        "Real-time diff of store state between renders",
+        "Time-travel debugging — click a previous state snapshot to revert the UI",
+        "Automatic unit test generation from store actions",
+        "Live performance flamegraph for store getters"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which Vue DevTools installation method opens a panel embedded inside the app itself?",
+      "options": [
+        "The Chrome Web Store browser extension",
+        "The Firefox Add-ons extension",
+        "The `vite-plugin-vue-devtools` Vite plugin",
+        "The `@vue/devtools` npm package"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What should you check in Vue DevTools when the UI is not updating as expected?",
+      "options": [
+        "The router tab for navigation history",
+        "The emitted events log for the component",
+        "The state tab to confirm if the reactive state actually changed",
+        "The performance tab for render time"
+      ],
+      "answer": 2
+    }
+  ]
+}

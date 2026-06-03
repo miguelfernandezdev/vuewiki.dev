@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Which Nuxt config disables SSR globally, making the app a SPA?",
+      "options": [
+        "mode: 'spa'",
+        "ssr: false",
+        "static: true",
+        "render: 'client'"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which rendering mode is recommended for dashboards behind authentication where SEO doesn't matter?",
+      "options": [
+        "SSR (default)",
+        "ISR with a short TTL",
+        "SPA (ssr: false)",
+        "SSG with prerender: true"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which built-in component wraps content that can only run in the browser (e.g., third-party widgets)?",
+      "options": [
+        "<BrowserOnly>",
+        "<ClientSide>",
+        "<LazyLoad>",
+        "<ClientOnly>"
+      ],
+      "answer": 3
+    }
+  ]
+}

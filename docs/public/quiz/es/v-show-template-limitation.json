@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué `v-show` no funciona en elementos `<template>`?",
+      "options": [
+        "`<template>` es una etiqueta reservada que ignora todas las directivas",
+        "`v-show` requiere un elemento con propiedad `display`, pero `<template>` no tiene nodo DOM",
+        "`<template>` usa shadow DOM que bloquea el CSS",
+        "`v-show` aún no está implementado para wrappers de múltiples elementos"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la alternativa correcta a `<template v-show>` para mostrar y ocultar múltiples elementos?",
+      "options": [
+        "Usar `<div v-show>` como wrapper, o usar `<template v-if>`",
+        "Usar `v-show` en cada elemento hijo por separado",
+        "Usar `v-hide` en el `<template>` en su lugar",
+        "Usar `:style=\"{ display: isVisible ? 'block' : 'none' }\"` en `<template>`"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "¿Cómo se consigue el comportamiento 'else' con `v-show` (ya que `v-else` no está soportado)?",
+      "options": [
+        "Usar `v-if` solo para la rama else",
+        "Usar dos elementos con condiciones negadas: `v-show=\"x\"` y `v-show=\"!x\"`",
+        "Usar el modificador `v-show.else`",
+        "Envolver ambos en un `<template v-if>`"
+      ],
+      "answer": 1
+    }
+  ]
+}

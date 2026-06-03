@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "How do compound components share state between parent and child components?",
+      "options": [
+        "Through a Pinia store that both parent and child import",
+        "Via `provide` in the parent and `inject` in the child components",
+        "Through a global event bus attached to `app.config.globalProperties`",
+        "By passing all state down as props through every intermediate component"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the advantage of using an `InjectionKey` symbol instead of a string key in provide/inject?",
+      "options": [
+        "Symbols are faster to look up than strings at runtime",
+        "It provides type safety and avoids naming collisions between different injection keys",
+        "Symbols prevent child components from accidentally overwriting the injected value",
+        "It is required by Vue when using TypeScript strict mode"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is the compound components pattern a better choice than a props-only approach?",
+      "options": [
+        "When the component only needs one or two simple configuration options",
+        "When the parent and children are in different modules of the application",
+        "When children have complex content like sub-components or conditional logic that doesn't fit in a data array",
+        "When the component library needs to be published as an npm package"
+      ],
+      "answer": 2
+    }
+  ]
+}

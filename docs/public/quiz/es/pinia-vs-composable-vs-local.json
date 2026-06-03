@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Según el árbol de decisión, ¿cuándo deberías usar un store de Pinia en lugar de un composable?",
+      "options": [
+        "Cuando necesitas usar TypeScript en la lógica del store",
+        "Cuando múltiples componentes no relacionados comparten estado que debe sobrevivir a la navegación",
+        "Siempre que tengas operaciones async en tu lógica de estado",
+        "Cuando el archivo del composable supera las 100 líneas de código"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la diferencia de comportamiento clave entre un composable compartido (estado fuera de la función) y uno normal?",
+      "options": [
+        "Los composables compartidos no pueden usar watch ni computed",
+        "Los composables compartidos exponen todo el estado — cada consumidor obtiene su PROPIA instancia",
+        "Todos los consumidores de un composable compartido comparten la misma instancia de estado reactivo",
+        "Los composables normales se auto-importan; los compartidos no"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es el principal riesgo de usar un composable compartido a nivel de módulo para el estado en Nuxt durante SSR?",
+      "options": [
+        "No soporta genéricos TypeScript",
+        "El estado a nivel de módulo se filtra entre peticiones de servidor de diferentes usuarios",
+        "No se puede usar dentro de <script setup>",
+        "El hot module replacement no funcionará con él"
+      ],
+      "answer": 1
+    }
+  ]
+}

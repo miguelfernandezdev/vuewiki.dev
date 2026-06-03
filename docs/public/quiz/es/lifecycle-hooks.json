@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es el hook de ciclo de vida correcto para acceder a template refs e iniciar timers?",
+      "options": [
+        "onBeforeMount — el componente está a punto de ser adjuntado",
+        "onCreated — se ejecuta inmediatamente cuando el componente se instancia",
+        "onMounted — el DOM está listo en este punto",
+        "onBeforeUpdate — se dispara antes de cada actualización reactiva"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "No existe el hook onCreated en la Composition API. ¿Dónde va el código equivalente?",
+      "options": [
+        "Dentro de una llamada watch() con immediate: true",
+        "Directamente dentro de setup() o en el nivel superior de <script setup>",
+        "Dentro de onBeforeMount() que se dispara al mismo tiempo",
+        "En una opción especial created() pasada a defineComponent"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el patrón correcto para añadir y limpiar un listener de evento global en Vue?",
+      "options": [
+        "Añadir en setup(), eliminar en onBeforeMount()",
+        "Añadir y eliminar en onMounted() usando un bloque try/finally",
+        "Añadir en onMounted(), eliminar en onUnmounted()",
+        "Añadir en onBeforeMount(), eliminar en onBeforeUnmount()"
+      ],
+      "answer": 2
+    }
+  ]
+}

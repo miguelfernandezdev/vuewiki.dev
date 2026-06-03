@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué es un vnode en el Virtual DOM de Vue?",
+      "options": [
+        "Una representación en forma de string HTML compilado de un componente",
+        "Un objeto JavaScript plano que representa un nodo del DOM",
+        "Un Proxy reactivo que envuelve un elemento DOM real",
+        "Una interfaz TypeScript que describe las props de un componente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué optimización del compilador de Vue etiqueta los bindings dinámicos para que la comparación pueda omitir las partes estáticas?",
+      "options": ["Aplanamiento del árbol", "Elevación de estáticos", "Patch flags", "Memoización de nodos"],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué frameworks prescinden del Virtual DOM y compilan los templates directamente a instrucciones DOM?",
+      "options": [
+        "Angular y Ember",
+        "Svelte y SolidJS",
+        "Preact e Inferno",
+        "Alpine.js y Petite-Vue"
+      ],
+      "answer": 1
+    }
+  ]
+}

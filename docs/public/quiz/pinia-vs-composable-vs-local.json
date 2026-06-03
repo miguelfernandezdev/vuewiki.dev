@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "According to the decision tree, when should you use a Pinia store instead of a composable?",
+      "options": [
+        "When you need to use TypeScript in the store logic",
+        "When multiple unrelated components share state that must survive navigation",
+        "Whenever you have async operations in your state logic",
+        "When the composable file exceeds 100 lines of code"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the key behavioral difference between a shared composable (state outside the function) and a regular composable?",
+      "options": [
+        "Shared composables cannot use watch or computed",
+        "Shared composables expose all state — each consumer gets its OWN instance",
+        "All consumers of a shared composable share the same reactive state instance",
+        "Regular composables are auto-imported; shared composables are not"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What is the main risk of using a module-scope shared composable for state in Nuxt during SSR?",
+      "options": [
+        "It doesn't support TypeScript generics",
+        "Module-scope state leaks between server requests across different users",
+        "It cannot be used inside <script setup>",
+        "Hot module replacement won't work with it"
+      ],
+      "answer": 1
+    }
+  ]
+}

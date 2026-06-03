@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre cuando un componente hijo intenta mutar directamente una prop?",
+      "options": [
+        "Vue ignora la mutación silenciosamente",
+        "El estado del padre se actualiza correctamente",
+        "Vue lanza un error en tiempo de compilación",
+        "Vue dispara una advertencia en tiempo de ejecución: Attempting to mutate prop"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "¿Qué API se usa para declarar estado reactivo local propiedad del componente?",
+      "options": [
+        "defineProps",
+        "ref() o reactive()",
+        "useState()",
+        "defineModel()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el patrón correcto cuando un hijo necesita cambiar un valor propiedad del padre?",
+      "options": [
+        "Usar toRef() para crear un ref escribible desde la prop",
+        "Mutar la prop — Vue 3 lo permite con una supresión de advertencias",
+        "Emitir un evento desde el hijo; el padre actualiza su propio estado",
+        "Usar un store de Pinia como intermediario para todos los cambios de props"
+      ],
+      "answer": 2
+    }
+  ]
+}

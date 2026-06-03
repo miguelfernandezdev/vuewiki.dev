@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "With @click.prevent.self, when does preventDefault() run compared to the self check?",
+      "options": [
+        "Only after confirming the click was on the element itself",
+        "Before the self check, so it runs on ALL clicks including children",
+        "They run simultaneously in the same microtask",
+        "In the capture phase before any check"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When does modifier ORDER matter in Vue event directives?",
+      "options": [
+        "Always — every modifier combination is order-sensitive",
+        "Only when using .capture or .passive modifiers",
+        "When one modifier is conditional (.self) and another has side effects",
+        "Only when chaining more than three modifiers together"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "With @click.self.prevent on a div containing an anchor tag, what happens when you click the anchor?",
+      "options": [
+        "Default navigation is prevented on the anchor",
+        "The self check fails first, so preventDefault never runs on the anchor",
+        "Both the handler and default are prevented",
+        "The event propagates up to the parent"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre con los archivos del directorio public/ frente a assets/?",
+      "options": [
+        "Ambos son procesados por el bundler con hashing",
+        "public/ se empaqueta, assets/ se sirve tal cual",
+        "public/ se sirve tal cual desde la URL raíz; assets/ es procesado por el bundler",
+        "No hay ninguna diferencia entre ambos directorios"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué convención de nombres hace que un middleware se ejecute en todas las rutas sin necesidad de definePageMeta?",
+      "options": [
+        "middleware/auth.all.ts",
+        "middleware/analytics.global.ts",
+        "middleware/universal.ts",
+        "middleware/auth.every.ts"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En el directorio components/, ¿en qué se convierte el nombre de la carpeta en el nombre del componente auto-importado?",
+      "options": [
+        "Se ignora — solo importa el nombre del archivo",
+        "Un sufijo añadido después del nombre del archivo",
+        "Un prefijo añadido antes del nombre del archivo",
+        "Un espacio de nombres separado por una barra"
+      ],
+      "answer": 2
+    }
+  ]
+}

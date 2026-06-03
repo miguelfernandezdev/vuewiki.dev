@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la diferencia de comportamiento clave entre `watch` y `watchEffect` respecto a cuándo se ejecutan por primera vez?",
+      "options": [
+        "`watch` se ejecuta inmediatamente; `watchEffect` es lazy por defecto",
+        "`watchEffect` se ejecuta inmediatamente; `watch` es lazy por defecto",
+        "Ambos se ejecutan inmediatamente al crearse",
+        "Ambos son lazy — ninguno se ejecuta hasta que cambia una dependencia"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué composable proporciona tanto `newVal` como `oldVal` en su callback?",
+      "options": ["watchEffect", "watch", "watchPostEffect", "watchSyncEffect"],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué `watchEffect` puede no detectar una dependencia reactiva en un callback asíncrono?",
+      "options": [
+        "Las funciones asíncronas desactivan el rastreo de dependencias de forma global",
+        "Solo se rastrea la primera sentencia `await`",
+        "Vue deja de rastrear dependencias después de que el primer `await` cede el control",
+        "`watchEffect` no soporta callbacks asíncronos en absoluto"
+      ],
+      "answer": 2
+    }
+  ]
+}

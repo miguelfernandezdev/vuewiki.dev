@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué se deben almacenar los tokens de autenticación en cookies en lugar de localStorage en una app Nuxt con SSR?",
+      "options": [
+        "Las cookies son más seguras e inmunes a los ataques XSS",
+        "localStorage no existe en el servidor — las cookies se envían con cada petición HTTP",
+        "localStorage es síncrono y bloquearía el renderizado SSR",
+        "El composable useCookie de Vue es más eficiente que el acceso a localStorage"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué archivo de Nuxt inicializa la sesión del usuario tanto en el servidor como en el cliente al arrancar la app?",
+      "options": [
+        "middleware/auth.ts",
+        "composables/useAuth.ts",
+        "plugins/auth.ts",
+        "server/middleware/auth.ts"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Por qué la cookie de autenticación NO debe ser httpOnly cuando se gestiona con el composable useCookie de Nuxt en el cliente?",
+      "options": [
+        "Las cookies httpOnly no se envían con peticiones del mismo sitio",
+        "Las cookies httpOnly no son accesibles por JavaScript, por lo que useCookie leería null",
+        "httpOnly impide que el servidor SSR lea la cookie durante la hidratación",
+        "El $fetch de Nuxt ignora las cookies httpOnly por razones de seguridad"
+      ],
+      "answer": 1
+    }
+  ]
+}

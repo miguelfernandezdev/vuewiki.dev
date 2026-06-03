@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué boilerplate elimina <script setup> en comparación con un <script> normal con setup()?",
+      "options": [
+        "La necesidad de importar APIs de Vue como ref y computed",
+        "El export default, la función setup() y la sentencia return",
+        "La necesidad de declarar props y emits",
+        "Las anotaciones de tipo TypeScript en las props"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál de estas es una macro del compilador disponible en <script setup> que NO necesita ser importada?",
+      "options": [
+        "ref()",
+        "computed()",
+        "defineProps()",
+        "watchEffect()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuándo sigue siendo necesario un bloque <script> normal junto a <script setup>?",
+      "options": [
+        "Cuando se usa TypeScript",
+        "Cuando se definen propiedades computadas",
+        "Cuando se usa v-model en el componente",
+        "Cuando se establece inheritAttrs: false o se declaran exports con nombre"
+      ],
+      "answer": 3
+    }
+  ]
+}

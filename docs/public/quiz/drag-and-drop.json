@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What must you call inside `@dragover` to allow a drop target to accept a dragged item?",
+      "options": [
+        "`event.stopPropagation()`",
+        "`event.preventDefault()`",
+        "`event.dataTransfer.setData('text/plain', '')`",
+        "`event.dataTransfer.clearData()`"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the recommended library for sortable lists and kanban boards in Vue 3?",
+      "options": [
+        "vue-smooth-dnd",
+        "interact.js",
+        "vue-draggable-plus",
+        "Sortable.js used directly via a custom directive"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which approach supports both mouse and touch devices without extra event handling code?",
+      "options": [
+        "Native HTML Drag and Drop API",
+        "Pointer events (`pointerdown`, `pointermove`, `pointerup`)",
+        "Mouse events combined with a `touchstart` polyfill",
+        "`vue-draggable-plus` with `touch-start-threshold` set to `0`"
+      ],
+      "answer": 1
+    }
+  ]
+}

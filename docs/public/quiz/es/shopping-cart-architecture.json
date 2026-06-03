@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "En el store Pinia de carrito de compra, ¿qué calcula el getter totalPrice?",
+      "options": [
+        "El número de productos únicos en el carrito",
+        "La suma de precio × cantidad para todos los artículos",
+        "El precio medio de todos los artículos",
+        "El precio tras aplicar un código de descuento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué ocurre cuando se llama a updateQty() con qty <= 0 en el store del carrito?",
+      "options": [
+        "La cantidad se establece a 0 y el artículo permanece en el carrito",
+        "Se lanza un error de validación",
+        "El artículo se elimina del carrito llamando a removeItem()",
+        "La cantidad se restablece a 1 como mínimo"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué método se recomienda para persistir el estado del carrito entre recargas de página?",
+      "options": [
+        "Usar una propiedad computada que lea desde localStorage",
+        "Llamar a $subscribe en el store y escribir en localStorage en cada mutación",
+        "Guardar el estado en una cookie en cada acción",
+        "Usar el plugin de persistencia integrado de Vuex"
+      ],
+      "answer": 1
+    }
+  ]
+}

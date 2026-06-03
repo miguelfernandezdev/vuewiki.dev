@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué ocurre cuando reasignas una propiedad de un objeto reactive() en Vue 3?",
+      "options": [
+        "La reactividad se pierde silenciosamente",
+        "Vue muestra un aviso e ignora el cambio",
+        "El trap set del Proxy lo intercepta y dispara las actualizaciones",
+        "Debes usar Vue.set() como en Vue 2"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué operación SÍ rompe la reactividad en un objeto reactive()?",
+      "options": [
+        "Añadir una nueva propiedad al objeto",
+        "Reasignar toda la variable a un nuevo objeto",
+        "Mutar una propiedad anidada",
+        "Eliminar una propiedad"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la forma recomendada de reemplazar todas las propiedades de un objeto reactive sin romper la reactividad?",
+      "options": [
+        "state = reactive({ ...newData })",
+        "state = { ...newData }",
+        "Object.assign(state, newData)",
+        "state.$patch(newData)"
+      ],
+      "answer": 2
+    }
+  ]
+}

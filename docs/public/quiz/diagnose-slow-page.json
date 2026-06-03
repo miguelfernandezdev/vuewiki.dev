@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What tool do you use first when a page takes 3-4 seconds to become interactive?",
+      "options": [
+        "Run `npx vite-bundle-visualizer` to check bundle size immediately",
+        "Record a Performance trace in browser DevTools to identify where time is actually spent",
+        "Open Vue DevTools and sort components by prop count",
+        "Add `console.time` around every API call in the component"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is a common symptom that points to a Vue reactivity issue rather than a network or bundle issue?",
+      "options": [
+        "The Network tab shows requests taking more than 500ms",
+        "The Lighthouse audit gives a low LCP score",
+        "Vue DevTools shows components re-rendering when their props have not changed",
+        "The JavaScript bundle exceeds 1 MB uncompressed"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When should you use `shallowRef` instead of `ref` for large data arrays?",
+      "options": [
+        "When the array contains primitive values like strings or numbers",
+        "When the array data is replaced wholesale from an API response and deep reactivity is not needed",
+        "When the array is used in a `v-for` directive with a stable `:key`",
+        "When the array is stored in a Pinia store rather than local component state"
+      ],
+      "answer": 1
+    }
+  ]
+}

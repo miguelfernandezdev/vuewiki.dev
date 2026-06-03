@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the recommended way to force a component to fully re-initialize in Vue?",
+      "options": [
+        "Call this.$forceUpdate() in the Composition API",
+        "Use v-if to toggle the component off and on",
+        "Change the component's :key attribute to a new value",
+        "Call component.reload() from a parent ref"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What happens to lifecycle hooks when a component's :key changes?",
+      "options": [
+        "No hooks run — Vue patches the component in place",
+        "Only onUpdated runs since the DOM is replaced",
+        "All lifecycle hooks run again from onMounted",
+        "onBeforeUnmount and onUnmounted fire, but not onMounted"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why is $forceUpdate not available in the Composition API?",
+      "options": [
+        "It was deprecated and removed for performance reasons",
+        "The assumption is that correct reactive state makes it unnecessary",
+        "It conflicts with Vue 3's Proxy-based reactivity system",
+        "It was replaced by the watchEffect cleanup mechanism"
+      ],
+      "answer": 1
+    }
+  ]
+}

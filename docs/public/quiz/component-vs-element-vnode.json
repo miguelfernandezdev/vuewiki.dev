@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What is the key difference in the `type` field between an element VNode and a component VNode?",
+      "options": [
+        "Element VNodes use `null`; component VNodes use a string",
+        "Element VNodes use a string like `'div'`; component VNodes use the component definition object",
+        "Element VNodes use a number ID; component VNodes use a Symbol",
+        "Both use strings, but element VNodes are lowercase and component VNodes are PascalCase"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Does a component appear as a tag in the actual browser DOM?",
+      "options": [
+        "Yes, Vue adds a custom element with the component name as the tag",
+        "Yes, but only if `inheritAttrs` is set to true",
+        "No, only the component's rendered output (element VNodes) appears in the DOM",
+        "No, unless the component uses `<Teleport>` to mount itself"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Compared to elements, what makes component VNodes more expensive?",
+      "options": [
+        "Components must always fetch data from an API before rendering",
+        "Components require a reactive instance, `setup()` execution, and their own VNode tree",
+        "Components block the main thread while the virtual DOM diffing runs",
+        "Components cannot be reused, so Vue creates a new class for each occurrence"
+      ],
+      "answer": 1
+    }
+  ]
+}

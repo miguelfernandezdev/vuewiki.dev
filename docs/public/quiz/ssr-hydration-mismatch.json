@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What causes a hydration mismatch when using Date.now() in a template?",
+      "options": [
+        "Date.now() is not available in Node.js",
+        "The server and client render at different times, producing different values",
+        "Vue SSR serializes dates as strings, causing a type mismatch",
+        "Date.now() triggers an async operation that Suspense cannot handle"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What attribute was introduced in Vue 3.5 to suppress intentional hydration mismatches?",
+      "options": [
+        "v-client-only",
+        "data-allow-mismatch",
+        ":hydration-skip=\"true\"",
+        "v-no-hydration"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What Vite config option enables detailed hydration mismatch warnings in production?",
+      "options": [
+        "ssr.verboseHydration: true",
+        "define: { __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true }",
+        "build.ssrDebug: true",
+        "plugins: [vueHydrationDebug()]"
+      ],
+      "answer": 1
+    }
+  ]
+}

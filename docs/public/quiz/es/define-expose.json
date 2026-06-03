@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué recibe un componente padre cuando mantiene un template ref a un hijo con `<script setup>` que NO ha llamado a `defineExpose`?",
+      "options": [
+        "La instancia completa del componente, idéntica al comportamiento de la Options API",
+        "Un objeto vacío `{}` porque los componentes `<script setup>` son cerrados por defecto",
+        "Un Proxy que lanza error cuando se accede a cualquier propiedad",
+        "El elemento DOM raíz del componente en lugar de la instancia"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es un caso de uso habitual de `defineExpose` en un componente wrapper `BaseInput`?",
+      "options": [
+        "Hacer disponible el binding `v-model` del input para componentes abuelos",
+        "Exponer métodos imperativos como `focus()` y `blur()` para que los padres puedan llamarlos mediante un template ref",
+        "Permitir que el padre sobreescriba los estilos CSS con scope del input",
+        "Difundir eventos del input a componentes hermanos sin usar un store"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo deberías preferir `defineExpose` sobre props y emit para la comunicación padre-hijo?",
+      "options": [
+        "Siempre que el rendimiento requiera evitar el flujo de datos reactivo",
+        "Para acciones genuinamente imperativas (como `reset()` o `focus()`) que no encajan en un patrón declarativo de props/emit",
+        "Cuando el componente hijo tiene más de cinco props que devolver",
+        "Cuando el padre y el hijo están en vistas de ruta distintas"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens to files placed in the public/ directory vs assets/?",
+      "options": [
+        "Both are processed by the bundler with hashing",
+        "public/ is bundled, assets/ is served as-is",
+        "public/ is served as-is at the root URL; assets/ is processed by the bundler",
+        "There is no difference between the two directories"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Which naming convention makes a middleware run on every route without definePageMeta?",
+      "options": [
+        "middleware/auth.all.ts",
+        "middleware/analytics.global.ts",
+        "middleware/universal.ts",
+        "middleware/auth.every.ts"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "In the components/ directory, what does the folder name become in the component's auto-import name?",
+      "options": [
+        "It is ignored — only the filename matters",
+        "A suffix appended after the filename",
+        "A prefix prepended to the filename",
+        "A namespace separated by a slash"
+      ],
+      "answer": 2
+    }
+  ]
+}

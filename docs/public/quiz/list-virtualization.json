@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does list virtualization fundamentally do to improve performance?",
+      "options": [
+        "It compresses list items to reduce memory footprint",
+        "It renders only items visible in the viewport instead of all items",
+        "It paginates the list automatically to limit DOM nodes to 100",
+        "It uses Web Workers to render list items off the main thread"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What CSS requirement must the container have when using vue-virtual-scroller's RecycleScroller?",
+      "options": [
+        "overflow: hidden to prevent scroll events from bubbling",
+        "display: grid for proper item positioning",
+        "A fixed height for the container element",
+        "position: relative for absolute item positioning"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When should you NOT use list virtualization?",
+      "options": [
+        "When items have dynamic heights",
+        "For SEO-critical content that needs to be in the initial HTML",
+        "When the list has pagination controls",
+        "When the list uses v-for with a :key binding"
+      ],
+      "answer": 1
+    }
+  ]
+}

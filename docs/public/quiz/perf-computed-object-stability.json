@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "In Vue 3.4+, what is the first argument passed to a computed getter function?",
+      "options": [
+        "The reactive dependencies list",
+        "The previous computed value",
+        "The component instance",
+        "The current render count"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why must you compute the new value BEFORE comparing it with the old one inside a computed getter?",
+      "options": [
+        "Vue requires strict execution order for performance",
+        "An early return skips reactive dependency tracking, breaking the computed",
+        "The comparison function only works on fully computed values",
+        "Vue optimizes the order automatically anyway"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Vue 3.4+ automatically avoids re-running effects when a computed value hasn't changed. What is the limitation?",
+      "options": [
+        "This only works for computed properties, not watchers",
+        "This only works for primitive return values, not objects",
+        "This only works in production builds",
+        "This requires the deep: true option on computed"
+      ],
+      "answer": 1
+    }
+  ]
+}

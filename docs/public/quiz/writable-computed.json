@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What two functions does a writable computed property require?",
+      "options": [
+        "A `read` function and a `write` function",
+        "A `get` function and a `set` function",
+        "A `value` function and an `update` function",
+        "A `compute` function and a `mutate` function"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which use case is a writable computed NOT recommended for?",
+      "options": [
+        "Binding `v-model` to a derived/formatted value",
+        "Creating a proxy for Pinia store state",
+        "Performing async operations when the value is set",
+        "Unit conversion like km/miles"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What must the setter of a writable computed do to keep the computed value accurate?",
+      "options": [
+        "Call `triggerRef()` to force a re-render",
+        "Update the reactive sources that the getter reads from",
+        "Return the new value to update the internal cache",
+        "Emit an event so the parent can update its own state"
+      ],
+      "answer": 1
+    }
+  ]
+}

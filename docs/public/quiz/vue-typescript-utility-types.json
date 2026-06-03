@@ -1,0 +1,29 @@
+{
+  "questions": [
+    {
+      "question": "When is `PropType<T>` from Vue needed for typing component props?",
+      "options": [
+        "Always, when using `<script setup>` with TypeScript",
+        "Only with the Options API or runtime prop declarations, not type-based `defineProps`",
+        "When using composables that accept props as arguments",
+        "Only when the prop type is a generic"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the difference between `MaybeRef<T>` and `MaybeRefOrGetter<T>`?",
+      "options": [
+        "They are identical — just different naming conventions",
+        "`MaybeRef<T>` accepts `T | Ref<T>`; `MaybeRefOrGetter<T>` also accepts `() => T`",
+        "`MaybeRefOrGetter<T>` only accepts getter functions, not plain values",
+        "`MaybeRef<T>` is for computed refs; `MaybeRefOrGetter<T>` is for watch sources"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which utility type enables type-safe `provide`/`inject` in Vue?",
+      "options": ["ProviderKey<T>", "InjectToken<T>", "InjectionKey<T>", "ProvideType<T>"],
+      "answer": 2
+    }
+  ]
+}

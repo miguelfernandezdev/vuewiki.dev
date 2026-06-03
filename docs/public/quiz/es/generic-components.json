@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué atributo en `<script setup>` habilita los parámetros de tipo genérico en Vue 3.3+?",
+      "options": [
+        "type=\"generic\"",
+        "generic=\"T\"",
+        "generics=\"T\"",
+        "typescript=\"generic\""
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo infiere TypeScript el tipo T al usar un componente genérico?",
+      "options": [
+        "Debes especificar T explícitamente usando la prop generic del componente",
+        "T se infiere del valor en tiempo de ejecución pasado a la primera prop",
+        "T se infiere de los tipos de props como items en el lugar de uso",
+        "T tiene unknown como valor por defecto a menos que anotes el componente padre"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cómo se implementaban los componentes genéricos en Vue antes del atributo generic (pre-3.3)?",
+      "options": [
+        "Usando un decorador especial @generic en la clase del componente",
+        "Envolviendo defineComponent en una función factory con un parámetro de tipo",
+        "Usando la opción type: 'generic' en defineComponent",
+        "Añadiendo una sección generics al bloque <docs> del componente"
+      ],
+      "answer": 1
+    }
+  ]
+}

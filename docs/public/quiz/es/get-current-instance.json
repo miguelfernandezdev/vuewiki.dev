@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué devuelve getCurrentInstance() cuando se llama dentro de un setTimeout después de que setup se completa?",
+      "options": [
+        "La instancia del componente, almacenada en un closure",
+        "Una referencia obsoleta a la instancia anterior",
+        "null",
+        "Se lanza un error"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la alternativa correcta a getCurrentInstance() para acceder al router dentro de un componente?",
+      "options": [
+        "instance.appContext.config.globalProperties.$router",
+        "Usando el composable useRouter() proporcionado por Vue Router",
+        "Importando la instancia del router directamente desde el archivo del router",
+        "Accediendo a window.$router establecido por el plugin del router"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué los autores de librerías como Vue Router usan legítimamente getCurrentInstance()?",
+      "options": [
+        "Es la única forma de acceder al estado reactivo desde fuera de un componente",
+        "Las librerías necesitan engancharse al ciclo de vida, acceder al contexto de la app y leer el árbol de componentes",
+        "Proporciona mejores tipos de TypeScript que los composables",
+        "Es necesario para soportar la Options API junto a la Composition API"
+      ],
+      "answer": 1
+    }
+  ]
+}

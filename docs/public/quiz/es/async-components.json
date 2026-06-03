@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué envuelve defineAsyncComponent?",
+      "options": [
+        "Un import estático",
+        "Un import dinámico (import())",
+        "Una llamada a require()",
+        "Una petición fetch()"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo se descarga el código del componente asíncrono?",
+      "options": [
+        "En tiempo de compilación",
+        "Cuando se inicializa la aplicación",
+        "Cuando el componente se renderiza por primera vez",
+        "Cuando se registra la ruta"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué controla la opción 'delay' en defineAsyncComponent?",
+      "options": [
+        "El tiempo antes de mostrar el componente de error",
+        "El tiempo antes de mostrar el componente de carga",
+        "El tiempo antes de reintentar el import",
+        "El tiempo antes de que el componente sea destruido"
+      ],
+      "answer": 1
+    }
+  ]
+}

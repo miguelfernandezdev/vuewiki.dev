@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What problem occurs when using the array index as the :key in v-for?",
+      "options": [
+        "Vue warns that index is not a valid key type",
+        "Rendering performance degrades due to index recalculation",
+        "On reorder, component state and DOM state get out of sync",
+        "The list fails to render items after the first update"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When iterating an object with v-for, what are the three available loop variables?",
+      "options": [
+        "item, key, index",
+        "value, key, index",
+        "property, name, position",
+        "entry, field, order"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which array operations does Vue detect automatically to trigger DOM updates?",
+      "options": [
+        "filter, map, and concat since they return new arrays",
+        "Mutation methods like push, pop, splice, sort, and reverse",
+        "Any operation that changes the array's length property",
+        "All operations equally — Vue watches the entire array"
+      ],
+      "answer": 1
+    }
+  ]
+}

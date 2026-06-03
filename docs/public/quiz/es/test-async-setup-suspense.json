@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué un componente con async setup debe envolverse en <Suspense> en un test?",
+      "options": [
+        "Vue Test Utils requiere Suspense para todas las operaciones asíncronas",
+        "Sin un boundary de Suspense, Vue muestra un aviso y el componente nunca termina de renderizarse",
+        "Suspense proporciona el contexto mock necesario para que async setup funcione",
+        "El entorno de test no soporta componentes asíncronos sin Suspense"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué hace flushPromises() en el contexto de testear componentes con async setup?",
+      "options": [
+        "Restablece todas las llamadas fetch mockeadas a sus implementaciones originales",
+        "Espera a que todas las microtareas pendientes (resoluciones de Promise) se completen, incluyendo async setup",
+        "Fuerza a Vue a rerenderizar síncronamente el árbol de componentes",
+        "Limpia la cola interna de promises del componente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo deben capturarse los estados de error al testear un componente asíncrono envuelto en Suspense?",
+      "options": [
+        "Envolver la aserción en un bloque try/catch",
+        "Comprobar wrapper.emitted('error') después de flushPromises",
+        "Usar onErrorCaptured en el componente Suspense envolvente para recoger los errores lanzados",
+        "Establecer global.onerror antes del montaje"
+      ],
+      "answer": 2
+    }
+  ]
+}

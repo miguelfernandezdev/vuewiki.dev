@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why is await nextTick() needed before vi.advanceTimersByTime() when testing a debounce composable?",
+      "options": [
+        "nextTick ensures the DOM is updated before time advances",
+        "Vue's reactivity queue must be flushed first so the watcher runs and registers the setTimeout",
+        "advanceTimersByTime requires a synchronization point before it can execute",
+        "nextTick resets the fake timer state to zero"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What must you call in afterEach to prevent fake timers from leaking into other tests?",
+      "options": [
+        "vi.clearAllTimers()",
+        "vi.resetAllMocks()",
+        "vi.useRealTimers()",
+        "vi.restoreAllMocks()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When testing a composable that calls start() to begin setInterval directly, is await nextTick() needed before advancing time?",
+      "options": [
+        "Yes — nextTick is always required before timer advancement",
+        "No — start() creates the setInterval synchronously without a reactive watcher involved",
+        "Yes — setInterval is async and needs a tick to register",
+        "No — vi.useFakeTimers() automatically flushes the reactivity queue"
+      ],
+      "answer": 1
+    }
+  ]
+}

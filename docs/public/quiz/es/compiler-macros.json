@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué compiler macro se introdujo en Vue 3.4 para crear bindings v-model bidireccionales?",
+      "options": [
+        "defineExpose",
+        "defineOptions",
+        "defineModel",
+        "defineSlots"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué hace `defineExpose` en un componente `<script setup>`?",
+      "options": [
+        "Exporta el componente para usarlo en otros archivos",
+        "Controla qué propiedades y métodos son accesibles mediante template refs del componente padre",
+        "Declara qué props deben pasarse a elementos hijos",
+        "Permite al componente recibir bindings v-model de un padre"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es una regla que aplica a TODOS los compiler macros de Vue?",
+      "options": [
+        "Deben importarse desde 'vue' antes de usarse",
+        "Solo pueden usarse dentro del lifecycle hook `mounted`",
+        "Deben llamarse al nivel superior, no dentro de funciones o condicionales",
+        "Requieren que TypeScript esté habilitado en el proyecto"
+      ],
+      "answer": 2
+    }
+  ]
+}

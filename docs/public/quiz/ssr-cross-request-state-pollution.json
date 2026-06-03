@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why is module-level reactive state dangerous in SSR?",
+      "options": [
+        "It increases memory usage per component",
+        "The server process shares module-level singletons across all requests, leaking data between users",
+        "Module-level state is not serializable to JSON for hydration",
+        "Vue's reactivity system does not work outside a browser environment"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is Nuxt's built-in solution for per-request isolated state?",
+      "options": [
+        "ref() with a unique key argument",
+        "reactive() called inside onServerPrefetch",
+        "useState() which creates an isolated instance per request",
+        "provide() at the server entry level"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "In vanilla Vue SSR (without Nuxt), what pattern prevents cross-request state pollution?",
+      "options": [
+        "Using Object.freeze() on all reactive state",
+        "Declaring all state inside computed properties",
+        "A factory function that creates fresh state instances per request, provided via app.provide()",
+        "Resetting global state in a beforeEach navigation guard"
+      ],
+      "answer": 2
+    }
+  ]
+}

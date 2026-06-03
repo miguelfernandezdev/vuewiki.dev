@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué llamar a `.sort()` dentro de un `computed` muta el array original?",
+      "options": [
+        "El sistema de reactividad de Vue desenvuelve el array antes de pasarlo al getter",
+        "`.sort()` modifica el array en su lugar, por lo que el getter computed y la fuente comparten el mismo array mutado",
+        "Los getters computed se ejecutan en un contexto reactivo separado que se fusiona al completarse",
+        "Vue clona todos los valores reactivos al leerlos, provocando que la versión ordenada reemplace al original"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué método de ES2023 es el equivalente no mutante de `.sort()`?",
+      "options": [
+        "`.sortCopy()`",
+        "`.toArray().sort()`",
+        "`.toSorted()`",
+        "`.cloneSort()`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál de estas opciones crea correctamente una copia ordenada dentro de un computed sin mutar la fuente?",
+      "options": [
+        "`return items.value.sort((a, b) => a - b)`",
+        "`return [...items.value].sort((a, b) => a - b)`",
+        "`return items.value.map(i => i).sort((a, b) => a - b)` únicamente",
+        "`return Array.from(items.value)` sin llamar a sort"
+      ],
+      "answer": 1
+    }
+  ]
+}

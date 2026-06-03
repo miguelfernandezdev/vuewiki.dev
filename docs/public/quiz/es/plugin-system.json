@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué dos formas válidas puede tener un plugin de Vue?",
+      "options": [
+        "Una clase con un método install estático, o una función constructora",
+        "Un objeto con un método install, o una función plana",
+        "Un componente Vue con un hook de ciclo de vida install, o un composable",
+        "Un objeto Proxy o un módulo ES con una exportación por defecto"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué deberías usar símbolos InjectionKey<T> en lugar de claves de cadena al proveer valores desde un plugin?",
+      "options": [
+        "Las claves de símbolo son más rápidas de buscar en tiempo de ejecución",
+        "Las claves de cadena no funcionan con la Composition API de Vue",
+        "Los símbolos garantizan unicidad y ofrecen seguridad de tipos con TypeScript",
+        "InjectionKey es requerido por el compilador de Vue para el tree-shaking"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué acción del método install de un plugin hace que un valor esté disponible para todos los componentes descendientes mediante inject()?",
+      "options": [
+        "app.config.globalProperties.$value = ...",
+        "app.component('GlobalValue', ...)",
+        "app.provide(key, value)",
+        "app.mixin({ data: () => ({ value }) })"
+      ],
+      "answer": 2
+    }
+  ]
+}

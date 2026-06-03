@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué no puedes ver las llamadas API de SSR en la pestaña Network del navegador?",
+      "options": [
+        "Nuxt bloquea las peticiones salientes durante el renderizado en servidor por razones de seguridad",
+        "Las peticiones SSR se realizan desde el proceso Node.js del servidor, no desde el navegador",
+        "La pestaña Network del navegador solo muestra conexiones WebSocket, no peticiones HTTP",
+        "Las peticiones SSR usan un canal privado que requiere activar el modo desarrollador en Nuxt"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es el primer paso recomendado para añadir visibilidad a las peticiones SSR en un proyecto Nuxt?",
+      "options": [
+        "Establecer `DEBUG=*` antes de cada comando `nuxt dev`",
+        "Crear un plugin solo de servidor (`.server.ts`) usando `$fetch.create` con interceptores `onRequest`/`onResponse`",
+        "Adjuntar un inspector de Node.js y añadir breakpoints dentro de las llamadas a `useFetch`",
+        "Redirigir todo el tráfico a través de Charles Proxy con un certificado SSL autofirmado"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué herramienta de Nuxt ofrece un panel visual con todas las peticiones HTTP de SSR con cabeceras, estado y tiempos durante el desarrollo?",
+      "options": [
+        "La pestaña Performance de Vue DevTools",
+        "La pestaña Network del navegador filtrada por peticiones XHR",
+        "El panel Server API de Nuxt DevTools",
+        "La salida de la variable de entorno `DEBUG=ofetch`"
+      ],
+      "answer": 2
+    }
+  ]
+}

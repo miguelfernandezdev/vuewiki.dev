@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la sintaxis abreviada para apuntar a un slot con nombre llamado 'header' en Vue?",
+      "options": [
+        "v-slot:header",
+        "#header",
+        "slot='header'",
+        ":slot=\"'header'\""
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué problema resuelven los scoped slots?",
+      "options": [
+        "Permiten que los estilos CSS del padre lleguen a los elementos del hijo",
+        "Permiten que el hijo pase datos al padre a través de las props del slot",
+        "Evitan que el contenido del slot se renderice más de una vez",
+        "Hacen que el contenido del slot se cargue de forma diferida por rendimiento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo deberías usar un slot en lugar de una prop?",
+      "options": [
+        "Cuando se pasa un simple valor de texto para mostrar",
+        "Cuando se pasa una bandera booleana para alternar comportamiento",
+        "Cuando el padre decide qué mostrar y el hijo decide dónde colocarlo",
+        "Cuando los datos necesitan validarse antes de renderizarse"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "If you set `count.value = 1`, `count.value = 2`, `count.value = 3` synchronously, how many times does a watcher on `count` fire?",
+      "options": [
+        "Three times — once for each assignment",
+        "Once, with the final value of `3`",
+        "Twice — once during the micro-task queue and once after the DOM update",
+        "Zero times — watchers only fire after `nextTick` is awaited"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What flush option causes a watcher to fire on EVERY individual state change, bypassing batching?",
+      "options": [
+        "`flush: 'post'`",
+        "`flush: 'immediate'`",
+        "`flush: 'sync'`",
+        "`flush: 'eager'`"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "When does a watcher with `flush: 'post'` run relative to the DOM?",
+      "options": [
+        "Before Vue applies the DOM update so it can cancel the render",
+        "Immediately on each synchronous change without any deferral",
+        "After Vue has applied the DOM update, allowing effects to read the updated DOM",
+        "On the next microtask after the component's `onMounted` hook fires"
+      ],
+      "answer": 2
+    }
+  ]
+}

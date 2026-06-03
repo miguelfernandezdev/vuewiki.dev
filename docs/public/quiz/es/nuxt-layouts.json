@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué archivo de layout se usa automáticamente en todas las páginas que no especifican uno?",
+      "options": [
+        "layouts/main.vue",
+        "layouts/app.vue",
+        "layouts/base.vue",
+        "layouts/default.vue"
+      ],
+      "answer": 3
+    },
+    {
+      "question": "¿Qué debes añadir a app.vue para habilitar los layouts cuando usas ese archivo?",
+      "options": [
+        "<NuxtPage />",
+        "<NuxtLayout>",
+        "<RouterView />",
+        "<LayoutProvider />"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cómo se desactiva el layout por completo para una página concreta?",
+      "options": [
+        "definePageMeta({ layout: null })",
+        "definePageMeta({ layout: 'none' })",
+        "definePageMeta({ layout: false })",
+        "Eliminar la página del directorio pages/"
+      ],
+      "answer": 2
+    }
+  ]
+}

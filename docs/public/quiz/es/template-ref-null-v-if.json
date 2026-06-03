@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué un template ref devuelve null cuando se usa con v-if?",
+      "options": [
+        "v-if y ref son directivas incompatibles en Vue 3",
+        "El elemento se elimina del DOM cuando v-if es false, y Vue establece el ref a null",
+        "Los template refs solo funcionan con v-show, no con v-if",
+        "El ref no se inicializa hasta que el usuario interactúa con el elemento"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuál es la ventaja de usar v-show en lugar de v-if cuando necesitas acceso persistente al template ref?",
+      "options": [
+        "v-show crea un contexto reactivo separado para el elemento",
+        "v-show mantiene el elemento en el DOM (oculto mediante CSS), por lo que el ref nunca es null",
+        "v-show se procesa antes que v-if, asegurando que el ref se establece primero",
+        "v-show inicializa automáticamente el ref con un HTMLElement vacío"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En Vue 3.5+, ¿qué API ofrece un manejo de template refs más limpio con mejor inferencia de tipos TypeScript?",
+      "options": [
+        "defineTemplateRef()",
+        "useRef()",
+        "useTemplateRef()",
+        "templateRef()"
+      ],
+      "answer": 2
+    }
+  ]
+}

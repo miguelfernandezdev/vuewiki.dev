@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué hace toRefs() cuando se aplica a un objeto reactive?",
+      "options": [
+        "Crea una copia de solo lectura profunda del objeto reactive",
+        "Convierte cada propiedad en un ref individual que permanece conectado a la fuente",
+        "Aplana los objetos reactive anidados en un único nivel reactivo",
+        "Convierte el objeto reactive en un ref con el objeto como .value"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué nueva capacidad ganó toRef() en Vue 3.3?",
+      "options": [
+        "La capacidad de crear refs de escritura a partir de propiedades computadas",
+        "La capacidad de aceptar una función getter y devolver un ref de solo lectura que la rastrea",
+        "La capacidad de agrupar múltiples refs de propiedades en una sola actualización",
+        "Soporte para rastreo reactivo profundo en propiedades de objetos anidados"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué devuelve toValue() cuando se llama con un número plano como toValue(3)?",
+      "options": [
+        "ref(3): siempre envuelve la entrada en un ref",
+        "3: pasa los valores planos sin modificarlos",
+        "computed(() => 3): lo envuelve en un getter",
+        "reactive({ value: 3 }): normaliza a reactive"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué rastrea shallowRef en comparación con un ref normal?",
+      "options": [
+        "Solo valores primitivos, no objetos",
+        "Solo el reemplazo de .value: las mutaciones a propiedades anidadas NO se rastrean",
+        "Solo el primer nivel de propiedades anidadas",
+        "Nada: shallowRef deshabilita la reactividad por completo"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Tienes shallowRef items = shallowRef([]). Llamas a items.value.push(newItem). ¿Qué ocurre?",
+      "options": [
+        "El componente vuelve a renderizarse con el nuevo elemento",
+        "Vue lanza un TypeError",
+        "El push se produce pero NO dispara un nuevo renderizado",
+        "El push se ignora y items permanece vacío"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Qué función puedes llamar para forzar manualmente una actualización después de mutar el valor interno de un shallowRef?",
+      "options": [
+        "forceUpdate()",
+        "triggerRef(items)",
+        "nextTick()",
+        "items.value = items.value"
+      ],
+      "answer": 1
+    }
+  ]
+}

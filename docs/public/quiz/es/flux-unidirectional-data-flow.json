@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuál es la restricción clave del flujo de datos unidireccional de Flux?",
+      "options": [
+        "El estado debe almacenarse en un único objeto global",
+        "La vista nunca modifica el estado directamente — siempre pasa por una acción",
+        "Las acciones deben ser síncronas para mantener la trazabilidad",
+        "Los componentes no pueden compartir estado directamente"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué eliminó Pinia las mutations respecto a Vuex?",
+      "options": [
+        "Las mutations causaban problemas de rendimiento en aplicaciones grandes",
+        "TypeScript no soporta el patrón de mutations",
+        "La indirección extra no justificaba el boilerplate",
+        "Las mutations eran incompatibles con la Composition API"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿En qué se expande realmente v-model de Vue internamente?",
+      "options": [
+        "Un proxy reactivo que escribe directamente en el estado del componente",
+        "Un binding :value más un evento @input que actualiza la fuente",
+        "Un binding reactivo bidireccional usando getters y setters computados",
+        "Un watcher que sincroniza el valor del DOM con el modelo de datos"
+      ],
+      "answer": 1
+    }
+  ]
+}

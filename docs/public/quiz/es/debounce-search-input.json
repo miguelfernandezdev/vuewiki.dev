@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Qué problema resuelve el debounce en un input de búsqueda?",
+      "options": [
+        "Evita que el navegador bloquee el hilo principal durante un filtrado intenso",
+        "Evita que el input dispare una llamada API en cada pulsación de tecla cuando el usuario no ha terminado de escribir",
+        "Agrupa múltiples búsquedas simultáneas en una única petición de red",
+        "Cancela las peticiones en vuelo cuando se escribe un nuevo carácter"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "En el patrón de debounce inline, ¿qué dispara la búsqueda real (p. ej., actualiza `debouncedQuery`)?",
+      "options": [
+        "El evento `@input` en el campo de texto tras cada pulsación de tecla",
+        "Un callback de `setTimeout` que se dispara tras un período de inactividad al escribir",
+        "Un `watchEffect` que se vuelve a ejecutar cuando `searchQuery` cambia",
+        "Una propiedad computed que compara los valores bruto y con debounce"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Cuándo elegirías throttle sobre debounce?",
+      "options": [
+        "Para inputs de búsqueda donde quieres disparar una vez cuando el usuario termina de escribir",
+        "Para manejadores de scroll o resize donde quieres actualizaciones periódicas durante actividad continua",
+        "Cuando el evento se dispara como máximo una vez y el debounce añadiría un retraso innecesario",
+        "Cuando necesitas cancelar una llamada API pendiente antes de disparar una nueva"
+      ],
+      "answer": 1
+    }
+  ]
+}

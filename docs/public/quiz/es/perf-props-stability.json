@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Si activeId cambia en una lista de 1000 elementos y cada uno recibe :active-id='activeId', ¿cuántos re-renders ocurren?",
+      "options": [
+        "2 (solo el elemento previamente activo y el recién activo)",
+        "1 (solo el elemento recién activo)",
+        "1000 (todos los elementos de la lista se vuelven a renderizar)",
+        "0 (Vue agrupa y deduplica)"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "¿Cuál es la solución de estabilidad de props para pasar una selección activa a los elementos de una lista?",
+      "options": [
+        "Usar v-memo en cada elemento de la lista con la dependencia activeId",
+        "Precalcular un booleano :active='item.id === activeId' en el componente padre",
+        "Mover activeId a un store de Pinia al que cada elemento accede directamente",
+        "Usar shallowRef para activeId y reducir la sobrecarga de reactividad"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Por qué las props de objeto en línea como :style=\"{ color: item.color }\" perjudican el rendimiento?",
+      "options": [
+        "Los estilos en línea son procesados más lentamente por el navegador",
+        "Crean una nueva referencia de objeto en cada render, por lo que Vue siempre detecta una prop modificada",
+        "Vue no soporta objetos de estilo reactivos en línea",
+        "Evitan el algoritmo de diffing del DOM virtual"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "¿Por qué al desestructurar un objeto reactive se pierde la reactividad?",
+      "options": [
+        "JavaScript no soporta desestructurar Proxies",
+        "La desestructuración extrae valores planos fuera del Proxy",
+        "Vue deshabilita la reactividad en variables desestructuradas",
+        "El recolector de basura elimina la referencia al Proxy"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "¿Qué utilidad conserva la reactividad al desestructurar?",
+      "options": [
+        "toRaw()",
+        "markRaw()",
+        "toRefs()",
+        "shallowRef()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Después de usar toRefs(), ¿cómo accedes al valor?",
+      "options": [
+        "Directamente, como una variable normal",
+        "Usando .value en cada propiedad desestructurada",
+        "Usando el método .get()",
+        "Solo a través del objeto reactive original"
+      ],
+      "answer": 1
+    }
+  ]
+}
