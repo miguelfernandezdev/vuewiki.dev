@@ -35,17 +35,37 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [x] Brand rename from VueWiki.dev to VueWiki
 - [x] Open Graph image for social sharing
 
-## Phase 4 — Community
+## Phase 4 — Community & OSS readiness
 
 - [x] Built-in search (VitePress local search)
 - [x] Contribution guide
 - [x] Community Q&A submissions via GitHub PRs
 - [x] Analytics (PostHog, EU region)
+- [x] Issue templates (new question, bug report, improvement)
+- [x] PR template
+- [x] Code of Conduct (Contributor Covenant v2.0)
+- [x] GitHub Discussions
+- [x] Branch protection on main
+- [x] Prettier + pre-commit hook (matching VitePress config)
 
-## Phase 5 — Beyond interviews
+## Phase 5 — More content
 
-- [ ] Vue 3 migration guides
-- [ ] Pinia patterns and best practices
-- [ ] Vitest testing guides
-- [ ] Nuxt-specific section
-- [ ] Interactive code examples (StackBlitz embeds or similar)
+- [ ] Vue 3 migration guides (#2)
+- [ ] Pinia patterns and best practices (#3)
+- [ ] Vitest testing guides (#4)
+- [ ] Dedicated Nuxt section (#5)
+- [ ] Interactive code examples (#6)
+
+## Phase 6 — Translations
+
+- [x] Spanish (es)
+- [ ] Chinese Simplified (zh-CN) (#7)
+- [ ] Portuguese (pt-BR) (#8)
+- [ ] Japanese (ja) (#9)
+- [ ] Korean (ko) (#10)
+- [ ] French (fr) (#11)
+- [ ] German (de) (#12)
+- [ ] Russian (ru) (#13)
+- [ ] Arabic (ar) (#14)
+- [ ] Vietnamese (vi) (#15)
+- [ ] Hindi (hi) (#16)
