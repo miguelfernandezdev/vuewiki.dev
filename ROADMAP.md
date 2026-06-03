@@ -40,7 +40,7 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [x] Built-in search (VitePress local search)
 - [x] Contribution guide
 - [x] Community Q&A submissions via GitHub PRs
-- [ ] Analytics
+- [x] Analytics (PostHog, EU region)
 
 ## Phase 5 — Beyond interviews
 
