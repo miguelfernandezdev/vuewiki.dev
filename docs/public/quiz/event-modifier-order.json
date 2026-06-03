@@ -13,7 +13,7 @@
     {
       "question": "When does modifier ORDER matter in Vue event directives?",
       "options": [
-        "Always — every modifier combination is order-sensitive",
+        "Always: every modifier combination is order-sensitive",
         "Only when using .capture or .passive modifiers",
         "When one modifier is conditional (.self) and another has side effects",
         "Only when chaining more than three modifiers together"

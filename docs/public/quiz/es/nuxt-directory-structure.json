@@ -23,7 +23,7 @@
     {
       "question": "En el directorio components/, ¿en qué se convierte el nombre de la carpeta en el nombre del componente auto-importado?",
       "options": [
-        "Se ignora — solo importa el nombre del archivo",
+        "Se ignora: solo importa el nombre del archivo",
         "Un sufijo añadido después del nombre del archivo",
         "Un prefijo añadido antes del nombre del archivo",
         "Un espacio de nombres separado por una barra"

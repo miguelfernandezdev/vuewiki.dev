@@ -8,7 +8,7 @@ summary: "provide envía datos de un padre a cualquier descendiente sin prop dri
 
 Cuando un componente padre necesita pasar datos a un hijo profundamente anidado, normalmente tendrías que pasar props a través de cada componente intermedio, aunque esos componentes no usen los datos. Esto se llama "prop drilling", y hace el código frágil y difícil de mantener.
 
-[`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) e [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) resuelven esto. Un padre provee datos, y cualquier descendiente —sin importar la profundidad— puede inyectarlos directamente sin que ningún componente intermedio sepa de ellos.
+[`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) e [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) resuelven esto. Un padre provee datos, y cualquier descendiente, sin importar la profundidad, puede inyectarlos directamente sin que ningún componente intermedio sepa de ellos.
 
 ## Cómo funciona
 
@@ -73,9 +73,9 @@ const userWithDefault = inject(UserKey, ref({ name: 'Guest', role: 'viewer' })) 
 - Funcionalidades tipo plugin (un gestor de toasts, un gestor de modales)
 
 **Malos casos de uso:**
-- Pasar datos entre componentes hermanos — provide/inject es solo de ancestro a descendiente
-- Reemplazar todas las props con inject — hace los componentes más difíciles de testear y entender porque sus dependencias son implícitas
-- Estado global que muchos componentes no relacionados leen y escriben — usa [Pinia](https://pinia.vuejs.org/) en su lugar
+- Pasar datos entre componentes hermanos. provide/inject es solo de ancestro a descendiente
+- Reemplazar todas las props con inject. Hace los componentes más difíciles de testear y entender porque sus dependencias son implícitas
+- Estado global que muchos componentes no relacionados leen y escriben. Usa [Pinia](https://pinia.vuejs.org/) en su lugar
 
 ## Provide/Inject vs Props vs Pinia
 

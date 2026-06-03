@@ -109,6 +109,6 @@ See also: [Why does forgetting .value with ref cause bugs?](/q/ref-value-gotcha)
 
 ## References
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [v-model — Vue guide](https://vuejs.org/guide/components/v-model.html)
-- [Form Input Bindings — Vue guide](https://vuejs.org/guide/essentials/forms.html)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [v-model - Vue guide](https://vuejs.org/guide/components/v-model.html)
+- [Form Input Bindings - Vue guide](https://vuejs.org/guide/essentials/forms.html)

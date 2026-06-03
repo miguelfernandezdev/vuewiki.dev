@@ -4,7 +4,7 @@
       "question": "¿Qué hace `v-memo=\"[]\"` a un subárbol del template?",
       "options": [
         "Omite el render en el primer montaje",
-        "Actúa como `v-once` — el contenido nunca se vuelve a renderizar",
+        "Actúa como `v-once`: el contenido nunca se vuelve a renderizar",
         "Memoiza basándose en todas las dependencias reactivas",
         "Limpia el subárbol en cada render"
       ],

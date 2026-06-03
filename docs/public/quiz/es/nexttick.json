@@ -4,7 +4,7 @@
       "question": "¿Por qué leer el DOM inmediatamente después de cambiar estado reactivo devuelve valores obsoletos?",
       "options": [
         "El sistema de reactividad de Vue hace debounce de todas las actualizaciones 16ms para alinearse con el animation frame",
-        "Vue agrupa las actualizaciones del DOM de forma asíncrona — la actualización ocurre en la siguiente microtarea",
+        "Vue agrupa las actualizaciones del DOM de forma asíncrona: la actualización ocurre en la siguiente microtarea",
         "Los template refs solo se refrescan durante el hook del ciclo de vida de actualización del componente",
         "El pipeline de renderizado del navegador retrasa la reflexión del DOM hasta el siguiente paint"
       ],

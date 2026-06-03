@@ -3,7 +3,7 @@ order: 163
 title: "What is SSR cross-request state pollution and how do you avoid it?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]
-summary: "Module-scope reactive state is shared across ALL server requests. Each request needs its own state instance — use app-level provide or Pinia's per-request stores."
+summary: "Module-scope reactive state is shared across ALL server requests. Each request needs its own state instance: use app-level provide or Pinia's per-request stores."
 ---
 
 In SSR, the server process handles multiple requests. If you declare reactive state at module scope, that state is a singleton shared across ALL requests. User A's data can leak into User B's response. This is a security vulnerability, not just a bug.

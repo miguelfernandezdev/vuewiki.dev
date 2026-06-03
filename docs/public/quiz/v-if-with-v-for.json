@@ -6,7 +6,7 @@
         "v-for runs first, then v-if filters",
         "v-if runs first, before the loop variable exists",
         "They run simultaneously",
-        "Vue 3 throws a compile error — neither runs"
+        "Vue 3 throws a compile error: neither runs"
       ],
       "answer": 1
     },

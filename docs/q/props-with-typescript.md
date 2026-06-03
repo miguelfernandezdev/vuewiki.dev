@@ -6,7 +6,7 @@ tags: ["typescript", "components"]
 summary: "Pass a TypeScript interface to defineProps as a generic: defineProps<{ title: string }>. Vue generates runtime checks from your types."
 ---
 
-In Vue 3 with `<script setup>`, you declare props using [`defineProps`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) — a compiler macro that Vue processes at build time. You don't import it; it's available automatically inside `<script setup>`.
+In Vue 3 with `<script setup>`, you declare props using [`defineProps`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits), a compiler macro that Vue processes at build time. You don't import it; it's available automatically inside `<script setup>`.
 
 ## Basic declaration
 
@@ -52,7 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
-For arrays and objects, use a factory function (`() => ['vue']`) — same reason as `data()` in the Options API: each component instance needs its own copy.
+For arrays and objects, use a factory function (`() => ['vue']`), same reason as `data()` in the Options API: each component instance needs its own copy.
 
 ## Reactive destructure (3.5+)
 
@@ -93,15 +93,15 @@ const props = defineProps<Props>()
 </script>
 ```
 
-There are [limitations on the types you can use](/q/defineprops-type-limitations) — for example, you can't use conditional types or imported type aliases that resolve to complex generics in some cases.
+There are [limitations on the types you can use](/q/defineprops-type-limitations). For example, you can't use conditional types or imported type aliases that resolve to complex generics in some cases.
 
 ## Why not the runtime syntax?
 
 Vue also supports a runtime object syntax (`defineProps({ title: String })`) that doesn't need TypeScript. The type-based syntax is better because:
 
-1. **IDE support** — types flow into the template, autocomplete works, refactoring catches all usages
-2. **No duplication** — your TypeScript types ARE the prop definitions, not a parallel declaration
-3. **Stricter** — union types, literal types, and complex shapes that the runtime syntax can't express
+1. **IDE support**: types flow into the template, autocomplete works, refactoring catches all usages
+2. **No duplication**: your TypeScript types ARE the prop definitions, not a parallel declaration
+3. **Stricter**: union types, literal types, and complex shapes that the runtime syntax can't express
 
 See also: [What are the limitations of defineProps types?](/q/defineprops-type-limitations) · [How do you emit events with TypeScript?](/q/emit-events-typescript) · [What is the difference between props and state?](/q/props-vs-state) · [Why does Vue warn when you mutate props?](/q/mutating-props-warning)
 

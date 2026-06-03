@@ -3,7 +3,7 @@ order: 46
 title: "¿Cómo fuerzas el re-renderizado de un componente?"
 difficulty: "intermediate"
 tags: ["components", "reactivity"]
-summary: "Cambia el :key del componente. Vue destruye la instancia vieja y crea una nueva. Evita $forceUpdate — indica reactividad rota."
+summary: "Cambia el :key del componente. Vue destruye la instancia vieja y crea una nueva. Evita $forceUpdate, indica reactividad rota."
 ---
 
 Cambia el atributo `key` del componente. Cuando la key cambia, Vue destruye la instancia antigua y crea una nueva desde cero, ejecutando todos los lifecycle hooks de nuevo y reiniciando todo el estado local. Este es el único enfoque limpio. Técnicas como `$forceUpdate` o incrementar un contador para disparar un re-render son casi siempre síntomas de una configuración de reactividad incorrecta.
@@ -113,6 +113,6 @@ Ver también: [¿Cómo funciona el sistema de reactividad de Vue 3?](/es/q/react
 
 ## Referencias
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [Atributos especiales: key — Vue docs](https://vuejs.org/api/built-in-special-attributes.html#key)
-- [Fundamentos de reactividad — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Atributos especiales: key - Vue docs](https://vuejs.org/api/built-in-special-attributes.html#key)
+- [Fundamentos de reactividad - Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

@@ -4,7 +4,7 @@
       "question": "¿Cuál es el anti-patrón de usar `watch` para derivar un valor que debería manejar `computed`?",
       "options": [
         "Provoca bucles infinitos en el sistema de reactividad",
-        "Crea un punto de sincronización manual — un bug de sincronización esperando ocurrir",
+        "Crea un punto de sincronización manual: un bug de sincronización esperando ocurrir",
         "Es un error de sintaxis en Vue 3",
         "Impide que el valor sea reactivo"
       ],
@@ -14,7 +14,7 @@
       "question": "¿Por qué se considera un anti-patrón el event bus en Vue 3?",
       "options": [
         "Los event buses son demasiado lentos para uso en producción",
-        "Vue 3 eliminó `$on`/`$off` — hay que usar una librería de terceros",
+        "Vue 3 eliminó `$on`/`$off`: hay que usar una librería de terceros",
         "Crea dependencias invisibles que hacen imposible rastrear quién emite y quién escucha",
         "Los event buses solo funcionan en Vue 2 con la Options API"
       ],

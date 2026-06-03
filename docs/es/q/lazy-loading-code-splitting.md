@@ -6,7 +6,7 @@ tags: ["performance", "vue-router", "vite"]
 summary: "Usa import() dinámico en definiciones de rutas y defineAsyncComponent. Vite crea automáticamente chunks separados que se cargan bajo demanda."
 ---
 
-El code splitting divide tu app en archivos JavaScript más pequeños (chunks) que se cargan bajo demanda en lugar de todos a la vez. El lazy loading significa cargar un chunk solo cuando el usuario realmente lo necesita — al navegar a una ruta, abrir un modal o hacer scroll a una sección. Vite gestiona esto automáticamente cuando usas `import()` dinámico.
+El code splitting divide tu app en archivos JavaScript más pequeños (chunks) que se cargan bajo demanda en lugar de todos a la vez. El lazy loading significa cargar un chunk solo cuando el usuario realmente lo necesita: al navegar a una ruta, abrir un modal o hacer scroll a una sección. Vite gestiona esto automáticamente cuando usas `import()` dinámico.
 
 ## Code splitting a nivel de ruta
 
@@ -161,7 +161,7 @@ export default defineConfig({
 | Sección de admin que la mayoría nunca visita | Chunk de ruta separado |
 | Componentes siempre visibles en la carga | No dividir (añade latencia) |
 
-La mayor ganancia es la división a nivel de ruta — es el patrón por defecto en Vue Router y no cuesta nada implementarlo. La división a nivel de componente es para componentes pesados específicos donde la petición de red adicional compensa un bundle inicial más pequeño.
+La mayor ganancia es la división a nivel de ruta. Es el patrón por defecto en Vue Router y no cuesta nada implementarlo. La división a nivel de componente es para componentes pesados específicos donde la petición de red adicional compensa un bundle inicial más pequeño.
 
 Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Qué es Vite?](/es/q/what-is-vite)
 

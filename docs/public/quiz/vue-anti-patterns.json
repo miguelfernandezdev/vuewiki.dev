@@ -4,7 +4,7 @@
       "question": "What is the anti-pattern of using `watch` to derive a value that `computed` should handle?",
       "options": [
         "It causes infinite loops in the reactivity system",
-        "It creates a manual synchronization point — a sync bug waiting to happen",
+        "It creates a manual synchronization point: a sync bug waiting to happen",
         "It is a syntax error in Vue 3",
         "It prevents the value from being reactive"
       ],
@@ -14,7 +14,7 @@
       "question": "Why is an event bus considered an anti-pattern in Vue 3?",
       "options": [
         "Event buses are too slow for production use",
-        "Vue 3 removed `$on`/`$off` — you must use a third-party lib",
+        "Vue 3 removed `$on`/`$off`: you must use a third-party lib",
         "It creates invisible dependencies making it impossible to trace who emits and who listens",
         "Event buses only work in Vue 2 with the Options API"
       ],

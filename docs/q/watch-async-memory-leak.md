@@ -75,6 +75,6 @@ See also: [Why does my watchEffect miss dependencies after an await?](/q/watchef
 
 ## References
 
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
-- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [watchEffect() - Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Composables guide - Vue docs](https://vuejs.org/guide/reusability/composables.html)

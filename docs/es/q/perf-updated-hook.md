@@ -198,6 +198,6 @@ Ver también: [¿Cómo agrupa Vue las actualizaciones del DOM?](/es/q/dom-update
 
 ## Referencias
 
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Lifecycle Hooks — Vue guide](https://vuejs.org/guide/essentials/lifecycle.html)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Lifecycle Hooks - Vue guide](https://vuejs.org/guide/essentials/lifecycle.html)

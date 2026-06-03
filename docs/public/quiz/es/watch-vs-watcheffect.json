@@ -6,7 +6,7 @@
         "`watch` se ejecuta inmediatamente; `watchEffect` es lazy por defecto",
         "`watchEffect` se ejecuta inmediatamente; `watch` es lazy por defecto",
         "Ambos se ejecutan inmediatamente al crearse",
-        "Ambos son lazy — ninguno se ejecuta hasta que cambia una dependencia"
+        "Ambos son lazy: ninguno se ejecuta hasta que cambia una dependencia"
       ],
       "answer": 1
     },

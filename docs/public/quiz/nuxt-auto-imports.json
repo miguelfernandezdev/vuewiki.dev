@@ -6,7 +6,7 @@
         "All components are registered with their filename only, regardless of folder",
         "The folder path becomes a prefix (e.g., base/Button.vue becomes <BaseButton />)",
         "Components are named using the full path with slashes replaced by dashes",
-        "Sub-folder names are ignored — only the filename matters"
+        "Sub-folder names are ignored: only the filename matters"
       ],
       "answer": 1
     },
@@ -23,10 +23,10 @@
     {
       "question": "Which directory structure in composables/ is NOT auto-imported by default in Nuxt?",
       "options": [
-        "composables/useAuth.ts — a top-level file",
-        "composables/useCounter.ts — a top-level file",
-        "composables/helpers/validate.ts — a nested file",
-        "composables/useSearch.ts — a top-level file"
+        "composables/useAuth.ts: a top-level file",
+        "composables/useCounter.ts: a top-level file",
+        "composables/helpers/validate.ts: a nested file",
+        "composables/useSearch.ts: a top-level file"
       ],
       "answer": 2
     }

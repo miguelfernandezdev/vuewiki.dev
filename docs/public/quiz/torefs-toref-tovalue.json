@@ -23,10 +23,10 @@
     {
       "question": "What does toValue() return when called with a plain number like toValue(3)?",
       "options": [
-        "ref(3) — it always wraps the input in a ref",
-        "3 — it passes plain values through unchanged",
-        "computed(() => 3) — it wraps it in a getter",
-        "reactive({ value: 3 }) — it normalizes to reactive"
+        "ref(3): it always wraps the input in a ref",
+        "3: it passes plain values through unchanged",
+        "computed(() => 3): it wraps it in a getter",
+        "reactive({ value: 3 }): it normalizes to reactive"
       ],
       "answer": 1
     }

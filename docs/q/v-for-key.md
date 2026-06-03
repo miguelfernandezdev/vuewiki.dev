@@ -10,7 +10,7 @@ When Vue renders a list with [`v-for`](https://vuejs.org/guide/essentials/list.h
 
 ## What goes wrong without a proper key
 
-Without a unique key, Vue reuses DOM elements by position. If you remove the second item from a list, Vue doesn't remove the second `<li>` — it updates the text of items 2, 3, 4... and removes the last one. This is efficient for simple text, but breaks when elements have their own state.
+Without a unique key, Vue reuses DOM elements by position. If you remove the second item from a list, Vue doesn't remove the second `<li>`. Instead, it updates the text of items 2, 3, 4... and removes the last one. This is efficient for simple text, but breaks when elements have their own state.
 
 ```vue
 <script setup lang="ts">
@@ -49,9 +49,9 @@ Type something in each input, then remove the first item. With `key=index`, the 
 ## The rules
 
 1. **Always use `:key`** on `v-for` elements.
-2. **Use a unique, stable identifier** — an `id` from your data, a database primary key, a slug. Something that stays the same across re-renders.
+2. **Use a unique, stable identifier**: an `id` from your data, a database primary key, a slug. Something that stays the same across re-renders.
 3. **Never use the array index as key** if items can be reordered, inserted, or removed. The index changes when the array changes, which defeats the purpose.
-4. **Keys must be primitives** — strings or numbers. Objects don't work.
+4. **Keys must be primitives**: strings or numbers. Objects don't work.
 
 ```vue
 <!-- ✅ Good: stable ID from the data -->

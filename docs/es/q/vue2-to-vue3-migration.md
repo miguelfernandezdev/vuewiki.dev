@@ -3,10 +3,10 @@ order: 168
 title: "¿Cómo planificarías una migración de Vue 2 a Vue 3?"
 difficulty: "advanced"
 tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]
-summary: "Usa @vue/compat (build de compatibilidad) para ejecutar código Vue 2 en Vue 3. Corrige advertencias de deprecación incrementalmente — no es una reescritura."
+summary: "Usa @vue/compat (build de compatibilidad) para ejecutar código Vue 2 en Vue 3. Corrige advertencias de deprecación incrementalmente. No es una reescritura."
 ---
 
-Una migración de Vue 2 a Vue 3 no es una reescritura total — es un proceso incremental. Vue 3 proporciona `@vue/compat` (el build de compatibilidad), que ejecuta el código Vue 2 existente sobre el runtime de Vue 3 y registra avisos de deprecación por cada API que hayas utilizado y que haya sido eliminada o modificada. Esto significa que puedes hacer el cambio en un día y seguir teniendo la aplicación funcionando, para luego ir resolviendo los problemas por categorías a lo largo de semanas o meses, a tu propio ritmo.
+Una migración de Vue 2 a Vue 3 no es una reescritura total. Es un proceso incremental. Vue 3 proporciona `@vue/compat` (el build de compatibilidad), que ejecuta el código Vue 2 existente sobre el runtime de Vue 3 y registra avisos de deprecación por cada API que hayas utilizado y que haya sido eliminada o modificada. Esto significa que puedes hacer el cambio en un día y seguir teniendo la aplicación funcionando, para luego ir resolviendo los problemas por categorías a lo largo de semanas o meses, a tu propio ritmo.
 
 ## Fase 1: Auditoría
 
@@ -14,14 +14,14 @@ Antes de tocar ningún código, necesitas saber con qué estás tratando. Una mi
 
 Recorre el código y documenta:
 
-- **Número de componentes** — te da una estimación aproximada del tamaño del trabajo que tienes por delante.
-- **Mixins** — cada mixin es un composable esperando a existir. Los mixins eran el mecanismo de reutilización de Vue 2, pero ocultan dependencias y provocan colisiones de nombres. En Vue 3 están desaconsejados en favor de los composables.
-- **Filtros** — la sintaxis `{{ price | currency }}` ha sido eliminada por completo en Vue 3. Cada filtro debe convertirse en una propiedad computada o en un método.
-- **Uso del event bus** — si tienes una instancia global de Vue usada como `bus.$on(...)` / `bus.$off(...)`, esos métodos de instancia ya no existen. Necesitas una estrategia de reemplazo.
-- **Stores de Vuex** — Vuex 4 funciona con Vue 3 (como puente), pero el movimiento recomendado a largo plazo es Pinia.
-- **Librerías de terceros** — este es habitualmente el mayor riesgo. Comprueba si cada librería tiene una versión compatible con Vue 3. Algunas librerías populares de Vue 2 fueron abandonadas y nunca actualizadas.
-- **Directivas personalizadas** — los nombres de los hooks del ciclo de vida de las directivas cambiaron en Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
-- **Render functions** — la firma de la función `h` cambió. Las props ahora son planas (sin objetos anidados `attrs`, `on`, `class`). En Vue 3, `h` se importa directamente desde Vue, no se recibe como parámetro.
+- **Número de componentes**: te da una estimación aproximada del tamaño del trabajo que tienes por delante.
+- **Mixins**: cada mixin es un composable esperando a existir. Los mixins eran el mecanismo de reutilización de Vue 2, pero ocultan dependencias y provocan colisiones de nombres. En Vue 3 están desaconsejados en favor de los composables.
+- **Filtros**: la sintaxis `{{ price | currency }}` ha sido eliminada por completo en Vue 3. Cada filtro debe convertirse en una propiedad computada o en un método.
+- **Uso del event bus**: si tienes una instancia global de Vue usada como `bus.$on(...)` / `bus.$off(...)`, esos métodos de instancia ya no existen. Necesitas una estrategia de reemplazo.
+- **Stores de Vuex**: Vuex 4 funciona con Vue 3 (como puente), pero el movimiento recomendado a largo plazo es Pinia.
+- **Librerías de terceros**: este es habitualmente el mayor riesgo. Comprueba si cada librería tiene una versión compatible con Vue 3. Algunas librerías populares de Vue 2 fueron abandonadas y nunca actualizadas.
+- **Directivas personalizadas**: los nombres de los hooks del ciclo de vida de las directivas cambiaron en Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
+- **Render functions**: la firma de la función `h` cambió. Las props ahora son planas (sin objetos anidados `attrs`, `on`, `class`). En Vue 3, `h` se importa directamente desde Vue, no se recibe como parámetro.
 
 Esta auditoría te da un alcance real de la migración. Sin ella, descubrirás bloqueos a mitad del proceso cuando sea más difícil recuperarse.
 
@@ -105,8 +105,8 @@ Esto te da una lista de verificación de migración por funcionalidad, aplicada 
 | --- | --- | --- |
 | Filtros (sintaxis de pipe `\|`) | Eliminados | Usa una propiedad computada o un método utilitario |
 | `$on` / `$off` / `$once` | Eliminados | Usa mitt, o provide/inject para eventos entre componentes |
-| `$listeners` | Eliminado | Se fusiona con `$attrs` — usa `v-bind="$attrs"` |
-| `$set` / `$delete` | Eliminados | La reactividad basada en Proxy es automática — ya no son necesarios |
+| `$listeners` | Eliminado | Se fusiona con `$attrs`, usa `v-bind="$attrs"` |
+| `$set` / `$delete` | Eliminados | La reactividad basada en Proxy es automática, ya no son necesarios |
 | Mixins | Desaconsejados | Extrae a composables |
 | Vuex | Opcional | Pinia es el reemplazo recomendado |
 | Options API | Todavía soportada | `<script setup>` es la alternativa moderna recomendada |
@@ -140,7 +140,7 @@ const app = createApp(App)
 app.mount('#app')
 ```
 
-Tras eliminar el build de compatibilidad, ejecuta toda tu suite de tests. Aquí es donde emergen los problemas silenciosos — cosas que el build de compatibilidad corregía sin avisar y que ya no corrige. Resuelve los fallos antes de continuar.
+Tras eliminar el build de compatibilidad, ejecuta toda tu suite de tests. Aquí es donde emergen los problemas silenciosos: cosas que el build de compatibilidad corregía sin avisar y que ya no corrige. Resuelve los fallos antes de continuar.
 
 En este punto tu aplicación está ejecutándose sobre Vue 3 estándar. Puedes continuar migrando componentes a `<script setup>` + TypeScript a tu propio ritmo, ya que la Options API sigue funcionando en Vue 3.
 
@@ -160,7 +160,7 @@ h('div', { attrs: { id: 'app' }, on: { click: handler } }, children)
 h('div', { id: 'app', onClick: handler }, children)
 ```
 
-**Módulos de Vuex con getters complejos.** Si estás migrando a Pinia, la composición de getters funciona de forma diferente. Los getters de Pinia reciben el estado del store directamente y pueden acceder a otros stores importándolos — no existe `rootState` ni `rootGetters`. Los árboles complejos de módulos Vuex requieren un mapeo cuidadoso.
+**Módulos de Vuex con getters complejos.** Si estás migrando a Pinia, la composición de getters funciona de forma diferente. Los getters de Pinia reciben el estado del store directamente y pueden acceder a otros stores importándolos. No existe `rootState` ni `rootGetters`. Los árboles complejos de módulos Vuex requieren un mapeo cuidadoso.
 
 ---
 

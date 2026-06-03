@@ -3,10 +3,10 @@
     {
       "question": "¿Cuál es el hook de ciclo de vida correcto para acceder a template refs e iniciar timers?",
       "options": [
-        "onBeforeMount — el componente está a punto de ser adjuntado",
-        "onCreated — se ejecuta inmediatamente cuando el componente se instancia",
-        "onMounted — el DOM está listo en este punto",
-        "onBeforeUpdate — se dispara antes de cada actualización reactiva"
+        "onBeforeMount: el componente está a punto de ser adjuntado",
+        "onCreated: se ejecuta inmediatamente cuando el componente se instancia",
+        "onMounted: el DOM está listo en este punto",
+        "onBeforeUpdate: se dispara antes de cada actualización reactiva"
       ],
       "answer": 2
     },

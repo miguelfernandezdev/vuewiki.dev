@@ -6,7 +6,7 @@ tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
 summary: "Watch the input ref and delay the query update with setTimeout. Extract it as a composable or use VueUse's refDebounced."
 ---
 
-Debouncing delays an action until the user stops typing for a set amount of time. Without it, a search input fires an API call on every keystroke — typing "vue router" sends 10 requests, most of which are useless because the user hasn't finished typing.
+Debouncing delays an action until the user stops typing for a set amount of time. Without it, a search input fires an API call on every keystroke. Typing "vue router" sends 10 requests, most of which are useless because the user hasn't finished typing.
 
 ## Inline approach
 
@@ -88,7 +88,7 @@ const debouncedQuery = refDebounced(searchQuery, 300)
 
 ## Debounce vs throttle
 
-**Debounce** waits until activity stops (fires once after the last event). **Throttle** fires at regular intervals during activity (at most once per interval). For search inputs, debounce is usually the right choice — you want to wait until the user finishes typing. For scroll or resize handlers, throttle is often better because you want periodic updates while the event is happening.
+**Debounce** waits until activity stops (fires once after the last event). **Throttle** fires at regular intervals during activity (at most once per interval). For search inputs, debounce is usually the right choice because you want to wait until the user finishes typing. For scroll or resize handlers, throttle is often better because you want periodic updates while the event is happening.
 
 See also: [What is VueUse?](/q/vueuse) · [How would you build a composable for data fetching?](/q/composable-data-fetching) · [What is a composable?](/q/what-is-a-composable)
 

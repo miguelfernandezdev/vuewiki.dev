@@ -3,7 +3,7 @@ order: 3
 title: "Is Vue a library or a framework? Why?"
 difficulty: "beginner"
 tags: ["core", "pinia", "vite"]
-summary: "Vue is a progressive framework — the core is a view library, but its official ecosystem (Router, Pinia, Vite) gives it full framework capabilities."
+summary: "Vue is a progressive framework. The core is a view library, but its official ecosystem (Router, Pinia, Vite) gives it full framework capabilities."
 ---
 
 Vue is officially described as a "[progressive framework](https://vuejs.org/guide/introduction.html)." The core package (`vue`) is a view library focused on rendering UI, comparable in scope to React. But unlike a pure library, Vue ships an official ecosystem ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Vite](https://vite.dev/) scaffolding, [DevTools](https://devtools.vuejs.org/), SSR) that gives it framework-level capabilities. You start with just the view layer and adopt more pieces as your project needs them.

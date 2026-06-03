@@ -67,7 +67,7 @@
   },
   "flashcards": {
     "title": "Flashcards",
-    "description": "Test your recall — see the question, think of the answer, then check yourself.",
+    "description": "Test your recall: see the question, think of the answer, then check yourself.",
     "start": "Start ({count} cards)",
     "reveal": "Reveal",
     "revealHint": "Think about your answer first",
@@ -93,7 +93,7 @@
   },
   "cta": {
     "missingTitle": "Got a question we haven't covered?",
-    "missingDesc": "Suggest it on GitHub — we're always adding new ones",
+    "missingDesc": "Suggest it on GitHub. We're always adding new ones",
     "missingAction": "Suggest",
     "contribute": "Contribute"
   },

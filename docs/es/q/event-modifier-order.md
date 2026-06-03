@@ -3,7 +3,7 @@ order: 18
 title: "¿Qué son los modificadores de eventos y por qué importa el orden?"
 difficulty: "intermediate"
 tags: ["directives"]
-summary: "Los modificadores se compilan de izquierda a derecha — .prevent.self y .self.prevent producen comportamientos distintos. El orden importa."
+summary: "Los modificadores se compilan de izquierda a derecha. .prevent.self y .self.prevent producen comportamientos distintos. El orden importa."
 ---
 
 Los modificadores de eventos son sufijos en `v-on` (o `@`) que gestionan patrones comunes de eventos de forma declarativa. Vue los compila a JavaScript en el orden exacto en que los escribes, y ese orden cambia el comportamiento.

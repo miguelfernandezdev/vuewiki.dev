@@ -6,11 +6,11 @@ tags: ["testing", "vitest", "v-model"]
 summary: "Vitest + @vue/test-utils: mount() para tests de integración con hijos, shallowMount() para tests aislados del padre. Se ejecuta en jsdom o happy-dom."
 ---
 
-Vitest ejecuta tests de componentes Vue usando `@vue/test-utils` para montar componentes y la propia API de aserciones de Vitest. Los tests corren en un entorno DOM simulado (jsdom o happy-dom), no en un navegador real, lo que mantiene el ciclo de feedback rápido. La contrapartida es que las APIs específicas del navegador son mocked — para comportamiento real de navegador, considera Playwright o Cypress.
+Vitest ejecuta tests de componentes Vue usando `@vue/test-utils` para montar componentes y la propia API de aserciones de Vitest. Los tests corren en un entorno DOM simulado (jsdom o happy-dom), no en un navegador real, lo que mantiene el ciclo de feedback rápido. La contrapartida es que las APIs específicas del navegador son mocked. Para comportamiento real de navegador, considera Playwright o Cypress.
 
 ## Montar un componente
 
-`@vue/test-utils` ofrece dos estrategias de montaje. `mount` renderiza el árbol completo de componentes incluyendo los hijos — ideal para tests de integración donde el comportamiento de los hijos importa. `shallowMount` reemplaza los componentes hijo con stubs — útil cuando quieres testear un componente padre de forma aislada sin arrastrar hijos complejos.
+`@vue/test-utils` ofrece dos estrategias de montaje. `mount` renderiza el árbol completo de componentes incluyendo los hijos, lo que es ideal para tests de integración donde el comportamiento de los hijos importa. `shallowMount` reemplaza los componentes hijo con stubs, lo que es útil cuando quieres testear un componente padre de forma aislada sin arrastrar hijos complejos.
 
 ```ts
 import { describe, it, expect } from 'vitest'
@@ -41,7 +41,7 @@ describe('TodoList', () => {
 })
 ```
 
-Usa `wrapper.find()` para localizar un único elemento y `wrapper.findAll()` para varios. Prefiere atributos `data-testid` antes que clases CSS o etiquetas de elemento — expresan la intención y son resistentes a refactorizaciones de estilos.
+Usa `wrapper.find()` para localizar un único elemento y `wrapper.findAll()` para varios. Prefiere atributos `data-testid` antes que clases CSS o etiquetas de elemento. Expresan la intención y son resistentes a refactorizaciones de estilos.
 
 ## Testar interacciones del usuario
 
@@ -78,7 +78,7 @@ Si necesitas esperar algo más allá del siguiente ciclo de renderizado, usa la 
 
 ## Testar props y eventos emitidos
 
-Los componentes se comunican hacia afuera mediante emits. `wrapper.emitted()` devuelve un objeto donde cada clave es el nombre de un evento y el valor es un array de arrays — un array interior por cada emisión, con los argumentos que se pasaron en ese momento.
+Los componentes se comunican hacia afuera mediante emits. `wrapper.emitted()` devuelve un objeto donde cada clave es el nombre de un evento y el valor es un array de arrays (un array interior por cada emisión, con los argumentos que se pasaron en ese momento).
 
 ```ts
 import { describe, it, expect } from 'vitest'
@@ -107,7 +107,7 @@ describe('CheckboxItem', () => {
 
 ## Testar composables
 
-Los composables son funciones normales — testéalos llamándolos directamente y verificando los refs que devuelven. No hace falta montar ningún componente, lo que hace que estos tests sean los más sencillos de escribir.
+Los composables son funciones normales. Testéalos llamándolos directamente y verificando los refs que devuelven. No hace falta montar ningún componente, lo que hace que estos tests sean los más sencillos de escribir.
 
 ```ts
 import { it, expect } from 'vitest'
@@ -126,7 +126,7 @@ Un matiz importante: los composables que usan hooks de ciclo de vida (`onMounted
 
 ## Mocking
 
-Usa `vi.fn()` para crear un mock de callback que puedes pasar como prop y verificar después. Usa `vi.mock()` para reemplazar un módulo completo — útil para hacer mock de llamadas a APIs o servicios de terceros.
+Usa `vi.fn()` para crear un mock de callback que puedes pasar como prop y verificar después. Usa `vi.mock()` para reemplazar un módulo completo, lo que es útil para hacer mock de llamadas a APIs o servicios de terceros.
 
 ```ts
 import { describe, it, expect, vi } from 'vitest'
@@ -163,7 +163,7 @@ describe('UserProfile', () => {
 
 ## Qué testear
 
-Céntrate en el comportamiento observable desde fuera — lo que el usuario ve o lo que el componente comunica a su padre.
+Céntrate en el comportamiento observable desde fuera: lo que el usuario ve o lo que el componente comunica a su padre.
 
 | Test | Ejemplo |
 | --- | --- |

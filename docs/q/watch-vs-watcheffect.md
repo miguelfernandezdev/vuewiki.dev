@@ -30,7 +30,7 @@ watch([firstName, lastName], ([newFirst, newLast], [oldFirst, oldLast]) => {
 })
 ```
 
-`watch` is **lazy by default** — it doesn't run until the source actually changes. Add `{ immediate: true }` if you need it to run once immediately.
+`watch` is **lazy by default**. It doesn't run until the source actually changes. Add `{ immediate: true }` if you need it to run once immediately.
 
 ## watchEffect: Vue figures out the dependencies
 
@@ -50,7 +50,7 @@ watchEffect(async () => {
 })
 ```
 
-You don't list dependencies anywhere — Vue detects them at runtime by observing which reactive values your code actually reads.
+You don't list dependencies anywhere. Vue detects them at runtime by observing which reactive values your code actually reads.
 
 ## When to use which
 

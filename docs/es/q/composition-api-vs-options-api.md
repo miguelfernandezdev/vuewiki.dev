@@ -10,7 +10,7 @@ Vue ofrece dos formas de escribir la lógica de un componente.
 
 ## Options API
 
-La [Options API](https://vuejs.org/guide/introduction.html#options-api) es el estilo original de Vue. Exportas un objeto con claves predefinidas — `data` para el estado, `methods` para funciones, `computed` para valores derivados, `watch` para efectos secundarios. Vue lee esas claves y conecta todo internamente.
+La [Options API](https://vuejs.org/guide/introduction.html#options-api) es el estilo original de Vue. Exportas un objeto con claves predefinidas: `data` para el estado, `methods` para funciones, `computed` para valores derivados, `watch` para efectos secundarios. Vue lee esas claves y conecta todo internamente.
 
 ```vue
 <script>
@@ -44,7 +44,7 @@ function increment() { count.value++ }
 </script>
 ```
 
-El estado reactivo (`ref`), los valores derivados (`computed`) y las funciones conviven juntos. Cuando el componente crece, puedes extraer la lógica relacionada en un [composable](/es/q/what-is-a-composable) — una función que devuelve estado reactivo — y reutilizarlo en otros componentes.
+El estado reactivo (`ref`), los valores derivados (`computed`) y las funciones conviven juntos. Cuando el componente crece, puedes extraer la lógica relacionada en un [composable](/es/q/what-is-a-composable) (una función que devuelve estado reactivo) y reutilizarlo en otros componentes.
 
 ## Por qué la Composition API gana en proyectos reales
 

@@ -65,6 +65,6 @@ See also: [How do toRefs, toRef, and toValue work?](/q/torefs-toref-tovalue) · 
 
 ## References
 
-- [toRefs() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
-- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
-- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [toRefs() - Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
+- [reactive() - Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [Reactivity Fundamentals - Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

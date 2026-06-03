@@ -123,6 +123,6 @@ Ver también: [¿Qué es el problema de identidad del proxy en reactividad?](/es
 
 ## Referencias
 
-- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [Proxy — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+- [reactive() - Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

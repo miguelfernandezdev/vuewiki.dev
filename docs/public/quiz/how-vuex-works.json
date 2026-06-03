@@ -3,10 +3,10 @@
     {
       "question": "In Vuex, what is the ONLY way to change state, and what constraint must they follow?",
       "options": [
-        "Actions — they must be synchronous",
-        "Getters — they derive new state synchronously",
-        "Mutations — they must be synchronous",
-        "Dispatches — they can be async or sync"
+        "Actions: they must be synchronous",
+        "Getters: they derive new state synchronously",
+        "Mutations: they must be synchronous",
+        "Dispatches: they can be async or sync"
       ],
       "answer": 2
     },

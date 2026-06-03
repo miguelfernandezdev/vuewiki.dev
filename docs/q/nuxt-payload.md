@@ -87,7 +87,7 @@ Raw `$fetch` in `<script setup>` runs during SSR and then runs again during clie
 
 ## Payload serialization with devalue
 
-Since Nuxt 3.4+, the payload is serialized using [devalue](https://github.com/Rich-Harris/devalue) instead of plain JSON. This means built-in types like `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined`, and even cyclic references are handled automatically — no custom code needed.
+Since Nuxt 3.4+, the payload is serialized using [devalue](https://github.com/Rich-Harris/devalue) instead of plain JSON. This means built-in types like `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined`, and even cyclic references are handled automatically. No custom code needed.
 
 Custom reducers and revivers are only necessary for **custom class instances** that devalue doesn't know about:
 

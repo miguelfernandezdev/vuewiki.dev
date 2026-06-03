@@ -25,7 +25,7 @@
       "options": [
         "height, width, and margin for natural layout transitions",
         "top, left, right, bottom for position animations",
-        "transform and opacity — they are GPU-accelerated and don't trigger layout",
+        "transform and opacity: they are GPU-accelerated and don't trigger layout",
         "display and visibility for show/hide transitions"
       ],
       "answer": 2

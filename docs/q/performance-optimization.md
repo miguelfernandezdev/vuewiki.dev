@@ -6,7 +6,7 @@ tags: ["performance", "vite", "watchers", "slots"]
 summary: "Measure first, then fix: lazy loading, v-once/v-memo, shallowRef for large data, virtual lists, code splitting. Never optimize without profiling."
 ---
 
-Performance optimization is not a list of tricks to apply upfront — it is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.
+Performance optimization is not a list of tricks to apply upfront. It is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.
 
 ## Rendering optimizations
 
@@ -14,7 +14,7 @@ Vue's reactivity system is efficient by design, but it cannot know which parts o
 
 ### `v-once` for static content
 
-`v-once` renders the element or component exactly once and then completely removes it from Vue's reactivity tracking. The virtual DOM will never diff it again. Use it for content that is genuinely static for the lifetime of the page — legal footers, about-page copy, icon sprites.
+`v-once` renders the element or component exactly once and then completely removes it from Vue's reactivity tracking. The virtual DOM will never diff it again. Use it for content that is genuinely static for the lifetime of the page: legal footers, about-page copy, icon sprites.
 
 ```vue
 <template>
@@ -55,11 +55,11 @@ defineProps<{
 </template>
 ```
 
-With 1,000 items in the list, selecting a different row causes Vue to re-render only the two rows whose `v-memo` value changed — not all 1,000.
+With 1,000 items in the list, selecting a different row causes Vue to re-render only the two rows whose `v-memo` value changed, not all 1,000.
 
 ### `shallowRef` and `shallowReactive` for large objects
 
-By default, `ref()` and `reactive()` make every nested property reactive. For a configuration object with hundreds of keys, or a read-heavy data structure you receive from an API and never mutate deeply, this is wasteful — Vue walks the entire object at initialization to attach tracking. `shallowRef` and `shallowReactive` make only the top level reactive, which is enough when you replace the object wholesale rather than mutating nested properties.
+By default, `ref()` and `reactive()` make every nested property reactive. For a configuration object with hundreds of keys, or a read-heavy data structure you receive from an API and never mutate deeply, this is wasteful because Vue walks the entire object at initialization to attach tracking. `shallowRef` and `shallowReactive` make only the top level reactive, which is enough when you replace the object wholesale rather than mutating nested properties.
 
 ```vue
 <script setup lang="ts">
@@ -87,7 +87,7 @@ function updateConfig(next: Config) {
 
 ### `computed` caching vs calling a method repeatedly
 
-A `computed` property is cached: Vue evaluates the function once and returns the cached result on every subsequent access until one of its reactive dependencies changes. A method call has no cache — it runs on every render. If you have an expensive filter or sort operation that does not need to run on every keystroke, make it a `computed`, not a method.
+A `computed` property is cached: Vue evaluates the function once and returns the cached result on every subsequent access until one of its reactive dependencies changes. A method call has no cache; it runs on every render. If you have an expensive filter or sort operation that does not need to run on every keystroke, make it a `computed`, not a method.
 
 ```vue
 <script setup lang="ts">
@@ -107,7 +107,7 @@ function getSortedItems() {
 
 ## Loading optimizations
 
-Rendering performance only matters once the app is in the browser. Getting it there faster — by shipping less JavaScript on the critical path — is often where the biggest wins come from.
+Rendering performance only matters once the app is in the browser. Getting it there faster by shipping less JavaScript on the critical path is often where the biggest wins come from.
 
 ### Route-level code splitting
 
@@ -141,7 +141,7 @@ export default router
 
 ### `defineAsyncComponent` for heavy components
 
-You can apply the same lazy-loading pattern to individual components — not just routes. A rich text editor, a PDF viewer, or a chart library may add hundreds of KB to your bundle. `defineAsyncComponent` defers loading until the component is actually rendered.
+You can apply the same lazy-loading pattern to individual components, not just routes. A rich text editor, a PDF viewer, or a chart library may add hundreds of KB to your bundle. `defineAsyncComponent` defers loading until the component is actually rendered.
 
 ```vue
 <script setup lang="ts">
@@ -168,7 +168,7 @@ const ChartWidget = defineAsyncComponent({
 
 ### Lazy hydration in Nuxt
 
-In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the component enters the viewport (or is needed). The component is still server-rendered as HTML, but the client-side hydration — which is what makes it interactive — is delayed. This directly improves Time to Interactive on content-heavy pages.
+In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the component enters the viewport (or is needed). The component is still server-rendered as HTML, but the client-side hydration (which is what makes it interactive) is delayed. This directly improves Time to Interactive on content-heavy pages.
 
 ```vue
 <template>
@@ -183,7 +183,7 @@ In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the compo
 
 ## List performance
 
-Long lists are one of the most predictable performance problems in frontend apps. If you render 1,000 `<li>` elements in the DOM, the browser has to lay out and paint all 1,000 — even the ones that are off-screen. Virtual scrolling fixes this by rendering only the rows visible in the viewport at any given time (typically 20–50 items), recycling DOM nodes as the user scrolls.
+Long lists are one of the most predictable performance problems in frontend apps. If you render 1,000 `<li>` elements in the DOM, the browser has to lay out and paint all 1,000, even the ones that are off-screen. Virtual scrolling fixes this by rendering only the rows visible in the viewport at any given time (typically 20–50 items), recycling DOM nodes as the user scrolls.
 
 For Vue, [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) and [@tanstack/virtual](https://tanstack.com/virtual/latest) are the two common choices. The principle is the same: you pass the full data array, the library calculates which slice is visible, and only those items exist in the DOM.
 
@@ -213,7 +213,7 @@ defineProps<{ users: User[] }>()
 </template>
 ```
 
-**Props stability** is a related pattern. When you pass computed values into a list item that change on every parent re-render, every item re-renders too — even when its own data did not change. Prefer passing the derived boolean directly:
+**Props stability** is a related pattern. When you pass computed values into a list item that change on every parent re-render, every item re-renders too, even when its own data did not change. Prefer passing the derived boolean directly:
 
 ```vue
 <!-- Unstable: `activeId` prop changes cause all items to re-render -->
@@ -239,7 +239,7 @@ Vue's reactivity system has a cost proportional to how many reactive dependencie
 
 **Prefer `computed` over `watch`.** A `watch` runs side effects and is harder for Vue to optimize. A `computed` is a pure derived value that is only recalculated when its inputs change. Most data transformations belong in a `computed`.
 
-**Do not make everything reactive.** Data that you only read and never mutate — lookup tables, enum maps, static translations — does not need to be reactive at all. Declare it as a plain `const`, or freeze it with `Object.freeze` to signal that intent and prevent accidental deep observation.
+**Do not make everything reactive.** Data that you only read and never mutate (lookup tables, enum maps, static translations) does not need to be reactive at all. Declare it as a plain `const`, or freeze it with `Object.freeze` to signal that intent and prevent accidental deep observation.
 
 ```ts
 // No reactivity overhead — Vue won't try to observe this
@@ -264,14 +264,14 @@ No optimization effort is complete without measurement. These are the tools you 
 | vite-bundle-visualizer | Bundle composition and sizes |
 | Network tab | Redundant requests, large payloads |
 
-The Vue DevTools Performance tab is the most useful starting point for runtime problems — it shows you which component is re-rendering, how often, and for how long. The Browser Performance tab goes deeper into the main thread, showing JavaScript execution alongside layout and paint. Lighthouse gives you a summary score and specific CWV metrics (LCP, CLS, INP) that reflect what real users experience. `vite-bundle-visualizer` (`npx vite-bundle-visualizer`) visualizes your output chunks as a treemap, which makes it obvious when a single dependency is dominating your bundle.
+The Vue DevTools Performance tab is the most useful starting point for runtime problems. It shows you which component is re-rendering, how often, and for how long. The Browser Performance tab goes deeper into the main thread, showing JavaScript execution alongside layout and paint. Lighthouse gives you a summary score and specific CWV metrics (LCP, CLS, INP) that reflect what real users experience. `vite-bundle-visualizer` (`npx vite-bundle-visualizer`) visualizes your output chunks as a treemap, which makes it obvious when a single dependency is dominating your bundle.
 
 ## Common mistakes
 
-- **Optimizing before measuring.** Premature optimization is not just wasteful — it can make code worse for no real gain.
+- **Optimizing before measuring.** Premature optimization is not just wasteful. It can make code worse for no real gain.
 - **Making everything reactive.** Static data, constants, and lookup maps do not need to go inside `ref` or `reactive`.
 - **Not code-splitting routes.** A single synchronous import graph for the entire app means the user downloads all of it before anything renders.
-- **Deep watching large objects.** `{ deep: true }` on a complex object traverses every key on every change — use a targeted getter instead.
+- **Deep watching large objects.** `{ deep: true }` on a complex object traverses every key on every change. Use a targeted getter instead.
 - **Ignoring props stability in lists.** Passing unstable derived values as props causes entire lists to re-render when only one item changed.
 
 ---

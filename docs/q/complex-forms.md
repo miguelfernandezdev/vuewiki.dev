@@ -6,7 +6,7 @@ tags: ["components", "composables", "v-model"]
 summary: "Use a reactive object for form data, a parallel object for errors, and extract validation into a composable. For large forms, consider VeeValidate or FormKit."
 ---
 
-A "complex form" usually means one or more of: many fields, multi-step wizards, dynamic sections (add/remove fields), nested objects, cross-field validation, or async validation (check if username is taken). The challenge isn't any single field — it's keeping validation, state, dirty tracking, and submit logic organized as the form grows.
+A "complex form" usually means one or more of: many fields, multi-step wizards, dynamic sections (add/remove fields), nested objects, cross-field validation, or async validation (check if username is taken). The challenge isn't any single field. It's keeping validation, state, dirty tracking, and submit logic organized as the form grows.
 
 ## The core pattern: reactive state + composable validation
 
@@ -136,7 +136,7 @@ async function handleSubmit() {
 
 Build your own composable when the form is specific to your app and doesn't need complex features. Use a library when you need:
 
-- **Schema-based validation** (Zod, Yup, Valibot) — shared between frontend and backend
+- **Schema-based validation** (Zod, Yup, Valibot), shared between frontend and backend
 - **Multi-step wizards** with per-step validation
 - **Dynamic array fields** (add/remove repeating sections)
 - **Async validation** with debouncing (username availability checks)

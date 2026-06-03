@@ -15,7 +15,7 @@
       "options": [
         "Use inline styles on all teleported elements",
         "Use !important in the scoped styles",
-        "Use CSS Modules — class names are hashed at build time, so scoping doesn't depend on DOM position",
+        "Use CSS Modules: class names are hashed at build time, so scoping doesn't depend on DOM position",
         "Add the data-v attribute manually to teleported elements"
       ],
       "answer": 2
@@ -24,7 +24,7 @@
       "question": "Which option works but is considered a poor practice for styling teleported content?",
       "options": [
         "Using a separate non-scoped <style> block with prefixed class names",
-        "Using :deep() in a scoped block — it works but defeats the purpose of scoping",
+        "Using :deep() in a scoped block: it works but defeats the purpose of scoping",
         "Using CSS Modules for the teleported elements",
         "Moving teleported content into its own component with its own styles"
       ],

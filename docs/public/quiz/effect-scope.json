@@ -13,10 +13,10 @@
     {
       "question": "What is `onScopeDispose` analogous to in component lifecycle terms?",
       "options": [
-        "`onBeforeMount` — runs before the scope starts executing",
-        "`onUnmounted` — registers a cleanup callback that runs when the scope stops",
-        "`onUpdated` — runs after each time the scope's effects re-run",
-        "`onErrorCaptured` — catches errors thrown inside the scope"
+        "`onBeforeMount`: runs before the scope starts executing",
+        "`onUnmounted`: registers a cleanup callback that runs when the scope stops",
+        "`onUpdated`: runs after each time the scope's effects re-run",
+        "`onErrorCaptured`: catches errors thrown inside the scope"
       ],
       "answer": 1
     },

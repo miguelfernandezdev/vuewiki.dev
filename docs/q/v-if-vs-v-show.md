@@ -6,11 +6,11 @@ tags: ["directives"]
 summary: "v-if adds/removes elements from the DOM (higher toggle cost, zero render cost when hidden). v-show toggles CSS display (cheap toggle, always rendered)."
 ---
 
-Both hide and show elements based on a condition, but they do it in completely different ways — and that difference has real performance implications.
+Both hide and show elements based on a condition, but they do it in completely different ways, and that difference has real performance implications.
 
 ## v-if: adds and removes from the DOM
 
-[`v-if`](https://vuejs.org/guide/essentials/conditional.html#v-if) completely removes the element (and its children, components, event listeners) from the DOM when the condition is `false`. When it becomes `true`, Vue creates everything from scratch — runs `setup`, mounts the component, triggers `onMounted`.
+[`v-if`](https://vuejs.org/guide/essentials/conditional.html#v-if) completely removes the element (and its children, components, event listeners) from the DOM when the condition is `false`. When it becomes `true`, Vue creates everything from scratch: runs `setup`, mounts the component, triggers `onMounted`.
 
 ```vue
 <template>
@@ -21,7 +21,7 @@ Both hide and show elements based on a condition, but they do it in completely d
 </template>
 ```
 
-This means toggling `v-if` is expensive: Vue has to tear down and rebuild the DOM subtree every time. But if the condition is `false` on initial render, nothing is created at all — zero cost.
+This means toggling `v-if` is expensive: Vue has to tear down and rebuild the DOM subtree every time. But if the condition is `false` on initial render, nothing is created at all. Zero cost.
 
 ## v-show: hides with CSS
 

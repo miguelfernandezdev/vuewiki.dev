@@ -13,7 +13,7 @@
     {
       "question": "¿Cuándo importa el ORDEN de los modificadores en las directivas de evento de Vue?",
       "options": [
-        "Siempre — cada combinación de modificadores es sensible al orden",
+        "Siempre: cada combinación de modificadores es sensible al orden",
         "Solo cuando se usan los modificadores .capture o .passive",
         "Cuando un modificador es condicional (.self) y otro tiene efectos secundarios",
         "Solo cuando se encadenan más de tres modificadores juntos"

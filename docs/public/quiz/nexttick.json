@@ -4,7 +4,7 @@
       "question": "Why does reading the DOM immediately after changing reactive state return stale values?",
       "options": [
         "Vue's reactivity system debounces all updates by 16ms for animation frame alignment",
-        "Vue batches DOM updates asynchronously — the update happens in the next microtask",
+        "Vue batches DOM updates asynchronously: the update happens in the next microtask",
         "Template refs are only refreshed during the component's update lifecycle hook",
         "The browser's rendering pipeline delays DOM reflection until the next paint"
       ],

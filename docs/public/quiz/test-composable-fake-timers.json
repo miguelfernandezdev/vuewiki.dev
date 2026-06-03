@@ -23,10 +23,10 @@
     {
       "question": "When testing a composable that calls start() to begin setInterval directly, is await nextTick() needed before advancing time?",
       "options": [
-        "Yes — nextTick is always required before timer advancement",
-        "No — start() creates the setInterval synchronously without a reactive watcher involved",
-        "Yes — setInterval is async and needs a tick to register",
-        "No — vi.useFakeTimers() automatically flushes the reactivity queue"
+        "Yes: nextTick is always required before timer advancement",
+        "No: start() creates the setInterval synchronously without a reactive watcher involved",
+        "Yes: setInterval is async and needs a tick to register",
+        "No: vi.useFakeTimers() automatically flushes the reactivity queue"
       ],
       "answer": 1
     }

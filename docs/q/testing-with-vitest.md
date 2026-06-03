@@ -6,11 +6,11 @@ tags: ["testing", "vitest", "v-model"]
 summary: "Vitest + @vue/test-utils: mount() for integration tests with children, shallowMount() for isolated parent tests. Runs in jsdom or happy-dom."
 ---
 
-Vitest runs Vue component tests using `@vue/test-utils` for mounting components and Vitest's own assertion API. Tests execute in a simulated DOM environment (jsdom or happy-dom), not a real browser, which keeps the feedback loop fast. The trade-off is that browser-specific APIs are mocked — for real browser behavior, consider Playwright or Cypress.
+Vitest runs Vue component tests using `@vue/test-utils` for mounting components and Vitest's own assertion API. Tests execute in a simulated DOM environment (jsdom or happy-dom), not a real browser, which keeps the feedback loop fast. The trade-off is that browser-specific APIs are mocked. For real browser behavior, consider Playwright or Cypress.
 
 ## Mounting a component
 
-`@vue/test-utils` gives you two mounting strategies. `mount` renders the full component tree including children — good for integration-style tests where child behavior matters. `shallowMount` replaces child components with stubs — useful when you want to test a parent component in isolation without pulling in complex children.
+`@vue/test-utils` gives you two mounting strategies. `mount` renders the full component tree including children, which is good for integration-style tests where child behavior matters. `shallowMount` replaces child components with stubs, which is useful when you want to test a parent component in isolation without pulling in complex children.
 
 ```ts
 import { describe, it, expect } from 'vitest'
@@ -41,7 +41,7 @@ describe('TodoList', () => {
 })
 ```
 
-Use `wrapper.find()` to locate a single element and `wrapper.findAll()` for multiple. Prefer `data-testid` attributes over CSS classes or element tags — they express intent and are resilient to style refactors.
+Use `wrapper.find()` to locate a single element and `wrapper.findAll()` for multiple. Prefer `data-testid` attributes over CSS classes or element tags. They express intent and are resilient to style refactors.
 
 ## Testing user interactions
 
@@ -78,7 +78,7 @@ If you need to wait for something beyond the next render cycle, use the right to
 
 ## Testing props and emitted events
 
-Components communicate outward via emits. `wrapper.emitted()` returns an object where each key is an event name and the value is an array of arrays — one inner array per emission, each holding the arguments passed that time.
+Components communicate outward via emits. `wrapper.emitted()` returns an object where each key is an event name and the value is an array of arrays (one inner array per emission, each holding the arguments passed that time).
 
 ```ts
 import { describe, it, expect } from 'vitest'
@@ -107,7 +107,7 @@ describe('CheckboxItem', () => {
 
 ## Testing composables
 
-Composables are plain functions — test them by calling them directly and asserting on the returned refs. No component mounting needed, which makes these tests the simplest to write.
+Composables are plain functions. Test them by calling them directly and asserting on the returned refs. No component mounting needed, which makes these tests the simplest to write.
 
 ```ts
 import { it, expect } from 'vitest'
@@ -126,7 +126,7 @@ One caveat: composables that use lifecycle hooks (`onMounted`, `onUnmounted`) ne
 
 ## Mocking
 
-Use `vi.fn()` to create a mock callback you can pass as a prop and assert on. Use `vi.mock()` to replace an entire module — useful for mocking API calls or third-party services.
+Use `vi.fn()` to create a mock callback you can pass as a prop and assert on. Use `vi.mock()` to replace an entire module, which is useful for mocking API calls or third-party services.
 
 ```ts
 import { describe, it, expect, vi } from 'vitest'
@@ -163,7 +163,7 @@ describe('UserProfile', () => {
 
 ## What to test
 
-Focus on behavior observable from the outside — what the user sees or what the component communicates to its parent.
+Focus on behavior observable from the outside: what the user sees or what the component communicates to its parent.
 
 | Test | Example |
 | --- | --- |

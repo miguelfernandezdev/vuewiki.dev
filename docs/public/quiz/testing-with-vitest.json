@@ -25,7 +25,7 @@
       "options": [
         "The most recent value emitted",
         "A boolean indicating if the event was emitted at least once",
-        "An array of arrays — one inner array per emission, each holding the arguments passed",
+        "An array of arrays: one inner array per emission, each holding the arguments passed",
         "A ref that updates reactively each time the event is emitted"
       ],
       "answer": 2

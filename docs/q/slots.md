@@ -6,7 +6,7 @@ tags: ["components", "slots"]
 summary: "Slots let a parent pass template content into a child. Default slots for content, named slots for multiple areas, scoped slots for data from the child."
 ---
 
-[Slots](https://vuejs.org/guide/components/slots.html) let a parent component pass template content into a child. Instead of the child deciding what to render, the parent provides the markup and the child decides where to place it. This makes components flexible — a `Card` doesn't need a prop for every possible layout variation; it provides a slot and the parent fills it in.
+[Slots](https://vuejs.org/guide/components/slots.html) let a parent component pass template content into a child. Instead of the child deciding what to render, the parent provides the markup and the child decides where to place it. This makes components flexible: a `Card` doesn't need a prop for every possible layout variation; it provides a slot and the parent fills it in.
 
 ## Default slot
 
@@ -82,7 +82,7 @@ defineProps<{ items: string[] }>()
 </ItemList>
 ```
 
-The child owns the data and the loop. The parent owns the rendering. This is the **render delegation pattern** — the same idea behind headless UI libraries like [Headless UI](https://headlessui.com/) and [Radix Vue](https://www.radix-vue.com/).
+The child owns the data and the loop. The parent owns the rendering. This is the **render delegation pattern**, the same idea behind headless UI libraries like [Headless UI](https://headlessui.com/) and [Radix Vue](https://www.radix-vue.com/).
 
 ## When to use slots vs props
 

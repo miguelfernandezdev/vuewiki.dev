@@ -6,7 +6,7 @@ tags: ["performance", "vue-router", "vite"]
 summary: "Use dynamic import() in route definitions and defineAsyncComponent. Vite automatically creates separate chunks that load on demand."
 ---
 
-Code splitting breaks your app into smaller JavaScript files (chunks) that load on demand instead of all at once. Lazy loading means loading a chunk only when the user actually needs it — navigating to a route, opening a modal, scrolling to a section. Vite handles this automatically when you use dynamic `import()`.
+Code splitting breaks your app into smaller JavaScript files (chunks) that load on demand instead of all at once. Lazy loading means loading a chunk only when the user actually needs it: navigating to a route, opening a modal, scrolling to a section. Vite handles this automatically when you use dynamic `import()`.
 
 ## Route-level code splitting
 
@@ -161,7 +161,7 @@ export default defineConfig({
 | Admin section most users never visit | Separate route chunk |
 | Components always visible on load | Don't split (adds latency) |
 
-The biggest win is route-level splitting — it's the default in Vue Router and costs nothing to implement. Component-level splitting is for specific heavy components where the additional network request is worth the smaller initial bundle.
+The biggest win is route-level splitting. It's the default in Vue Router and costs nothing to implement. Component-level splitting is for specific heavy components where the additional network request is worth the smaller initial bundle.
 
 See also: [What are async components?](/q/async-components) · [How does Vue Router work?](/q/vue-router-navigation-guards) · [What is Vite?](/q/what-is-vite)
 

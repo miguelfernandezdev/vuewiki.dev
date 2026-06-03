@@ -6,7 +6,7 @@
         "Only server middleware",
         "Both server middleware and route middleware",
         "Only route middleware",
-        "Neither — no middleware runs on client navigation"
+        "Neither: no middleware runs on client navigation"
       ],
       "answer": 2
     },
@@ -14,7 +14,7 @@
       "question": "Can route middleware protect an API endpoint from unauthorized access?",
       "options": [
         "Yes, route middleware blocks all requests including API calls",
-        "No — route middleware only affects page navigations, not direct API calls",
+        "No: route middleware only affects page navigations, not direct API calls",
         "Yes, but only if marked as .global",
         "Yes, if placed in server/middleware/"
       ],

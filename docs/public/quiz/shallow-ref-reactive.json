@@ -4,9 +4,9 @@
       "question": "What does shallowRef track compared to a regular ref?",
       "options": [
         "Only primitive values, not objects",
-        "Only .value replacement — mutations to nested properties are NOT tracked",
+        "Only .value replacement: mutations to nested properties are NOT tracked",
         "Only the first level of nested properties",
-        "Nothing — shallowRef disables reactivity entirely"
+        "Nothing: shallowRef disables reactivity entirely"
       ],
       "answer": 1
     },

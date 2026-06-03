@@ -186,7 +186,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-Because the client-side `useCookie('auth-token')` composable reads and writes the cookie directly (for login, logout, and the `loggedIn` check), the cookie must NOT be `httpOnly`. An `httpOnly` cookie cannot be accessed by JavaScript at all — `useCookie` would read `null`. If you need the stronger XSS protection of `httpOnly` cookies, the server must manage all cookie operations and the client should NOT use `useCookie` to read the token. Instead, check auth state through a server endpoint like `/api/auth/me`.
+Because the client-side `useCookie('auth-token')` composable reads and writes the cookie directly (for login, logout, and the `loggedIn` check), the cookie must NOT be `httpOnly`. An `httpOnly` cookie cannot be accessed by JavaScript at all, so `useCookie` would read `null`. If you need the stronger XSS protection of `httpOnly` cookies, the server must manage all cookie operations and the client should NOT use `useCookie` to read the token. Instead, check auth state through a server endpoint like `/api/auth/me`.
 
 ## How the pieces connect
 

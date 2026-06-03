@@ -10,7 +10,7 @@ Cuando Vue renderiza una lista con [`v-for`](https://vuejs.org/guide/essentials/
 
 ## Qué falla sin una key adecuada
 
-Sin una key única, Vue reutiliza los elementos del DOM por posición. Si eliminas el segundo elemento de una lista, Vue no elimina el segundo `<li>` — actualiza el texto de los elementos 2, 3, 4... y elimina el último. Esto es eficiente para texto simple, pero falla cuando los elementos tienen su propio estado.
+Sin una key única, Vue reutiliza los elementos del DOM por posición. Si eliminas el segundo elemento de una lista, Vue no elimina el segundo `<li>`. En su lugar, actualiza el texto de los elementos 2, 3, 4... y elimina el último. Esto es eficiente para texto simple, pero falla cuando los elementos tienen su propio estado.
 
 ```vue
 <script setup lang="ts">
@@ -49,9 +49,9 @@ Escribe algo en cada input y luego elimina el primer elemento. Con `key=index`, 
 ## Las reglas
 
 1. **Usa siempre `:key`** en los elementos con `v-for`.
-2. **Usa un identificador único y estable** — un `id` de tus datos, una clave primaria de base de datos, un slug. Algo que no cambie entre renderizados.
+2. **Usa un identificador único y estable**: un `id` de tus datos, una clave primaria de base de datos, un slug. Algo que no cambie entre renderizados.
 3. **Nunca uses el índice del array como key** si los elementos pueden reordenarse, insertarse o eliminarse. El índice cambia cuando el array cambia, lo que invalida el propósito.
-4. **Las keys deben ser primitivos** — strings o números. Los objetos no funcionan.
+4. **Las keys deben ser primitivos**: strings o números. Los objetos no funcionan.
 
 ```vue
 <!-- ✅ Bien: ID estable de los datos -->

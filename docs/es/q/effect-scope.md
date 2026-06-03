@@ -143,6 +143,6 @@ Ver también: [¿Por qué los watchers creados dentro de callbacks asíncronos c
 
 ## Referencias
 
-- [effectScope() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [Guía de composables — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [effectScope() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Guía de composables - Vue docs](https://vuejs.org/guide/reusability/composables.html)

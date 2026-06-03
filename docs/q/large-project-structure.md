@@ -6,7 +6,7 @@ tags: ["architecture", "pinia", "vite"]
 summary: "Group files by feature/domain, not by technical layer. Each feature folder owns its components, composables, stores, and routes."
 ---
 
-Vue does not enforce any particular project structure. A brand-new Vite scaffold gives you a `src/` folder and leaves the rest to you. That works fine for a few dozen files, but as the codebase grows the absence of conventions becomes a real problem: no one can predict where a given piece of logic lives, reviews become harder, and onboarding new developers takes longer than it should. The goal of a deliberate structure is simple — any file should be findable by its responsibility, not by memory.
+Vue does not enforce any particular project structure. A brand-new Vite scaffold gives you a `src/` folder and leaves the rest to you. That works fine for a few dozen files, but as the codebase grows the absence of conventions becomes a real problem: no one can predict where a given piece of logic lives, reviews become harder, and onboarding new developers takes longer than it should. The goal of a deliberate structure is simple: any file should be findable by its responsibility, not by memory.
 
 ## Flat structure (small apps)
 
@@ -26,7 +26,7 @@ src/
 └── App.vue
 ```
 
-The key discipline: **only shared, cross-cutting code lives here.** If a component is only used inside one view, it does not belong in `components/` — it belongs next to the view that owns it. Mixing shared and feature-specific code in the same flat folder is what causes `components/` to balloon to 80 files with no clear grouping.
+The key discipline: **only shared, cross-cutting code lives here.** If a component is only used inside one view, it does not belong in `components/`; it belongs next to the view that owns it. Mixing shared and feature-specific code in the same flat folder is what causes `components/` to balloon to 80 files with no clear grouping.
 
 ## Feature-based structure (medium and large apps)
 

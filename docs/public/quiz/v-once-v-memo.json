@@ -4,7 +4,7 @@
       "question": "What does `v-memo=\"[]\"` do to a template subtree?",
       "options": [
         "Skips rendering on first mount",
-        "Acts like `v-once` — the content is never re-rendered",
+        "Acts like `v-once`: the content is never re-rendered",
         "Memoizes based on all reactive dependencies",
         "Clears the subtree on each render"
       ],

@@ -16,7 +16,7 @@
         "v-show, porque CSS es más barato que las operaciones de DOM",
         "v-if, porque el elemento nunca se crea",
         "Ambas tienen el mismo coste de render inicial",
-        "Ninguna — ambas siempre se renderizan al montar"
+        "Ninguna: ambas siempre se renderizan al montar"
       ],
       "answer": 1
     },

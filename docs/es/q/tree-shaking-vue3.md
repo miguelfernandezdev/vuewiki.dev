@@ -51,7 +51,7 @@ Cada API es un export separado que el bundler puede rastrear. Si tu aplicación 
 
 ## Impacto en el tamaño del bundle
 
-El runtime core de Vue 3 ocupa aproximadamente 10 KB comprimido con gzip tras el tree-shaking (una aplicacion minima que usa `ref`, `computed` y el compilador de templates — el tamano real varia segun las funcionalidades usadas). El runtime de Vue 2 ocupaba alrededor de 23 KB comprimido independientemente de las funcionalidades que usaras (varia segun la version y la configuracion del build).
+El runtime core de Vue 3 ocupa aproximadamente 10 KB comprimido con gzip tras el tree-shaking (una aplicacion minima que usa `ref`, `computed` y el compilador de templates; el tamano real varia segun las funcionalidades usadas). El runtime de Vue 2 ocupaba alrededor de 23 KB comprimido independientemente de las funcionalidades que usaras (varia segun la version y la configuracion del build).
 
 Las funcionalidades que el tree-shaking elimina con mayor frecuencia:
 

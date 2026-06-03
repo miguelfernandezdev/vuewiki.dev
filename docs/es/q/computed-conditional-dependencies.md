@@ -65,6 +65,6 @@ Ver también: [¿Cómo afecta la estabilidad de objetos en computed a los re-ren
 
 ## Referencias
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Caché de computed vs. métodos — Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
-- [Buenas prácticas: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Caché de computed vs. métodos - Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
+- [Buenas prácticas: computed - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

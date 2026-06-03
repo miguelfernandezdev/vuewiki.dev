@@ -14,8 +14,8 @@
       "question": "Which primitive types do NOT need factory functions in `withDefaults`?",
       "options": [
         "All types need factory functions for safety",
-        "Only `string` and `number` — `boolean` still needs one",
-        "Strings, numbers, booleans, and null — they are immutable values",
+        "Only `string` and `number`: `boolean` still needs one",
+        "Strings, numbers, booleans, and null: they are immutable values",
         "Only types that are JSON-serializable"
       ],
       "answer": 2

@@ -6,7 +6,7 @@
         "Todos los componentes se registran solo con su nombre de archivo, sin importar la carpeta",
         "La ruta de la carpeta se convierte en prefijo (ej: base/Button.vue se usa como <BaseButton />)",
         "Los componentes se nombran con la ruta completa usando guiones en lugar de barras",
-        "Los nombres de las subcarpetas se ignoran — solo importa el nombre del archivo"
+        "Los nombres de las subcarpetas se ignoran: solo importa el nombre del archivo"
       ],
       "answer": 1
     },
@@ -23,10 +23,10 @@
     {
       "question": "¿Qué estructura de directorios en composables/ NO se auto-importa por defecto en Nuxt?",
       "options": [
-        "composables/useAuth.ts — un archivo en el nivel raíz",
-        "composables/useCounter.ts — un archivo en el nivel raíz",
-        "composables/helpers/validate.ts — un archivo anidado",
-        "composables/useSearch.ts — un archivo en el nivel raíz"
+        "composables/useAuth.ts: un archivo en el nivel raíz",
+        "composables/useCounter.ts: un archivo en el nivel raíz",
+        "composables/helpers/validate.ts: un archivo anidado",
+        "composables/useSearch.ts: un archivo en el nivel raíz"
       ],
       "answer": 2
     }

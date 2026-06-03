@@ -87,7 +87,7 @@ El `$fetch` en bruto dentro de `<script setup>` se ejecuta durante SSR y luego v
 
 ## Serialización del payload con devalue
 
-Desde Nuxt 3.4+, el payload se serializa usando [devalue](https://github.com/Rich-Harris/devalue) en lugar de JSON plano. Esto significa que tipos nativos como `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined` e incluso referencias cíclicas se gestionan automáticamente — sin necesidad de código personalizado.
+Desde Nuxt 3.4+, el payload se serializa usando [devalue](https://github.com/Rich-Harris/devalue) en lugar de JSON plano. Esto significa que tipos nativos como `Date`, `Map`, `Set`, `RegExp`, `BigInt`, `Infinity`, `NaN`, `undefined` e incluso referencias cíclicas se gestionan automáticamente. No se necesita código personalizado.
 
 Los reducers y revivers personalizados solo son necesarios para **instancias de clases personalizadas** que devalue no reconoce:
 

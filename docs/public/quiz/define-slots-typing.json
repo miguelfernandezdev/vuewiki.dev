@@ -4,7 +4,7 @@
       "question": "What does `defineSlots` add at runtime compared to what it provides at development time?",
       "options": [
         "It adds runtime validation that throws if required slots are missing",
-        "It adds nothing at runtime — it only provides type checking and autocomplete for slot props",
+        "It adds nothing at runtime: it only provides type checking and autocomplete for slot props",
         "It registers slot names with Vue DevTools for better component inspection",
         "It generates default slot content when the parent does not provide any"
       ],

@@ -168,6 +168,6 @@ See also: [Why does my computed property not update when a dependency changes?](
 
 ## References
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
-- [Computed Best Practices — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [watchEffect() - Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Computed Best Practices - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

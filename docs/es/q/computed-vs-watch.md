@@ -10,7 +10,7 @@ Ambos reaccionan a cambios en datos reactivos, pero sirven para propósitos fund
 
 ## computed: derivar valores
 
-Un [`computed`](https://vuejs.org/api/reactivity-core.html#computed) calcula un valor a partir de otros datos reactivos. Tiene caché — Vue solo lo recalcula cuando sus dependencias cambian realmente. Se lee como una variable, nunca se llama como una función.
+Un [`computed`](https://vuejs.org/api/reactivity-core.html#computed) calcula un valor a partir de otros datos reactivos. Tiene caché, y Vue solo lo recalcula cuando sus dependencias cambian realmente. Se lee como una variable, nunca se llama como una función.
 
 ```vue
 <script setup lang="ts">
@@ -29,11 +29,11 @@ const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 </template>
 ```
 
-Piensa en `computed` como una fórmula en una celda de hoja de cálculo. Celda C1 = A1 + B1. No la "ejecutas" — simplemente siempre tiene la respuesta correcta.
+Piensa en `computed` como una fórmula en una celda de hoja de cálculo. Celda C1 = A1 + B1. No la "ejecutas". Simplemente siempre tiene la respuesta correcta.
 
 ## watch: reaccionar a cambios
 
-Un [`watch`](https://vuejs.org/api/reactivity-core.html#watch) ejecuta código **en respuesta** a un cambio. No devuelve un valor — realiza efectos secundarios como llamadas a la API, manipulación del DOM, escrituras en localStorage o eventos de analítica.
+Un [`watch`](https://vuejs.org/api/reactivity-core.html#watch) ejecuta código **en respuesta** a un cambio. No devuelve un valor. Realiza efectos secundarios como llamadas a la API, manipulación del DOM, escrituras en localStorage o eventos de analítica.
 
 ```ts
 import { ref, watch } from 'vue'

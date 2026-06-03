@@ -23,7 +23,7 @@
     {
       "question": "When does using a render function make more sense than a template?",
       "options": [
-        "Always — render functions are faster because they skip compilation",
+        "Always: render functions are faster because they skip compilation",
         "When the component uses TypeScript",
         "When the output is too dynamic for template syntax, like a variable tag level",
         "When you need to use computed properties"

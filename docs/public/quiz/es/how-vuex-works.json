@@ -3,10 +3,10 @@
     {
       "question": "En Vuex, ¿cuál es la ÚNICA forma de cambiar el estado y qué restricción deben seguir?",
       "options": [
-        "Las acciones — deben ser síncronas",
-        "Los getters — derivan nuevo estado de forma síncrona",
-        "Las mutations — deben ser síncronas",
-        "Los dispatches — pueden ser asíncronos o síncronos"
+        "Las acciones: deben ser síncronas",
+        "Los getters: derivan nuevo estado de forma síncrona",
+        "Las mutations: deben ser síncronas",
+        "Los dispatches: pueden ser asíncronos o síncronos"
       ],
       "answer": 2
     },

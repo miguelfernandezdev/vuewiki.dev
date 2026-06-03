@@ -14,7 +14,7 @@
       "question": "What is the key behavioral difference between a shared composable (state outside the function) and a regular composable?",
       "options": [
         "Shared composables cannot use watch or computed",
-        "Shared composables expose all state — each consumer gets its OWN instance",
+        "Shared composables expose all state: each consumer gets its OWN instance",
         "All consumers of a shared composable share the same reactive state instance",
         "Regular composables are auto-imported; shared composables are not"
       ],

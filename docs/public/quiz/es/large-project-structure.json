@@ -14,7 +14,7 @@
       "question": "¿Cuál es el propósito de una exportación barrel index.ts en una carpeta de funcionalidad?",
       "options": [
         "Registra globalmente todos los componentes de la funcionalidad con app.component()",
-        "Define la API pública de la funcionalidad — qué pueden importar otras funcionalidades",
+        "Define la API pública de la funcionalidad: qué pueden importar otras funcionalidades",
         "Carga de forma lazy todas las rutas de la funcionalidad para code splitting",
         "Fusiona el store de Pinia de la funcionalidad con el store global"
       ],

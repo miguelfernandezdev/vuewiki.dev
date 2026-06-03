@@ -13,10 +13,10 @@
     {
       "question": "¿A qué hook del ciclo de vida de un componente es análogo `onScopeDispose`?",
       "options": [
-        "`onBeforeMount` — se ejecuta antes de que el scope empiece a correr",
-        "`onUnmounted` — registra un callback de limpieza que se ejecuta cuando el scope se detiene",
-        "`onUpdated` — se ejecuta cada vez que los efectos del scope vuelven a correr",
-        "`onErrorCaptured` — captura los errores lanzados dentro del scope"
+        "`onBeforeMount`: se ejecuta antes de que el scope empiece a correr",
+        "`onUnmounted`: registra un callback de limpieza que se ejecuta cuando el scope se detiene",
+        "`onUpdated`: se ejecuta cada vez que los efectos del scope vuelven a correr",
+        "`onErrorCaptured`: captura los errores lanzados dentro del scope"
       ],
       "answer": 1
     },

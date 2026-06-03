@@ -4,7 +4,7 @@
       "question": "What unique debugging feature does Pinia integration in Vue DevTools provide?",
       "options": [
         "Real-time diff of store state between renders",
-        "Time-travel debugging — click a previous state snapshot to revert the UI",
+        "Time-travel debugging: click a previous state snapshot to revert the UI",
         "Automatic unit test generation from store actions",
         "Live performance flamegraph for store getters"
       ],

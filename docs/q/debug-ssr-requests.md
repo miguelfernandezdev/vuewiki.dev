@@ -3,7 +3,7 @@ order: 165
 title: "How do you debug SSR requests that don't go through the browser?"
 difficulty: "advanced"
 tags: ["nuxt", "ssr", "debugging", "vueuse"]
-summary: "Use $fetch interceptors, DEBUG env vars, Nuxt DevTools server tab, or proxy tools — browser DevTools can't see server-side HTTP requests."
+summary: "Use $fetch interceptors, DEBUG env vars, Nuxt DevTools server tab, or proxy tools. Browser DevTools can't see server-side HTTP requests."
 ---
 
 During SSR, HTTP requests go out from the Node.js server process, not from the browser. There is no Network tab. The server fetches data, renders HTML, and sends it to the client. If an API call fails or returns unexpected data during SSR, you won't see it in browser DevTools. You need server-side observability: interceptors that log to the terminal, proxy tools that capture outgoing traffic, and Nuxt DevTools' server request panel.
@@ -22,7 +22,7 @@ If `/api/users` returns a 500 during SSR, the page renders with empty data (or a
 
 ## Log with $fetch interceptors
 
-Create a server-only plugin that creates a custom `$fetch` instance with logging. Do not replace `globalThis.$fetch` directly — Nuxt internals rely on it, and overwriting it can cause unexpected side effects:
+Create a server-only plugin that creates a custom `$fetch` instance with logging. Do not replace `globalThis.$fetch` directly. Nuxt internals rely on it, and overwriting it can cause unexpected side effects:
 
 ```ts
 // plugins/debug-ssr.server.ts

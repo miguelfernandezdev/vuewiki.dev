@@ -138,6 +138,6 @@ See also: [Why do I lose reactivity when destructuring a reactive object?](/q/re
 
 ## References
 
-- [toRefs() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
-- [toRef() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#toref)
-- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [toRefs() - Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
+- [toRef() - Vue docs](https://vuejs.org/api/reactivity-utilities.html#toref)
+- [Composables guide - Vue docs](https://vuejs.org/guide/reusability/composables.html)

@@ -26,7 +26,7 @@ src/
 └── App.vue
 ```
 
-La disciplina clave: **aquí solo vive el código compartido y transversal.** Si un componente solo se usa dentro de una vista, no pertenece a `components/` — pertenece junto a la vista que lo posee. Mezclar código compartido con código específico de una feature en la misma carpeta plana es lo que provoca que `components/` acabe con 80 archivos sin ninguna agrupación clara.
+La disciplina clave: **aquí solo vive el código compartido y transversal.** Si un componente solo se usa dentro de una vista, no pertenece a `components/`; pertenece junto a la vista que lo posee. Mezclar código compartido con código específico de una feature en la misma carpeta plana es lo que provoca que `components/` acabe con 80 archivos sin ninguna agrupación clara.
 
 ## Estructura por features (apps medianas y grandes)
 

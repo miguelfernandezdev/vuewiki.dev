@@ -3,10 +3,10 @@
     {
       "question": "If you set `count.value = 1`, `count.value = 2`, `count.value = 3` synchronously, how many times does a watcher on `count` fire?",
       "options": [
-        "Three times — once for each assignment",
+        "Three times: once for each assignment",
         "Once, with the final value of `3`",
-        "Twice — once during the micro-task queue and once after the DOM update",
-        "Zero times — watchers only fire after `nextTick` is awaited"
+        "Twice: once during the micro-task queue and once after the DOM update",
+        "Zero times: watchers only fire after `nextTick` is awaited"
       ],
       "answer": 1
     },

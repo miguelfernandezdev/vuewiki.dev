@@ -143,6 +143,6 @@ See also: [Why do watchers created inside async callbacks cause memory leaks?](/
 
 ## References
 
-- [effectScope() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [effectScope() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#effectscope)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Composables guide - Vue docs](https://vuejs.org/guide/reusability/composables.html)

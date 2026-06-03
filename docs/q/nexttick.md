@@ -121,6 +121,6 @@ See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [When sho
 
 ## References
 
-- [nextTick() — Vue docs](https://vuejs.org/api/general.html#nexttick)
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [Reactivity in Depth — Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)
+- [nextTick() - Vue docs](https://vuejs.org/api/general.html#nexttick)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Reactivity in Depth - Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)

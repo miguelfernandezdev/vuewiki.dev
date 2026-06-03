@@ -15,7 +15,7 @@
       "options": [
         "Soporta stores de Pinia compartidos entre micro-frontends",
         "Proporciona mejor soporte de TypeScript entre los límites de equipo",
-        "Es agnóstico al framework — el shell no necesita saber que es Vue",
+        "Es agnóstico al framework: el shell no necesita saber que es Vue",
         "Habilita la integración de Vue DevTools en todos los micro-frontends"
       ],
       "answer": 2

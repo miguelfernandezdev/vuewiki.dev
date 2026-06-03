@@ -18,7 +18,7 @@
     {
       "question": "En Vue 3, ¿qué reemplazó a `$listeners` que fue eliminado de Vue 2?",
       "options": [
-        "`$events` — un nuevo objeto dedicado a los listeners",
+        "`$events`: un nuevo objeto dedicado a los listeners",
         "`$listeners` fue fusionado en `$attrs`",
         "Un nuevo composable `useListeners()`",
         "Los event listeners ahora se pasan como props normales"

@@ -15,7 +15,7 @@
       "options": [
         "El descendiente debe llamar a inject de nuevo para obtener el valor actualizado",
         "El descendiente recibe el valor actualizado automáticamente, ya que los refs proveídos son reactivos",
-        "El descendiente obtiene un snapshot — provide/inject no es reactivo",
+        "El descendiente obtiene un snapshot: provide/inject no es reactivo",
         "El padre debe llamar a update() para enviar el nuevo valor a los descendientes"
       ],
       "answer": 1

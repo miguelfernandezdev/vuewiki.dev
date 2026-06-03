@@ -6,7 +6,7 @@ tags: ["reactivity", "watchers"]
 summary: "reactive() soporta Map, Set, WeakMap y WeakSet nativamente. Vue intercepta los métodos de colección (get, set, add, delete) para tracking automático."
 ---
 
-[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. Puedes usar tanto `reactive()` como `ref()` — ambos funcionan. Con `reactive()` interactúas con la colección directamente; con `ref()` accedes a ella a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
+[reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. Puedes usar tanto `reactive()` como `ref()`; ambos funcionan. Con `reactive()` interactúas con la colección directamente; con `ref()` accedes a ella a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
 
 ## Uso básico
 
@@ -63,7 +63,7 @@ Esto significa que las propiedades computed y los watchers que leen de un Map o 
 
 ## reactive() vs ref() con colecciones
 
-Ambos funcionan. `reactive()` hace proxy del Map/Set directamente, así que llamas a los métodos sin `.value`. `ref()` lo envuelve — accedes a la colección a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
+Ambos funcionan. `reactive()` hace proxy del Map/Set directamente, así que llamas a los métodos sin `.value`. `ref()` lo envuelve, así que accedes a la colección a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
 
 ```ts
 // reactive(): interactúa con el Map directamente
@@ -129,7 +129,7 @@ El `computed` se re-evalúa cuando cambia cualquier entrada del Map porque al ha
 
 ## Limitaciones
 
-1. **Los valores son profundamente reactivos cuando se acceden a través del Map**: `map.get('key')` devuelve un proxy reactivo, por lo que las mutaciones anidadas como `map.get('key').nested = 'new'` se registran. Sin embargo, el objeto original que se pasó a `set()` NO se convierte en reactivo — solo lo es la versión devuelta por `get()`.
+1. **Los valores son profundamente reactivos cuando se acceden a través del Map**: `map.get('key')` devuelve un proxy reactivo, por lo que las mutaciones anidadas como `map.get('key').nested = 'new'` se registran. Sin embargo, el objeto original que se pasó a `set()` NO se convierte en reactivo. Solo lo es la versión devuelta por `get()`.
 
 2. **WeakMap/WeakSet son limitados**: funcionan con `reactive()` pero no se pueden iterar ni comprobar `.size`, lo que limita su utilidad en templates. Son útiles principalmente para bookkeeping interno en composables.
 
@@ -150,6 +150,6 @@ Ver también: [¿Por qué reactive() no funciona con primitivos?](/es/q/reactive
 
 ## Referencias
 
-- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
-- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
-- [Fundamentos de reactividad — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [reactive() - Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [shallowRef() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [Fundamentos de reactividad - Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

@@ -3,7 +3,7 @@ order: 153
 title: "How do Nuxt modules work and when would you create one?"
 difficulty: "intermediate"
 tags: ["nuxt", "architecture", "vite"]
-summary: "Modules are build-time plugins that extend Nuxt via @nuxt/kit — they register components, composables, server routes, and modify config."
+summary: "Modules are build-time plugins that extend Nuxt via @nuxt/kit. They register components, composables, server routes, and modify config."
 ---
 
 Nuxt modules are plugins that run at build time and extend the framework. They can register components, composables, server routes, plugins, and modify the Nuxt/Vite config. The ecosystem is full of them: `@nuxt/ui`, `@nuxt/image`, `@nuxtjs/i18n`, `@pinia/nuxt`.

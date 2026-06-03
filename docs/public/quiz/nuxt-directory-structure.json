@@ -23,7 +23,7 @@
     {
       "question": "In the components/ directory, what does the folder name become in the component's auto-import name?",
       "options": [
-        "It is ignored — only the filename matters",
+        "It is ignored: only the filename matters",
         "A suffix appended after the filename",
         "A prefix prepended to the filename",
         "A namespace separated by a slash"

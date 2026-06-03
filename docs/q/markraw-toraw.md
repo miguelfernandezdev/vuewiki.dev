@@ -116,6 +116,6 @@ See also: [What happens when you use Object.freeze() on reactive data?](/q/objec
 
 ## References
 
-- [markRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
-- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
-- [shallowRef() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)
+- [markRaw() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#markraw)
+- [toRaw() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [shallowRef() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowref)

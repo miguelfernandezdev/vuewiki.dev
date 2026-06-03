@@ -15,7 +15,7 @@
       "options": [
         "Use toRefs(props) before destructuring",
         "Use storeToRefs(props) from Pinia",
-        "Destructure directly from defineProps — reactive destructure is supported natively",
+        "Destructure directly from defineProps: reactive destructure is supported natively",
         "Use computed(() => props.title) for each prop individually"
       ],
       "answer": 2

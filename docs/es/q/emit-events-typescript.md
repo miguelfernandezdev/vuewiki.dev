@@ -6,7 +6,7 @@ tags: ["typescript", "components"]
 summary: "Usa defineEmits con un parámetro de tipo para declarar nombres de eventos y tipos de payload. TypeScript valida las llamadas a emit() en compilación."
 ---
 
-En Vue 3 con `<script setup>`, declaras emits usando [`defineEmits`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) — una macro del compilador, igual que `defineProps`. El tipado con TypeScript asegura que cada llamada a `emit()` en tu componente tenga el nombre de evento correcto y los tipos de payload correctos.
+En Vue 3 con `<script setup>`, declaras emits usando [`defineEmits`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits), una macro del compilador, igual que `defineProps`. El tipado con TypeScript asegura que cada llamada a `emit()` en tu componente tenga el nombre de evento correcto y los tipos de payload correctos.
 
 ## Declarando emits tipados
 
@@ -59,7 +59,7 @@ function handleDelete(id: number) {
 
 ## Emits con validación (sintaxis runtime)
 
-Si necesitas validación en runtime — no solo verificación de tipos — usa la sintaxis de objeto:
+Si necesitas validación en runtime, no solo verificación de tipos, usa la sintaxis de objeto:
 
 ```vue
 <script setup lang="ts">
@@ -75,7 +75,7 @@ const emit = defineEmits({
 emit('update', '') // emite, pero Vue muestra un warning porque la validación devolvió false
 ```
 
-La función de validación se ejecuta en runtime y muestra un warning (en desarrollo) cuando devuelve `false`. Esto es independiente de la verificación en tiempo de compilación de TypeScript — puedes combinar ambos enfoques en diferentes situaciones.
+La función de validación se ejecuta en runtime y muestra un warning (en desarrollo) cuando devuelve `false`. Esto es independiente de la verificación en tiempo de compilación de TypeScript. Puedes combinar ambos enfoques en diferentes situaciones.
 
 ## Por qué importan los emits tipados
 

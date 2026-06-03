@@ -5,7 +5,7 @@
       "options": [
         "The local ref automatically updates to match the new prop value",
         "Vue throws a warning about prop mutation",
-        "The local ref stays at its initial value — the prop change has no effect",
+        "The local ref stays at its initial value: the prop change has no effect",
         "The component re-mounts with the new prop value"
       ],
       "answer": 2

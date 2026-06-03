@@ -198,6 +198,6 @@ See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [What is 
 
 ## References
 
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Lifecycle Hooks — Vue guide](https://vuejs.org/guide/essentials/lifecycle.html)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Lifecycle Hooks - Vue guide](https://vuejs.org/guide/essentials/lifecycle.html)

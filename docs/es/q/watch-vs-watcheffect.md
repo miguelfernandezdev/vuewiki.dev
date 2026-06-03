@@ -30,7 +30,7 @@ watch([firstName, lastName], ([newFirst, newLast], [oldFirst, oldLast]) => {
 })
 ```
 
-`watch` es **lazy por defecto** — no se ejecuta hasta que la fuente cambia realmente. Añade `{ immediate: true }` si necesitas que se ejecute una vez de inmediato.
+`watch` es **lazy por defecto**. No se ejecuta hasta que la fuente cambia realmente. Añade `{ immediate: true }` si necesitas que se ejecute una vez de inmediato.
 
 ## watchEffect: Vue deduce las dependencias
 
@@ -50,7 +50,7 @@ watchEffect(async () => {
 })
 ```
 
-No listas dependencias en ningún sitio — Vue las detecta en tiempo de ejecución observando qué valores reactivos lee realmente tu código.
+No listas dependencias en ningún sitio. Vue las detecta en tiempo de ejecución observando qué valores reactivos lee realmente tu código.
 
 ## Cuándo usar cuál
 

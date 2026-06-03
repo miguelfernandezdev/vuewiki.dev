@@ -3,7 +3,7 @@ order: 126
 title: "How do props stability optimizations work?"
 difficulty: "advanced"
 tags: ["performance", "components"]
-summary: "Vue skips re-rendering children when props haven't changed. Avoid passing shared values (like activeId) to every list item — pass only a boolean flag."
+summary: "Vue skips re-rendering children when props haven't changed. Avoid passing shared values (like activeId) to every list item; pass only a boolean flag."
 ---
 
 Vue skips re-rendering a child component when none of its props changed. Props stability means structuring your props so that only the components that truly need to update receive changed values. The biggest win is in lists: passing a shared value like `activeId` to every item forces all items to re-render, even though only two items actually changed state.

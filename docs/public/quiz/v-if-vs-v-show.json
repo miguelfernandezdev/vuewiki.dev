@@ -16,7 +16,7 @@
         "v-show, because CSS is cheaper than DOM operations",
         "v-if, because the element is never created",
         "Both have the same initial render cost",
-        "Neither — both always render on mount"
+        "Neither: both always render on mount"
       ],
       "answer": 1
     },

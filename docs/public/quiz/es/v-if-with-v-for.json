@@ -6,7 +6,7 @@
         "v-for se ejecuta primero y luego v-if filtra",
         "v-if se ejecuta primero, antes de que exista la variable del bucle",
         "Se ejecutan simultáneamente",
-        "Vue 3 lanza un error de compilación — ninguna se ejecuta"
+        "Vue 3 lanza un error de compilación: ninguna se ejecuta"
       ],
       "answer": 1
     },

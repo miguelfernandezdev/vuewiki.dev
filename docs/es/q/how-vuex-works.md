@@ -8,7 +8,7 @@ summary: "Vuex es una implementación Flux de un solo store: state almacena dato
 
 [Vuex](https://vuex.vuejs.org/) es la librería oficial de gestión de estado para Vue (antes de que [Pinia](/es/q/how-pinia-works) la reemplazara). Implementa el [patrón Flux](/es/q/flux-unidirectional-data-flow): un único store contiene todo el estado compartido, y los cambios fluyen en una dirección a través de un pipeline estricto.
 
-> **Nota:** Vuex está en modo mantenimiento. Para proyectos nuevos, usa [Pinia](/es/q/how-pinia-works) — es el store oficialmente recomendado para Vue 3. Entender Vuex sigue siendo importante porque muchas aplicaciones existentes lo usan.
+> **Nota:** Vuex está en modo mantenimiento. Para proyectos nuevos, usa [Pinia](/es/q/how-pinia-works). Es el store oficialmente recomendado para Vue 3. Entender Vuex sigue siendo importante porque muchas aplicaciones existentes lo usan.
 
 ## Las cuatro piezas
 
@@ -20,7 +20,7 @@ Componente → dispatch(Action) → commit(Mutation) → State → Getters → C
 
 ### State
 
-La única fuente de verdad — un objeto reactivo que contiene todos los datos compartidos. Los componentes leen de él, pero nunca escriben directamente.
+La única fuente de verdad: un objeto reactivo que contiene todos los datos compartidos. Los componentes leen de él, pero nunca escriben directamente.
 
 ```ts
 const store = createStore({
@@ -33,7 +33,7 @@ const store = createStore({
 
 ### Getters
 
-Valores computados derivados del estado. Cachean su resultado y solo recalculan cuando el estado subyacente cambia — mismo concepto que `computed()` en un componente.
+Valores computados derivados del estado. Cachean su resultado y solo recalculan cuando el estado subyacente cambia, el mismo concepto que `computed()` en un componente.
 
 ```ts
 getters: {
@@ -44,7 +44,7 @@ getters: {
 
 ### Mutations
 
-La ÚNICA forma de cambiar el estado. Las mutations deben ser **síncronas** — esta es la restricción clave. Asegura que cada cambio de estado sea rastreable en Vue DevTools (puedes ver exactamente cuándo y cómo cambió el estado).
+La ÚNICA forma de cambiar el estado. Las mutations deben ser **síncronas**. Esta es la restricción clave. Asegura que cada cambio de estado sea rastreable en Vue DevTools (puedes ver exactamente cuándo y cómo cambió el estado).
 
 ```ts
 mutations: {
@@ -59,7 +59,7 @@ mutations: {
 
 ### Actions
 
-Donde vive la lógica asíncrona. Las actions no cambian el estado directamente — llaman a mutations mediante `commit()`. Esta separación es la razón por la que Vuex puede rastrear cada cambio de estado: las mutations son el cuello de botella, y siempre son síncronas.
+Donde vive la lógica asíncrona. Las actions no cambian el estado directamente; llaman a mutations mediante `commit()`. Esta separación es la razón por la que Vuex puede rastrear cada cambio de estado: las mutations son el cuello de botella, y siempre son síncronas.
 
 ```ts
 actions: {
@@ -91,7 +91,7 @@ function loadUsers() {
 </script>
 ```
 
-Observa la API basada en strings: `commit('SET_USERS')`, `dispatch('fetchUsers')`, `store.getters.activeUsers`. Estos strings no son type-safe — los typos se convierten en bugs en runtime, no en errores de compilación. Esta es una de las principales razones por las que se creó Pinia.
+Observa la API basada en strings: `commit('SET_USERS')`, `dispatch('fetchUsers')`, `store.getters.activeUsers`. Estos strings no son type-safe. Los typos se convierten en bugs en runtime, no en errores de compilación. Esta es una de las principales razones por las que se creó Pinia.
 
 ## Módulos
 

@@ -10,7 +10,7 @@ When you change a value in Vue and the page updates automatically, that's the re
 
 ## The core mechanism: Proxy
 
-Vue 3 wraps your objects in a JavaScript [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). A Proxy is a built-in language feature that intercepts operations on an object — reads, writes, deletions — and lets Vue run custom code when they happen.
+Vue 3 wraps your objects in a JavaScript [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). A Proxy is a built-in language feature that intercepts operations on an object (reads, writes, deletions) and lets Vue run custom code when they happen.
 
 When you write `reactive(obj)`, Vue creates a Proxy around `obj` that does two things:
 

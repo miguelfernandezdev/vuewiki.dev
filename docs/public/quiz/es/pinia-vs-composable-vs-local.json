@@ -14,7 +14,7 @@
       "question": "¿Cuál es la diferencia de comportamiento clave entre un composable compartido (estado fuera de la función) y uno normal?",
       "options": [
         "Los composables compartidos no pueden usar watch ni computed",
-        "Los composables compartidos exponen todo el estado — cada consumidor obtiene su PROPIA instancia",
+        "Los composables compartidos exponen todo el estado: cada consumidor obtiene su PROPIA instancia",
         "Todos los consumidores de un composable compartido comparten la misma instancia de estado reactivo",
         "Los composables normales se auto-importan; los compartidos no"
       ],

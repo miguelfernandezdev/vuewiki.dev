@@ -24,7 +24,7 @@
       "question": "¿Qué estrategia de rutas usa @nuxtjs/i18n con la configuración 'prefix_except_default'?",
       "options": [
         "Todas las rutas tienen prefijo de locale incluyendo el idioma por defecto",
-        "Ninguna ruta tiene prefijo de locale — se usa el header Accept-Language",
+        "Ninguna ruta tiene prefijo de locale: se usa el header Accept-Language",
         "Los locales no predeterminados tienen prefijo (p. ej., /es/about) mientras el predeterminado no lo tiene",
         "Las rutas usan parámetros de query como ?lang=es en lugar de prefijos de ruta"
       ],

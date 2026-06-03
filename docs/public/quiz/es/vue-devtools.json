@@ -4,7 +4,7 @@
       "question": "¿Qué funcionalidad de depuración única ofrece la integración de Pinia en Vue DevTools?",
       "options": [
         "Diff en tiempo real del estado del store entre renders",
-        "Time-travel debugging — haz clic en un snapshot de estado anterior para revertir la UI",
+        "Time-travel debugging: haz clic en un snapshot de estado anterior para revertir la UI",
         "Generación automática de tests unitarios a partir de las acciones del store",
         "Flamegraph de rendimiento en vivo para los getters del store"
       ],

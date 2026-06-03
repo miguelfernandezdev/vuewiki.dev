@@ -6,17 +6,17 @@ tags: ["state-management", "pinia", "vuex"]
 summary: "Pinia replaces Vuex: no mutations, no string-based API, full TypeScript support, modular by design. Vuex is in maintenance mode."
 ---
 
-[Pinia](https://pinia.vuejs.org/) is the official state management library for Vue 3. It replaces [Vuex](/q/how-vuex-works) — the Vue team created it because Vuex's design (mutations, string-based API, complex modules) didn't align well with TypeScript and the Composition API.
+[Pinia](https://pinia.vuejs.org/) is the official state management library for Vue 3. It replaces [Vuex](/q/how-vuex-works). The Vue team created it because Vuex's design (mutations, string-based API, complex modules) didn't align well with TypeScript and the Composition API.
 
 ## Why Pinia replaced Vuex
 
 Vuex has three pain points that Pinia eliminates:
 
-**1. Mutations are gone.** In Vuex, you can't change state directly — you have to write a mutation (synchronous) and commit it by name. Pinia lets actions change state directly, because Vue 3's reactivity system tracks changes automatically through DevTools without needing a separate mutation layer.
+**1. Mutations are gone.** In Vuex, you can't change state directly. You have to write a mutation (synchronous) and commit it by name. Pinia lets actions change state directly, because Vue 3's reactivity system tracks changes automatically through DevTools without needing a separate mutation layer.
 
-**2. Full TypeScript inference.** Vuex relies on string keys (`commit('SET_USER')`, `dispatch('fetchUser')`, `getters.userName`). A typo in any of those strings is a runtime bug, not a compile error. Pinia stores are plain objects — your IDE knows every property and method.
+**2. Full TypeScript inference.** Vuex relies on string keys (`commit('SET_USER')`, `dispatch('fetchUser')`, `getters.userName`). A typo in any of those strings is a runtime bug, not a compile error. Pinia stores are plain objects; your IDE knows every property and method.
 
-**3. No modules or namespacing.** Vuex has one global store, split into namespaced modules (`store.commit('cart/ADD_ITEM')`). Pinia stores are independent — each is its own `defineStore()`, imported directly where needed.
+**3. No modules or namespacing.** Vuex has one global store, split into namespaced modules (`store.commit('cart/ADD_ITEM')`). Pinia stores are independent, each is its own `defineStore()`, imported directly where needed.
 
 ## Side-by-side comparison
 
@@ -58,7 +58,7 @@ export const useCartStore = defineStore('cart', () => {
 })
 ```
 
-This uses the [Composition API syntax](https://pinia.vuejs.org/core-concepts/#Setup-Stores) (setup function). There's also an [Options syntax](https://pinia.vuejs.org/core-concepts/#Option-Stores) with `state`, `getters`, and `actions` properties — same result, different style.
+This uses the [Composition API syntax](https://pinia.vuejs.org/core-concepts/#Setup-Stores) (setup function). There's also an [Options syntax](https://pinia.vuejs.org/core-concepts/#Option-Stores) with `state`, `getters`, and `actions` properties. Same result, different style.
 
 ## Using it in a component
 

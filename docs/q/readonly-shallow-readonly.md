@@ -128,6 +128,6 @@ See also: [What happens when you use Object.freeze() on reactive data?](/q/objec
 
 ## References
 
-- [readonly() — Vue docs](https://vuejs.org/api/reactivity-core.html#readonly)
-- [shallowReadonly() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowreadonly)
-- [provide / inject — Vue guide](https://vuejs.org/guide/components/provide-inject.html)
+- [readonly() - Vue docs](https://vuejs.org/api/reactivity-core.html#readonly)
+- [shallowReadonly() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#shallowreadonly)
+- [provide / inject - Vue guide](https://vuejs.org/guide/components/provide-inject.html)

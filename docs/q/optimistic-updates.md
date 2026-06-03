@@ -216,6 +216,6 @@ See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [When sho
 
 ## References
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [toRaw() — Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
-- [Pinia Colada — async state management](https://pinia-colada.esm.dev/)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [toRaw() - Vue docs](https://vuejs.org/api/reactivity-advanced.html#toraw)
+- [Pinia Colada - async state management](https://pinia-colada.esm.dev/)

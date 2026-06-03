@@ -4,7 +4,7 @@
       "question": "¿Qué ocurre con las mutations de Vuex al migrar un módulo a Pinia?",
       "options": [
         "Se convierten en acciones de Pinia con la misma API de string-key",
-        "Se reemplazan con funciones normales — Pinia no tiene capa de mutations",
+        "Se reemplazan con funciones normales: Pinia no tiene capa de mutations",
         "Se convierten en getters de Pinia",
         "Deben tener el prefijo `commit_` para funcionar en Pinia"
       ],
@@ -24,7 +24,7 @@
       "question": "¿Cuál es la estrategia de migración recomendada para una aplicación grande con muchos módulos de Vuex?",
       "options": [
         "Reescribir todos los módulos a Pinia de una vez antes de desplegar",
-        "Migrar un módulo a la vez — Pinia y Vuex pueden coexistir",
+        "Migrar un módulo a la vez: Pinia y Vuex pueden coexistir",
         "Usar el adaptador `@pinia/vuex-compat` de forma permanente",
         "Convertir solo los módulos usados en nuevas funcionalidades; dejar los antiguos en Vuex"
       ],

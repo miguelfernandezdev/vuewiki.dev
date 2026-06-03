@@ -13,7 +13,7 @@
     {
       "question": "¿Qué ocurre con los hooks de ciclo de vida cuando cambia el :key de un componente?",
       "options": [
-        "No se ejecuta ningún hook — Vue parchea el componente en su lugar",
+        "No se ejecuta ningún hook: Vue parchea el componente en su lugar",
         "Solo se ejecuta onUpdated ya que el DOM es reemplazado",
         "Todos los hooks del ciclo de vida se ejecutan de nuevo desde onMounted",
         "Se disparan onBeforeUnmount y onUnmounted, pero no onMounted"

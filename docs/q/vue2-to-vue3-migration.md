@@ -3,10 +3,10 @@ order: 168
 title: "How would you plan a Vue 2 to Vue 3 migration?"
 difficulty: "advanced"
 tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]
-summary: "Use @vue/compat (compatibility build) to run Vue 2 code on Vue 3 runtime. Fix deprecation warnings incrementally — it's not a rewrite."
+summary: "Use @vue/compat (compatibility build) to run Vue 2 code on Vue 3 runtime. Fix deprecation warnings incrementally. It's not a rewrite."
 ---
 
-A Vue 2 to Vue 3 migration is not a rewrite — it is an incremental process. Vue 3 provides `@vue/compat` (the compatibility build), which runs your existing Vue 2 code on the Vue 3 runtime and logs deprecation warnings for every API you are using that has been removed or changed. This means you can flip the switch one day and still have a working application, then fix issues category by category over weeks or months, at your own pace.
+A Vue 2 to Vue 3 migration is not a rewrite. It is an incremental process. Vue 3 provides `@vue/compat` (the compatibility build), which runs your existing Vue 2 code on the Vue 3 runtime and logs deprecation warnings for every API you are using that has been removed or changed. This means you can flip the switch one day and still have a working application, then fix issues category by category over weeks or months, at your own pace.
 
 ## Phase 1: Audit
 
@@ -14,14 +14,14 @@ Before touching any code, you need to know what you are dealing with. A migratio
 
 Go through your codebase and document:
 
-- **Number of components** — gives you a rough size estimate for the effort ahead.
-- **Mixins** — each mixin is a composable waiting to happen. Mixins were Vue 2's reuse mechanism but they hide dependencies and cause naming collisions. In Vue 3, they are discouraged in favor of composables.
-- **Filters** — `{{ price | currency }}` syntax is completely removed in Vue 3. Every filter needs to become a computed property or a method.
-- **Event bus usage** — if you have a global Vue instance used as `bus.$on(...)` / `bus.$off(...)`, those instance methods no longer exist. You need a replacement strategy.
-- **Vuex stores** — Vuex 4 works with Vue 3 (as a bridge), but the recommended long-term move is Pinia.
-- **Third-party libraries** — this is often the biggest risk. Check each library for a Vue 3-compatible version. Some popular Vue 2 libraries were abandoned and never updated.
-- **Custom directives** — directive lifecycle hooks were renamed in Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
-- **Render functions** — the `h` function signature changed. Props are now flat (no nested `attrs`, `on`, `class` objects). In Vue 3, `h` is imported directly from Vue, not received as a parameter.
+- **Number of components**: gives you a rough size estimate for the effort ahead.
+- **Mixins**: each mixin is a composable waiting to happen. Mixins were Vue 2's reuse mechanism but they hide dependencies and cause naming collisions. In Vue 3, they are discouraged in favor of composables.
+- **Filters**: `{{ price | currency }}` syntax is completely removed in Vue 3. Every filter needs to become a computed property or a method.
+- **Event bus usage**: if you have a global Vue instance used as `bus.$on(...)` / `bus.$off(...)`, those instance methods no longer exist. You need a replacement strategy.
+- **Vuex stores**: Vuex 4 works with Vue 3 (as a bridge), but the recommended long-term move is Pinia.
+- **Third-party libraries**: this is often the biggest risk. Check each library for a Vue 3-compatible version. Some popular Vue 2 libraries were abandoned and never updated.
+- **Custom directives**: directive lifecycle hooks were renamed in Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
+- **Render functions**: the `h` function signature changed. Props are now flat (no nested `attrs`, `on`, `class` objects). In Vue 3, `h` is imported directly from Vue, not received as a parameter.
 
 This audit gives you a real migration scope. Without it, you will discover blockers mid-migration when it is harder to recover.
 
@@ -105,8 +105,8 @@ This gives you a per-feature migration checklist enforced at runtime.
 | --- | --- | --- |
 | Filters (`\|` pipe syntax) | Removed | Use a computed property or a utility method |
 | `$on` / `$off` / `$once` | Removed | Use mitt, or provide/inject for cross-component events |
-| `$listeners` | Removed | Merged into `$attrs` — use `v-bind="$attrs"` |
-| `$set` / `$delete` | Removed | Proxy-based reactivity is automatic — no longer needed |
+| `$listeners` | Removed | Merged into `$attrs`, use `v-bind="$attrs"` |
+| `$set` / `$delete` | Removed | Proxy-based reactivity is automatic, no longer needed |
 | Mixins | Discouraged | Extract into composables |
 | Vuex | Optional | Pinia is the recommended replacement |
 | Options API | Still supported | `<script setup>` is the recommended modern alternative |
@@ -140,7 +140,7 @@ const app = createApp(App)
 app.mount('#app')
 ```
 
-After removing the compat build, run your full test suite. This is where any silent issues surface — things the compat build was silently fixing but no longer warned about. Fix failures before moving on.
+After removing the compat build, run your full test suite. This is where any silent issues surface: things the compat build was silently fixing but no longer warned about. Fix failures before moving on.
 
 At this point your application is running on standard Vue 3. You can then continue migrating components to `<script setup>` + TypeScript at your own pace, since the Options API still works in Vue 3.
 
@@ -160,7 +160,7 @@ h('div', { attrs: { id: 'app' }, on: { click: handler } }, children)
 h('div', { id: 'app', onClick: handler }, children)
 ```
 
-**Vuex modules with complex getters.** If you are migrating to Pinia, getter composition works differently. Pinia getters receive the store state directly and can access other stores by importing them — there is no `rootState` or `rootGetters`. Complex Vuex module trees need careful mapping.
+**Vuex modules with complex getters.** If you are migrating to Pinia, getter composition works differently. Pinia getters receive the store state directly and can access other stores by importing them. There is no `rootState` or `rootGetters`. Complex Vuex module trees need careful mapping.
 
 ---
 

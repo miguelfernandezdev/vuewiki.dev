@@ -126,7 +126,7 @@ export default defineNitroPlugin((nitro) => {
 })
 ```
 
-> **Nuxt 4 note:** `defineNitroPlugin` is the Nuxt 3 API. In Nuxt 4, server plugins use `definePlugin` imported from `'nitro'` instead. If you are migrating to Nuxt 4, replace `defineNitroPlugin` with `import { definePlugin } from 'nitro'`. Both APIs work the same way — only the import and function name change.
+> **Nuxt 4 note:** `defineNitroPlugin` is the Nuxt 3 API. In Nuxt 4, server plugins use `definePlugin` imported from `'nitro'` instead. If you are migrating to Nuxt 4, replace `defineNitroPlugin` with `import { definePlugin } from 'nitro'`. Both APIs work the same way; only the import and function name change.
 
 ## Calling server routes from the client
 

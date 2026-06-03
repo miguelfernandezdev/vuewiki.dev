@@ -123,6 +123,6 @@ See also: [What is nextTick and when do you need it?](/q/nexttick) · [How does 
 
 ## References
 
-- [nextTick() — Vue docs](https://vuejs.org/api/general.html#nexttick)
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [nextTick() - Vue docs](https://vuejs.org/api/general.html#nexttick)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [watchEffect() - Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)

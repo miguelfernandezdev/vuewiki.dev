@@ -131,6 +131,6 @@ Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-
 
 ## Referencias
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [v-model — Vue guide](https://vuejs.org/guide/components/v-model.html)
-- [Computed Properties — Vue guide](https://vuejs.org/guide/essentials/computed.html)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [v-model - Vue guide](https://vuejs.org/guide/components/v-model.html)
+- [Computed Properties - Vue guide](https://vuejs.org/guide/essentials/computed.html)

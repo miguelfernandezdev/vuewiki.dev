@@ -6,7 +6,7 @@ tags: ["components", "architecture", "vite", "vitest", "slots"]
 summary: "Each component is self-contained with typed props, emits, and slots. Ship as a package with tree-shakeable exports, theming via CSS variables."
 ---
 
-A shared component library gives multiple apps (or teams) a consistent set of UI components. The goal is reusability without coupling — each consumer imports what they need, gets type safety and theming, and can upgrade on their own schedule.
+A shared component library gives multiple apps (or teams) a consistent set of UI components. The goal is reusability without coupling. Each consumer imports what they need, gets type safety and theming, and can upgrade on their own schedule.
 
 ## Project structure
 
@@ -56,7 +56,7 @@ defineSlots<{
 </script>
 ```
 
-**Use slots over props for content.** A button that takes `label` and `icon` props is limited. A button with a default slot and an `icon` slot lets consumers put anything inside — text, icons, badges, complex markup.
+**Use slots over props for content.** A button that takes `label` and `icon` props is limited. A button with a default slot and an `icon` slot lets consumers put anything inside: text, icons, badges, complex markup.
 
 **Use CSS custom properties for theming.** Don't hardcode colors or spacing. Expose design tokens that consumers can override:
 
@@ -72,7 +72,7 @@ Consumers override tokens at the app level without touching library code.
 
 ## Build and distribution
 
-Use [Vite library mode](https://vite.dev/guide/build.html#library-mode) to build. Export named components for tree-shaking — consumers only bundle what they import:
+Use [Vite library mode](https://vite.dev/guide/build.html#library-mode) to build. Export named components for tree-shaking so consumers only bundle what they import:
 
 ```ts
 // src/index.ts
@@ -89,7 +89,7 @@ Use [VitePress](https://vitepress.dev/) or [Storybook](https://storybook.js.org/
 
 ## Versioning and testing
 
-- **Semver** — breaking prop changes are major bumps, new components are minor
+- **Semver**: breaking prop changes are major bumps, new components are minor
 - **Vitest** for unit tests (prop rendering, emit behavior, slot content)
 - **Visual regression** (Chromatic, Percy, or Playwright screenshots) to catch unintended style changes
 

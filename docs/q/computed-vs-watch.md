@@ -10,7 +10,7 @@ Both react to changes in reactive data, but they serve fundamentally different p
 
 ## computed: deriving values
 
-A [`computed`](https://vuejs.org/api/reactivity-core.html#computed) calculates a value from other reactive data. It's cached — Vue only recalculates it when its dependencies actually change. You read it like a variable, never call it like a function.
+A [`computed`](https://vuejs.org/api/reactivity-core.html#computed) calculates a value from other reactive data. It's cached, and Vue only recalculates it when its dependencies actually change. You read it like a variable, never call it like a function.
 
 ```vue
 <script setup lang="ts">
@@ -29,11 +29,11 @@ const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 </template>
 ```
 
-Think of `computed` as a formula in a spreadsheet cell. Cell C1 = A1 + B1. You don't "run" it — it just always has the right answer.
+Think of `computed` as a formula in a spreadsheet cell. Cell C1 = A1 + B1. You don't "run" it. It just always has the right answer.
 
 ## watch: reacting to changes
 
-A [`watch`](https://vuejs.org/api/reactivity-core.html#watch) runs code **in response** to a change. It doesn't return a value — it performs side effects like API calls, DOM manipulation, localStorage writes, or analytics events.
+A [`watch`](https://vuejs.org/api/reactivity-core.html#watch) runs code **in response** to a change. It doesn't return a value. It performs side effects like API calls, DOM manipulation, localStorage writes, or analytics events.
 
 ```ts
 import { ref, watch } from 'vue'

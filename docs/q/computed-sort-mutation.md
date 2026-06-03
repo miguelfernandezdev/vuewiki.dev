@@ -57,6 +57,6 @@ See also: [Why does my computed property not update when a dependency changes?](
 
 ## References
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Computed Best Practices — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
-- [Array.prototype.toSorted() — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Computed Best Practices - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [Array.prototype.toSorted() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)

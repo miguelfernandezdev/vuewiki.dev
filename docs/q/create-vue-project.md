@@ -3,7 +3,7 @@ order: 5
 title: "How do you create a Vue project from scratch?"
 difficulty: "beginner"
 tags: ["tooling", "pinia", "vite", "vitest"]
-summary: "Run npm create vue@latest — it scaffolds a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint."
+summary: "Run npm create vue@latest to scaffold a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint."
 ---
 
 The official way to start a new Vue project is `create-vue`, which scaffolds a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint.

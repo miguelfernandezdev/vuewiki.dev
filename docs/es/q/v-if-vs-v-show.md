@@ -6,7 +6,7 @@ tags: ["directives"]
 summary: "v-if añade/elimina elementos del DOM (mayor coste de cambio, cero coste oculto). v-show cambia CSS display (cambio barato, siempre renderizado)."
 ---
 
-Ambas directivas muestran y ocultan elementos según una condición, pero lo hacen de formas completamente distintas — y esa diferencia tiene implicaciones reales de rendimiento.
+Ambas directivas muestran y ocultan elementos según una condición, pero lo hacen de formas completamente distintas, y esa diferencia tiene implicaciones reales de rendimiento.
 
 ## v-if: añade y elimina del DOM
 
@@ -21,7 +21,7 @@ Ambas directivas muestran y ocultan elementos según una condición, pero lo hac
 </template>
 ```
 
-Alternar `v-if` es costoso: Vue tiene que desmontar y reconstruir el subárbol del DOM cada vez. Pero si la condición es `false` en el renderizado inicial, no se crea nada — coste cero.
+Alternar `v-if` es costoso: Vue tiene que desmontar y reconstruir el subárbol del DOM cada vez. Pero si la condición es `false` en el renderizado inicial, no se crea nada. Coste cero.
 
 ## v-show: oculta con CSS
 

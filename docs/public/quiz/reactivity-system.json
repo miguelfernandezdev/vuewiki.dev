@@ -16,7 +16,7 @@
         "The value is cached for performance",
         "A dependency link is created between the effect and that property (tracking)",
         "The effect is immediately re-run",
-        "Nothing — reads are not tracked"
+        "Nothing: reads are not tracked"
       ],
       "answer": 1
     },

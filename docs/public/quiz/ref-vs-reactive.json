@@ -5,7 +5,7 @@
       "options": [
         "reactive() cannot track computed properties",
         "reactive() cannot be used with TypeScript generics",
-        "reactive() cannot be safely reassigned — it breaks the reactive link",
+        "reactive() cannot be safely reassigned: it breaks the reactive link",
         "reactive() requires explicit dependency declaration"
       ],
       "answer": 2
@@ -24,8 +24,8 @@
       "question": "According to Vue best practices, what is the safest default choice for creating reactive state?",
       "options": [
         "reactive() for objects, ref() only for primitives",
-        "reactive() for everything — it avoids the .value syntax",
-        "ref() for everything — it handles all types and supports reassignment",
+        "reactive() for everything: it avoids the .value syntax",
+        "ref() for everything: it handles all types and supports reassignment",
         "computed() for derived state, reactive() for everything else"
       ],
       "answer": 2

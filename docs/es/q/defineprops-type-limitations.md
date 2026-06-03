@@ -3,7 +3,7 @@ order: 113
 title: "¿Cuáles son las limitaciones de defineProps basado en tipos?"
 difficulty: "advanced"
 tags: ["typescript", "components"]
-summary: "El compilador de Vue resuelve tipos estáticamente — tipos condicionales, mapped types profundos y globals ambientales fallan. Aplana tipos en interfaces."
+summary: "El compilador de Vue resuelve tipos estáticamente. Tipos condicionales, mapped types profundos y globals ambientales fallan. Aplana tipos en interfaces."
 ---
 
 `defineProps<T>()` basado en tipos funciona con interfaces importadas y alias de tipo desde Vue 3.3, pero algunos patrones complejos de TypeScript fallan en tiempo de compilación porque el compilador de Vue resuelve los tipos estáticamente, no a través del sistema completo de tipos de TypeScript.

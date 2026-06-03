@@ -13,7 +13,7 @@
     {
       "question": "When IS null the appropriate initial value for a ref?",
       "options": [
-        "Always — it is the Vue recommended default",
+        "Always: it is the Vue recommended default",
         "Only for number inputs",
         "When 'no value' is semantically different from 'empty', such as data not yet loaded",
         "When you want to skip TypeScript type checking"

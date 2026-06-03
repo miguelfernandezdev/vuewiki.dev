@@ -3,7 +3,7 @@ order: 71
 title: "¿Por qué mi watcher recibe el mismo valor para old y new?"
 difficulty: "intermediate"
 tags: ["reactivity", "errors", "watchers"]
-summary: "Deep-watch de un objeto reactive da la misma referencia para old y new — Vue no clona antes de mutar. Usa structuredClone si necesitas el diff."
+summary: "Deep-watch de un objeto reactive da la misma referencia para old y new. Vue no clona antes de mutar. Usa structuredClone si necesitas el diff."
 ---
 
 Porque cuando observas en profundidad un objeto reactivo con [watch](https://vuejs.org/api/reactivity-core.html#watch) y mutas una propiedad anidada, tanto `newValue` como `oldValue` apuntan a la **misma referencia de objeto**. Vue no clona el objeto antes de la mutación, por lo que cuando se ejecuta el callback, ambas referencias reflejan el estado actual (mutado).
@@ -78,6 +78,6 @@ Ver también: [¿Cuál es la diferencia entre watch y watchEffect?](/es/q/watch-
 
 ## Referencias
 
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [Watchers guide — Vue docs](https://vuejs.org/guide/essentials/watchers.html)
-- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Watchers guide - Vue docs](https://vuejs.org/guide/essentials/watchers.html)
+- [reactive() - Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)

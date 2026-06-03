@@ -4,7 +4,7 @@
       "question": "What is the key constraint of Flux unidirectional data flow?",
       "options": [
         "State must be stored in a single global object",
-        "The view never modifies state directly — it always goes through an action",
+        "The view never modifies state directly: it always goes through an action",
         "Actions must be synchronous to maintain traceability",
         "Components cannot share state directly"
       ],

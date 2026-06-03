@@ -6,7 +6,7 @@ tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
 summary: "Observa la ref del input y retrasa la actualización con setTimeout. Extráelo como composable o usa refDebounced de VueUse."
 ---
 
-Debouncing retrasa una acción hasta que el usuario deja de escribir durante un tiempo determinado. Sin él, un input de búsqueda dispara una llamada a la API en cada tecla — escribir "vue router" envía 10 peticiones, la mayoría inútiles porque el usuario no ha terminado de escribir.
+Debouncing retrasa una acción hasta que el usuario deja de escribir durante un tiempo determinado. Sin él, un input de búsqueda dispara una llamada a la API en cada tecla. Escribir "vue router" envía 10 peticiones, la mayoría inútiles porque el usuario no ha terminado de escribir.
 
 ## Enfoque inline
 
@@ -88,7 +88,7 @@ const debouncedQuery = refDebounced(searchQuery, 300)
 
 ## Debounce vs throttle
 
-**Debounce** espera hasta que la actividad se detiene (dispara una vez después del último evento). **Throttle** dispara a intervalos regulares durante la actividad (como máximo una vez por intervalo). Para inputs de búsqueda, debounce suele ser la opción correcta — quieres esperar hasta que el usuario termine de escribir. Para handlers de scroll o resize, throttle suele ser mejor porque quieres actualizaciones periódicas mientras el evento está ocurriendo.
+**Debounce** espera hasta que la actividad se detiene (dispara una vez después del último evento). **Throttle** dispara a intervalos regulares durante la actividad (como máximo una vez por intervalo). Para inputs de búsqueda, debounce suele ser la opción correcta porque quieres esperar hasta que el usuario termine de escribir. Para handlers de scroll o resize, throttle suele ser mejor porque quieres actualizaciones periódicas mientras el evento está ocurriendo.
 
 Ver también: [¿Qué es VueUse?](/es/q/vueuse) · [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching) · [¿Qué es un composable?](/es/q/what-is-a-composable)
 

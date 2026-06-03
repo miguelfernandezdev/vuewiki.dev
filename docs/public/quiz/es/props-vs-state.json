@@ -24,7 +24,7 @@
       "question": "¿Cuál es el patrón correcto cuando un hijo necesita cambiar un valor propiedad del padre?",
       "options": [
         "Usar toRef() para crear un ref escribible desde la prop",
-        "Mutar la prop — Vue 3 lo permite con una supresión de advertencias",
+        "Mutar la prop: Vue 3 lo permite con una supresión de advertencias",
         "Emitir un evento desde el hijo; el padre actualiza su propio estado",
         "Usar un store de Pinia como intermediario para todos los cambios de props"
       ],

@@ -6,7 +6,7 @@ tags: ["components", "architecture", "vite", "vitest", "slots"]
 summary: "Cada componente es autónomo con props tipados, emits y slots. Publica como paquete con exports tree-shakeable y temas via variables CSS."
 ---
 
-Una librería de componentes compartida da a múltiples apps (o equipos) un conjunto consistente de componentes UI. El objetivo es reutilización sin acoplamiento — cada consumidor importa lo que necesita, obtiene type safety y theming, y puede actualizar a su propio ritmo.
+Una librería de componentes compartida da a múltiples apps (o equipos) un conjunto consistente de componentes UI. El objetivo es reutilización sin acoplamiento. Cada consumidor importa lo que necesita, obtiene type safety y theming, y puede actualizar a su propio ritmo.
 
 ## Estructura del proyecto
 
@@ -56,7 +56,7 @@ defineSlots<{
 </script>
 ```
 
-**Usa slots en lugar de props para contenido.** Un botón que recibe props `label` e `icon` es limitado. Un botón con un slot por defecto y un slot `icon` permite a los consumidores poner cualquier cosa dentro — texto, iconos, badges, markup complejo.
+**Usa slots en lugar de props para contenido.** Un botón que recibe props `label` e `icon` es limitado. Un botón con un slot por defecto y un slot `icon` permite a los consumidores poner cualquier cosa dentro: texto, iconos, badges, markup complejo.
 
 **Usa CSS custom properties para theming.** No hardcodees colores ni espaciado. Expón design tokens que los consumidores puedan sobreescribir:
 
@@ -72,7 +72,7 @@ Los consumidores sobreescriben tokens a nivel de app sin tocar el código de la 
 
 ## Build y distribución
 
-Usa el [modo librería de Vite](https://vite.dev/guide/build.html#library-mode) para hacer build. Exporta componentes con nombre para tree-shaking — los consumidores solo empaquetan lo que importan:
+Usa el [modo librería de Vite](https://vite.dev/guide/build.html#library-mode) para hacer build. Exporta componentes con nombre para tree-shaking, de forma que los consumidores solo empaquetan lo que importan:
 
 ```ts
 // src/index.ts
@@ -89,7 +89,7 @@ Usa [VitePress](https://vitepress.dev/) o [Storybook](https://storybook.js.org/)
 
 ## Versionado y testing
 
-- **Semver** — cambios breaking en props son bumps major, nuevos componentes son minor
+- **Semver**: cambios breaking en props son bumps major, nuevos componentes son minor
 - **Vitest** para tests unitarios (renderizado de props, comportamiento de emits, contenido de slots)
 - **Regresión visual** (Chromatic, Percy, o screenshots de Playwright) para detectar cambios de estilo no intencionados
 

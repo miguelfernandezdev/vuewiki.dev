@@ -6,9 +6,9 @@ tags: ["components", "composition-api", "pinia", "provide-inject"]
 summary: "provide sends data from a parent to any descendant without prop drilling. inject reads it. Works across any depth of nesting."
 ---
 
-When a parent component needs to pass data to a deeply nested child, you'd normally have to pass props through every component in between — even if intermediate components don't use the data. This is called "prop drilling," and it makes your code fragile and hard to maintain.
+When a parent component needs to pass data to a deeply nested child, you'd normally have to pass props through every component in between, even if intermediate components don't use the data. This is called "prop drilling," and it makes your code fragile and hard to maintain.
 
-[`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) and [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) solve this. A parent provides data, and any descendant — no matter how deep — can inject it directly without any intermediate component knowing about it.
+[`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) and [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) solve this. A parent provides data, and any descendant, no matter how deep, can inject it directly without any intermediate component knowing about it.
 
 ## How it works
 
@@ -73,9 +73,9 @@ const userWithDefault = inject(UserKey, ref({ name: 'Guest', role: 'viewer' })) 
 - Plugin-style features (a toast manager, a modal manager)
 
 **Bad use cases:**
-- Passing data between siblings — provide/inject is parent-to-descendant only
-- Replacing all props with inject — makes components harder to test and understand because their dependencies are implicit
-- Global state that many unrelated components read and write — use [Pinia](https://pinia.vuejs.org/) instead
+- Passing data between siblings. provide/inject is parent-to-descendant only
+- Replacing all props with inject. It makes components harder to test and understand because their dependencies are implicit
+- Global state that many unrelated components read and write. Use [Pinia](https://pinia.vuejs.org/) instead
 
 ## Provide/Inject vs Props vs Pinia
 

@@ -3,7 +3,7 @@ order: 64
 title: "Why does forgetting .value with ref cause bugs?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]
-summary: "ref() wraps the value in an object — access it via .value in script. Forgetting .value means you're operating on the wrapper, not the data."
+summary: "ref() wraps the value in an object. Access it via .value in script. Forgetting .value means you're operating on the wrapper, not the data."
 ---
 
 Because [ref()](https://vuejs.org/api/reactivity-core.html#ref) wraps your value inside an object. The actual data lives at `.value`, not on the ref itself. If you forget `.value` in JavaScript, you're operating on the wrapper object, not the data.
@@ -50,6 +50,6 @@ See also: [Why doesn't reactive() work with primitives?](/q/reactive-with-primit
 
 ## References
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
-- [Template Refs — Vue guide](https://vuejs.org/guide/essentials/template-refs.html)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Reactivity Fundamentals - Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [Template Refs - Vue guide](https://vuejs.org/guide/essentials/template-refs.html)

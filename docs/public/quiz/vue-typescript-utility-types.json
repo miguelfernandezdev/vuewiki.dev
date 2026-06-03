@@ -13,7 +13,7 @@
     {
       "question": "What is the difference between `MaybeRef<T>` and `MaybeRefOrGetter<T>`?",
       "options": [
-        "They are identical — just different naming conventions",
+        "They are identical: just different naming conventions",
         "`MaybeRef<T>` accepts `T | Ref<T>`; `MaybeRefOrGetter<T>` also accepts `() => T`",
         "`MaybeRefOrGetter<T>` only accepts getter functions, not plain values",
         "`MaybeRef<T>` is for computed refs; `MaybeRefOrGetter<T>` is for watch sources"

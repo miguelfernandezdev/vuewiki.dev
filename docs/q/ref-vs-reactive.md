@@ -10,7 +10,7 @@ Vue 3 gives you two ways to create reactive state: [`ref`](https://vuejs.org/api
 
 ## ref: works with any value
 
-`ref` wraps any value — a number, a string, a boolean, an object, an array, or `null`. You access and modify it through `.value` in JavaScript/TypeScript. In templates, Vue unwraps it automatically so you don't write `.value` there.
+`ref` wraps any value: a number, a string, a boolean, an object, an array, or `null`. You access and modify it through `.value` in JavaScript/TypeScript. In templates, Vue unwraps it automatically so you don't write `.value` there.
 
 ```ts
 import { ref } from 'vue'
@@ -34,7 +34,7 @@ items.value.push('new item')
 
 ## reactive: objects only, no `.value`
 
-`reactive` wraps an object (or array, Map, Set) and makes its properties reactive directly — no `.value` needed. But it **only works with objects**. You can't pass it a number or string.
+`reactive` wraps an object (or array, Map, Set) and makes its properties reactive directly, no `.value` needed. But it **only works with objects**. You can't pass it a number or string.
 
 ```ts
 import { reactive } from 'vue'
@@ -56,7 +56,7 @@ state = reactive({ count: 1 }) // ❌ breaks reactivity — old watchers still w
 
 **Use `ref` for everything** is the safest default. It works with any type, you can reassign it freely (`count.value = newValue`), and it handles all edge cases. The `.value` is a small cost for flexibility.
 
-**Use `reactive` when** you have a group of related properties that always live together and you'll never replace the whole object — like a form:
+**Use `reactive` when** you have a group of related properties that always live together and you'll never replace the whole object, like a form:
 
 ```ts
 const form = reactive({

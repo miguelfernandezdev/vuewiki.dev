@@ -24,7 +24,7 @@
       "question": "What caveat exists when using Fragments (multiple root elements) with fallthrough attributes?",
       "options": [
         "Fallthrough attributes are completely disabled for multi-root components",
-        "Attributes don't apply automatically — you must bind $attrs explicitly since Vue doesn't know which root to target",
+        "Attributes don't apply automatically: you must bind $attrs explicitly since Vue doesn't know which root to target",
         "All fallthrough attributes are applied to the first root element",
         "Multi-root components cannot receive fallthrough attributes at all"
       ],

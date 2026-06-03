@@ -8,7 +8,7 @@ summary: "Vuex is a single-store Flux implementation: state holds data, getters 
 
 [Vuex](https://vuex.vuejs.org/) is the official state management library for Vue (before [Pinia](/q/how-pinia-works) replaced it). It implements the [Flux pattern](/q/flux-unidirectional-data-flow): a single store holds all shared state, and changes flow in one direction through a strict pipeline.
 
-> **Note:** Vuex is in maintenance mode. For new projects, use [Pinia](/q/how-pinia-works) — it's the officially recommended store for Vue 3. Understanding Vuex still matters because many existing apps use it.
+> **Note:** Vuex is in maintenance mode. For new projects, use [Pinia](/q/how-pinia-works). It's the officially recommended store for Vue 3. Understanding Vuex still matters because many existing apps use it.
 
 ## The four pieces
 
@@ -20,7 +20,7 @@ Component → dispatch(Action) → commit(Mutation) → State → Getters → Co
 
 ### State
 
-The single source of truth — a reactive object that holds all shared data. Components read from it, but never write to it directly.
+The single source of truth: a reactive object that holds all shared data. Components read from it, but never write to it directly.
 
 ```ts
 const store = createStore({
@@ -33,7 +33,7 @@ const store = createStore({
 
 ### Getters
 
-Computed values derived from state. They cache their result and only recalculate when the underlying state changes — same concept as `computed()` in a component.
+Computed values derived from state. They cache their result and only recalculate when the underlying state changes, the same concept as `computed()` in a component.
 
 ```ts
 getters: {
@@ -44,7 +44,7 @@ getters: {
 
 ### Mutations
 
-The ONLY way to change state. Mutations must be **synchronous** — this is the key constraint. It ensures every state change is trackable in Vue DevTools (you can see exactly when and how state changed).
+The ONLY way to change state. Mutations must be **synchronous**. This is the key constraint. It ensures every state change is trackable in Vue DevTools (you can see exactly when and how state changed).
 
 ```ts
 mutations: {
@@ -59,7 +59,7 @@ mutations: {
 
 ### Actions
 
-Where async logic lives. Actions don't change state directly — they call mutations via `commit()`. This separation is why Vuex can track every state change: mutations are the bottleneck, and they're always synchronous.
+Where async logic lives. Actions don't change state directly; they call mutations via `commit()`. This separation is why Vuex can track every state change: mutations are the bottleneck, and they're always synchronous.
 
 ```ts
 actions: {
@@ -91,7 +91,7 @@ function loadUsers() {
 </script>
 ```
 
-Notice the string-based API: `commit('SET_USERS')`, `dispatch('fetchUsers')`, `store.getters.activeUsers`. These strings aren't type-safe — typos become runtime bugs, not compile errors. This is one of the main reasons Pinia was created.
+Notice the string-based API: `commit('SET_USERS')`, `dispatch('fetchUsers')`, `store.getters.activeUsers`. These strings aren't type-safe. Typos become runtime bugs, not compile errors. This is one of the main reasons Pinia was created.
 
 ## Modules
 

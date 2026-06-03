@@ -61,12 +61,12 @@ No `export default`. No `setup()` function. No `return` statement. Everything de
 
 ## Compiler macros
 
-`<script setup>` introduces [compiler macros](/q/compiler-macros) — special functions that the Vue compiler processes at build time. They don't need to be imported:
+`<script setup>` introduces [compiler macros](/q/compiler-macros), special functions that the Vue compiler processes at build time. They don't need to be imported:
 
-- **`defineProps`** — declares props with full TypeScript type inference
-- **`defineEmits`** — declares events the component can emit
-- **`defineModel`** — declares a two-way binding prop (v-model)
-- **`defineExpose`** — explicitly exposes values to parent template refs
+- **`defineProps`**: declares props with full TypeScript type inference
+- **`defineEmits`**: declares events the component can emit
+- **`defineModel`**: declares a two-way binding prop (v-model)
+- **`defineExpose`**: explicitly exposes values to parent template refs
 
 ```vue
 <script setup lang="ts">
@@ -80,7 +80,7 @@ defineExpose({ reset() { /* ... */ } })
 
 ## When you still need a regular `<script>`
 
-Occasionally you need both `<script setup>` and a regular `<script>` block in the same component — for example, to set `inheritAttrs: false` or declare named exports:
+Occasionally you need both `<script setup>` and a regular `<script>` block in the same component. For example, to set `inheritAttrs: false` or declare named exports:
 
 ```vue
 <script lang="ts">

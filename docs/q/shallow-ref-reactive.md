@@ -6,7 +6,7 @@ tags: ["reactivity", "performance"]
 summary: "shallowRef only tracks .value replacement (not nested changes). shallowReactive only tracks top-level properties. Use them for large objects you replace wholesale."
 ---
 
-By default, `ref` and `reactive` make your data deeply reactive — Vue tracks every nested property, no matter how deep. This is convenient but has a cost: Vue walks the entire object tree and wraps every nested object in a Proxy. For small objects that's fine. For a list of 10,000 items, each with nested properties, it's wasted work if you never edit individual items in place.
+By default, `ref` and `reactive` make your data deeply reactive. Vue tracks every nested property, no matter how deep. This is convenient but has a cost: Vue walks the entire object tree and wraps every nested object in a Proxy. For small objects that's fine. For a list of 10,000 items, each with nested properties, it's wasted work if you never edit individual items in place.
 
 [`shallowRef`](https://vuejs.org/api/reactivity-advanced.html#shallowref) and [`shallowReactive`](https://vuejs.org/api/reactivity-advanced.html#shallowreactive) solve this by only tracking the top level.
 

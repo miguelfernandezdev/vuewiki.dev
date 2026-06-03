@@ -24,7 +24,7 @@
       "question": "What is the correct pattern when a child needs to change a value owned by the parent?",
       "options": [
         "Use toRef() to create a writable ref from the prop",
-        "Mutate the prop — Vue 3 allows it with a warning suppression",
+        "Mutate the prop: Vue 3 allows it with a warning suppression",
         "Emit an event from the child; the parent updates its own state",
         "Use a Pinia store as an intermediary for all prop changes"
       ],

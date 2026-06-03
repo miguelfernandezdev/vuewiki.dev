@@ -6,7 +6,7 @@ tags: ["composables", "composition-api", "vueuse", "watchers"]
 summary: "A function that encapsulates reusable logic using the Composition API (refs, computed, watchers). It returns reactive state and methods."
 ---
 
-As your components grow, you'll notice pieces of logic that don't belong to any single component — data fetching patterns, form validation, timers, event listeners. A composable is a function that packages that reusable logic using the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), so you can share it across components without duplicating code.
+As your components grow, you'll notice pieces of logic that don't belong to any single component: data fetching patterns, form validation, timers, event listeners. A composable is a function that packages that reusable logic using the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), so you can share it across components without duplicating code.
 
 ## The problem composables solve
 

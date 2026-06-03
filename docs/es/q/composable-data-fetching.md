@@ -42,10 +42,10 @@ export function useFetch<T>(url: MaybeRefOrGetter<string>) {
 
 Decisiones de diseño clave:
 
-- **`MaybeRefOrGetter<string>`** — la URL puede ser un string plano, un ref, o un getter. [`toValue()`](https://vuejs.org/api/reactivity-utilities.html#tovalue) desenvuelve lo que sea. Esta es la convención Vue 3.3+ para inputs de composables.
-- **`watchEffect`** — se ejecuta inmediatamente (hace fetch al crearse) y se re-ejecuta cuando la URL cambia. Si la URL es estática, hace fetch una sola vez.
-- **Devuelve refs** — el que llama obtiene `data`, `error` y `loading` reactivos que se actualizan conforme avanza la petición.
-- **`refetch`** — expone la función execute para que el que llama pueda reintentar o refrescar manualmente.
+- **`MaybeRefOrGetter<string>`**: la URL puede ser un string plano, un ref, o un getter. [`toValue()`](https://vuejs.org/api/reactivity-utilities.html#tovalue) desenvuelve lo que sea. Esta es la convención Vue 3.3+ para inputs de composables.
+- **`watchEffect`**: se ejecuta inmediatamente (hace fetch al crearse) y se re-ejecuta cuando la URL cambia. Si la URL es estática, hace fetch una sola vez.
+- **Devuelve refs**: el que llama obtiene `data`, `error` y `loading` reactivos que se actualizan conforme avanza la petición.
+- **`refetch`**: expone la función execute para que el que llama pueda reintentar o refrescar manualmente.
 
 ## Usándolo en un componente
 

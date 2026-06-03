@@ -65,6 +65,6 @@ See also: [How does computed object stability affect re-renders?](/q/perf-comput
 
 ## References
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Computed caching vs. methods — Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
-- [Best Practices: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Computed caching vs. methods - Vue guide](https://vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods)
+- [Best Practices: computed - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)

@@ -4,7 +4,7 @@
       "question": "¿Por qué se deben almacenar los tokens de autenticación en cookies en lugar de localStorage en una app Nuxt con SSR?",
       "options": [
         "Las cookies son más seguras e inmunes a los ataques XSS",
-        "localStorage no existe en el servidor — las cookies se envían con cada petición HTTP",
+        "localStorage no existe en el servidor: las cookies se envían con cada petición HTTP",
         "localStorage es síncrono y bloquearía el renderizado SSR",
         "El composable useCookie de Vue es más eficiente que el acceso a localStorage"
       ],

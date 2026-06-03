@@ -51,7 +51,7 @@ Each API is a separate export that the bundler can trace. If your app never uses
 
 ## Impact on bundle size
 
-Vue 3's runtime core is approximately 10 KB gzipped when tree-shaken (a minimal app using `ref`, `computed`, and the template compiler — actual size varies by features used). Vue 2's runtime was around 23 KB gzipped regardless of which features you used (varies by version and build configuration).
+Vue 3's runtime core is approximately 10 KB gzipped when tree-shaken (a minimal app using `ref`, `computed`, and the template compiler; actual size varies by features used). Vue 2's runtime was around 23 KB gzipped regardless of which features you used (varies by version and build configuration).
 
 The features most often removed by tree-shaking:
 

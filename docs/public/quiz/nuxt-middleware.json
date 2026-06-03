@@ -13,10 +13,10 @@
     {
       "question": "Where does server middleware live and what does it have access to?",
       "options": [
-        "middleware/ — Vue composables and the route object",
-        "server/middleware/ — raw HTTP request/response via Nitro",
-        "plugins/ — the Nuxt app instance",
-        "server/api/ — the event context only"
+        "middleware/: Vue composables and the route object",
+        "server/middleware/: raw HTTP request/response via Nitro",
+        "plugins/: the Nuxt app instance",
+        "server/api/: the event context only"
       ],
       "answer": 1
     },

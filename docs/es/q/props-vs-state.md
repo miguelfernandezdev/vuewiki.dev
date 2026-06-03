@@ -95,6 +95,6 @@ Ver también: [¿Puedes inicializar el state con el valor de una prop?](/es/q/in
 
 ## Referencias
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [Props — Vue guide](https://vuejs.org/guide/components/props.html)
-- [Eventos de componente — Vue guide](https://vuejs.org/guide/components/events.html)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [Props - Vue guide](https://vuejs.org/guide/components/props.html)
+- [Eventos de componente - Vue guide](https://vuejs.org/guide/components/events.html)

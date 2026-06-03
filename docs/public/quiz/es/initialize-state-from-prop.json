@@ -5,7 +5,7 @@
       "options": [
         "El ref local se actualiza automáticamente para coincidir con el nuevo valor de la prop",
         "Vue lanza un warning sobre la mutación de props",
-        "El ref local permanece en su valor inicial — el cambio de prop no tiene efecto",
+        "El ref local permanece en su valor inicial: el cambio de prop no tiene efecto",
         "El componente se vuelve a montar con el nuevo valor de la prop"
       ],
       "answer": 2

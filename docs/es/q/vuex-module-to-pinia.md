@@ -6,7 +6,7 @@ tags: ["state-management", "migration", "pinia", "vuex"]
 summary: "Cada módulo Vuex se convierte en defineStore. Las mutations desaparecen, commit/dispatch se convierten en llamadas directas. Actualiza cada componente consumidor."
 ---
 
-Migrar de Vuex a Pinia es mayormente mecánico: cada módulo de Vuex se convierte en su propio `defineStore`, las mutations desaparecen, y las llamadas basadas en strings `commit`/`dispatch` se convierten en llamadas directas a métodos. La parte difícil no es el store en sí — es encontrar y actualizar cada componente que lo usa.
+Migrar de Vuex a Pinia es mayormente mecánico: cada módulo de Vuex se convierte en su propio `defineStore`, las mutations desaparecen, y las llamadas basadas en strings `commit`/`dispatch` se convierten en llamadas directas a métodos. La parte difícil no es el store en sí. Es encontrar y actualizar cada componente que lo usa.
 
 ## Conversión paso a paso
 
@@ -76,7 +76,7 @@ export const useCartStore = defineStore('cart', () => {
 
 | Vuex | Pinia | Por qué |
 | --- | --- | --- |
-| `state.total` (tracking manual) | `computed(() => ...)` | Computed deriva del estado — no necesita sincronización manual |
+| `state.total` (tracking manual) | `computed(() => ...)` | Computed deriva del estado, no necesita sincronización manual |
 | Mutations (`ADD_ITEM`, `CLEAR`) | Funciones normales | Pinia rastrea cambios de estado a través de reactividad, no necesita capa de mutations |
 | `commit('CLEAR')` | `clear()` | Llamada directa a función, type-safe |
 | `state, commit` destructurados del contexto | Acceso directo a refs | Todo está en scope, sin objeto de contexto |

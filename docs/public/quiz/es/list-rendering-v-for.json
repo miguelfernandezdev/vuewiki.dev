@@ -26,7 +26,7 @@
         "filter, map y concat ya que devuelven nuevos arrays",
         "Métodos de mutación como push, pop, splice, sort y reverse",
         "Cualquier operación que cambie la propiedad length del array",
-        "Todas las operaciones por igual — Vue observa el array completo"
+        "Todas las operaciones por igual: Vue observa el array completo"
       ],
       "answer": 1
     }

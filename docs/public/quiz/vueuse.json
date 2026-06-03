@@ -18,7 +18,7 @@
     {
       "question": "When should you write your own composable instead of using VueUse?",
       "options": [
-        "Always — custom composables are faster than VueUse",
+        "Always: custom composables are faster than VueUse",
         "When the logic is domain-specific to your application",
         "When you need SSR compatibility",
         "When the VueUse composable uses TypeScript"

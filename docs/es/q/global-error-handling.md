@@ -30,7 +30,7 @@ app.config.errorHandler = (err, instance, info) => {
 |---|---|
 | `err` | El objeto Error |
 | `instance` | La instancia del componente que lanzó el error (o null) |
-| `info` | Donde ocurrio el error: `'setup function'`, `'render function'`, `'watcher callback'`, etc. En builds de produccion, `info` es un codigo numerico abreviado en lugar de la cadena completa — consulta la [Error Reference](https://vuejs.org/error-reference/) para las correspondencias. |
+| `info` | Donde ocurrio el error: `'setup function'`, `'render function'`, `'watcher callback'`, etc. En builds de produccion, `info` es un codigo numerico abreviado en lugar de la cadena completa. Consulta la [Error Reference](https://vuejs.org/error-reference/) para las correspondencias. |
 
 ## onErrorCaptured (barrera a nivel de componente)
 

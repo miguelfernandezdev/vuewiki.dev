@@ -6,17 +6,17 @@ tags: ["state-management", "pinia", "vuex"]
 summary: "Pinia reemplaza Vuex: sin mutations, sin API basada en strings, soporte TypeScript completo, modular por diseño. Vuex está en modo mantenimiento."
 ---
 
-[Pinia](https://pinia.vuejs.org/) es la librería oficial de gestión de estado para Vue 3. Reemplaza a [Vuex](/es/q/how-vuex-works) — el equipo de Vue la creó porque el diseño de Vuex (mutations, API basada en strings, módulos complejos) no encajaba bien con TypeScript y la Composition API.
+[Pinia](https://pinia.vuejs.org/) es la librería oficial de gestión de estado para Vue 3. Reemplaza a [Vuex](/es/q/how-vuex-works). El equipo de Vue la creó porque el diseño de Vuex (mutations, API basada en strings, módulos complejos) no encajaba bien con TypeScript y la Composition API.
 
 ## Por qué Pinia reemplazó a Vuex
 
 Vuex tiene tres puntos de dolor que Pinia elimina:
 
-**1. Las mutations desaparecen.** En Vuex, no puedes cambiar el estado directamente — tienes que escribir una mutation (síncrona) y hacer commit por nombre. Pinia permite que las actions cambien el estado directamente, porque el sistema de reactividad de Vue 3 rastrea los cambios automáticamente a través de DevTools sin necesitar una capa de mutations separada.
+**1. Las mutations desaparecen.** En Vuex, no puedes cambiar el estado directamente. Tienes que escribir una mutation (síncrona) y hacer commit por nombre. Pinia permite que las actions cambien el estado directamente, porque el sistema de reactividad de Vue 3 rastrea los cambios automáticamente a través de DevTools sin necesitar una capa de mutations separada.
 
-**2. Inferencia completa de TypeScript.** Vuex depende de claves string (`commit('SET_USER')`, `dispatch('fetchUser')`, `getters.userName`). Un typo en cualquiera de esos strings es un bug en runtime, no un error de compilación. Los stores de Pinia son objetos planos — tu IDE conoce cada propiedad y método.
+**2. Inferencia completa de TypeScript.** Vuex depende de claves string (`commit('SET_USER')`, `dispatch('fetchUser')`, `getters.userName`). Un typo en cualquiera de esos strings es un bug en runtime, no un error de compilación. Los stores de Pinia son objetos planos; tu IDE conoce cada propiedad y método.
 
-**3. Sin módulos ni namespacing.** Vuex tiene un store global, dividido en módulos con namespace (`store.commit('cart/ADD_ITEM')`). Los stores de Pinia son independientes — cada uno es su propio `defineStore()`, importado directamente donde se necesite.
+**3. Sin módulos ni namespacing.** Vuex tiene un store global, dividido en módulos con namespace (`store.commit('cart/ADD_ITEM')`). Los stores de Pinia son independientes, cada uno es su propio `defineStore()`, importado directamente donde se necesite.
 
 ## Comparación lado a lado
 
@@ -58,7 +58,7 @@ export const useCartStore = defineStore('cart', () => {
 })
 ```
 
-Esto usa la [sintaxis de Composition API](https://pinia.vuejs.org/core-concepts/#Setup-Stores) (función setup). También hay una [sintaxis Options](https://pinia.vuejs.org/core-concepts/#Option-Stores) con propiedades `state`, `getters` y `actions` — mismo resultado, diferente estilo.
+Esto usa la [sintaxis de Composition API](https://pinia.vuejs.org/core-concepts/#Setup-Stores) (función setup). También hay una [sintaxis Options](https://pinia.vuejs.org/core-concepts/#Option-Stores) con propiedades `state`, `getters` y `actions`. Mismo resultado, diferente estilo.
 
 ## Usándolo en un componente
 

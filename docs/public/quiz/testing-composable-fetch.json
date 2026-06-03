@@ -13,10 +13,10 @@
     {
       "question": "What state should loading.value have immediately after calling the composable (before the fetch resolves)?",
       "options": [
-        "false — loading only becomes true after the first failed request",
-        "null — it is unset until the fetch starts",
-        "true — the fetch is pending",
-        "undefined — it depends on the composable implementation"
+        "false: loading only becomes true after the first failed request",
+        "null: it is unset until the fetch starts",
+        "true: the fetch is pending",
+        "undefined: it depends on the composable implementation"
       ],
       "answer": 2
     },

@@ -138,6 +138,6 @@ Ver también: [¿Por qué desestructurar un reactive hace perder la reactividad?
 
 ## Referencias
 
-- [toRefs() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
-- [toRef() — Vue docs](https://vuejs.org/api/reactivity-utilities.html#toref)
-- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [toRefs() - Vue docs](https://vuejs.org/api/reactivity-utilities.html#torefs)
+- [toRef() - Vue docs](https://vuejs.org/api/reactivity-utilities.html#toref)
+- [Composables guide - Vue docs](https://vuejs.org/guide/reusability/composables.html)

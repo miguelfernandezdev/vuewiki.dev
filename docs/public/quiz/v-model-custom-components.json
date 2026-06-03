@@ -19,7 +19,7 @@
       "question": "How do you support multiple `v-model` bindings on a single component in Vue 3?",
       "options": [
         "Use the `.sync` modifier for extra bindings",
-        "Each named `v-model` is not supported — only one allowed",
+        "Each named `v-model` is not supported: only one allowed",
         "Use named `v-model:propName` syntax for each binding",
         "Pass additional bindings as an object prop"
       ],

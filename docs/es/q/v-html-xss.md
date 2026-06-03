@@ -3,7 +3,7 @@ order: 15
 title: "¿Cómo se inyecta HTML crudo en Vue y por qué es peligroso?"
 difficulty: "beginner"
 tags: ["directives", "security"]
-summary: "v-html renderiza HTML crudo via innerHTML. Nunca lo uses con input del usuario — habilita ataques XSS. Solo úsalo con contenido confiable y sanitizado."
+summary: "v-html renderiza HTML crudo via innerHTML. Nunca lo uses con input del usuario porque habilita ataques XSS. Solo úsalo con contenido confiable y sanitizado."
 ---
 
 La directiva `v-html` renderiza una cadena como HTML crudo en lugar de texto plano. Omite la compilación de templates de Vue e inserta el HTML directamente en el DOM usando `innerHTML`. Es útil para renderizar contenido enriquecido de confianza (salida de markdown, contenido de tu propio CMS), pero abre la puerta al Cross-Site Scripting (XSS) si el contenido proviene de la entrada del usuario.

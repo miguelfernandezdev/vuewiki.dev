@@ -6,7 +6,7 @@ tags: ["reactivity", "performance"]
 summary: "shallowRef solo rastrea reemplazo de .value (no cambios anidados). shallowReactive solo rastrea propiedades del nivel superior. Úsalos para objetos grandes que reemplazas enteros."
 ---
 
-Por defecto, `ref` y `reactive` hacen tus datos profundamente reactivos — Vue rastrea cada propiedad anidada, sin importar cuán profunda sea. Esto es conveniente pero tiene un coste: Vue recorre todo el árbol de objetos y envuelve cada objeto anidado en un Proxy. Para objetos pequeños está bien. Para una lista de 10.000 elementos, cada uno con propiedades anidadas, es trabajo desperdiciado si nunca editas elementos individuales en su lugar.
+Por defecto, `ref` y `reactive` hacen tus datos profundamente reactivos. Vue rastrea cada propiedad anidada, sin importar cuán profunda sea. Esto es conveniente pero tiene un coste: Vue recorre todo el árbol de objetos y envuelve cada objeto anidado en un Proxy. Para objetos pequeños está bien. Para una lista de 10.000 elementos, cada uno con propiedades anidadas, es trabajo desperdiciado si nunca editas elementos individuales en su lugar.
 
 [`shallowRef`](https://vuejs.org/api/reactivity-advanced.html#shallowref) y [`shallowReactive`](https://vuejs.org/api/reactivity-advanced.html#shallowreactive) resuelven esto rastreando solo el primer nivel.
 

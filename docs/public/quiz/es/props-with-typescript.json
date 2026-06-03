@@ -15,7 +15,7 @@
       "options": [
         "Usando toRefs(props) antes de desestructurar",
         "Usando storeToRefs(props) de Pinia",
-        "Desestructurando directamente desde defineProps — la desestructuración reactiva está soportada de forma nativa",
+        "Desestructurando directamente desde defineProps: la desestructuración reactiva está soportada de forma nativa",
         "Usando computed(() => props.title) para cada prop individualmente"
       ],
       "answer": 2

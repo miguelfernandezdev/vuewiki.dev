@@ -10,7 +10,7 @@ Vue gives you two ways to write component logic.
 
 ## Options API
 
-The [Options API](https://vuejs.org/guide/introduction.html#options-api) is the original Vue style. You export an object with predefined keys — `data` for state, `methods` for functions, `computed` for derived values, `watch` for side effects. Vue reads those keys and wires everything together behind the scenes.
+The [Options API](https://vuejs.org/guide/introduction.html#options-api) is the original Vue style. You export an object with predefined keys: `data` for state, `methods` for functions, `computed` for derived values, `watch` for side effects. Vue reads those keys and wires everything together behind the scenes.
 
 ```vue
 <script>
@@ -44,7 +44,7 @@ function increment() { count.value++ }
 </script>
 ```
 
-The reactive state (`ref`), derived values (`computed`), and functions all live together. When the component grows, you can extract related logic into a [composable](/q/what-is-a-composable) — a plain function that returns reactive state — and reuse it across components.
+The reactive state (`ref`), derived values (`computed`), and functions all live together. When the component grows, you can extract related logic into a [composable](/q/what-is-a-composable) (a plain function that returns reactive state) and reuse it across components.
 
 ## Why the Composition API wins for real projects
 

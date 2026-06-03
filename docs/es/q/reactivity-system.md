@@ -10,7 +10,7 @@ Cuando cambias un valor en Vue y la página se actualiza automáticamente, es el
 
 ## El mecanismo central: Proxy
 
-Vue 3 envuelve tus objetos en un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de JavaScript. Un Proxy es una característica nativa del lenguaje que intercepta operaciones sobre un objeto —lecturas, escrituras, eliminaciones— y permite a Vue ejecutar código personalizado cuando ocurren.
+Vue 3 envuelve tus objetos en un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de JavaScript. Un Proxy es una característica nativa del lenguaje que intercepta operaciones sobre un objeto (lecturas, escrituras, eliminaciones) y permite a Vue ejecutar código personalizado cuando ocurren.
 
 Cuando escribes `reactive(obj)`, Vue crea un Proxy alrededor de `obj` que hace dos cosas:
 

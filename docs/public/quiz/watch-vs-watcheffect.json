@@ -6,7 +6,7 @@
         "`watch` runs immediately; `watchEffect` is lazy by default",
         "`watchEffect` runs immediately; `watch` is lazy by default",
         "Both run immediately on creation",
-        "Both are lazy — neither runs until a dependency changes"
+        "Both are lazy: neither runs until a dependency changes"
       ],
       "answer": 1
     },

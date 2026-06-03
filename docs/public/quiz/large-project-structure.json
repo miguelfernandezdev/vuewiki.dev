@@ -14,7 +14,7 @@
       "question": "What is the purpose of an index.ts barrel export in a feature folder?",
       "options": [
         "It registers all feature components globally with app.component()",
-        "It defines the feature's public API — what other features are allowed to import",
+        "It defines the feature's public API: what other features are allowed to import",
         "It lazy-loads all feature routes for code splitting",
         "It merges the feature's Pinia store with the global store"
       ],

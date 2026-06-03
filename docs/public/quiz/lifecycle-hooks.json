@@ -3,10 +3,10 @@
     {
       "question": "Which lifecycle hook is the correct place to access template refs and start timers?",
       "options": [
-        "onBeforeMount — the component is about to be attached",
-        "onCreated — runs immediately when the component is instantiated",
-        "onMounted — the DOM is ready at this point",
-        "onBeforeUpdate — fires before every reactive update"
+        "onBeforeMount: the component is about to be attached",
+        "onCreated: runs immediately when the component is instantiated",
+        "onMounted: the DOM is ready at this point",
+        "onBeforeUpdate: fires before every reactive update"
       ],
       "answer": 2
     },

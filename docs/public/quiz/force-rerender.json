@@ -13,7 +13,7 @@
     {
       "question": "What happens to lifecycle hooks when a component's :key changes?",
       "options": [
-        "No hooks run — Vue patches the component in place",
+        "No hooks run: Vue patches the component in place",
         "Only onUpdated runs since the DOM is replaced",
         "All lifecycle hooks run again from onMounted",
         "onBeforeUnmount and onUnmounted fire, but not onMounted"

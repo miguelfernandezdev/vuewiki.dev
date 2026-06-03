@@ -26,7 +26,7 @@
         "filter, map, and concat since they return new arrays",
         "Mutation methods like push, pop, splice, sort, and reverse",
         "Any operation that changes the array's length property",
-        "All operations equally — Vue watches the entire array"
+        "All operations equally: Vue watches the entire array"
       ],
       "answer": 1
     }

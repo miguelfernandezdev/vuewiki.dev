@@ -15,7 +15,7 @@
       "options": [
         "The descendant must call inject again to get the updated value",
         "The descendant receives the updated value automatically since provided refs are reactive",
-        "The descendant gets a snapshot — provide/inject is not reactive",
+        "The descendant gets a snapshot: provide/inject is not reactive",
         "The parent must call update() to push the new value to descendants"
       ],
       "answer": 1

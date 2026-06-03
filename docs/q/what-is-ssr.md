@@ -18,7 +18,7 @@ Server Side Rendering (SSR) means generating the HTML for a page on the server i
 5. Server sends the HTML + serialized state to the browser
 6. Browser displays the HTML instantly (content visible)
 7. JavaScript bundle loads
-8. Vue "hydrates" the static HTML — attaches event listeners, makes it interactive
+8. Vue "hydrates" the static HTML: attaches event listeners, makes it interactive
 ```
 
 ## SSR vs CSR (Client Side Rendering)

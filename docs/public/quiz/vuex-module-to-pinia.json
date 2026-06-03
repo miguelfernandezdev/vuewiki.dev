@@ -4,7 +4,7 @@
       "question": "What happens to Vuex mutations when migrating a module to Pinia?",
       "options": [
         "They become Pinia actions with the same string-key API",
-        "They are replaced with regular functions — Pinia has no mutations layer",
+        "They are replaced with regular functions: Pinia has no mutations layer",
         "They become getters in Pinia",
         "They must be prefixed with `commit_` to work in Pinia"
       ],
@@ -24,7 +24,7 @@
       "question": "What is the recommended migration strategy for a large app with many Vuex modules?",
       "options": [
         "Rewrite all modules to Pinia at once before deploying",
-        "Migrate one module at a time — Pinia and Vuex can coexist",
+        "Migrate one module at a time: Pinia and Vuex can coexist",
         "Use the `@pinia/vuex-compat` adapter layer permanently",
         "Convert only the modules used in new features; leave old ones in Vuex"
       ],

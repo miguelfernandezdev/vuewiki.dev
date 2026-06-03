@@ -25,7 +25,7 @@
       "options": [
         "The child's root DOM element",
         "The child's entire reactive state object",
-        "Nothing — <script setup> components expose nothing by default; use defineExpose()",
+        "Nothing: <script setup> components expose nothing by default; use defineExpose()",
         "A proxy to all public methods and data"
       ],
       "answer": 2

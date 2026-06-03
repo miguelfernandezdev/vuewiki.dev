@@ -3,7 +3,7 @@ order: 47
 title: "¿Qué son los componentes funcionales y cuándo son útiles?"
 difficulty: "intermediate"
 tags: ["components", "performance"]
-summary: "Funciones que reciben props y devuelven VNodes — sin instancia, sin estado, sin lifecycle. En Vue 3, la ganancia de rendimiento sobre componentes con estado es mínima."
+summary: "Funciones que reciben props y devuelven VNodes. Sin instancia, sin estado, sin lifecycle. En Vue 3, la ganancia de rendimiento sobre componentes con estado es mínima."
 ---
 
 Los componentes funcionales son componentes definidos como funciones planas que reciben props y devuelven VNodes. No tienen instancia, ni estado reactivo, ni lifecycle hooks, ni contexto `this`. En Vue 2, ofrecían una ventaja de rendimiento considerable porque omitían la sobrecarga de creación de la instancia del componente. En Vue 3, los componentes con estado ya son tan rápidos que la diferencia de rendimiento es mínima. Los componentes funcionales siguen existiendo, pero su uso principal ahora son los patrones de renderizado programático, no la optimización.

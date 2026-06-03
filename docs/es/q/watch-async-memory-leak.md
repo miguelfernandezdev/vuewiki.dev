@@ -75,6 +75,6 @@ Ver también: [¿Por qué mi watchEffect pierde dependencias después de un awai
 
 ## Referencias
 
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
-- [Composables guide — Vue docs](https://vuejs.org/guide/reusability/composables.html)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [watchEffect() - Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Composables guide - Vue docs](https://vuejs.org/guide/reusability/composables.html)

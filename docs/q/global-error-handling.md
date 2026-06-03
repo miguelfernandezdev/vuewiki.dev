@@ -30,7 +30,7 @@ app.config.errorHandler = (err, instance, info) => {
 |---|---|
 | `err` | The Error object |
 | `instance` | The component instance that threw (or null) |
-| `info` | Where the error occurred: `'setup function'`, `'render function'`, `'watcher callback'`, etc. In production builds, `info` is a shortened numeric code instead of the full string — see the [Error Reference](https://vuejs.org/error-reference/) for mappings. |
+| `info` | Where the error occurred: `'setup function'`, `'render function'`, `'watcher callback'`, etc. In production builds, `info` is a shortened numeric code instead of the full string. See the [Error Reference](https://vuejs.org/error-reference/) for mappings. |
 
 ## onErrorCaptured (component-level boundary)
 

@@ -67,7 +67,7 @@
   },
   "flashcards": {
     "title": "Flashcards",
-    "description": "Pon a prueba tu memoria — lee la pregunta, piensa la respuesta y comprueba.",
+    "description": "Pon a prueba tu memoria: lee la pregunta, piensa la respuesta y comprueba.",
     "start": "Empezar ({count} tarjetas)",
     "reveal": "Revelar",
     "revealHint": "Piensa tu respuesta primero",
@@ -93,7 +93,7 @@
   },
   "cta": {
     "missingTitle": "¿Tienes una pregunta que no hemos cubierto?",
-    "missingDesc": "Sugiere en GitHub — siempre estamos añadiendo nuevas",
+    "missingDesc": "Sugiere en GitHub, siempre estamos añadiendo nuevas",
     "missingAction": "Sugerir",
     "contribute": "Contribuir"
   },

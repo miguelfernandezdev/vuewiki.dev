@@ -13,10 +13,10 @@
     {
       "question": "¿Dónde vive el middleware de servidor y a qué tiene acceso?",
       "options": [
-        "middleware/ — composables de Vue y el objeto de ruta",
-        "server/middleware/ — request/response HTTP crudos a través de Nitro",
-        "plugins/ — la instancia de la aplicación Nuxt",
-        "server/api/ — solo el contexto del evento"
+        "middleware/: composables de Vue y el objeto de ruta",
+        "server/middleware/: request/response HTTP crudos a través de Nitro",
+        "plugins/: la instancia de la aplicación Nuxt",
+        "server/api/: solo el contexto del evento"
       ],
       "answer": 1
     },

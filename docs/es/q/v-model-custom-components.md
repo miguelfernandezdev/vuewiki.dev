@@ -20,7 +20,7 @@ El padre proporciona los datos a través de una prop. El hijo emite un evento cu
 
 ## defineModel (Vue 3.4+)
 
-[`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel) es la forma moderna de implementar `v-model` en un componente hijo. Crea un ref que puedes leer y escribir — Vue maneja el binding de la prop y la emisión del evento internamente:
+[`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel) es la forma moderna de implementar `v-model` en un componente hijo. Crea un ref que puedes leer y escribir. Vue maneja el binding de la prop y la emisión del evento internamente:
 
 ```vue
 <!-- SearchInput.vue -->
@@ -41,7 +41,7 @@ O vincúlalo directamente con `v-model` en un input nativo:
 </template>
 ```
 
-Antes de Vue 3.4, tenías que declarar la prop y el emit por separado — `defineModel` elimina ese boilerplate.
+Antes de Vue 3.4, tenías que declarar la prop y el emit por separado. `defineModel` elimina ese boilerplate.
 
 ## v-models con nombre (múltiples bindings)
 

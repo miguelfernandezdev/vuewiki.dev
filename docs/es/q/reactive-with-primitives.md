@@ -3,7 +3,7 @@ order: 65
 title: "¿Por qué reactive() no funciona con primitivos?"
 difficulty: "beginner"
 tags: ["reactivity", "errors"]
-summary: "reactive() se basa en Proxy, que solo puede envolver objetos. Los primitivos (string, number, boolean) no pueden ser proxied — usa ref()."
+summary: "reactive() se basa en Proxy, que solo puede envolver objetos. Los primitivos (string, number, boolean) no pueden ser proxied, así que usa ref()."
 ---
 
 Porque `reactive()` se construye sobre objetos [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de JavaScript, y los Proxies solo pueden envolver **objetos**. Los valores primitivos (strings, números, booleanos) no son objetos, así que no hay nada que el Proxy pueda envolver.
@@ -43,6 +43,6 @@ Ver también: [¿Cuál es la diferencia entre ref y reactive?](/es/q/ref-vs-reac
 
 ## Referencias
 
-- [ref() — Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
-- [reactive() — Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
-- [Reactivity Fundamentals — Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [ref() - Vue docs](https://vuejs.org/api/reactivity-core.html#ref)
+- [reactive() - Vue docs](https://vuejs.org/api/reactivity-core.html#reactive)
+- [Reactivity Fundamentals - Vue guide](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

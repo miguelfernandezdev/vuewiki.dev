@@ -57,6 +57,6 @@ Ver también: [¿Por qué mi propiedad computed no se actualiza cuando cambia un
 
 ## Referencias
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [Buenas prácticas: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
-- [Array.prototype.toSorted() — MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [Buenas prácticas: computed - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [Array.prototype.toSorted() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)

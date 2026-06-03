@@ -6,7 +6,7 @@ tags: ["components", "composables", "v-model"]
 summary: "Usa un objeto reactive para los datos, otro paralelo para errores, y extrae la validación a un composable. Para formularios grandes, considera VeeValidate o FormKit."
 ---
 
-Un "formulario complejo" normalmente significa una o más de: muchos campos, wizards multi-paso, secciones dinámicas (añadir/eliminar campos), objetos anidados, validación entre campos, o validación asíncrona (verificar si un nombre de usuario está disponible). El reto no es un campo individual — es mantener la validación, el estado, el tracking de cambios y la lógica de envío organizados a medida que el formulario crece.
+Un "formulario complejo" normalmente significa una o más de: muchos campos, wizards multi-paso, secciones dinámicas (añadir/eliminar campos), objetos anidados, validación entre campos, o validación asíncrona (verificar si un nombre de usuario está disponible). El reto no es un campo individual. Es mantener la validación, el estado, el tracking de cambios y la lógica de envío organizados a medida que el formulario crece.
 
 ## El patrón base: estado reactivo + validación en composable
 
@@ -136,7 +136,7 @@ async function handleSubmit() {
 
 Construye tu propio composable cuando el formulario es específico de tu app y no necesita funcionalidades complejas. Usa una librería cuando necesites:
 
-- **Validación basada en schemas** (Zod, Yup, Valibot) — compartida entre frontend y backend
+- **Validación basada en schemas** (Zod, Yup, Valibot), compartida entre frontend y backend
 - **Wizards multi-paso** con validación por paso
 - **Campos de array dinámicos** (añadir/eliminar secciones repetidas)
 - **Validación asíncrona** con debouncing (verificar disponibilidad de nombre de usuario)

@@ -3,7 +3,7 @@ order: 102
 title: "What is Pinia Colada and how does it handle async state?"
 difficulty: "advanced"
 tags: ["state-management", "data-fetching", "pinia"]
-summary: "Vue's answer to TanStack Query — handles data fetching, caching, invalidation, optimistic updates, and deduplication on top of Pinia."
+summary: "Vue's answer to TanStack Query. Handles data fetching, caching, invalidation, optimistic updates, and deduplication on top of Pinia."
 ---
 
 Pinia Colada is an async state management layer for Vue, built by Eduardo San Martin Morote (the creator of Pinia and Vue Router). It handles data fetching, caching, invalidation, optimistic updates, and deduplication. Think of it as Vue's answer to TanStack Query (React Query), but designed around Vue's reactivity and Pinia's ecosystem.

@@ -24,7 +24,7 @@
       "question": "What routing strategy does @nuxtjs/i18n use with 'prefix_except_default' config?",
       "options": [
         "All routes have a locale prefix including the default language",
-        "No routes have a locale prefix — the Accept-Language header is used",
+        "No routes have a locale prefix: the Accept-Language header is used",
         "Non-default locales get a prefix (e.g., /es/about) while default has no prefix",
         "Routes use query parameters like ?lang=es instead of path prefixes"
       ],

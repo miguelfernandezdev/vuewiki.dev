@@ -121,6 +121,6 @@ Ver también: [¿Cómo agrupa Vue las actualizaciones del DOM?](/es/q/dom-update
 
 ## Referencias
 
-- [nextTick() — Vue docs](https://vuejs.org/api/general.html#nexttick)
-- [watch() — Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
-- [Reactividad en profundidad — Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)
+- [nextTick() - Vue docs](https://vuejs.org/api/general.html#nexttick)
+- [watch() - Vue docs](https://vuejs.org/api/reactivity-core.html#watch)
+- [Reactividad en profundidad - Vue guide](https://vuejs.org/guide/extras/reactivity-in-depth.html)

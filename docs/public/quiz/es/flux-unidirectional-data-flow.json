@@ -4,7 +4,7 @@
       "question": "¿Cuál es la restricción clave del flujo de datos unidireccional de Flux?",
       "options": [
         "El estado debe almacenarse en un único objeto global",
-        "La vista nunca modifica el estado directamente — siempre pasa por una acción",
+        "La vista nunca modifica el estado directamente: siempre pasa por una acción",
         "Las acciones deben ser síncronas para mantener la trazabilidad",
         "Los componentes no pueden compartir estado directamente"
       ],

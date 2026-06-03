@@ -13,10 +13,10 @@
     {
       "question": "Which lifecycle hook is safe to use browser-only APIs in, and why?",
       "options": [
-        "setup() — it runs first and has full context",
-        "onServerPrefetch() — it runs on the server with full access",
-        "onMounted() — it only runs on the client, never on the server",
-        "onBeforeCreate() — it runs before the component is rendered"
+        "setup(): it runs first and has full context",
+        "onServerPrefetch(): it runs on the server with full access",
+        "onMounted(): it only runs on the client, never on the server",
+        "onBeforeCreate(): it runs before the component is rendered"
       ],
       "answer": 2
     },

@@ -10,7 +10,7 @@ These are three built-in features introduced in Vue 3. Each solves a different p
 
 ## Teleport
 
-[`<Teleport>`](https://vuejs.org/guide/built-ins/teleport.html) renders its children into a different part of the DOM, outside the parent component's element. The component logic (props, events, reactivity) stays in place — only the DOM output moves.
+[`<Teleport>`](https://vuejs.org/guide/built-ins/teleport.html) renders its children into a different part of the DOM, outside the parent component's element. The component logic (props, events, reactivity) stays in place; only the DOM output moves.
 
 ```vue
 <script setup>
@@ -34,7 +34,7 @@ const showModal = ref(false)
 
 Without Teleport, a modal inside a deeply nested component inherits all parent CSS (`overflow: hidden`, `z-index`, `transform`), which can clip or misposition it. Teleporting to `<body>` sidesteps those issues. The `to` prop accepts any CSS selector or DOM element.
 
-Common uses: modals, tooltips, dropdown menus, notifications — anything that needs to visually escape its parent's layout.
+Common uses: modals, tooltips, dropdown menus, notifications. Anything that needs to visually escape its parent's layout.
 
 ## Fragments
 
@@ -50,7 +50,7 @@ In Vue 2, every component needed a single root element. This forced unnecessary 
 </template>
 ```
 
-Vue 3 supports **fragments** — multiple root elements with no wrapper:
+Vue 3 supports **fragments**, meaning multiple root elements with no wrapper:
 
 ```vue
 <!-- Vue 3: multiple roots, no wrapper needed -->

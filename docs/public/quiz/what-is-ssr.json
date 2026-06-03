@@ -5,7 +5,7 @@
       "options": [
         "SSR uses less JavaScript overall",
         "SSR eliminates the need for hydration",
-        "Users see content before JavaScript loads — faster first contentful paint",
+        "Users see content before JavaScript loads: faster first contentful paint",
         "SSR servers cache responses indefinitely with no invalidation needed"
       ],
       "answer": 2

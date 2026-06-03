@@ -14,7 +14,7 @@
       "question": "What is the purpose of each feature's index.ts barrel export file?",
       "options": [
         "To auto-generate TypeScript types for external consumers",
-        "To define the feature's public API — what other features are allowed to import",
+        "To define the feature's public API: what other features are allowed to import",
         "To register the feature's components globally with Vue",
         "To configure the feature's Pinia store with initial state"
       ],

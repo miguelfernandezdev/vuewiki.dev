@@ -168,6 +168,6 @@ Ver también: [¿Por qué mi propiedad computed no se actualiza cuando cambia un
 
 ## Referencias
 
-- [computed() — Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
-- [watchEffect() — Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
-- [Buenas prácticas: computed — Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
+- [computed() - Vue docs](https://vuejs.org/api/reactivity-core.html#computed)
+- [watchEffect() - Vue docs](https://vuejs.org/api/reactivity-core.html#watcheffect)
+- [Buenas prácticas: computed - Vue guide](https://vuejs.org/guide/essentials/computed.html#best-practices)
