@@ -101,5 +101,16 @@
     "back": "← All questions",
     "markRead": "Mark as read",
     "read": "Read"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "startBtn": "Test yourself ({count} questions)",
+    "perfect": "Perfect score!",
+    "good": "Good job!",
+    "tryAgain": "Keep studying!",
+    "retry": "Try again",
+    "close": "Close",
+    "correctLabel": "correct",
+    "wrongLabel": "wrong"
   }
 }

@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What does defineAsyncComponent wrap?",
+      "options": [
+        "A static import",
+        "A dynamic import (import())",
+        "A require() call",
+        "A fetch() request"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is the async component's code downloaded?",
+      "options": [
+        "At build time",
+        "When the app initializes",
+        "When the component first renders",
+        "When the route is registered"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does the 'delay' option control in defineAsyncComponent?",
+      "options": [
+        "Time before showing the error component",
+        "Time before showing the loading component",
+        "Time before retrying the import",
+        "Time before the component is destroyed"
+      ],
+      "answer": 1
+    }
+  ]
+}

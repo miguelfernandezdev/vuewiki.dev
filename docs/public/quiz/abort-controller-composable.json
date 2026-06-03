@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What error name does a cancelled fetch throw?",
+      "options": [
+        "CancelError",
+        "AbortError",
+        "TimeoutError",
+        "NetworkError"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What do you pass to fetch() to make it cancellable?",
+      "options": [
+        "The AbortController instance",
+        "A cancel token",
+        "The controller's signal property",
+        "A timeout value"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "Why cancel requests on component unmount?",
+      "options": [
+        "To save server bandwidth",
+        "To prevent memory leaks from setting state on destroyed components",
+        "To speed up page transitions",
+        "To clear the browser cache"
+      ],
+      "answer": 1
+    }
+  ]
+}

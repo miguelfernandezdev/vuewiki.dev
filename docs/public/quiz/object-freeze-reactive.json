@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "What happens when you mutate a frozen reactive object in non-strict mode?",
+      "options": [
+        "Vue throws a warning and re-renders",
+        "The mutation silently fails, no re-render",
+        "The Proxy throws a TypeError",
+        "Vue removes the Proxy wrapper"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Why can't Vue make frozen objects reactive?",
+      "options": [
+        "Proxy doesn't support frozen objects at all",
+        "Object.freeze sets writable:false, blocking the Proxy set trap",
+        "Vue uses Object.defineProperty, not Proxy",
+        "Frozen objects can't have getters"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "When is Object.freeze() on reactive data useful?",
+      "options": [
+        "To make data deeply reactive",
+        "To prevent XSS attacks",
+        "As a performance optimization for large read-only datasets",
+        "To enable server-side rendering"
+      ],
+      "answer": 2
+    }
+  ]
+}

@@ -101,5 +101,16 @@
     "back": "← Todas las preguntas",
     "markRead": "Marcar como leída",
     "read": "Leída"
+  },
+  "quiz": {
+    "title": "Quiz",
+    "startBtn": "Ponte a prueba ({count} preguntas)",
+    "perfect": "¡Puntuación perfecta!",
+    "good": "¡Buen trabajo!",
+    "tryAgain": "¡Sigue estudiando!",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "correctLabel": "correctas",
+    "wrongLabel": "incorrectas"
   }
 }

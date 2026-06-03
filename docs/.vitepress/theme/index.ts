@@ -7,6 +7,7 @@ import FlashcardsPage from './FlashcardsPage.vue'
 import QuestionMeta from './QuestionMeta.vue'
 import BookLogo from './BookLogo.vue'
 import FooterCta from './FooterCta.vue'
+import QuizSection from './QuizSection.vue'
 import './style.css'
 
 export default {
@@ -14,7 +15,7 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'doc-before': () => h(QuestionMeta),
-      'doc-after': () => h(FooterCta),
+      'doc-after': () => [h(QuizSection), h(FooterCta)],
       'home-hero-image': () => h(BookLogo),
     })
   },

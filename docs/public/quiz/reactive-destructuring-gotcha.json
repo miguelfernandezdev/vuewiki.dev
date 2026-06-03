@@ -1,0 +1,34 @@
+{
+  "questions": [
+    {
+      "question": "Why does destructuring a reactive object lose reactivity?",
+      "options": [
+        "JavaScript doesn't support destructuring Proxies",
+        "Destructuring extracts plain values out of the Proxy",
+        "Vue disables reactivity on destructured variables",
+        "The garbage collector removes the Proxy reference"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which utility preserves reactivity when destructuring?",
+      "options": [
+        "toRaw()",
+        "markRaw()",
+        "toRefs()",
+        "shallowRef()"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "After using toRefs(), how do you access the value?",
+      "options": [
+        "Directly, like a normal variable",
+        "Using .value on each destructured property",
+        "Using .get() method",
+        "Through the original reactive object only"
+      ],
+      "answer": 1
+    }
+  ]
+}
