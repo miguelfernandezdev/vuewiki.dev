@@ -12,12 +12,7 @@
     },
     {
       "question": "¿Qué composable envuelve cualquier función async (no solo $fetch) y acepta una clave de caché única?",
-      "options": [
-        "useFetch",
-        "useNuxtData",
-        "useAsyncData",
-        "$fetch"
-      ],
+      "options": ["useFetch", "useNuxtData", "useAsyncData", "$fetch"],
       "answer": 2
     },
     {

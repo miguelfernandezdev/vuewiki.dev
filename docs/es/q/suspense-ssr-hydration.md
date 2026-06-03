@@ -1,9 +1,9 @@
 ---
 order: 145
-title: "¿Qué problemas de hidratación SSR causa Suspense y cómo se evitan?"
-difficulty: "advanced"
-tags: ["ssr", "components", "vueuse", "suspense"]
-summary: "Durante la hydration, los chunks de componentes async pueden no estar cargados, causando mismatches. Precarga chunks o usa el Suspense integrado de Nuxt."
+title: '¿Qué problemas de hidratación SSR causa Suspense y cómo se evitan?'
+difficulty: 'advanced'
+tags: ['ssr', 'components', 'vueuse', 'suspense']
+summary: 'Durante la hydration, los chunks de componentes async pueden no estar cargados, causando mismatches. Precarga chunks o usa el Suspense integrado de Nuxt.'
 ---
 
 `<Suspense>` y SSR tienen casos límite conocidos. El problema central: durante la hidratación, el chunk de un componente asíncrono puede no estar cargado todavía, así que el cliente renderiza el fallback mientras el servidor envió el contenido resuelto. Esto crea un error de hidratación que provoca parpadeos, pérdida de estado o errores en tiempo de ejecución.
@@ -26,9 +26,7 @@ El usuario ve el contenido, luego un destello del estado de carga, y luego el co
 
 ```vue
 <script setup>
-const AsyncDashboard = defineAsyncComponent(
-  () => import('./Dashboard.vue')
-)
+const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
 </script>
 
 <template>
@@ -137,13 +135,13 @@ Configurar un `staleTime` adecuado evita que el cliente vuelva a pedir datos que
 
 ## Referencia de problemas habituales
 
-| Síntoma | Causa | Solución |
-|---|---|---|
-| El contenido parpadea a cargando y vuelve | El chunk asíncrono no está listo al hidratar | Usa async setup o ClientOnly |
-| Destello en blanco en Safari | Carga más lenta del chunk en Safari | Precarga los chunks críticos, usa esqueletos |
-| Aviso "Hydration mismatch" | El servidor y el cliente renderizan contenido diferente | Haz coincidir la estructura del fallback con la salida del servidor |
-| Los datos se piden dos veces | staleTime no configurado, el cliente vuelve a pedir | Configura staleTime en las queries |
-| "Cannot access composable" tras await | useQuery llamado después de await | Mueve todas las llamadas a composables antes del await |
+| Síntoma                                   | Causa                                                   | Solución                                                            |
+| ----------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------- |
+| El contenido parpadea a cargando y vuelve | El chunk asíncrono no está listo al hidratar            | Usa async setup o ClientOnly                                        |
+| Destello en blanco en Safari              | Carga más lenta del chunk en Safari                     | Precarga los chunks críticos, usa esqueletos                        |
+| Aviso "Hydration mismatch"                | El servidor y el cliente renderizan contenido diferente | Haz coincidir la estructura del fallback con la salida del servidor |
+| Los datos se piden dos veces              | staleTime no configurado, el cliente vuelve a pedir     | Configura staleTime en las queries                                  |
+| "Cannot access composable" tras await     | useQuery llamado después de await                       | Mueve todas las llamadas a composables antes del await              |
 
 Ver también: [¿Cómo funciona Suspense?](/es/q/suspense) · [¿Qué son los componentes asíncronos?](/es/q/async-components)
 

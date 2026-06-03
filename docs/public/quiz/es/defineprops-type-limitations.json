@@ -22,12 +22,7 @@
     },
     {
       "question": "¿A partir de qué versión de Vue puede `defineProps` aceptar interfaces importadas de archivos externos?",
-      "options": [
-        "Vue 3.0",
-        "Vue 3.2",
-        "Vue 3.3",
-        "Vue 3.5"
-      ],
+      "options": ["Vue 3.0", "Vue 3.2", "Vue 3.3", "Vue 3.5"],
       "answer": 2
     }
   ]

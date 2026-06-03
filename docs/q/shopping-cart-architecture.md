@@ -1,9 +1,9 @@
 ---
 order: 136
-title: "How would you build a shopping cart with Vue?"
-difficulty: "advanced"
-tags: ["architecture", "state-management", "pinia"]
-summary: "Use a Pinia store for cart state shared across pages. Actions handle add/remove/clear, getters compute totals. Persist to localStorage via a plugin."
+title: 'How would you build a shopping cart with Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'state-management', 'pinia']
+summary: 'Use a Pinia store for cart state shared across pages. Actions handle add/remove/clear, getters compute totals. Persist to localStorage via a plugin.'
 ---
 
 A shopping cart is a classic state management problem. The cart state needs to be shared across multiple pages (product list, cart drawer, checkout), persisted across page refreshes, and updated from different places. A Pinia store is the natural fit.
@@ -32,7 +32,7 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Omit<CartItem, 'qty'>, qty = 1) {
-    const existing = items.value.find(i => i.id === product.id)
+    const existing = items.value.find((i) => i.id === product.id)
     if (existing) {
       existing.qty += qty
     } else {
@@ -41,11 +41,11 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function removeItem(id: string) {
-    items.value = items.value.filter(i => i.id !== id)
+    items.value = items.value.filter((i) => i.id !== id)
   }
 
   function updateQty(id: string, qty: number) {
-    const item = items.value.find(i => i.id === id)
+    const item = items.value.find((i) => i.id === id)
     if (!item) return
     if (qty <= 0) {
       removeItem(id)
@@ -58,7 +58,15 @@ export const useCartStore = defineStore('cart', () => {
     items.value = []
   }
 
-  return { items, totalItems, totalPrice, addItem, removeItem, updateQty, clear }
+  return {
+    items,
+    totalItems,
+    totalPrice,
+    addItem,
+    removeItem,
+    updateQty,
+    clear
+  }
 })
 ```
 
@@ -160,11 +168,15 @@ npm install pinia-plugin-persistedstate
 
 ```ts
 // stores/cart.ts
-export const useCartStore = defineStore('cart', () => {
-  // ... same as before
-}, {
-  persist: true
-})
+export const useCartStore = defineStore(
+  'cart',
+  () => {
+    // ... same as before
+  },
+  {
+    persist: true
+  }
+)
 ```
 
 ## Header cart badge
@@ -199,7 +211,7 @@ async function placeOrder() {
     await $fetch('/api/orders', {
       method: 'POST',
       body: {
-        items: cart.items.map(i => ({ id: i.id, qty: i.qty }))
+        items: cart.items.map((i) => ({ id: i.id, qty: i.qty }))
       }
     })
     cart.clear()
@@ -214,9 +226,12 @@ async function placeOrder() {
   <div>
     <h1>Checkout</h1>
     <div v-for="item in cart.items" :key="item.id">
-      {{ item.name }} × {{ item.qty }} — {{ (item.price * item.qty).toFixed(2) }} €
+      {{ item.name }} × {{ item.qty }} —
+      {{ (item.price * item.qty).toFixed(2) }} €
     </div>
-    <p><strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong></p>
+    <p>
+      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
+    </p>
     <button :disabled="isSubmitting || !cart.items.length" @click="placeOrder">
       Place order
     </button>

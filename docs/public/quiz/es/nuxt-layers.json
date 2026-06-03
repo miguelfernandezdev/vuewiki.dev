@@ -12,12 +12,7 @@
     },
     {
       "question": "¿Qué clave en nuxt.config.ts se usa para extender desde una capa local o de npm?",
-      "options": [
-        "plugins",
-        "modules",
-        "layers",
-        "extends"
-      ],
+      "options": ["plugins", "modules", "layers", "extends"],
       "answer": 3
     },
     {

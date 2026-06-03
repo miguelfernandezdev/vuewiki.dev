@@ -1,9 +1,9 @@
 ---
 order: 135
-title: "¿Qué es el patrón de componentes compuestos en Vue?"
-difficulty: "advanced"
-tags: ["architecture", "components", "vite", "provide-inject"]
-summary: "Componentes que comparten estado implícito via provide/inject. El padre gestiona el estado, los hijos lo consumen. Ejemplos: tabs, acordeones, selects."
+title: '¿Qué es el patrón de componentes compuestos en Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'components', 'vite', 'provide-inject']
+summary: 'Componentes que comparten estado implícito via provide/inject. El padre gestiona el estado, los hijos lo consumen. Ejemplos: tabs, acordeones, selects.'
 ---
 
 Los componentes compuestos son un conjunto de componentes que trabajan juntos y comparten estado implícito a través de provide/inject. El padre gestiona el estado, los hijos lo consumen. El consumidor organiza los hijos libremente sin necesidad de conectar props o eventos entre ellos manualmente.
@@ -189,12 +189,12 @@ const { toggle, isOpen } = inject('accordion')!
 
 ## Cuándo usar componentes compuestos
 
-| Situación | ¿Usar componentes compuestos? |
-|---|---|
-| Grupo de elementos de UI que comparten estado (pestañas, accordion, select, stepper) | Sí |
-| Componentes que siempre se usan juntos en una relación padre-hijo | Sí |
-| Componentes independientes que ocasionalmente interactúan | No, usa props/emits o un store |
-| Padre-hijo simple con 1-2 props | No, sería sobreingeniería |
+| Situación                                                                            | ¿Usar componentes compuestos?  |
+| ------------------------------------------------------------------------------------ | ------------------------------ |
+| Grupo de elementos de UI que comparten estado (pestañas, accordion, select, stepper) | Sí                             |
+| Componentes que siempre se usan juntos en una relación padre-hijo                    | Sí                             |
+| Componentes independientes que ocasionalmente interactúan                            | No, usa props/emits o un store |
+| Padre-hijo simple con 1-2 props                                                      | No, sería sobreingeniería      |
 
 ## Componentes compuestos frente al enfoque solo con props
 
@@ -202,10 +202,12 @@ El enfoque solo con props pasa todos los datos a un único componente:
 
 ```vue
 <!-- Solo props: menos flexible, más simple para casos pequeños -->
-<Tabs :items="[
-  { label: 'Profile', content: '...' },
-  { label: 'Settings', content: '...' }
-]" />
+<Tabs
+  :items="[
+    { label: 'Profile', content: '...' },
+    { label: 'Settings', content: '...' }
+  ]"
+/>
 
 <!-- Compuesto: más flexible, el consumidor controla el layout -->
 <Tabs>

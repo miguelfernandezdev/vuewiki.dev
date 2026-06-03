@@ -1,9 +1,9 @@
 ---
 order: 8
-title: "¿Cuál es la diferencia entre v-if y v-show?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: "v-if añade/elimina elementos del DOM (mayor coste de cambio, cero coste oculto). v-show cambia CSS display (cambio barato, siempre renderizado)."
+title: '¿Cuál es la diferencia entre v-if y v-show?'
+difficulty: 'beginner'
+tags: ['directives']
+summary: 'v-if añade/elimina elementos del DOM (mayor coste de cambio, cero coste oculto). v-show cambia CSS display (cambio barato, siempre renderizado).'
 ---
 
 Ambas directivas muestran y ocultan elementos según una condición, pero lo hacen de formas completamente distintas, y esa diferencia tiene implicaciones reales de rendimiento.
@@ -40,13 +40,13 @@ Alternar es barato (un cambio de propiedad CSS), pero el renderizado inicial sie
 
 ## Cuándo usar cada uno
 
-| Escenario | Usar | Por qué |
-|---|---|---|
-| El usuario alterna algo con frecuencia (pestañas, dropdowns, tooltips) | `v-show` | Evita montajes/desmontajes repetidos |
-| La condición raramente cambia (feature flags, permisos) | `v-if` | No pagues el coste de renderizar algo que quizás el usuario nunca vea |
-| Árbol de componentes grande y costoso de montar | `v-show` si se alterna mucho, `v-if` si rara vez se muestra | Equilibra el coste inicial vs el coste de alternancia |
-| Necesitas cadenas `v-else` o `v-else-if` | `v-if` | `v-show` no soporta cadenas else |
-| Necesitas envolver varios elementos con `<template>` | `v-if` | `v-show` no funciona en `<template>` |
+| Escenario                                                              | Usar                                                        | Por qué                                                               |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| El usuario alterna algo con frecuencia (pestañas, dropdowns, tooltips) | `v-show`                                                    | Evita montajes/desmontajes repetidos                                  |
+| La condición raramente cambia (feature flags, permisos)                | `v-if`                                                      | No pagues el coste de renderizar algo que quizás el usuario nunca vea |
+| Árbol de componentes grande y costoso de montar                        | `v-show` si se alterna mucho, `v-if` si rara vez se muestra | Equilibra el coste inicial vs el coste de alternancia                 |
+| Necesitas cadenas `v-else` o `v-else-if`                               | `v-if`                                                      | `v-show` no soporta cadenas else                                      |
+| Necesitas envolver varios elementos con `<template>`                   | `v-if`                                                      | `v-show` no funciona en `<template>`                                  |
 
 **Usa `v-if` por defecto** salvo que tengas una razón específica para mantener el elemento en el DOM. La mayoría de condiciones en aplicaciones reales no se alternan con suficiente frecuencia para que `v-show` marque la diferencia.
 

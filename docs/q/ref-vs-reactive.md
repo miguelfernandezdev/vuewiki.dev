@@ -1,8 +1,8 @@
 ---
 order: 62
 title: "What's the difference between ref and reactive?"
-difficulty: "beginner"
-tags: ["reactivity", "composition-api"]
+difficulty: 'beginner'
+tags: ['reactivity', 'composition-api']
 summary: "ref works with any value type and requires .value access. reactive works only with objects, no .value needed, but can't be reassigned or destructured safely."
 ---
 
@@ -15,12 +15,12 @@ Vue 3 gives you two ways to create reactive state: [`ref`](https://vuejs.org/api
 ```ts
 import { ref } from 'vue'
 
-const count = ref(0)           // primitive
+const count = ref(0) // primitive
 const user = ref({ name: '' }) // object
 const items = ref<string[]>([]) // array
 
-count.value++                   // access through .value in JS
-user.value.name = 'Ana'         // nested access
+count.value++ // access through .value in JS
+user.value.name = 'Ana' // nested access
 items.value.push('new item')
 ```
 
@@ -41,7 +41,7 @@ import { reactive } from 'vue'
 
 const state = reactive({ count: 0, name: '' })
 
-state.count++     // no .value needed
+state.count++ // no .value needed
 state.name = 'Ana'
 ```
 

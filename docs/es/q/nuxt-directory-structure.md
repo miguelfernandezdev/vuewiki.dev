@@ -1,9 +1,9 @@
 ---
 order: 150
-title: "¿Cuál es la convención de estructura de directorios en Nuxt?"
-difficulty: "beginner"
-tags: ["nuxt", "architecture", "vite"]
-summary: "Basado en convenciones: pages/ para rutas, server/api/ para endpoints, composables/ para auto-imports, components/ para componentes auto-registrados."
+title: '¿Cuál es la convención de estructura de directorios en Nuxt?'
+difficulty: 'beginner'
+tags: ['nuxt', 'architecture', 'vite']
+summary: 'Basado en convenciones: pages/ para rutas, server/api/ para endpoints, composables/ para auto-imports, components/ para componentes auto-registrados.'
 ---
 
 Nuxt está basado en convenciones. La estructura de directorios es la configuración. El lugar donde colocas un archivo determina su función: un archivo `.vue` en `pages/` se convierte en una ruta, un archivo `.ts` en `server/api/` se convierte en un endpoint de API, un composable en `composables/` se importa automáticamente. No hay configuración manual.
@@ -126,12 +126,14 @@ server/
 ### public/ vs assets/
 
 Los archivos de `public/` se sirven sin cambios en la URL raíz:
+
 ```
 public/favicon.ico           → /favicon.ico
 public/robots.txt            → /robots.txt
 ```
 
 Los archivos de `assets/` son procesados por el bundler (con hash, optimizados):
+
 ```vue
 <template>
   <img src="~/assets/images/hero.png" />
@@ -144,25 +146,25 @@ Los archivos de `assets/` son procesados por el bundler (con hash, optimizados):
 
 ## Convenciones de nombres de archivo
 
-| Patrón | Significado |
-|---|---|
-| `[param].vue` | Parámetro de ruta dinámico |
-| `[[param]].vue` | Parámetro de ruta opcional |
-| `[...slug].vue` | Ruta comodín |
-| `(group)/` | Grupo de rutas (carpeta no incluida en la URL) |
-| `.client.vue` / `.client.ts` | Solo en el cliente |
-| `.server.vue` / `.server.ts` | Solo en el servidor |
-| `.global.ts` | Middleware global |
+| Patrón                       | Significado                                    |
+| ---------------------------- | ---------------------------------------------- |
+| `[param].vue`                | Parámetro de ruta dinámico                     |
+| `[[param]].vue`              | Parámetro de ruta opcional                     |
+| `[...slug].vue`              | Ruta comodín                                   |
+| `(group)/`                   | Grupo de rutas (carpeta no incluida en la URL) |
+| `.client.vue` / `.client.ts` | Solo en el cliente                             |
+| `.server.vue` / `.server.ts` | Solo en el servidor                            |
+| `.global.ts`                 | Middleware global                              |
 
 ## Archivos especiales
 
-| Archivo | Propósito |
-|---|---|
-| `app.vue` | Componente raíz (opcional si existe `pages/`) |
-| `nuxt.config.ts` | Configuración en tiempo de build (módulos, Vite, Nitro) |
-| `app.config.ts` | Configuración en tiempo de ejecución (tema, feature flags) |
-| `error.vue` | Página de error personalizada |
-| `.env` | Variables de entorno |
+| Archivo          | Propósito                                                  |
+| ---------------- | ---------------------------------------------------------- |
+| `app.vue`        | Componente raíz (opcional si existe `pages/`)              |
+| `nuxt.config.ts` | Configuración en tiempo de build (módulos, Vite, Nitro)    |
+| `app.config.ts`  | Configuración en tiempo de ejecución (tema, feature flags) |
+| `error.vue`      | Página de error personalizada                              |
+| `.env`           | Variables de entorno                                       |
 
 ## Todo es opcional
 

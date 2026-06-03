@@ -1,9 +1,9 @@
 ---
 order: 131
-title: "What is the container-presentational pattern in Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "components", "vueuse"]
-summary: "Containers handle logic and data fetching; presentational components receive props and emit events. In Vue 3, composables often replace containers."
+title: 'What is the container-presentational pattern in Vue?'
+difficulty: 'intermediate'
+tags: ['architecture', 'components', 'vueuse']
+summary: 'Containers handle logic and data fetching; presentational components receive props and emit events. In Vue 3, composables often replace containers.'
 ---
 
 The container-presentational pattern separates components into two roles: containers handle logic and data, presentational components handle UI. Containers fetch data, manage state, and call APIs. Presentational components receive everything through props and emit events. They don't know where the data comes from.
@@ -119,12 +119,12 @@ The page component is thinner because the composable owns the logic. The present
 
 ## When to apply this pattern
 
-| Situation | Apply pattern? |
-|---|---|
-| Component is reused in multiple places | Yes |
-| Component fetches its own data and renders it | Split into container + presentational |
-| Simple one-off component | Not worth the overhead |
-| Page-level component with route-specific logic | The page IS the container |
+| Situation                                      | Apply pattern?                        |
+| ---------------------------------------------- | ------------------------------------- |
+| Component is reused in multiple places         | Yes                                   |
+| Component fetches its own data and renders it  | Split into container + presentational |
+| Simple one-off component                       | Not worth the overhead                |
+| Page-level component with route-specific logic | The page IS the container             |
 
 Don't split every component. Apply the pattern when a component mixes data fetching with UI rendering and you want to reuse the UI part or test it independently.
 

@@ -1,9 +1,9 @@
 ---
 order: 137
-title: "¿Cómo estructurarías un micro-frontend con Vue?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "vite", "provide-inject"]
-summary: "Divide el frontend en apps independientes usando Module Federation, Web Components o iframes. Cada equipo despliega independientemente."
+title: '¿Cómo estructurarías un micro-frontend con Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'vite', 'provide-inject']
+summary: 'Divide el frontend en apps independientes usando Module Federation, Web Components o iframes. Cada equipo despliega independientemente.'
 ---
 
 Los micro-frontends dividen un frontend grande en apps independientes que se desarrollan, despliegan y ejecutan por separado. Cada equipo es propietario de una funcionalidad y la publica sin coordinar releases con otros. En Vue, los enfoques principales son Module Federation, Web Components y composición basada en iframes.
@@ -100,9 +100,11 @@ Los micro-frontends están aislados, por lo que necesitan canales de comunicaci�
 
 ```ts
 // Micro-frontend A despacha
-window.dispatchEvent(new CustomEvent('cart:updated', {
-  detail: { itemCount: 3 }
-}))
+window.dispatchEvent(
+  new CustomEvent('cart:updated', {
+    detail: { itemCount: 3 }
+  })
+)
 
 // Micro-frontend B escucha
 window.addEventListener('cart:updated', (e: CustomEvent) => {
@@ -122,10 +124,13 @@ type EventMap = {
 const listeners = new Map<string, Set<Function>>()
 
 export function emit<K extends keyof EventMap>(event: K, data: EventMap[K]) {
-  listeners.get(event)?.forEach(fn => fn(data))
+  listeners.get(event)?.forEach((fn) => fn(data))
 }
 
-export function on<K extends keyof EventMap>(event: K, fn: (data: EventMap[K]) => void) {
+export function on<K extends keyof EventMap>(
+  event: K,
+  fn: (data: EventMap[K]) => void
+) {
   if (!listeners.has(event)) listeners.set(event, new Set())
   listeners.get(event)!.add(fn)
   return () => listeners.get(event)!.delete(fn)
@@ -160,13 +165,13 @@ apps/
 
 ## Cuándo usar micro-frontends
 
-| Situación | ¿Usar micro-frontends? |
-|---|---|
-| Múltiples equipos trabajando en funcionalidades separadas de forma independiente | Sí |
-| Necesidad de desplegar funcionalidades sin publicar toda la app | Sí |
-| Un solo equipo, app de tamaño mediano | No, usa un monolito con buena arquitectura |
-| El rendimiento es crítico (overhead mínimo) | Probablemente no, añade complejidad de carga |
-| Mezclar Vue con React o Angular en la misma página | Sí, con el enfoque de Web Components |
+| Situación                                                                        | ¿Usar micro-frontends?                       |
+| -------------------------------------------------------------------------------- | -------------------------------------------- |
+| Múltiples equipos trabajando en funcionalidades separadas de forma independiente | Sí                                           |
+| Necesidad de desplegar funcionalidades sin publicar toda la app                  | Sí                                           |
+| Un solo equipo, app de tamaño mediano                                            | No, usa un monolito con buena arquitectura   |
+| El rendimiento es crítico (overhead mínimo)                                      | Probablemente no, añade complejidad de carga |
+| Mezclar Vue con React o Angular en la misma página                               | Sí, con el enfoque de Web Components         |
 
 ## Ventajas e inconvenientes
 

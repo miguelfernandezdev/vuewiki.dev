@@ -1,9 +1,9 @@
 ---
 order: 83
-title: "When should you use markRaw and toRaw?"
-difficulty: "advanced"
-tags: ["reactivity", "performance"]
-summary: "markRaw prevents an object from becoming reactive (for libraries, DOM elements, static data). toRaw returns the original object behind a reactive Proxy."
+title: 'When should you use markRaw and toRaw?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance']
+summary: 'markRaw prevents an object from becoming reactive (for libraries, DOM elements, static data). toRaw returns the original object behind a reactive Proxy.'
 ---
 
 [markRaw](https://vuejs.org/api/reactivity-advanced.html#markraw) tells Vue to never wrap an object in a reactive [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) returns the original object behind an existing Proxy. Both exist because not everything belongs inside the reactivity system.
@@ -37,7 +37,7 @@ const editor = markRaw(monaco.editor.create(element, {}))
 const ws = markRaw(new WebSocketManager('ws://example.com'))
 
 // Large static datasets that never change
-const geoData = markRaw(await fetch('/huge.json').then(r => r.json()))
+const geoData = markRaw(await fetch('/huge.json').then((r) => r.json()))
 
 // DOM elements stored in reactive state
 const el = markRaw(document.getElementById('canvas')!)
@@ -54,7 +54,11 @@ function useChart(containerId: string) {
   const chart = shallowRef<Chart | null>(null)
 
   onMounted(() => {
-    chart.value = markRaw(new Chart(containerId, { /* config */ }))
+    chart.value = markRaw(
+      new Chart(containerId, {
+        /* config */
+      })
+    )
   })
 
   onUnmounted(() => {
@@ -90,12 +94,12 @@ console.log(raw === state) // false (state is a Proxy)
 
 ## markRaw vs toRaw
 
-| | `markRaw` | `toRaw` |
-|---|---|---|
-| When to use | Before storing in reactive state | After something is already reactive |
-| What it does | Marks object so it's never proxied | Returns the plain object behind a Proxy |
-| Permanent? | Yes, the mark stays on the object | No, it just unwraps once |
-| Mutates the object? | Adds a `__v_skip` flag | No |
+|                     | `markRaw`                          | `toRaw`                                 |
+| ------------------- | ---------------------------------- | --------------------------------------- |
+| When to use         | Before storing in reactive state   | After something is already reactive     |
+| What it does        | Marks object so it's never proxied | Returns the plain object behind a Proxy |
+| Permanent?          | Yes, the mark stays on the object  | No, it just unwraps once                |
+| Mutates the object? | Adds a `__v_skip` flag             | No                                      |
 
 ## Gotcha: markRaw is shallow
 

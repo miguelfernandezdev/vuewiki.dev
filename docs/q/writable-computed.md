@@ -1,9 +1,9 @@
 ---
 order: 86
-title: "How do writable computed properties work?"
-difficulty: "advanced"
-tags: ["reactivity", "pinia", "v-model"]
-summary: "A computed with a setter: reading derives the value, writing updates the underlying source. Common use: two-way computed binding for form transforms."
+title: 'How do writable computed properties work?'
+difficulty: 'advanced'
+tags: ['reactivity', 'pinia', 'v-model']
+summary: 'A computed with a setter: reading derives the value, writing updates the underlying source. Common use: two-way computed binding for form transforms.'
 ---
 
 A regular [computed](https://vuejs.org/api/reactivity-core.html#computed) property is read-only: it derives a value from reactive dependencies. A writable computed adds a setter, so you can assign to it and the setter updates the underlying source data.
@@ -29,7 +29,7 @@ console.log(fullName.value) // "Ana García"
 
 fullName.value = 'Luis Fernández'
 console.log(firstName.value) // "Luis"
-console.log(lastName.value)  // "Fernández"
+console.log(lastName.value) // "Fernández"
 ```
 
 The getter derives the value. The setter decomposes the assigned value back into the source refs.
@@ -119,13 +119,13 @@ const theme = computed({
 
 ## When to use writable computed
 
-| Scenario | Writable computed? |
-|---|---|
-| v-model on a derived/formatted value | Yes |
-| Two-way binding to a store property | Yes |
-| Unit conversion (km/miles, C/F) | Yes |
-| Complex multi-step transformation | Probably not, use a method |
-| Async operations on set | No, use a watcher |
+| Scenario                             | Writable computed?         |
+| ------------------------------------ | -------------------------- |
+| v-model on a derived/formatted value | Yes                        |
+| Two-way binding to a store property  | Yes                        |
+| Unit conversion (km/miles, C/F)      | Yes                        |
+| Complex multi-step transformation    | Probably not, use a method |
+| Async operations on set              | No, use a watcher          |
 
 See also: [What is the difference between computed and watch?](/q/computed-vs-watch) · [How does Vue's v-model work with components?](/q/v-model-custom-components)
 

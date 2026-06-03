@@ -1,9 +1,9 @@
 ---
 order: 72
-title: "¿Por qué mi watchEffect pierde dependencias después de un await?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors", "watchers"]
-summary: "watchEffect solo rastrea dependencias durante la ejecución síncrona. Tras el primer await, Vue deja de rastrear. Las refs accedidas después son invisibles."
+title: '¿Por qué mi watchEffect pierde dependencias después de un await?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors', 'watchers']
+summary: 'watchEffect solo rastrea dependencias durante la ejecución síncrona. Tras el primer await, Vue deja de rastrear. Las refs accedidas después son invisibles.'
 ---
 
 Porque [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) solo rastrea dependencias durante la ejecución **síncrona**. Después del primer `await`, Vue deja de rastrear. Cualquier propiedad reactiva accedida después de ese punto es invisible para el watcher.
@@ -16,7 +16,8 @@ watchEffect(async () => {
   const res = await fetch(`/api/users/${userId.value}`) // userId rastreado
   const data = await res.json()
 
-  if (includeDetails.value) { // NO rastreado, después del await
+  if (includeDetails.value) {
+    // NO rastreado, después del await
     // ...
   }
 })
@@ -30,8 +31,8 @@ Cambiar `userId` vuelve a ejecutar el efecto. Cambiar `includeDetails` no hace n
 
 ```ts
 watchEffect(async () => {
-  const id = userId.value             // rastreado
-  const withDetails = includeDetails.value  // rastreado
+  const id = userId.value // rastreado
+  const withDetails = includeDetails.value // rastreado
 
   const res = await fetch(`/api/users/${id}`)
   const data = await res.json()

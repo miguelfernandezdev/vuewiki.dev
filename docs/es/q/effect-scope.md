@@ -1,9 +1,9 @@
 ---
 order: 81
-title: "¿Qué es effectScope y cuándo lo usarías?"
-difficulty: "advanced"
-tags: ["reactivity", "composables", "pinia", "watchers"]
-summary: "effectScope agrupa watchers, computed y watchEffect en un contenedor. Llamar scope.stop() elimina todos a la vez."
+title: '¿Qué es effectScope y cuándo lo usarías?'
+difficulty: 'advanced'
+tags: ['reactivity', 'composables', 'pinia', 'watchers']
+summary: 'effectScope agrupa watchers, computed y watchEffect en un contenedor. Llamar scope.stop() elimina todos a la vez.'
 ---
 
 [effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) crea un contenedor que recolecta todos los efectos reactivos (watchers, computed, watchEffect) creados dentro de él. Cuando llamas a `scope.stop()`, todos los efectos del scope se eliminan a la vez. Esto es lo que Vue hace internamente para cada instancia de componente, pero puedes usarlo tú mismo en composables o contextos fuera de componentes.
@@ -99,7 +99,11 @@ scope.stop()
 ```ts
 import { getCurrentScope, onScopeDispose } from 'vue'
 
-function useEventListener(target: EventTarget, event: string, handler: EventListener) {
+function useEventListener(
+  target: EventTarget,
+  event: string,
+  handler: EventListener
+) {
   target.addEventListener(event, handler)
 
   if (getCurrentScope()) {
@@ -131,13 +135,13 @@ parentScope.stop() // childScope NO se detiene
 
 ## Cuándo usar effectScope
 
-| Escenario | ¿Usar effectScope? |
-|---|---|
-| Lógica normal de componente | No, Vue lo gestiona |
-| Composable con muchos watchers/computed | Sí, simplifica la limpieza |
-| Store tipo Pinia fuera de componentes | Sí, controla el tiempo de vida de los efectos |
-| Configuración de tests con estado reactivo | Sí, limpia en afterEach |
-| Watcher único que puedes detener manualmente | No, es excesivo |
+| Escenario                                    | ¿Usar effectScope?                            |
+| -------------------------------------------- | --------------------------------------------- |
+| Lógica normal de componente                  | No, Vue lo gestiona                           |
+| Composable con muchos watchers/computed      | Sí, simplifica la limpieza                    |
+| Store tipo Pinia fuera de componentes        | Sí, controla el tiempo de vida de los efectos |
+| Configuración de tests con estado reactivo   | Sí, limpia en afterEach                       |
+| Watcher único que puedes detener manualmente | No, es excesivo                               |
 
 Ver también: [¿Por qué los watchers creados dentro de callbacks asíncronos causan pérdidas de memoria?](/es/q/watch-async-memory-leak) · [¿Qué es nextTick y cuándo lo necesitas?](/es/q/nexttick)
 

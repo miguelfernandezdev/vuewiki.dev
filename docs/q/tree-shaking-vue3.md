@@ -1,8 +1,18 @@
 ---
 order: 121
-title: "What is tree-shaking and how does Vue 3 support it?"
-difficulty: "intermediate"
-tags: ["performance", "tooling", "vite", "watchers", "v-model", "provide-inject", "suspense", "teleport"]
+title: 'What is tree-shaking and how does Vue 3 support it?'
+difficulty: 'intermediate'
+tags:
+  [
+    'performance',
+    'tooling',
+    'vite',
+    'watchers',
+    'v-model',
+    'provide-inject',
+    'suspense',
+    'teleport'
+  ]
 summary: "Bundlers remove unused exports at build time. Vue 3 uses named exports (import { ref }) so unused APIs are stripped. Vue 2's global API prevented this."
 ---
 
@@ -55,16 +65,16 @@ Vue 3's runtime core is approximately 10 KB gzipped when tree-shaken (a minimal 
 
 The features most often removed by tree-shaking:
 
-| Feature | Removed if unused |
-|---|---|
-| `<Transition>` / `<TransitionGroup>` | Yes |
-| `<KeepAlive>` | Yes |
-| `<Suspense>` | Yes |
-| `<Teleport>` | Yes |
-| `v-model` on components | Yes |
-| `v-show` directive | Yes |
+| Feature                                        | Removed if unused |
+| ---------------------------------------------- | ----------------- |
+| `<Transition>` / `<TransitionGroup>`           | Yes               |
+| `<KeepAlive>`                                  | Yes               |
+| `<Suspense>`                                   | Yes               |
+| `<Teleport>`                                   | Yes               |
+| `v-model` on components                        | Yes               |
+| `v-show` directive                             | Yes               |
 | Reactivity APIs (`watch`, `watchEffect`, etc.) | Yes, per function |
-| Lifecycle hooks (`onMounted`, etc.) | Yes, per hook |
+| Lifecycle hooks (`onMounted`, etc.)            | Yes, per hook     |
 
 ## What breaks tree-shaking
 
@@ -115,10 +125,7 @@ Use `rollup-plugin-visualizer` (Vite) or `webpack-bundle-analyzer` to see what's
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    visualizer({ open: true })
-  ]
+  plugins: [vue(), visualizer({ open: true })]
 })
 ```
 

@@ -1,8 +1,8 @@
 ---
 order: 32
 title: "Why doesn't mutating an object through defineModel update the parent?"
-difficulty: "intermediate"
-tags: ["components", "errors", "v-model"]
+difficulty: 'intermediate'
+tags: ['components', 'errors', 'v-model']
 summary: "Mutating properties inside the object doesn't change the reference, so defineModel won't emit. Replace the entire object with spread to trigger the update."
 ---
 

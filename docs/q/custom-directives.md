@@ -1,9 +1,9 @@
 ---
 order: 16
-title: "How do you create custom directives in Vue?"
-difficulty: "intermediate"
-tags: ["directives", "v-model"]
-summary: "Custom directives give low-level DOM access via hooks (mounted, updated, unmounted). Use them for auto-focus, observers, or third-party integrations."
+title: 'How do you create custom directives in Vue?'
+difficulty: 'intermediate'
+tags: ['directives', 'v-model']
+summary: 'Custom directives give low-level DOM access via hooks (mounted, updated, unmounted). Use them for auto-focus, observers, or third-party integrations.'
 ---
 
 [Custom directives](https://vuejs.org/guide/reusability/custom-directives.html) give you low-level access to DOM elements when built-in directives (`v-if`, `v-show`, `v-model`) aren't enough. They're ideal for things like auto-focus, intersection observers, or third-party library integration.
@@ -46,23 +46,23 @@ const vFocus = (el: HTMLElement) => el.focus()
 
 ```ts
 const vExample = {
-  created(el, binding) {},      // before element's attrs/events are applied
-  beforeMount(el, binding) {},  // before inserted into DOM
-  mounted(el, binding) {},      // element inserted into DOM
+  created(el, binding) {}, // before element's attrs/events are applied
+  beforeMount(el, binding) {}, // before inserted into DOM
+  mounted(el, binding) {}, // element inserted into DOM
   beforeUpdate(el, binding) {}, // before parent component updates
-  updated(el, binding) {},      // after parent component updated
+  updated(el, binding) {}, // after parent component updated
   beforeUnmount(el, binding) {},
-  unmounted(el, binding) {}     // element removed from DOM
+  unmounted(el, binding) {} // element removed from DOM
 }
 ```
 
 The `binding` object contains:
 
-| Property | Description |
-|---|---|
-| `value` | The current value passed to the directive |
-| `oldValue` | The previous value (only in `updated`) |
-| `arg` | The argument after the colon (`v-dir:arg`) |
+| Property    | Description                                                |
+| ----------- | ---------------------------------------------------------- |
+| `value`     | The current value passed to the directive                  |
+| `oldValue`  | The previous value (only in `updated`)                     |
+| `arg`       | The argument after the colon (`v-dir:arg`)                 |
 | `modifiers` | An object of modifiers (`v-dir.mod` gives `{ mod: true }`) |
 
 ## Using arguments, modifiers, and values
@@ -117,17 +117,19 @@ For directives used across the app, register them on the application instance:
 const app = createApp(App)
 
 app.directive('focus', {
-  mounted(el) { el.focus() }
+  mounted(el) {
+    el.focus()
+  }
 })
 ```
 
 ## When to use directives vs composables vs components
 
-| Need | Use |
-|---|---|
-| Direct DOM manipulation (focus, scroll, attributes) | Directive |
-| Reusable stateful logic (fetch, debounce, timers) | Composable |
-| Reusable UI with template/structure | Component |
+| Need                                                | Use        |
+| --------------------------------------------------- | ---------- |
+| Direct DOM manipulation (focus, scroll, attributes) | Directive  |
+| Reusable stateful logic (fetch, debounce, timers)   | Composable |
+| Reusable UI with template/structure                 | Component  |
 
 Directives should stay simple. If you find yourself managing complex state or emitting events inside a directive, you probably want a composable or a component instead.
 

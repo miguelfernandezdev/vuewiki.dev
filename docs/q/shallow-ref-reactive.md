@@ -1,9 +1,9 @@
 ---
 order: 78
-title: "When would you use shallowRef / shallowReactive?"
-difficulty: "advanced"
-tags: ["reactivity", "performance"]
-summary: "shallowRef only tracks .value replacement (not nested changes). shallowReactive only tracks top-level properties. Use them for large objects you replace wholesale."
+title: 'When would you use shallowRef / shallowReactive?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance']
+summary: 'shallowRef only tracks .value replacement (not nested changes). shallowReactive only tracks top-level properties. Use them for large objects you replace wholesale.'
 ---
 
 By default, `ref` and `reactive` make your data deeply reactive. Vue tracks every nested property, no matter how deep. This is convenient but has a cost: Vue walks the entire object tree and wraps every nested object in a Proxy. For small objects that's fine. For a list of 10,000 items, each with nested properties, it's wasted work if you never edit individual items in place.
@@ -42,9 +42,9 @@ const state = shallowReactive({
   nested: { deep: 'value' }
 })
 
-state.count++              // ✅ tracked — root property
+state.count++ // ✅ tracked — root property
 state.nested = { deep: 1 } // ✅ tracked — root property replaced
-state.nested.deep = 2      // ❌ NOT tracked — nested mutation
+state.nested.deep = 2 // ❌ NOT tracked — nested mutation
 ```
 
 ## When to use them
@@ -71,12 +71,12 @@ async function refresh() {
 
 ## Deep vs shallow: the tradeoff
 
-| | `ref` / `reactive` | `shallowRef` / `shallowReactive` |
-|---|---|---|
-| What's tracked | Everything, recursively | Top level only |
-| Setup cost | Higher (wraps every nested object) | Lower |
-| Mutation style | Mutate anything, anywhere | Replace top-level value or use `triggerRef` |
-| When to use | Default for most data | Large datasets, external objects, performance-critical paths |
+|                | `ref` / `reactive`                 | `shallowRef` / `shallowReactive`                             |
+| -------------- | ---------------------------------- | ------------------------------------------------------------ |
+| What's tracked | Everything, recursively            | Top level only                                               |
+| Setup cost     | Higher (wraps every nested object) | Lower                                                        |
+| Mutation style | Mutate anything, anywhere          | Replace top-level value or use `triggerRef`                  |
+| When to use    | Default for most data              | Large datasets, external objects, performance-critical paths |
 
 **Start with `ref`/`reactive`.** Only switch to shallow variants when you measure a performance problem or when deep reactivity doesn't make sense for your data (like a Canvas context or a WebSocket instance).
 

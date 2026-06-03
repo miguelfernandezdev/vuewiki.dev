@@ -1,9 +1,9 @@
 ---
 order: 89
-title: "¿Cómo funcionan los Maps y Sets reactivos en Vue 3?"
-difficulty: "advanced"
-tags: ["reactivity", "watchers"]
-summary: "reactive() soporta Map, Set, WeakMap y WeakSet nativamente. Vue intercepta los métodos de colección (get, set, add, delete) para tracking automático."
+title: '¿Cómo funcionan los Maps y Sets reactivos en Vue 3?'
+difficulty: 'advanced'
+tags: ['reactivity', 'watchers']
+summary: 'reactive() soporta Map, Set, WeakMap y WeakSet nativamente. Vue intercepta los métodos de colección (get, set, add, delete) para tracking automático.'
 ---
 
 [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) de Vue 3 soporta `Map`, `Set`, `WeakMap` y `WeakSet` de serie. El [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepta los métodos de colección como `get`, `set`, `add`, `delete`, `has` y `forEach`, registrando las lecturas y disparando actualizaciones en las escrituras. Se usa la API estándar de JavaScript y Vue gestiona la reactividad de forma transparente. Puedes usar tanto `reactive()` como `ref()`; ambos funcionan. Con `reactive()` interactúas con la colección directamente; con `ref()` accedes a ella a través de `.value`, y Vue hace el valor interno reactivo automáticamente.
@@ -45,19 +45,19 @@ function setScore(name: string, score: number) {
 
 Vue intercepta estas operaciones:
 
-| Operación | Registrada (lectura) | Dispara actualización (escritura) |
-|---|---|---|
-| `map.get(key)` | Sí | No |
-| `map.set(key, value)` | No | Sí |
-| `map.has(key)` | Sí | No |
-| `map.delete(key)` | No | Sí |
-| `map.size` | Sí | No |
-| `map.forEach(fn)` | Sí (todas las entradas) | No |
-| `set.add(value)` | No | Sí |
-| `set.has(value)` | Sí | No |
-| `set.delete(value)` | No | Sí |
-| `map.clear()` | No | Sí |
-| Iteración (`for...of`, spread) | Sí (todas las entradas) | No |
+| Operación                      | Registrada (lectura)    | Dispara actualización (escritura) |
+| ------------------------------ | ----------------------- | --------------------------------- |
+| `map.get(key)`                 | Sí                      | No                                |
+| `map.set(key, value)`          | No                      | Sí                                |
+| `map.has(key)`                 | Sí                      | No                                |
+| `map.delete(key)`              | No                      | Sí                                |
+| `map.size`                     | Sí                      | No                                |
+| `map.forEach(fn)`              | Sí (todas las entradas) | No                                |
+| `set.add(value)`               | No                      | Sí                                |
+| `set.has(value)`               | Sí                      | No                                |
+| `set.delete(value)`            | No                      | Sí                                |
+| `map.clear()`                  | No                      | Sí                                |
+| Iteración (`for...of`, spread) | Sí (todas las entradas) | No                                |
 
 Esto significa que las propiedades computed y los watchers que leen de un Map o Set reactivo se volverán a ejecutar cuando se modifique la colección.
 
@@ -82,7 +82,7 @@ const scores = shallowRef(new Map<string, number>())
 
 async function refresh() {
   const data = await $fetch('/api/scores')
-  const newMap = new Map(data.map(d => [d.name, d.score]))
+  const newMap = new Map(data.map((d) => [d.name, d.score]))
   scores.value = newMap // dispara la actualización
 }
 ```
@@ -91,11 +91,15 @@ async function refresh() {
 
 ```vue
 <script setup>
-const permissions = reactive(new Map<string, boolean>([
-  ['read', true],
-  ['write', false],
-  ['admin', false]
-]))
+const permissions = reactive(
+  new Map() < string,
+  boolean >
+    [
+      ['read', true],
+      ['write', false],
+      ['admin', false]
+    ]
+)
 
 const activePermissions = computed(() =>
   [...permissions.entries()]
@@ -114,17 +118,17 @@ El `computed` se re-evalúa cuando cambia cualquier entrada del Map porque al ha
 
 ## Cuándo usar Map/Set frente a objetos planos y arrays
 
-| Usar un Map cuando | Usar un objeto plano cuando |
-|---|---|
-| Las claves no son strings (objetos, números, símbolos) | Las claves son solo strings |
-| Se necesita iteración garantizada en orden de inserción | El orden no importa |
-| Se añaden/eliminan claves frecuentemente (los Maps están optimizados para esto) | La forma es estática |
-| Se necesita `.size` sin `Object.keys().length` | El rendimiento no es una preocupación |
+| Usar un Map cuando                                                              | Usar un objeto plano cuando           |
+| ------------------------------------------------------------------------------- | ------------------------------------- |
+| Las claves no son strings (objetos, números, símbolos)                          | Las claves son solo strings           |
+| Se necesita iteración garantizada en orden de inserción                         | El orden no importa                   |
+| Se añaden/eliminan claves frecuentemente (los Maps están optimizados para esto) | La forma es estática                  |
+| Se necesita `.size` sin `Object.keys().length`                                  | El rendimiento no es una preocupación |
 
-| Usar un Set cuando | Usar un array cuando |
-|---|---|
-| Se necesita unicidad garantizada automáticamente | Los duplicados son válidos |
-| Se comprueba la pertenencia a menudo (`has()` es O(1)) | Se busca por índice |
+| Usar un Set cuando                                        | Usar un array cuando                |
+| --------------------------------------------------------- | ----------------------------------- |
+| Se necesita unicidad garantizada automáticamente          | Los duplicados son válidos          |
+| Se comprueba la pertenencia a menudo (`has()` es O(1))    | Se busca por índice                 |
 | Se necesitan operaciones de unión/intersección/diferencia | Se necesita `map`/`filter`/`reduce` |
 
 ## Limitaciones

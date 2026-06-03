@@ -12,12 +12,7 @@
     },
     {
       "question": "¿Qué utilidad desenvuelve un Proxy reactivo de vuelta al objeto plano original para comparaciones de identidad?",
-      "options": [
-        "markRaw()",
-        "unref()",
-        "toRaw()",
-        "readonly()"
-      ],
+      "options": ["markRaw()", "unref()", "toRaw()", "readonly()"],
       "answer": 2
     },
     {

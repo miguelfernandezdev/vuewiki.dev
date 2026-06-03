@@ -1,9 +1,9 @@
 ---
 order: 7
-title: "¿Cómo ayudan las Vue DevTools con la depuración?"
-difficulty: "beginner"
-tags: ["tooling", "pinia", "vite"]
-summary: "Extensión del navegador que muestra el árbol de componentes, estado reactivo, stores de Pinia, rutas y datos de rendimiento. Esencial para depurar apps Vue."
+title: '¿Cómo ayudan las Vue DevTools con la depuración?'
+difficulty: 'beginner'
+tags: ['tooling', 'pinia', 'vite']
+summary: 'Extensión del navegador que muestra el árbol de componentes, estado reactivo, stores de Pinia, rutas y datos de rendimiento. Esencial para depurar apps Vue.'
 ---
 
 Vue DevTools es una extensión de navegador (Chrome, Firefox, Edge) y un plugin de Vite independiente que te permite inspeccionar tu aplicación Vue en tiempo de ejecución. Puedes ver el árbol de componentes, el estado reactivo, los stores de Pinia, las rutas y los datos de rendimiento sin añadir `console.log` por todas partes.
@@ -93,14 +93,14 @@ Haz clic en el botón "seleccionar componente" en las DevTools y luego haz clic 
 
 ## Flujos de depuración comunes
 
-| Problema | Qué revisar en DevTools |
-|---|---|
-| La interfaz no se actualiza | Comprueba si el estado reactivo realmente cambió (pestaña de estado) |
-| Datos incorrectos mostrados | Inspecciona los props pasados al componente |
-| La ruta no coincide | Revisa la pestaña del router para ver rutas registradas y parámetros actuales |
-| La acción de Pinia no funciona | Comprueba la línea de tiempo para llamadas a acciones y errores |
-| El componente se re-renderiza demasiado | Usa la pestaña de rendimiento para encontrar renders excesivos |
-| El evento no llega al padre | Comprueba los eventos emitidos en el componente hijo |
+| Problema                                | Qué revisar en DevTools                                                       |
+| --------------------------------------- | ----------------------------------------------------------------------------- |
+| La interfaz no se actualiza             | Comprueba si el estado reactivo realmente cambió (pestaña de estado)          |
+| Datos incorrectos mostrados             | Inspecciona los props pasados al componente                                   |
+| La ruta no coincide                     | Revisa la pestaña del router para ver rutas registradas y parámetros actuales |
+| La acción de Pinia no funciona          | Comprueba la línea de tiempo para llamadas a acciones y errores               |
+| El componente se re-renderiza demasiado | Usa la pestaña de rendimiento para encontrar renders excesivos                |
+| El evento no llega al padre             | Comprueba los eventos emitidos en el componente hijo                          |
 
 Ver también: [¿Cómo diagnosticar una página lenta?](/es/q/diagnose-slow-page) · [¿Cómo depurar peticiones SSR?](/es/q/debug-ssr-requests) · [¿Cómo optimizar el rendimiento en una app Vue?](/es/q/performance-optimization)
 

@@ -1,9 +1,9 @@
 ---
 order: 20
-title: "¿Por qué mutar props directamente genera warnings?"
-difficulty: "beginner"
-tags: ["components", "errors", "v-model"]
-summary: "Los props son de solo lectura (flujo unidireccional). Mutarlos directamente causa advertencias porque el padre sobrescribirá el cambio en el próximo re-render."
+title: '¿Por qué mutar props directamente genera warnings?'
+difficulty: 'beginner'
+tags: ['components', 'errors', 'v-model']
+summary: 'Los props son de solo lectura (flujo unidireccional). Mutarlos directamente causa advertencias porque el padre sobrescribirá el cambio en el próximo re-render.'
 ---
 
 Porque Vue impone el **flujo de datos unidireccional**: las props van hacia abajo (padre a hijo), los eventos van hacia arriba (hijo a padre). Si un hijo modifica una prop directamente, el padre no se entera, y la próxima vez que el padre se re-renderice, sobreescribirá el cambio del hijo.

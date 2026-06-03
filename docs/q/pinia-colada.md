@@ -1,8 +1,8 @@
 ---
 order: 102
-title: "What is Pinia Colada and how does it handle async state?"
-difficulty: "advanced"
-tags: ["state-management", "data-fetching", "pinia"]
+title: 'What is Pinia Colada and how does it handle async state?'
+difficulty: 'advanced'
+tags: ['state-management', 'data-fetching', 'pinia']
 summary: "Vue's answer to TanStack Query. Handles data fetching, caching, invalidation, optimistic updates, and deduplication on top of Pinia."
 ---
 
@@ -23,7 +23,7 @@ async function fetchUsers() {
   isLoading.value = true
   error.value = null
   try {
-    users.value = await fetch('/api/users').then(r => r.json())
+    users.value = await fetch('/api/users').then((r) => r.json())
   } catch (e) {
     error.value = e as Error
   } finally {
@@ -37,9 +37,13 @@ onMounted(fetchUsers)
 With Pinia Colada:
 
 ```ts
-const { data: users, isLoading, error } = useQuery({
+const {
+  data: users,
+  isLoading,
+  error
+} = useQuery({
   key: ['users'],
-  query: () => fetch('/api/users').then(r => r.json())
+  query: () => fetch('/api/users').then((r) => r.json())
 })
 ```
 
@@ -67,7 +71,7 @@ import { useQuery } from '@pinia/colada'
 
 const { data, isLoading, error, refresh } = useQuery({
   key: ['users'],
-  query: () => fetch('/api/users').then(r => r.json())
+  query: () => fetch('/api/users').then((r) => r.json())
 })
 ```
 
@@ -80,7 +84,7 @@ const props = defineProps<{ userId: string }>()
 
 const { data: user } = useQuery({
   key: () => ['users', props.userId],
-  query: () => fetch(`/api/users/${props.userId}`).then(r => r.json())
+  query: () => fetch(`/api/users/${props.userId}`).then((r) => r.json())
 })
 ```
 
@@ -112,7 +116,7 @@ const { mutate, isLoading } = useMutation({
     fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify(newUser)
-    }).then(r => r.json()),
+    }).then((r) => r.json()),
   onSettled: () => {
     queryCache.invalidateQueries({ key: ['users'] })
   }
@@ -146,11 +150,11 @@ const { mutate } = useMutation({
     fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: JSON.stringify({ done: !todo.done })
-    }).then(r => r.json()),
+    }).then((r) => r.json()),
   onMutate: (todo) => {
     const previous = queryCache.getQueryData<Todo[]>(['todos'])
     queryCache.setQueryData(['todos'], (old) =>
-      old?.map(t => t.id === todo.id ? { ...t, done: !t.done } : t)
+      old?.map((t) => (t.id === todo.id ? { ...t, done: !t.done } : t))
     )
     return { previous }
   },
@@ -162,14 +166,14 @@ const { mutate } = useMutation({
 
 ## Pinia Colada vs TanStack Query vs raw composables
 
-| | Pinia Colada | TanStack Vue Query | Raw composables |
-|---|---|---|---|
-| Vue-native | Yes (built on Pinia) | Adapter from React core | Yes |
-| Caching + dedup | Built-in | Built-in | Manual |
-| Devtools | Pinia devtools | Dedicated devtools | None |
-| SSR (Nuxt) | Supported | Supported | Manual |
-| Bundle size | Small | Larger | Zero |
-| Best for | Vue/Pinia projects wanting integrated async state | Teams familiar with TanStack from React | Simple apps with few API calls |
+|                 | Pinia Colada                                      | TanStack Vue Query                      | Raw composables                |
+| --------------- | ------------------------------------------------- | --------------------------------------- | ------------------------------ |
+| Vue-native      | Yes (built on Pinia)                              | Adapter from React core                 | Yes                            |
+| Caching + dedup | Built-in                                          | Built-in                                | Manual                         |
+| Devtools        | Pinia devtools                                    | Dedicated devtools                      | None                           |
+| SSR (Nuxt)      | Supported                                         | Supported                               | Manual                         |
+| Bundle size     | Small                                             | Larger                                  | Zero                           |
+| Best for        | Vue/Pinia projects wanting integrated async state | Teams familiar with TanStack from React | Simple apps with few API calls |
 
 See also: [How does Pinia work?](/q/how-pinia-works) · [What are Pinia plugins?](/q/pinia-plugins) · [How would you build a composable for data fetching?](/q/composable-data-fetching)
 

@@ -1,9 +1,9 @@
 ---
 order: 54
-title: "¿Qué es script setup?"
-difficulty: "beginner"
-tags: ["composition-api", "v-model"]
-summary: "<script setup> es la forma recomendada de escribir Composition API. Elimina boilerplate: sin export default, sin función setup(), sin return."
+title: '¿Qué es script setup?'
+difficulty: 'beginner'
+tags: ['composition-api', 'v-model']
+summary: '<script setup> es la forma recomendada de escribir Composition API. Elimina boilerplate: sin export default, sin función setup(), sin return.'
 ---
 
 [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) es la forma recomendada de escribir componentes Vue usando la Composition API. Elimina el código repetitivo que de otro modo tendrías que escribir manualmente, así que dedicas menos tiempo al código de conexión y más a la lógica real.
@@ -74,7 +74,11 @@ const props = defineProps<{ title: string }>()
 const emit = defineEmits<{ close: [] }>()
 const model = defineModel<string>()
 
-defineExpose({ reset() { /* ... */ } })
+defineExpose({
+  reset() {
+    /* ... */
+  }
+})
 </script>
 ```
 

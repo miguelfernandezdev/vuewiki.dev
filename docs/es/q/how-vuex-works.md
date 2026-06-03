@@ -1,9 +1,9 @@
 ---
 order: 97
-title: "¿Cómo funciona Vuex?"
-difficulty: "beginner"
-tags: ["state-management", "pinia", "vuex"]
-summary: "Vuex es una implementación Flux de un solo store: state almacena datos, getters derivan valores, mutations cambian estado síncronamente, actions manejan lógica async."
+title: '¿Cómo funciona Vuex?'
+difficulty: 'beginner'
+tags: ['state-management', 'pinia', 'vuex']
+summary: 'Vuex es una implementación Flux de un solo store: state almacena datos, getters derivan valores, mutations cambian estado síncronamente, actions manejan lógica async.'
 ---
 
 [Vuex](https://vuex.vuejs.org/) es la librería oficial de gestión de estado para Vue (antes de que [Pinia](/es/q/how-pinia-works) la reemplazara). Implementa el [patrón Flux](/es/q/flux-unidirectional-data-flow): un único store contiene todo el estado compartido, y los cambios fluyen en una dirección a través de un pipeline estricto.
@@ -102,7 +102,9 @@ const userModule = {
   namespaced: true,
   state: () => ({ list: [] as User[] }),
   mutations: {
-    SET_LIST(state, users: User[]) { state.list = users }
+    SET_LIST(state, users: User[]) {
+      state.list = users
+    }
   }
 }
 

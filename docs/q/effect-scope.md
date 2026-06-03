@@ -1,9 +1,9 @@
 ---
 order: 81
-title: "What is effectScope and when would you use it?"
-difficulty: "advanced"
-tags: ["reactivity", "composables", "pinia", "watchers"]
-summary: "effectScope collects watchers, computed, and watchEffect in a container. Calling scope.stop() disposes all of them at once."
+title: 'What is effectScope and when would you use it?'
+difficulty: 'advanced'
+tags: ['reactivity', 'composables', 'pinia', 'watchers']
+summary: 'effectScope collects watchers, computed, and watchEffect in a container. Calling scope.stop() disposes all of them at once.'
 ---
 
 [effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) creates a container that collects all reactive effects (watchers, computed, watchEffect) created inside it. When you call `scope.stop()`, every effect in the scope is disposed at once. This is what Vue does internally for each component instance, but you can use it yourself in composables or non-component contexts.
@@ -99,7 +99,11 @@ scope.stop()
 ```ts
 import { getCurrentScope, onScopeDispose } from 'vue'
 
-function useEventListener(target: EventTarget, event: string, handler: EventListener) {
+function useEventListener(
+  target: EventTarget,
+  event: string,
+  handler: EventListener
+) {
   target.addEventListener(event, handler)
 
   if (getCurrentScope()) {
@@ -131,13 +135,13 @@ parentScope.stop() // childScope is NOT stopped
 
 ## When to use effectScope
 
-| Scenario | Use effectScope? |
-|---|---|
-| Normal component logic | No, Vue handles it |
-| Composable with many watchers/computed | Yes, simplifies cleanup |
-| Pinia-like store outside components | Yes, controls effect lifetime |
-| Test setup with reactive state | Yes, clean up in afterEach |
-| Single watcher you can stop manually | No, overkill |
+| Scenario                               | Use effectScope?              |
+| -------------------------------------- | ----------------------------- |
+| Normal component logic                 | No, Vue handles it            |
+| Composable with many watchers/computed | Yes, simplifies cleanup       |
+| Pinia-like store outside components    | Yes, controls effect lifetime |
+| Test setup with reactive state         | Yes, clean up in afterEach    |
+| Single watcher you can stop manually   | No, overkill                  |
 
 See also: [Why do watchers created inside async callbacks cause memory leaks?](/q/watch-async-memory-leak) · [What is nextTick and when do you need it?](/q/nexttick)
 

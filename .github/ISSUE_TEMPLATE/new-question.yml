@@ -1,6 +1,6 @@
 name: Suggest a question
 description: Suggest a new Vue.js interview question
-labels: ["content", "new question"]
+labels: ['content', 'new question']
 body:
   - type: input
     id: question
@@ -25,7 +25,7 @@ body:
     attributes:
       label: Tags
       description: Comma-separated topics this question relates to.
-      placeholder: "reactivity, composition-api"
+      placeholder: 'reactivity, composition-api'
   - type: textarea
     id: context
     attributes:

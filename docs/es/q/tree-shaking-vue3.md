@@ -1,9 +1,19 @@
 ---
 order: 121
-title: "¿Qué es el tree-shaking y cómo lo soporta Vue 3?"
-difficulty: "intermediate"
-tags: ["performance", "tooling", "vite", "watchers", "v-model", "provide-inject", "suspense", "teleport"]
-summary: "Los bundlers eliminan exports no usados en build. Vue 3 usa named exports (import { ref }) para que APIs no usadas se eliminen. Vue 2 no lo permitía."
+title: '¿Qué es el tree-shaking y cómo lo soporta Vue 3?'
+difficulty: 'intermediate'
+tags:
+  [
+    'performance',
+    'tooling',
+    'vite',
+    'watchers',
+    'v-model',
+    'provide-inject',
+    'suspense',
+    'teleport'
+  ]
+summary: 'Los bundlers eliminan exports no usados en build. Vue 3 usa named exports (import { ref }) para que APIs no usadas se eliminen. Vue 2 no lo permitía.'
 ---
 
 El tree-shaking es una optimización en tiempo de compilación donde el bundler (Vite/Rollup, webpack) elimina el código no utilizado del resultado final. Si importas `ref` y `computed` pero nunca usas `watch`, el bundler elimina `watch` del build de producción. Vue 3 fue reescrito específicamente para soportar esto. La API global de Vue 2 (`Vue.component`, `Vue.use`, `Vue.mixin`) hacía que todo fuera una sola importación, así que el bundler no podía eliminar nada.
@@ -55,16 +65,16 @@ El runtime core de Vue 3 ocupa aproximadamente 10 KB comprimido con gzip tras el
 
 Las funcionalidades que el tree-shaking elimina con mayor frecuencia:
 
-| Funcionalidad | Se elimina si no se usa |
-|---|---|
-| `<Transition>` / `<TransitionGroup>` | Sí |
-| `<KeepAlive>` | Sí |
-| `<Suspense>` | Sí |
-| `<Teleport>` | Sí |
-| `v-model` en componentes | Sí |
-| Directiva `v-show` | Sí |
-| APIs de reactividad (`watch`, `watchEffect`, etc.) | Sí, por función |
-| Hooks del ciclo de vida (`onMounted`, etc.) | Sí, por hook |
+| Funcionalidad                                      | Se elimina si no se usa |
+| -------------------------------------------------- | ----------------------- |
+| `<Transition>` / `<TransitionGroup>`               | Sí                      |
+| `<KeepAlive>`                                      | Sí                      |
+| `<Suspense>`                                       | Sí                      |
+| `<Teleport>`                                       | Sí                      |
+| `v-model` en componentes                           | Sí                      |
+| Directiva `v-show`                                 | Sí                      |
+| APIs de reactividad (`watch`, `watchEffect`, etc.) | Sí, por función         |
+| Hooks del ciclo de vida (`onMounted`, etc.)        | Sí, por hook            |
 
 ## Qué rompe el tree-shaking
 
@@ -115,10 +125,7 @@ Usa `rollup-plugin-visualizer` (Vite) o `webpack-bundle-analyzer` para ver qué 
 import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    visualizer({ open: true })
-  ]
+  plugins: [vue(), visualizer({ open: true })]
 })
 ```
 

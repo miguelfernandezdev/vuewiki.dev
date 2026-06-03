@@ -1,9 +1,9 @@
 ---
 order: 101
-title: "¿Qué son los plugins de Pinia y cómo se crea uno?"
-difficulty: "advanced"
-tags: ["state-management", "architecture", "pinia"]
-summary: "Una función que se ejecuta por cada store creado. Úsalos para persistencia en localStorage, logging, propiedades compartidas o wrappers de actions."
+title: '¿Qué son los plugins de Pinia y cómo se crea uno?'
+difficulty: 'advanced'
+tags: ['state-management', 'architecture', 'pinia']
+summary: 'Una función que se ejecuta por cada store creado. Úsalos para persistencia en localStorage, logging, propiedades compartidas o wrappers de actions.'
 ---
 
 Los plugins de Pinia permiten añadir comportamiento a todos los stores globalmente: persistir estado en localStorage, agregar propiedades compartidas, envolver acciones con logging, sincronizar con sistemas externos. Un plugin es una función que recibe un objeto de contexto y se ejecuta una vez por cada creación de store.
@@ -63,7 +63,9 @@ function piniaLogger(): PiniaPlugin {
 
       after(() => {
         const duration = (performance.now() - start).toFixed(1)
-        console.log(`[${store.$id}] ${name}(${JSON.stringify(args)}) — ${duration}ms`)
+        console.log(
+          `[${store.$id}] ${name}(${JSON.stringify(args)}) — ${duration}ms`
+        )
       })
 
       onError((error) => {
@@ -110,8 +112,12 @@ function piniaLoadingState(): PiniaPlugin {
 
     store.$onAction(({ after, onError }) => {
       isLoading.value = true
-      after(() => { isLoading.value = false })
-      onError(() => { isLoading.value = false })
+      after(() => {
+        isLoading.value = false
+      })
+      onError(() => {
+        isLoading.value = false
+      })
     })
 
     return { isLoading }
@@ -138,13 +144,16 @@ Comprobar `store.$id` o usar el objeto options para aplicar lógica de forma sel
 function piniaDebounce(): PiniaPlugin {
   return ({ store, options }) => {
     if (options.debounce) {
-      return Object.keys(options.debounce).reduce((debounced, action) => {
-        debounced[action] = useDebounceFn(
-          store[action],
-          options.debounce[action]
-        )
-        return debounced
-      }, {} as Record<string, Function>)
+      return Object.keys(options.debounce).reduce(
+        (debounced, action) => {
+          debounced[action] = useDebounceFn(
+            store[action],
+            options.debounce[action]
+          )
+          return debounced
+        },
+        {} as Record<string, Function>
+      )
     }
   }
 }
@@ -153,7 +162,9 @@ function piniaDebounce(): PiniaPlugin {
 ```ts
 defineStore('search', {
   actions: {
-    search() { /* ... */ }
+    search() {
+      /* ... */
+    }
   },
   debounce: {
     search: 300
@@ -176,18 +187,18 @@ export default defineNuxtPlugin(({ $pinia }) => {
 
 ## Plugins de la comunidad más usados
 
-| Plugin | Qué hace |
-|---|---|
+| Plugin                        | Qué hace                                                                     |
+| ----------------------------- | ---------------------------------------------------------------------------- |
 | `pinia-plugin-persistedstate` | Persistir stores en localStorage/sessionStorage/cookies con control granular |
-| `@pinia/colada` | Gestión de estado asíncrono (data fetching, caché, invalidación) |
+| `@pinia/colada`               | Gestión de estado asíncrono (data fetching, caché, invalidación)             |
 
 ## Plugin vs acción de store vs composable
 
-| Necesidad | Usar |
-|---|---|
-| Comportamiento añadido a TODOS los stores (logging, persistencia, estado compartido) | Plugin |
-| Lógica de negocio para un store específico | Acción del store |
-| Lógica reutilizable no ligada a un store | Composable |
+| Necesidad                                                                            | Usar             |
+| ------------------------------------------------------------------------------------ | ---------------- |
+| Comportamiento añadido a TODOS los stores (logging, persistencia, estado compartido) | Plugin           |
+| Lógica de negocio para un store específico                                           | Acción del store |
+| Lógica reutilizable no ligada a un store                                             | Composable       |
 
 Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Qué es Pinia Colada?](/es/q/pinia-colada) · [¿Cuándo usar Pinia vs composable vs ref local?](/es/q/pinia-vs-composable-vs-local)
 

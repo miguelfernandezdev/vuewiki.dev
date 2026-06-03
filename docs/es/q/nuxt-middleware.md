@@ -1,9 +1,9 @@
 ---
 order: 152
-title: "¿Qué son los middleware de Nuxt y cómo funcionan?"
-difficulty: "intermediate"
-tags: ["nuxt", "vue-router"]
-summary: "El middleware de rutas protege navegaciones (auth, redirecciones). El de servidor gestiona HTTP (CORS, logging) antes de que Vue se ejecute."
+title: '¿Qué son los middleware de Nuxt y cómo funcionan?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'vue-router']
+summary: 'El middleware de rutas protege navegaciones (auth, redirecciones). El de servidor gestiona HTTP (CORS, logging) antes de que Vue se ejecute.'
 ---
 
 Nuxt tiene dos tipos de middleware que se ejecutan en capas distintas. El middleware de rutas se ejecuta en Vue antes de que se renderice una página (cliente y servidor). El middleware de servidor se ejecuta en Nitro antes de que la petición llegue a Vue.
@@ -79,12 +79,12 @@ definePageMeta({
 
 ### Valores de retorno posibles
 
-| Valor de retorno | Efecto |
-|---|---|
-| Nada (`undefined`) | Continúa la navegación |
-| `navigateTo('/path')` | Redirige a otra ruta |
-| `abortNavigation()` | Cancela la navegación, permanece en la página actual |
-| `abortNavigation(error)` | Cancela y muestra la página de error |
+| Valor de retorno         | Efecto                                               |
+| ------------------------ | ---------------------------------------------------- |
+| Nada (`undefined`)       | Continúa la navegación                               |
+| `navigateTo('/path')`    | Redirige a otra ruta                                 |
+| `abortNavigation()`      | Cancela la navegación, permanece en la página actual |
+| `abortNavigation(error)` | Cancela y muestra la página de error                 |
 
 ## Middleware de servidor
 
@@ -117,14 +117,14 @@ Los archivos de middleware de servidor en `server/middleware/` se ejecutan autom
 
 ## Middleware de rutas vs middleware de servidor
 
-| | Middleware de rutas | Middleware de servidor |
-|---|---|---|
-| Ubicación | `middleware/` | `server/middleware/` |
-| Se ejecuta en | Vue (cliente + servidor) | Nitro (solo servidor) |
-| Tiene acceso a | Composables de Vue, ruta, stores | Petición/respuesta HTTP en bruto |
-| Usar para | Guards de autenticación, redirecciones, analíticas | CORS, logging, cabeceras, rate limiting |
-| Se aplica a | Páginas específicas o globalmente | Todas las peticiones al servidor |
-| Puede redirigir a rutas Vue | Sí (`navigateTo`) | No (solo redirecciones HTTP) |
+|                             | Middleware de rutas                                | Middleware de servidor                  |
+| --------------------------- | -------------------------------------------------- | --------------------------------------- |
+| Ubicación                   | `middleware/`                                      | `server/middleware/`                    |
+| Se ejecuta en               | Vue (cliente + servidor)                           | Nitro (solo servidor)                   |
+| Tiene acceso a              | Composables de Vue, ruta, stores                   | Petición/respuesta HTTP en bruto        |
+| Usar para                   | Guards de autenticación, redirecciones, analíticas | CORS, logging, cabeceras, rate limiting |
+| Se aplica a                 | Páginas específicas o globalmente                  | Todas las peticiones al servidor        |
+| Puede redirigir a rutas Vue | Sí (`navigateTo`)                                  | No (solo redirecciones HTTP)            |
 
 Ver también: [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware) · [¿Cómo implementar autenticación en Nuxt?](/es/q/nuxt-authentication) · [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards)
 

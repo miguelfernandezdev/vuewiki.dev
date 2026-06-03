@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "What error name does a cancelled fetch throw?",
-      "options": [
-        "CancelError",
-        "AbortError",
-        "TimeoutError",
-        "NetworkError"
-      ],
+      "options": ["CancelError", "AbortError", "TimeoutError", "NetworkError"],
       "answer": 1
     },
     {

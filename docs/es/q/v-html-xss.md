@@ -1,9 +1,9 @@
 ---
 order: 15
-title: "¿Cómo se inyecta HTML crudo en Vue y por qué es peligroso?"
-difficulty: "beginner"
-tags: ["directives", "security"]
-summary: "v-html renderiza HTML crudo via innerHTML. Nunca lo uses con input del usuario porque habilita ataques XSS. Solo úsalo con contenido confiable y sanitizado."
+title: '¿Cómo se inyecta HTML crudo en Vue y por qué es peligroso?'
+difficulty: 'beginner'
+tags: ['directives', 'security']
+summary: 'v-html renderiza HTML crudo via innerHTML. Nunca lo uses con input del usuario porque habilita ataques XSS. Solo úsalo con contenido confiable y sanitizado.'
 ---
 
 La directiva `v-html` renderiza una cadena como HTML crudo en lugar de texto plano. Omite la compilación de templates de Vue e inserta el HTML directamente en el DOM usando `innerHTML`. Es útil para renderizar contenido enriquecido de confianza (salida de markdown, contenido de tu propio CMS), pero abre la puerta al Cross-Site Scripting (XSS) si el contenido proviene de la entrada del usuario.
@@ -111,7 +111,9 @@ El contenido inyectado con `v-html` es DOM crudo. Los componentes Vue, las direc
 
 ```vue
 <style scoped>
-p { color: red; }
+p {
+  color: red;
+}
 </style>
 
 <template>
@@ -124,19 +126,21 @@ Los estilos con scoped añaden un atributo `data-v-xxxxx` a los elementos compil
 
 ```vue
 <style scoped>
-div :deep(p) { color: red; }
+div :deep(p) {
+  color: red;
+}
 </style>
 ```
 
 ## Alternativas a v-html
 
-| Necesidad | Enfoque |
-|---|---|
-| Mostrar texto del usuario de forma segura | `{{ text }}` (escapado automáticamente) |
-| Renderizar markdown | Compilar a HTML + DOMPurify + `v-html` |
-| Texto enriquecido de tu CMS | `v-html` (fuente de confianza) |
-| Texto enriquecido generado por el usuario | DOMPurify + `v-html` |
-| Templates Vue dinámicos | Funciones render o compilador en tiempo de ejecución |
+| Necesidad                                 | Enfoque                                              |
+| ----------------------------------------- | ---------------------------------------------------- |
+| Mostrar texto del usuario de forma segura | `{{ text }}` (escapado automáticamente)              |
+| Renderizar markdown                       | Compilar a HTML + DOMPurify + `v-html`               |
+| Texto enriquecido de tu CMS               | `v-html` (fuente de confianza)                       |
+| Texto enriquecido generado por el usuario | DOMPurify + `v-html`                                 |
+| Templates Vue dinámicos                   | Funciones render o compilador en tiempo de ejecución |
 
 Ver también: [¿Qué son los modificadores de eventos?](/es/q/event-modifier-order) · [¿Cómo implementar manejo global de errores?](/es/q/global-error-handling) · [¿Qué es el Virtual DOM?](/es/q/virtual-dom)
 

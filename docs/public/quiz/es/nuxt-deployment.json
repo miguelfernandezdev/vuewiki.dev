@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué comando prerenderiza todas las páginas a HTML estático en Nuxt?",
-      "options": [
-        "nuxt build",
-        "nuxt start",
-        "nuxt export",
-        "nuxt generate"
-      ],
+      "options": ["nuxt build", "nuxt start", "nuxt export", "nuxt generate"],
       "answer": 3
     },
     {

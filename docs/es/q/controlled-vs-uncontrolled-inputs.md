@@ -1,9 +1,9 @@
 ---
 order: 39
-title: "¿Cuál es la diferencia entre inputs controlados y no controlados?"
-difficulty: "intermediate"
-tags: ["components", "forms", "v-model"]
-summary: "Los controlados usan v-model (el estado dirige el valor). Los no controlados dejan que el DOM gestione el valor y lo leen con refs cuando es necesario."
+title: '¿Cuál es la diferencia entre inputs controlados y no controlados?'
+difficulty: 'intermediate'
+tags: ['components', 'forms', 'v-model']
+summary: 'Los controlados usan v-model (el estado dirige el valor). Los no controlados dejan que el DOM gestione el valor y lo leen con refs cuando es necesario.'
 ---
 
 Un input controlado tiene su valor dirigido por estado reactivo. Cada pulsación de tecla actualiza el estado, y el estado dicta lo que muestra el input. Un input no controlado gestiona su propio valor internamente a través del DOM. Lo lees cuando lo necesitas (al enviar, al perder el foco) en lugar de rastrear cada cambio.
@@ -49,14 +49,14 @@ El DOM posee el valor. Solo lo lees cuando lo necesitas.
 
 ## Cuándo usar cada uno
 
-| Situación | Enfoque | Por qué |
-|---|---|---|
-| Validación en tiempo real | Controlado | Necesitas el valor en cada pulsación |
-| Visualización derivada (contador de caracteres, previsualización) | Controlado | Las propiedades computed dependen del valor |
-| Lógica condicional (deshabilitar botón hasta que sea válido) | Controlado | El template necesita acceso reactivo |
-| Formulario simple enviado al pulsar un botón | Cualquiera | El no controlado es más simple si no necesitas actualizaciones en vivo |
-| Inputs de archivo | No controlado | `<input type="file">` es de solo lectura, v-model no aplica |
-| Librerías DOM de terceros | No controlado | La librería gestiona su propio estado DOM |
+| Situación                                                         | Enfoque       | Por qué                                                                |
+| ----------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------- |
+| Validación en tiempo real                                         | Controlado    | Necesitas el valor en cada pulsación                                   |
+| Visualización derivada (contador de caracteres, previsualización) | Controlado    | Las propiedades computed dependen del valor                            |
+| Lógica condicional (deshabilitar botón hasta que sea válido)      | Controlado    | El template necesita acceso reactivo                                   |
+| Formulario simple enviado al pulsar un botón                      | Cualquiera    | El no controlado es más simple si no necesitas actualizaciones en vivo |
+| Inputs de archivo                                                 | No controlado | `<input type="file">` es de solo lectura, v-model no aplica            |
+| Librerías DOM de terceros                                         | No controlado | La librería gestiona su propio estado DOM                              |
 
 ## Valores por defecto
 

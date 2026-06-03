@@ -1,9 +1,9 @@
 ---
 order: 12
-title: "¿Cómo funciona el manejo de eventos en Vue?"
-difficulty: "beginner"
-tags: ["directives", "components"]
-summary: "v-on (o @) enlaza listeners de eventos DOM en el template. Vue los adjunta y elimina automáticamente con el ciclo de vida del componente."
+title: '¿Cómo funciona el manejo de eventos en Vue?'
+difficulty: 'beginner'
+tags: ['directives', 'components']
+summary: 'v-on (o @) enlaza listeners de eventos DOM en el template. Vue los adjunta y elimina automáticamente con el ciclo de vida del componente.'
 ---
 
 Vue escucha eventos del DOM con la directiva [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on), abreviada como `@`. Enlazas un manejador directamente en el template, y Vue se encarga de adjuntar y eliminar el listener con el lifecycle del componente.
@@ -108,14 +108,14 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 
 ## Referencia rápida
 
-| Modificador | Reemplaza |
-|---|---|
-| `.prevent` | `event.preventDefault()` |
-| `.stop` | `event.stopPropagation()` |
-| `.once` | Elimina el listener tras el primer disparo |
-| `.self` | Solo dispara si `event.target === element` |
-| `.passive` | `addEventListener({ passive: true })` para rendimiento en scroll |
-| `.capture` | Usa el modo de captura en lugar de bubbling |
+| Modificador | Reemplaza                                                        |
+| ----------- | ---------------------------------------------------------------- |
+| `.prevent`  | `event.preventDefault()`                                         |
+| `.stop`     | `event.stopPropagation()`                                        |
+| `.once`     | Elimina el listener tras el primer disparo                       |
+| `.self`     | Solo dispara si `event.target === element`                       |
+| `.passive`  | `addEventListener({ passive: true })` para rendimiento en scroll |
+| `.capture`  | Usa el modo de captura en lugar de bubbling                      |
 
 Ver también: [¿En qué orden deben ir los modificadores de evento?](/es/q/event-modifier-order) · [¿Qué es el renderizado condicional en Vue?](/es/q/conditional-rendering)
 

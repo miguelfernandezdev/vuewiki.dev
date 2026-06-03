@@ -34,12 +34,14 @@ const slug = computed(() => {
 
 const current = computed(() => questions.value[currentIndex.value])
 
-const score = computed(() =>
-  answers.value.filter((a, i) => a === questions.value[i]?.answer).length,
+const score = computed(
+  () => answers.value.filter((a, i) => a === questions.value[i]?.answer).length
 )
 
 const scorePercent = computed(() =>
-  questions.value.length ? Math.round((score.value / questions.value.length) * 100) : 0,
+  questions.value.length
+    ? Math.round((score.value / questions.value.length) * 100)
+    : 0
 )
 
 async function loadQuiz() {
@@ -48,7 +50,10 @@ async function loadQuiz() {
   const prefix = lang.value === 'es' ? '/quiz/es/' : '/quiz/'
   try {
     const res = await fetch(`${prefix}${slug.value}.json`)
-    if (!res.ok) { hasQuiz.value = false; return }
+    if (!res.ok) {
+      hasQuiz.value = false
+      return
+    }
     const data = await res.json()
     if (data.questions?.length) {
       questions.value = data.questions
@@ -71,7 +76,7 @@ function start() {
   posthog.capture('quiz_started', {
     question_slug: slug.value,
     question_count: questions.value.length,
-    language: lang.value,
+    language: lang.value
   })
 }
 
@@ -90,7 +95,7 @@ function selectOption(index: number) {
         question_count: questions.value.length,
         score: score.value,
         score_percent: scorePercent.value,
-        language: lang.value,
+        language: lang.value
       })
     }
   }, 1500)
@@ -107,15 +112,19 @@ function backToIdle() {
   answers.value = []
 }
 
-watch(() => route.path, () => {
-  phase.value = 'idle'
-  questions.value = []
-  hasQuiz.value = null
-  currentIndex.value = 0
-  selected.value = null
-  answers.value = []
-  if (isQuestion.value) loadQuiz()
-}, { immediate: true })
+watch(
+  () => route.path,
+  () => {
+    phase.value = 'idle'
+    questions.value = []
+    hasQuiz.value = null
+    currentIndex.value = 0
+    selected.value = null
+    answers.value = []
+    if (isQuestion.value) loadQuiz()
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -135,11 +144,15 @@ watch(() => route.path, () => {
           <span
             v-for="(_, i) in questions"
             :key="i"
-            :class="['dot', {
-              current: i === currentIndex,
-              correct: answers[i] != null && answers[i] === questions[i].answer,
-              wrong: answers[i] != null && answers[i] !== questions[i].answer,
-            }]"
+            :class="[
+              'dot',
+              {
+                current: i === currentIndex,
+                correct:
+                  answers[i] != null && answers[i] === questions[i].answer,
+                wrong: answers[i] != null && answers[i] !== questions[i].answer
+              }
+            ]"
           />
         </div>
       </div>
@@ -150,21 +163,48 @@ watch(() => route.path, () => {
         <button
           v-for="(option, i) in current.options"
           :key="i"
-          :class="['quiz-option', {
-            selected: selected === i,
-            correct: selected !== null && i === current.answer,
-            wrong: selected === i && i !== current.answer,
-            dimmed: selected !== null && i !== current.answer && selected !== i,
-          }]"
+          :class="[
+            'quiz-option',
+            {
+              selected: selected === i,
+              correct: selected !== null && i === current.answer,
+              wrong: selected === i && i !== current.answer,
+              dimmed:
+                selected !== null && i !== current.answer && selected !== i
+            }
+          ]"
           :disabled="selected !== null"
           @click="selectOption(i)"
         >
           <span class="option-letter">
-            <svg v-if="selected !== null && i === current.answer" width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              v-if="selected !== null && i === current.answer"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M3 7L6 10L11 4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
-            <svg v-else-if="selected === i && i !== current.answer" width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M4 4L10 10M10 4L4 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <svg
+              v-else-if="selected === i && i !== current.answer"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M4 4L10 10M10 4L4 10"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
             </svg>
             <template v-else>{{ String.fromCharCode(65 + i) }}</template>
           </span>
@@ -182,17 +222,35 @@ watch(() => route.path, () => {
       <div class="complete-body">
         <div class="score-ring">
           <svg viewBox="0 0 100 100" width="100" height="100">
-            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--vp-c-border)" stroke-width="7" />
             <circle
-              cx="50" cy="50" r="42"
+              cx="50"
+              cy="50"
+              r="42"
               fill="none"
-              :stroke="scorePercent >= 50 ? 'var(--vp-c-green-2)' : 'var(--vp-c-red-2)'"
+              stroke="var(--vp-c-border)"
+              stroke-width="7"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r="42"
+              fill="none"
+              :stroke="
+                scorePercent >= 50 ? 'var(--vp-c-green-2)' : 'var(--vp-c-red-2)'
+              "
               stroke-width="7"
               stroke-linecap="round"
               :stroke-dasharray="`${scorePercent * 2.64} 264`"
               transform="rotate(-90 50 50)"
             />
-            <text x="50" y="54" text-anchor="middle" font-size="22" font-weight="700" fill="var(--vp-c-text-1)">
+            <text
+              x="50"
+              y="54"
+              text-anchor="middle"
+              font-size="22"
+              font-weight="700"
+              fill="var(--vp-c-text-1)"
+            >
               {{ score }}/{{ questions.length }}
             </text>
           </svg>
@@ -200,15 +258,29 @@ watch(() => route.path, () => {
 
         <div class="complete-info">
           <p class="score-text">
-            {{ scorePercent >= 100 ? t('quiz.perfect') : scorePercent >= 50 ? t('quiz.good') : t('quiz.tryAgain') }}
+            {{
+              scorePercent >= 100
+                ? t('quiz.perfect')
+                : scorePercent >= 50
+                  ? t('quiz.good')
+                  : t('quiz.tryAgain')
+            }}
           </p>
           <div class="score-breakdown">
-            <span class="score-detail correct">✓ {{ score }} {{ t('quiz.correctLabel') }}</span>
-            <span class="score-detail wrong">✗ {{ questions.length - score }} {{ t('quiz.wrongLabel') }}</span>
+            <span class="score-detail correct"
+              >✓ {{ score }} {{ t('quiz.correctLabel') }}</span
+            >
+            <span class="score-detail wrong"
+              >✗ {{ questions.length - score }} {{ t('quiz.wrongLabel') }}</span
+            >
           </div>
           <div class="quiz-actions">
-            <button class="quiz-btn retry" @click="retry">{{ t('quiz.retry') }}</button>
-            <button class="quiz-btn back" @click="backToIdle">{{ t('quiz.close') }}</button>
+            <button class="quiz-btn retry" @click="retry">
+              {{ t('quiz.retry') }}
+            </button>
+            <button class="quiz-btn back" @click="backToIdle">
+              {{ t('quiz.close') }}
+            </button>
           </div>
         </div>
       </div>
@@ -353,17 +425,34 @@ watch(() => route.path, () => {
 }
 
 @keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(2px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-4px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
 }
 
 .option-letter {

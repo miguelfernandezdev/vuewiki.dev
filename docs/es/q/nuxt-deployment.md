@@ -1,9 +1,9 @@
 ---
 order: 157
-title: "¿Cómo se despliega una aplicación Nuxt?"
-difficulty: "intermediate"
-tags: ["nuxt", "tooling"]
-summary: "Nitro compila tu app para cualquier plataforma. nuxt build para servidores SSR/serverless, nuxt generate para archivos estáticos."
+title: '¿Cómo se despliega una aplicación Nuxt?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'tooling']
+summary: 'Nitro compila tu app para cualquier plataforma. nuxt build para servidores SSR/serverless, nuxt generate para archivos estáticos.'
 ---
 
 Nuxt usa Nitro como motor de servidor, que compila la aplicación para cualquier plataforma de alojamiento. Se construye una vez y Nitro adapta la salida al destino: servidor Node.js, archivos estáticos, funciones serverless o edge workers.
@@ -109,12 +109,12 @@ docker run -p 3000:3000 my-app
 
 ## Elegir plataforma
 
-| Necesidad | Plataforma |
-|---|---|
-| Configuración más rápida, buena experiencia de desarrollo | Vercel |
-| Sitio estático con formularios integrados | Netlify |
-| Mejor rendimiento global, bajo coste a escala | Cloudflare Pages |
-| Control total, infraestructura existente | Node.js en VPS o Docker |
+| Necesidad                                                 | Plataforma              |
+| --------------------------------------------------------- | ----------------------- |
+| Configuración más rápida, buena experiencia de desarrollo | Vercel                  |
+| Sitio estático con formularios integrados                 | Netlify                 |
+| Mejor rendimiento global, bajo coste a escala             | Cloudflare Pages        |
+| Control total, infraestructura existente                  | Node.js en VPS o Docker |
 
 ## Variables de entorno en producción
 
@@ -124,9 +124,9 @@ Los valores de configuración en tiempo de ejecución provienen de variables de 
 // nuxt.config.ts
 export default defineNuxtConfig({
   runtimeConfig: {
-    secretKey: '',          // solo en el servidor, lee NUXT_SECRET_KEY
+    secretKey: '', // solo en el servidor, lee NUXT_SECRET_KEY
     public: {
-      apiBase: ''           // cliente y servidor, lee NUXT_PUBLIC_API_BASE
+      apiBase: '' // cliente y servidor, lee NUXT_PUBLIC_API_BASE
     }
   }
 })

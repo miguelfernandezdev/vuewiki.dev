@@ -1,9 +1,9 @@
 ---
 order: 86
-title: "¿Cómo funcionan las propiedades computed con escritura?"
-difficulty: "advanced"
-tags: ["reactivity", "pinia", "v-model"]
-summary: "Un computed con setter: leer deriva el valor, escribir actualiza la fuente subyacente. Uso común: enlace computed bidireccional para transformaciones de formularios."
+title: '¿Cómo funcionan las propiedades computed con escritura?'
+difficulty: 'advanced'
+tags: ['reactivity', 'pinia', 'v-model']
+summary: 'Un computed con setter: leer deriva el valor, escribir actualiza la fuente subyacente. Uso común: enlace computed bidireccional para transformaciones de formularios.'
 ---
 
 Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) normal es de solo lectura: deriva un valor de las dependencias reactivas. Un computed con escritura añade un setter, por lo que puedes asignarle un valor y el setter actualiza los datos fuente subyacentes.
@@ -29,7 +29,7 @@ console.log(fullName.value) // "Ana García"
 
 fullName.value = 'Luis Fernández'
 console.log(firstName.value) // "Luis"
-console.log(lastName.value)  // "Fernández"
+console.log(lastName.value) // "Fernández"
 ```
 
 El getter deriva el valor. El setter descompone el valor asignado de vuelta en los refs fuente.
@@ -119,13 +119,13 @@ const theme = computed({
 
 ## Cuándo usar computed con escritura
 
-| Escenario | ¿Computed con escritura? |
-|---|---|
-| v-model en un valor derivado o formateado | Sí |
-| Binding bidireccional a una propiedad del store | Sí |
-| Conversión de unidades (km/millas, C/F) | Sí |
-| Transformación compleja de varios pasos | Probablemente no, usa un método |
-| Operaciones asíncronas en el set | No, usa un watcher |
+| Escenario                                       | ¿Computed con escritura?        |
+| ----------------------------------------------- | ------------------------------- |
+| v-model en un valor derivado o formateado       | Sí                              |
+| Binding bidireccional a una propiedad del store | Sí                              |
+| Conversión de unidades (km/millas, C/F)         | Sí                              |
+| Transformación compleja de varios pasos         | Probablemente no, usa un método |
+| Operaciones asíncronas en el set                | No, usa un watcher              |
 
 Ver también: [¿Cuál es la diferencia entre computed y watch?](/es/q/computed-vs-watch) · [¿Cómo funciona v-model con componentes?](/es/q/v-model-custom-components)
 

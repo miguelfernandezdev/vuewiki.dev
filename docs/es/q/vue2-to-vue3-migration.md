@@ -1,9 +1,9 @@
 ---
 order: 168
-title: "¿Cómo planificarías una migración de Vue 2 a Vue 3?"
-difficulty: "advanced"
-tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]
-summary: "Usa @vue/compat (build de compatibilidad) para ejecutar código Vue 2 en Vue 3. Corrige advertencias de deprecación incrementalmente. No es una reescritura."
+title: '¿Cómo planificarías una migración de Vue 2 a Vue 3?'
+difficulty: 'advanced'
+tags: ['migration', 'pinia', 'vite', 'vuex', 'v-model', 'provide-inject']
+summary: 'Usa @vue/compat (build de compatibilidad) para ejecutar código Vue 2 en Vue 3. Corrige advertencias de deprecación incrementalmente. No es una reescritura.'
 ---
 
 Una migración de Vue 2 a Vue 3 no es una reescritura total. Es un proceso incremental. Vue 3 proporciona `@vue/compat` (el build de compatibilidad), que ejecuta el código Vue 2 existente sobre el runtime de Vue 3 y registra avisos de deprecación por cada API que hayas utilizado y que haya sido eliminada o modificada. Esto significa que puedes hacer el cambio en un día y seguir teniendo la aplicación funcionando, para luego ir resolviendo los problemas por categorías a lo largo de semanas o meses, a tu propio ritmo.
@@ -92,7 +92,7 @@ También puedes desactivar la compatibilidad para funcionalidades específicas u
 ```ts
 configureCompat({
   MODE: 2,
-  FILTERS: false,         // confirmed: no filters remain
+  FILTERS: false, // confirmed: no filters remain
   INSTANCE_EVENT_EMITTER: false // confirmed: no $on/$off usage remains
 })
 ```
@@ -101,17 +101,17 @@ Esto te da una lista de verificación de migración por funcionalidad, aplicada 
 
 ## Qué cambia: las eliminaciones de API más importantes
 
-| Vue 2 | Vue 3 | Ruta de migración |
-| --- | --- | --- |
-| Filtros (sintaxis de pipe `\|`) | Eliminados | Usa una propiedad computada o un método utilitario |
-| `$on` / `$off` / `$once` | Eliminados | Usa mitt, o provide/inject para eventos entre componentes |
-| `$listeners` | Eliminado | Se fusiona con `$attrs`, usa `v-bind="$attrs"` |
-| `$set` / `$delete` | Eliminados | La reactividad basada en Proxy es automática, ya no son necesarios |
-| Mixins | Desaconsejados | Extrae a composables |
-| Vuex | Opcional | Pinia es el reemplazo recomendado |
-| Options API | Todavía soportada | `<script setup>` es la alternativa moderna recomendada |
-| `Vue.extend` | Eliminado | Usa `defineComponent` |
-| `v-model` (una sola prop) | Múltiples bindings de `v-model` | Cambio menor de sintaxis, compatible hacia atrás para el caso básico |
+| Vue 2                           | Vue 3                           | Ruta de migración                                                    |
+| ------------------------------- | ------------------------------- | -------------------------------------------------------------------- |
+| Filtros (sintaxis de pipe `\|`) | Eliminados                      | Usa una propiedad computada o un método utilitario                   |
+| `$on` / `$off` / `$once`        | Eliminados                      | Usa mitt, o provide/inject para eventos entre componentes            |
+| `$listeners`                    | Eliminado                       | Se fusiona con `$attrs`, usa `v-bind="$attrs"`                       |
+| `$set` / `$delete`              | Eliminados                      | La reactividad basada en Proxy es automática, ya no son necesarios   |
+| Mixins                          | Desaconsejados                  | Extrae a composables                                                 |
+| Vuex                            | Opcional                        | Pinia es el reemplazo recomendado                                    |
+| Options API                     | Todavía soportada               | `<script setup>` es la alternativa moderna recomendada               |
+| `Vue.extend`                    | Eliminado                       | Usa `defineComponent`                                                |
+| `v-model` (una sola prop)       | Múltiples bindings de `v-model` | Cambio menor de sintaxis, compatible hacia atrás para el caso básico |
 
 Las eliminaciones que afectan a más proyectos en la práctica son los filtros, `$listeners` y el event bus. Prioriza esas.
 

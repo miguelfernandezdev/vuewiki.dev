@@ -1,9 +1,9 @@
 ---
 order: 129
-title: "Una página tarda 3-4 segundos en ser interactiva. ¿Cómo la diagnosticas y corriges?"
-difficulty: "advanced"
-tags: ["performance", "debugging", "watchers"]
-summary: "Mide primero (pestaña Performance, Lighthouse). Revisa red (APIs lentas), bundle (code splitting) y renderizado (reactividad excesiva)."
+title: 'Una página tarda 3-4 segundos en ser interactiva. ¿Cómo la diagnosticas y corriges?'
+difficulty: 'advanced'
+tags: ['performance', 'debugging', 'watchers']
+summary: 'Mide primero (pestaña Performance, Lighthouse). Revisa red (APIs lentas), bundle (code splitting) y renderizado (reactividad excesiva).'
 ---
 
 Sigue un proceso estructurado: mide, identifica la categoría del cuello de botella, corrige, mide de nuevo. El cuello de botella siempre es una de tres cosas: la red (llamadas a la API lentas o demasiadas), el bundle (demasiado JavaScript enviado) o el renderizado (demasiado trabajo en el hilo principal).
@@ -13,6 +13,7 @@ Sigue un proceso estructurado: mide, identifica la categoría del cuello de bote
 Abre las DevTools del navegador y graba un trace de rendimiento de la carga de la página. Esto te da un flame chart que muestra exactamente dónde se invierte el tiempo.
 
 Métricas clave a revisar:
+
 - **Time to Interactive (TTI)**: cuándo la página responde a la entrada
 - **Largest Contentful Paint (LCP)**: cuándo el contenido principal es visible
 - **Total Blocking Time (TBT)**: cuánto tiempo estuvo bloqueado el hilo principal
@@ -28,15 +29,15 @@ Abre la pestaña de Red y recarga. Busca:
 ```vue
 <script setup>
 // MAL: secuencial — tiempo total = A + B + C
-const users = await fetch('/api/users').then(r => r.json())
-const posts = await fetch('/api/posts').then(r => r.json())
-const stats = await fetch('/api/stats').then(r => r.json())
+const users = await fetch('/api/users').then((r) => r.json())
+const posts = await fetch('/api/posts').then((r) => r.json())
+const stats = await fetch('/api/stats').then((r) => r.json())
 
 // BIEN: paralelo — tiempo total = max(A, B, C)
 const [users, posts, stats] = await Promise.all([
-  fetch('/api/users').then(r => r.json()),
-  fetch('/api/posts').then(r => r.json()),
-  fetch('/api/stats').then(r => r.json())
+  fetch('/api/users').then((r) => r.json()),
+  fetch('/api/posts').then((r) => r.json()),
+  fetch('/api/stats').then((r) => r.json())
 ])
 </script>
 ```
@@ -102,11 +103,11 @@ const items = shallowRef(hugeArrayFromApi)
 ```js
 // MAL: el watch dispara un cambio de estado → re-render → el watch se activa de nuevo
 watch(items, () => {
-  filteredItems.value = items.value.filter(i => i.active)
+  filteredItems.value = items.value.filter((i) => i.active)
 })
 
 // BIEN: computed está en caché, se ejecuta una vez por cambio de dependencia
-const filteredItems = computed(() => items.value.filter(i => i.active))
+const filteredItems = computed(() => items.value.filter((i) => i.active))
 ```
 
 **Métodos llamados en templates**: un método en una expresión de template se ejecuta en cada render. Un computed solo se ejecuta cuando cambian sus dependencias.
@@ -145,15 +146,15 @@ Después de cada corrección, vuelve a ejecutar el trace de rendimiento y la aud
 
 ## Lista de diagnóstico
 
-| Cuello de botella | Herramienta de identificación | Correcciones habituales |
-|---|---|---|
-| APIs lentas | Pestaña de red, gráfico de cascada | Peticiones en paralelo, caché, paginación |
-| Demasiadas peticiones | Pestaña de red, contador de peticiones | Combinar endpoints, BFF |
-| Bundle grande | vite-bundle-visualizer | Code splitting, rutas lazy, tree shaking |
-| Reactividad profunda | Pestaña de rendimiento de Vue DevTools | shallowRef, evitar reactive profundo en datos grandes |
-| Watchers en cascada | Timeline de Vue DevTools | Sustituir watch por computed |
-| Listas grandes | Pestaña de elementos, conteo de nodos DOM | Virtual scrolling |
-| Re-renders innecesarios | Resaltado de componentes en Vue DevTools | Props estables, v-once, v-memo |
+| Cuello de botella       | Herramienta de identificación             | Correcciones habituales                               |
+| ----------------------- | ----------------------------------------- | ----------------------------------------------------- |
+| APIs lentas             | Pestaña de red, gráfico de cascada        | Peticiones en paralelo, caché, paginación             |
+| Demasiadas peticiones   | Pestaña de red, contador de peticiones    | Combinar endpoints, BFF                               |
+| Bundle grande           | vite-bundle-visualizer                    | Code splitting, rutas lazy, tree shaking              |
+| Reactividad profunda    | Pestaña de rendimiento de Vue DevTools    | shallowRef, evitar reactive profundo en datos grandes |
+| Watchers en cascada     | Timeline de Vue DevTools                  | Sustituir watch por computed                          |
+| Listas grandes          | Pestaña de elementos, conteo de nodos DOM | Virtual scrolling                                     |
+| Re-renders innecesarios | Resaltado de componentes en Vue DevTools  | Props estables, v-once, v-memo                        |
 
 ## La estructura para la entrevista
 

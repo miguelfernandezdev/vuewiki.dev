@@ -1,9 +1,9 @@
 ---
 order: 18
-title: "¿Qué son los modificadores de eventos y por qué importa el orden?"
-difficulty: "intermediate"
-tags: ["directives"]
-summary: "Los modificadores se compilan de izquierda a derecha. .prevent.self y .self.prevent producen comportamientos distintos. El orden importa."
+title: '¿Qué son los modificadores de eventos y por qué importa el orden?'
+difficulty: 'intermediate'
+tags: ['directives']
+summary: 'Los modificadores se compilan de izquierda a derecha. .prevent.self y .self.prevent producen comportamientos distintos. El orden importa.'
 ---
 
 Los modificadores de eventos son sufijos en `v-on` (o `@`) que gestionan patrones comunes de eventos de forma declarativa. Vue los compila a JavaScript en el orden exacto en que los escribes, y ese orden cambia el comportamiento.
@@ -14,13 +14,13 @@ Vue genera el código de cada modificador de izquierda a derecha. `.prevent.self
 
 ```ts
 // @click.prevent.self compila a:
-event.preventDefault()               // se ejecuta primero, en TODOS los clics
+event.preventDefault() // se ejecuta primero, en TODOS los clics
 if (event.target !== event.currentTarget) return
 handler()
 
 // @click.self.prevent compila a:
-if (event.target !== event.currentTarget) return  // comprueba primero
-event.preventDefault()               // solo se ejecuta si el clic fue en el propio elemento
+if (event.target !== event.currentTarget) return // comprueba primero
+event.preventDefault() // solo se ejecuta si el clic fue en el propio elemento
 handler()
 ```
 
@@ -30,26 +30,28 @@ En la práctica:
 <template>
   <!-- .prevent.self: previene el comportamiento predeterminado también en los hijos -->
   <div @click.prevent.self="handleClick">
-    <a href="/page">Link</a> <!-- el default se previene aunque el clic sea en el hijo -->
+    <a href="/page">Link</a>
+    <!-- el default se previene aunque el clic sea en el hijo -->
   </div>
 
   <!-- .self.prevent: solo previene el default en el propio div -->
   <div @click.self.prevent="handleClick">
-    <a href="/page">Link</a> <!-- la navegación funciona con normalidad -->
+    <a href="/page">Link</a>
+    <!-- la navegación funciona con normalidad -->
   </div>
 </template>
 ```
 
 ## Todos los modificadores de eventos
 
-| Modificador | Qué hace |
-|---|---|
-| `.prevent` | Llama a `event.preventDefault()` |
-| `.stop` | Llama a `event.stopPropagation()` |
-| `.self` | Solo se dispara si `event.target === event.currentTarget` |
-| `.once` | Elimina el listener tras el primer disparo |
-| `.capture` | Usa la fase de captura en lugar de bubbling |
-| `.passive` | Establece `{ passive: true }` en el listener (mejora el rendimiento del scroll) |
+| Modificador | Qué hace                                                                        |
+| ----------- | ------------------------------------------------------------------------------- |
+| `.prevent`  | Llama a `event.preventDefault()`                                                |
+| `.stop`     | Llama a `event.stopPropagation()`                                               |
+| `.self`     | Solo se dispara si `event.target === event.currentTarget`                       |
+| `.once`     | Elimina el listener tras el primer disparo                                      |
+| `.capture`  | Usa la fase de captura en lugar de bubbling                                     |
+| `.passive`  | Establece `{ passive: true }` en el listener (mejora el rendimiento del scroll) |
 
 ## Combinaciones habituales
 
@@ -82,9 +84,7 @@ Si la cadena de modificadores se vuelve confusa, divide la lógica en manejadore
 ```vue
 <template>
   <div @click.self="handleSelfClick">
-    <button @click.prevent="handleChildClick">
-      Child
-    </button>
+    <button @click.prevent="handleChildClick">Child</button>
   </div>
 </template>
 ```

@@ -1,9 +1,9 @@
 ---
 order: 126
-title: "¿Cómo funcionan las optimizaciones de estabilidad de props?"
-difficulty: "advanced"
-tags: ["performance", "components"]
-summary: "Vue salta el re-render de hijos cuando los props no cambian. Evita pasar valores compartidos (como activeId) a cada item; pasa solo un booleano."
+title: '¿Cómo funcionan las optimizaciones de estabilidad de props?'
+difficulty: 'advanced'
+tags: ['performance', 'components']
+summary: 'Vue salta el re-render de hijos cuando los props no cambian. Evita pasar valores compartidos (como activeId) a cada item; pasa solo un booleano.'
 ---
 
 Vue omite el re-render de un componente hijo cuando ninguna de sus props cambia. La estabilidad de props consiste en estructurarlas para que solo los componentes que realmente necesitan actualizarse reciban valores cambiados. La mayor ventaja está en las listas: pasar un valor compartido como `activeId` a todos los elementos obliga a re-renderizar todos, aunque solo dos elementos hayan cambiado de estado.
@@ -13,8 +13,10 @@ Vue omite el re-render de un componente hijo cuando ninguna de sus props cambia.
 ```vue
 <!-- Parent -->
 <script setup>
-const items = ref([/* 100 items */])
-const activeId = ref<number | null>(null)
+const items = ref([
+  /* 100 items */
+])
+const activeId = (ref < number) | (null > null)
 </script>
 
 <template>
@@ -66,6 +68,7 @@ defineProps<{ id: number; active: boolean }>()
 ```
 
 Ahora cuando `activeId` cambia de 1 a 2:
+
 - Elemento 1: `:active` pasa de `true` a `false` (re-render)
 - Elemento 2: `:active` pasa de `false` a `true` (re-render)
 - Elementos 3-100: `:active` sigue siendo `false` (se omiten)
@@ -78,11 +81,7 @@ Ahora cuando `activeId` cambia de 1 a 2:
 
 ```vue
 <!-- MAL: todos los elementos se re-renderizan cuando cambia cualquier selección -->
-<Item
-  v-for="item in items"
-  :key="item.id"
-  :selected-ids="selectedIds"
-/>
+<Item v-for="item in items" :key="item.id" :selected-ids="selectedIds" />
 
 <!-- BIEN: solo los elementos afectados se re-renderizan -->
 <Item
@@ -127,11 +126,11 @@ Los objetos inline y las arrow functions crean una nueva referencia en cada rend
 
 ## Impacto a escala
 
-| Tamaño de lista | Prop inestable (activeId) | Prop estable (:active boolean) |
-|---|---|---|
-| 100 elementos | 100 re-renders | 2 re-renders |
-| 1.000 elementos | 1.000 re-renders | 2 re-renders |
-| 10.000 elementos | 10.000 re-renders | 2 re-renders |
+| Tamaño de lista  | Prop inestable (activeId) | Prop estable (:active boolean) |
+| ---------------- | ------------------------- | ------------------------------ |
+| 100 elementos    | 100 re-renders            | 2 re-renders                   |
+| 1.000 elementos  | 1.000 re-renders          | 2 re-renders                   |
+| 10.000 elementos | 10.000 re-renders         | 2 re-renders                   |
 
 La optimización tiene un coste constante (siempre 2) independientemente del tamaño de la lista. El enfoque directo tiene coste lineal.
 

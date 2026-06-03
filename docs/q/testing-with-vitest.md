@@ -1,9 +1,9 @@
 ---
 order: 114
-title: "How do you test Vue components with Vitest?"
-difficulty: "intermediate"
-tags: ["testing", "vitest", "v-model"]
-summary: "Vitest + @vue/test-utils: mount() for integration tests with children, shallowMount() for isolated parent tests. Runs in jsdom or happy-dom."
+title: 'How do you test Vue components with Vitest?'
+difficulty: 'intermediate'
+tags: ['testing', 'vitest', 'v-model']
+summary: 'Vitest + @vue/test-utils: mount() for integration tests with children, shallowMount() for isolated parent tests. Runs in jsdom or happy-dom.'
 ---
 
 Vitest runs Vue component tests using `@vue/test-utils` for mounting components and Vitest's own assertion API. Tests execute in a simulated DOM environment (jsdom or happy-dom), not a real browser, which keeps the feedback loop fast. The trade-off is that browser-specific APIs are mocked. For real browser behavior, consider Playwright or Cypress.
@@ -165,13 +165,13 @@ describe('UserProfile', () => {
 
 Focus on behavior observable from the outside: what the user sees or what the component communicates to its parent.
 
-| Test | Example |
-| --- | --- |
-| Rendering based on props | Component shows "empty state" when `items=[]` |
-| User interactions | Click button → counter increments |
-| Emitted events | Checkbox toggle → emits `update:modelValue` with new value |
-| Computed behavior | Filtered list shows only matching items |
-| Edge cases | Empty input, boundary values, null/undefined props |
+| Test                     | Example                                                    |
+| ------------------------ | ---------------------------------------------------------- |
+| Rendering based on props | Component shows "empty state" when `items=[]`              |
+| User interactions        | Click button → counter increments                          |
+| Emitted events           | Checkbox toggle → emits `update:modelValue` with new value |
+| Computed behavior        | Filtered list shows only matching items                    |
+| Edge cases               | Empty input, boundary values, null/undefined props         |
 
 What NOT to test: implementation details like the internal shape of reactive state (testing that `count` is stored as a `ref` vs a `reactive` property), framework behavior (`v-if` working correctly is Vue's responsibility, not yours), or CSS styling.
 

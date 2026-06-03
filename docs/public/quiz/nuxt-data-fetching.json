@@ -12,12 +12,7 @@
     },
     {
       "question": "Which composable wraps any async function (not just $fetch) and accepts a unique cache key?",
-      "options": [
-        "useFetch",
-        "useNuxtData",
-        "useAsyncData",
-        "$fetch"
-      ],
+      "options": ["useFetch", "useNuxtData", "useAsyncData", "$fetch"],
       "answer": 2
     },
     {

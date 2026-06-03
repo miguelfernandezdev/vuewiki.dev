@@ -1,8 +1,8 @@
 ---
 order: 143
-title: "How do you avoid platform-specific API issues in SSR?"
-difficulty: "intermediate"
-tags: ["ssr", "vite"]
+title: 'How do you avoid platform-specific API issues in SSR?'
+difficulty: 'intermediate'
+tags: ['ssr', 'vite']
 summary: "window, document, and localStorage don't exist on the server. Guard them with onMounted, typeof window checks, or <ClientOnly>."
 ---
 
@@ -12,20 +12,20 @@ In SSR, your Vue code runs on both the server (Node.js) and the browser. Browser
 
 ```ts
 // ALL of these crash during SSR
-const width = ref(window.innerWidth)        // ReferenceError
+const width = ref(window.innerWidth) // ReferenceError
 const theme = localStorage.getItem('theme') // ReferenceError
-const ua = navigator.userAgent              // ReferenceError
-document.title = 'My Page'                  // ReferenceError
+const ua = navigator.userAgent // ReferenceError
+document.title = 'My Page' // ReferenceError
 ```
 
-| Browser API | Error on server |
-|---|---|
-| `window` | ReferenceError |
-| `document` | ReferenceError |
-| `localStorage` / `sessionStorage` | ReferenceError |
-| `navigator` | ReferenceError |
-| `IntersectionObserver` | ReferenceError |
-| `requestAnimationFrame` | ReferenceError |
+| Browser API                       | Error on server |
+| --------------------------------- | --------------- |
+| `window`                          | ReferenceError  |
+| `document`                        | ReferenceError  |
+| `localStorage` / `sessionStorage` | ReferenceError  |
+| `navigator`                       | ReferenceError  |
+| `IntersectionObserver`            | ReferenceError  |
+| `requestAnimationFrame`           | ReferenceError  |
 
 ## Solution 1: move to onMounted
 
@@ -104,7 +104,7 @@ Some third-party libraries access `window` on import. Use `defineAsyncComponent`
 ```vue
 <script setup>
 const MapView = defineAsyncComponent(() =>
-  import('leaflet-vue').then(m => m.MapView)
+  import('leaflet-vue').then((m) => m.MapView)
 )
 </script>
 
@@ -157,17 +157,17 @@ export function loadConfig() {
 
 ## Lifecycle hooks and SSR
 
-| Hook | Runs on server? | Runs on client? |
-|---|---|---|
-| `setup()` / `<script setup>` | Yes | Yes |
-| `beforeCreate` (Options API) | Yes | Yes |
-| `created` (Options API) | Yes | Yes |
-| `onServerPrefetch` | Yes | No |
-| `onBeforeMount` | No | Yes |
-| `onMounted` | No | Yes |
-| `onBeforeUpdate` | No | Yes |
-| `onUpdated` | No | Yes |
-| `onUnmounted` | No | Yes |
+| Hook                         | Runs on server? | Runs on client? |
+| ---------------------------- | --------------- | --------------- |
+| `setup()` / `<script setup>` | Yes             | Yes             |
+| `beforeCreate` (Options API) | Yes             | Yes             |
+| `created` (Options API)      | Yes             | Yes             |
+| `onServerPrefetch`           | Yes             | No              |
+| `onBeforeMount`              | No              | Yes             |
+| `onMounted`                  | No              | Yes             |
+| `onBeforeUpdate`             | No              | Yes             |
+| `onUpdated`                  | No              | Yes             |
+| `onUnmounted`                | No              | Yes             |
 
 `setup` runs everywhere, so that's where browser API access is dangerous. Everything from `onBeforeMount` onward is client-only.
 

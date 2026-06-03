@@ -11,16 +11,19 @@ const route = useRoute()
 const { isRead, markRead, toggleRead: _toggleRead } = useReadTracker()
 
 const isQuestion = computed(() => !!frontmatter.value.difficulty)
-const backUrl = computed(() => lang.value === 'es' ? '/es/' : '/')
+const backUrl = computed(() => (lang.value === 'es' ? '/es/' : '/'))
 const questionUrl = computed(() => route.path)
 
 onMounted(() => {
   if (isQuestion.value) markRead(questionUrl.value)
 })
 
-watch(() => route.path, () => {
-  if (isQuestion.value) markRead(questionUrl.value)
-})
+watch(
+  () => route.path,
+  () => {
+    if (isQuestion.value) markRead(questionUrl.value)
+  }
+)
 
 function toggleRead(url: string) {
   const wasRead = isRead(url)
@@ -30,14 +33,14 @@ function toggleRead(url: string) {
     question_url: url,
     difficulty: frontmatter.value.difficulty,
     tags: frontmatter.value.tags,
-    language: lang.value,
+    language: lang.value
   })
 }
 
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',
   intermediate: 'badge-intermediate',
-  advanced: 'badge-advanced',
+  advanced: 'badge-advanced'
 }
 </script>
 
@@ -46,18 +49,39 @@ const difficultyClass: Record<string, string> = {
     <a :href="backUrl" class="back-link">{{ t('detail.back') }}</a>
 
     <div class="meta-header">
-      <span :class="['difficulty-badge', difficultyClass[frontmatter.difficulty]]">
+      <span
+        :class="['difficulty-badge', difficultyClass[frontmatter.difficulty]]"
+      >
         {{ t(`filters.${frontmatter.difficulty}`) }}
       </span>
       <button
         :class="['read-btn', { active: isRead(questionUrl) }]"
         @click.prevent="toggleRead(questionUrl)"
       >
-        <svg v-if="isRead(questionUrl)" width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          v-if="isRead(questionUrl)"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+        >
+          <path
+            d="M3 7L6 10L11 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         <svg v-else width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <circle cx="7" cy="7" r="5.25" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <circle
+            cx="7"
+            cy="7"
+            r="5.25"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-dasharray="3 2"
+          />
         </svg>
         {{ isRead(questionUrl) ? t('detail.read') : t('detail.markRead') }}
       </button>

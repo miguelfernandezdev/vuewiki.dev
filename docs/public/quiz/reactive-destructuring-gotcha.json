@@ -12,12 +12,7 @@
     },
     {
       "question": "Which utility preserves reactivity when destructuring?",
-      "options": [
-        "toRaw()",
-        "markRaw()",
-        "toRefs()",
-        "shallowRef()"
-      ],
+      "options": ["toRaw()", "markRaw()", "toRefs()", "shallowRef()"],
       "answer": 2
     },
     {

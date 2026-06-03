@@ -1,8 +1,8 @@
 ---
 order: 31
 title: "Why don't scoped styles apply to teleported content?"
-difficulty: "intermediate"
-tags: ["components", "errors", "suspense", "teleport"]
+difficulty: 'intermediate'
+tags: ['components', 'errors', 'suspense', 'teleport']
 summary: "Teleported elements leave the component's DOM subtree, so scoped data-v attributes don't match. Use :global() or an unscoped style block."
 ---
 
@@ -36,13 +36,20 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 ```vue
 <style scoped>
 /* Normal component styles stay scoped */
-.trigger-button { color: blue; }
+.trigger-button {
+  color: blue;
+}
 </style>
 
 <style>
 /* Teleported content uses non-scoped styles */
-.my-modal { background: white; padding: 20px; }
-.my-modal-text { color: blue; }
+.my-modal {
+  background: white;
+  padding: 20px;
+}
+.my-modal-text {
+  color: blue;
+}
 </style>
 ```
 
@@ -58,8 +65,13 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 </template>
 
 <style module>
-.modal { background: white; padding: 20px; }
-.text { color: blue; }
+.modal {
+  background: white;
+  padding: 20px;
+}
+.text {
+  color: blue;
+}
 </style>
 ```
 
@@ -67,8 +79,12 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 
 ```vue
 <style scoped>
-:deep(.modal) { background: white; }
-:deep(.modal-text) { color: blue; }
+:deep(.modal) {
+  background: white;
+}
+:deep(.modal-text) {
+  color: blue;
+}
 </style>
 ```
 

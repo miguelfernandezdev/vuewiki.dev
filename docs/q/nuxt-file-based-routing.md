@@ -1,9 +1,9 @@
 ---
 order: 147
-title: "How does file-based routing work in Nuxt?"
-difficulty: "beginner"
-tags: ["nuxt", "vue-router", "vueuse"]
-summary: "Every .vue file in pages/ becomes a route automatically. Use [brackets] for dynamic segments and [...slug] for catch-all routes."
+title: 'How does file-based routing work in Nuxt?'
+difficulty: 'beginner'
+tags: ['nuxt', 'vue-router', 'vueuse']
+summary: 'Every .vue file in pages/ becomes a route automatically. Use [brackets] for dynamic segments and [...slug] for catch-all routes.'
 ---
 
 In Nuxt, you don't configure routes manually. Every `.vue` file inside the `pages/` directory automatically becomes a route. The file system IS the router config.
@@ -109,14 +109,14 @@ If your app is a single-page without routing (a widget, a dashboard), you can sk
 
 ## File naming reference
 
-| File | Route | Example match |
-|---|---|---|
-| `index.vue` | `/` | `/` |
-| `about.vue` | `/about` | `/about` |
-| `posts/index.vue` | `/posts` | `/posts` |
-| `posts/[id].vue` | `/posts/:id` | `/posts/42` |
-| `posts/[...slug].vue` | `/posts/*` | `/posts/2024/my-article` |
-| `[[lang]]/index.vue` | `/:lang?` | `/` or `/es` |
+| File                  | Route        | Example match            |
+| --------------------- | ------------ | ------------------------ |
+| `index.vue`           | `/`          | `/`                      |
+| `about.vue`           | `/about`     | `/about`                 |
+| `posts/index.vue`     | `/posts`     | `/posts`                 |
+| `posts/[id].vue`      | `/posts/:id` | `/posts/42`              |
+| `posts/[...slug].vue` | `/posts/*`   | `/posts/2024/my-article` |
+| `[[lang]]/index.vue`  | `/:lang?`    | `/` or `/es`             |
 
 See also: [How does Vue Router work?](/q/vue-router-navigation-guards) · [What is the Nuxt directory structure?](/q/nuxt-directory-structure) · [What is Nuxt middleware?](/q/nuxt-middleware)
 

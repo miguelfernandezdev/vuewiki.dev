@@ -1,9 +1,9 @@
 ---
 order: 142
-title: "What is hydration and how does it work in Vue?"
-difficulty: "intermediate"
-tags: ["ssr", "vueuse"]
-summary: "Vue takes over server-rendered HTML, walks the existing DOM, attaches event listeners, and connects reactivity, making static HTML interactive without re-rendering."
+title: 'What is hydration and how does it work in Vue?'
+difficulty: 'intermediate'
+tags: ['ssr', 'vueuse']
+summary: 'Vue takes over server-rendered HTML, walks the existing DOM, attaches event listeners, and connects reactivity, making static HTML interactive without re-rendering.'
 ---
 
 Hydration is the process where Vue takes over static HTML that was rendered on the server and makes it interactive. The server sends fully rendered HTML so the user sees content immediately. Then Vue loads on the client, walks the existing DOM, attaches event listeners, and connects reactivity. The page becomes a live Vue app without re-rendering from scratch.
@@ -53,7 +53,9 @@ A mismatch happens when the HTML the client would render differs from what the s
 <p><div>Content</div></p>
 
 <!-- Browser corrects to this -->
-<p></p><div>Content</div><p></p>
+<p></p>
+<div>Content</div>
+<p></p>
 
 <!-- Vue expects the original — mismatch -->
 ```
@@ -117,7 +119,7 @@ During SSR, the server serializes the app state into the HTML so the client can 
 ```html
 <!-- Server injects this -->
 <script>
-  window.__PINIA_STATE__ = {"user":{"id":1,"name":"Alice"}}
+  window.__PINIA_STATE__ = { user: { id: 1, name: 'Alice' } }
 </script>
 ```
 
@@ -125,12 +127,12 @@ The client reads this data during hydration and initializes stores with it. This
 
 ## Hydration timeline
 
-| Phase | What the user sees | Interactive? |
-|---|---|---|
-| HTML arrives | Full content | No (static HTML) |
-| CSS loads | Styled content | No |
-| JS downloads | Styled content | No |
-| Vue hydrates | Same content | Yes |
+| Phase        | What the user sees | Interactive?     |
+| ------------ | ------------------ | ---------------- |
+| HTML arrives | Full content       | No (static HTML) |
+| CSS loads    | Styled content     | No               |
+| JS downloads | Styled content     | No               |
+| Vue hydrates | Same content       | Yes              |
 
 The gap between "content visible" and "fully interactive" is called the Time to Interactive (TTI). Minimizing JS bundle size and using lazy hydration strategies reduce this gap.
 

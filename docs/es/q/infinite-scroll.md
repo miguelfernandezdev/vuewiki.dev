@@ -1,9 +1,9 @@
 ---
 order: 120
-title: "¿Cómo implementarías el scroll infinito con Vue?"
-difficulty: "intermediate"
-tags: ["performance", "composables", "vueuse", "watchers"]
-summary: "Usa IntersectionObserver en un elemento centinela al final de la lista. Cuando entra en el viewport, carga la siguiente página."
+title: '¿Cómo implementarías el scroll infinito con Vue?'
+difficulty: 'intermediate'
+tags: ['performance', 'composables', 'vueuse', 'watchers']
+summary: 'Usa IntersectionObserver en un elemento centinela al final de la lista. Cuando entra en el viewport, carga la siguiente página.'
 ---
 
 El scroll infinito carga más contenido a medida que el usuario se desplaza cerca del fondo de la página. El enfoque estándar usa `IntersectionObserver` sobre un elemento centinela al final de la lista. Cuando el centinela entra en el viewport, se obtiene la siguiente página.
@@ -130,8 +130,13 @@ export function useInfiniteScroll<T>(
 
 ```vue
 <script setup>
-const { items: posts, isLoading, hasMore, sentinel } = useInfiniteScroll(
-  (page) => $fetch('/api/posts', { params: { page, limit: 20 } })
+const {
+  items: posts,
+  isLoading,
+  hasMore,
+  sentinel
+} = useInfiniteScroll((page) =>
+  $fetch('/api/posts', { params: { page, limit: 20 } })
 )
 </script>
 
@@ -151,7 +156,7 @@ VueUse proporciona `useIntersectionObserver` que simplifica la configuración de
 <script setup>
 import { useIntersectionObserver } from '@vueuse/core'
 
-const sentinel = ref<HTMLElement | null>(null)
+const sentinel = (ref < HTMLElement) | (null > null)
 
 useIntersectionObserver(
   sentinel,
@@ -216,13 +221,13 @@ Así cargas datos de forma incremental Y solo renderizas los elementos visibles.
 
 ## Scroll infinito vs paginación
 
-| | Scroll infinito | Paginación |
-|---|---|---|
-| UX | Navegación continua | Control explícito de página |
-| Botón atrás | Pierde la posición de scroll | Fácil volver a una página |
-| SEO | Más difícil (contenido no en el HTML inicial) | Cada página tiene una URL |
-| Rendimiento | Riesgo de DOM grande con el tiempo | Tamaño de DOM constante |
-| Ideal para | Feeds sociales, galerías de imágenes | Resultados de búsqueda, tablas de datos |
+|             | Scroll infinito                               | Paginación                              |
+| ----------- | --------------------------------------------- | --------------------------------------- |
+| UX          | Navegación continua                           | Control explícito de página             |
+| Botón atrás | Pierde la posición de scroll                  | Fácil volver a una página               |
+| SEO         | Más difícil (contenido no en el HTML inicial) | Cada página tiene una URL               |
+| Rendimiento | Riesgo de DOM grande con el tiempo            | Tamaño de DOM constante                 |
+| Ideal para  | Feeds sociales, galerías de imágenes          | Resultados de búsqueda, tablas de datos |
 
 Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Qué es VueUse?](/es/q/vueuse)
 

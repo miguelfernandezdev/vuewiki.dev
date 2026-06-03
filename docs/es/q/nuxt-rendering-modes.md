@@ -1,9 +1,9 @@
 ---
 order: 146
-title: "¿Qué es Nuxt y qué modos de renderizado admite?"
-difficulty: "beginner"
-tags: ["nuxt"]
-summary: "Nuxt soporta SSR (por defecto), SPA, SSG y renderizado híbrido. Usa routeRules para combinar estrategias por ruta."
+title: '¿Qué es Nuxt y qué modos de renderizado admite?'
+difficulty: 'beginner'
+tags: ['nuxt']
+summary: 'Nuxt soporta SSR (por defecto), SPA, SSG y renderizado híbrido. Usa routeRules para combinar estrategias por ruta.'
 ---
 
 Nuxt es un framework full-stack construido sobre Vue. Añade server-side rendering, enrutamiento basado en archivos, auto-importaciones, utilidades de obtención de datos y un motor de servidor (Nitro) de serie. Su principal diferenciador es que puedes elegir cómo se renderiza cada página: en el servidor, en el cliente, en tiempo de build o una combinación de los tres.
@@ -64,12 +64,12 @@ export default defineNuxtConfig({
 })
 ```
 
-| Regla | Qué hace |
-|---|---|
-| `prerender: true` | Genera HTML estático en tiempo de build |
-| `ssr: false` | Solo en el cliente (SPA) |
-| `isr: 3600` | Incremental Static Regeneration, regenera cada hora |
-| `swr: true` | Stale-While-Revalidate, sirve el caché y regenera en segundo plano |
+| Regla             | Qué hace                                                           |
+| ----------------- | ------------------------------------------------------------------ |
+| `prerender: true` | Genera HTML estático en tiempo de build                            |
+| `ssr: false`      | Solo en el cliente (SPA)                                           |
+| `isr: 3600`       | Incremental Static Regeneration, regenera cada hora                |
+| `swr: true`       | Stale-While-Revalidate, sirve el caché y regenera en segundo plano |
 
 También puedes definir route rules inline en una página:
 
@@ -104,13 +104,13 @@ if (import.meta.client) {
 
 ## Cuándo usar cada modo
 
-| Escenario | Modo de renderizado |
-|---|---|
-| Sitio de marketing, blog, documentación | SSG (`prerender: true`) |
-| E-commerce con precios dinámicos | ISR o SWR |
-| Dashboard detrás de login | SPA (`ssr: false`) |
-| Páginas dinámicas con SEO importante | SSR (por defecto) |
-| Combinación de todo lo anterior | Híbrido con `routeRules` |
+| Escenario                               | Modo de renderizado      |
+| --------------------------------------- | ------------------------ |
+| Sitio de marketing, blog, documentación | SSG (`prerender: true`)  |
+| E-commerce con precios dinámicos        | ISR o SWR                |
+| Dashboard detrás de login               | SPA (`ssr: false`)       |
+| Páginas dinámicas con SEO importante    | SSR (por defecto)        |
+| Combinación de todo lo anterior         | Híbrido con `routeRules` |
 
 Ver también: [¿Cómo funciona el renderizado híbrido en Nuxt?](/es/q/nuxt-hybrid-rendering) · [¿Cómo desplegar una app Nuxt?](/es/q/nuxt-deployment) · [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching)
 

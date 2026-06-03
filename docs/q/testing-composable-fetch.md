@@ -1,9 +1,9 @@
 ---
 order: 117
-title: "How would you test a composable that fetches data?"
-difficulty: "advanced"
-tags: ["testing", "composables", "vitest", "vueuse"]
-summary: "Mock fetch or $fetch with vi.fn(), call the composable, await the promise, and assert against the returned reactive refs (data, error, isLoading)."
+title: 'How would you test a composable that fetches data?'
+difficulty: 'advanced'
+tags: ['testing', 'composables', 'vitest', 'vueuse']
+summary: 'Mock fetch or $fetch with vi.fn(), call the composable, await the promise, and assert against the returned reactive refs (data, error, isLoading).'
 ---
 
 ```ts

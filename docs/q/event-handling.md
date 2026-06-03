@@ -1,9 +1,9 @@
 ---
 order: 12
-title: "How does event handling work in Vue?"
-difficulty: "beginner"
-tags: ["directives", "components"]
-summary: "v-on (or @) binds DOM event listeners in the template. Vue attaches and removes them automatically with the component lifecycle."
+title: 'How does event handling work in Vue?'
+difficulty: 'beginner'
+tags: ['directives', 'components']
+summary: 'v-on (or @) binds DOM event listeners in the template. Vue attaches and removes them automatically with the component lifecycle.'
 ---
 
 Vue listens to DOM events with the [`v-on`](https://vuejs.org/api/built-in-directives.html#v-on) directive, shortened to `@`. You bind a handler directly in the template, and Vue takes care of attaching and removing the listener with the component's lifecycle.
@@ -108,14 +108,14 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 
 ## Quick reference
 
-| Modifier | Replaces |
-|---|---|
-| `.prevent` | `event.preventDefault()` |
-| `.stop` | `event.stopPropagation()` |
-| `.once` | Remove listener after first trigger |
-| `.self` | Only fire if `event.target === element` |
+| Modifier   | Replaces                                                     |
+| ---------- | ------------------------------------------------------------ |
+| `.prevent` | `event.preventDefault()`                                     |
+| `.stop`    | `event.stopPropagation()`                                    |
+| `.once`    | Remove listener after first trigger                          |
+| `.self`    | Only fire if `event.target === element`                      |
 | `.passive` | `addEventListener({ passive: true })` for scroll performance |
-| `.capture` | Use capture mode instead of bubbling |
+| `.capture` | Use capture mode instead of bubbling                         |
 
 See also: [What order should event modifiers go in?](/q/event-modifier-order) · [What is conditional rendering in Vue?](/q/conditional-rendering)
 

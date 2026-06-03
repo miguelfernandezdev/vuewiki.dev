@@ -1,9 +1,9 @@
 ---
 order: 52
-title: "How does error handling work in Vue?"
-difficulty: "advanced"
-tags: ["components", "error-handling", "suspense"]
-summary: "onErrorCaptured catches errors from descendant components (error boundaries). app.config.errorHandler catches global uncaught errors. defineAsyncComponent has error options."
+title: 'How does error handling work in Vue?'
+difficulty: 'advanced'
+tags: ['components', 'error-handling', 'suspense']
+summary: 'onErrorCaptured catches errors from descendant components (error boundaries). app.config.errorHandler catches global uncaught errors. defineAsyncComponent has error options.'
 ---
 
 Vue provides `onErrorCaptured` to catch errors from descendant components, letting you build error boundaries similar to React's `componentDidCatch`. Combined with `app.config.errorHandler` for global errors and `defineAsyncComponent`'s error options, you can handle failures at every level.
@@ -17,7 +17,7 @@ A parent component can catch errors thrown by any descendant (including async er
 <script setup>
 import { ref, onErrorCaptured } from 'vue'
 
-const error = ref<Error | null>(null)
+const error = (ref < Error) | (null > null)
 
 onErrorCaptured((err, instance, info) => {
   error.value = err
@@ -46,11 +46,11 @@ onErrorCaptured((err, instance, info) => {
 
 The callback receives three arguments:
 
-| Argument | Description |
-|---|---|
-| `err` | The error object |
-| `instance` | The component instance that threw |
-| `info` | A string describing where the error was caught (e.g., `"render"`, `"setup"`, `"watcher"`) |
+| Argument   | Description                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| `err`      | The error object                                                                          |
+| `instance` | The component instance that threw                                                         |
+| `info`     | A string describing where the error was caught (e.g., `"render"`, `"setup"`, `"watcher"`) |
 
 Returning `false` prevents the error from propagating further. Returning `true` (or nothing) lets it bubble up to parent error handlers and `app.config.errorHandler`.
 
@@ -99,16 +99,16 @@ const AsyncWidget = defineAsyncComponent({
 
 ## What Vue error handling catches
 
-| Source | Caught? |
-|---|---|
-| Render/template errors | Yes |
-| Lifecycle hook errors | Yes |
-| Watcher callback errors | Yes |
-| Component event handler errors | Yes |
-| Custom directive hook errors | Yes |
-| `setTimeout`/`setInterval` callbacks | No (not tracked by Vue) |
-| Native event listeners added manually | No |
-| Errors in third-party libraries | No (unless called from Vue lifecycle) |
+| Source                                | Caught?                               |
+| ------------------------------------- | ------------------------------------- |
+| Render/template errors                | Yes                                   |
+| Lifecycle hook errors                 | Yes                                   |
+| Watcher callback errors               | Yes                                   |
+| Component event handler errors        | Yes                                   |
+| Custom directive hook errors          | Yes                                   |
+| `setTimeout`/`setInterval` callbacks  | No (not tracked by Vue)               |
+| Native event listeners added manually | No                                    |
+| Errors in third-party libraries       | No (unless called from Vue lifecycle) |
 
 For errors outside Vue's tracking (timers, manual listeners), use `window.addEventListener('error', handler)` or `window.addEventListener('unhandledrejection', handler)`.
 

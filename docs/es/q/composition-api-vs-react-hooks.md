@@ -1,9 +1,9 @@
 ---
 order: 59
-title: "¿Cuál es la diferencia entre la Composition API y los React Hooks?"
-difficulty: "advanced"
-tags: ["composition-api", "watchers"]
-summary: "El setup() de Vue se ejecuta una vez por instancia; la función del componente React se ejecuta en cada render. Esto elimina closures obsoletas y dependency arrays."
+title: '¿Cuál es la diferencia entre la Composition API y los React Hooks?'
+difficulty: 'advanced'
+tags: ['composition-api', 'watchers']
+summary: 'El setup() de Vue se ejecuta una vez por instancia; la función del componente React se ejecuta en cada render. Esto elimina closures obsoletas y dependency arrays.'
 ---
 
 A primera vista se parecen (ambos extraen lógica reutilizable en funciones), pero tienen una diferencia fundamental: el `setup` de Vue se ejecuta **una vez** por instancia de componente, mientras que la función de componente de React se ejecuta en **cada renderizado**. Esta única diferencia elimina categorías enteras de bugs y patrones innecesarios.
@@ -83,7 +83,7 @@ function handleClick() {
 
 // React: necesita memoización
 const handleClick = useCallback(() => {
-  setCount(c => c + 1)
+  setCount((c) => c + 1)
 }, [])
 ```
 
@@ -104,15 +104,15 @@ if (featureEnabled) {
 
 ## Comparativa
 
-| Aspecto | Composition API de Vue | React Hooks |
-|---|---|---|
-| Ejecución | `setup` se ejecuta una vez | La función de componente se ejecuta en cada renderizado |
-| Closures obsoletas | No posibles (ref.value siempre es actual) | Bug habitual, requiere soluciones alternativas |
-| Rastreo de dependencias | Automático | Arrays manuales, reglas de lint |
-| Memoización de funciones | No necesaria | `useCallback` requerido para rendimiento |
-| Memoización de valores | `computed()` con rastreo automático | `useMemo` con array de dependencias |
-| Uso condicional | Permitido | Prohibido (reglas de hooks) |
-| Alcance del re-renderizado | Granular (solo lo que cambió) | Árbol de componentes completo por defecto |
+| Aspecto                    | Composition API de Vue                    | React Hooks                                             |
+| -------------------------- | ----------------------------------------- | ------------------------------------------------------- |
+| Ejecución                  | `setup` se ejecuta una vez                | La función de componente se ejecuta en cada renderizado |
+| Closures obsoletas         | No posibles (ref.value siempre es actual) | Bug habitual, requiere soluciones alternativas          |
+| Rastreo de dependencias    | Automático                                | Arrays manuales, reglas de lint                         |
+| Memoización de funciones   | No necesaria                              | `useCallback` requerido para rendimiento                |
+| Memoización de valores     | `computed()` con rastreo automático       | `useMemo` con array de dependencias                     |
+| Uso condicional            | Permitido                                 | Prohibido (reglas de hooks)                             |
+| Alcance del re-renderizado | Granular (solo lo que cambió)             | Árbol de componentes completo por defecto               |
 
 ## Patrones de React que hay que evitar en Vue
 

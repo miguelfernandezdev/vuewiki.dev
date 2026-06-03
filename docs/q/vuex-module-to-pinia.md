@@ -1,9 +1,9 @@
 ---
 order: 100
-title: "How would you migrate a Vuex module to Pinia?"
-difficulty: "advanced"
-tags: ["state-management", "migration", "pinia", "vuex"]
-summary: "Each Vuex module becomes a defineStore. Mutations disappear, commit/dispatch become direct method calls. Update every consuming component."
+title: 'How would you migrate a Vuex module to Pinia?'
+difficulty: 'advanced'
+tags: ['state-management', 'migration', 'pinia', 'vuex']
+summary: 'Each Vuex module becomes a defineStore. Mutations disappear, commit/dispatch become direct method calls. Update every consuming component.'
 ---
 
 Migrating from Vuex to Pinia is mostly mechanical: each Vuex module becomes its own `defineStore`, mutations disappear, and string-based `commit`/`dispatch` calls become direct method calls. The hard part isn't the store itself. It's finding and updating every component that uses it.
@@ -74,13 +74,13 @@ export const useCartStore = defineStore('cart', () => {
 
 ### What changed
 
-| Vuex | Pinia | Why |
-| --- | --- | --- |
-| `state.total` (manual tracking) | `computed(() => ...)` | Computed derives from state, no manual sync needed |
-| Mutations (`ADD_ITEM`, `CLEAR`) | Regular functions | Pinia tracks state changes through reactivity, no mutations layer needed |
-| `commit('CLEAR')` | `clear()` | Direct function call, type-safe |
-| `state, commit` destructured from context | Direct access to refs | Everything is in scope, no context object |
-| Namespaced module (`cart/ADD_ITEM`) | Independent store | No namespace strings, just import the store |
+| Vuex                                      | Pinia                 | Why                                                                      |
+| ----------------------------------------- | --------------------- | ------------------------------------------------------------------------ |
+| `state.total` (manual tracking)           | `computed(() => ...)` | Computed derives from state, no manual sync needed                       |
+| Mutations (`ADD_ITEM`, `CLEAR`)           | Regular functions     | Pinia tracks state changes through reactivity, no mutations layer needed |
+| `commit('CLEAR')`                         | `clear()`             | Direct function call, type-safe                                          |
+| `state, commit` destructured from context | Direct access to refs | Everything is in scope, no context object                                |
+| Namespaced module (`cart/ADD_ITEM`)       | Independent store     | No namespace strings, just import the store                              |
 
 ### Updating components
 

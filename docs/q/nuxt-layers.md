@@ -1,9 +1,9 @@
 ---
 order: 162
-title: "What are Nuxt layers and when would you use them?"
-difficulty: "advanced"
-tags: ["nuxt", "architecture"]
-summary: "Layers are partial Nuxt apps you extend via config. They share components, composables, pages, and config across projects."
+title: 'What are Nuxt layers and when would you use them?'
+difficulty: 'advanced'
+tags: ['nuxt', 'architecture']
+summary: 'Layers are partial Nuxt apps you extend via config. They share components, composables, pages, and config across projects.'
 ---
 
 Layers let you share partial Nuxt applications across projects. A layer can include components, composables, pages, layouts, middleware, plugins, server routes, and config. Think of them as Nuxt's inheritance model: your project extends one or more layers, and everything merges automatically.
@@ -16,9 +16,9 @@ Add it to `extends` in your config:
 // nuxt.config.ts
 export default defineNuxtConfig({
   extends: [
-    '@my-org/base-layer',          // from npm
-    '../shared-layer',              // local directory
-    'github:user/repo#main',       // from git
+    '@my-org/base-layer', // from npm
+    '../shared-layer', // local directory
+    'github:user/repo#main' // from git
   ]
 })
 ```
@@ -59,6 +59,7 @@ The consuming project gets all components, composables, layouts, and server rout
 Your project always wins over the layer. If the layer provides `components/BaseButton.vue` and you create the same file, your version takes precedence.
 
 Priority order (highest to lowest):
+
 1. Your project files
 2. Auto-scanned layers from `~~/layers` directory (sorted alphabetically, Z has higher priority than A)
 3. Layers in `extends` (first entry wins over later ones)
@@ -101,7 +102,7 @@ export default defineAppConfig({
 export function useTheme() {
   const config = useAppConfig()
   const isDark = useState('dark', () => config.theme.darkMode)
-  const toggle = () => isDark.value = !isDark.value
+  const toggle = () => (isDark.value = !isDark.value)
   return { isDark, toggle }
 }
 ```
@@ -141,13 +142,13 @@ npx nuxi init --template layer my-layer
 
 ## Layers vs modules
 
-| | Layer | Module |
-|---|---|---|
-| What it is | A partial Nuxt app (files and config) | A build-time plugin (code that runs during build) |
-| Can provide | Components, pages, layouts, composables, server routes, config | Anything via @nuxt/kit programmatic API |
-| Merging | File-based, automatic | Programmatic, explicit |
-| Override | Replace the file in your project | Configure via module options |
-| Use when | Sharing a base app, design system, or preset across projects | Adding a capability (analytics, auth, image optimization) |
+|             | Layer                                                          | Module                                                    |
+| ----------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+| What it is  | A partial Nuxt app (files and config)                          | A build-time plugin (code that runs during build)         |
+| Can provide | Components, pages, layouts, composables, server routes, config | Anything via @nuxt/kit programmatic API                   |
+| Merging     | File-based, automatic                                          | Programmatic, explicit                                    |
+| Override    | Replace the file in your project                               | Configure via module options                              |
+| Use when    | Sharing a base app, design system, or preset across projects   | Adding a capability (analytics, auth, image optimization) |
 
 See also: [How do Nuxt modules work?](/q/nuxt-modules) · [What is the Nuxt directory structure?](/q/nuxt-directory-structure) · [How do you deploy a Nuxt app?](/q/nuxt-deployment)
 

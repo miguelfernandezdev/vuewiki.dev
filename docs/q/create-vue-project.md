@@ -1,9 +1,9 @@
 ---
 order: 5
-title: "How do you create a Vue project from scratch?"
-difficulty: "beginner"
-tags: ["tooling", "pinia", "vite", "vitest"]
-summary: "Run npm create vue@latest to scaffold a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint."
+title: 'How do you create a Vue project from scratch?'
+difficulty: 'beginner'
+tags: ['tooling', 'pinia', 'vite', 'vitest']
+summary: 'Run npm create vue@latest to scaffold a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint.'
 ---
 
 The official way to start a new Vue project is `create-vue`, which scaffolds a Vite-powered project with optional TypeScript, Router, Pinia, Vitest, and ESLint.
@@ -75,13 +75,13 @@ app.mount('#app')
 
 Vue CLI (based on Webpack) is in maintenance mode. Vite is the recommended build tool for new Vue projects:
 
-| | Vite | Webpack (Vue CLI) |
-|---|---|---|
-| Dev server startup | Instant (native ES modules) | Slow (bundles everything first) |
+|                        | Vite                               | Webpack (Vue CLI)                   |
+| ---------------------- | ---------------------------------- | ----------------------------------- |
+| Dev server startup     | Instant (native ES modules)        | Slow (bundles everything first)     |
 | Hot Module Replacement | Fast (only updates changed module) | Slower (rebundles dependency graph) |
-| Build tool | Rollup (production) | Webpack |
-| Config | Minimal by default | Verbose |
-| Status | Actively developed | Maintenance mode |
+| Build tool             | Rollup (production)                | Webpack                             |
+| Config                 | Minimal by default                 | Verbose                             |
+| Status                 | Actively developed                 | Maintenance mode                    |
 
 ## Minimal manual setup
 

@@ -1,9 +1,17 @@
 ---
 order: 138
-title: "How would you architect a dashboard with multiple widgets that each fetch their own data?"
-difficulty: "advanced"
-tags: ["architecture", "composables", "performance", "pinia", "provide-inject", "suspense"]
-summary: "Each widget is an independent component with its own data-fetching composable. Shared data goes in Pinia; widget-only data stays in local refs."
+title: 'How would you architect a dashboard with multiple widgets that each fetch their own data?'
+difficulty: 'advanced'
+tags:
+  [
+    'architecture',
+    'composables',
+    'performance',
+    'pinia',
+    'provide-inject',
+    'suspense'
+  ]
+summary: 'Each widget is an independent component with its own data-fetching composable. Shared data goes in Pinia; widget-only data stays in local refs.'
 ---
 
 Each widget should be an independent component with its own composable for data fetching. Every widget manages its own loading, error, and data state so one slow API doesn't block the other four. Shared data goes in a Pinia store; widget-only data stays in the composable's local refs. The layout uses CSS Grid so widgets are responsive grid cells that render independently.
@@ -65,12 +73,15 @@ interface SalesData {
 }
 
 export function useSalesWidget() {
-  const { data, error, isLoading, refresh } = useFetchData<SalesData>('/api/dashboard/sales')
+  const { data, error, isLoading, refresh } = useFetchData<SalesData>(
+    '/api/dashboard/sales'
+  )
 
   const formattedRevenue = computed(() => {
     if (!data.value) return '$0'
     return new Intl.NumberFormat('en-US', {
-      style: 'currency', currency: 'USD'
+      style: 'currency',
+      currency: 'USD'
     }).format(data.value.totalRevenue)
   })
 
@@ -149,7 +160,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
   const currentUser = ref<User | null>(null)
 
   async function loadUser() {
-    currentUser.value = await fetch('/api/me').then(r => r.json())
+    currentUser.value = await fetch('/api/me').then((r) => r.json())
   }
 
   return { dateRange, currentUser, loadUser }
@@ -162,7 +173,8 @@ export function useSalesWidget() {
   const store = useDashboardStore()
 
   const url = computed(
-    () => `/api/dashboard/sales?from=${store.dateRange.from.toISOString()}&to=${store.dateRange.to.toISOString()}`
+    () =>
+      `/api/dashboard/sales?from=${store.dateRange.from.toISOString()}&to=${store.dateRange.to.toISOString()}`
   )
 
   const { data, error, isLoading, refresh } = useFetchData<SalesData>(url)
@@ -182,7 +194,9 @@ Widgets need a refresh strategy. Three options depending on the use case:
 
 // Option 2: Polling interval
 export function useSalesWidget() {
-  const { data, error, isLoading, refresh } = useFetchData<SalesData>('/api/dashboard/sales')
+  const { data, error, isLoading, refresh } = useFetchData<SalesData>(
+    '/api/dashboard/sales'
+  )
 
   const interval = setInterval(refresh, 30_000)
   onUnmounted(() => clearInterval(interval))
@@ -226,13 +240,13 @@ Each `Suspense` boundary is independent, so widgets still load at their own pace
 
 ## Architecture decisions summary
 
-| Decision | Widget-only data | Shared data |
-|---|---|---|
-| Where it lives | Composable local ref | Pinia store |
-| Who fetches | Widget composable | Store action |
-| Reactivity depth | `shallowRef` (replaced wholesale) | `ref` or `shallowRef` |
+| Decision         | Widget-only data                     | Shared data                          |
+| ---------------- | ------------------------------------ | ------------------------------------ |
+| Where it lives   | Composable local ref                 | Pinia store                          |
+| Who fetches      | Widget composable                    | Store action                         |
+| Reactivity depth | `shallowRef` (replaced wholesale)    | `ref` or `shallowRef`                |
 | Refresh strategy | Per-widget (poll, manual, WebSocket) | Store action triggers all dependents |
-| Error handling | Per-widget (local error state) | Store-level or per-widget |
+| Error handling   | Per-widget (local error state)       | Store-level or per-widget            |
 
 See also: [What are async components?](/q/async-components) · [How does provide/inject work?](/q/provide-inject) · [What are dynamic components and KeepAlive?](/q/dynamic-components-keepalive)
 

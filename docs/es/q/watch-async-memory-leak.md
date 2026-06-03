@@ -1,9 +1,9 @@
 ---
 order: 80
-title: "¿Por qué los watchers creados dentro de callbacks asíncronos causan pérdidas de memoria?"
-difficulty: "advanced"
-tags: ["reactivity", "errors", "watchers"]
-summary: "Watchers creados dentro de callbacks async (setTimeout, await) no están ligados al ciclo de vida. Siguen ejecutándose tras unmount. Detenlos manualmente."
+title: '¿Por qué los watchers creados dentro de callbacks asíncronos causan pérdidas de memoria?'
+difficulty: 'advanced'
+tags: ['reactivity', 'errors', 'watchers']
+summary: 'Watchers creados dentro de callbacks async (setTimeout, await) no están ligados al ciclo de vida. Siguen ejecutándose tras unmount. Detenlos manualmente.'
 ---
 
 Porque Vue solo limpia automáticamente los watchers creados de forma **síncrona** durante `setup()`. Cuando creas un [watch](https://vuejs.org/api/reactivity-core.html#watch) o [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) dentro de un `setTimeout`, `Promise.then` o después de un `await`, Vue no puede vincularlo al ciclo de vida del componente. Sigue ejecutándose después de que el componente se desmonte.

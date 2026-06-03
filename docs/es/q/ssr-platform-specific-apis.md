@@ -1,9 +1,9 @@
 ---
 order: 143
-title: "¿Cómo se evitan los problemas con APIs específicas de plataforma en SSR?"
-difficulty: "intermediate"
-tags: ["ssr", "vite"]
-summary: "window, document y localStorage no existen en el servidor. Protégelos con onMounted, typeof window o <ClientOnly>."
+title: '¿Cómo se evitan los problemas con APIs específicas de plataforma en SSR?'
+difficulty: 'intermediate'
+tags: ['ssr', 'vite']
+summary: 'window, document y localStorage no existen en el servidor. Protégelos con onMounted, typeof window o <ClientOnly>.'
 ---
 
 En SSR, tu código Vue se ejecuta tanto en el servidor (Node.js) como en el navegador. APIs del navegador como `window`, `document` y `localStorage` no existen en el servidor y lanzarán un `ReferenceError`. Hay que proteger el código específico de cada plataforma para que solo se ejecute en el entorno correcto.
@@ -12,20 +12,20 @@ En SSR, tu código Vue se ejecuta tanto en el servidor (Node.js) como en el nave
 
 ```ts
 // TODAS estas rompen durante SSR
-const width = ref(window.innerWidth)        // ReferenceError
+const width = ref(window.innerWidth) // ReferenceError
 const theme = localStorage.getItem('theme') // ReferenceError
-const ua = navigator.userAgent              // ReferenceError
-document.title = 'My Page'                  // ReferenceError
+const ua = navigator.userAgent // ReferenceError
+document.title = 'My Page' // ReferenceError
 ```
 
-| API del navegador | Error en el servidor |
-|---|---|
-| `window` | ReferenceError |
-| `document` | ReferenceError |
-| `localStorage` / `sessionStorage` | ReferenceError |
-| `navigator` | ReferenceError |
-| `IntersectionObserver` | ReferenceError |
-| `requestAnimationFrame` | ReferenceError |
+| API del navegador                 | Error en el servidor |
+| --------------------------------- | -------------------- |
+| `window`                          | ReferenceError       |
+| `document`                        | ReferenceError       |
+| `localStorage` / `sessionStorage` | ReferenceError       |
+| `navigator`                       | ReferenceError       |
+| `IntersectionObserver`            | ReferenceError       |
+| `requestAnimationFrame`           | ReferenceError       |
 
 ## Solución 1: mover a onMounted
 
@@ -104,7 +104,7 @@ Algunas librerías de terceros acceden a `window` al importarse. Usa `defineAsyn
 ```vue
 <script setup>
 const MapView = defineAsyncComponent(() =>
-  import('leaflet-vue').then(m => m.MapView)
+  import('leaflet-vue').then((m) => m.MapView)
 )
 </script>
 
@@ -157,17 +157,17 @@ export function loadConfig() {
 
 ## Hooks del ciclo de vida y SSR
 
-| Hook | ¿Se ejecuta en el servidor? | ¿Se ejecuta en el cliente? |
-|---|---|---|
-| `setup()` / `<script setup>` | Sí | Sí |
-| `beforeCreate` (Options API) | Sí | Sí |
-| `created` (Options API) | Sí | Sí |
-| `onServerPrefetch` | Sí | No |
-| `onBeforeMount` | No | Sí |
-| `onMounted` | No | Sí |
-| `onBeforeUpdate` | No | Sí |
-| `onUpdated` | No | Sí |
-| `onUnmounted` | No | Sí |
+| Hook                         | ¿Se ejecuta en el servidor? | ¿Se ejecuta en el cliente? |
+| ---------------------------- | --------------------------- | -------------------------- |
+| `setup()` / `<script setup>` | Sí                          | Sí                         |
+| `beforeCreate` (Options API) | Sí                          | Sí                         |
+| `created` (Options API)      | Sí                          | Sí                         |
+| `onServerPrefetch`           | Sí                          | No                         |
+| `onBeforeMount`              | No                          | Sí                         |
+| `onMounted`                  | No                          | Sí                         |
+| `onBeforeUpdate`             | No                          | Sí                         |
+| `onUpdated`                  | No                          | Sí                         |
+| `onUnmounted`                | No                          | Sí                         |
 
 `setup` se ejecuta en todos los entornos, por eso es donde el acceso a APIs del navegador es peligroso. Todo lo que viene desde `onBeforeMount` en adelante es exclusivo del cliente.
 

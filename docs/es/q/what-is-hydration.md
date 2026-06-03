@@ -1,9 +1,9 @@
 ---
 order: 142
-title: "¿Qué es la hidratación y cómo funciona en Vue?"
-difficulty: "intermediate"
-tags: ["ssr", "vueuse"]
-summary: "Vue toma el HTML del servidor, recorre el DOM existente, adjunta event listeners y conecta la reactividad, haciendo el HTML estático interactivo sin re-renderizar."
+title: '¿Qué es la hidratación y cómo funciona en Vue?'
+difficulty: 'intermediate'
+tags: ['ssr', 'vueuse']
+summary: 'Vue toma el HTML del servidor, recorre el DOM existente, adjunta event listeners y conecta la reactividad, haciendo el HTML estático interactivo sin re-renderizar.'
 ---
 
 La hidratación es el proceso por el que Vue toma el HTML estático renderizado en el servidor y lo hace interactivo. El servidor envía HTML completamente renderizado para que el usuario vea el contenido de inmediato. Luego Vue carga en el cliente, recorre el DOM existente, adjunta los event listeners y conecta la reactividad. La página se convierte en una aplicación Vue en funcionamiento sin volver a renderizar desde cero.
@@ -53,7 +53,9 @@ Un desajuste ocurre cuando el HTML que el cliente renderizaría difiere del que 
 <p><div>Content</div></p>
 
 <!-- El navegador lo corrige a esto -->
-<p></p><div>Content</div><p></p>
+<p></p>
+<div>Content</div>
+<p></p>
 
 <!-- Vue espera el original: desajuste -->
 ```
@@ -117,7 +119,7 @@ Durante el SSR, el servidor serializa el estado de la app en el HTML para que el
 ```html
 <!-- El servidor inyecta esto -->
 <script>
-  window.__PINIA_STATE__ = {"user":{"id":1,"name":"Alice"}}
+  window.__PINIA_STATE__ = { user: { id: 1, name: 'Alice' } }
 </script>
 ```
 
@@ -125,12 +127,12 @@ El cliente lee estos datos durante la hidratación e inicializa los stores con e
 
 ## Línea de tiempo de la hidratación
 
-| Fase | Lo que ve el usuario | ¿Interactivo? |
-|---|---|---|
-| Llega el HTML | Contenido completo | No (HTML estático) |
-| Carga el CSS | Contenido con estilos | No |
-| Descarga el JS | Contenido con estilos | No |
-| Vue hidrata | El mismo contenido | Sí |
+| Fase           | Lo que ve el usuario  | ¿Interactivo?      |
+| -------------- | --------------------- | ------------------ |
+| Llega el HTML  | Contenido completo    | No (HTML estático) |
+| Carga el CSS   | Contenido con estilos | No                 |
+| Descarga el JS | Contenido con estilos | No                 |
+| Vue hidrata    | El mismo contenido    | Sí                 |
 
 El intervalo entre "contenido visible" y "completamente interactivo" se llama Time to Interactive (TTI). Reducir el tamaño del bundle de JS y usar estrategias de hidratación diferida acortan este intervalo.
 

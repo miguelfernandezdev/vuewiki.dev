@@ -1,9 +1,9 @@
 ---
 order: 129
-title: "A page takes 3-4 seconds to become interactive. How do you diagnose and fix it?"
-difficulty: "advanced"
-tags: ["performance", "debugging", "watchers"]
-summary: "Measure first (Performance tab, Lighthouse). Check network (slow/many API calls), bundle (code splitting), and rendering (excessive reactivity)."
+title: 'A page takes 3-4 seconds to become interactive. How do you diagnose and fix it?'
+difficulty: 'advanced'
+tags: ['performance', 'debugging', 'watchers']
+summary: 'Measure first (Performance tab, Lighthouse). Check network (slow/many API calls), bundle (code splitting), and rendering (excessive reactivity).'
 ---
 
 Follow a structured process: measure, identify the bottleneck category, fix, measure again. The bottleneck is always one of three things: the network (slow or too many API calls), the bundle (too much JavaScript shipped), or the rendering (too much work on the main thread).
@@ -13,6 +13,7 @@ Follow a structured process: measure, identify the bottleneck category, fix, mea
 Open browser DevTools and record a Performance trace of the page load. This gives you a flame chart that shows exactly where time is spent.
 
 Key metrics to check:
+
 - **Time to Interactive (TTI)**: when the page responds to input
 - **Largest Contentful Paint (LCP)**: when the main content is visible
 - **Total Blocking Time (TBT)**: how long the main thread was blocked
@@ -28,15 +29,15 @@ Open the Network tab and reload. Look for:
 ```vue
 <script setup>
 // BAD: sequential — total time = A + B + C
-const users = await fetch('/api/users').then(r => r.json())
-const posts = await fetch('/api/posts').then(r => r.json())
-const stats = await fetch('/api/stats').then(r => r.json())
+const users = await fetch('/api/users').then((r) => r.json())
+const posts = await fetch('/api/posts').then((r) => r.json())
+const stats = await fetch('/api/stats').then((r) => r.json())
 
 // GOOD: parallel — total time = max(A, B, C)
 const [users, posts, stats] = await Promise.all([
-  fetch('/api/users').then(r => r.json()),
-  fetch('/api/posts').then(r => r.json()),
-  fetch('/api/stats').then(r => r.json())
+  fetch('/api/users').then((r) => r.json()),
+  fetch('/api/posts').then((r) => r.json()),
+  fetch('/api/stats').then((r) => r.json())
 ])
 </script>
 ```
@@ -102,11 +103,11 @@ const items = shallowRef(hugeArrayFromApi)
 ```js
 // BAD: watch triggers state change → re-render → watch fires again
 watch(items, () => {
-  filteredItems.value = items.value.filter(i => i.active)
+  filteredItems.value = items.value.filter((i) => i.active)
 })
 
 // GOOD: computed is cached, runs once per dependency change
-const filteredItems = computed(() => items.value.filter(i => i.active))
+const filteredItems = computed(() => items.value.filter((i) => i.active))
 ```
 
 **Methods called in templates**: a method in a template expression runs on every render. A computed only runs when its dependencies change.
@@ -145,15 +146,15 @@ After each fix, re-run the Performance trace and Lighthouse audit. Compare TTI, 
 
 ## Diagnostic checklist
 
-| Bottleneck | Tool to identify | Common fixes |
-|---|---|---|
-| Slow APIs | Network tab, waterfall chart | Parallel requests, caching, pagination |
-| Too many requests | Network tab, request count | Combine endpoints, BFF |
-| Large bundle | vite-bundle-visualizer | Code splitting, lazy routes, tree shaking |
-| Deep reactivity | Vue DevTools performance tab | shallowRef, avoid deep reactive on large data |
-| Cascading watchers | Vue DevTools timeline | Replace watch with computed |
-| Large lists | Elements tab, DOM node count | Virtual scrolling |
-| Unnecessary re-renders | Vue DevTools component highlights | Stable props, v-once, v-memo |
+| Bottleneck             | Tool to identify                  | Common fixes                                  |
+| ---------------------- | --------------------------------- | --------------------------------------------- |
+| Slow APIs              | Network tab, waterfall chart      | Parallel requests, caching, pagination        |
+| Too many requests      | Network tab, request count        | Combine endpoints, BFF                        |
+| Large bundle           | vite-bundle-visualizer            | Code splitting, lazy routes, tree shaking     |
+| Deep reactivity        | Vue DevTools performance tab      | shallowRef, avoid deep reactive on large data |
+| Cascading watchers     | Vue DevTools timeline             | Replace watch with computed                   |
+| Large lists            | Elements tab, DOM node count      | Virtual scrolling                             |
+| Unnecessary re-renders | Vue DevTools component highlights | Stable props, v-once, v-memo                  |
 
 ## The interview structure
 

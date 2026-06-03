@@ -1,8 +1,8 @@
 ---
 order: 61
-title: "What is getCurrentInstance() and why should you avoid it?"
-difficulty: "advanced"
-tags: ["composition-api", "pinia", "vueuse", "provide-inject"]
+title: 'What is getCurrentInstance() and why should you avoid it?'
+difficulty: 'advanced'
+tags: ['composition-api', 'pinia', 'vueuse', 'provide-inject']
 summary: "getCurrentInstance() exposes internal component state. It's internal API for library authors, not app code, because it can break between versions."
 ---
 
@@ -98,14 +98,14 @@ For example, `useRouter()` internally calls `getCurrentInstance()` to access the
 
 ## Summary
 
-| Need | Use instead |
-|---|---|
-| DOM element | Template ref |
-| Router, i18n, custom plugins | Their composables (`useRouter`, `useI18n`) |
-| Parent data | `inject()` |
-| Emit from composable | Pass `emit` as a parameter |
-| App context in a library | `getCurrentInstance()` is acceptable (wrap it) |
-| App code | Never use `getCurrentInstance()` |
+| Need                         | Use instead                                    |
+| ---------------------------- | ---------------------------------------------- |
+| DOM element                  | Template ref                                   |
+| Router, i18n, custom plugins | Their composables (`useRouter`, `useI18n`)     |
+| Parent data                  | `inject()`                                     |
+| Emit from composable         | Pass `emit` as a parameter                     |
+| App context in a library     | `getCurrentInstance()` is acceptable (wrap it) |
+| App code                     | Never use `getCurrentInstance()`               |
 
 See also: [What is Provide/Inject?](/q/provide-inject) · [How do template refs work?](/q/template-refs)
 

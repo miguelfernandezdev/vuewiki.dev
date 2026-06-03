@@ -1,9 +1,9 @@
 ---
 order: 115
-title: "How do you configure Vitest for a Vue project?"
-difficulty: "intermediate"
-tags: ["testing", "tooling", "pinia", "vite", "vitest", "provide-inject"]
-summary: "Vitest reuses your Vite config. Add @vue/test-utils + jsdom/happy-dom. Configure in vitest.config.ts or inside vite.config.ts under test."
+title: 'How do you configure Vitest for a Vue project?'
+difficulty: 'intermediate'
+tags: ['testing', 'tooling', 'pinia', 'vite', 'vitest', 'provide-inject']
+summary: 'Vitest reuses your Vite config. Add @vue/test-utils + jsdom/happy-dom. Configure in vitest.config.ts or inside vite.config.ts under test.'
 ---
 
 Vitest is a test runner built on Vite. It understands `.vue` files, TypeScript, and JSX out of the box because it reuses your Vite config. Combined with `@vue/test-utils` for component mounting and `jsdom` or `happy-dom` for DOM simulation, it's the standard testing setup for Vue 3 projects.
@@ -39,13 +39,16 @@ Or use a separate `vitest.config.ts` if you want to keep things isolated:
 import { defineConfig, mergeConfig } from 'vitest/config'
 import viteConfig from './vite.config'
 
-export default mergeConfig(viteConfig, defineConfig({
-  test: {
-    environment: 'happy-dom',
-    globals: true,
-    include: ['src/**/*.{test,spec}.{ts,tsx}']
-  }
-}))
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: 'happy-dom',
+      globals: true,
+      include: ['src/**/*.{test,spec}.{ts,tsx}']
+    }
+  })
+)
 ```
 
 With `globals: true`, you don't need to import `describe`, `it`, `expect` in every test file. Add the types to your tsconfig:
@@ -186,11 +189,11 @@ Add scripts to `package.json`:
 
 ## happy-dom vs jsdom
 
-| | happy-dom | jsdom |
-|---|---|---|
-| Speed | Faster | Slower |
-| Compatibility | Covers most use cases | More complete DOM API |
-| Best for | Unit tests, component tests | Tests needing full browser API fidelity |
+|               | happy-dom                   | jsdom                                   |
+| ------------- | --------------------------- | --------------------------------------- |
+| Speed         | Faster                      | Slower                                  |
+| Compatibility | Covers most use cases       | More complete DOM API                   |
+| Best for      | Unit tests, component tests | Tests needing full browser API fidelity |
 
 Start with `happy-dom`. Switch to `jsdom` only if you hit a missing API.
 

@@ -1,9 +1,9 @@
 ---
 order: 130
-title: "How does the Vue plugin system work?"
-difficulty: "intermediate"
-tags: ["architecture", "provide-inject"]
-summary: "Plugins add app-level functionality via app.use(). Inside install(), you can register global components, directives, provide values, or add properties."
+title: 'How does the Vue plugin system work?'
+difficulty: 'intermediate'
+tags: ['architecture', 'provide-inject']
+summary: 'Plugins add app-level functionality via app.use(). Inside install(), you can register global components, directives, provide values, or add properties.'
 ---
 
 A plugin is a way to add app-level functionality to Vue. You install it with `app.use()`, and inside the plugin's `install` function you can register global components, directives, provide values for injection, or add global properties.
@@ -83,7 +83,9 @@ import { httpKey } from '@/plugins/api'
 export function useHttp() {
   const http = inject(httpKey)
   if (!http) {
-    throw new Error('API plugin not installed. Did you forget app.use(apiPlugin)?')
+    throw new Error(
+      'API plugin not installed. Did you forget app.use(apiPlugin)?'
+    )
   }
   return http
 }
@@ -130,11 +132,11 @@ app.use(i18nPlugin, {
 
 ## When to write a plugin vs a composable
 
-| Need | Use |
-|---|---|
-| App-wide setup that runs once at startup | Plugin |
-| Global components, directives, or properties | Plugin |
-| Reusable logic consumed by individual components | Composable |
+| Need                                                    | Use                                            |
+| ------------------------------------------------------- | ---------------------------------------------- |
+| App-wide setup that runs once at startup                | Plugin                                         |
+| Global components, directives, or properties            | Plugin                                         |
+| Reusable logic consumed by individual components        | Composable                                     |
 | Third-party library integration (analytics, i18n, HTTP) | Plugin that provides, composable that consumes |
 
 See also: [What is a composable?](/q/what-is-a-composable) · [How would you handle i18n in Vue?](/q/i18n-vue) · [How would you structure a large Vue project?](/q/large-project-structure)

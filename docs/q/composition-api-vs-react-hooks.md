@@ -1,8 +1,8 @@
 ---
 order: 59
-title: "What is the difference between Composition API and React Hooks?"
-difficulty: "advanced"
-tags: ["composition-api", "watchers"]
+title: 'What is the difference between Composition API and React Hooks?'
+difficulty: 'advanced'
+tags: ['composition-api', 'watchers']
 summary: "Vue's setup() runs once per instance; React's component function runs on every render. This eliminates stale closures, dependency arrays, and useCallback/useMemo."
 ---
 
@@ -83,7 +83,7 @@ function handleClick() {
 
 // React: needs memoization
 const handleClick = useCallback(() => {
-  setCount(c => c + 1)
+  setCount((c) => c + 1)
 }, [])
 ```
 
@@ -104,15 +104,15 @@ if (featureEnabled) {
 
 ## Side-by-side comparison
 
-| Concern | Vue Composition API | React Hooks |
-|---|---|---|
-| Execution | `setup` runs once | Component function runs every render |
-| Stale closures | Not possible (ref.value is always current) | Common bug, needs workarounds |
-| Dependency tracking | Automatic | Manual arrays, lint rules |
-| Function memoization | Not needed | `useCallback` required for performance |
-| Value memoization | `computed()` auto-tracks | `useMemo` with dependency array |
-| Conditional usage | Allowed | Forbidden (rules of hooks) |
-| Re-render scope | Fine-grained (only what changed) | Entire component tree by default |
+| Concern              | Vue Composition API                        | React Hooks                            |
+| -------------------- | ------------------------------------------ | -------------------------------------- |
+| Execution            | `setup` runs once                          | Component function runs every render   |
+| Stale closures       | Not possible (ref.value is always current) | Common bug, needs workarounds          |
+| Dependency tracking  | Automatic                                  | Manual arrays, lint rules              |
+| Function memoization | Not needed                                 | `useCallback` required for performance |
+| Value memoization    | `computed()` auto-tracks                   | `useMemo` with dependency array        |
+| Conditional usage    | Allowed                                    | Forbidden (rules of hooks)             |
+| Re-render scope      | Fine-grained (only what changed)           | Entire component tree by default       |
 
 ## React patterns to avoid in Vue
 

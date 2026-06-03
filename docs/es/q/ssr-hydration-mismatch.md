@@ -1,9 +1,9 @@
 ---
 order: 144
-title: "¿Qué causa los errores de hidratación en SSR y cómo se corrigen?"
-difficulty: "advanced"
-tags: ["ssr", "errors", "vite"]
-summary: "Ocurre cuando el HTML del cliente difiere del servidor. Causas comunes: HTML inválido anidado, APIs solo de navegador, Date.now() y falta de v-if guards."
+title: '¿Qué causa los errores de hidratación en SSR y cómo se corrigen?'
+difficulty: 'advanced'
+tags: ['ssr', 'errors', 'vite']
+summary: 'Ocurre cuando el HTML del cliente difiere del servidor. Causas comunes: HTML inválido anidado, APIs solo de navegador, Date.now() y falta de v-if guards.'
 ---
 
 Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere del que envió el servidor. Vue intenta recuperarse descartando los nodos que no coinciden y re-renderizándolos, lo que puede provocar parpadeos y pérdida de rendimiento. En la mayoría de los casos, la app debería seguir funcionando correctamente tras la recuperación.
@@ -73,11 +73,11 @@ export default defineConfig({
 })
 ```
 
-| Mensaje de error | Causa probable |
-|---|---|
+| Mensaje de error                  | Causa probable                                          |
+| --------------------------------- | ------------------------------------------------------- |
 | "Hydration text content mismatch" | Fechas, valores aleatorios, diferencias de zona horaria |
-| "Hydration children mismatch" | HTML anidado inválido, renderizado condicional |
-| "Hydration node mismatch" | Se renderiza un elemento completamente distinto |
+| "Hydration children mismatch"     | HTML anidado inválido, renderizado condicional          |
+| "Hydration node mismatch"         | Se renderiza un elemento completamente distinto         |
 
 Ver también: [¿Qué es la hydration?](/es/q/what-is-hydration) · [¿Qué es SSR?](/es/q/what-is-ssr) · [¿Cómo evitar problemas con APIs específicas de plataforma en SSR?](/es/q/ssr-platform-specific-apis)
 

@@ -1,6 +1,6 @@
 name: Bug report
 description: Report a site bug, broken link, or incorrect answer
-labels: ["bug"]
+labels: ['bug']
 body:
   - type: dropdown
     id: type
@@ -18,7 +18,7 @@ body:
     attributes:
       label: Affected page
       description: URL or question title where you found the issue.
-      placeholder: "https://vuewiki.dev/q/what-is-vue"
+      placeholder: 'https://vuewiki.dev/q/what-is-vue'
     validations:
       required: true
   - type: textarea

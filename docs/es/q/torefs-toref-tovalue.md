@@ -1,9 +1,9 @@
 ---
 order: 82
-title: "¿Cómo funcionan toRefs, toRef y toValue?"
-difficulty: "advanced"
-tags: ["reactivity", "vueuse", "watchers"]
-summary: "toRefs convierte cada propiedad reactiva en una ref (destructuring seguro). toRef crea una ref vinculada a una propiedad. toValue desenvuelve refs/getters."
+title: '¿Cómo funcionan toRefs, toRef y toValue?'
+difficulty: 'advanced'
+tags: ['reactivity', 'vueuse', 'watchers']
+summary: 'toRefs convierte cada propiedad reactiva en una ref (destructuring seguro). toRef crea una ref vinculada a una propiedad. toValue desenvuelve refs/getters.'
 ---
 
 Estas tres utilidades resuelven el problema de convertir entre los tipos reactivos de Vue. Son más útiles al desestructurar objetos reactivos, escribir composables que aceptan entradas flexibles, o hacer de puente entre `reactive()` y `ref()`. Consulta [toRefs](https://vuejs.org/api/reactivity-utilities.html#torefs), [toRef](https://vuejs.org/api/reactivity-utilities.html#toref) y [unref](https://vuejs.org/api/reactivity-utilities.html#unref) en la documentación.
@@ -32,7 +32,9 @@ Esto es imprescindible al devolver estado reactivo desde composables, para que l
 function useCounter() {
   const state = reactive({ count: 0, doubled: computed(() => state.count * 2) })
 
-  function increment() { state.count++ }
+  function increment() {
+    state.count++
+  }
 
   return { ...toRefs(state), increment }
 }
@@ -72,9 +74,9 @@ const countRef = toRef(() => state.count)
 ```ts
 import { toValue } from 'vue'
 
-toValue(ref(1))       // 1
-toValue(() => 2)      // 2
-toValue(3)            // 3
+toValue(ref(1)) // 1
+toValue(() => 2) // 2
+toValue(3) // 3
 ```
 
 El caso de uso principal son composables que aceptan un ref, un getter o un valor plano:
@@ -97,12 +99,12 @@ useTitle(() => `${page.value} - Mi App`)
 
 ## Referencia rápida
 
-| Utilidad | Entrada | Salida | Caso de uso |
-|---|---|---|---|
-| `toRefs(obj)` | Objeto `reactive` | Objeto de refs | Desestructurar sin perder reactividad |
-| `toRef(obj, 'key')` | Objeto `reactive` + clave | Ref individual | Una propiedad como ref |
-| `toRef(() => val)` | Función getter | Ref de solo lectura | Envolver un getter como ref (3.3+) |
-| `toValue(input)` | Ref, getter o valor plano | Valor desenvuelto | Normalizar entradas flexibles en composables |
+| Utilidad            | Entrada                   | Salida              | Caso de uso                                  |
+| ------------------- | ------------------------- | ------------------- | -------------------------------------------- |
+| `toRefs(obj)`       | Objeto `reactive`         | Objeto de refs      | Desestructurar sin perder reactividad        |
+| `toRef(obj, 'key')` | Objeto `reactive` + clave | Ref individual      | Una propiedad como ref                       |
+| `toRef(() => val)`  | Función getter            | Ref de solo lectura | Envolver un getter como ref (3.3+)           |
+| `toValue(input)`    | Ref, getter o valor plano | Valor desenvuelto   | Normalizar entradas flexibles en composables |
 
 ## Patrón habitual: composable con MaybeRefOrGetter
 

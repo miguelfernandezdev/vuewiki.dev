@@ -1,9 +1,9 @@
 ---
 order: 131
-title: "¿Qué es el patrón contenedor-presentacional en Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "components", "vueuse"]
-summary: "Los contenedores gestionan lógica y datos; los presentacionales reciben props y emiten eventos. En Vue 3, los composables suelen reemplazar contenedores."
+title: '¿Qué es el patrón contenedor-presentacional en Vue?'
+difficulty: 'intermediate'
+tags: ['architecture', 'components', 'vueuse']
+summary: 'Los contenedores gestionan lógica y datos; los presentacionales reciben props y emiten eventos. En Vue 3, los composables suelen reemplazar contenedores.'
 ---
 
 El patrón contenedor-presentacional separa los componentes en dos roles: los contenedores gestionan la lógica y los datos, los componentes presentacionales gestionan la UI. Los contenedores cargan datos, gestionan el estado y llaman a las APIs. Los componentes presentacionales reciben todo a través de props y emiten eventos. No saben de dónde vienen los datos.
@@ -119,12 +119,12 @@ El componente de página es más delgado porque el composable posee la lógica. 
 
 ## Cuándo aplicar este patrón
 
-| Situación | ¿Aplicar el patrón? |
-|---|---|
-| El componente se reutiliza en varios lugares | Sí |
+| Situación                                             | ¿Aplicar el patrón?                   |
+| ----------------------------------------------------- | ------------------------------------- |
+| El componente se reutiliza en varios lugares          | Sí                                    |
 | El componente carga sus propios datos y los renderiza | Divide en contenedor + presentacional |
-| Componente simple de un solo uso | No merece la pena |
-| Componente de página con lógica específica de ruta | La página ES el contenedor |
+| Componente simple de un solo uso                      | No merece la pena                     |
+| Componente de página con lógica específica de ruta    | La página ES el contenedor            |
 
 No dividas todos los componentes. Aplica el patrón cuando un componente mezcla carga de datos con renderizado de UI y quieres reutilizar la parte de UI o probarla de forma independiente.
 

@@ -1,9 +1,9 @@
 ---
 order: 14
-title: "¿Qué es el renderizado condicional en Vue?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: "v-if añade/elimina elementos del DOM. v-show cambia el CSS display. Usa v-if para cambios raros, v-show para frecuentes."
+title: '¿Qué es el renderizado condicional en Vue?'
+difficulty: 'beginner'
+tags: ['directives']
+summary: 'v-if añade/elimina elementos del DOM. v-show cambia el CSS display. Usa v-if para cambios raros, v-show para frecuentes.'
 ---
 
 El renderizado condicional controla si los elementos aparecen en el DOM según el estado reactivo. Vue ofrece dos mecanismos: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (añade o elimina elementos) y [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (alterna la propiedad CSS `display`).
@@ -61,14 +61,14 @@ Para renderizar condicionalmente varios elementos sin añadir un wrapper al DOM:
 
 ## v-if frente a v-show
 
-| | `v-if` | `v-show` |
-|---|---|---|
-| Comportamiento en el DOM | Añade/elimina elementos | Alterna `display: none` |
-| Coste de renderizado inicial | Más barato si la condición es false (no renderiza nada) | Siempre se renderiza |
-| Coste al alternar | Caro (destruye y vuelve a crear) | Barato (solo CSS) |
-| Soporta `<template>` | Sí | No |
-| Soporta `v-else` | Sí | No |
-| Dispara lifecycle hooks | Sí, en cada alternancia | Solo en el primer renderizado |
+|                              | `v-if`                                                  | `v-show`                      |
+| ---------------------------- | ------------------------------------------------------- | ----------------------------- |
+| Comportamiento en el DOM     | Añade/elimina elementos                                 | Alterna `display: none`       |
+| Coste de renderizado inicial | Más barato si la condición es false (no renderiza nada) | Siempre se renderiza          |
+| Coste al alternar            | Caro (destruye y vuelve a crear)                        | Barato (solo CSS)             |
+| Soporta `<template>`         | Sí                                                      | No                            |
+| Soporta `v-else`             | Sí                                                      | No                            |
+| Dispara lifecycle hooks      | Sí, en cada alternancia                                 | Solo en el primer renderizado |
 
 **Regla general:** usa `v-show` para cosas que el usuario alterna con frecuencia (pestañas, desplegables, tooltips). Usa `v-if` para condiciones que raramente cambian o cuando quieres evitar el coste de renderizado inicial.
 
@@ -89,7 +89,7 @@ Nunca pongas `v-if` y `v-for` en el mismo elemento. En Vue 3, `v-if` tiene mayor
 ```
 
 ```ts
-const activeItems = computed(() => items.value.filter(i => i.active))
+const activeItems = computed(() => items.value.filter((i) => i.active))
 ```
 
 Ver también: [¿Cuál es la diferencia entre v-if y v-show?](/es/q/v-if-vs-v-show) · [¿Por qué no debes usar v-if con v-for?](/es/q/v-if-with-v-for)

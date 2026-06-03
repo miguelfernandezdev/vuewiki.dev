@@ -1,9 +1,9 @@
 ---
 order: 13
-title: "How does list rendering work with v-for?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: "v-for iterates over arrays, objects, numbers, and strings. Always provide a unique :key so Vue can track and reuse DOM elements efficiently."
+title: 'How does list rendering work with v-for?'
+difficulty: 'beginner'
+tags: ['directives']
+summary: 'v-for iterates over arrays, objects, numbers, and strings. Always provide a unique :key so Vue can track and reuse DOM elements efficiently.'
 ---
 
 [`v-for`](https://vuejs.org/guide/essentials/list.html) iterates over arrays, objects, numbers, and strings to render a list of elements. It works like a `for...of` loop in JavaScript, but inside the template.
@@ -110,7 +110,7 @@ Vue detects calls to mutation methods (`push`, `pop`, `shift`, `unshift`, `splic
 items.value.push({ id: 4, name: 'Date' })
 
 // Replacement: assign the new array
-items.value = items.value.filter(i => i.name !== 'Banana')
+items.value = items.value.filter((i) => i.name !== 'Banana')
 ```
 
 See also: [What's the purpose of :key in v-for?](/q/v-for-key)

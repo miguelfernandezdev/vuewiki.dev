@@ -1,9 +1,9 @@
 ---
 order: 144
-title: "What causes SSR hydration mismatches and how do you fix them?"
-difficulty: "advanced"
-tags: ["ssr", "errors", "vite"]
-summary: "Happens when client HTML differs from server HTML. Common causes: invalid HTML nesting, browser-only APIs, Date.now(), and missing v-if guards."
+title: 'What causes SSR hydration mismatches and how do you fix them?'
+difficulty: 'advanced'
+tags: ['ssr', 'errors', 'vite']
+summary: 'Happens when client HTML differs from server HTML. Common causes: invalid HTML nesting, browser-only APIs, Date.now(), and missing v-if guards.'
 ---
 
 A hydration mismatch happens when the HTML the client renders differs from what the server sent. Vue tries to recover by discarding the mismatched nodes and re-rendering them, which can cause flickering and performance loss. In most cases, the app should continue to work as expected after recovery.
@@ -73,11 +73,11 @@ export default defineConfig({
 })
 ```
 
-| Error message | Likely cause |
-|---|---|
-| "Hydration text content mismatch" | Dates, random values, timezone differences |
-| "Hydration children mismatch" | Invalid HTML nesting, conditional rendering |
-| "Hydration node mismatch" | Completely different element rendered |
+| Error message                     | Likely cause                                |
+| --------------------------------- | ------------------------------------------- |
+| "Hydration text content mismatch" | Dates, random values, timezone differences  |
+| "Hydration children mismatch"     | Invalid HTML nesting, conditional rendering |
+| "Hydration node mismatch"         | Completely different element rendered       |
 
 See also: [What is hydration?](/q/what-is-hydration) · [What is SSR?](/q/what-is-ssr) · [How do you avoid platform-specific API issues in SSR?](/q/ssr-platform-specific-apis)
 

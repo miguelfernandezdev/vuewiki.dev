@@ -1,8 +1,8 @@
 ---
 order: 145
-title: "What are Suspense SSR hydration issues and how do you work around them?"
-difficulty: "advanced"
-tags: ["ssr", "components", "vueuse", "suspense"]
+title: 'What are Suspense SSR hydration issues and how do you work around them?'
+difficulty: 'advanced'
+tags: ['ssr', 'components', 'vueuse', 'suspense']
 summary: "During hydration, async component chunks may not be loaded yet, causing mismatches. Prefetch chunks or use Nuxt's built-in Suspense handling."
 ---
 
@@ -26,9 +26,7 @@ The user sees content, then a flash of loading state, then content again.
 
 ```vue
 <script setup>
-const AsyncDashboard = defineAsyncComponent(
-  () => import('./Dashboard.vue')
-)
+const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
 </script>
 
 <template>
@@ -137,13 +135,13 @@ Setting a proper `staleTime` prevents the client from refetching data that was a
 
 ## Common issues reference
 
-| Symptom | Cause | Fix |
-|---|---|---|
-| Content flickers to loading then back | Async chunk not ready at hydration | Use async setup, or ClientOnly |
-| Blank flash on Safari | Slower chunk loading on Safari | Preload critical chunks, use skeletons |
-| "Hydration mismatch" warning | Server and client render different content | Match fallback structure to server output |
-| Data fetched twice | staleTime not set, client refetches | Set staleTime on queries |
-| "Cannot access composable" after await | useQuery called after await | Move all composable calls before await |
+| Symptom                                | Cause                                      | Fix                                       |
+| -------------------------------------- | ------------------------------------------ | ----------------------------------------- |
+| Content flickers to loading then back  | Async chunk not ready at hydration         | Use async setup, or ClientOnly            |
+| Blank flash on Safari                  | Slower chunk loading on Safari             | Preload critical chunks, use skeletons    |
+| "Hydration mismatch" warning           | Server and client render different content | Match fallback structure to server output |
+| Data fetched twice                     | staleTime not set, client refetches        | Set staleTime on queries                  |
+| "Cannot access composable" after await | useQuery called after await                | Move all composable calls before await    |
 
 See also: [How does Suspense work?](/q/suspense) · [What are async components?](/q/async-components)
 

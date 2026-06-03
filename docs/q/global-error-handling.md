@@ -1,9 +1,9 @@
 ---
 order: 167
-title: "How would you implement global error handling in a Vue app?"
-difficulty: "advanced"
-tags: ["error-handling", "architecture"]
-summary: "app.config.errorHandler catches all uncaught errors globally. Combine with onErrorCaptured for subtree boundaries and try/catch for async operations."
+title: 'How would you implement global error handling in a Vue app?'
+difficulty: 'advanced'
+tags: ['error-handling', 'architecture']
+summary: 'app.config.errorHandler catches all uncaught errors globally. Combine with onErrorCaptured for subtree boundaries and try/catch for async operations.'
 ---
 
 Vue provides multiple layers for catching errors: `app.config.errorHandler` for uncaught errors globally, `onErrorCaptured` for errors in a component subtree, and try/catch for async operations. A production app should combine all three, plus a user-facing error UI.
@@ -26,11 +26,11 @@ app.config.errorHandler = (err, instance, info) => {
 }
 ```
 
-| Parameter | What it contains |
-|---|---|
-| `err` | The Error object |
-| `instance` | The component instance that threw (or null) |
-| `info` | Where the error occurred: `'setup function'`, `'render function'`, `'watcher callback'`, etc. In production builds, `info` is a shortened numeric code instead of the full string. See the [Error Reference](https://vuejs.org/error-reference/) for mappings. |
+| Parameter  | What it contains                                                                                                                                                                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `err`      | The Error object                                                                                                                                                                                                                                               |
+| `instance` | The component instance that threw (or null)                                                                                                                                                                                                                    |
+| `info`     | Where the error occurred: `'setup function'`, `'render function'`, `'watcher callback'`, etc. In production builds, `info` is a shortened numeric code instead of the full string. See the [Error Reference](https://vuejs.org/error-reference/) for mappings. |
 
 ## onErrorCaptured (component-level boundary)
 
@@ -77,9 +77,9 @@ If a page crashes, the header and footer stay visible. The user sees an error me
 
 ## Return value of onErrorCaptured
 
-| Return | Effect |
-|---|---|
-| `false` | Error is captured, stops propagating |
+| Return            | Effect                                                                |
+| ----------------- | --------------------------------------------------------------------- |
+| `false`           | Error is captured, stops propagating                                  |
 | `true` or nothing | Error continues to parent and eventually to `app.config.errorHandler` |
 
 ## Async error handling
@@ -141,8 +141,12 @@ export function useAsyncAction<T>(action: () => Promise<T>) {
 
 ```vue
 <script setup>
-const { execute: submit, isLoading, error } = useAsyncAction(
-  () => $fetch('/api/submit', { method: 'POST', body: formData })
+const {
+  execute: submit,
+  isLoading,
+  error
+} = useAsyncAction(() =>
+  $fetch('/api/submit', { method: 'POST', body: formData })
 )
 </script>
 ```

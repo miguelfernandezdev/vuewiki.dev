@@ -1,8 +1,8 @@
 ---
 order: 168
-title: "How would you plan a Vue 2 to Vue 3 migration?"
-difficulty: "advanced"
-tags: ["migration", "pinia", "vite", "vuex", "v-model", "provide-inject"]
+title: 'How would you plan a Vue 2 to Vue 3 migration?'
+difficulty: 'advanced'
+tags: ['migration', 'pinia', 'vite', 'vuex', 'v-model', 'provide-inject']
 summary: "Use @vue/compat (compatibility build) to run Vue 2 code on Vue 3 runtime. Fix deprecation warnings incrementally. It's not a rewrite."
 ---
 
@@ -92,7 +92,7 @@ You can also disable compat for specific features once they are fixed, to confir
 ```ts
 configureCompat({
   MODE: 2,
-  FILTERS: false,         // confirmed: no filters remain
+  FILTERS: false, // confirmed: no filters remain
   INSTANCE_EVENT_EMITTER: false // confirmed: no $on/$off usage remains
 })
 ```
@@ -101,17 +101,17 @@ This gives you a per-feature migration checklist enforced at runtime.
 
 ## What changes: the most impactful API removals
 
-| Vue 2 | Vue 3 | Migration path |
-| --- | --- | --- |
-| Filters (`\|` pipe syntax) | Removed | Use a computed property or a utility method |
-| `$on` / `$off` / `$once` | Removed | Use mitt, or provide/inject for cross-component events |
-| `$listeners` | Removed | Merged into `$attrs`, use `v-bind="$attrs"` |
-| `$set` / `$delete` | Removed | Proxy-based reactivity is automatic, no longer needed |
-| Mixins | Discouraged | Extract into composables |
-| Vuex | Optional | Pinia is the recommended replacement |
-| Options API | Still supported | `<script setup>` is the recommended modern alternative |
-| `Vue.extend` | Removed | Use `defineComponent` |
-| `v-model` (one prop) | Multiple `v-model` bindings | Minor syntax change, backwards compatible for the basic case |
+| Vue 2                      | Vue 3                       | Migration path                                               |
+| -------------------------- | --------------------------- | ------------------------------------------------------------ |
+| Filters (`\|` pipe syntax) | Removed                     | Use a computed property or a utility method                  |
+| `$on` / `$off` / `$once`   | Removed                     | Use mitt, or provide/inject for cross-component events       |
+| `$listeners`               | Removed                     | Merged into `$attrs`, use `v-bind="$attrs"`                  |
+| `$set` / `$delete`         | Removed                     | Proxy-based reactivity is automatic, no longer needed        |
+| Mixins                     | Discouraged                 | Extract into composables                                     |
+| Vuex                       | Optional                    | Pinia is the recommended replacement                         |
+| Options API                | Still supported             | `<script setup>` is the recommended modern alternative       |
+| `Vue.extend`               | Removed                     | Use `defineComponent`                                        |
+| `v-model` (one prop)       | Multiple `v-model` bindings | Minor syntax change, backwards compatible for the basic case |
 
 The removals that affect the most codebases in practice are filters, `$listeners`, and the event bus. Prioritize those.
 

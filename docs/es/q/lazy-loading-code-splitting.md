@@ -1,9 +1,9 @@
 ---
 order: 123
-title: "¿Cómo implementarías lazy loading y code splitting?"
-difficulty: "advanced"
-tags: ["performance", "vue-router", "vite"]
-summary: "Usa import() dinámico en definiciones de rutas y defineAsyncComponent. Vite crea automáticamente chunks separados que se cargan bajo demanda."
+title: '¿Cómo implementarías lazy loading y code splitting?'
+difficulty: 'advanced'
+tags: ['performance', 'vue-router', 'vite']
+summary: 'Usa import() dinámico en definiciones de rutas y defineAsyncComponent. Vite crea automáticamente chunks separados que se cargan bajo demanda.'
 ---
 
 El code splitting divide tu app en archivos JavaScript más pequeños (chunks) que se cargan bajo demanda en lugar de todos a la vez. El lazy loading significa cargar un chunk solo cuando el usuario realmente lo necesita: al navegar a una ruta, abrir un modal o hacer scroll a una sección. Vite gestiona esto automáticamente cuando usas `import()` dinámico.
@@ -93,10 +93,10 @@ Vite añade automáticamente `<link rel="modulepreload">` para los chunks enlaza
 ```ts
 function prefetchRoute(path: string) {
   const route = router.resolve(path)
-  const components = route.matched.flatMap(r =>
+  const components = route.matched.flatMap((r) =>
     Object.values(r.components ?? {})
   )
-  components.forEach(c => {
+  components.forEach((c) => {
     if (typeof c === 'function') (c as Function)()
   })
 }
@@ -112,11 +112,13 @@ En **Webpack**, los comentarios mágicos agrupan rutas relacionadas en el mismo 
 const routes = [
   {
     path: '/settings/profile',
-    component: () => import(/* webpackChunkName: "settings" */ './views/SettingsProfile.vue')
+    component: () =>
+      import(/* webpackChunkName: "settings" */ './views/SettingsProfile.vue')
   },
   {
     path: '/settings/billing',
-    component: () => import(/* webpackChunkName: "settings" */ './views/SettingsBilling.vue')
+    component: () =>
+      import(/* webpackChunkName: "settings" */ './views/SettingsBilling.vue')
   }
 ]
 ```
@@ -143,23 +145,23 @@ export default defineConfig({
 
 ## Qué hace Vite automáticamente
 
-| Característica | ¿Automático? |
-| --- | --- |
-| Dividir en `import()` dinámicos | Sí |
-| Tree-shake exports no usados | Sí |
-| Code splitting CSS (por componente) | Sí |
-| `modulepreload` para chunks de entrada | Sí |
-| Separación de chunk de vendors | Sí (configurable) |
+| Característica                         | ¿Automático?      |
+| -------------------------------------- | ----------------- |
+| Dividir en `import()` dinámicos        | Sí                |
+| Tree-shake exports no usados           | Sí                |
+| Code splitting CSS (por componente)    | Sí                |
+| `modulepreload` para chunks de entrada | Sí                |
+| Separación de chunk de vendors         | Sí (configurable) |
 
 ## Cuándo dividir
 
-| Escenario | Enfoque |
-| --- | --- |
-| Diferentes páginas/rutas | División a nivel de ruta (hazlo siempre) |
-| Componente pesado detrás de un toggle | `defineAsyncComponent` |
-| Librería grande usada en una sola página | `import()` dinámico en el componente |
-| Sección de admin que la mayoría nunca visita | Chunk de ruta separado |
-| Componentes siempre visibles en la carga | No dividir (añade latencia) |
+| Escenario                                    | Enfoque                                  |
+| -------------------------------------------- | ---------------------------------------- |
+| Diferentes páginas/rutas                     | División a nivel de ruta (hazlo siempre) |
+| Componente pesado detrás de un toggle        | `defineAsyncComponent`                   |
+| Librería grande usada en una sola página     | `import()` dinámico en el componente     |
+| Sección de admin que la mayoría nunca visita | Chunk de ruta separado                   |
+| Componentes siempre visibles en la carga     | No dividir (añade latencia)              |
 
 La mayor ganancia es la división a nivel de ruta. Es el patrón por defecto en Vue Router y no cuesta nada implementarlo. La división a nivel de componente es para componentes pesados específicos donde la petición de red adicional compensa un bundle inicial más pequeño.
 

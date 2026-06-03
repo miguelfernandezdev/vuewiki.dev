@@ -1,8 +1,8 @@
 ---
 order: 165
 title: "How do you debug SSR requests that don't go through the browser?"
-difficulty: "advanced"
-tags: ["nuxt", "ssr", "debugging", "vueuse"]
+difficulty: 'advanced'
+tags: ['nuxt', 'ssr', 'debugging', 'vueuse']
 summary: "Use $fetch interceptors, DEBUG env vars, Nuxt DevTools server tab, or proxy tools. Browser DevTools can't see server-side HTTP requests."
 ---
 
@@ -118,13 +118,15 @@ For Nitro server routes, use `createError` with descriptive messages:
 ```ts
 // server/api/users.get.ts
 export default defineEventHandler(async (event) => {
-  const response = await $fetch('https://api.example.com/users').catch((err) => {
-    console.error('[Server] Upstream API failed:', err.status, err.message)
-    throw createError({
-      statusCode: 502,
-      statusMessage: 'Upstream API unavailable'
-    })
-  })
+  const response = await $fetch('https://api.example.com/users').catch(
+    (err) => {
+      console.error('[Server] Upstream API failed:', err.status, err.message)
+      throw createError({
+        statusCode: 502,
+        statusMessage: 'Upstream API unavailable'
+      })
+    }
+  )
   return response
 })
 ```
@@ -143,14 +145,14 @@ Then open `chrome://inspect` in Chrome and connect to the Node process. You can 
 
 ## Debugging checklist
 
-| Tool | What it shows | When to use |
-|---|---|---|
+| Tool                        | What it shows                     | When to use                          |
+| --------------------------- | --------------------------------- | ------------------------------------ |
 | `$fetch` interceptor plugin | All SSR HTTP requests in terminal | First thing to add for SSR debugging |
-| `console.log` on server | Quick checks | Simple issues |
-| `DEBUG=*` env variable | Verbose library internals | Deep protocol-level issues |
-| Nuxt DevTools server tab | Requests with full detail | Development, visual inspection |
-| Charles Proxy / mitmproxy | Full HTTP traffic capture | Auth flows, SSL issues, redirects |
-| Node.js inspector | Breakpoints, step-through | Complex logic bugs |
+| `console.log` on server     | Quick checks                      | Simple issues                        |
+| `DEBUG=*` env variable      | Verbose library internals         | Deep protocol-level issues           |
+| Nuxt DevTools server tab    | Requests with full detail         | Development, visual inspection       |
+| Charles Proxy / mitmproxy   | Full HTTP traffic capture         | Auth flows, SSL issues, redirects    |
+| Node.js inspector           | Breakpoints, step-through         | Complex logic bugs                   |
 
 See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [How does the SSR payload work in Nuxt?](/q/nuxt-payload) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes)
 

@@ -1,9 +1,9 @@
 ---
 order: 69
-title: "¿Cómo funciona el sistema de reactividad de Vue 3?"
-difficulty: "intermediate"
-tags: ["reactivity", "watchers"]
-summary: "Vue 3 envuelve objetos en un Proxy que intercepta lecturas (track dependencias) y escrituras (trigger actualizaciones). Los efectos se re-ejecutan cuando cambian."
+title: '¿Cómo funciona el sistema de reactividad de Vue 3?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'watchers']
+summary: 'Vue 3 envuelve objetos en un Proxy que intercepta lecturas (track dependencias) y escrituras (trigger actualizaciones). Los efectos se re-ejecutan cuando cambian.'
 ---
 
 Cuando cambias un valor en Vue y la página se actualiza automáticamente, es el sistema de reactividad en acción.
@@ -68,12 +68,12 @@ state = reactive({ count: 1 }) // nuevo Proxy, los watchers antiguos siguen obse
 
 Vue 2 usaba `Object.defineProperty`, que tenía limitaciones reales: no podía detectar adición ni eliminación de propiedades, no funcionaba bien con arrays de forma nativa, y requería alternativas como `Vue.set()`. El sistema basado en Proxy de Vue 3 elimina todos esos problemas.
 
-| | Vue 2 (`Object.defineProperty`) | Vue 3 (`Proxy`) |
-|---|---|---|
-| Detectar propiedades nuevas | No (requería `Vue.set()`) | Sí |
-| Rastreo de mutaciones en arrays | Parcialmente (solo métodos parcheados) | Completo |
-| Soporte para Map/Set | No | Sí |
-| Rendimiento con objetos grandes | Más lento (convierte todo al inicio) | Más rápido (lazy, bajo demanda) |
+|                                 | Vue 2 (`Object.defineProperty`)        | Vue 3 (`Proxy`)                 |
+| ------------------------------- | -------------------------------------- | ------------------------------- |
+| Detectar propiedades nuevas     | No (requería `Vue.set()`)              | Sí                              |
+| Rastreo de mutaciones en arrays | Parcialmente (solo métodos parcheados) | Completo                        |
+| Soporte para Map/Set            | No                                     | Sí                              |
+| Rendimiento con objetos grandes | Más lento (convierte todo al inicio)   | Más rápido (lazy, bajo demanda) |
 
 Ver también: [¿Qué es el problema de identidad del proxy en reactividad?](/es/q/proxy-identity-hazard) · [¿Por qué pierdo reactividad al desestructurar un objeto reactive?](/es/q/reactive-destructuring-gotcha)
 

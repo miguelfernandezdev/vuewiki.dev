@@ -22,12 +22,7 @@
     },
     {
       "question": "Which property in the defineNuxtModule meta object sets the config key used in nuxt.config.ts?",
-      "options": [
-        "key",
-        "name",
-        "id",
-        "configKey"
-      ],
+      "options": ["key", "name", "id", "configKey"],
       "answer": 3
     }
   ]

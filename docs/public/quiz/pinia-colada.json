@@ -12,12 +12,7 @@
     },
     {
       "question": "Which Pinia Colada hook is used to implement optimistic updates before the server responds?",
-      "options": [
-        "onSuccess",
-        "onSettled",
-        "onMutate",
-        "beforeMutation"
-      ],
+      "options": ["onSuccess", "onSettled", "onMutate", "beforeMutation"],
       "answer": 2
     },
     {

@@ -1,9 +1,9 @@
 ---
 order: 147
-title: "¿Cómo funciona el enrutamiento basado en archivos en Nuxt?"
-difficulty: "beginner"
-tags: ["nuxt", "vue-router", "vueuse"]
-summary: "Cada .vue en pages/ se convierte en ruta automáticamente. Usa [corchetes] para segmentos dinámicos y [...slug] para rutas comodín."
+title: '¿Cómo funciona el enrutamiento basado en archivos en Nuxt?'
+difficulty: 'beginner'
+tags: ['nuxt', 'vue-router', 'vueuse']
+summary: 'Cada .vue en pages/ se convierte en ruta automáticamente. Usa [corchetes] para segmentos dinámicos y [...slug] para rutas comodín.'
 ---
 
 En Nuxt no se configuran las rutas manualmente. Cada archivo `.vue` dentro del directorio `pages/` se convierte automáticamente en una ruta. El sistema de archivos es la configuración del router.
@@ -109,14 +109,14 @@ Si tu app es de una sola página sin enrutamiento (un widget, un dashboard), pue
 
 ## Referencia de nombres de archivo
 
-| Archivo | Ruta | Ejemplo de coincidencia |
-|---|---|---|
-| `index.vue` | `/` | `/` |
-| `about.vue` | `/about` | `/about` |
-| `posts/index.vue` | `/posts` | `/posts` |
-| `posts/[id].vue` | `/posts/:id` | `/posts/42` |
-| `posts/[...slug].vue` | `/posts/*` | `/posts/2024/mi-articulo` |
-| `[[lang]]/index.vue` | `/:lang?` | `/` o `/es` |
+| Archivo               | Ruta         | Ejemplo de coincidencia   |
+| --------------------- | ------------ | ------------------------- |
+| `index.vue`           | `/`          | `/`                       |
+| `about.vue`           | `/about`     | `/about`                  |
+| `posts/index.vue`     | `/posts`     | `/posts`                  |
+| `posts/[id].vue`      | `/posts/:id` | `/posts/42`               |
+| `posts/[...slug].vue` | `/posts/*`   | `/posts/2024/mi-articulo` |
+| `[[lang]]/index.vue`  | `/:lang?`    | `/` o `/es`               |
 
 Ver también: [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure) · [¿Qué es el middleware de Nuxt?](/es/q/nuxt-middleware)
 

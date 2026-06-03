@@ -1,9 +1,9 @@
 ---
 order: 5
-title: "¿Cómo se crea un proyecto Vue desde cero?"
-difficulty: "beginner"
-tags: ["tooling", "pinia", "vite", "vitest"]
-summary: "Ejecuta npm create vue@latest para generar un proyecto con Vite y opciones de TypeScript, Router, Pinia, Vitest y ESLint."
+title: '¿Cómo se crea un proyecto Vue desde cero?'
+difficulty: 'beginner'
+tags: ['tooling', 'pinia', 'vite', 'vitest']
+summary: 'Ejecuta npm create vue@latest para generar un proyecto con Vite y opciones de TypeScript, Router, Pinia, Vitest y ESLint.'
 ---
 
 La forma oficial de iniciar un nuevo proyecto Vue es `create-vue`, que genera un proyecto basado en Vite con TypeScript, Router, Pinia, Vitest y ESLint opcionales.
@@ -75,13 +75,13 @@ app.mount('#app')
 
 Vue CLI (basado en Webpack) está en modo mantenimiento. Vite es la herramienta de build recomendada para nuevos proyectos Vue:
 
-| | Vite | Webpack (Vue CLI) |
-|---|---|---|
-| Arranque del servidor de desarrollo | Instantáneo (módulos ES nativos) | Lento (bundlea todo primero) |
-| Hot Module Replacement | Rápido (solo actualiza el módulo modificado) | Más lento (vuelve a hacer el bundle del grafo de dependencias) |
-| Herramienta de build | Rollup (producción) | Webpack |
-| Configuración | Mínima por defecto | Verbosa |
-| Estado | En desarrollo activo | Modo mantenimiento |
+|                                     | Vite                                         | Webpack (Vue CLI)                                              |
+| ----------------------------------- | -------------------------------------------- | -------------------------------------------------------------- |
+| Arranque del servidor de desarrollo | Instantáneo (módulos ES nativos)             | Lento (bundlea todo primero)                                   |
+| Hot Module Replacement              | Rápido (solo actualiza el módulo modificado) | Más lento (vuelve a hacer el bundle del grafo de dependencias) |
+| Herramienta de build                | Rollup (producción)                          | Webpack                                                        |
+| Configuración                       | Mínima por defecto                           | Verbosa                                                        |
+| Estado                              | En desarrollo activo                         | Modo mantenimiento                                             |
 
 ## Configuración manual mínima
 

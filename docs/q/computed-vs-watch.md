@@ -1,9 +1,9 @@
 ---
 order: 79
 title: "What's the difference between computed and watch?"
-difficulty: "advanced"
-tags: ["reactivity", "composition-api", "watchers"]
-summary: "computed derives a cached value from reactive data (pure, no side effects). watch runs side effects when specific sources change (API calls, DOM manipulation)."
+difficulty: 'advanced'
+tags: ['reactivity', 'composition-api', 'watchers']
+summary: 'computed derives a cached value from reactive data (pure, no side effects). watch runs side effects when specific sources change (API calls, DOM manipulation).'
 ---
 
 Both react to changes in reactive data, but they serve fundamentally different purposes. Getting this wrong leads to either duplicated state (using `watch` where `computed` would suffice) or unexpected side effects (using `computed` for things that shouldn't be pure).
@@ -53,13 +53,13 @@ You get both the new and old value, and you can do async work inside. A `compute
 
 Ask yourself: **"Am I calculating a value, or doing something?"**
 
-| Question | Answer | Use |
-|---|---|---|
-| Do I need a derived value in the template? | Yes | `computed` |
-| Do I need to fetch data when something changes? | Yes | `watch` |
-| Do I need the previous value? | Yes | `watch` |
-| Do I need to write to localStorage/cookies? | Yes | `watch` |
-| Can the result be expressed as a pure function of inputs? | Yes | `computed` |
+| Question                                                  | Answer | Use        |
+| --------------------------------------------------------- | ------ | ---------- |
+| Do I need a derived value in the template?                | Yes    | `computed` |
+| Do I need to fetch data when something changes?           | Yes    | `watch`    |
+| Do I need the previous value?                             | Yes    | `watch`    |
+| Do I need to write to localStorage/cookies?               | Yes    | `watch`    |
+| Can the result be expressed as a pure function of inputs? | Yes    | `computed` |
 
 ## The common mistake
 
@@ -70,12 +70,16 @@ Using `watch` + `ref` to do what `computed` does for free:
 const items = ref<Item[]>([])
 const activeCount = ref(0)
 
-watch(items, (val) => {
-  activeCount.value = val.filter(i => i.active).length
-}, { deep: true })
+watch(
+  items,
+  (val) => {
+    activeCount.value = val.filter((i) => i.active).length
+  },
+  { deep: true }
+)
 
 // ✅ Just use computed — always in sync, cached, no extra state
-const activeCount = computed(() => items.value.filter(i => i.active).length)
+const activeCount = computed(() => items.value.filter((i) => i.active).length)
 ```
 
 If you find yourself writing a `watch` that sets a `ref` to a derived value, replace it with a `computed`.

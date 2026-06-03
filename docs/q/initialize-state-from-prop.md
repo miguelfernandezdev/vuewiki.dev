@@ -1,8 +1,8 @@
 ---
 order: 66
-title: "Can you initialize state with a prop value? What happens?"
-difficulty: "beginner"
-tags: ["reactivity", "components", "watchers", "v-model"]
+title: 'Can you initialize state with a prop value? What happens?'
+difficulty: 'beginner'
+tags: ['reactivity', 'components', 'watchers', 'v-model']
 summary: "Yes. ref(props.value) creates a one-time copy. The local ref becomes independent: prop changes won't update it, and local changes won't affect the parent."
 ---
 

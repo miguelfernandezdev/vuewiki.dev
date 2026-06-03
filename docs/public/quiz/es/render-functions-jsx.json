@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué significa la 'h' en la función h() de Vue?",
-      "options": [
-        "handler",
-        "hyperscript",
-        "html",
-        "hook"
-      ],
+      "options": ["handler", "hyperscript", "html", "hook"],
       "answer": 1
     },
     {

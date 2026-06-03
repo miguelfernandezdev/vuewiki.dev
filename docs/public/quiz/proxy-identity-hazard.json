@@ -12,12 +12,7 @@
     },
     {
       "question": "Which utility unwraps a reactive proxy back to the original plain object for identity comparison?",
-      "options": [
-        "markRaw()",
-        "unref()",
-        "toRaw()",
-        "readonly()"
-      ],
+      "options": ["markRaw()", "unref()", "toRaw()", "readonly()"],
       "answer": 2
     },
     {

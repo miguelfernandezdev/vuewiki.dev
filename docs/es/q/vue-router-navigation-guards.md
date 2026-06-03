@@ -1,9 +1,9 @@
 ---
 order: 103
-title: "¿Cómo funciona Vue Router y qué son los navigation guards?"
-difficulty: "intermediate"
-tags: ["vue-router"]
-summary: "Vue Router mapea URLs a componentes. Los guards de navegación (beforeEach, beforeEnter, beforeRouteLeave) controlan acceso, redirigen o cancelan navegaciones."
+title: '¿Cómo funciona Vue Router y qué son los navigation guards?'
+difficulty: 'intermediate'
+tags: ['vue-router']
+summary: 'Vue Router mapea URLs a componentes. Los guards de navegación (beforeEach, beforeEnter, beforeRouteLeave) controlan acceso, redirigen o cancelan navegaciones.'
 ---
 
 Vue Router mapea rutas URL a componentes. Cuando la URL cambia, Vue Router renderiza el componente correspondiente sin recargar la página completa. Los navigation guards son hooks que se ejecutan antes, durante o después de cada navegación, permitiéndote controlar el acceso, cancelar navegaciones o ejecutar efectos secundarios.
@@ -22,7 +22,10 @@ const router = createRouter({
       component: () => import('./views/Dashboard.vue'),
       meta: { requiresAuth: true }
     },
-    { path: '/:pathMatch(.*)*', component: () => import('./views/NotFound.vue') }
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('./views/NotFound.vue')
+    }
   ]
 })
 ```
@@ -118,14 +121,14 @@ router.afterEach((to) => {
 
 ## Patrones comunes
 
-| Necesidad | Guard | Dónde |
-| --- | --- | --- |
-| Proteger rutas autenticadas | `beforeEach` | Global |
-| Evitar salir de formularios sin guardar | `onBeforeRouteLeave` | En el componente |
-| Redirigir URLs antiguas | `beforeEnter` | Por ruta |
-| Analytics/seguimiento de página | `afterEach` | Global |
-| Establecer título de página | `afterEach` | Global |
-| Esperar datos asíncronos antes de mostrar la página | `beforeResolve` | Global |
+| Necesidad                                           | Guard                | Dónde            |
+| --------------------------------------------------- | -------------------- | ---------------- |
+| Proteger rutas autenticadas                         | `beforeEach`         | Global           |
+| Evitar salir de formularios sin guardar             | `onBeforeRouteLeave` | En el componente |
+| Redirigir URLs antiguas                             | `beforeEnter`        | Por ruta         |
+| Analytics/seguimiento de página                     | `afterEach`          | Global           |
+| Establecer título de página                         | `afterEach`          | Global           |
+| Esperar datos asíncronos antes de mostrar la página | `beforeResolve`      | Global           |
 
 Ver también: [¿Cómo implementar autenticación con Vue Router?](/es/q/auth-with-vue-router) · [¿Cómo funciona el routing basado en archivos en Nuxt?](/es/q/nuxt-file-based-routing) · [¿Cómo implementar lazy loading?](/es/q/lazy-loading-code-splitting)
 

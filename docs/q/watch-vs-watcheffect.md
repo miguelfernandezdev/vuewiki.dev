@@ -1,9 +1,9 @@
 ---
 order: 68
 title: "What's the difference between watch and watchEffect?"
-difficulty: "intermediate"
-tags: ["reactivity", "composition-api", "watchers"]
-summary: "watch specifies explicit sources and gives old/new values. watchEffect auto-tracks dependencies and runs immediately. watch is more predictable for complex logic."
+difficulty: 'intermediate'
+tags: ['reactivity', 'composition-api', 'watchers']
+summary: 'watch specifies explicit sources and gives old/new values. watchEffect auto-tracks dependencies and runs immediately. watch is more predictable for complex logic.'
 ---
 
 Both run code in response to reactive changes, but they differ in **how you tell Vue what to watch** and **when they first run**.
@@ -55,6 +55,7 @@ You don't list dependencies anywhere. Vue detects them at runtime by observing w
 ## When to use which
 
 **Use `watch` when:**
+
 - You need the **previous value** (e.g., comparing old vs new to decide what to do)
 - You want to watch something **specific** and ignore other reactive data in the callback
 - You want **lazy** execution (don't run until the first change)
@@ -69,6 +70,7 @@ watch(route, (newRoute, oldRoute) => {
 ```
 
 **Use `watchEffect` when:**
+
 - You have a **simple side effect** that depends on reactive data and should run right away
 - You don't care about the previous value
 - You want dependencies tracked automatically (less code, fewer mistakes)

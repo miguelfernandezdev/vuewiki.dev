@@ -1,8 +1,8 @@
 ---
 order: 92
-title: "How would you implement debounce on a search input?"
-difficulty: "intermediate"
-tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
+title: 'How would you implement debounce on a search input?'
+difficulty: 'intermediate'
+tags: ['composables', 'performance', 'vueuse', 'watchers', 'v-model']
 summary: "Watch the input ref and delay the query update with setTimeout. Extract it as a composable or use VueUse's refDebounced."
 ---
 

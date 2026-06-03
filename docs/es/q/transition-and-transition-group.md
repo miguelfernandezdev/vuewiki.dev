@@ -1,9 +1,9 @@
 ---
 order: 36
-title: "¿Cómo funcionan Transition y TransitionGroup?"
-difficulty: "intermediate"
-tags: ["components", "animation"]
-summary: "<Transition> anima un elemento al entrar/salir. <TransitionGroup> anima elementos de lista. Ambos usan clases CSS para las etapas enter/leave."
+title: '¿Cómo funcionan Transition y TransitionGroup?'
+difficulty: 'intermediate'
+tags: ['components', 'animation']
+summary: '<Transition> anima un elemento al entrar/salir. <TransitionGroup> anima elementos de lista. Ambos usan clases CSS para las etapas enter/leave.'
 ---
 
 Vue incluye dos componentes integrados para animación. `<Transition>` anima un único elemento al entrar o salir. `<TransitionGroup>` anima elementos en una lista.
@@ -63,7 +63,9 @@ Usa solo `transform` y `opacity`. Estas propiedades están aceleradas por GPU y 
 ```css
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .slide-enter-from {
@@ -123,7 +125,12 @@ Usa hooks de JavaScript con `data-index` para efectos en cascada:
 
 ```vue
 <template>
-  <TransitionGroup tag="ul" :css="false" @before-enter="onBeforeEnter" @enter="onEnter">
+  <TransitionGroup
+    tag="ul"
+    :css="false"
+    @before-enter="onBeforeEnter"
+    @enter="onEnter"
+  >
     <li v-for="(item, index) in items" :key="item.id" :data-index="index">
       {{ item.name }}
     </li>
@@ -150,12 +157,12 @@ function onEnter(el: HTMLElement, done: () => void) {
 
 ## Transition vs TransitionGroup
 
-| | `<Transition>` | `<TransitionGroup>` |
-|---|---|---|
-| Hijos | Un elemento o componente | Múltiples (lista con v-for) |
-| Prop `mode` | Compatible (`out-in`, `in-out`) | No compatible |
-| Clase `.move` | No | Sí (anima reordenaciones) |
-| Prop `tag` | No (no renderiza un wrapper) | Sí (opcional, sin wrapper por defecto) |
+|               | `<Transition>`                  | `<TransitionGroup>`                    |
+| ------------- | ------------------------------- | -------------------------------------- |
+| Hijos         | Un elemento o componente        | Múltiples (lista con v-for)            |
+| Prop `mode`   | Compatible (`out-in`, `in-out`) | No compatible                          |
+| Clase `.move` | No                              | Sí (anima reordenaciones)              |
+| Prop `tag`    | No (no renderiza un wrapper)    | Sí (opcional, sin wrapper por defecto) |
 
 Ver también: [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive) · [¿Cómo funcionan los estilos scoped?](/es/q/css-scoped-modules-dynamic)
 

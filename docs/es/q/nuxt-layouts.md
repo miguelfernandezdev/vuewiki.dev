@@ -1,9 +1,9 @@
 ---
 order: 149
-title: "¿Qué son los layouts de Nuxt y cómo funcionan?"
-difficulty: "beginner"
-tags: ["nuxt", "components"]
-summary: "Los layouts envuelven páginas con UI compartida (cabeceras, pies). Las páginas eligen layout via definePageMeta o default.vue se aplica automáticamente."
+title: '¿Qué son los layouts de Nuxt y cómo funcionan?'
+difficulty: 'beginner'
+tags: ['nuxt', 'components']
+summary: 'Los layouts envuelven páginas con UI compartida (cabeceras, pies). Las páginas eligen layout via definePageMeta o default.vue se aplica automáticamente.'
 ---
 
 Los layouts son componentes wrapper que rodean tus páginas. Definen la interfaz compartida como cabeceras, pies de página y barras laterales. En lugar de repetir esa estructura en cada página, la defines una vez en un layout y Nuxt envuelve las páginas automáticamente.
@@ -169,12 +169,12 @@ layouts/
 
 ## Cuándo usar layouts vs componentes
 
-| Necesidad | Usar |
-|---|---|
-| Cabecera/pie/barra lateral compartida en muchas páginas | Layout |
-| Wrapper que solo usan unos pocos componentes | Componente normal |
-| Estructura diferente para páginas públicas y de admin | Múltiples layouts |
-| Sin wrapper (embed, widget) | `layout: false` |
+| Necesidad                                               | Usar              |
+| ------------------------------------------------------- | ----------------- |
+| Cabecera/pie/barra lateral compartida en muchas páginas | Layout            |
+| Wrapper que solo usan unos pocos componentes            | Componente normal |
+| Estructura diferente para páginas públicas y de admin   | Múltiples layouts |
+| Sin wrapper (embed, widget)                             | `layout: false`   |
 
 Ver también: [¿Cómo maneja Nuxt la gestión de estado?](/es/q/nuxt-state-management) · [¿Qué son los slots?](/es/q/slots)
 

@@ -1,8 +1,8 @@
 ---
 order: 67
 title: "Why should you initialize a search ref as '' instead of null?"
-difficulty: "beginner"
-tags: ["reactivity", "errors", "vueuse", "v-model"]
+difficulty: 'beginner'
+tags: ['reactivity', 'errors', 'vueuse', 'v-model']
 summary: "v-model on inputs always produces strings. Initialize with '' instead of null to avoid Ref<string | null> and unnecessary null checks everywhere."
 ---
 
@@ -12,7 +12,7 @@ When you bind a [ref](https://vuejs.org/api/reactivity-core.html#ref) to an inpu
 
 ```vue
 <script setup>
-const search = ref<string | null>(null)
+const search = (ref < string) | (null > null)
 </script>
 
 <template>
@@ -26,7 +26,7 @@ The moment the user types anything, `search` becomes a string. But before the us
 // Must handle null everywhere
 const filtered = computed(() => {
   if (search.value === null) return items.value
-  return items.value.filter(i => i.name.includes(search.value!))
+  return items.value.filter((i) => i.name.includes(search.value!))
   //                                                        ^ non-null assertion needed
 })
 
@@ -50,7 +50,7 @@ const search = ref('')
 // Clean — no null checks
 const filtered = computed(() => {
   if (!search.value) return items.value
-  return items.value.filter(i => i.name.includes(search.value))
+  return items.value.filter((i) => i.name.includes(search.value))
 })
 
 const hasQuery = computed(() => search.value.length > 0)
@@ -63,12 +63,12 @@ An empty string is falsy, so `if (!search.value)` catches both "empty" and "no i
 ```ts
 // With null: type is string | null
 const search = ref<string | null>(null)
-search.value.toLowerCase()  // TS error: possibly null
+search.value.toLowerCase() // TS error: possibly null
 search.value!.toLowerCase() // works but unsafe
 
 // With empty string: type is string
 const search = ref('')
-search.value.toLowerCase()  // works, no assertion needed
+search.value.toLowerCase() // works, no assertion needed
 ```
 
 Every `.length`, `.includes()`, `.toLowerCase()`, `.trim()`, and `.startsWith()` call works without null guards.
@@ -77,11 +77,11 @@ Every `.length`, `.includes()`, `.toLowerCase()`, `.trim()`, and `.startsWith()`
 
 ```ts
 // Prefer empty defaults that match the input's output type
-const name = ref('')         // text input → string
-const bio = ref('')          // textarea → string
-const quantity = ref(0)      // number input → number
-const isActive = ref(false)  // checkbox → boolean
-const selected = ref('')     // select → string
+const name = ref('') // text input → string
+const bio = ref('') // textarea → string
+const quantity = ref(0) // number input → number
+const isActive = ref(false) // checkbox → boolean
+const selected = ref('') // select → string
 const tags = ref<string[]>([]) // multi-select → array
 ```
 

@@ -1,9 +1,9 @@
 ---
 order: 106
-title: "¿Cómo se emiten eventos con TypeScript?"
-difficulty: "beginner"
-tags: ["typescript", "components"]
-summary: "Usa defineEmits con un parámetro de tipo para declarar nombres de eventos y tipos de payload. TypeScript valida las llamadas a emit() en compilación."
+title: '¿Cómo se emiten eventos con TypeScript?'
+difficulty: 'beginner'
+tags: ['typescript', 'components']
+summary: 'Usa defineEmits con un parámetro de tipo para declarar nombres de eventos y tipos de payload. TypeScript valida las llamadas a emit() en compilación.'
 ---
 
 En Vue 3 con `<script setup>`, declaras emits usando [`defineEmits`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits), una macro del compilador, igual que `defineProps`. El tipado con TypeScript asegura que cada llamada a `emit()` en tu componente tenga el nombre de evento correcto y los tipos de payload correctos.
@@ -21,10 +21,10 @@ const emit = defineEmits<{
 }>()
 
 emit('update', 'new value') // ✅
-emit('update', 42)          // ❌ Error de tipo: se esperaba string
-emit('submit')              // ✅
-emit('submit', 'extra')     // ❌ Error de tipo: se esperaban 0 argumentos
-emit('typo')                // ❌ Error de tipo: evento desconocido
+emit('update', 42) // ❌ Error de tipo: se esperaba string
+emit('submit') // ✅
+emit('submit', 'extra') // ❌ Error de tipo: se esperaban 0 argumentos
+emit('typo') // ❌ Error de tipo: evento desconocido
 </script>
 ```
 
@@ -40,10 +40,7 @@ Cuando un componente emite eventos tipados, el padre usa `@nombreEvento` (o `v-o
 <!-- ChildComponent emite: { update: [value: string] } -->
 
 <template>
-  <ChildComponent
-    @update="handleUpdate"
-    @delete="handleDelete"
-  />
+  <ChildComponent @update="handleUpdate" @delete="handleDelete" />
 </template>
 
 <script setup lang="ts">

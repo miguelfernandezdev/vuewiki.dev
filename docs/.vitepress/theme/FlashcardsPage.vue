@@ -9,7 +9,7 @@ const { lang } = useData()
 const { t } = useI18n()
 
 const questions = computed(() =>
-  allQuestions.filter(q => q.locale === lang.value),
+  allQuestions.filter((q) => q.locale === lang.value)
 )
 
 type Phase = 'setup' | 'active' | 'complete'
@@ -25,14 +25,18 @@ const deck = ref<typeof questions.value>([])
 
 const filteredQuestions = computed(() => {
   let qs = questions.value
-  if (difficultyFilter.value) qs = qs.filter(q => q.difficulty === difficultyFilter.value)
-  if (tagFilter.value.size > 0) qs = qs.filter(q => q.tags.some(tag => tagFilter.value.has(tag)))
+  if (difficultyFilter.value)
+    qs = qs.filter((q) => q.difficulty === difficultyFilter.value)
+  if (tagFilter.value.size > 0)
+    qs = qs.filter((q) => q.tags.some((tag) => tagFilter.value.has(tag)))
   return qs
 })
 
 const tagFilteredQuestions = computed(() => {
   if (tagFilter.value.size === 0) return questions.value
-  return questions.value.filter(q => q.tags.some(tag => tagFilter.value.has(tag)))
+  return questions.value.filter((q) =>
+    q.tags.some((tag) => tagFilter.value.has(tag))
+  )
 })
 
 const difficultyOptions = computed(() => {
@@ -45,13 +49,13 @@ const difficultyOptions = computed(() => {
     { value: null, count: base.length },
     { value: 'beginner', count: counts.beginner ?? 0 },
     { value: 'intermediate', count: counts.intermediate ?? 0 },
-    { value: 'advanced', count: counts.advanced ?? 0 },
+    { value: 'advanced', count: counts.advanced ?? 0 }
   ]
 })
 
 const difficultyFilteredQuestions = computed(() => {
   if (!difficultyFilter.value) return questions.value
-  return questions.value.filter(q => q.difficulty === difficultyFilter.value)
+  return questions.value.filter((q) => q.difficulty === difficultyFilter.value)
 })
 
 const availableTags = computed(() => {
@@ -74,8 +78,8 @@ function toggleTag(tag: string) {
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
 }
@@ -83,9 +87,11 @@ function shuffle<T>(arr: T[]): T[] {
 function startDeck(reviewOnly = false) {
   if (reviewOnly) {
     const reviewUrls = new Set(
-      [...results.value.entries()].filter(([, r]) => r === 'review').map(([url]) => url),
+      [...results.value.entries()]
+        .filter(([, r]) => r === 'review')
+        .map(([url]) => url)
     )
-    deck.value = shuffle(deck.value.filter(q => reviewUrls.has(q.url)))
+    deck.value = shuffle(deck.value.filter((q) => reviewUrls.has(q.url)))
   } else {
     deck.value = shuffle(filteredQuestions.value)
   }
@@ -99,7 +105,7 @@ function startDeck(reviewOnly = false) {
     difficulty_filter: difficultyFilter.value,
     tag_count: tagFilter.value.size,
     tags: [...tagFilter.value],
-    language: lang.value,
+    language: lang.value
   })
 }
 
@@ -108,8 +114,8 @@ const currentCard = computed(() => deck.value[currentIndex.value])
 const progress = computed(() => ({
   current: currentIndex.value + 1,
   total: deck.value.length,
-  gotIt: [...results.value.values()].filter(r => r === 'got-it').length,
-  review: [...results.value.values()].filter(r => r === 'review').length,
+  gotIt: [...results.value.values()].filter((r) => r === 'got-it').length,
+  review: [...results.value.values()].filter((r) => r === 'review').length
 }))
 
 function doReveal() {
@@ -124,8 +130,12 @@ function answer(result: Result) {
     revealed.value = false
   } else {
     phase.value = 'complete'
-    const gotItCount = [...results.value.values()].filter(r => r === 'got-it').length
-    const reviewCount = [...results.value.values()].filter(r => r === 'review').length
+    const gotItCount = [...results.value.values()].filter(
+      (r) => r === 'got-it'
+    ).length
+    const reviewCount = [...results.value.values()].filter(
+      (r) => r === 'review'
+    ).length
     posthog.capture('flashcard_session_completed', {
       card_count: deck.value.length,
       got_it_count: gotItCount,
@@ -133,7 +143,7 @@ function answer(result: Result) {
       score_percent: Math.round((gotItCount / deck.value.length) * 100),
       difficulty_filter: difficultyFilter.value,
       tag_count: tagFilter.value.size,
-      language: lang.value,
+      language: lang.value
     })
   }
 }
@@ -144,12 +154,12 @@ function backToSetup() {
   tagFilter.value = new Set()
 }
 
-const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
+const homeBase = computed(() => (lang.value === 'es' ? '/es/' : '/'))
 
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',
   intermediate: 'badge-intermediate',
-  advanced: 'badge-advanced',
+  advanced: 'badge-advanced'
 }
 
 // --- Swipe gestures ---
@@ -201,7 +211,7 @@ const swipeStyle = computed(() => {
   const rotate = dragX.value * 0.08
   return {
     transform: `translateX(${dragX.value}px) rotate(${rotate}deg)`,
-    transition: dragging.value ? 'none' : 'transform 0.3s ease',
+    transition: dragging.value ? 'none' : 'transform 0.3s ease'
   }
 })
 
@@ -223,8 +233,13 @@ function onKeydown(e: KeyboardEvent) {
     e.preventDefault()
     if (!revealed.value) doReveal()
   } else if (revealed.value) {
-    if (e.key === 'ArrowRight') { e.preventDefault(); answer('got-it') }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); answer('review') }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      answer('got-it')
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      answer('review')
+    }
   }
 }
 
@@ -243,7 +258,11 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
         <button
           v-for="opt in difficultyOptions"
           :key="opt.value ?? 'all'"
-          :class="['pick-btn', { active: difficultyFilter === opt.value }, opt.value ? `pick-${opt.value}` : '']"
+          :class="[
+            'pick-btn',
+            { active: difficultyFilter === opt.value },
+            opt.value ? `pick-${opt.value}` : ''
+          ]"
           @click="difficultyFilter = opt.value"
         >
           {{ opt.value ? t(`filters.${opt.value}`) : t('filters.all') }}
@@ -264,12 +283,20 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
             <span class="pick-count">({{ count }})</span>
           </button>
         </div>
-        <button v-if="tagFilter.size > 0" class="tag-clear" @click="tagFilter = new Set()">
+        <button
+          v-if="tagFilter.size > 0"
+          class="tag-clear"
+          @click="tagFilter = new Set()"
+        >
           {{ t('tags.clear') }}
         </button>
       </div>
 
-      <button class="start-btn" :disabled="filteredQuestions.length === 0" @click="startDeck()">
+      <button
+        class="start-btn"
+        :disabled="filteredQuestions.length === 0"
+        @click="startDeck()"
+      >
         {{ t('flashcards.start', { count: filteredQuestions.length }) }}
       </button>
     </div>
@@ -278,15 +305,25 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
     <div v-else-if="phase === 'active'" class="active">
       <div class="card-progress">
         <div class="progress-bar">
-          <div class="progress-fill" :style="{ width: `${(progress.current / progress.total) * 100}%` }" />
+          <div
+            class="progress-fill"
+            :style="{ width: `${(progress.current / progress.total) * 100}%` }"
+          />
         </div>
-        <span class="progress-text">{{ progress.current }} / {{ progress.total }}</span>
+        <span class="progress-text"
+          >{{ progress.current }} / {{ progress.total }}</span
+        >
       </div>
 
       <div class="card-hint">
-        {{ revealed
-          ? (isTouch ? t('flashcards.swipeHintTouch') : '← → ' + t('flashcards.swipeHint'))
-          : (isTouch ? t('flashcards.tapHint') : t('flashcards.spaceHint'))
+        {{
+          revealed
+            ? isTouch
+              ? t('flashcards.swipeHintTouch')
+              : '← → ' + t('flashcards.swipeHint')
+            : isTouch
+              ? t('flashcards.tapHint')
+              : t('flashcards.spaceHint')
         }}
       </div>
 
@@ -302,12 +339,21 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
         <div class="card-flipper" :class="{ flipped: revealed }">
           <!-- Front -->
           <div class="card card-face-front">
-            <span :class="['difficulty-badge', difficultyClass[currentCard.difficulty]]">
+            <span
+              :class="[
+                'difficulty-badge',
+                difficultyClass[currentCard.difficulty]
+              ]"
+            >
               {{ t(`filters.${currentCard.difficulty}`) }}
             </span>
             <h2 class="card-title">{{ currentCard.title }}</h2>
             <div class="card-tags">
-              <span v-for="tag in currentCard.tags" :key="tag" class="tag-badge">
+              <span
+                v-for="tag in currentCard.tags"
+                :key="tag"
+                class="tag-badge"
+              >
                 {{ t(`tags.${tag}`) }}
               </span>
             </div>
@@ -318,18 +364,31 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
           </div>
           <!-- Back -->
           <div class="card card-face-back">
-            <p v-if="currentCard.summary" class="card-excerpt">{{ currentCard.summary }}</p>
+            <p v-if="currentCard.summary" class="card-excerpt">
+              {{ currentCard.summary }}
+            </p>
             <p class="self-assess-label">{{ t('flashcards.selfAssess') }}</p>
             <div class="answer-buttons">
               <button class="answer-btn review" @click="answer('review')">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path
+                    d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
                 </svg>
                 {{ t('flashcards.reviewAgain') }}
               </button>
               <button class="answer-btn got-it" @click="answer('got-it')">
                 <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M3 7L6 10L11 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
                 {{ t('flashcards.gotIt') }}
               </button>
@@ -339,8 +398,24 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
             </a>
           </div>
         </div>
-        <button v-if="revealed" class="swipe-indicator swipe-indicator-left" :class="{ dragging: Math.abs(dragX) >= 30 && dragX < 0 }" @pointerdown.stop @click="answer('review')">✗</button>
-        <button v-if="revealed" class="swipe-indicator swipe-indicator-right" :class="{ dragging: Math.abs(dragX) >= 30 && dragX > 0 }" @pointerdown.stop @click="answer('got-it')">✓</button>
+        <button
+          v-if="revealed"
+          class="swipe-indicator swipe-indicator-left"
+          :class="{ dragging: Math.abs(dragX) >= 30 && dragX < 0 }"
+          @pointerdown.stop
+          @click="answer('review')"
+        >
+          ✗
+        </button>
+        <button
+          v-if="revealed"
+          class="swipe-indicator swipe-indicator-right"
+          :class="{ dragging: Math.abs(dragX) >= 30 && dragX > 0 }"
+          @pointerdown.stop
+          @click="answer('got-it')"
+        >
+          ✓
+        </button>
       </div>
 
       <div class="card-stats">
@@ -355,9 +430,18 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 
       <div class="score-ring">
         <svg viewBox="0 0 100 100" width="140" height="140">
-          <circle cx="50" cy="50" r="42" fill="none" stroke="var(--vp-c-bg-soft)" stroke-width="8" />
           <circle
-            cx="50" cy="50" r="42"
+            cx="50"
+            cy="50"
+            r="42"
+            fill="none"
+            stroke="var(--vp-c-bg-soft)"
+            stroke-width="8"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="42"
             fill="none"
             stroke="var(--vp-c-green-2)"
             stroke-width="8"
@@ -367,17 +451,27 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
           />
         </svg>
         <div class="score-text">
-          <span class="score-number">{{ Math.round((progress.gotIt / progress.total) * 100) }}%</span>
+          <span class="score-number"
+            >{{ Math.round((progress.gotIt / progress.total) * 100) }}%</span
+          >
         </div>
       </div>
 
       <div class="score-details">
-        <span class="stat got-it">✓ {{ t('flashcards.gotItCount', { count: progress.gotIt }) }}</span>
-        <span class="stat review">✗ {{ t('flashcards.reviewCount', { count: progress.review }) }}</span>
+        <span class="stat got-it"
+          >✓ {{ t('flashcards.gotItCount', { count: progress.gotIt }) }}</span
+        >
+        <span class="stat review"
+          >✗ {{ t('flashcards.reviewCount', { count: progress.review }) }}</span
+        >
       </div>
 
       <div class="complete-actions">
-        <button v-if="progress.review > 0" class="start-btn" @click="startDeck(true)">
+        <button
+          v-if="progress.review > 0"
+          class="start-btn"
+          @click="startDeck(true)"
+        >
           {{ t('flashcards.reviewPile', { count: progress.review }) }}
         </button>
         <button class="start-btn secondary" @click="startDeck()">
@@ -486,8 +580,16 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
   max-height: 160px;
   overflow-y: auto;
   padding: 0.25rem 0.25rem 1.5rem;
-  mask-image: linear-gradient(to bottom, black calc(100% - 32px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 32px), transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 32px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 32px),
+    transparent 100%
+  );
 }
 
 .tag-pick-btn {
@@ -836,8 +938,12 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
   font-weight: 600;
 }
 
-.stat.got-it { color: var(--vp-c-green-2); }
-.stat.review { color: var(--vp-c-red-2); }
+.stat.got-it {
+  color: var(--vp-c-green-2);
+}
+.stat.review {
+  color: var(--vp-c-red-2);
+}
 
 /* Complete phase */
 .complete {
@@ -925,9 +1031,17 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 }
 
 @media (max-width: 640px) {
-  .swipe-indicator-left { left: -8px; }
-  .swipe-indicator-right { right: -8px; }
-  .swipe-indicator-left.dragging { left: 8px; }
-  .swipe-indicator-right.dragging { right: 8px; }
+  .swipe-indicator-left {
+    left: -8px;
+  }
+  .swipe-indicator-right {
+    right: -8px;
+  }
+  .swipe-indicator-left.dragging {
+    left: 8px;
+  }
+  .swipe-indicator-right.dragging {
+    right: 8px;
+  }
 }
 </style>

@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué flag interno añade markRaw para evitar que un objeto sea envuelto con Proxy?",
-      "options": [
-        "__v_raw",
-        "__v_skip",
-        "__v_readonly",
-        "__v_noProxy"
-      ],
+      "options": ["__v_raw", "__v_skip", "__v_readonly", "__v_noProxy"],
       "answer": 1
     },
     {

@@ -1,9 +1,9 @@
 ---
 order: 60
-title: "¿Cuál es el equivalente a los componentes de orden superior (HOC) en Vue?"
-difficulty: "advanced"
-tags: ["composition-api", "architecture", "vueuse", "watchers", "slots"]
-summary: "Vue no usa HOCs. Los composables los reemplazan para reutilizar lógica, y los componentes renderless (via slots) para patrones de lógica + renderizado."
+title: '¿Cuál es el equivalente a los componentes de orden superior (HOC) en Vue?'
+difficulty: 'advanced'
+tags: ['composition-api', 'architecture', 'vueuse', 'watchers', 'slots']
+summary: 'Vue no usa HOCs. Los composables los reemplazan para reutilizar lógica, y los componentes renderless (via slots) para patrones de lógica + renderizado.'
 ---
 
 En React, un Higher-Order Component (HOC) es una función que recibe un componente y devuelve uno nuevo con comportamiento añadido. Vue no usa este patrón porque la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) resuelve el mismo problema de forma más directa. Los equivalentes en Vue son los composables (para reutilizar lógica) y los componentes renderless (para lógica con renderizado basado en slots). Ambos evitan el anidamiento de wrappers, las colisiones de props y los problemas de depuración que causan los HOCs.
@@ -143,15 +143,15 @@ const { isAuthenticated } = useAuth()
 
 ## Composables vs componentes renderless vs HOCs
 
-| | Composable | Componente renderless | HOC |
-|---|---|---|---|
-| Reutiliza | Solo lógica | Lógica + template via slot | Lógica + envoltorio |
-| Cómo se consume | Llamada a función en setup | `<Component v-slot>` | Envuelve la definición del componente |
-| Props visibles | Valores de retorno explícitos | Props del scoped slot | Ocultas, se pasan de forma transparente |
-| TypeScript | Inferencia completa | Inferencia completa | Inferencia pobre |
-| DevTools | Sin anidamiento extra | Un componente extra | Un componente extra por HOC |
-| Composabilidad | Se pueden llamar múltiples composables | El anidamiento se vuelve verboso | El anidamiento se hace profundo |
-| Idioma Vue | Patrón principal | Útil para librerías | Evitar |
+|                 | Composable                             | Componente renderless            | HOC                                     |
+| --------------- | -------------------------------------- | -------------------------------- | --------------------------------------- |
+| Reutiliza       | Solo lógica                            | Lógica + template via slot       | Lógica + envoltorio                     |
+| Cómo se consume | Llamada a función en setup             | `<Component v-slot>`             | Envuelve la definición del componente   |
+| Props visibles  | Valores de retorno explícitos          | Props del scoped slot            | Ocultas, se pasan de forma transparente |
+| TypeScript      | Inferencia completa                    | Inferencia completa              | Inferencia pobre                        |
+| DevTools        | Sin anidamiento extra                  | Un componente extra              | Un componente extra por HOC             |
+| Composabilidad  | Se pueden llamar múltiples composables | El anidamiento se vuelve verboso | El anidamiento se hace profundo         |
+| Idioma Vue      | Patrón principal                       | Útil para librerías              | Evitar                                  |
 
 ## Cuándo usar cada uno
 

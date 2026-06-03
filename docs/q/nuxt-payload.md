@@ -1,9 +1,9 @@
 ---
 order: 159
-title: "What is the Nuxt payload and how does it prevent double-fetching?"
-difficulty: "intermediate"
-tags: ["nuxt", "ssr", "pinia", "vueuse"]
-summary: "The payload serializes server-fetched data into HTML so the client reuses it during hydration instead of re-fetching."
+title: 'What is the Nuxt payload and how does it prevent double-fetching?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'ssr', 'pinia', 'vueuse']
+summary: 'The payload serializes server-fetched data into HTML so the client reuses it during hydration instead of re-fetching.'
 ---
 
 The payload is Nuxt's mechanism for transferring data from server to client during SSR. When `useFetch`, `useAsyncData`, or `useState` resolve on the server, Nuxt serializes their results into a `<script>` tag embedded in the HTML response. On the client, Nuxt reads that serialized data instead of re-executing the fetch calls. This is why there is no "double fetch": the server fetches once, the client reuses the result.
@@ -34,7 +34,15 @@ After SSR, the HTML contains something like this:
 
 <!-- The payload: serialized data from server-side fetches -->
 <script type="application/json" id="__NUXT_DATA__">
-  [["users", [{"id":1,"name":"Alice"},{"id":2,"name":"Bob"}]]]
+  [
+    [
+      "users",
+      [
+        { "id": 1, "name": "Alice" },
+        { "id": 2, "name": "Bob" }
+      ]
+    ]
+  ]
 </script>
 ```
 
@@ -94,7 +102,10 @@ Custom reducers and revivers are only necessary for **custom class instances** t
 ```ts
 // plugins/payload.ts
 class UserSettings {
-  constructor(public theme: string, public locale: string) {}
+  constructor(
+    public theme: string,
+    public locale: string
+  ) {}
 }
 
 export default defineNuxtPlugin(() => {
@@ -141,13 +152,13 @@ If you fetch a huge dataset during SSR, the entire dataset ends up in the HTML. 
 
 ## Summary
 
-| Concept | Behavior |
-|---|---|
+| Concept                     | Behavior                                                    |
+| --------------------------- | ----------------------------------------------------------- |
 | `useFetch` / `useAsyncData` | Server fetches, result serialized in payload, client reuses |
-| `useState` | Server sets value, serialized in payload, client hydrates |
-| Pinia stores | Server state serialized, client hydrates |
-| Raw `$fetch` in setup | Runs on both server and client (double fetch) |
-| `$fetch` in event handlers | Client-only, no SSR involvement |
+| `useState`                  | Server sets value, serialized in payload, client hydrates   |
+| Pinia stores                | Server state serialized, client hydrates                    |
+| Raw `$fetch` in setup       | Runs on both server and client (double fetch)               |
+| `$fetch` in event handlers  | Client-only, no SSR involvement                             |
 
 See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes) · [What is cross-request state pollution in SSR?](/q/ssr-cross-request-state-pollution)
 

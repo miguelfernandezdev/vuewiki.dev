@@ -1,9 +1,9 @@
 ---
 order: 111
-title: "How do generic components work with TypeScript?"
-difficulty: "advanced"
-tags: ["typescript", "components", "v-model", "slots"]
-summary: "The generic attribute on <script setup> (Vue 3.3+) declares type parameters that flow through props, emits, and slots for full type safety."
+title: 'How do generic components work with TypeScript?'
+difficulty: 'advanced'
+tags: ['typescript', 'components', 'v-model', 'slots']
+summary: 'The generic attribute on <script setup> (Vue 3.3+) declares type parameters that flow through props, emits, and slots for full type safety.'
 ---
 
 Generic components let you write a single component that works with different data types while keeping full type safety. The `generic` attribute on `<script setup>` (Vue 3.3+) declares type parameters that flow through props, emits, and slots.
@@ -124,7 +124,9 @@ function createGenericList<T>() {
     setup(props) {
       return () => (
         <ul>
-          {props.items?.map(item => <li>{String(item)}</li>)}
+          {props.items?.map((item) => (
+            <li>{String(item)}</li>
+          ))}
         </ul>
       )
     }
@@ -136,12 +138,12 @@ The `generic` attribute makes this pattern accessible with normal SFC templates.
 
 ## When to use generic components
 
-| Scenario | Generic? |
-|---|---|
-| List/table/select that works with any data type | Yes |
-| Form field wrapper with typed v-model | Yes |
-| Component that always works with a known type | No, use concrete types |
-| Simple UI components (buttons, cards, modals) | No |
+| Scenario                                        | Generic?               |
+| ----------------------------------------------- | ---------------------- |
+| List/table/select that works with any data type | Yes                    |
+| Form field wrapper with typed v-model           | Yes                    |
+| Component that always works with a known type   | No, use concrete types |
+| Simple UI components (buttons, cards, modals)   | No                     |
 
 See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [How do you type slots with defineSlots?](/q/define-slots-typing) · [What are the limitations of defineProps types?](/q/defineprops-type-limitations)
 

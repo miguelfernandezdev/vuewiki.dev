@@ -2,7 +2,12 @@
   "questions": [
     {
       "question": "¿Cuál es el tipo TypeScript de `event.target` en un handler estándar de `Event`?",
-      "options": ["HTMLElement | null", "EventTarget | null", "Element | null", "Node | null"],
+      "options": [
+        "HTMLElement | null",
+        "EventTarget | null",
+        "Element | null",
+        "Node | null"
+      ],
       "answer": 1
     },
     {

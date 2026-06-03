@@ -1,9 +1,9 @@
 ---
 order: 150
-title: "What is the Nuxt directory structure convention?"
-difficulty: "beginner"
-tags: ["nuxt", "architecture", "vite"]
-summary: "Convention-driven: pages/ for routes, server/api/ for endpoints, composables/ for auto-imports, components/ for auto-registered components."
+title: 'What is the Nuxt directory structure convention?'
+difficulty: 'beginner'
+tags: ['nuxt', 'architecture', 'vite']
+summary: 'Convention-driven: pages/ for routes, server/api/ for endpoints, composables/ for auto-imports, components/ for auto-registered components.'
 ---
 
 Nuxt is convention-driven. The directory structure IS the configuration. Where you place a file determines what it does: a `.vue` file in `pages/` becomes a route, a `.ts` file in `server/api/` becomes an API endpoint, a composable in `composables/` gets auto-imported. You don't wire things up manually.
@@ -126,12 +126,14 @@ server/
 ### public/ vs assets/
 
 `public/` files are served unchanged at the root URL:
+
 ```
 public/favicon.ico           → /favicon.ico
 public/robots.txt            → /robots.txt
 ```
 
 `assets/` files are processed by the bundler (hashed, optimized):
+
 ```vue
 <template>
   <img src="~/assets/images/hero.png" />
@@ -144,25 +146,25 @@ public/robots.txt            → /robots.txt
 
 ## File naming conventions
 
-| Pattern | Meaning |
-|---|---|
-| `[param].vue` | Dynamic route parameter |
-| `[[param]].vue` | Optional route parameter |
-| `[...slug].vue` | Catch-all route |
-| `(group)/` | Route group (folder not in URL) |
-| `.client.vue` / `.client.ts` | Client-only |
-| `.server.vue` / `.server.ts` | Server-only |
-| `.global.ts` | Global middleware |
+| Pattern                      | Meaning                         |
+| ---------------------------- | ------------------------------- |
+| `[param].vue`                | Dynamic route parameter         |
+| `[[param]].vue`              | Optional route parameter        |
+| `[...slug].vue`              | Catch-all route                 |
+| `(group)/`                   | Route group (folder not in URL) |
+| `.client.vue` / `.client.ts` | Client-only                     |
+| `.server.vue` / `.server.ts` | Server-only                     |
+| `.global.ts`                 | Global middleware               |
 
 ## Special files
 
-| File | Purpose |
-|---|---|
-| `app.vue` | Root component (optional if `pages/` exists) |
-| `nuxt.config.ts` | Build-time config (modules, Vite, Nitro) |
-| `app.config.ts` | Runtime config (theme, feature flags) |
-| `error.vue` | Custom error page |
-| `.env` | Environment variables |
+| File             | Purpose                                      |
+| ---------------- | -------------------------------------------- |
+| `app.vue`        | Root component (optional if `pages/` exists) |
+| `nuxt.config.ts` | Build-time config (modules, Vite, Nitro)     |
+| `app.config.ts`  | Runtime config (theme, feature flags)        |
+| `error.vue`      | Custom error page                            |
+| `.env`           | Environment variables                        |
 
 ## Everything is optional
 

@@ -1,9 +1,9 @@
 ---
 order: 103
-title: "How does Vue Router work and what are navigation guards?"
-difficulty: "intermediate"
-tags: ["vue-router"]
-summary: "Vue Router maps URLs to components. Navigation guards (beforeEach, beforeEnter, beforeRouteLeave) let you control access, redirect, or cancel navigations."
+title: 'How does Vue Router work and what are navigation guards?'
+difficulty: 'intermediate'
+tags: ['vue-router']
+summary: 'Vue Router maps URLs to components. Navigation guards (beforeEach, beforeEnter, beforeRouteLeave) let you control access, redirect, or cancel navigations.'
 ---
 
 Vue Router maps URL paths to components. When the URL changes, Vue Router renders the matching component without a full page reload. Navigation guards are hooks that run before, during, or after each navigation, letting you control access, cancel navigations, or run side effects.
@@ -22,7 +22,10 @@ const router = createRouter({
       component: () => import('./views/Dashboard.vue'),
       meta: { requiresAuth: true }
     },
-    { path: '/:pathMatch(.*)*', component: () => import('./views/NotFound.vue') }
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('./views/NotFound.vue')
+    }
   ]
 })
 ```
@@ -118,14 +121,14 @@ router.afterEach((to) => {
 
 ## Common patterns
 
-| Need | Guard | Where |
-| --- | --- | --- |
-| Protect authenticated routes | `beforeEach` | Global |
-| Prevent leaving unsaved forms | `onBeforeRouteLeave` | In-component |
-| Redirect old URLs | `beforeEnter` | Per-route |
-| Analytics/page tracking | `afterEach` | Global |
-| Set page title | `afterEach` | Global |
-| Wait for async data before showing page | `beforeResolve` | Global |
+| Need                                    | Guard                | Where        |
+| --------------------------------------- | -------------------- | ------------ |
+| Protect authenticated routes            | `beforeEach`         | Global       |
+| Prevent leaving unsaved forms           | `onBeforeRouteLeave` | In-component |
+| Redirect old URLs                       | `beforeEnter`        | Per-route    |
+| Analytics/page tracking                 | `afterEach`          | Global       |
+| Set page title                          | `afterEach`          | Global       |
+| Wait for async data before showing page | `beforeResolve`      | Global       |
 
 See also: [How do you implement authentication with Vue Router?](/q/auth-with-vue-router) · [How does Nuxt file-based routing work?](/q/nuxt-file-based-routing) · [How would you implement lazy loading?](/q/lazy-loading-code-splitting)
 

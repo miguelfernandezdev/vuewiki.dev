@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "If each list item has 5 nested components and you render 100 items, how many total instances are created?",
-      "options": [
-        "100",
-        "200",
-        "500",
-        "1000"
-      ],
+      "options": ["100", "200", "500", "1000"],
       "answer": 2
     },
     {

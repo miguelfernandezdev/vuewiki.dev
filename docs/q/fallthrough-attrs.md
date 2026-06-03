@@ -1,8 +1,8 @@
 ---
 order: 38
-title: "What are fallthrough attributes?"
-difficulty: "intermediate"
-tags: ["components", "watchers"]
+title: 'What are fallthrough attributes?'
+difficulty: 'intermediate'
+tags: ['components', 'watchers']
 summary: "Attributes not declared in defineProps or defineEmits (class, style, id, aria-*, listeners) automatically forward to the component's root element."
 ---
 
@@ -68,12 +68,12 @@ function handleClick(event: MouseEvent) {
 
 ## Attribute naming in $attrs
 
-| Parent template | Key in `$attrs` |
-|---|---|
-| `class="foo"` | `attrs.class` |
-| `data-id="123"` | `attrs['data-id']` |
-| `aria-label="..."` | `attrs['aria-label']` |
-| `@click="fn"` | `attrs.onClick` |
+| Parent template      | Key in `$attrs`       |
+| -------------------- | --------------------- |
+| `class="foo"`        | `attrs.class`         |
+| `data-id="123"`      | `attrs['data-id']`    |
+| `aria-label="..."`   | `attrs['aria-label']` |
+| `@click="fn"`        | `attrs.onClick`       |
 | `@custom-event="fn"` | `attrs.onCustomEvent` |
 
 Hyphenated attributes need bracket notation. Event listeners become camelCase `onX` keys.
@@ -86,7 +86,12 @@ Hyphenated attributes need bracket notation. Event listeners become camelCase `o
 const attrs = useAttrs()
 
 // This watcher never fires on attr changes
-watch(() => attrs.class, (val) => { /* dead code */ })
+watch(
+  () => attrs.class,
+  (val) => {
+    /* dead code */
+  }
+)
 
 // Use onBeforeUpdate instead
 onBeforeUpdate(() => {
@@ -98,12 +103,12 @@ If you need to react to a specific attribute changing, promote it to a prop with
 
 ## When fallthrough attrs matter
 
-| Scenario | What to do |
-|---|---|
+| Scenario                                        | What to do                                                    |
+| ----------------------------------------------- | ------------------------------------------------------------- |
 | Wrapper around a native element (input, button) | Let attrs fall through, or bind `$attrs` to the right element |
-| Component with multiple roots | Set `inheritAttrs: false`, bind `$attrs` explicitly |
-| Need to intercept an event before forwarding | Read `attrs.onClick`, call it after your logic |
-| Need reactive access to a specific attr | Promote it to a declared prop |
+| Component with multiple roots                   | Set `inheritAttrs: false`, bind `$attrs` explicitly           |
+| Need to intercept an event before forwarding    | Read `attrs.onClick`, call it after your logic                |
+| Need reactive access to a specific attr         | Promote it to a declared prop                                 |
 
 See also: [What is defineExpose?](/q/define-expose) · [What are slots?](/q/slots) · [What are functional components?](/q/functional-components)
 

@@ -1,9 +1,9 @@
 ---
 order: 57
-title: "Can you use await directly in script setup? When?"
-difficulty: "intermediate"
-tags: ["composition-api", "nuxt", "vueuse", "watchers", "suspense"]
-summary: "Yes. The compiler wraps it in async setup(). The catch: the parent must provide a <Suspense> boundary. Nuxt does this automatically."
+title: 'Can you use await directly in script setup? When?'
+difficulty: 'intermediate'
+tags: ['composition-api', 'nuxt', 'vueuse', 'watchers', 'suspense']
+summary: 'Yes. The compiler wraps it in async setup(). The catch: the parent must provide a <Suspense> boundary. Nuxt does this automatically.'
 ---
 
 Yes, you can use top-level `await` in [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). The compiler wraps the setup block in an `async setup()` function automatically. The catch: async components require a `<Suspense>` boundary in the parent to handle the pending state while the await resolves. Without a `<Suspense>` boundary in a parent component, the async component may not render as expected. Nuxt wraps every page in `<Suspense>` by default, so in Nuxt you can use `await` freely in pages and layouts without thinking about it.
@@ -89,11 +89,11 @@ const count = ref(0)
 watch(count, (val) => console.log(val))
 onMounted(() => console.log('mounted'))
 
-const data = await fetch('/api/data').then(r => r.json())
+const data = await fetch('/api/data').then((r) => r.json())
 
 // These also work — withAsyncContext preserves the instance
-watch(data, (val) => console.log(val))       // works
-onMounted(() => console.log('after await'))   // works
+watch(data, (val) => console.log(val)) // works
+onMounted(() => console.log('after await')) // works
 </script>
 ```
 
@@ -123,7 +123,7 @@ In Nuxt, prefer `useFetch` over raw `await fetch()`:
 const { data } = await useFetch('/api/users')
 
 // Avoid this — no payload transfer, double-fetches on hydration
-const data = ref(await fetch('/api/users').then(r => r.json()))
+const data = ref(await fetch('/api/users').then((r) => r.json()))
 </script>
 ```
 
@@ -151,12 +151,12 @@ const [{ data: users }, { data: posts }] = await Promise.all([
 
 ## Summary
 
-| Context | await in setup works? | Suspense needed? |
-|---|---|---|
-| Nuxt page/layout | Yes | No (automatic) |
-| Nuxt component inside a page | Yes | Yes (add Suspense in parent) |
-| Plain Vue (no Nuxt) | Yes | Yes (you must add it) |
-| Inside event handler | N/A (use $fetch instead) | No |
+| Context                      | await in setup works?    | Suspense needed?             |
+| ---------------------------- | ------------------------ | ---------------------------- |
+| Nuxt page/layout             | Yes                      | No (automatic)               |
+| Nuxt component inside a page | Yes                      | Yes (add Suspense in parent) |
+| Plain Vue (no Nuxt)          | Yes                      | Yes (you must add it)        |
+| Inside event handler         | N/A (use $fetch instead) | No                           |
 
 See also: [What are lifecycle hooks in Vue 3?](/q/lifecycle-hooks) · [What is script setup?](/q/script-setup)
 

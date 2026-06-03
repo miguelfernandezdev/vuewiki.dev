@@ -1,9 +1,9 @@
 ---
 order: 122
-title: "How would you optimize performance in a Vue app?"
-difficulty: "advanced"
-tags: ["performance", "vite", "watchers", "slots"]
-summary: "Measure first, then fix: lazy loading, v-once/v-memo, shallowRef for large data, virtual lists, code splitting. Never optimize without profiling."
+title: 'How would you optimize performance in a Vue app?'
+difficulty: 'advanced'
+tags: ['performance', 'vite', 'watchers', 'slots']
+summary: 'Measure first, then fix: lazy loading, v-once/v-memo, shallowRef for large data, virtual lists, code splitting. Never optimize without profiling.'
 ---
 
 Performance optimization is not a list of tricks to apply upfront. It is a cycle: **measure → identify the bottleneck → fix it → measure again**. Use Vue DevTools, the browser Performance tab, and Lighthouse to find where time is actually going before changing any code.
@@ -44,11 +44,7 @@ defineProps<{
 
 <template>
   <ul>
-    <li
-      v-for="item in items"
-      :key="item.id"
-      v-memo="[item.id === selectedId]"
-    >
+    <li v-for="item in items" :key="item.id" v-memo="[item.id === selectedId]">
       {{ item.label }}
     </li>
   </ul>
@@ -147,15 +143,15 @@ You can apply the same lazy-loading pattern to individual components, not just r
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 
-const RichTextEditor = defineAsyncComponent(() =>
-  import('@/components/RichTextEditor.vue')
+const RichTextEditor = defineAsyncComponent(
+  () => import('@/components/RichTextEditor.vue')
 )
 
 const ChartWidget = defineAsyncComponent({
   loader: () => import('@/components/ChartWidget.vue'),
   loadingComponent: LoadingSpinner,
   errorComponent: ErrorDisplay,
-  delay: 200,      // Show loading spinner only after 200ms
+  delay: 200, // Show loading spinner only after 200ms
   timeout: 5000
 })
 </script>
@@ -256,13 +252,13 @@ const STATUS_LABELS = Object.freeze({
 
 No optimization effort is complete without measurement. These are the tools you should reach for first:
 
-| Tool | What it shows |
-| --- | --- |
+| Tool                         | What it shows                            |
+| ---------------------------- | ---------------------------------------- |
 | Vue DevTools Performance tab | Component render times, re-render counts |
-| Browser Performance tab | Flame chart, long tasks, layout shifts |
-| Lighthouse | Core Web Vitals scores |
-| vite-bundle-visualizer | Bundle composition and sizes |
-| Network tab | Redundant requests, large payloads |
+| Browser Performance tab      | Flame chart, long tasks, layout shifts   |
+| Lighthouse                   | Core Web Vitals scores                   |
+| vite-bundle-visualizer       | Bundle composition and sizes             |
+| Network tab                  | Redundant requests, large payloads       |
 
 The Vue DevTools Performance tab is the most useful starting point for runtime problems. It shows you which component is re-rendering, how often, and for how long. The Browser Performance tab goes deeper into the main thread, showing JavaScript execution alongside layout and paint. Lighthouse gives you a summary score and specific CWV metrics (LCP, CLS, INP) that reflect what real users experience. `vite-bundle-visualizer` (`npx vite-bundle-visualizer`) visualizes your output chunks as a treemap, which makes it obvious when a single dependency is dominating your bundle.
 

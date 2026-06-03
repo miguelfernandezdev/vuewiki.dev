@@ -1,9 +1,9 @@
 ---
 order: 68
-title: "¿Cuál es la diferencia entre watch y watchEffect?"
-difficulty: "intermediate"
-tags: ["reactivity", "composition-api", "watchers"]
-summary: "watch especifica fuentes explícitas y da valores old/new. watchEffect auto-rastrea dependencias y se ejecuta inmediatamente. watch es más predecible para lógica compleja."
+title: '¿Cuál es la diferencia entre watch y watchEffect?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'composition-api', 'watchers']
+summary: 'watch especifica fuentes explícitas y da valores old/new. watchEffect auto-rastrea dependencias y se ejecuta inmediatamente. watch es más predecible para lógica compleja.'
 ---
 
 Ambos ejecutan código en respuesta a cambios reactivos, pero difieren en **cómo le dices a Vue qué observar** y **cuándo se ejecutan por primera vez**.

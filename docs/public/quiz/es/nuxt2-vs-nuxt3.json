@@ -2,22 +2,12 @@
   "questions": [
     {
       "question": "¿Qué herramienta de build usa Nuxt 3 por defecto, reemplazando a Webpack de Nuxt 2?",
-      "options": [
-        "Rollup",
-        "esbuild",
-        "Parcel",
-        "Vite"
-      ],
+      "options": ["Rollup", "esbuild", "Parcel", "Vite"],
       "answer": 3
     },
     {
       "question": "¿Qué reemplazó al servidor Connect de Nuxt 2 como motor de servidor en Nuxt 3?",
-      "options": [
-        "Express",
-        "Nitro (construido sobre h3)",
-        "Fastify",
-        "Hono"
-      ],
+      "options": ["Express", "Nitro (construido sobre h3)", "Fastify", "Hono"],
       "answer": 1
     },
     {

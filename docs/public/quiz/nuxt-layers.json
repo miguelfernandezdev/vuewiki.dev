@@ -12,12 +12,7 @@
     },
     {
       "question": "Which key in nuxt.config.ts is used to extend from a local or npm layer?",
-      "options": [
-        "plugins",
-        "modules",
-        "layers",
-        "extends"
-      ],
+      "options": ["plugins", "modules", "layers", "extends"],
       "answer": 3
     },
     {

@@ -12,7 +12,12 @@
     },
     {
       "question": "¿Qué optimización del compilador de Vue etiqueta los bindings dinámicos para que la comparación pueda omitir las partes estáticas?",
-      "options": ["Aplanamiento del árbol", "Elevación de estáticos", "Patch flags", "Memoización de nodos"],
+      "options": [
+        "Aplanamiento del árbol",
+        "Elevación de estáticos",
+        "Patch flags",
+        "Memoización de nodos"
+      ],
       "answer": 2
     },
     {

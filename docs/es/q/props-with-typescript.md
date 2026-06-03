@@ -1,9 +1,9 @@
 ---
 order: 105
-title: "¿Cómo se declaran props con TypeScript en Vue 3?"
-difficulty: "beginner"
-tags: ["typescript", "components"]
-summary: "Pasa una interfaz TypeScript a defineProps como genérico: defineProps<{ title: string }>. Vue genera validaciones en runtime desde tus tipos."
+title: '¿Cómo se declaran props con TypeScript en Vue 3?'
+difficulty: 'beginner'
+tags: ['typescript', 'components']
+summary: 'Pasa una interfaz TypeScript a defineProps como genérico: defineProps<{ title: string }>. Vue genera validaciones en runtime desde tus tipos.'
 ---
 
 En Vue 3 con `<script setup>`, declaras props usando [`defineProps`](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits), una macro del compilador que Vue procesa en tiempo de compilación. No se importa; está disponible automáticamente dentro de `<script setup>`.
@@ -60,7 +60,11 @@ Desde Vue 3.5, puedes destructurar props manteniendo la reactividad. Los valores
 
 ```vue
 <script setup lang="ts">
-const { title, count = 0, tags = ['vue'] } = defineProps<{
+const {
+  title,
+  count = 0,
+  tags = ['vue']
+} = defineProps<{
   title: string
   count?: number
   tags?: string[]

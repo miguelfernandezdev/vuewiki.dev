@@ -10,27 +10,26 @@ const { t } = useI18n()
 const { readCount, isRead } = useReadTracker()
 
 const questions = computed(() =>
-  allQuestions.filter(q => q.locale === lang.value),
+  allQuestions.filter((q) => q.locale === lang.value)
 )
 
 const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'] as const
 
 const groups = computed(() =>
-  DIFFICULTY_ORDER.map(diff => {
-    const qs = questions.value.filter(q => q.difficulty === diff)
-    const readTotal = qs.filter(q => isRead(q.url)).length
+  DIFFICULTY_ORDER.map((diff) => {
+    const qs = questions.value.filter((q) => q.difficulty === diff)
+    const readTotal = qs.filter((q) => isRead(q.url)).length
     return { difficulty: diff, questions: qs, readTotal }
-  }),
+  })
 )
 
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',
   intermediate: 'badge-intermediate',
-  advanced: 'badge-advanced',
+  advanced: 'badge-advanced'
 }
 
-const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
-
+const homeBase = computed(() => (lang.value === 'es' ? '/es/' : '/'))
 </script>
 
 <template>
@@ -38,11 +37,20 @@ const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
     <div class="page-header">
       <h1>{{ t('questionsPage.title') }}</h1>
       <p class="page-subtitle">
-        {{ t('questionsPage.subtitle', { read: readCount, total: questions.length }) }}
+        {{
+          t('questionsPage.subtitle', {
+            read: readCount,
+            total: questions.length
+          })
+        }}
       </p>
     </div>
 
-    <div v-for="group in groups" :key="group.difficulty" class="difficulty-group">
+    <div
+      v-for="group in groups"
+      :key="group.difficulty"
+      class="difficulty-group"
+    >
       <div class="group-header">
         <a
           :href="`${homeBase}?difficulty=${group.difficulty}`"
@@ -56,10 +64,16 @@ const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
             <div
               class="group-progress-fill"
               :class="`fill-${group.difficulty}`"
-              :style="{ width: group.questions.length ? `${(group.readTotal / group.questions.length) * 100}%` : '0%' }"
+              :style="{
+                width: group.questions.length
+                  ? `${(group.readTotal / group.questions.length) * 100}%`
+                  : '0%'
+              }"
             />
           </div>
-          <span class="group-progress-label">{{ group.readTotal }}/{{ group.questions.length }}</span>
+          <span class="group-progress-label"
+            >{{ group.readTotal }}/{{ group.questions.length }}</span
+          >
         </div>
       </div>
 
@@ -71,8 +85,20 @@ const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
           :class="['question-row', { 'is-read': isRead(q.url) }]"
         >
           <span :class="['read-check', { read: isRead(q.url) }]">
-            <svg v-if="isRead(q.url)" width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              v-if="isRead(q.url)"
+              width="12"
+              height="12"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M3 7L6 10L11 4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </span>
           <span class="question-text">{{ q.title }}</span>
@@ -146,9 +172,15 @@ const homeBase = computed(() => lang.value === 'es' ? '/es/' : '/')
   transition: width 0.3s ease;
 }
 
-.fill-beginner { background: var(--vp-c-green-2); }
-.fill-intermediate { background: var(--vp-c-yellow-2); }
-.fill-advanced { background: var(--vp-c-red-2); }
+.fill-beginner {
+  background: var(--vp-c-green-2);
+}
+.fill-intermediate {
+  background: var(--vp-c-yellow-2);
+}
+.fill-advanced {
+  background: var(--vp-c-red-2);
+}
 
 .group-progress-label {
   font-size: 0.75rem;

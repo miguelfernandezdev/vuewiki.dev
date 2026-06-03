@@ -1,9 +1,9 @@
 ---
 order: 1
-title: "What is Vue and what are its main features?"
-difficulty: "beginner"
-tags: ["core", "pinia"]
-summary: "A JavaScript framework for building UIs with declarative templates, a component-based model, and a reactivity system that auto-updates the DOM."
+title: 'What is Vue and what are its main features?'
+difficulty: 'beginner'
+tags: ['core', 'pinia']
+summary: 'A JavaScript framework for building UIs with declarative templates, a component-based model, and a reactivity system that auto-updates the DOM.'
 ---
 
 Vue is a JavaScript framework for building user interfaces. It extends standard HTML, CSS, and JavaScript with a declarative, component-based model and a [reactivity system](https://vuejs.org/guide/essentials/reactivity-fundamentals.html) that automatically updates the DOM when your data changes.
@@ -62,13 +62,13 @@ App
 
 ## How Vue compares to other frameworks
 
-| Feature | Vue | React | Angular |
-|---|---|---|---|
-| Rendering | Template-based (with optional JSX) | JSX | Template-based |
-| Reactivity | Built-in fine-grained (Proxy) | Manual (useState + re-render) | Zone.js / Signals |
-| Styling | Scoped CSS, CSS Modules built-in | External solutions (CSS Modules, styled-components) | Component-scoped by default |
-| Bundle size (approx.) | ~33 KB | ~42 KB | ~50+ KB |
-| Learning curve | Gentle | Moderate | Steep |
+| Feature               | Vue                                | React                                               | Angular                     |
+| --------------------- | ---------------------------------- | --------------------------------------------------- | --------------------------- |
+| Rendering             | Template-based (with optional JSX) | JSX                                                 | Template-based              |
+| Reactivity            | Built-in fine-grained (Proxy)      | Manual (useState + re-render)                       | Zone.js / Signals           |
+| Styling               | Scoped CSS, CSS Modules built-in   | External solutions (CSS Modules, styled-components) | Component-scoped by default |
+| Bundle size (approx.) | ~33 KB                             | ~42 KB                                              | ~50+ KB                     |
+| Learning curve        | Gentle                             | Moderate                                            | Steep                       |
 
 Vue's design philosophy is progressive adoption: start with just the core library for view rendering, then add official packages ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Nuxt](https://nuxt.com/)) as your project grows. You never have to commit to the full stack upfront.
 

@@ -1,9 +1,9 @@
 ---
 order: 88
-title: "What is customRef and when would you use one?"
-difficulty: "advanced"
-tags: ["reactivity", "v-model"]
-summary: "customRef lets you control when track() and trigger() fire, enabling debounced, validated, or localStorage-synced refs."
+title: 'What is customRef and when would you use one?'
+difficulty: 'advanced'
+tags: ['reactivity', 'v-model']
+summary: 'customRef lets you control when track() and trigger() fire, enabling debounced, validated, or localStorage-synced refs.'
 ---
 
 [customRef](https://vuejs.org/api/reactivity-advanced.html#customref) creates a ref where you control when dependency tracking (`track`) and update triggering (`trigger`) happen. Normal refs track on every read and trigger on every write automatically. With `customRef`, you insert your own logic between the read/write and the reactivity system. The classic use case is a debounced ref that delays triggering updates until the user stops typing.
@@ -83,9 +83,9 @@ function useValidatedRef(initial: number, min: number, max: number) {
 }
 
 const quantity = useValidatedRef(1, 1, 99)
-quantity.value = 50   // works, triggers update
-quantity.value = 200  // ignored, nothing happens
-quantity.value = -5   // ignored, nothing happens
+quantity.value = 50 // works, triggers update
+quantity.value = 200 // ignored, nothing happens
+quantity.value = -5 // ignored, nothing happens
 ```
 
 ## Ref with local storage sync
@@ -114,14 +114,14 @@ Every read goes through `localStorage`, so even if another tab changes the value
 
 ## When to use customRef vs alternatives
 
-| Need | Solution |
-|---|---|
-| Delay updates (debounce/throttle) | `customRef` |
-| Validate before updating | `customRef` or a setter composable |
-| Sync with external storage | `customRef` |
-| Transform values on read/write | `computed` with getter/setter |
-| React to changes after the fact | `watch` |
-| Derive a value from other refs | `computed` |
+| Need                              | Solution                           |
+| --------------------------------- | ---------------------------------- |
+| Delay updates (debounce/throttle) | `customRef`                        |
+| Validate before updating          | `customRef` or a setter composable |
+| Sync with external storage        | `customRef`                        |
+| Transform values on read/write    | `computed` with getter/setter      |
+| React to changes after the fact   | `watch`                            |
+| Derive a value from other refs    | `computed`                         |
 
 `customRef` is for cases where you need to control the reactivity pipeline itself. If you just need to transform or derive values, `computed` is simpler.
 

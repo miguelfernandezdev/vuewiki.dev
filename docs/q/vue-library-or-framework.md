@@ -1,9 +1,9 @@
 ---
 order: 3
-title: "Is Vue a library or a framework? Why?"
-difficulty: "beginner"
-tags: ["core", "pinia", "vite"]
-summary: "Vue is a progressive framework. The core is a view library, but its official ecosystem (Router, Pinia, Vite) gives it full framework capabilities."
+title: 'Is Vue a library or a framework? Why?'
+difficulty: 'beginner'
+tags: ['core', 'pinia', 'vite']
+summary: 'Vue is a progressive framework. The core is a view library, but its official ecosystem (Router, Pinia, Vite) gives it full framework capabilities.'
 ---
 
 Vue is officially described as a "[progressive framework](https://vuejs.org/guide/introduction.html)." The core package (`vue`) is a view library focused on rendering UI, comparable in scope to React. But unlike a pure library, Vue ships an official ecosystem ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Vite](https://vite.dev/) scaffolding, [DevTools](https://devtools.vuejs.org/), SSR) that gives it framework-level capabilities. You start with just the view layer and adopt more pieces as your project needs them.
@@ -24,17 +24,17 @@ If you only use the core package, Vue behaves like a library:
 <div id="app"></div>
 
 <script type="module">
-import { createApp, ref } from 'vue'
+  import { createApp, ref } from 'vue'
 
-const App = {
-  setup() {
-    const count = ref(0)
-    return { count }
-  },
-  template: `<button @click="count++">{{ count }}</button>`
-}
+  const App = {
+    setup() {
+      const count = ref(0)
+      return { count }
+    },
+    template: `<button @click="count++">{{ count }}</button>`
+  }
 
-createApp(App).mount('#app')
+  createApp(App).mount('#app')
 </script>
 ```
 
@@ -84,14 +84,14 @@ At step 1, Vue is a library. By step 4, it's a full framework. You move along th
 
 ## Comparison with React and Angular
 
-| | Vue | React | Angular |
-|---|---|---|---|
-| Core | View layer (reactivity + rendering) | View layer (rendering) | Full framework |
-| Routing | Official (Vue Router) but optional | Third-party (React Router) | Built-in (@angular/router) |
-| State management | Official (Pinia) but optional | Third-party (Redux, Zustand) | Built-in (Services + RxJS) |
-| Build tool | Official (Vite) but optional | Third-party (Vite, Webpack) | Built-in (Angular CLI) |
-| Project structure | Suggested, not enforced | No convention | Enforced by CLI |
-| Classification | Progressive framework | Library | Framework |
+|                   | Vue                                 | React                        | Angular                    |
+| ----------------- | ----------------------------------- | ---------------------------- | -------------------------- |
+| Core              | View layer (reactivity + rendering) | View layer (rendering)       | Full framework             |
+| Routing           | Official (Vue Router) but optional  | Third-party (React Router)   | Built-in (@angular/router) |
+| State management  | Official (Pinia) but optional       | Third-party (Redux, Zustand) | Built-in (Services + RxJS) |
+| Build tool        | Official (Vite) but optional        | Third-party (Vite, Webpack)  | Built-in (Angular CLI)     |
+| Project structure | Suggested, not enforced             | No convention                | Enforced by CLI            |
+| Classification    | Progressive framework               | Library                      | Framework                  |
 
 React calls itself a library because it only handles rendering. Angular calls itself a framework because it includes everything. Vue starts as a library and becomes a framework as you add its official ecosystem.
 

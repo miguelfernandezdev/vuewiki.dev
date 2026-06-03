@@ -1,9 +1,9 @@
 ---
 order: 10
-title: "¿Por qué no se pueden usar v-if y v-for en el mismo elemento?"
-difficulty: "beginner"
-tags: ["directives", "errors"]
-summary: "En Vue 3, v-if se ejecuta antes que v-for, así que la variable del loop no está disponible. Envuelve con <template v-for> y pon v-if dentro, o usa computed."
+title: '¿Por qué no se pueden usar v-if y v-for en el mismo elemento?'
+difficulty: 'beginner'
+tags: ['directives', 'errors']
+summary: 'En Vue 3, v-if se ejecuta antes que v-for, así que la variable del loop no está disponible. Envuelve con <template v-for> y pon v-if dentro, o usa computed.'
 ---
 
 Porque la precedencia entre ellos cambió de Vue 2 a Vue 3, y ponerlos juntos crea código ambiguo independientemente de la versión.
@@ -24,9 +24,7 @@ Usa una propiedad `computed`:
 
 ```vue
 <script setup lang="ts">
-const activeUsers = computed(() =>
-  props.users.filter(user => user.isActive)
-)
+const activeUsers = computed(() => props.users.filter((user) => user.isActive))
 </script>
 
 <template>

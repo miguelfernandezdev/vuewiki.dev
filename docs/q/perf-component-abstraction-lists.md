@@ -1,9 +1,9 @@
 ---
 order: 125
-title: "Why should you avoid component abstraction in large lists?"
-difficulty: "advanced"
-tags: ["performance", "components"]
-summary: "Each component instance has overhead (reactive setup, vnode, lifecycle). In large lists, flatten the component tree to reduce instances."
+title: 'Why should you avoid component abstraction in large lists?'
+difficulty: 'advanced'
+tags: ['performance', 'components']
+summary: 'Each component instance has overhead (reactive setup, vnode, lifecycle). In large lists, flatten the component tree to reduce instances.'
 ---
 
 Every Vue component instance has a cost: reactive setup, vnode creation, lifecycle hooks, and memory for the instance proxy. For a single component this is negligible. In a list of 100+ items, the cost multiplies. If each list item is 5 nested components deep, that's 500 instances instead of 100.
@@ -58,11 +58,11 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
 ## Impact by numbers
 
 | List size | Components per item | Total instances |
-|---|---|---|
-| 100 | 1 (flat) | 100 |
-| 100 | 5 (nested) | 500 |
-| 1,000 | 1 (flat) | 1,000 |
-| 1,000 | 5 (nested) | 5,000 |
+| --------- | ------------------- | --------------- |
+| 100       | 1 (flat)            | 100             |
+| 100       | 5 (nested)          | 500             |
+| 1,000     | 1 (flat)            | 1,000           |
+| 1,000     | 5 (nested)          | 5,000           |
 
 Each instance adds roughly 1-2 KB of memory overhead. At 5,000 instances, that's 5-10 MB just for component scaffolding.
 
@@ -89,20 +89,20 @@ Not every list needs flattening. Keep component abstractions when:
 
 Replace with plain elements:
 
-| Instead of | Use |
-|---|---|
-| `<Card>` wrapper | `<div class="card">` |
-| `<Text>` for typography | `<span class="text-body">` |
+| Instead of                             | Use                        |
+| -------------------------------------- | -------------------------- |
+| `<Card>` wrapper                       | `<div class="card">`       |
+| `<Text>` for typography                | `<span class="text-body">` |
 | `<Flex>` / `<Stack>` layout components | `<div class="flex gap-2">` |
-| `<Avatar>` that just wraps an img | `<img class="avatar">` |
+| `<Avatar>` that just wraps an img      | `<img class="avatar">`     |
 
 Keep as components:
 
-| Component | Why |
-|---|---|
-| `<UserStatusBadge>` | Has conditional logic, tooltip |
-| `<EditableField>` | Manages its own editing state |
-| `<LazyImage>` | Handles intersection observer, loading state |
+| Component           | Why                                          |
+| ------------------- | -------------------------------------------- |
+| `<UserStatusBadge>` | Has conditional logic, tooltip               |
+| `<EditableField>`   | Manages its own editing state                |
+| `<LazyImage>`       | Handles intersection observer, loading state |
 
 ## How to measure
 

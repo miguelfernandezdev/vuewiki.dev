@@ -1,9 +1,9 @@
 ---
 order: 169
-title: "¿Cómo se gestiona la accesibilidad en Vue?"
-difficulty: "intermediate"
-tags: ["accessibility", "components", "teleport"]
-summary: "Usa HTML semántico, añade ARIA solo cuando la semántica nativa no baste, gestiona el foco en cambios de ruta y prueba con lectores de pantalla."
+title: '¿Cómo se gestiona la accesibilidad en Vue?'
+difficulty: 'intermediate'
+tags: ['accessibility', 'components', 'teleport']
+summary: 'Usa HTML semántico, añade ARIA solo cuando la semántica nativa no baste, gestiona el foco en cambios de ruta y prueba con lectores de pantalla.'
 ---
 
 Empieza con elementos HTML semánticos en lugar de divs. Añade atributos ARIA solo cuando la semántica nativa no sea suficiente. Gestiona el foco explícitamente en los cambios de ruta y en el contenido dinámico. Vue no añade barreras a la accesibilidad, pero tampoco añade restricciones. La responsabilidad es tuya.
@@ -52,13 +52,7 @@ const panelId = useId()
   >
     Details
   </button>
-  <div
-    v-show="isExpanded"
-    :id="panelId"
-    role="region"
-  >
-    Panel content
-  </div>
+  <div v-show="isExpanded" :id="panelId" role="region">Panel content</div>
 </template>
 ```
 
@@ -178,15 +172,15 @@ Sin el texto visualmente oculto, un lector de pantalla solo anunciaría "botón"
 
 ## Lista de comprobación
 
-| Área | Qué hacer |
-|---|---|
-| HTML semántico | Usa `nav`, `main`, `button`, `ul`, `dialog` en lugar de divs |
-| ARIA | Solo añade cuando la semántica nativa no sea suficiente. Enlaza dinámicamente con `:aria-*` |
-| Foco | Gestiona en cambios de ruta, modales y contenido dinámico |
-| Regiones en vivo | Anuncia cambios de contenido dinámico con `aria-live` |
-| Teclado | Asegura que todos los elementos interactivos son alcanzables y operables con el teclado |
-| Contraste de color | Mínimo 4.5:1 para texto, 3:1 para texto grande (WCAG AA) |
-| Etiquetas | Cada campo de formulario necesita un `<label>` visible o `aria-label` |
+| Área               | Qué hacer                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| HTML semántico     | Usa `nav`, `main`, `button`, `ul`, `dialog` en lugar de divs                                |
+| ARIA               | Solo añade cuando la semántica nativa no sea suficiente. Enlaza dinámicamente con `:aria-*` |
+| Foco               | Gestiona en cambios de ruta, modales y contenido dinámico                                   |
+| Regiones en vivo   | Anuncia cambios de contenido dinámico con `aria-live`                                       |
+| Teclado            | Asegura que todos los elementos interactivos son alcanzables y operables con el teclado     |
+| Contraste de color | Mínimo 4.5:1 para texto, 3:1 para texto grande (WCAG AA)                                    |
+| Etiquetas          | Cada campo de formulario necesita un `<label>` visible o `aria-label`                       |
 
 Ver también: [¿Cómo manejar formularios complejos?](/es/q/complex-forms) · [¿Cómo funciona Teleport?](/es/q/teleport-fragments-suspense) · [¿Cómo funcionan las template refs?](/es/q/template-refs)
 

@@ -1,9 +1,9 @@
 ---
 order: 87
-title: "How would you implement optimistic updates in Vue?"
-difficulty: "advanced"
-tags: ["reactivity", "performance", "pinia"]
-summary: "Update the UI immediately, snapshot the previous state with toRaw, send the request, and roll back on failure."
+title: 'How would you implement optimistic updates in Vue?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance', 'pinia']
+summary: 'Update the UI immediately, snapshot the previous state with toRaw, send the request, and roll back on failure.'
 ---
 
 Optimistic updates change the UI immediately before the server confirms the action. If the server request succeeds, nothing changes visually. If it fails, you roll back to the previous state. The pattern relies on [ref](https://vuejs.org/api/reactivity-core.html#ref) and [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) to snapshot and restore state. This makes the app feel instant because the user doesn't wait for a network round trip.
@@ -49,7 +49,11 @@ async function toggleTodo(todo: Todo) {
   <ul>
     <li v-for="todo in todos" :key="todo.id">
       <label>
-        <input type="checkbox" :checked="todo.done" @change="toggleTodo(todo)" />
+        <input
+          type="checkbox"
+          :checked="todo.done"
+          @change="toggleTodo(todo)"
+        />
         {{ todo.text }}
       </label>
     </li>
@@ -63,7 +67,7 @@ Deleting is trickier because you need to remember the item and its position:
 
 ```ts
 async function deleteTodo(id: string) {
-  const index = todos.value.findIndex(t => t.id === id)
+  const index = todos.value.findIndex((t) => t.id === id)
   if (index === -1) return
 
   const removed = todos.value[index]
@@ -98,11 +102,11 @@ async function addTodo(text: string) {
       body: { text }
     })
     // Replace temp with real server response
-    const index = todos.value.findIndex(t => t.id === tempId)
+    const index = todos.value.findIndex((t) => t.id === tempId)
     if (index !== -1) todos.value[index] = created
   } catch {
     // Rollback: remove the optimistic item
-    todos.value = todos.value.filter(t => t.id !== tempId)
+    todos.value = todos.value.filter((t) => t.id !== tempId)
   }
 }
 ```
@@ -133,15 +137,12 @@ export function useOptimistic<T>(
 ```
 
 ```ts
-const { execute: toggleOptimistic } = useOptimistic(
-  todos,
-  async (updated) => {
-    await $fetch('/api/todos', { method: 'PUT', body: updated })
-  }
-)
+const { execute: toggleOptimistic } = useOptimistic(todos, async (updated) => {
+  await $fetch('/api/todos', { method: 'PUT', body: updated })
+})
 
 function toggleTodo(id: string) {
-  const updated = todos.value.map(t =>
+  const updated = todos.value.map((t) =>
     t.id === id ? { ...t, done: !t.done } : t
   )
   toggleOptimistic(updated)
@@ -156,7 +157,7 @@ export const useTodoStore = defineStore('todos', () => {
   const items = ref<Todo[]>([])
 
   async function toggle(id: string) {
-    const todo = items.value.find(t => t.id === id)
+    const todo = items.value.find((t) => t.id === id)
     if (!todo) return
 
     const previous = todo.done
@@ -190,7 +191,7 @@ const { mutate } = useMutation({
   onMutate: (todo) => {
     const previous = queryCache.getQueryData<Todo[]>(['todos'])
     queryCache.setQueryData(['todos'], (old) =>
-      old?.map(t => t.id === todo.id ? { ...t, done: !t.done } : t)
+      old?.map((t) => (t.id === todo.id ? { ...t, done: !t.done } : t))
     )
     return { previous }
   },
@@ -202,13 +203,13 @@ const { mutate } = useMutation({
 
 ## When to use optimistic updates
 
-| Action | Optimistic? | Why |
-|---|---|---|
-| Toggle like/bookmark | Yes | Fast feedback, low risk |
-| Delete an item | Yes | But show an undo toast |
-| Edit text content | Maybe | Risk of conflict if others edit too |
-| Payment/checkout | No | Must wait for server confirmation |
-| File upload | No | Can't fake the result |
+| Action               | Optimistic? | Why                                 |
+| -------------------- | ----------- | ----------------------------------- |
+| Toggle like/bookmark | Yes         | Fast feedback, low risk             |
+| Delete an item       | Yes         | But show an undo toast              |
+| Edit text content    | Maybe       | Risk of conflict if others edit too |
+| Payment/checkout     | No          | Must wait for server confirmation   |
+| File upload          | No          | Can't fake the result               |
 
 The rule: use optimistic updates when the action is very likely to succeed and the rollback experience is acceptable.
 

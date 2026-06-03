@@ -1,9 +1,9 @@
 ---
 order: 91
-title: "¿Cómo construirías un composable para data fetching?"
-difficulty: "intermediate"
-tags: ["composables", "pinia", "vueuse", "watchers"]
-summary: "Envuelve refs de loading, error y data con la lógica de fetch en una función. Devuelve estado reactivo para que el componente solo lea valores."
+title: '¿Cómo construirías un composable para data fetching?'
+difficulty: 'intermediate'
+tags: ['composables', 'pinia', 'vueuse', 'watchers']
+summary: 'Envuelve refs de loading, error y data con la lógica de fetch en una función. Devuelve estado reactivo para que el componente solo lea valores.'
 ---
 
 Data fetching es una de las primeras cosas que extraerás en un [composable](/es/q/what-is-a-composable). Cada componente que carga datos de una API repite el mismo patrón: un flag de loading, un estado de error, los datos en sí, y la lógica de fetch. Un composable `useFetch` envuelve todo eso en una función reutilizable.
@@ -56,9 +56,11 @@ import { useFetch } from '@/composables/useFetch'
 
 const props = defineProps<{ userId: number }>()
 
-const { data: user, error, loading } = useFetch<User>(
-  () => `/api/users/${props.userId}`
-)
+const {
+  data: user,
+  error,
+  loading
+} = useFetch<User>(() => `/api/users/${props.userId}`)
 </script>
 
 <template>

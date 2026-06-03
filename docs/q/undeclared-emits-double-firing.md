@@ -1,9 +1,9 @@
 ---
 order: 29
-title: "Why do undeclared emits fire twice?"
-difficulty: "intermediate"
-tags: ["components", "errors"]
-summary: "Re-emitting a native event without declaring it fires twice: once via $attrs fallthrough, once via your explicit emit(). Declare it in defineEmits to fix."
+title: 'Why do undeclared emits fire twice?'
+difficulty: 'intermediate'
+tags: ['components', 'errors']
+summary: 'Re-emitting a native event without declaring it fires twice: once via $attrs fallthrough, once via your explicit emit(). Declare it in defineEmits to fix.'
 ---
 
 Because when you re-emit a native event (like `click`) without declaring it in `defineEmits`, the parent's listener ends up attached in two places: once through `$attrs` fallthrough on the root element, and once through your explicit `$emit()` call.

@@ -1,9 +1,9 @@
 ---
 order: 130
-title: "¿Cómo funciona el sistema de plugins de Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "provide-inject"]
-summary: "Los plugins añaden funcionalidad a nivel de app via app.use(). Dentro de install() puedes registrar componentes globales, directivas, provide valores o añadir propiedades."
+title: '¿Cómo funciona el sistema de plugins de Vue?'
+difficulty: 'intermediate'
+tags: ['architecture', 'provide-inject']
+summary: 'Los plugins añaden funcionalidad a nivel de app via app.use(). Dentro de install() puedes registrar componentes globales, directivas, provide valores o añadir propiedades.'
 ---
 
 Un plugin es una forma de añadir funcionalidad a nivel de app en Vue. Se instala con `app.use()`, y dentro de la función `install` del plugin se pueden registrar componentes globales, directivas, proveer valores para inyección o añadir propiedades globales.
@@ -83,7 +83,9 @@ import { httpKey } from '@/plugins/api'
 export function useHttp() {
   const http = inject(httpKey)
   if (!http) {
-    throw new Error('API plugin not installed. Did you forget app.use(apiPlugin)?')
+    throw new Error(
+      'API plugin not installed. Did you forget app.use(apiPlugin)?'
+    )
   }
   return http
 }
@@ -130,12 +132,12 @@ app.use(i18nPlugin, {
 
 ## Cuándo escribir un plugin vs un composable
 
-| Necesidad | Usar |
-|---|---|
-| Configuración a nivel de app que se ejecuta una vez al inicio | Plugin |
-| Componentes globales, directivas o propiedades | Plugin |
-| Lógica reutilizable consumida por componentes individuales | Composable |
-| Integración de librería de terceros (analytics, i18n, HTTP) | Plugin que provee, composable que consume |
+| Necesidad                                                     | Usar                                      |
+| ------------------------------------------------------------- | ----------------------------------------- |
+| Configuración a nivel de app que se ejecuta una vez al inicio | Plugin                                    |
+| Componentes globales, directivas o propiedades                | Plugin                                    |
+| Lógica reutilizable consumida por componentes individuales    | Composable                                |
+| Integración de librería de terceros (analytics, i18n, HTTP)   | Plugin que provee, composable que consume |
 
 Ver también: [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo manejar la internacionalización en Vue?](/es/q/i18n-vue) · [¿Cómo estructurar un proyecto Vue grande?](/es/q/large-project-structure)
 

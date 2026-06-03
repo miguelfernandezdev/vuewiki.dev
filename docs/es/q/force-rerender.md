@@ -1,9 +1,9 @@
 ---
 order: 46
-title: "¿Cómo fuerzas el re-renderizado de un componente?"
-difficulty: "intermediate"
-tags: ["components", "reactivity"]
-summary: "Cambia el :key del componente. Vue destruye la instancia vieja y crea una nueva. Evita $forceUpdate, indica reactividad rota."
+title: '¿Cómo fuerzas el re-renderizado de un componente?'
+difficulty: 'intermediate'
+tags: ['components', 'reactivity']
+summary: 'Cambia el :key del componente. Vue destruye la instancia vieja y crea una nueva. Evita $forceUpdate, indica reactividad rota.'
 ---
 
 Cambia el atributo `key` del componente. Cuando la key cambia, Vue destruye la instancia antigua y crea una nueva desde cero, ejecutando todos los lifecycle hooks de nuevo y reiniciando todo el estado local. Este es el único enfoque limpio. Técnicas como `$forceUpdate` o incrementar un contador para disparar un re-render son casi siempre síntomas de una configuración de reactividad incorrecta.
@@ -46,8 +46,8 @@ Si sientes la necesidad de forzar un re-render, el estado reactivo probablemente
 items[0] = newItem
 
 // BIEN: Vue rastrea esto
-items.value[0] = newItem  // con ref
-items[0] = newItem        // con reactive (el Proxy lo captura)
+items.value[0] = newItem // con ref
+items[0] = newItem // con reactive (el Proxy lo captura)
 ```
 
 **Leer un valor no reactivo en el template:**
@@ -64,9 +64,7 @@ const count = ref(0)
 
 ```ts
 // Esto solo se reevalúa cuando items.value cambia
-const total = computed(() =>
-  items.value.reduce((sum, i) => sum + i.price, 0)
-)
+const total = computed(() => items.value.reduce((sum, i) => sum + i.price, 0))
 ```
 
 Corrige la reactividad y Vue actualizará el DOM automáticamente. Esa es la esencia del sistema.
@@ -90,22 +88,22 @@ No existe un equivalente de `$forceUpdate` en la Composition API porque la premi
 
 ## Cuándo el re-render basado en key es legítimo
 
-| Escenario | Por qué funciona la key |
-|---|---|
-| Cambiar entre entidades en la misma ruta (`/users/1` → `/users/2`) | Reinicia el estado local (valores del formulario, posición de scroll) para la nueva entidad |
-| Componente de terceros con estado interno que no puedes controlar | Fuerza la inicialización limpia |
-| Tras un cambio de locale/tema que requiere reinicialización completa | Algunas librerías de i18n necesitan que los componentes se remonten |
-| Restablecer un formulario a su estado inicial | Más sencillo que reiniciar manualmente cada campo |
+| Escenario                                                            | Por qué funciona la key                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Cambiar entre entidades en la misma ruta (`/users/1` → `/users/2`)   | Reinicia el estado local (valores del formulario, posición de scroll) para la nueva entidad |
+| Componente de terceros con estado interno que no puedes controlar    | Fuerza la inicialización limpia                                                             |
+| Tras un cambio de locale/tema que requiere reinicialización completa | Algunas librerías de i18n necesitan que los componentes se remonten                         |
+| Restablecer un formulario a su estado inicial                        | Más sencillo que reiniciar manualmente cada campo                                           |
 
 ## Key change vs actualización reactiva
 
-| | Cambio de key | Actualización reactiva |
-|---|---|---|
-| Lifecycle hooks | Todos se ejecutan de nuevo (`onMounted`, etc.) | Ninguno se ejecuta |
-| Estado local | Se reinicia a los valores iniciales | Se conserva |
-| Componentes hijo | Se destruyen y recrean | Se parchean in situ |
-| DOM | Se reemplaza completamente | Se parchea mínimamente |
-| Rendimiento | Costoso (desmontaje completo + setup) | Barato (actualizaciones dirigidas) |
+|                  | Cambio de key                                  | Actualización reactiva             |
+| ---------------- | ---------------------------------------------- | ---------------------------------- |
+| Lifecycle hooks  | Todos se ejecutan de nuevo (`onMounted`, etc.) | Ninguno se ejecuta                 |
+| Estado local     | Se reinicia a los valores iniciales            | Se conserva                        |
+| Componentes hijo | Se destruyen y recrean                         | Se parchean in situ                |
+| DOM              | Se reemplaza completamente                     | Se parchea mínimamente             |
+| Rendimiento      | Costoso (desmontaje completo + setup)          | Barato (actualizaciones dirigidas) |
 
 Usa actualizaciones reactivas por defecto. Reserva el re-render basado en key para casos donde genuinamente necesites una instancia fresca del componente.
 

@@ -1,8 +1,8 @@
 ---
 order: 108
-title: "How do you type template refs in TypeScript?"
-difficulty: "intermediate"
-tags: ["typescript", "components", "watchers"]
+title: 'How do you type template refs in TypeScript?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components', 'watchers']
 summary: "Declare as ref<HTMLElement | null>(null). Use optional chaining (el.value?.focus()) or access in onMounted where it's guaranteed to exist."
 ---
 
@@ -99,9 +99,7 @@ watch(modalRef, (el) => {
 </script>
 
 <template>
-  <div v-if="showModal" ref="modalRef" tabindex="-1">
-    Modal content
-  </div>
+  <div v-if="showModal" ref="modalRef" tabindex="-1">Modal content</div>
 </template>
 ```
 
@@ -126,7 +124,11 @@ onMounted(() => {
     <li
       v-for="(item, index) in items"
       :key="item"
-      :ref="(el) => { itemRefs[index] = el as HTMLLIElement }"
+      :ref="
+        (el) => {
+          itemRefs[index] = el as HTMLLIElement
+        }
+      "
     >
       {{ item }}
     </li>
@@ -151,14 +153,14 @@ onMounted(async () => {
 
 ## Quick reference
 
-| Scenario | Type |
-|---|---|
-| DOM element | `ref<HTMLDivElement \| null>(null)` |
-| Input element | `ref<HTMLInputElement \| null>(null)` |
-| Canvas element | `ref<HTMLCanvasElement \| null>(null)` |
-| Child component | `ref<InstanceType<typeof MyComponent> \| null>(null)` |
-| Array from v-for | `ref<(HTMLLIElement \| null)[]>([])` |
-| useTemplateRef (3.5+) | `useTemplateRef<HTMLInputElement>('name')` |
+| Scenario              | Type                                                  |
+| --------------------- | ----------------------------------------------------- |
+| DOM element           | `ref<HTMLDivElement \| null>(null)`                   |
+| Input element         | `ref<HTMLInputElement \| null>(null)`                 |
+| Canvas element        | `ref<HTMLCanvasElement \| null>(null)`                |
+| Child component       | `ref<InstanceType<typeof MyComponent> \| null>(null)` |
+| Array from v-for      | `ref<(HTMLLIElement \| null)[]>([])`                  |
+| useTemplateRef (3.5+) | `useTemplateRef<HTMLInputElement>('name')`            |
 
 See also: [How do template refs work?](/q/template-refs) · [Why is a template ref null inside v-if?](/q/template-ref-null-v-if) · [What is defineExpose?](/q/define-expose)
 

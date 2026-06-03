@@ -1,9 +1,9 @@
 ---
 order: 93
-title: "What is VueUse and what are its most useful composables?"
-difficulty: "intermediate"
-tags: ["composables", "tooling", "pinia", "vueuse", "watchers", "v-model"]
-summary: "A collection of 200+ composables for common tasks: browser APIs, sensors, state, network. Install @vueuse/core and use them directly."
+title: 'What is VueUse and what are its most useful composables?'
+difficulty: 'intermediate'
+tags: ['composables', 'tooling', 'pinia', 'vueuse', 'watchers', 'v-model']
+summary: 'A collection of 200+ composables for common tasks: browser APIs, sensors, state, network. Install @vueuse/core and use them directly.'
 ---
 
 VueUse is a collection of composables for common tasks: browser APIs, sensors, state, animations, network, and more. Instead of writing your own `useLocalStorage` or `useDebounceFn` from scratch, you install `@vueuse/core` and get 200+ battle-tested composables that work with Vue 3's reactivity system.
@@ -133,9 +133,13 @@ const { width, height } = useElementSize(el)
 ```ts
 const search = ref('')
 
-watchDebounced(search, (value) => {
-  fetchResults(value)
-}, { debounce: 300 })
+watchDebounced(
+  search,
+  (value) => {
+    fetchResults(value)
+  },
+  { debounce: 300 }
+)
 ```
 
 **whenever**: watch that fires only when value is truthy.
@@ -152,7 +156,7 @@ whenever(isReady, () => {
 
 ```ts
 const { state, isLoading, error } = useAsyncState(
-  () => fetch('/api/user').then(r => r.json()),
+  () => fetch('/api/user').then((r) => r.json()),
   null // initial state
 )
 ```
@@ -174,7 +178,10 @@ watch(searchQuery, (q) => debouncedSearch(q))
 </script>
 
 <template>
-  <input v-model="searchQuery" :placeholder="isMobile ? 'Search...' : 'Search articles...'" />
+  <input
+    v-model="searchQuery"
+    :placeholder="isMobile ? 'Search...' : 'Search articles...'"
+  />
 </template>
 ```
 

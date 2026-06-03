@@ -1,9 +1,9 @@
 ---
 order: 25
-title: "¿Qué son los slots y para qué se usan?"
-difficulty: "intermediate"
-tags: ["components", "slots"]
-summary: "Los slots permiten que un padre pase contenido de template a un hijo. Slots por defecto, con nombre para múltiples áreas, scoped para datos del hijo."
+title: '¿Qué son los slots y para qué se usan?'
+difficulty: 'intermediate'
+tags: ['components', 'slots']
+summary: 'Los slots permiten que un padre pase contenido de template a un hijo. Slots por defecto, con nombre para múltiples áreas, scoped para datos del hijo.'
 ---
 
 Los [slots](https://vuejs.org/guide/components/slots.html) permiten a un componente padre pasar contenido de template a un hijo. En lugar de que el hijo decida qué renderizar, el padre proporciona el markup y el hijo decide dónde colocarlo. Esto hace los componentes flexibles: un `Card` no necesita una prop para cada posible variación de layout; proporciona un slot y el padre lo rellena.
@@ -88,11 +88,11 @@ El hijo posee los datos y el bucle. El padre posee el renderizado. Este es el **
 
 Usa **props** cuando el padre pasa datos y el hijo decide cómo mostrarlos. Usa **slots** cuando el padre decide qué mostrar y el hijo decide dónde colocarlo.
 
-| Escenario | Usar |
-| --- | --- |
-| Pasar un string de título | Prop |
-| Pasar markup de header arbitrario | Slot con nombre |
-| El hijo tiene datos, el padre decide el renderizado | Scoped slot |
+| Escenario                                               | Usar             |
+| ------------------------------------------------------- | ---------------- |
+| Pasar un string de título                               | Prop             |
+| Pasar markup de header arbitrario                       | Slot con nombre  |
+| El hijo tiene datos, el padre decide el renderizado     | Scoped slot      |
 | Componente que envuelve contenido (card, modal, layout) | Slot por defecto |
 
 Ver también: [¿Cómo funcionan las render functions y JSX en Vue?](/es/q/render-functions-jsx) · [¿Qué son los atributos fallthrough?](/es/q/fallthrough-attrs) · [¿Qué es defineExpose y cuándo se necesita?](/es/q/define-expose)

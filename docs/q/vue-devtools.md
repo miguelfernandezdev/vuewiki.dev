@@ -1,9 +1,9 @@
 ---
 order: 7
-title: "How do Vue DevTools help with debugging?"
-difficulty: "beginner"
-tags: ["tooling", "pinia", "vite"]
-summary: "Browser extension that shows the component tree, reactive state, Pinia stores, routes, and performance data. Essential for debugging Vue apps."
+title: 'How do Vue DevTools help with debugging?'
+difficulty: 'beginner'
+tags: ['tooling', 'pinia', 'vite']
+summary: 'Browser extension that shows the component tree, reactive state, Pinia stores, routes, and performance data. Essential for debugging Vue apps.'
 ---
 
 Vue DevTools is a browser extension (Chrome, Firefox, Edge) and a standalone Vite plugin that lets you inspect your Vue app at runtime. You can see the component tree, reactive state, Pinia stores, routes, and performance data without adding `console.log` everywhere.
@@ -93,14 +93,14 @@ Click the "select component" button in DevTools, then click any element on the p
 
 ## Common debugging workflows
 
-| Problem | What to check in DevTools |
-|---|---|
-| UI not updating | Check if the reactive state actually changed (state tab) |
-| Wrong data displayed | Inspect props passed to the component |
-| Route not matching | Check the router tab for registered routes and current params |
-| Pinia action not working | Check the timeline for action calls and errors |
-| Component re-rendering too much | Use the performance tab to find excessive renders |
-| Event not reaching parent | Check emitted events on the child component |
+| Problem                         | What to check in DevTools                                     |
+| ------------------------------- | ------------------------------------------------------------- |
+| UI not updating                 | Check if the reactive state actually changed (state tab)      |
+| Wrong data displayed            | Inspect props passed to the component                         |
+| Route not matching              | Check the router tab for registered routes and current params |
+| Pinia action not working        | Check the timeline for action calls and errors                |
+| Component re-rendering too much | Use the performance tab to find excessive renders             |
+| Event not reaching parent       | Check emitted events on the child component                   |
 
 See also: [How would you diagnose a slow page?](/q/diagnose-slow-page) · [How do you debug SSR requests?](/q/debug-ssr-requests) · [How would you optimize performance in a Vue app?](/q/performance-optimization)
 

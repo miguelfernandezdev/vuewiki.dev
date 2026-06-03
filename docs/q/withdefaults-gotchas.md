@@ -1,9 +1,9 @@
 ---
 order: 110
-title: "How does withDefaults work and what are its gotchas?"
-difficulty: "intermediate"
-tags: ["typescript", "components"]
-summary: "withDefaults provides defaults for type-based defineProps. Gotcha: mutable defaults (arrays, objects) MUST use factory functions to avoid shared references."
+title: 'How does withDefaults work and what are its gotchas?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components']
+summary: 'withDefaults provides defaults for type-based defineProps. Gotcha: mutable defaults (arrays, objects) MUST use factory functions to avoid shared references.'
 ---
 
 `withDefaults` provides default values for type-based `defineProps`. The main gotcha: mutable defaults (arrays, objects) MUST use factory functions, otherwise all component instances share the same reference. Vue 3.5+ introduces destructured defaults that handle this automatically.
@@ -58,30 +58,31 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Default',              // primitive — no factory needed
-  disabled: false,               // primitive — no factory needed
-  items: () => [],               // array — factory required
-  config: () => ({               // object — factory required
+  title: 'Default', // primitive — no factory needed
+  disabled: false, // primitive — no factory needed
+  items: () => [], // array — factory required
+  config: () => ({
+    // object — factory required
     theme: 'light',
     locale: 'en'
   }),
-  selectedIds: () => new Set()   // Set — factory required
+  selectedIds: () => new Set() // Set — factory required
 })
 </script>
 ```
 
 ## When you need a factory function
 
-| Type | Factory needed | Default syntax |
-|---|---|---|
-| `string` | No | `'hello'` |
-| `number` | No | `42` |
-| `boolean` | No | `false` |
-| `null` | No | `null` |
-| `Array` | Yes | `() => []` |
-| `Object` | Yes | `() => ({})` |
-| `Map` / `Set` | Yes | `() => new Map()` |
-| `Date` | Yes | `() => new Date()` |
+| Type          | Factory needed | Default syntax     |
+| ------------- | -------------- | ------------------ |
+| `string`      | No             | `'hello'`          |
+| `number`      | No             | `42`               |
+| `boolean`     | No             | `false`            |
+| `null`        | No             | `null`             |
+| `Array`       | Yes            | `() => []`         |
+| `Object`      | Yes            | `() => ({})`       |
+| `Map` / `Set` | Yes            | `() => new Map()`  |
+| `Date`        | Yes            | `() => new Date()` |
 
 The rule: if `typeof value === 'object'`, use a factory.
 
@@ -112,22 +113,22 @@ No `withDefaults`, no factory functions. Each component instance gets its own co
 ```vue
 <!-- Vue 3.4 and below: withDefaults -->
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  items?: string[]
-  label?: string
-}>(), {
-  items: () => [],
-  label: 'Default'
-})
+const props = withDefaults(
+  defineProps<{
+    items?: string[]
+    label?: string
+  }>(),
+  {
+    items: () => [],
+    label: 'Default'
+  }
+)
 // access: props.items, props.label
 </script>
 
 <!-- Vue 3.5+: destructured defaults -->
 <script setup lang="ts">
-const {
-  items = [],
-  label = 'Default'
-} = defineProps<{
+const { items = [], label = 'Default' } = defineProps<{
   items?: string[]
   label?: string
 }>()

@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué concepto principal de Vuex elimina Pinia por completo?",
-      "options": [
-        "Getters",
-        "Actions",
-        "Mutations",
-        "Modules"
-      ],
+      "options": ["Getters", "Actions", "Mutations", "Modules"],
       "answer": 2
     },
     {

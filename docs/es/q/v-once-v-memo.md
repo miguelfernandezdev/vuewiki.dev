@@ -1,9 +1,9 @@
 ---
 order: 19
-title: "¿Qué son v-once y v-memo? ¿Cuándo deberías usarlos?"
-difficulty: "advanced"
-tags: ["directives", "performance", "v-model"]
-summary: "v-once renderiza contenido una vez, saltando futuras actualizaciones. v-memo salta re-renders condicionalmente según un array de dependencias (como React.memo)."
+title: '¿Qué son v-once y v-memo? ¿Cuándo deberías usarlos?'
+difficulty: 'advanced'
+tags: ['directives', 'performance', 'v-model']
+summary: 'v-once renderiza contenido una vez, saltando futuras actualizaciones. v-memo salta re-renders condicionalmente según un array de dependencias (como React.memo).'
 ---
 
 `v-once` renderiza un elemento una sola vez y omite todas las actualizaciones futuras. `v-memo` omite re-renders de forma condicional basándose en un array de dependencias. Ambos reducen el trabajo de render indicándole a Vue que ciertas partes del template no necesitan reevaluarse.
@@ -36,11 +36,7 @@ Memoiza un subárbol basándose en un array de dependencias. Vue omite el re-ren
 
 ```vue
 <template>
-  <div
-    v-for="item in items"
-    :key="item.id"
-    v-memo="[item.id === selectedId]"
-  >
+  <div v-for="item in items" :key="item.id" v-memo="[item.id === selectedId]">
     <div :class="{ selected: item.id === selectedId }">
       <ExpensiveComponent :data="item" />
     </div>
@@ -50,8 +46,10 @@ Memoiza un subárbol basándose en un array de dependencias. Vue omite el re-ren
 <script setup>
 import { ref } from 'vue'
 
-const items = ref([/* 1.000 elementos */])
-const selectedId = ref<number | null>(null)
+const items = ref([
+  /* 1.000 elementos */
+])
+const selectedId = (ref < number) | (null > null)
 </script>
 ```
 
@@ -108,13 +106,13 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 
 ## Cuándo usar cada uno
 
-| Escenario | Usa |
-|---|---|
-| Contenido que usa datos en tiempo de ejecución pero nunca cambia tras el montaje | `v-once` |
-| Lista grande donde solo cambian pocos elementos a la vez | `v-memo` con la condición cambiante |
-| Marcado completamente estático (sin interpolación) | Ninguno, el compilador ya lo eleva |
-| Contenido con hijos interactivos (inputs, v-model) | Ninguno, necesitan re-renderizarse |
-| Elementos pequeños y simples | Ninguno, la optimización no vale la pena |
+| Escenario                                                                        | Usa                                      |
+| -------------------------------------------------------------------------------- | ---------------------------------------- |
+| Contenido que usa datos en tiempo de ejecución pero nunca cambia tras el montaje | `v-once`                                 |
+| Lista grande donde solo cambian pocos elementos a la vez                         | `v-memo` con la condición cambiante      |
+| Marcado completamente estático (sin interpolación)                               | Ninguno, el compilador ya lo eleva       |
+| Contenido con hijos interactivos (inputs, v-model)                               | Ninguno, necesitan re-renderizarse       |
+| Elementos pequeños y simples                                                     | Ninguno, la optimización no vale la pena |
 
 Perfila con Vue DevTools antes de añadir estas directivas. Son una optimización concreta para cuellos de botella medidos, no algo que debas usar a la ligera.
 

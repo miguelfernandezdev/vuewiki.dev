@@ -1,9 +1,9 @@
 ---
 order: 140
-title: "¿Cuáles son los antipatrones más comunes en bases de código Vue grandes?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "watchers", "provide-inject"]
-summary: "Componentes dios, todo en stores, watchers en vez de computed, prop drilling sin provide/inject y acoplamiento fuerte a librerías externas."
+title: '¿Cuáles son los antipatrones más comunes en bases de código Vue grandes?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'watchers', 'provide-inject']
+summary: 'Componentes dios, todo en stores, watchers en vez de computed, prop drilling sin provide/inject y acoplamiento fuerte a librerías externas.'
 ---
 
 Los antipatrones más dañinos en proyectos Vue no son errores de sintaxis. Son decisiones estructurales que parecen productivas al principio pero generan problemas acumulativos a medida que crece la base de código. Estos son los que aparecen repetidamente en código real en producción.
@@ -34,12 +34,22 @@ onMounted(async () => {
   }
 })
 
-const filteredUsers = computed(() => { /* 30 líneas de filtrado y ordenación */ })
+const filteredUsers = computed(() => {
+  /* 30 líneas de filtrado y ordenación */
+})
 
-function selectUser(user) { /* ... */ }
-function deleteUser(id) { /* ... */ }
-function exportToCsv() { /* ... */ }
-function sendInvitation(email) { /* ... */ }
+function selectUser(user) {
+  /* ... */
+}
+function deleteUser(id) {
+  /* ... */
+}
+function exportToCsv() {
+  /* ... */
+}
+function sendInvitation(email) {
+  /* ... */
+}
 </script>
 
 <template>
@@ -73,9 +83,13 @@ const firstName = ref('John')
 const lastName = ref('Doe')
 const fullName = ref('')
 
-watch([firstName, lastName], ([f, l]) => {
-  fullName.value = `${f} ${l}`
-}, { immediate: true })
+watch(
+  [firstName, lastName],
+  ([f, l]) => {
+    fullName.value = `${f} ${l}`
+  },
+  { immediate: true }
+)
 
 // BIEN: dejar que el sistema de reactividad haga su trabajo
 const fullName = computed(() => `${firstName.value} ${lastName.value}`)
@@ -87,14 +101,21 @@ Cada watcher innecesario es un bug de sincronización esperando a ocurrir.
 
 ```ts
 // MAL: deep watching de un objeto grande para detectar un cambio en una propiedad
-watch(user, (newUser) => {
-  updateHeader(newUser.name)
-}, { deep: true })
+watch(
+  user,
+  (newUser) => {
+    updateHeader(newUser.name)
+  },
+  { deep: true }
+)
 
 // BIEN: observar solo lo que necesitas
-watch(() => user.value.name, (newName) => {
-  updateHeader(newName)
-})
+watch(
+  () => user.value.name,
+  (newName) => {
+    updateHeader(newName)
+  }
+)
 ```
 
 `deep: true` recorre cada propiedad anidada en cada cambio. Para objetos grandes, esto es costoso y ejecuta el watcher ante cualquier mutación de cualquier propiedad, no solo la que te importa.
@@ -177,16 +198,16 @@ Prefiere componentes componibles sobre componentes configurables: slots para la 
 
 ## Resumen
 
-| Antipatrón | Solución |
-|---|---|
-| Componentes dios | Divide en contenedor + presentacional, extrae composables |
-| Todo en Pinia | ref local para estado local, composable para lógica reutilizable |
-| Watch en lugar de computed | Usa computed para valores derivados |
-| deep: true en todas partes | Observa propiedades específicas con un getter |
-| Mutar props | Emite eventos, deja que el padre gestione las mutaciones |
-| Lógica de negocio en componentes | Extrae a funciones puras o composables |
-| Event bus | Usa props/emit, provide/inject o Pinia |
-| Componentes mega-configurables | Composición con slots y componentes más pequeños |
+| Antipatrón                       | Solución                                                         |
+| -------------------------------- | ---------------------------------------------------------------- |
+| Componentes dios                 | Divide en contenedor + presentacional, extrae composables        |
+| Todo en Pinia                    | ref local para estado local, composable para lógica reutilizable |
+| Watch en lugar de computed       | Usa computed para valores derivados                              |
+| deep: true en todas partes       | Observa propiedades específicas con un getter                    |
+| Mutar props                      | Emite eventos, deja que el padre gestione las mutaciones         |
+| Lógica de negocio en componentes | Extrae a funciones puras o composables                           |
+| Event bus                        | Usa props/emit, provide/inject o Pinia                           |
+| Componentes mega-configurables   | Composición con slots y componentes más pequeños                 |
 
 Ver también: [¿Cómo estructurar un proyecto Vue grande?](/es/q/large-project-structure) · [¿Cómo arquitecturar una app Vue 3 para escalar entre múltiples equipos?](/es/q/scale-vue-multiple-teams) · [¿Qué es un composable?](/es/q/what-is-a-composable)
 

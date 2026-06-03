@@ -1,9 +1,9 @@
 ---
 order: 134
-title: "¿Cómo estructurarías un proyecto Vue grande?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "vite"]
-summary: "Agrupa archivos por feature/dominio, no por capa técnica. Cada carpeta de feature contiene sus componentes, composables, stores y rutas."
+title: '¿Cómo estructurarías un proyecto Vue grande?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'vite']
+summary: 'Agrupa archivos por feature/dominio, no por capa técnica. Cada carpeta de feature contiene sus componentes, composables, stores y rutas.'
 ---
 
 Vue no impone ninguna estructura de proyecto en particular. Un scaffold nuevo con Vite te da una carpeta `src/` y el resto queda en tus manos. Eso funciona bien con unas pocas decenas de archivos, pero a medida que el código crece, la ausencia de convenciones se convierte en un problema real: nadie puede predecir dónde vive una determinada pieza de lógica, las revisiones se complican y incorporar nuevos desarrolladores tarda más de lo que debería. El objetivo de una estructura deliberada es simple: cualquier archivo debe ser encontrable por su responsabilidad, no de memoria.
@@ -130,24 +130,24 @@ Esto crea contratos explícitos entre features. Cuando refactorizas los internos
 
 ## Convenciones de nomenclatura
 
-| Tipo | Convención | Ejemplo |
-| --- | --- | --- |
-| Componentes | PascalCase, sustantivo | `ProductCard.vue`, `AppModal.vue` |
-| Composables | camelCase, prefijo `use` | `useCart.ts`, `useMediaQuery.ts` |
-| Pinia stores | camelCase, `useXxxStore` | `useAuthStore.ts`, `useCartStore.ts` |
-| Tipos / interfaces | PascalCase | `AuthUser.ts`, `CartItem.ts` |
-| Funciones utilitarias | camelCase, verbo | `formatDate.ts`, `slugify.ts` |
-| Carpetas de features | kebab-case | `user-profile/`, `order-history/` |
+| Tipo                  | Convención               | Ejemplo                              |
+| --------------------- | ------------------------ | ------------------------------------ |
+| Componentes           | PascalCase, sustantivo   | `ProductCard.vue`, `AppModal.vue`    |
+| Composables           | camelCase, prefijo `use` | `useCart.ts`, `useMediaQuery.ts`     |
+| Pinia stores          | camelCase, `useXxxStore` | `useAuthStore.ts`, `useCartStore.ts` |
+| Tipos / interfaces    | PascalCase               | `AuthUser.ts`, `CartItem.ts`         |
+| Funciones utilitarias | camelCase, verbo         | `formatDate.ts`, `slugify.ts`        |
+| Carpetas de features  | kebab-case               | `user-profile/`, `order-history/`    |
 
 Estas no son preferencias de estilo arbitrarias. PascalCase para los componentes los distingue de los elementos HTML nativos en los templates. El prefijo `use` para los composables señala "esto devuelve estado reactivo y efectos secundarios" a cualquiera que lea el import. La consistencia aquí elimina por completo una categoría de microdecisiones.
 
 ## Cuándo cambiar de estructura
 
-| Situación | Estructura recomendada |
-| --- | --- |
-| App pequeña, 1–2 desarrolladores, < 100 componentes | Plana (`src/components`, `src/composables`, etc.) |
-| App mediana, 3–5 desarrolladores, features por dominio | Por features (`src/features/xxx`) |
-| App grande, múltiples equipos, sistema de diseño compartido | Por features + `shared/` + considerar un monorepo |
+| Situación                                                       | Estructura recomendada                                 |
+| --------------------------------------------------------------- | ------------------------------------------------------ |
+| App pequeña, 1–2 desarrolladores, < 100 componentes             | Plana (`src/components`, `src/composables`, etc.)      |
+| App mediana, 3–5 desarrolladores, features por dominio          | Por features (`src/features/xxx`)                      |
+| App grande, múltiples equipos, sistema de diseño compartido     | Por features + `shared/` + considerar un monorepo      |
 | Múltiples apps que comparten componentes UI o lógica de negocio | Monorepo con packages (`packages/ui`, `packages/core`) |
 
 El error que cometen los equipos es saltar directamente a la estructura más compleja antes de que exista la complejidad que la justifique. Una estructura plana bien mantenida es mejor que una estructura por features aplicada de forma inconsistente. Elige la estructura más simple que mantenga las carpetas navegables y migra cuando el dolor sea real.
@@ -158,6 +158,6 @@ Ver también: [¿Cuáles son los anti-patrones más comunes en codebases Vue gra
 
 ## Referencias
 
-- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs  
+- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs
 - [Style Guide](https://vuejs.org/style-guide/) - Vue.js docs
 - [Pinia](https://pinia.vuejs.org/) - Pinia docs

@@ -1,9 +1,9 @@
 ---
 order: 73
-title: "¿Por qué ordenar un array dentro de computed muta los datos originales?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors"]
-summary: "sort(), reverse() y splice() mutan en sitio. Dentro de computed, usa spread ([...arr].sort()) o toSorted() para no mutar el origen."
+title: '¿Por qué ordenar un array dentro de computed muta los datos originales?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors']
+summary: 'sort(), reverse() y splice() mutan en sitio. Dentro de computed, usa spread ([...arr].sort()) o toSorted() para no mutar el origen.'
 ---
 
 Porque `.sort()`, `.reverse()` y `.splice()` modifican el array **en su lugar**. Dentro de un [computed](https://vuejs.org/api/reactivity-core.html#computed), estás llamando a estos métodos sobre el array fuente reactivo. La "copia ordenada" y el original acaban siendo el mismo array mutado.
@@ -45,11 +45,11 @@ const reversed = computed(() => items.value.toReversed())
 ## Métodos que mutan frente a los que no mutan
 
 | Muta el original | Devuelve un nuevo array |
-|---|---|
-| `sort()` | `toSorted()` |
-| `reverse()` | `toReversed()` |
-| `splice()` | `toSpliced()` |
-| `push()` | `concat()` |
+| ---------------- | ----------------------- |
+| `sort()`         | `toSorted()`            |
+| `reverse()`      | `toReversed()`          |
+| `splice()`       | `toSpliced()`           |
+| `push()`         | `concat()`              |
 
 La regla general: si estás dentro de un `computed`, nunca llames a un método que cambie el array fuente. Trabaja siempre sobre una copia.
 

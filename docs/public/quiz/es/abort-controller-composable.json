@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué nombre de error lanza un fetch cancelado?",
-      "options": [
-        "CancelError",
-        "AbortError",
-        "TimeoutError",
-        "NetworkError"
-      ],
+      "options": ["CancelError", "AbortError", "TimeoutError", "NetworkError"],
       "answer": 1
     },
     {

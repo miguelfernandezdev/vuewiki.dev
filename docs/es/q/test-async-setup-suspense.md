@@ -1,9 +1,9 @@
 ---
 order: 119
-title: "¿Cómo se prueban componentes que usan async setup y Suspense?"
-difficulty: "advanced"
-tags: ["testing", "components", "vitest", "suspense"]
-summary: "Envuelve el componente en <Suspense> en tu test, luego llama a flushPromises() para esperar que el setup async se resuelva antes de hacer assertions."
+title: '¿Cómo se prueban componentes que usan async setup y Suspense?'
+difficulty: 'advanced'
+tags: ['testing', 'components', 'vitest', 'suspense']
+summary: 'Envuelve el componente en <Suspense> en tu test, luego llama a flushPromises() para esperar que el setup async se resuelva antes de hacer assertions.'
 ---
 
 Envuelve el componente en un límite `<Suspense>` en tu test, luego usa `flushPromises()` para esperar a que el async setup se resuelva. Sin `<Suspense>`, Vue avisa de que el componente tiene un `setup()` asíncrono pero no tiene un límite Suspense padre, y el componente nunca se renderiza. El test monta un wrapper que proporciona el Suspense y luego hace las comprobaciones después de que todas las promesas se resuelvan.
@@ -38,10 +38,11 @@ function mountSuspense(component: any, props: Record<string, any> = {}) {
   return mount(
     defineComponent({
       setup() {
-        return () => h(Suspense, null, {
-          default: () => h(component, props),
-          fallback: () => h('div', 'Loading...')
-        })
+        return () =>
+          h(Suspense, null, {
+            default: () => h(component, props),
+            fallback: () => h('div', 'Loading...')
+          })
       }
     })
   )
@@ -51,7 +52,9 @@ describe('UserProfile', () => {
   beforeEach(() => {
     global.fetch = vi.fn(() =>
       Promise.resolve(
-        new Response(JSON.stringify({ name: 'Alice', email: 'alice@example.com' }))
+        new Response(
+          JSON.stringify({ name: 'Alice', email: 'alice@example.com' })
+        )
       )
     )
   })
@@ -72,12 +75,16 @@ describe('UserProfile', () => {
   it('puede probar el estado de carga', async () => {
     // Crea una promesa que controlamos nosotros
     let resolveData: (value: any) => void
-    global.fetch = vi.fn(() =>
-      new Promise(resolve => {
-        resolveData = () => resolve(
-          new Response(JSON.stringify({ name: 'Bob', email: 'bob@test.com' }))
-        )
-      })
+    global.fetch = vi.fn(
+      () =>
+        new Promise((resolve) => {
+          resolveData = () =>
+            resolve(
+              new Response(
+                JSON.stringify({ name: 'Bob', email: 'bob@test.com' })
+              )
+            )
+        })
     )
 
     const wrapper = mountSuspense(UserProfile, { userId: 2 })
@@ -113,7 +120,10 @@ await flushPromises()
 Suspense no gestiona errores por sí solo. Usa `onErrorCaptured` en el wrapper:
 
 ```ts
-function mountSuspenseWithError(component: any, props: Record<string, any> = {}) {
+function mountSuspenseWithError(
+  component: any,
+  props: Record<string, any> = {}
+) {
   const errors: Error[] = []
 
   const wrapper = mount(
@@ -123,10 +133,11 @@ function mountSuspenseWithError(component: any, props: Record<string, any> = {})
           errors.push(err as Error)
           return false
         })
-        return () => h(Suspense, null, {
-          default: () => h(component, props),
-          fallback: () => h('div', 'Loading...')
-        })
+        return () =>
+          h(Suspense, null, {
+            default: () => h(component, props),
+            fallback: () => h('div', 'Loading...')
+          })
       }
     })
   )
@@ -161,10 +172,11 @@ export async function mountAsync(
   const wrapper = mount(
     defineComponent({
       setup() {
-        return () => h(Suspense, null, {
-          default: () => h(component, options.props ?? {}),
-          fallback: () => h('div', 'Loading...')
-        })
+        return () =>
+          h(Suspense, null, {
+            default: () => h(component, options.props ?? {}),
+            fallback: () => h('div', 'Loading...')
+          })
       }
     }),
     { global: options.global }

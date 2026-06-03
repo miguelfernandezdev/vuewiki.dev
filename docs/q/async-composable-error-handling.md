@@ -1,9 +1,9 @@
 ---
 order: 95
-title: "How do you handle errors in async composables?"
-difficulty: "intermediate"
-tags: ["composables", "error-handling", "watchers"]
-summary: "Return an error ref alongside data and isLoading. The composable catches errors internally and exposes them as reactive state."
+title: 'How do you handle errors in async composables?'
+difficulty: 'intermediate'
+tags: ['composables', 'error-handling', 'watchers']
+summary: 'Return an error ref alongside data and isLoading. The composable catches errors internally and exposes them as reactive state.'
 ---
 
 Return an `error` ref alongside `data` and `isLoading`. The composable catches errors internally and exposes them as reactive state, so the component can render error UI without try/catch blocks in the template. Never let errors escape silently, and never throw from a composable unless the caller explicitly expects it.
@@ -109,9 +109,8 @@ export function useFetchData<T>(url: MaybeRefOrGetter<string>) {
 ```vue
 <script setup>
 const userId = ref(1)
-const { data: user, error } = useFetchData<User>(
-  () => `/api/users/${userId.value}`
-)
+const { data: user, error } =
+  useFetchData < User > (() => `/api/users/${userId.value}`)
 </script>
 ```
 
@@ -164,9 +163,7 @@ function toFetchError(e: unknown): FetchError {
   <div v-else-if="error?.isValidationError">
     The submitted data was invalid.
   </div>
-  <div v-else-if="error">
-    Something went wrong: {{ error.message }}
-  </div>
+  <div v-else-if="error">Something went wrong: {{ error.message }}</div>
 </template>
 ```
 
@@ -177,7 +174,7 @@ For errors that composables can't handle (unexpected runtime errors), use `onErr
 ```vue
 <!-- ErrorBoundary.vue -->
 <script setup>
-const error = ref<Error | null>(null)
+const error = (ref < Error) | (null > null)
 
 onErrorCaptured((err) => {
   error.value = err
@@ -205,13 +202,13 @@ This catches errors from descendant components thrown during: renders, watchers,
 
 ## Checklist
 
-| Practice | Why |
-|---|---|
-| Return `error` ref, don't throw | Consumer controls error rendering |
-| Reset error before each request | Stale errors don't persist through retries |
-| Expose a `retry` function | Lets users recover from transient failures |
-| Type errors by category | Different errors need different UI |
-| Use `onErrorCaptured` for unexpected errors | Prevents full app crashes |
+| Practice                                    | Why                                        |
+| ------------------------------------------- | ------------------------------------------ |
+| Return `error` ref, don't throw             | Consumer controls error rendering          |
+| Reset error before each request             | Stale errors don't persist through retries |
+| Expose a `retry` function                   | Lets users recover from transient failures |
+| Type errors by category                     | Different errors need different UI         |
+| Use `onErrorCaptured` for unexpected errors | Prevents full app crashes                  |
 
 See also: [How would you build a composable for data fetching?](/q/composable-data-fetching) · [What is a composable?](/q/what-is-a-composable) · [How does error handling work in Vue?](/q/error-handling)
 

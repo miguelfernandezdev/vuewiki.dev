@@ -1,9 +1,9 @@
 ---
 order: 34
-title: "What are dynamic components and how does KeepAlive work?"
-difficulty: "intermediate"
-tags: ["components", "performance", "slots", "suspense", "teleport"]
-summary: "<component :is> switches components at runtime. <KeepAlive> caches instances in memory instead of destroying them on each switch."
+title: 'What are dynamic components and how does KeepAlive work?'
+difficulty: 'intermediate'
+tags: ['components', 'performance', 'slots', 'suspense', 'teleport']
+summary: '<component :is> switches components at runtime. <KeepAlive> caches instances in memory instead of destroying them on each switch.'
 ---
 
 Dynamic components let you switch between components at runtime using the built-in `<component>` element with the `:is` prop. By default, Vue destroys the old component and creates a new one on each switch. `<KeepAlive>` changes that behavior by caching instances in memory.
@@ -122,12 +122,12 @@ Using `route.fullPath` as the key means `/users/1` and `/users/2` are cached sep
 
 ## When NOT to use KeepAlive
 
-| Scenario | Why |
-|---|---|
-| Memory-heavy components (maps, large tables) | Cached instances stay in memory |
-| Sensitive data (auth forms, payment flows) | Data should be cleared on exit |
-| Components with background timers you can't pause | They keep running while hidden |
-| Pages where users expect fresh results | Stale cached data confuses users |
+| Scenario                                          | Why                              |
+| ------------------------------------------------- | -------------------------------- |
+| Memory-heavy components (maps, large tables)      | Cached instances stay in memory  |
+| Sensitive data (auth forms, payment flows)        | Data should be cleared on exit   |
+| Components with background timers you can't pause | They keep running while hidden   |
+| Pages where users expect fresh results            | Stale cached data confuses users |
 
 See also: [What are async components?](/q/async-components) · [What are Teleport, Fragments, and Suspense?](/q/teleport-fragments-suspense) · [How does the `is` attribute work?](/q/is-attribute-dynamic-rendering)
 

@@ -1,9 +1,9 @@
 ---
 order: 134
-title: "How would you structure a large Vue project?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "vite"]
-summary: "Group files by feature/domain, not by technical layer. Each feature folder owns its components, composables, stores, and routes."
+title: 'How would you structure a large Vue project?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'vite']
+summary: 'Group files by feature/domain, not by technical layer. Each feature folder owns its components, composables, stores, and routes.'
 ---
 
 Vue does not enforce any particular project structure. A brand-new Vite scaffold gives you a `src/` folder and leaves the rest to you. That works fine for a few dozen files, but as the codebase grows the absence of conventions becomes a real problem: no one can predict where a given piece of logic lives, reviews become harder, and onboarding new developers takes longer than it should. The goal of a deliberate structure is simple: any file should be findable by its responsibility, not by memory.
@@ -130,24 +130,24 @@ This creates explicit contracts between features. When you refactor the internal
 
 ## Naming conventions
 
-| Type | Convention | Example |
-| --- | --- | --- |
-| Components | PascalCase, noun phrase | `ProductCard.vue`, `AppModal.vue` |
-| Composables | camelCase, `use` prefix | `useCart.ts`, `useMediaQuery.ts` |
-| Pinia stores | camelCase, `useXxxStore` | `useAuthStore.ts`, `useCartStore.ts` |
-| Types / interfaces | PascalCase | `AuthUser.ts`, `CartItem.ts` |
-| Utility functions | camelCase, verb | `formatDate.ts`, `slugify.ts` |
-| Feature folders | kebab-case | `user-profile/`, `order-history/` |
+| Type               | Convention               | Example                              |
+| ------------------ | ------------------------ | ------------------------------------ |
+| Components         | PascalCase, noun phrase  | `ProductCard.vue`, `AppModal.vue`    |
+| Composables        | camelCase, `use` prefix  | `useCart.ts`, `useMediaQuery.ts`     |
+| Pinia stores       | camelCase, `useXxxStore` | `useAuthStore.ts`, `useCartStore.ts` |
+| Types / interfaces | PascalCase               | `AuthUser.ts`, `CartItem.ts`         |
+| Utility functions  | camelCase, verb          | `formatDate.ts`, `slugify.ts`        |
+| Feature folders    | kebab-case               | `user-profile/`, `order-history/`    |
 
 These are not arbitrary style preferences. PascalCase for components distinguishes them from native HTML elements in templates. The `use` prefix for composables signals "this returns reactive state and side effects" to anyone reading the import. Consistency here removes a category of micro-decisions entirely.
 
 ## When to change structure
 
-| Situation | Recommended structure |
-| --- | --- |
-| Small app, 1–2 developers, < 100 components | Flat (`src/components`, `src/composables`, etc.) |
-| Medium app, 3–5 developers, domain-driven features | Feature-based (`src/features/xxx`) |
-| Large app, multiple teams, shared design system | Feature-based + `shared/` + consider a monorepo |
+| Situation                                             | Recommended structure                                   |
+| ----------------------------------------------------- | ------------------------------------------------------- |
+| Small app, 1–2 developers, < 100 components           | Flat (`src/components`, `src/composables`, etc.)        |
+| Medium app, 3–5 developers, domain-driven features    | Feature-based (`src/features/xxx`)                      |
+| Large app, multiple teams, shared design system       | Feature-based + `shared/` + consider a monorepo         |
 | Multiple apps sharing UI components or business logic | Monorepo with packages (`packages/ui`, `packages/core`) |
 
 The mistake teams make is jumping straight to the most complex structure before the complexity exists to justify it. A flat structure that is consistently maintained is better than a feature structure applied inconsistently. Choose the simplest structure that keeps folders navigable, and migrate when the pain becomes real.
@@ -158,6 +158,6 @@ See also: [What are common anti-patterns in large Vue codebases?](/q/vue-anti-pa
 
 ## References
 
-- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs  
+- [Project Structure](https://vuejs.org/guide/scaling-up/project-structure.html) - Vue.js docs
 - [Style Guide](https://vuejs.org/style-guide/) - Vue.js docs
 - [Pinia](https://pinia.vuejs.org/) - Pinia docs

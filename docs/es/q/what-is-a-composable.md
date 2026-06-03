@@ -1,9 +1,9 @@
 ---
 order: 90
-title: "¿Qué es un composable?"
-difficulty: "beginner"
-tags: ["composables", "composition-api", "vueuse", "watchers"]
-summary: "Una función que encapsula lógica reutilizable usando la Composition API (refs, computed, watchers). Devuelve estado reactivo y métodos."
+title: '¿Qué es un composable?'
+difficulty: 'beginner'
+tags: ['composables', 'composition-api', 'vueuse', 'watchers']
+summary: 'Una función que encapsula lógica reutilizable usando la Composition API (refs, computed, watchers). Devuelve estado reactivo y métodos.'
 ---
 
 A medida que tus componentes crecen, notarás partes de lógica que no pertenecen a ningún componente concreto: patrones de obtención de datos, validación de formularios, temporizadores, event listeners. Un composable es una función que empaqueta esa lógica reutilizable usando la [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html), para que puedas compartirla entre componentes sin duplicar código.
@@ -22,9 +22,15 @@ export function useCounter(initial = 0) {
   const count = ref(initial)
   const doubled = computed(() => count.value * 2)
 
-  function increment() { count.value++ }
-  function decrement() { count.value-- }
-  function reset() { count.value = initial }
+  function increment() {
+    count.value++
+  }
+  function decrement() {
+    count.value--
+  }
+  function reset() {
+    count.value = initial
+  }
 
   return { count, doubled, increment, decrement, reset }
 }

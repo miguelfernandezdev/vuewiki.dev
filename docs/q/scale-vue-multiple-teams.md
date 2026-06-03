@@ -1,9 +1,9 @@
 ---
 order: 139
-title: "How do you architect a Vue 3 app to scale across multiple teams?"
-difficulty: "advanced"
-tags: ["architecture", "pinia"]
-summary: "Organize by business domain (feature modules), not technical layers. Each team owns a vertical slice with its own components, stores, and routes."
+title: 'How do you architect a Vue 3 app to scale across multiple teams?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia']
+summary: 'Organize by business domain (feature modules), not technical layers. Each team owns a vertical slice with its own components, stores, and routes.'
 ---
 
 Organize code by business domain, not by technical layer. Each team owns a vertical slice of the application (a feature module) with its own components, composables, stores, and routes. Shared code goes in a separate package with strict API boundaries. The goal is that teams can ship independently without stepping on each other's code.
@@ -87,7 +87,10 @@ export const billingRoutes: RouteRecordRaw[] = [
     path: '/billing',
     component: () => import('./components/BillingLayout.vue'),
     children: [
-      { path: '', component: () => import('./components/BillingDashboard.vue') },
+      {
+        path: '',
+        component: () => import('./components/BillingDashboard.vue')
+      },
       { path: 'invoices', component: () => import('./components/Invoices.vue') }
     ]
   }
@@ -101,11 +104,7 @@ import { billingRoutes } from '@/features/billing'
 import { dashboardRoutes } from '@/features/dashboard'
 
 const router = createRouter({
-  routes: [
-    ...authRoutes,
-    ...billingRoutes,
-    ...dashboardRoutes
-  ]
+  routes: [...authRoutes, ...billingRoutes, ...dashboardRoutes]
 })
 ```
 
@@ -148,14 +147,14 @@ Each package has its own `package.json`, tests, and build pipeline. The `app` pa
 
 ## Key principles
 
-| Principle | Why |
-|---|---|
-| Feature modules over technical layers | Teams own verticals, not horizontals |
-| Barrel exports as public API | Prevents coupling to internal structure |
-| Shared code is explicit and versioned | Changes to shared code are visible to all consumers |
-| Features don't import each other's internals | Use shared contracts (composables, types, events) |
-| Lazy-loaded routes per feature | Each feature is a separate chunk, reducing initial load |
-| Lint rules enforce boundaries | Humans forget, linters don't |
+| Principle                                    | Why                                                     |
+| -------------------------------------------- | ------------------------------------------------------- |
+| Feature modules over technical layers        | Teams own verticals, not horizontals                    |
+| Barrel exports as public API                 | Prevents coupling to internal structure                 |
+| Shared code is explicit and versioned        | Changes to shared code are visible to all consumers     |
+| Features don't import each other's internals | Use shared contracts (composables, types, events)       |
+| Lazy-loaded routes per feature               | Each feature is a separate chunk, reducing initial load |
+| Lint rules enforce boundaries                | Humans forget, linters don't                            |
 
 See also: [How would you structure a large Vue project?](/q/large-project-structure) · [How would you structure a micro-frontend with Vue?](/q/micro-frontends-vue) · [What are common anti-patterns in large Vue codebases?](/q/vue-anti-patterns)
 

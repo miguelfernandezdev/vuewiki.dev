@@ -1,8 +1,8 @@
 ---
 order: 169
-title: "How do you handle accessibility in Vue?"
-difficulty: "intermediate"
-tags: ["accessibility", "components", "teleport"]
+title: 'How do you handle accessibility in Vue?'
+difficulty: 'intermediate'
+tags: ['accessibility', 'components', 'teleport']
 summary: "Use semantic HTML, add ARIA only when native semantics aren't enough, manage focus on route changes, and test with screen readers."
 ---
 
@@ -52,13 +52,7 @@ const panelId = useId()
   >
     Details
   </button>
-  <div
-    v-show="isExpanded"
-    :id="panelId"
-    role="region"
-  >
-    Panel content
-  </div>
+  <div v-show="isExpanded" :id="panelId" role="region">Panel content</div>
 </template>
 ```
 
@@ -178,15 +172,15 @@ Without the visually hidden text, a screen reader would just announce "button" w
 
 ## Checklist
 
-| Area | What to do |
-|---|---|
-| Semantic HTML | Use `nav`, `main`, `button`, `ul`, `dialog` instead of divs |
-| ARIA | Only add when native semantics aren't enough. Bind dynamically with `:aria-*` |
-| Focus | Manage on route changes, modals, and dynamic content |
-| Live regions | Announce dynamic content changes with `aria-live` |
-| Keyboard | Ensure all interactive elements are reachable and operable with keyboard |
-| Color contrast | Minimum 4.5:1 for text, 3:1 for large text (WCAG AA) |
-| Labels | Every form input needs a visible `<label>` or `aria-label` |
+| Area           | What to do                                                                    |
+| -------------- | ----------------------------------------------------------------------------- |
+| Semantic HTML  | Use `nav`, `main`, `button`, `ul`, `dialog` instead of divs                   |
+| ARIA           | Only add when native semantics aren't enough. Bind dynamically with `:aria-*` |
+| Focus          | Manage on route changes, modals, and dynamic content                          |
+| Live regions   | Announce dynamic content changes with `aria-live`                             |
+| Keyboard       | Ensure all interactive elements are reachable and operable with keyboard      |
+| Color contrast | Minimum 4.5:1 for text, 3:1 for large text (WCAG AA)                          |
+| Labels         | Every form input needs a visible `<label>` or `aria-label`                    |
 
 See also: [How do you handle complex forms?](/q/complex-forms) · [How does Teleport work?](/q/teleport-fragments-suspense) · [How do template refs work?](/q/template-refs)
 

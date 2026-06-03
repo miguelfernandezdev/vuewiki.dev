@@ -1,9 +1,9 @@
 ---
 order: 108
-title: "¿Cómo se tipan los template refs en TypeScript?"
-difficulty: "intermediate"
-tags: ["typescript", "components", "watchers"]
-summary: "Declara como ref<HTMLElement | null>(null). Usa optional chaining (el.value?.focus()) o accede en onMounted donde está garantizado que existe."
+title: '¿Cómo se tipan los template refs en TypeScript?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components', 'watchers']
+summary: 'Declara como ref<HTMLElement | null>(null). Usa optional chaining (el.value?.focus()) o accede en onMounted donde está garantizado que existe.'
 ---
 
 Los template refs comienzan como `null` y se convierten en el elemento DOM o en la instancia del componente después del montaje. En TypeScript, debes tener en cuenta esto con un tipo unión y proteger el acceso con optional chaining o hooks del ciclo de vida.
@@ -99,9 +99,7 @@ watch(modalRef, (el) => {
 </script>
 
 <template>
-  <div v-if="showModal" ref="modalRef" tabindex="-1">
-    Contenido del modal
-  </div>
+  <div v-if="showModal" ref="modalRef" tabindex="-1">Contenido del modal</div>
 </template>
 ```
 
@@ -126,7 +124,11 @@ onMounted(() => {
     <li
       v-for="(item, index) in items"
       :key="item"
-      :ref="(el) => { itemRefs[index] = el as HTMLLIElement }"
+      :ref="
+        (el) => {
+          itemRefs[index] = el as HTMLLIElement
+        }
+      "
     >
       {{ item }}
     </li>
@@ -151,14 +153,14 @@ onMounted(async () => {
 
 ## Referencia rápida
 
-| Escenario | Tipo |
-|---|---|
-| Elemento DOM | `ref<HTMLDivElement \| null>(null)` |
-| Elemento input | `ref<HTMLInputElement \| null>(null)` |
-| Elemento canvas | `ref<HTMLCanvasElement \| null>(null)` |
-| Componente hijo | `ref<InstanceType<typeof MyComponent> \| null>(null)` |
-| Array desde v-for | `ref<(HTMLLIElement \| null)[]>([])` |
-| useTemplateRef (3.5+) | `useTemplateRef<HTMLInputElement>('nombre')` |
+| Escenario             | Tipo                                                  |
+| --------------------- | ----------------------------------------------------- |
+| Elemento DOM          | `ref<HTMLDivElement \| null>(null)`                   |
+| Elemento input        | `ref<HTMLInputElement \| null>(null)`                 |
+| Elemento canvas       | `ref<HTMLCanvasElement \| null>(null)`                |
+| Componente hijo       | `ref<InstanceType<typeof MyComponent> \| null>(null)` |
+| Array desde v-for     | `ref<(HTMLLIElement \| null)[]>([])`                  |
+| useTemplateRef (3.5+) | `useTemplateRef<HTMLInputElement>('nombre')`          |
 
 Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Por qué una template ref es null dentro de v-if?](/es/q/template-ref-null-v-if) · [¿Qué es defineExpose?](/es/q/define-expose)
 

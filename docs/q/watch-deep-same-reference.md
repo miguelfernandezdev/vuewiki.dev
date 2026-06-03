@@ -1,8 +1,8 @@
 ---
 order: 71
-title: "Why does my watcher receive the same value for old and new?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors", "watchers"]
+title: 'Why does my watcher receive the same value for old and new?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors', 'watchers']
 summary: "Deep-watching a reactive object gives the same reference for old and new. Vue doesn't clone before mutation. Snapshot with structuredClone if you need the diff."
 ---
 
@@ -17,7 +17,7 @@ watch(
   () => state.user,
   (newUser, oldUser) => {
     console.log(newUser === oldUser) // true, same object
-    console.log(oldUser.name)        // 'Jane', not 'John'
+    console.log(oldUser.name) // 'Jane', not 'John'
   },
   { deep: true }
 )
@@ -70,8 +70,8 @@ watch(
 They differ when the entire object is **replaced**, not mutated:
 
 ```ts
-state.user = { name: 'Jane', theme: 'light' }  // replacement → different references
-state.user.name = 'Jane'                         // mutation → same reference
+state.user = { name: 'Jane', theme: 'light' } // replacement → different references
+state.user.name = 'Jane' // mutation → same reference
 ```
 
 See also: [What is the difference between watch and watchEffect?](/q/watch-vs-watcheffect) · [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard)

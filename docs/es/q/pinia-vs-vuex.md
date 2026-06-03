@@ -1,9 +1,9 @@
 ---
 order: 96
-title: "¿Qué es Pinia y en qué se diferencia de Vuex?"
-difficulty: "beginner"
-tags: ["state-management", "pinia", "vuex"]
-summary: "Pinia reemplaza Vuex: sin mutations, sin API basada en strings, soporte TypeScript completo, modular por diseño. Vuex está en modo mantenimiento."
+title: '¿Qué es Pinia y en qué se diferencia de Vuex?'
+difficulty: 'beginner'
+tags: ['state-management', 'pinia', 'vuex']
+summary: 'Pinia reemplaza Vuex: sin mutations, sin API basada en strings, soporte TypeScript completo, modular por diseño. Vuex está en modo mantenimiento.'
 ---
 
 [Pinia](https://pinia.vuejs.org/) es la librería oficial de gestión de estado para Vue 3. Reemplaza a [Vuex](/es/q/how-vuex-works). El equipo de Vue la creó porque el diseño de Vuex (mutations, API basada en strings, módulos complejos) no encajaba bien con TypeScript y la Composition API.
@@ -79,14 +79,14 @@ Sin `commit`, sin `dispatch`, sin `mapGetters`. Solo importa el store y úsalo.
 
 ## Tabla de diferencias clave
 
-| Aspecto | Vuex | Pinia |
-| --- | --- | --- |
-| Mutations | Requeridas (síncronas) | No existen |
-| TypeScript | Limitado, API basada en strings | Inferencia completa, type-safe |
-| Estructura del store | Un store, módulos con namespace | Stores independientes |
-| DevTools | Sí | Sí (time-travel, edición de estado) |
-| SSR | Requiere configuración cuidadosa | Soporte integrado |
-| Tamaño del bundle | ~6kb | ~1kb |
+| Aspecto              | Vuex                             | Pinia                               |
+| -------------------- | -------------------------------- | ----------------------------------- |
+| Mutations            | Requeridas (síncronas)           | No existen                          |
+| TypeScript           | Limitado, API basada en strings  | Inferencia completa, type-safe      |
+| Estructura del store | Un store, módulos con namespace  | Stores independientes               |
+| DevTools             | Sí                               | Sí (time-travel, edición de estado) |
+| SSR                  | Requiere configuración cuidadosa | Soporte integrado                   |
+| Tamaño del bundle    | ~6kb                             | ~1kb                                |
 
 Ver también: [¿Cómo funciona Vuex?](/es/q/how-vuex-works) · [¿Cómo funciona Pinia internamente?](/es/q/how-pinia-works) · [¿Cómo migrarías un módulo de Vuex a Pinia?](/es/q/vuex-module-to-pinia)
 

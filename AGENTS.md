@@ -33,9 +33,9 @@ Each question is a markdown file with this frontmatter:
 ```yaml
 ---
 order: 1
-title: "Question title here?"
-difficulty: "beginner"
-tags: ["composition-api", "reactivity"]
+title: 'Question title here?'
+difficulty: 'beginner'
+tags: ['composition-api', 'reactivity']
 ---
 ```
 

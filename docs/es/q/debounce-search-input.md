@@ -1,9 +1,9 @@
 ---
 order: 92
-title: "¿Cómo implementarías debounce en un input de búsqueda?"
-difficulty: "intermediate"
-tags: ["composables", "performance", "vueuse", "watchers", "v-model"]
-summary: "Observa la ref del input y retrasa la actualización con setTimeout. Extráelo como composable o usa refDebounced de VueUse."
+title: '¿Cómo implementarías debounce en un input de búsqueda?'
+difficulty: 'intermediate'
+tags: ['composables', 'performance', 'vueuse', 'watchers', 'v-model']
+summary: 'Observa la ref del input y retrasa la actualización con setTimeout. Extráelo como composable o usa refDebounced de VueUse.'
 ---
 
 Debouncing retrasa una acción hasta que el usuario deja de escribir durante un tiempo determinado. Sin él, un input de búsqueda dispara una llamada a la API en cada tecla. Escribir "vue router" envía 10 peticiones, la mayoría inútiles porque el usuario no ha terminado de escribir.

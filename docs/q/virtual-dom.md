@@ -1,9 +1,9 @@
 ---
 order: 2
-title: "What is the Virtual DOM and how does Vue use it?"
-difficulty: "beginner"
-tags: ["core", "reactivity"]
-summary: "A lightweight JS tree of vnodes. Vue diffs the new tree against the old one and applies only the minimal DOM operations needed."
+title: 'What is the Virtual DOM and how does Vue use it?'
+difficulty: 'beginner'
+tags: ['core', 'reactivity']
+summary: 'A lightweight JS tree of vnodes. Vue diffs the new tree against the old one and applies only the minimal DOM operations needed.'
 ---
 
 The [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) is a lightweight JavaScript representation of the real DOM. Instead of manipulating the browser's DOM directly on every change, Vue builds a tree of plain objects (vnodes), diffs the new tree against the previous one, and applies only the minimal set of real DOM operations needed.
@@ -60,9 +60,12 @@ Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compile
 ```vue
 <template>
   <div>
-    <h1>Static title</h1>           <!-- hoisted, skipped during diff -->
-    <p>{{ dynamicContent }}</p>      <!-- patch flag: TEXT -->
-    <span :class="activeClass">ok</span> <!-- patch flag: CLASS -->
+    <h1>Static title</h1>
+    <!-- hoisted, skipped during diff -->
+    <p>{{ dynamicContent }}</p>
+    <!-- patch flag: TEXT -->
+    <span :class="activeClass">ok</span>
+    <!-- patch flag: CLASS -->
   </div>
 </template>
 ```
@@ -71,9 +74,9 @@ Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compile
 
 Some frameworks (Svelte, SolidJS) skip the Virtual DOM entirely and compile templates to direct DOM instructions. Vue chose the Virtual DOM because it enables the render function API, JSX support, and programmatic vnode manipulation while still being fast enough for virtually all use cases.
 
-| Approach | Frameworks | Tradeoff |
-|---|---|---|
-| Virtual DOM | Vue, React | Flexible API, slight overhead from diffing |
+| Approach       | Frameworks      | Tradeoff                                        |
+| -------------- | --------------- | ----------------------------------------------- |
+| Virtual DOM    | Vue, React      | Flexible API, slight overhead from diffing      |
 | No Virtual DOM | Svelte, SolidJS | Less overhead, but limited programmatic control |
 
 See also: [What is the difference between a component and an element?](/q/component-vs-element-vnode), [What is Vue and what are its main features?](/q/what-is-vue)

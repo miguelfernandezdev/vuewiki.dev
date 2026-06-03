@@ -1,9 +1,9 @@
 ---
 order: 135
-title: "What is the compound components pattern in Vue?"
-difficulty: "advanced"
-tags: ["architecture", "components", "vite", "provide-inject"]
-summary: "Components that share implicit state via provide/inject. The parent manages state, children consume it. Classic examples: tabs, accordions, selects."
+title: 'What is the compound components pattern in Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'components', 'vite', 'provide-inject']
+summary: 'Components that share implicit state via provide/inject. The parent manages state, children consume it. Classic examples: tabs, accordions, selects.'
 ---
 
 Compound components are a set of components that work together and share implicit state through provide/inject. The parent manages the state, the children consume it. The consumer arranges the children freely without wiring props or events between them manually.
@@ -189,12 +189,12 @@ const { toggle, isOpen } = inject('accordion')!
 
 ## When to use compound components
 
-| Situation | Use compound components? |
-|---|---|
-| Group of UI elements that share state (tabs, accordion, select, stepper) | Yes |
-| Components always used together in a parent-child relationship | Yes |
-| Independent components that occasionally interact | No, use props/emits or a store |
-| Simple parent-child with 1-2 props | No, over-engineering |
+| Situation                                                                | Use compound components?       |
+| ------------------------------------------------------------------------ | ------------------------------ |
+| Group of UI elements that share state (tabs, accordion, select, stepper) | Yes                            |
+| Components always used together in a parent-child relationship           | Yes                            |
+| Independent components that occasionally interact                        | No, use props/emits or a store |
+| Simple parent-child with 1-2 props                                       | No, over-engineering           |
 
 ## Compound components vs props-only approach
 
@@ -202,10 +202,12 @@ The props-only approach passes all data to a single component:
 
 ```vue
 <!-- Props-only: less flexible, simpler for small cases -->
-<Tabs :items="[
-  { label: 'Profile', content: '...' },
-  { label: 'Settings', content: '...' }
-]" />
+<Tabs
+  :items="[
+    { label: 'Profile', content: '...' },
+    { label: 'Settings', content: '...' }
+  ]"
+/>
 
 <!-- Compound: more flexible, consumer controls layout -->
 <Tabs>

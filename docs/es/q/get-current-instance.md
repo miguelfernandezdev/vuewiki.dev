@@ -1,9 +1,9 @@
 ---
 order: 61
-title: "¿Qué es getCurrentInstance() y por qué deberías evitarlo?"
-difficulty: "advanced"
-tags: ["composition-api", "pinia", "vueuse", "provide-inject"]
-summary: "getCurrentInstance() expone el estado interno del componente. Es API interna para autores de librerías, no para código de app, porque puede romperse entre versiones."
+title: '¿Qué es getCurrentInstance() y por qué deberías evitarlo?'
+difficulty: 'advanced'
+tags: ['composition-api', 'pinia', 'vueuse', 'provide-inject']
+summary: 'getCurrentInstance() expone el estado interno del componente. Es API interna para autores de librerías, no para código de app, porque puede romperse entre versiones.'
 ---
 
 [`getCurrentInstance()`](https://vuejs.org/api/composition-api-setup.html#getcurrentinstance) devuelve la instancia interna del componente durante `setup()`. Expone internos como `$el`, `$parent`, `$refs`, `$emit`, el proxy del componente y todo el estado interno. Es una vía de escape para autores de librerías, no para código de aplicación. El equipo de Vue la marca explícitamente como API interna, lo que significa que puede cambiar entre versiones menores sin previo aviso. Si la usas en tu app, estás acoplándote a detalles de implementación que pueden romperse en cualquier actualización de Vue.
@@ -98,14 +98,14 @@ Por ejemplo, `useRouter()` llama internamente a `getCurrentInstance()` para acce
 
 ## Resumen
 
-| Necesidad | Usa en su lugar |
-|---|---|
-| Elemento DOM | Template ref |
-| Router, i18n, plugins personalizados | Sus composables (`useRouter`, `useI18n`) |
-| Datos del padre | `inject()` |
-| Emit desde un composable | Pasa `emit` como parámetro |
-| Contexto de app en una librería | `getCurrentInstance()` es aceptable (envuélvelo) |
-| Código de aplicación | Nunca uses `getCurrentInstance()` |
+| Necesidad                            | Usa en su lugar                                  |
+| ------------------------------------ | ------------------------------------------------ |
+| Elemento DOM                         | Template ref                                     |
+| Router, i18n, plugins personalizados | Sus composables (`useRouter`, `useI18n`)         |
+| Datos del padre                      | `inject()`                                       |
+| Emit desde un composable             | Pasa `emit` como parámetro                       |
+| Contexto de app en una librería      | `getCurrentInstance()` es aceptable (envuélvelo) |
+| Código de aplicación                 | Nunca uses `getCurrentInstance()`                |
 
 Ver también: [¿Qué es Provide/Inject?](/es/q/provide-inject) · [¿Cómo funcionan los template refs?](/es/q/template-refs)
 

@@ -1,9 +1,9 @@
 ---
 order: 42
-title: "¿Cómo implementarías drag and drop en Vue?"
-difficulty: "intermediate"
-tags: ["components", "v-model"]
-summary: "Usa vue-draggable-plus para listas ordenables, la API nativa HTML Drag and Drop para casos simples, o pointer events para arrastre personalizado."
+title: '¿Cómo implementarías drag and drop en Vue?'
+difficulty: 'intermediate'
+tags: ['components', 'v-model']
+summary: 'Usa vue-draggable-plus para listas ordenables, la API nativa HTML Drag and Drop para casos simples, o pointer events para arrastre personalizado.'
 ---
 
 Hay tres enfoques: la API nativa de HTML Drag and Drop para casos simples, la librería `vue-draggable-plus` (o `vuedraggable`) para listas ordenables, y los pointer events para comportamiento completamente personalizado. La mayoría de casos reales (listas reordenables, tableros kanban) se resuelven mejor con una librería.
@@ -26,7 +26,7 @@ function onDrop(event: DragEvent) {
   const item = event.dataTransfer!.getData('text/plain')
   if (!dropped.value.includes(item)) {
     dropped.value.push(item)
-    items.value = items.value.filter(i => i !== item)
+    items.value = items.value.filter((i) => i !== item)
   }
 }
 
@@ -51,11 +51,7 @@ function onDragOver(event: DragEvent) {
       </div>
     </div>
 
-    <div
-      class="column drop-zone"
-      @drop="onDrop"
-      @dragover="onDragOver"
-    >
+    <div class="column drop-zone" @drop="onDrop" @dragover="onDragOver">
       <h3>Dropped</h3>
       <div v-for="item in dropped" :key="item" class="drag-item">
         {{ item }}
@@ -116,12 +112,8 @@ const columns = ref({
     { id: 1, title: 'Research' },
     { id: 2, title: 'Design' }
   ],
-  doing: [
-    { id: 3, title: 'Implement API' }
-  ],
-  done: [
-    { id: 4, title: 'Write docs' }
-  ]
+  doing: [{ id: 3, title: 'Implement API' }],
+  done: [{ id: 4, title: 'Write docs' }]
 })
 </script>
 
@@ -149,10 +141,7 @@ La prop `group="kanban"` permite mover elementos entre listas. El array de cada 
 ### Gestionar el evento de reordenación
 
 ```vue
-<VueDraggable
-  v-model="tasks"
-  @update="onReorder"
->
+<VueDraggable v-model="tasks" @update="onReorder">
   ...
 </VueDraggable>
 
@@ -217,13 +206,13 @@ Los pointer events funcionan tanto en ratón como en dispositivos táctiles sin 
 
 ## Cómo elegir el enfoque
 
-| Necesidad | Enfoque |
-|---|---|
-| Lista reordenable o tablero kanban | vue-draggable-plus |
-| Arrastrar elemento de la zona A a la zona B | API nativa o vue-draggable-plus |
-| Arrastre en posición libre (tipo canvas) | Pointer events |
-| Handles de redimensión, restricciones personalizadas | Pointer events |
-| Soltar archivos desde el escritorio | API nativa (`@drop` + `dataTransfer.files`) |
+| Necesidad                                            | Enfoque                                     |
+| ---------------------------------------------------- | ------------------------------------------- |
+| Lista reordenable o tablero kanban                   | vue-draggable-plus                          |
+| Arrastrar elemento de la zona A a la zona B          | API nativa o vue-draggable-plus             |
+| Arrastre en posición libre (tipo canvas)             | Pointer events                              |
+| Handles de redimensión, restricciones personalizadas | Pointer events                              |
+| Soltar archivos desde el escritorio                  | API nativa (`@drop` + `dataTransfer.files`) |
 
 Ver también: [¿Cómo funcionan las template refs?](/es/q/template-refs) · [¿Cómo funciona el manejo de eventos?](/es/q/event-handling)
 

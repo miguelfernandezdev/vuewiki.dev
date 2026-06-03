@@ -1,8 +1,8 @@
 ---
 order: 33
-title: "How do template refs work?"
-difficulty: "intermediate"
-tags: ["components", "composition-api"]
+title: 'How do template refs work?'
+difficulty: 'intermediate'
+tags: ['components', 'composition-api']
 summary: "Add ref=\\\"name\\\" in the template and declare a matching ref() in script. After mount, it holds the DOM element or child component instance."
 ---
 
@@ -16,7 +16,7 @@ The variable name in script must match the `ref` attribute exactly. If they don'
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const inputEl = ref<HTMLInputElement | null>(null)
+const inputEl = (ref < HTMLInputElement) | (null > null)
 
 onMounted(() => {
   inputEl.value?.focus()
@@ -148,13 +148,13 @@ function submit() {
 
 ## When to use template refs
 
-| Situation | Use a ref? |
-|---|---|
-| Focus an input, scroll to element | Yes |
-| Integrate a non-Vue library (chart, map) | Yes |
-| Read element dimensions | Yes |
-| Change text or toggle classes | No, use reactive data and bindings |
-| Listen to events | No, use `@event` |
+| Situation                                | Use a ref?                         |
+| ---------------------------------------- | ---------------------------------- |
+| Focus an input, scroll to element        | Yes                                |
+| Integrate a non-Vue library (chart, map) | Yes                                |
+| Read element dimensions                  | Yes                                |
+| Change text or toggle classes            | No, use reactive data and bindings |
+| Listen to events                         | No, use `@event`                   |
 
 See also: [What is defineExpose and when is it needed?](/q/define-expose) · [Can you use await directly in script setup?](/q/await-in-script-setup)
 

@@ -11,17 +11,20 @@ export default defineConfig({
   description: 'Vue.js interview questions with answers and examples',
   cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
-  locales: { root: { label: 'English', lang: 'en' }, es: { label: 'Español', lang: 'es' } },
+  locales: {
+    root: { label: 'English', lang: 'en' },
+    es: { label: 'Español', lang: 'es' }
+  },
   themeConfig: {
     search: { provider: 'local' },
     socialLinks: [{ icon: 'github', link: '...' }],
-    nav: [],      // EMPTY
-    sidebar: {},  // EMPTY
+    nav: [], // EMPTY
+    sidebar: {} // EMPTY
     // NO footer
     // NO editLink
     // NO sitemap
     // NO OG meta tags
-  },
+  }
 })
 ```
 
@@ -33,17 +36,17 @@ Homepage uses `layout: page` with a custom `<HomePage />` component instead of V
 
 Every single Vue ecosystem site has navbar items. None are empty.
 
-| Project | Nav items |
-|---------|-----------|
-| Pinia | Guide, API, Cookbook, Links dropdown, v3.x dropdown |
-| Vue Router | Guide, API, v4.x/v5.x dropdown, Links dropdown |
-| Pinia Colada | Guide, API, Cookbook, Links dropdown |
-| Vite | Guide, Config, Plugins, Blog, Resources dropdown, v7.x dropdown |
-| VitePress | Guide, Reference, 2.0.0 dropdown |
-| Vitest | Guides, API, Config, Blog, vX.x dropdown |
-| VueUse | Guide dropdown, Functions dropdown, Resources dropdown, Playground |
-| Vue Macros | Guide, Macros, Features, Volar, Example |
-| Vue I18n | Guide, API, Ecosystem |
+| Project      | Nav items                                                          |
+| ------------ | ------------------------------------------------------------------ |
+| Pinia        | Guide, API, Cookbook, Links dropdown, v3.x dropdown                |
+| Vue Router   | Guide, API, v4.x/v5.x dropdown, Links dropdown                     |
+| Pinia Colada | Guide, API, Cookbook, Links dropdown                               |
+| Vite         | Guide, Config, Plugins, Blog, Resources dropdown, v7.x dropdown    |
+| VitePress    | Guide, Reference, 2.0.0 dropdown                                   |
+| Vitest       | Guides, API, Config, Blog, vX.x dropdown                           |
+| VueUse       | Guide dropdown, Functions dropdown, Resources dropdown, Playground |
+| Vue Macros   | Guide, Macros, Features, Volar, Example                            |
+| Vue I18n     | Guide, API, Ecosystem                                              |
 
 Common pattern: 2-4 main items + a "Links" or version dropdown. Libraries use Guide/API/Cookbook. Tools add Config. All use `activeMatch` for highlighting.
 
@@ -58,10 +61,16 @@ nav: [
   {
     text: 'Links',
     items: [
-      { text: 'GitHub', link: 'https://github.com/miguelfernandezdev/vuewiki.dev' },
-      { text: 'Changelog', link: 'https://github.com/miguelfernandezdev/vuewiki.dev/blob/main/CHANGELOG.md' },
-    ],
-  },
+      {
+        text: 'GitHub',
+        link: 'https://github.com/miguelfernandezdev/vuewiki.dev'
+      },
+      {
+        text: 'Changelog',
+        link: 'https://github.com/miguelfernandezdev/vuewiki.dev/blob/main/CHANGELOG.md'
+      }
+    ]
+  }
 ]
 ```
 
@@ -90,11 +99,11 @@ Add the standard footer. The locale keys `footer.builtWith` and `footer.github` 
 
 Every site enables it. Two text conventions:
 
-| Text | Used by |
-|------|---------|
+| Text                           | Used by                                         |
+| ------------------------------ | ----------------------------------------------- |
 | "Suggest changes to this page" | Pinia, Vue Router, Pinia Colada, VueUse, Vitest |
-| "Suggest changes" | Pinia (shared config) |
-| "Edit this page on GitHub" | VitePress |
+| "Suggest changes"              | Pinia (shared config)                           |
+| "Edit this page on GitHub"     | VitePress                                       |
 
 ```ts
 editLink: {
@@ -107,17 +116,17 @@ editLink: {
 
 ## 4. Social links
 
-| Project | GitHub | X/Twitter | Bluesky | Discord | Mastodon |
-|---------|--------|-----------|---------|---------|----------|
-| Pinia | x | x | | x | |
-| Vue Router | x | x | | x | |
-| Pinia Colada | x | x | | x | |
-| Vite | x | x | x | x | x |
-| VitePress | x | | | | |
-| Vitest | x | | x | x | x |
-| VueUse | x | | x | x | |
-| Vue I18n | | | | | |
-| Vue Macros | | | | | |
+| Project      | GitHub | X/Twitter | Bluesky | Discord | Mastodon |
+| ------------ | ------ | --------- | ------- | ------- | -------- |
+| Pinia        | x      | x         |         | x       |          |
+| Vue Router   | x      | x         |         | x       |          |
+| Pinia Colada | x      | x         |         | x       |          |
+| Vite         | x      | x         | x       | x       | x        |
+| VitePress    | x      |           |         |         |          |
+| Vitest       | x      |           | x       | x       | x        |
+| VueUse       | x      |           | x       | x       |          |
+| Vue I18n     |        |           |         |         |          |
+| Vue Macros   |        |           |         |         |          |
 
 GitHub is universal. Most include at least one other social platform.
 
@@ -137,12 +146,27 @@ Common pattern in head config:
 head: [
   ['meta', { property: 'og:type', content: 'website' }],
   ['meta', { property: 'og:title', content: 'VueWiki.dev' }],
-  ['meta', { property: 'og:description', content: 'Vue.js interview questions with answers and examples' }],
-  ['meta', { property: 'og:image', content: 'https://vuewiki.dev/og-image.png' }],
+  [
+    'meta',
+    {
+      property: 'og:description',
+      content: 'Vue.js interview questions with answers and examples'
+    }
+  ],
+  [
+    'meta',
+    { property: 'og:image', content: 'https://vuewiki.dev/og-image.png' }
+  ],
   ['meta', { property: 'og:url', content: 'https://vuewiki.dev' }],
   ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
   ['meta', { name: 'twitter:title', content: 'VueWiki.dev' }],
-  ['meta', { name: 'twitter:description', content: 'Vue.js interview questions with answers and examples' }],
+  [
+    'meta',
+    {
+      name: 'twitter:description',
+      content: 'Vue.js interview questions with answers and examples'
+    }
+  ]
 ]
 ```
 
@@ -156,16 +180,16 @@ Add OG meta tags. Create an og-image.png for the `public/` directory.
 
 ## 6. Sitemap
 
-| Project | Has sitemap |
-|---------|------------|
-| Vue Router | `hostname: 'https://router.vuejs.org'` |
-| VitePress | `hostname: 'https://vitepress.dev'` + filter migration pages |
-| Vite | `hostname: 'https://vite.dev'` |
-| Vue Macros | `hostname: docsLink` |
-| Pinia | Not configured |
-| Pinia Colada | Not configured |
-| Vitest | Not configured (uses PWA) |
-| VueUse | Not configured (uses PWA) |
+| Project      | Has sitemap                                                  |
+| ------------ | ------------------------------------------------------------ |
+| Vue Router   | `hostname: 'https://router.vuejs.org'`                       |
+| VitePress    | `hostname: 'https://vitepress.dev'` + filter migration pages |
+| Vite         | `hostname: 'https://vite.dev'`                               |
+| Vue Macros   | `hostname: docsLink`                                         |
+| Pinia        | Not configured                                               |
+| Pinia Colada | Not configured                                               |
+| Vitest       | Not configured (uses PWA)                                    |
+| VueUse       | Not configured (uses PWA)                                    |
 
 ```ts
 sitemap: {
@@ -179,12 +203,12 @@ Free SEO win, one line of config.
 
 ## 7. lastUpdated
 
-| Project | Enabled |
-|---------|---------|
-| VitePress | `lastUpdated: true` |
-| Vitest | `lastUpdated: true` |
+| Project    | Enabled             |
+| ---------- | ------------------- |
+| VitePress  | `lastUpdated: true` |
+| Vitest     | `lastUpdated: true` |
 | Vue Macros | `lastUpdated: true` |
-| Others | Not enabled |
+| Others     | Not enabled         |
 
 Optional. Adds credibility but requires git history to be available at build time.
 
@@ -299,17 +323,17 @@ Recommendation: show sidebar on question detail pages only. Homepage keeps its c
 
 ## 10. Search configuration
 
-| Project | Provider | Details |
-|---------|----------|---------|
-| Pinia | Algolia | With localized search |
-| Vue Router | Algolia | With localized search |
-| VitePress | Algolia | With AI assistant (`askAi`) |
-| VueUse | Algolia | |
-| Pinia Colada | Local | With `detailedView` and `boostDocument` for guide over API |
-| Vitest | Local | |
-| Vite | Local | |
-| Vue Macros | Local | With Chinese translations |
-| vuewiki.dev | Local | Basic config |
+| Project      | Provider | Details                                                    |
+| ------------ | -------- | ---------------------------------------------------------- |
+| Pinia        | Algolia  | With localized search                                      |
+| Vue Router   | Algolia  | With localized search                                      |
+| VitePress    | Algolia  | With AI assistant (`askAi`)                                |
+| VueUse       | Algolia  |                                                            |
+| Pinia Colada | Local    | With `detailedView` and `boostDocument` for guide over API |
+| Vitest       | Local    |                                                            |
+| Vite         | Local    |                                                            |
+| Vue Macros   | Local    | With Chinese translations                                  |
+| vuewiki.dev  | Local    | Basic config                                               |
 
 Local search is fine for our size. Could add `detailedView: true` and boost question pages.
 
@@ -320,12 +344,15 @@ Local search is fine for our size. Could add `detailedView: true` and boost ques
 Fathom Analytics is used by 6/9 projects. It's the de facto standard in the Vue ecosystem:
 
 ```ts
-['script', {
-  src: 'https://cdn.usefathom.com/script.js',
-  'data-site': 'SITE_ID',
-  'data-spa': 'auto',
-  defer: '',
-}]
+;[
+  'script',
+  {
+    src: 'https://cdn.usefathom.com/script.js',
+    'data-site': 'SITE_ID',
+    'data-spa': 'auto',
+    defer: ''
+  }
+]
 ```
 
 ### What vuewiki.dev should do
@@ -344,7 +371,7 @@ import llmstxt from 'vitepress-plugin-llms'
 llmstxt({
   description: '...',
   details: '...',
-  ignoreFiles: ['index.md', 'api/**/*'],
+  ignoreFiles: ['index.md', 'api/**/*']
 })
 ```
 
@@ -358,17 +385,17 @@ Low effort, high future value. Makes the wiki consumable by AI tools.
 
 ## 13. Theme customization
 
-| Project | Custom theme | What they customize |
-|---------|-------------|-------------------|
-| Pinia | Yes | HomeSponsors component, home-links CSS, sponsor styles |
-| Vue Router | Yes | HomeSponsors component, home-links CSS |
-| Pinia Colada | Yes | HomeSponsors, MasteringPinia sidebar widget |
-| Vite | Yes | Full landing page, custom components, landing layout |
-| VitePress | Minimal | Just styles.css |
-| Vitest | Yes | Custom Hero, Home, FeatureGrid, Intro components |
-| VueUse | Yes | Many custom components (FunctionsList, Contributors, etc.) |
-| Vue I18n | Yes | Sponsors, integrations components |
-| Vue Macros | Yes | Custom Layout.vue |
+| Project      | Custom theme | What they customize                                        |
+| ------------ | ------------ | ---------------------------------------------------------- |
+| Pinia        | Yes          | HomeSponsors component, home-links CSS, sponsor styles     |
+| Vue Router   | Yes          | HomeSponsors component, home-links CSS                     |
+| Pinia Colada | Yes          | HomeSponsors, MasteringPinia sidebar widget                |
+| Vite         | Yes          | Full landing page, custom components, landing layout       |
+| VitePress    | Minimal      | Just styles.css                                            |
+| Vitest       | Yes          | Custom Hero, Home, FeatureGrid, Intro components           |
+| VueUse       | Yes          | Many custom components (FunctionsList, Contributors, etc.) |
+| Vue I18n     | Yes          | Sponsors, integrations components                          |
+| Vue Macros   | Yes          | Custom Layout.vue                                          |
 
 Common: extend DefaultTheme, register custom components, add CSS overrides.
 
@@ -386,14 +413,14 @@ This is solid. No changes needed to the theme architecture.
 
 ## 14. Markdown code themes
 
-| Project | Dark | Light |
-|---------|------|-------|
-| Pinia | dracula-soft | vitesse-light |
-| Vue Router | one-dark-pro | github-light |
-| Pinia Colada | dracula-soft | vitesse-light |
-| VueUse | vitesse-dark | vitesse-light |
-| Vitest | github-dark | github-light |
-| vuewiki.dev | (VitePress default) | (VitePress default) |
+| Project      | Dark                | Light               |
+| ------------ | ------------------- | ------------------- |
+| Pinia        | dracula-soft        | vitesse-light       |
+| Vue Router   | one-dark-pro        | github-light        |
+| Pinia Colada | dracula-soft        | vitesse-light       |
+| VueUse       | vitesse-dark        | vitesse-light       |
+| Vitest       | github-dark         | github-light        |
+| vuewiki.dev  | (VitePress default) | (VitePress default) |
 
 Could set an explicit theme. `github-dark` / `github-light` is the most neutral choice.
 
@@ -409,6 +436,7 @@ The questions use 26 unique tags but en.json/es.json only define 24. Missing:
 - `security` (shows as "tags.security" on the site)
 
 Fix: add to both locale files:
+
 ```json
 "debugging": "Debugging",
 "security": "Security"

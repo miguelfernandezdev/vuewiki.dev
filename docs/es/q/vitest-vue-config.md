@@ -1,9 +1,9 @@
 ---
 order: 115
-title: "¿Cómo se configura Vitest para un proyecto Vue?"
-difficulty: "intermediate"
-tags: ["testing", "tooling", "pinia", "vite", "vitest", "provide-inject"]
-summary: "Vitest reutiliza tu config de Vite. Añade @vue/test-utils + jsdom/happy-dom. Configura en vitest.config.ts o dentro de vite.config.ts bajo test."
+title: '¿Cómo se configura Vitest para un proyecto Vue?'
+difficulty: 'intermediate'
+tags: ['testing', 'tooling', 'pinia', 'vite', 'vitest', 'provide-inject']
+summary: 'Vitest reutiliza tu config de Vite. Añade @vue/test-utils + jsdom/happy-dom. Configura en vitest.config.ts o dentro de vite.config.ts bajo test.'
 ---
 
 Vitest es un test runner construido sobre Vite. Entiende archivos `.vue`, TypeScript y JSX sin configuración adicional porque reutiliza tu config de Vite. Combinado con `@vue/test-utils` para montar componentes y `jsdom` o `happy-dom` para simular el DOM, es la configuración de testing estándar para proyectos Vue 3.
@@ -39,13 +39,16 @@ O usa un `vitest.config.ts` separado si quieres mantener las cosas aisladas:
 import { defineConfig, mergeConfig } from 'vitest/config'
 import viteConfig from './vite.config'
 
-export default mergeConfig(viteConfig, defineConfig({
-  test: {
-    environment: 'happy-dom',
-    globals: true,
-    include: ['src/**/*.{test,spec}.{ts,tsx}']
-  }
-}))
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: 'happy-dom',
+      globals: true,
+      include: ['src/**/*.{test,spec}.{ts,tsx}']
+    }
+  })
+)
 ```
 
 Con `globals: true`, no necesitas importar `describe`, `it`, `expect` en cada archivo de test. Añade los tipos a tu tsconfig:
@@ -186,11 +189,11 @@ Añade scripts a `package.json`:
 
 ## happy-dom vs jsdom
 
-| | happy-dom | jsdom |
-|---|---|---|
-| Velocidad | Más rápido | Más lento |
-| Compatibilidad | Cubre la mayoría de casos de uso | API DOM más completa |
-| Ideal para | Tests unitarios, tests de componentes | Tests que necesitan fidelidad completa de la API del navegador |
+|                | happy-dom                             | jsdom                                                          |
+| -------------- | ------------------------------------- | -------------------------------------------------------------- |
+| Velocidad      | Más rápido                            | Más lento                                                      |
+| Compatibilidad | Cubre la mayoría de casos de uso      | API DOM más completa                                           |
+| Ideal para     | Tests unitarios, tests de componentes | Tests que necesitan fidelidad completa de la API del navegador |
 
 Empieza con `happy-dom`. Cambia a `jsdom` solo si te falta alguna API.
 

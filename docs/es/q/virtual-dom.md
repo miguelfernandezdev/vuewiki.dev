@@ -1,9 +1,9 @@
 ---
 order: 2
-title: "¿Qué es el Virtual DOM y cómo lo usa Vue?"
-difficulty: "beginner"
-tags: ["core", "reactivity"]
-summary: "Un árbol JS ligero de vnodes. Vue compara el árbol nuevo con el anterior y aplica solo las operaciones DOM mínimas necesarias."
+title: '¿Qué es el Virtual DOM y cómo lo usa Vue?'
+difficulty: 'beginner'
+tags: ['core', 'reactivity']
+summary: 'Un árbol JS ligero de vnodes. Vue compara el árbol nuevo con el anterior y aplica solo las operaciones DOM mínimas necesarias.'
 ---
 
 El [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) es una representación JavaScript ligera del DOM real. En lugar de manipular directamente el DOM del navegador en cada cambio, Vue construye un árbol de objetos planos (vnodes), compara el nuevo árbol con el anterior y aplica solo el conjunto mínimo de operaciones DOM necesarias.
@@ -60,9 +60,12 @@ El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#c
 ```vue
 <template>
   <div>
-    <h1>Static title</h1>           <!-- elevado, omitido en la comparación -->
-    <p>{{ dynamicContent }}</p>      <!-- flag de parche: TEXT -->
-    <span :class="activeClass">ok</span> <!-- flag de parche: CLASS -->
+    <h1>Static title</h1>
+    <!-- elevado, omitido en la comparación -->
+    <p>{{ dynamicContent }}</p>
+    <!-- flag de parche: TEXT -->
+    <span :class="activeClass">ok</span>
+    <!-- flag de parche: CLASS -->
   </div>
 </template>
 ```
@@ -71,9 +74,9 @@ El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#c
 
 Algunos frameworks (Svelte, SolidJS) prescinden por completo del Virtual DOM y compilan los templates directamente a instrucciones DOM. Vue eligió el Virtual DOM porque habilita la API de funciones de render, el soporte de JSX y la manipulación programática de vnodes, siendo al mismo tiempo suficientemente rápido para prácticamente todos los casos de uso.
 
-| Enfoque | Frameworks | Compromiso |
-|---|---|---|
-| Virtual DOM | Vue, React | API flexible, ligero coste de la comparación |
+| Enfoque         | Frameworks      | Compromiso                                      |
+| --------------- | --------------- | ----------------------------------------------- |
+| Virtual DOM     | Vue, React      | API flexible, ligero coste de la comparación    |
 | Sin Virtual DOM | Svelte, SolidJS | Menos coste, pero control programático limitado |
 
 Ver también: [¿Cuál es la diferencia entre un componente y un elemento?](/es/q/component-vs-element-vnode), [¿Qué es Vue y cuáles son sus características principales?](/es/q/what-is-vue)

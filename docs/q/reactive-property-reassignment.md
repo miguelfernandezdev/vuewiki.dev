@@ -1,9 +1,9 @@
 ---
 order: 75
-title: "Does reassigning a property on a reactive object break reactivity?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors", "watchers"]
-summary: "Reassigning a property on a reactive object works fine (Proxy traps it). What breaks reactivity is reassigning the entire variable to a new object."
+title: 'Does reassigning a property on a reactive object break reactivity?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors', 'watchers']
+summary: 'Reassigning a property on a reactive object works fine (Proxy traps it). What breaks reactivity is reassigning the entire variable to a new object.'
 ---
 
 No. Reassigning a property on a `reactive()` object does NOT break reactivity. This is a common trick question in interviews. Because `reactive()` returns a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), the proxy's `set` trap intercepts the assignment and triggers updates correctly. What DOES break reactivity is reassigning the entire variable to a new object, because that replaces the proxy reference.
@@ -70,12 +70,12 @@ const proxy = reactive({ count: 0 })
 watchEffect(() => console.log(proxy.count))
 
 // Property assignment: proxy.set trap fires → watcher notified
-proxy.count = 1  // works
+proxy.count = 1 // works
 
 // Variable reassignment: just changes what the variable points to
 // The proxy still exists, but nothing references it anymore
 let state = proxy
-state = reactive({ count: 2 })  // breaks — watcher watches proxy, not state
+state = reactive({ count: 2 }) // breaks — watcher watches proxy, not state
 ```
 
 ## The same trap with ref containing objects
@@ -101,13 +101,13 @@ With `ref`, reassigning `.value` works because `ref` has its own getter/setter t
 ```js
 // reactive: cannot reassign, must mutate properties
 const state = reactive({ name: 'Alice' })
-state.name = 'Bob'           // works
+state.name = 'Bob' // works
 // state = { name: 'Bob' }   // breaks reactivity
 
 // ref: can reassign .value OR mutate properties
 const state = ref({ name: 'Alice' })
-state.value = { name: 'Bob' }   // works (ref setter)
-state.value.name = 'Charlie'    // works (inner proxy setter)
+state.value = { name: 'Bob' } // works (ref setter)
+state.value.name = 'Charlie' // works (inner proxy setter)
 ```
 
 ## The interview answer

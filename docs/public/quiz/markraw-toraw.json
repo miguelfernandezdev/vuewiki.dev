@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "What internal flag does markRaw add to prevent an object from being proxied?",
-      "options": [
-        "__v_raw",
-        "__v_skip",
-        "__v_readonly",
-        "__v_noProxy"
-      ],
+      "options": ["__v_raw", "__v_skip", "__v_readonly", "__v_noProxy"],
       "answer": 1
     },
     {

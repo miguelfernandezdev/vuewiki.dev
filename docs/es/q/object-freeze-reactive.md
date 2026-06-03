@@ -1,9 +1,9 @@
 ---
 order: 76
-title: "¿Qué ocurre cuando usas Object.freeze() en datos reactivos?"
-difficulty: "intermediate"
-tags: ["reactivity"]
-summary: "Vue no puede hacer reactivos objetos congelados porque las traps set del Proxy fallan silenciosamente. Útil como optimización para datasets grandes de solo lectura."
+title: '¿Qué ocurre cuando usas Object.freeze() en datos reactivos?'
+difficulty: 'intermediate'
+tags: ['reactivity']
+summary: 'Vue no puede hacer reactivos objetos congelados porque las traps set del Proxy fallan silenciosamente. Útil como optimización para datasets grandes de solo lectura.'
 ---
 
 Vue no puede hacer reactivo un objeto congelado. `Object.freeze()` impide modificaciones de propiedades a nivel del motor de JavaScript, por lo que las trampas del [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) de Vue para `set` y `deleteProperty` fallan silenciosamente. El objeto se renderiza una vez con sus valores iniciales, pero las mutaciones no dispararán actualizaciones. Esto es útil como optimización de rendimiento para grandes conjuntos de datos que nunca cambian.
@@ -12,10 +12,12 @@ Vue no puede hacer reactivo un objeto congelado. `Object.freeze()` impide modifi
 
 ```vue
 <script setup>
-const frozenList = reactive(Object.freeze([
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' }
-]))
+const frozenList = reactive(
+  Object.freeze([
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' }
+  ])
+)
 </script>
 
 <template>
@@ -25,9 +27,7 @@ const frozenList = reactive(Object.freeze([
   </p>
 
   <!-- Este botón no hace nada visible -->
-  <button @click="frozenList[0].name = 'Cambiado'">
-    Intentar mutar
-  </button>
+  <button @click="frozenList[0].name = 'Cambiado'">Intentar mutar</button>
 </template>
 ```
 
@@ -59,9 +59,11 @@ Cuando tienes grandes arrays de datos de solo lectura (tablas de referencia, con
 <script setup>
 import { shallowRef } from 'vue'
 
-const countries = shallowRef(Object.freeze(
-  await $fetch('/api/countries') // 250 objetos con propiedades anidadas
-))
+const countries = shallowRef(
+  Object.freeze(
+    await $fetch('/api/countries') // 250 objetos con propiedades anidadas
+  )
+)
 </script>
 
 <template>
@@ -106,12 +108,12 @@ map.set('key', 'value') // funciona, pero Vue no lo rastrea
 const chartInstance = markRaw(new Chart(canvas, config))
 ```
 
-| | `Object.freeze` | `markRaw` |
-|---|---|---|
-| Impide la reactividad | Sí | Sí |
-| Impide la mutación | Sí | No |
-| Caso de uso | Datos estáticos, tablas de referencia | Objetos de terceros (Chart.js, mapas, editores) |
-| Objetos anidados | Hay que congelar recursivamente | Solo aplica al nivel superior |
+|                       | `Object.freeze`                       | `markRaw`                                       |
+| --------------------- | ------------------------------------- | ----------------------------------------------- |
+| Impide la reactividad | Sí                                    | Sí                                              |
+| Impide la mutación    | Sí                                    | No                                              |
+| Caso de uso           | Datos estáticos, tablas de referencia | Objetos de terceros (Chart.js, mapas, editores) |
+| Objetos anidados      | Hay que congelar recursivamente       | Solo aplica al nivel superior                   |
 
 Ver también: [¿Cuándo deberías usar markRaw y toRaw?](/es/q/markraw-toraw) · [¿Cuándo usarías shallowRef / shallowReactive?](/es/q/shallow-ref-reactive)
 

@@ -1,9 +1,9 @@
 ---
 order: 52
-title: "¿Cómo funciona el manejo de errores en Vue?"
-difficulty: "advanced"
-tags: ["components", "error-handling", "suspense"]
-summary: "onErrorCaptured captura errores de componentes descendientes (error boundaries). app.config.errorHandler captura errores globales no manejados."
+title: '¿Cómo funciona el manejo de errores en Vue?'
+difficulty: 'advanced'
+tags: ['components', 'error-handling', 'suspense']
+summary: 'onErrorCaptured captura errores de componentes descendientes (error boundaries). app.config.errorHandler captura errores globales no manejados.'
 ---
 
 Vue proporciona `onErrorCaptured` para capturar errores de componentes descendientes, lo que permite construir límites de error similares al `componentDidCatch` de React. Combinado con `app.config.errorHandler` para errores globales y las opciones de error de `defineAsyncComponent`, puedes gestionar fallos a todos los niveles.
@@ -17,7 +17,7 @@ Un componente padre puede capturar errores lanzados por cualquier descendiente (
 <script setup>
 import { ref, onErrorCaptured } from 'vue'
 
-const error = ref<Error | null>(null)
+const error = (ref < Error) | (null > null)
 
 onErrorCaptured((err, instance, info) => {
   error.value = err
@@ -46,11 +46,11 @@ onErrorCaptured((err, instance, info) => {
 
 El callback recibe tres argumentos:
 
-| Argumento | Descripción |
-|---|---|
-| `err` | El objeto de error |
-| `instance` | La instancia del componente que lanzó el error |
-| `info` | Una cadena que describe dónde se capturó el error (p. ej., `"render"`, `"setup"`, `"watcher"`) |
+| Argumento  | Descripción                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| `err`      | El objeto de error                                                                             |
+| `instance` | La instancia del componente que lanzó el error                                                 |
+| `info`     | Una cadena que describe dónde se capturó el error (p. ej., `"render"`, `"setup"`, `"watcher"`) |
 
 Devolver `false` impide que el error se propague. Devolver `true` (o nada) lo deja subir hasta los manejadores de errores padre y `app.config.errorHandler`.
 
@@ -99,16 +99,16 @@ const AsyncWidget = defineAsyncComponent({
 
 ## Qué captura el manejo de errores de Vue
 
-| Origen | ¿Capturado? |
-|---|---|
-| Errores de render/template | Sí |
-| Errores en lifecycle hooks | Sí |
-| Errores en callbacks de watchers | Sí |
-| Errores en manejadores de eventos del componente | Sí |
-| Errores en hooks de directivas personalizadas | Sí |
-| Callbacks de `setTimeout`/`setInterval` | No (Vue no los rastrea) |
-| Listeners de eventos nativos añadidos manualmente | No |
-| Errores en librerías de terceros | No (a menos que se llamen desde el lifecycle de Vue) |
+| Origen                                            | ¿Capturado?                                          |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| Errores de render/template                        | Sí                                                   |
+| Errores en lifecycle hooks                        | Sí                                                   |
+| Errores en callbacks de watchers                  | Sí                                                   |
+| Errores en manejadores de eventos del componente  | Sí                                                   |
+| Errores en hooks de directivas personalizadas     | Sí                                                   |
+| Callbacks de `setTimeout`/`setInterval`           | No (Vue no los rastrea)                              |
+| Listeners de eventos nativos añadidos manualmente | No                                                   |
+| Errores en librerías de terceros                  | No (a menos que se llamen desde el lifecycle de Vue) |
 
 Para errores fuera del rastreo de Vue (temporizadores, listeners manuales), usa `window.addEventListener('error', handler)` o `window.addEventListener('unhandledrejection', handler)`.
 

@@ -1,8 +1,8 @@
 ---
 order: 30
 title: "Why doesn't scoped CSS style child component elements?"
-difficulty: "intermediate"
-tags: ["components", "errors", "teleport"]
+difficulty: 'intermediate'
+tags: ['components', 'errors', 'teleport']
 summary: "Scoped CSS adds data-v-xxxxx attributes to elements. Child components don't get that attribute, so selectors don't match. Use :deep() to target children."
 ---
 
@@ -46,10 +46,14 @@ Always scope `:deep()` to a parent class to limit its reach:
 ```vue
 <style scoped>
 /* Too broad — affects ALL .btn in any child */
-:deep(.btn) { background: blue; }
+:deep(.btn) {
+  background: blue;
+}
 
 /* Better — only .btn inside .wrapper */
-.wrapper :deep(.btn) { background: blue; }
+.wrapper :deep(.btn) {
+  background: blue;
+}
 </style>
 ```
 
@@ -69,9 +73,12 @@ A child component's **root element** IS affected by parent scoped CSS. Vue does 
 ## Old syntax (don't use)
 
 ```css
-.parent >>> .child { }     /* doesn't work with SCSS */
-.parent /deep/ .child { }  /* deprecated */
-.parent ::v-deep .child { } /* old Vue 3 syntax */
+.parent >>> .child {
+} /* doesn't work with SCSS */
+.parent /deep/ .child {
+} /* deprecated */
+.parent ::v-deep .child {
+} /* old Vue 3 syntax */
 ```
 
 In Vue 3, `:deep()` is the only supported syntax.

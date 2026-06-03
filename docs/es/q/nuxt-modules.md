@@ -1,9 +1,9 @@
 ---
 order: 153
-title: "¿Cómo funcionan los módulos de Nuxt y cuándo crearías uno?"
-difficulty: "intermediate"
-tags: ["nuxt", "architecture", "vite"]
-summary: "Los módulos son plugins en build-time que extienden Nuxt via @nuxt/kit. Registran componentes, composables, rutas de servidor y modifican la config."
+title: '¿Cómo funcionan los módulos de Nuxt y cuándo crearías uno?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'architecture', 'vite']
+summary: 'Los módulos son plugins en build-time que extienden Nuxt via @nuxt/kit. Registran componentes, composables, rutas de servidor y modifican la config.'
 ---
 
 Los módulos de Nuxt son plugins que se ejecutan en tiempo de build y extienden el framework. Pueden registrar componentes, composables, rutas de servidor, plugins y modificar la configuración de Nuxt/Vite. El ecosistema está lleno de ellos: `@nuxt/ui`, `@nuxt/image`, `@nuxtjs/i18n`, `@pinia/nuxt`.
@@ -83,14 +83,14 @@ export default defineNuxtConfig({
 
 ## Qué pueden registrar los módulos
 
-| Helper de @nuxt/kit | Registra |
-|---|---|
-| `addComponent` | Un componente global |
-| `addComponentsDir` | Un directorio de componentes |
-| `addImports` | Un composable/utilidad con auto-importación |
-| `addImportsDir` | Un directorio de auto-importaciones |
-| `addPlugin` | Un plugin de cliente/servidor/universal |
-| `addServerHandler` | Una ruta de servidor Nitro |
+| Helper de @nuxt/kit | Registra                                    |
+| ------------------- | ------------------------------------------- |
+| `addComponent`      | Un componente global                        |
+| `addComponentsDir`  | Un directorio de componentes                |
+| `addImports`        | Un composable/utilidad con auto-importación |
+| `addImportsDir`     | Un directorio de auto-importaciones         |
+| `addPlugin`         | Un plugin de cliente/servidor/universal     |
+| `addServerHandler`  | Una ruta de servidor Nitro                  |
 
 ```ts
 setup(options, nuxt) {
@@ -129,13 +129,13 @@ El directorio `runtime/` contiene el código que se ejecuta en la app. Todo lo q
 
 ## Cuándo crear un módulo vs un plugin vs un composable
 
-| Necesidad | Usar |
-|---|---|
-| Añadir configuración en tiempo de build, registrar componentes/rutas/plugins | Módulo |
-| Ejecutar código al iniciar la app (cliente o servidor) | Plugin |
-| Lógica reutilizable para componentes individuales | Composable |
-| Compartir funcionalidad entre varios proyectos Nuxt | Módulo (publicable en npm) |
-| Integración puntual específica del proyecto | Plugin o composable suele ser suficiente |
+| Necesidad                                                                    | Usar                                     |
+| ---------------------------------------------------------------------------- | ---------------------------------------- |
+| Añadir configuración en tiempo de build, registrar componentes/rutas/plugins | Módulo                                   |
+| Ejecutar código al iniciar la app (cliente o servidor)                       | Plugin                                   |
+| Lógica reutilizable para componentes individuales                            | Composable                               |
+| Compartir funcionalidad entre varios proyectos Nuxt                          | Módulo (publicable en npm)               |
+| Integración puntual específica del proyecto                                  | Plugin o composable suele ser suficiente |
 
 Ver también: [¿Qué son las layers de Nuxt?](/es/q/nuxt-layers) · [¿Cómo funcionan los auto-imports en Nuxt?](/es/q/nuxt-auto-imports) · [¿Cuál es la convención de estructura de directorios de Nuxt?](/es/q/nuxt-directory-structure)
 

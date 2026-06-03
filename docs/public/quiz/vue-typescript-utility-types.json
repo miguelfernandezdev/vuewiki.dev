@@ -22,7 +22,12 @@
     },
     {
       "question": "Which utility type enables type-safe `provide`/`inject` in Vue?",
-      "options": ["ProviderKey<T>", "InjectToken<T>", "InjectionKey<T>", "ProvideType<T>"],
+      "options": [
+        "ProviderKey<T>",
+        "InjectToken<T>",
+        "InjectionKey<T>",
+        "ProvideType<T>"
+      ],
       "answer": 2
     }
   ]

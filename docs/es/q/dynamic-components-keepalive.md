@@ -1,9 +1,9 @@
 ---
 order: 34
-title: "¿Qué son los componentes dinámicos y cómo funciona KeepAlive?"
-difficulty: "intermediate"
-tags: ["components", "performance", "slots", "suspense", "teleport"]
-summary: "<component :is> cambia componentes en tiempo de ejecución. <KeepAlive> cachea instancias en memoria en lugar de destruirlas en cada cambio."
+title: '¿Qué son los componentes dinámicos y cómo funciona KeepAlive?'
+difficulty: 'intermediate'
+tags: ['components', 'performance', 'slots', 'suspense', 'teleport']
+summary: '<component :is> cambia componentes en tiempo de ejecución. <KeepAlive> cachea instancias en memoria en lugar de destruirlas en cada cambio.'
 ---
 
 Los componentes dinámicos permiten cambiar entre componentes en tiempo de ejecución usando el elemento integrado `<component>` con la prop `:is`. Por defecto, Vue destruye el componente antiguo y crea uno nuevo en cada cambio. `<KeepAlive>` altera ese comportamiento almacenando las instancias en memoria.
@@ -122,12 +122,12 @@ Usar `route.fullPath` como key significa que `/users/1` y `/users/2` se almacena
 
 ## Cuándo NO usar KeepAlive
 
-| Escenario | Por qué |
-|---|---|
-| Componentes con mucha memoria (mapas, tablas grandes) | Las instancias en caché permanecen en memoria |
-| Datos sensibles (formularios de autenticación, flujos de pago) | Los datos deben limpiarse al salir |
-| Componentes con temporizadores en segundo plano que no puedes pausar | Siguen ejecutándose mientras están ocultos |
-| Páginas donde los usuarios esperan resultados frescos | Los datos en caché desactualizados confunden a los usuarios |
+| Escenario                                                            | Por qué                                                     |
+| -------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Componentes con mucha memoria (mapas, tablas grandes)                | Las instancias en caché permanecen en memoria               |
+| Datos sensibles (formularios de autenticación, flujos de pago)       | Los datos deben limpiarse al salir                          |
+| Componentes con temporizadores en segundo plano que no puedes pausar | Siguen ejecutándose mientras están ocultos                  |
+| Páginas donde los usuarios esperan resultados frescos                | Los datos en caché desactualizados confunden a los usuarios |
 
 Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Qué son Teleport, Fragments y Suspense?](/es/q/teleport-fragments-suspense) · [¿Cómo funciona el atributo `is`?](/es/q/is-attribute-dynamic-rendering)
 

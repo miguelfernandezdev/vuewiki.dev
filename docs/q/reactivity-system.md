@@ -1,9 +1,9 @@
 ---
 order: 69
 title: "How does Vue 3's reactivity system work?"
-difficulty: "intermediate"
-tags: ["reactivity", "watchers"]
-summary: "Vue 3 wraps objects in a Proxy that intercepts reads (track dependencies) and writes (trigger updates). Effects re-run when their tracked dependencies change."
+difficulty: 'intermediate'
+tags: ['reactivity', 'watchers']
+summary: 'Vue 3 wraps objects in a Proxy that intercepts reads (track dependencies) and writes (trigger updates). Effects re-run when their tracked dependencies change.'
 ---
 
 When you change a value in Vue and the page updates automatically, that's the reactivity system at work.
@@ -68,12 +68,12 @@ state = reactive({ count: 1 }) // new Proxy, old watchers still watch the old on
 
 Vue 2 used `Object.defineProperty`, which had real limitations: it couldn't detect property addition/deletion, didn't work with arrays natively, and required workarounds like `Vue.set()`. The Proxy-based system in Vue 3 eliminates all of those issues.
 
-| | Vue 2 (`Object.defineProperty`) | Vue 3 (`Proxy`) |
-|---|---|---|
-| Detect new properties | No (`Vue.set()` needed) | Yes |
-| Array mutation tracking | Partially (patched methods only) | Full |
-| Map/Set support | No | Yes |
-| Performance on large objects | Slower (converts all upfront) | Faster (lazy, on-demand) |
+|                              | Vue 2 (`Object.defineProperty`)  | Vue 3 (`Proxy`)          |
+| ---------------------------- | -------------------------------- | ------------------------ |
+| Detect new properties        | No (`Vue.set()` needed)          | Yes                      |
+| Array mutation tracking      | Partially (patched methods only) | Full                     |
+| Map/Set support              | No                               | Yes                      |
+| Performance on large objects | Slower (converts all upfront)    | Faster (lazy, on-demand) |
 
 See also: [What is the reactivity proxy identity hazard?](/q/proxy-identity-hazard) · [Why do I lose reactivity when destructuring a reactive object?](/q/reactive-destructuring-gotcha)
 

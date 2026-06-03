@@ -1,9 +1,9 @@
 ---
 order: 25
-title: "What are slots and what are they used for?"
-difficulty: "intermediate"
-tags: ["components", "slots"]
-summary: "Slots let a parent pass template content into a child. Default slots for content, named slots for multiple areas, scoped slots for data from the child."
+title: 'What are slots and what are they used for?'
+difficulty: 'intermediate'
+tags: ['components', 'slots']
+summary: 'Slots let a parent pass template content into a child. Default slots for content, named slots for multiple areas, scoped slots for data from the child.'
 ---
 
 [Slots](https://vuejs.org/guide/components/slots.html) let a parent component pass template content into a child. Instead of the child deciding what to render, the parent provides the markup and the child decides where to place it. This makes components flexible: a `Card` doesn't need a prop for every possible layout variation; it provides a slot and the parent fills it in.
@@ -88,11 +88,11 @@ The child owns the data and the loop. The parent owns the rendering. This is the
 
 Use **props** when the parent passes data and the child decides how to display it. Use **slots** when the parent decides what to display and the child decides where to place it.
 
-| Scenario | Use |
-| --- | --- |
-| Pass a title string | Prop |
-| Pass arbitrary header markup | Named slot |
-| Child has data, parent decides rendering | Scoped slot |
+| Scenario                                      | Use          |
+| --------------------------------------------- | ------------ |
+| Pass a title string                           | Prop         |
+| Pass arbitrary header markup                  | Named slot   |
+| Child has data, parent decides rendering      | Scoped slot  |
 | Component wraps content (card, modal, layout) | Default slot |
 
 See also: [How do render functions and JSX work in Vue?](/q/render-functions-jsx) · [What are fallthrough attributes?](/q/fallthrough-attrs) · [What is defineExpose and when is it needed?](/q/define-expose)

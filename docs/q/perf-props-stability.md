@@ -1,8 +1,8 @@
 ---
 order: 126
-title: "How do props stability optimizations work?"
-difficulty: "advanced"
-tags: ["performance", "components"]
+title: 'How do props stability optimizations work?'
+difficulty: 'advanced'
+tags: ['performance', 'components']
 summary: "Vue skips re-rendering children when props haven't changed. Avoid passing shared values (like activeId) to every list item; pass only a boolean flag."
 ---
 
@@ -13,8 +13,10 @@ Vue skips re-rendering a child component when none of its props changed. Props s
 ```vue
 <!-- Parent -->
 <script setup>
-const items = ref([/* 100 items */])
-const activeId = ref<number | null>(null)
+const items = ref([
+  /* 100 items */
+])
+const activeId = (ref < number) | (null > null)
 </script>
 
 <template>
@@ -66,6 +68,7 @@ defineProps<{ id: number; active: boolean }>()
 ```
 
 Now when `activeId` changes from 1 to 2:
+
 - Item 1: `:active` goes from `true` to `false` (re-renders)
 - Item 2: `:active` goes from `false` to `true` (re-renders)
 - Items 3-100: `:active` stays `false` (skipped)
@@ -78,11 +81,7 @@ Now when `activeId` changes from 1 to 2:
 
 ```vue
 <!-- BAD: all items re-render when any selection changes -->
-<Item
-  v-for="item in items"
-  :key="item.id"
-  :selected-ids="selectedIds"
-/>
+<Item v-for="item in items" :key="item.id" :selected-ids="selectedIds" />
 
 <!-- GOOD: only affected items re-render -->
 <Item
@@ -127,11 +126,11 @@ Inline objects and arrow functions create a new reference every render. Vue sees
 
 ## Impact at scale
 
-| List size | Unstable prop (activeId) | Stable prop (:active boolean) |
-|---|---|---|
-| 100 items | 100 re-renders | 2 re-renders |
-| 1,000 items | 1,000 re-renders | 2 re-renders |
-| 10,000 items | 10,000 re-renders | 2 re-renders |
+| List size    | Unstable prop (activeId) | Stable prop (:active boolean) |
+| ------------ | ------------------------ | ----------------------------- |
+| 100 items    | 100 re-renders           | 2 re-renders                  |
+| 1,000 items  | 1,000 re-renders         | 2 re-renders                  |
+| 10,000 items | 10,000 re-renders        | 2 re-renders                  |
 
 The optimization has a constant cost (always 2) regardless of list size. The naive approach has linear cost.
 

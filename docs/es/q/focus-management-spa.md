@@ -1,9 +1,9 @@
 ---
 order: 170
-title: "¿Cómo gestionas el foco en SPAs con Vue?"
-difficulty: "advanced"
-tags: ["accessibility", "vue-router", "watchers", "suspense"]
-summary: "Mueve el foco al encabezado principal tras cambios de ruta, atrapa el foco en modales y restáuralo al cerrar contenido dinámico."
+title: '¿Cómo gestionas el foco en SPAs con Vue?'
+difficulty: 'advanced'
+tags: ['accessibility', 'vue-router', 'watchers', 'suspense']
+summary: 'Mueve el foco al encabezado principal tras cambios de ruta, atrapa el foco en modales y restáuralo al cerrar contenido dinámico.'
 ---
 
 En un sitio web tradicional, el navegador mueve el foco al principio de la página en cada navegación. Las SPAs rompen esto porque la página nunca se recarga. Después de un cambio de ruta del lado del cliente, el foco permanece donde estaba, lo que significa que un usuario de lector de pantalla no tiene forma de saber que la página cambió. Necesitas mover el foco manualmente en los cambios de ruta, atraparlo dentro de los modales y devolverlo cuando el contenido dinámico se cierra.
@@ -37,11 +37,14 @@ Una alternativa es un anunciador de ruta que lee el título de la página sin mo
 const route = useRoute()
 const announcement = ref('')
 
-watch(() => route.path, () => {
-  nextTick(() => {
-    announcement.value = document.title
-  })
-})
+watch(
+  () => route.path,
+  () => {
+    nextTick(() => {
+      announcement.value = document.title
+    })
+  }
+)
 </script>
 
 <template>
@@ -186,14 +189,14 @@ El enlace está oculto hasta que recibe el foco, momento en que salta a la parte
 
 ## Resumen
 
-| Escenario | Acción |
-|---|---|
-| Cambio de ruta | Mover el foco a `h1` o anunciar el título de la página mediante live region |
-| Modal se abre | Usar `<dialog>` con `showModal()`, o atrapar el foco manualmente |
-| Modal se cierra | Devolver el foco al elemento que lo activó |
-| Elemento eliminado | Mover el foco al siguiente elemento o al contenedor de la lista |
-| Contenido cargado | Enfocar el nuevo contenido o anunciarlo con `aria-live` |
-| Saltar navegación | Proporcionar un skip link como primer elemento enfocable |
+| Escenario          | Acción                                                                      |
+| ------------------ | --------------------------------------------------------------------------- |
+| Cambio de ruta     | Mover el foco a `h1` o anunciar el título de la página mediante live region |
+| Modal se abre      | Usar `<dialog>` con `showModal()`, o atrapar el foco manualmente            |
+| Modal se cierra    | Devolver el foco al elemento que lo activó                                  |
+| Elemento eliminado | Mover el foco al siguiente elemento o al contenedor de la lista             |
+| Contenido cargado  | Enfocar el nuevo contenido o anunciarlo con `aria-live`                     |
+| Saltar navegación  | Proporcionar un skip link como primer elemento enfocable                    |
 
 Ver también: [¿Cómo manejar la accesibilidad en Vue?](/es/q/accessibility-in-vue) · [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Qué son teleport, fragments y Suspense?](/es/q/teleport-fragments-suspense)
 

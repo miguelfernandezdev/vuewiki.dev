@@ -1,9 +1,9 @@
 ---
 order: 58
-title: "¿Cuáles son todas las macros del compilador en Vue?"
-difficulty: "advanced"
-tags: ["composition-api", "typescript", "v-model", "slots"]
-summary: "defineProps, defineEmits, defineExpose, defineModel, defineSlots y defineOptions. Se ejecutan en compilación y no necesitan imports."
+title: '¿Cuáles son todas las macros del compilador en Vue?'
+difficulty: 'advanced'
+tags: ['composition-api', 'typescript', 'v-model', 'slots']
+summary: 'defineProps, defineEmits, defineExpose, defineModel, defineSlots y defineOptions. Se ejecutan en compilación y no necesitan imports.'
 ---
 
 Las macros del compilador son funciones especiales que solo funcionan dentro de [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). Se procesan en tiempo de compilación y no necesitan ser importadas. Vue 3.5 tiene seis de ellas.
@@ -20,12 +20,15 @@ const props = defineProps<{
 }>()
 
 // Con valores por defecto
-const props = withDefaults(defineProps<{
-  title: string
-  items?: string[]
-}>(), {
-  items: () => []
-})
+const props = withDefaults(
+  defineProps<{
+    title: string
+    items?: string[]
+  }>(),
+  {
+    items: () => []
+  }
+)
 </script>
 ```
 
@@ -71,7 +74,9 @@ Controla lo que el componente expone a las template refs del padre. Sin ella, lo
 import { ref } from 'vue'
 
 const count = ref(0)
-function reset() { count.value = 0 }
+function reset() {
+  count.value = 0
+}
 
 defineExpose({ count, reset })
 </script>
@@ -110,14 +115,14 @@ No cambia el comportamiento en tiempo de ejecución. Solo proporciona comprobaci
 
 ## Tabla resumen
 
-| Macro | Desde | Propósito | Devuelve |
-|---|---|---|---|
-| `defineProps` | 3.0 | Declarar props | Objeto reactivo de props |
-| `defineEmits` | 3.0 | Declarar eventos | Función emit tipada |
-| `defineModel` | 3.4 | Enlace v-model bidireccional | Ref escribible |
-| `defineExpose` | 3.0 | Controlar la API pública para refs | void |
-| `defineOptions` | 3.3 | Establecer name, inheritAttrs, etc. | void |
-| `defineSlots` | 3.3 | Tipar props de slot | Objeto de slots |
+| Macro           | Desde | Propósito                           | Devuelve                 |
+| --------------- | ----- | ----------------------------------- | ------------------------ |
+| `defineProps`   | 3.0   | Declarar props                      | Objeto reactivo de props |
+| `defineEmits`   | 3.0   | Declarar eventos                    | Función emit tipada      |
+| `defineModel`   | 3.4   | Enlace v-model bidireccional        | Ref escribible           |
+| `defineExpose`  | 3.0   | Controlar la API pública para refs  | void                     |
+| `defineOptions` | 3.3   | Establecer name, inheritAttrs, etc. | void                     |
+| `defineSlots`   | 3.3   | Tipar props de slot                 | Objeto de slots          |
 
 ## Reglas que aplican a todas las macros
 

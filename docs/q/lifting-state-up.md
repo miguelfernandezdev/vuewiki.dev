@@ -1,9 +1,9 @@
 ---
 order: 23
-title: "What is lifting state up and when should you do it?"
-difficulty: "beginner"
-tags: ["components", "architecture", "pinia", "provide-inject"]
-summary: "Move shared data to the nearest common ancestor. Children receive it via props and communicate changes via events. Avoids duplicated, out-of-sync state."
+title: 'What is lifting state up and when should you do it?'
+difficulty: 'beginner'
+tags: ['components', 'architecture', 'pinia', 'provide-inject']
+summary: 'Move shared data to the nearest common ancestor. Children receive it via props and communicate changes via events. Avoids duplicated, out-of-sync state.'
 ---
 
 Lifting state up means moving shared data from a child component to the nearest common ancestor so that multiple children can access and stay in sync with the same state.
@@ -73,12 +73,12 @@ Now the parent is the single source of truth. Both inputs always show consistent
 
 ## When to lift state
 
-| Situation | Action |
-|---|---|
-| Only one component uses the data | Keep it local |
-| Parent and child share data | Props down, emit up |
-| Siblings need the same data | Lift to the nearest common parent |
-| Distant components across the tree | `provide`/`inject` or Pinia |
+| Situation                          | Action                            |
+| ---------------------------------- | --------------------------------- |
+| Only one component uses the data   | Keep it local                     |
+| Parent and child share data        | Props down, emit up               |
+| Siblings need the same data        | Lift to the nearest common parent |
+| Distant components across the tree | `provide`/`inject` or Pinia       |
 
 ## When lifting becomes painful
 

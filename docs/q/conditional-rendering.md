@@ -1,9 +1,9 @@
 ---
 order: 14
-title: "What is conditional rendering in Vue?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: "v-if adds/removes elements from the DOM. v-show toggles CSS display. Use v-if for rare toggles, v-show for frequent ones."
+title: 'What is conditional rendering in Vue?'
+difficulty: 'beginner'
+tags: ['directives']
+summary: 'v-if adds/removes elements from the DOM. v-show toggles CSS display. Use v-if for rare toggles, v-show for frequent ones.'
 ---
 
 Conditional rendering controls whether elements appear in the DOM based on reactive state. Vue provides two mechanisms: [`v-if`](https://vuejs.org/api/built-in-directives.html#v-if) (adds/removes elements) and [`v-show`](https://vuejs.org/api/built-in-directives.html#v-show) (toggles CSS `display`).
@@ -61,14 +61,14 @@ To conditionally render multiple elements without adding a wrapper to the DOM:
 
 ## v-if vs v-show
 
-| | `v-if` | `v-show` |
-|---|---|---|
-| DOM behavior | Adds/removes elements | Toggles `display: none` |
-| Initial render cost | Cheaper if condition is false (nothing rendered) | Always rendered |
-| Toggle cost | Expensive (destroy + recreate) | Cheap (CSS only) |
-| Supports `<template>` | Yes | No |
-| Supports `v-else` | Yes | No |
-| Triggers lifecycle hooks | Yes, on every toggle | Only on first render |
+|                          | `v-if`                                           | `v-show`                |
+| ------------------------ | ------------------------------------------------ | ----------------------- |
+| DOM behavior             | Adds/removes elements                            | Toggles `display: none` |
+| Initial render cost      | Cheaper if condition is false (nothing rendered) | Always rendered         |
+| Toggle cost              | Expensive (destroy + recreate)                   | Cheap (CSS only)        |
+| Supports `<template>`    | Yes                                              | No                      |
+| Supports `v-else`        | Yes                                              | No                      |
+| Triggers lifecycle hooks | Yes, on every toggle                             | Only on first render    |
 
 **Rule of thumb:** use `v-show` for things the user toggles frequently (tabs, dropdowns, tooltips). Use `v-if` for conditions that rarely change or when you want to avoid rendering cost upfront.
 
@@ -89,7 +89,7 @@ Never put `v-if` and `v-for` on the same element. In Vue 3, `v-if` has higher pr
 ```
 
 ```ts
-const activeItems = computed(() => items.value.filter(i => i.active))
+const activeItems = computed(() => items.value.filter((i) => i.active))
 ```
 
 See also: [What's the difference between v-if and v-show?](/q/v-if-vs-v-show) · [Why shouldn't you use v-if with v-for?](/q/v-if-with-v-for)

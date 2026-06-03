@@ -1,9 +1,9 @@
 ---
 order: 151
-title: "What is the difference between useFetch, useAsyncData, and $fetch?"
-difficulty: "intermediate"
-tags: ["nuxt", "data-fetching", "vueuse"]
-summary: "useFetch for SSR-aware component data, useAsyncData for custom async logic, $fetch for client-side actions like form submissions."
+title: 'What is the difference between useFetch, useAsyncData, and $fetch?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'data-fetching', 'vueuse']
+summary: 'useFetch for SSR-aware component data, useAsyncData for custom async logic, $fetch for client-side actions like form submissions.'
 ---
 
 Nuxt provides three ways to fetch data. Each solves a different problem around SSR, hydration, and double-fetching.
@@ -63,12 +63,12 @@ const { data: post } = await useFetch(() => `/api/posts/${id.value}`)
 
 ```ts
 const { data } = await useFetch('/api/posts', {
-  pick: ['id', 'title'],           // only keep these fields in the payload
+  pick: ['id', 'title'], // only keep these fields in the payload
   transform: (posts) => posts.slice(0, 5), // transform before caching
-  default: () => [],                // default value while loading
-  lazy: true,                       // don't block navigation
-  server: false,                    // skip server-side fetch
-  immediate: false,                 // don't fetch until you call execute()
+  default: () => [], // default value while loading
+  lazy: true, // don't block navigation
+  server: false, // skip server-side fetch
+  immediate: false // don't fetch until you call execute()
 })
 ```
 
@@ -92,25 +92,25 @@ The first argument is a unique key for caching and deduplication.
 
 ## When to use which
 
-| Scenario | Use |
-|---|---|
-| Fetch from an API endpoint in a component | `useFetch` |
-| Combine multiple fetches into one | `useAsyncData` with `Promise.all` |
-| Fetch from a non-HTTP source (database, SDK) | `useAsyncData` |
-| Button click, form submit, user action | `$fetch` |
-| Initial data in `setup` | `useFetch` or `useAsyncData`, never `$fetch` alone |
+| Scenario                                     | Use                                                |
+| -------------------------------------------- | -------------------------------------------------- |
+| Fetch from an API endpoint in a component    | `useFetch`                                         |
+| Combine multiple fetches into one            | `useAsyncData` with `Promise.all`                  |
+| Fetch from a non-HTTP source (database, SDK) | `useAsyncData`                                     |
+| Button click, form submit, user action       | `$fetch`                                           |
+| Initial data in `setup`                      | `useFetch` or `useAsyncData`, never `$fetch` alone |
 
 ## Shared return values
 
 All composables return the same shape:
 
-| Property | Type | Description |
-|---|---|---|
-| `data` | `Ref<T>` | The fetched data |
-| `error` | `Ref<Error \| null>` | Error if the request failed |
-| `status` | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Current state |
-| `refresh` / `execute` | `() => Promise` | Refetch the data (`execute` is an alias for `refresh`) |
-| `clear` | `() => void` | Reset `data`, `error`, and `status` (back to `idle`), and cancel any pending requests |
+| Property              | Type                                               | Description                                                                           |
+| --------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `data`                | `Ref<T>`                                           | The fetched data                                                                      |
+| `error`               | `Ref<Error \| null>`                               | Error if the request failed                                                           |
+| `status`              | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Current state                                                                         |
+| `refresh` / `execute` | `() => Promise`                                    | Refetch the data (`execute` is an alias for `refresh`)                                |
+| `clear`               | `() => void`                                       | Reset `data`, `error`, and `status` (back to `idle`), and cancel any pending requests |
 
 ## Sharing data across components
 

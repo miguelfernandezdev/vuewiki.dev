@@ -2,7 +2,12 @@
   "questions": [
     {
       "question": "¿Qué usa `v-html` internamente para inyectar contenido en el DOM?",
-      "options": ["textContent", "innerText", "innerHTML", "insertAdjacentHTML"],
+      "options": [
+        "textContent",
+        "innerText",
+        "innerHTML",
+        "insertAdjacentHTML"
+      ],
       "answer": 2
     },
     {

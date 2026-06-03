@@ -1,9 +1,9 @@
 ---
 order: 96
-title: "What is Pinia and how does it differ from Vuex?"
-difficulty: "beginner"
-tags: ["state-management", "pinia", "vuex"]
-summary: "Pinia replaces Vuex: no mutations, no string-based API, full TypeScript support, modular by design. Vuex is in maintenance mode."
+title: 'What is Pinia and how does it differ from Vuex?'
+difficulty: 'beginner'
+tags: ['state-management', 'pinia', 'vuex']
+summary: 'Pinia replaces Vuex: no mutations, no string-based API, full TypeScript support, modular by design. Vuex is in maintenance mode.'
 ---
 
 [Pinia](https://pinia.vuejs.org/) is the official state management library for Vue 3. It replaces [Vuex](/q/how-vuex-works). The Vue team created it because Vuex's design (mutations, string-based API, complex modules) didn't align well with TypeScript and the Composition API.
@@ -79,14 +79,14 @@ No `commit`, no `dispatch`, no `mapGetters`. Just import the store and use it.
 
 ## Key differences table
 
-| Aspect | Vuex | Pinia |
-| --- | --- | --- |
-| Mutations | Required (synchronous) | Don't exist |
-| TypeScript | Limited, string-based API | Full inference, type-safe |
-| Store structure | One store, namespaced modules | Independent stores |
-| DevTools | Yes | Yes (time-travel, state editing) |
-| SSR | Requires careful setup | Built-in support |
-| Bundle size | ~6kb | ~1kb |
+| Aspect          | Vuex                          | Pinia                            |
+| --------------- | ----------------------------- | -------------------------------- |
+| Mutations       | Required (synchronous)        | Don't exist                      |
+| TypeScript      | Limited, string-based API     | Full inference, type-safe        |
+| Store structure | One store, namespaced modules | Independent stores               |
+| DevTools        | Yes                           | Yes (time-travel, state editing) |
+| SSR             | Requires careful setup        | Built-in support                 |
+| Bundle size     | ~6kb                          | ~1kb                             |
 
 See also: [How does Vuex work?](/q/how-vuex-works) · [How does Pinia work internally?](/q/how-pinia-works) · [How would you migrate a Vuex module to Pinia?](/q/vuex-module-to-pinia)
 

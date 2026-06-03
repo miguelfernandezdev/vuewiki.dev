@@ -1,8 +1,8 @@
 ---
 order: 113
-title: "What are the limitations of type-based defineProps?"
-difficulty: "advanced"
-tags: ["typescript", "components"]
+title: 'What are the limitations of type-based defineProps?'
+difficulty: 'advanced'
+tags: ['typescript', 'components']
 summary: "Vue's compiler resolves types statically. Conditional types, deep mapped types, and ambient globals fail. Flatten complex types into explicit interfaces."
 ---
 
@@ -159,11 +159,11 @@ The regular script block has full TypeScript access. The resolved type is then s
 
 ## Version history
 
-| Vue version | What's supported |
-|---|---|
-| 3.2 | Only inline types (no imports) |
-| 3.3 | Imported interfaces, type aliases, enums |
-| 3.4+ | Better support for `Pick`, `Omit`, cross-file generics |
+| Vue version | What's supported                                       |
+| ----------- | ------------------------------------------------------ |
+| 3.2         | Only inline types (no imports)                         |
+| 3.3         | Imported interfaces, type aliases, enums               |
+| 3.4+        | Better support for `Pick`, `Omit`, cross-file generics |
 
 See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [How do generic components work?](/q/generic-components) · [What are the gotchas with withDefaults?](/q/withdefaults-gotchas)
 

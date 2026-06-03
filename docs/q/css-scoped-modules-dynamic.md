@@ -1,9 +1,9 @@
 ---
 order: 21
-title: "How do scoped styles, CSS Modules, and dynamic classes work in Vue?"
-difficulty: "beginner"
-tags: ["components", "styling", "teleport"]
-summary: "Scoped styles add data-v attributes for isolation. CSS Modules hash class names for uniqueness. :class and :style bind classes/styles dynamically."
+title: 'How do scoped styles, CSS Modules, and dynamic classes work in Vue?'
+difficulty: 'beginner'
+tags: ['components', 'styling', 'teleport']
+summary: 'Scoped styles add data-v attributes for isolation. CSS Modules hash class names for uniqueness. :class and :style bind classes/styles dynamically.'
 ---
 
 Vue Single-File Components offer three ways to style components, each solving a different problem.
@@ -14,7 +14,9 @@ Adding `scoped` to a `<style>` block limits the CSS to the current component. Vu
 
 ```vue
 <style scoped>
-.title { color: blue; }
+.title {
+  color: blue;
+}
 /* Compiles to: .title[data-v-abc123] { color: blue; } */
 </style>
 ```
@@ -31,7 +33,9 @@ CSS Modules hash class names at build time. You bind them via `$style` instead o
 </template>
 
 <style module>
-.title { color: blue; }
+.title {
+  color: blue;
+}
 /* Compiles to: .title_abc1 { color: blue; } */
 </style>
 ```
@@ -79,13 +83,13 @@ Vue auto-prefixes vendor-specific CSS properties at runtime, so you don't need t
 
 ## When to use what
 
-| Need | Use |
-|---|---|
-| Simple component isolation | `<style scoped>` |
-| Teleported or dynamic content | `<style module>` |
-| Toggle a class based on state | `:class="{ active: isActive }"` |
+| Need                               | Use                                       |
+| ---------------------------------- | ----------------------------------------- |
+| Simple component isolation         | `<style scoped>`                          |
+| Teleported or dynamic content      | `<style module>`                          |
+| Toggle a class based on state      | `:class="{ active: isActive }"`           |
 | Combine static and dynamic classes | `:class="['base', { active: isActive }]"` |
-| One-off inline overrides | `:style="{ color: x }"` |
+| One-off inline overrides           | `:style="{ color: x }"`                   |
 
 See also: [Why doesn't scoped CSS style child component elements?](/q/scoped-css-child-components) · [How do scoped styles interact with Teleport?](/q/teleport-scoped-styles)
 

@@ -19,7 +19,7 @@ export function useI18n() {
     if (params) {
       return Object.entries(params).reduce(
         (str, [k, v]) => str.replace(`{${k}}`, String(v)),
-        value,
+        value
       )
     }
     return value

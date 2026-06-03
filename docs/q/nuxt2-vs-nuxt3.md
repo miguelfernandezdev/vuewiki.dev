@@ -1,30 +1,30 @@
 ---
 order: 158
-title: "What are the differences between Nuxt 2 and Nuxt 3?"
-difficulty: "intermediate"
-tags: ["nuxt", "migration", "pinia", "vite", "vueuse", "vuex"]
-summary: "Nuxt 3 rewrites everything on Vue 3, Vite, and Nitro. New APIs for data fetching (useFetch), state (useState), and TypeScript-first DX."
+title: 'What are the differences between Nuxt 2 and Nuxt 3?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'migration', 'pinia', 'vite', 'vueuse', 'vuex']
+summary: 'Nuxt 3 rewrites everything on Vue 3, Vite, and Nitro. New APIs for data fetching (useFetch), state (useState), and TypeScript-first DX.'
 ---
 
 Nuxt 3 is a full rewrite on top of Vue 3, Vite, and the Nitro server engine. The changes go beyond the Vue 2 to Vue 3 shift: the build tool, server layer, data fetching, state management, module system, and TypeScript experience are all different. The core philosophy is the same (convention over configuration, file-based routing, SSR by default), but almost every API surface changed.
 
 ## Side-by-side comparison
 
-| Aspect | Nuxt 2 | Nuxt 3 |
-|---|---|---|
-| Vue version | Vue 2 (Options API) | Vue 3 (Composition API) |
-| Build tool | Webpack | Vite (default), Webpack optional |
-| Server engine | Connect | Nitro (built on h3) |
-| State management | Vuex | Pinia / `useState` |
-| Config file | `nuxt.config.js` | `nuxt.config.ts` |
-| Auto-imports | Components only (partial) | Components, composables, utils, server utils |
-| TypeScript | Opt-in, painful setup | First-class, zero config |
-| Module authoring | Nuxt 2 hooks | `@nuxt/kit` API |
-| Data fetching | `asyncData` / `fetch` (Options API) | `useFetch` / `useAsyncData` (Composition API) |
-| Middleware | `context` object | Composables + `navigateTo` |
-| Plugins | `inject` + `context` | `defineNuxtPlugin` + `nuxtApp` |
-| Rendering | SSR or static | SSR, static, hybrid (per-route rules) |
-| Deployment | Node.js mainly | Universal (Node, Vercel, Netlify, Cloudflare, Deno) |
+| Aspect           | Nuxt 2                              | Nuxt 3                                              |
+| ---------------- | ----------------------------------- | --------------------------------------------------- |
+| Vue version      | Vue 2 (Options API)                 | Vue 3 (Composition API)                             |
+| Build tool       | Webpack                             | Vite (default), Webpack optional                    |
+| Server engine    | Connect                             | Nitro (built on h3)                                 |
+| State management | Vuex                                | Pinia / `useState`                                  |
+| Config file      | `nuxt.config.js`                    | `nuxt.config.ts`                                    |
+| Auto-imports     | Components only (partial)           | Components, composables, utils, server utils        |
+| TypeScript       | Opt-in, painful setup               | First-class, zero config                            |
+| Module authoring | Nuxt 2 hooks                        | `@nuxt/kit` API                                     |
+| Data fetching    | `asyncData` / `fetch` (Options API) | `useFetch` / `useAsyncData` (Composition API)       |
+| Middleware       | `context` object                    | Composables + `navigateTo`                          |
+| Plugins          | `inject` + `context`                | `defineNuxtPlugin` + `nuxtApp`                      |
+| Rendering        | SSR or static                       | SSR, static, hybrid (per-route rules)               |
+| Deployment       | Node.js mainly                      | Universal (Node, Vercel, Netlify, Cloudflare, Deno) |
 
 ## Data fetching
 
@@ -94,10 +94,14 @@ Nuxt 3 also distinguishes between route middleware (runs on navigation, lives in
 // Nuxt 2: Vuex store with mutations
 export const state = () => ({ count: 0 })
 export const mutations = {
-  INCREMENT(state) { state.count++ }
+  INCREMENT(state) {
+    state.count++
+  }
 }
 export const actions = {
-  increment({ commit }) { commit('INCREMENT') }
+  increment({ commit }) {
+    commit('INCREMENT')
+  }
 }
 ```
 
@@ -105,7 +109,9 @@ export const actions = {
 // Nuxt 3: Pinia store (or useState for simple cases)
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
-  function increment() { count.value++ }
+  function increment() {
+    count.value++
+  }
   return { count, increment }
 })
 
@@ -169,7 +175,9 @@ Different pages in the same app can use SSR, SSG, ISR, or client-only rendering.
 ```ts
 // Nuxt 2: module with hooks
 export default function MyModule() {
-  this.nuxt.hook('build:before', () => { /* ... */ })
+  this.nuxt.hook('build:before', () => {
+    /* ... */
+  })
   this.addPlugin({ src: resolve(__dirname, 'plugin.js') })
 }
 ```

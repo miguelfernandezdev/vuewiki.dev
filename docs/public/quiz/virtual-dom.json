@@ -12,7 +12,12 @@
     },
     {
       "question": "What Vue compiler optimization tags dynamic bindings so the diff can skip static parts?",
-      "options": ["Tree flattening", "Static hoisting", "Patch flags", "Node memoization"],
+      "options": [
+        "Tree flattening",
+        "Static hoisting",
+        "Patch flags",
+        "Node memoization"
+      ],
       "answer": 2
     },
     {

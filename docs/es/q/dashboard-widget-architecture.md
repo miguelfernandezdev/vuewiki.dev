@@ -1,9 +1,17 @@
 ---
 order: 138
-title: "¿Cómo arquitectarías un dashboard con múltiples widgets que cada uno obtiene sus propios datos?"
-difficulty: "advanced"
-tags: ["architecture", "composables", "performance", "pinia", "provide-inject", "suspense"]
-summary: "Cada widget es un componente independiente con su propio composable de datos. Los datos compartidos van en Pinia; los del widget en refs locales."
+title: '¿Cómo arquitectarías un dashboard con múltiples widgets que cada uno obtiene sus propios datos?'
+difficulty: 'advanced'
+tags:
+  [
+    'architecture',
+    'composables',
+    'performance',
+    'pinia',
+    'provide-inject',
+    'suspense'
+  ]
+summary: 'Cada widget es un componente independiente con su propio composable de datos. Los datos compartidos van en Pinia; los del widget en refs locales.'
 ---
 
 Cada widget debe ser un componente independiente con su propio composable para la obtención de datos. Cada widget gestiona sus propios estados de carga, error y datos, de modo que una API lenta no bloquea a las otras cuatro. Los datos compartidos van en un store de Pinia; los datos exclusivos del widget permanecen en los refs locales del composable. El layout usa CSS Grid para que los widgets sean celdas responsivas que se renderizan de forma independiente.
@@ -65,12 +73,15 @@ interface SalesData {
 }
 
 export function useSalesWidget() {
-  const { data, error, isLoading, refresh } = useFetchData<SalesData>('/api/dashboard/sales')
+  const { data, error, isLoading, refresh } = useFetchData<SalesData>(
+    '/api/dashboard/sales'
+  )
 
   const formattedRevenue = computed(() => {
     if (!data.value) return '$0'
     return new Intl.NumberFormat('en-US', {
-      style: 'currency', currency: 'USD'
+      style: 'currency',
+      currency: 'USD'
     }).format(data.value.totalRevenue)
   })
 
@@ -149,7 +160,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
   const currentUser = ref<User | null>(null)
 
   async function loadUser() {
-    currentUser.value = await fetch('/api/me').then(r => r.json())
+    currentUser.value = await fetch('/api/me').then((r) => r.json())
   }
 
   return { dateRange, currentUser, loadUser }
@@ -162,7 +173,8 @@ export function useSalesWidget() {
   const store = useDashboardStore()
 
   const url = computed(
-    () => `/api/dashboard/sales?from=${store.dateRange.from.toISOString()}&to=${store.dateRange.to.toISOString()}`
+    () =>
+      `/api/dashboard/sales?from=${store.dateRange.from.toISOString()}&to=${store.dateRange.to.toISOString()}`
   )
 
   const { data, error, isLoading, refresh } = useFetchData<SalesData>(url)
@@ -182,7 +194,9 @@ Los widgets necesitan una estrategia de refresco. Tres opciones según el caso d
 
 // Opción 2: Intervalo de polling
 export function useSalesWidget() {
-  const { data, error, isLoading, refresh } = useFetchData<SalesData>('/api/dashboard/sales')
+  const { data, error, isLoading, refresh } = useFetchData<SalesData>(
+    '/api/dashboard/sales'
+  )
 
   const interval = setInterval(refresh, 30_000)
   onUnmounted(() => clearInterval(interval))
@@ -226,13 +240,13 @@ Cada límite `Suspense` es independiente, por lo que los widgets siguen cargando
 
 ## Resumen de decisiones de arquitectura
 
-| Decisión | Datos solo del widget | Datos compartidos |
-|---|---|---|
-| Dónde vive | Ref local del composable | Store de Pinia |
-| Quién obtiene | Composable del widget | Acción del store |
-| Profundidad de reactividad | `shallowRef` (reemplazado completo) | `ref` o `shallowRef` |
-| Estrategia de refresco | Por widget (poll, manual, WebSocket) | La acción del store activa todos los dependientes |
-| Manejo de errores | Por widget (estado de error local) | A nivel de store o por widget |
+| Decisión                   | Datos solo del widget                | Datos compartidos                                 |
+| -------------------------- | ------------------------------------ | ------------------------------------------------- |
+| Dónde vive                 | Ref local del composable             | Store de Pinia                                    |
+| Quién obtiene              | Composable del widget                | Acción del store                                  |
+| Profundidad de reactividad | `shallowRef` (reemplazado completo)  | `ref` o `shallowRef`                              |
+| Estrategia de refresco     | Por widget (poll, manual, WebSocket) | La acción del store activa todos los dependientes |
+| Manejo de errores          | Por widget (estado de error local)   | A nivel de store o por widget                     |
 
 Ver también: [¿Qué son los componentes asíncronos?](/es/q/async-components) · [¿Cómo funciona provide/inject?](/es/q/provide-inject) · [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive)
 

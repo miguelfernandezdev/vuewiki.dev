@@ -1,9 +1,9 @@
 ---
 order: 8
 title: "What's the difference between v-if and v-show?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: "v-if adds/removes elements from the DOM (higher toggle cost, zero render cost when hidden). v-show toggles CSS display (cheap toggle, always rendered)."
+difficulty: 'beginner'
+tags: ['directives']
+summary: 'v-if adds/removes elements from the DOM (higher toggle cost, zero render cost when hidden). v-show toggles CSS display (cheap toggle, always rendered).'
 ---
 
 Both hide and show elements based on a condition, but they do it in completely different ways, and that difference has real performance implications.
@@ -40,13 +40,13 @@ Toggling is cheap (one CSS property change), but the initial render always pays 
 
 ## When to use which
 
-| Scenario | Use | Why |
-|---|---|---|
-| User toggles something frequently (tabs, dropdowns, tooltips) | `v-show` | Avoid repeated mount/unmount |
-| Condition rarely changes (feature flags, permissions) | `v-if` | Don't pay render cost for something the user may never see |
-| Large component tree that's expensive to mount | `v-show` if toggled often, `v-if` if rarely shown | Balance initial cost vs toggle cost |
-| Need `v-else` or `v-else-if` chains | `v-if` | `v-show` doesn't support else chains |
-| Need to wrap multiple elements with `<template>` | `v-if` | `v-show` doesn't work on `<template>` |
+| Scenario                                                      | Use                                               | Why                                                        |
+| ------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------- |
+| User toggles something frequently (tabs, dropdowns, tooltips) | `v-show`                                          | Avoid repeated mount/unmount                               |
+| Condition rarely changes (feature flags, permissions)         | `v-if`                                            | Don't pay render cost for something the user may never see |
+| Large component tree that's expensive to mount                | `v-show` if toggled often, `v-if` if rarely shown | Balance initial cost vs toggle cost                        |
+| Need `v-else` or `v-else-if` chains                           | `v-if`                                            | `v-show` doesn't support else chains                       |
+| Need to wrap multiple elements with `<template>`              | `v-if`                                            | `v-show` doesn't work on `<template>`                      |
 
 **Default to `v-if`** unless you have a specific reason to keep the element in the DOM. Most conditions in real apps don't toggle frequently enough for `v-show` to matter.
 

@@ -1,9 +1,9 @@
 ---
 order: 141
-title: "What is Server Side Rendering and what are its advantages?"
-difficulty: "intermediate"
-tags: ["ssr", "vite"]
-summary: "The server runs Vue components and sends complete HTML. The browser shows content immediately, then JavaScript loads and hydrates for interactivity."
+title: 'What is Server Side Rendering and what are its advantages?'
+difficulty: 'intermediate'
+tags: ['ssr', 'vite']
+summary: 'The server runs Vue components and sends complete HTML. The browser shows content immediately, then JavaScript loads and hydrates for interactivity.'
 ---
 
 Server Side Rendering (SSR) means generating the HTML for a page on the server instead of in the browser. When a user requests a page, the server runs your Vue components, produces complete HTML, and sends it. The browser shows the content immediately, then JavaScript loads and makes the page interactive (hydration).
@@ -108,13 +108,13 @@ No manual server setup, no separate entry files, no state serialization code. Th
 
 ## When to use SSR
 
-| Use case | SSR? |
-|---|---|
-| Marketing site, blog, docs | Yes, or prerender (SSG) |
-| E-commerce product pages | Yes (SEO + performance) |
-| Dashboard behind login | No (CSR is simpler, no SEO needed) |
-| Real-time collaborative app | Maybe (SSR for initial load, then CSR) |
-| Static site with no dynamic data | SSG (prerender at build time) |
+| Use case                         | SSR?                                   |
+| -------------------------------- | -------------------------------------- |
+| Marketing site, blog, docs       | Yes, or prerender (SSG)                |
+| E-commerce product pages         | Yes (SEO + performance)                |
+| Dashboard behind login           | No (CSR is simpler, no SEO needed)     |
+| Real-time collaborative app      | Maybe (SSR for initial load, then CSR) |
+| Static site with no dynamic data | SSG (prerender at build time)          |
 
 See also: [What is hydration?](/q/what-is-hydration) · [What causes SSR hydration mismatches?](/q/ssr-hydration-mismatch) · [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes)
 

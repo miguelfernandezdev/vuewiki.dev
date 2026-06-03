@@ -1,8 +1,8 @@
 ---
 order: 11
 title: "Why doesn't v-show work on template elements?"
-difficulty: "beginner"
-tags: ["directives", "errors"]
+difficulty: 'beginner'
+tags: ['directives', 'errors']
 summary: "v-show toggles CSS display, but <template> elements don't render to the DOM. There's no element to set display:none on. Use v-if instead."
 ---
 
@@ -22,7 +22,8 @@ Another limitation: `v-show` does not support `v-else`.
 ```vue
 <!-- v-else does NOT work with v-show -->
 <div v-show="isLoggedIn">Welcome!</div>
-<div v-else>Please log in</div> <!-- broken -->
+<div v-else>Please log in</div>
+<!-- broken -->
 ```
 
 ## How to fix it
@@ -52,12 +53,12 @@ Another limitation: `v-show` does not support `v-else`.
 
 ## Quick reference
 
-| Need | Use |
-|---|---|
-| Toggle multiple elements without a wrapper | `<template v-if>` |
-| Frequent toggle, single element | `v-show` on the element |
-| Frequent toggle, need "else" | Two `v-show` with negated conditions |
-| v-else / v-else-if branches | `v-if` / `v-else` |
+| Need                                       | Use                                  |
+| ------------------------------------------ | ------------------------------------ |
+| Toggle multiple elements without a wrapper | `<template v-if>`                    |
+| Frequent toggle, single element            | `v-show` on the element              |
+| Frequent toggle, need "else"               | Two `v-show` with negated conditions |
+| v-else / v-else-if branches                | `v-if` / `v-else`                    |
 
 See also: [Why can't you use v-if and v-for on the same element?](/q/v-if-with-v-for) · [What are event modifiers?](/q/event-modifier-order) · [What is v-once and v-memo?](/q/v-once-v-memo)
 

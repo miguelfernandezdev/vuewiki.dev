@@ -1,9 +1,9 @@
 ---
 order: 43
-title: "¿Cuál es la diferencia entre un componente y un elemento en Vue?"
-difficulty: "intermediate"
-tags: ["components", "core"]
-summary: "Un elemento es una etiqueta HTML (<div>, <button>). Un componente es una unidad de UI reutilizable con su propio estado, ciclo de vida, props y emit."
+title: '¿Cuál es la diferencia entre un componente y un elemento en Vue?'
+difficulty: 'intermediate'
+tags: ['components', 'core']
+summary: 'Un elemento es una etiqueta HTML (<div>, <button>). Un componente es una unidad de UI reutilizable con su propio estado, ciclo de vida, props y emit.'
 ---
 
 Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un componente es una pieza de UI reutilizable definida por ti (`<UserCard>`, `<Modal>`, `<AppHeader>`). Ambos producen [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (nodos del Virtual DOM) en tiempo de renderizado, pero Vue los gestiona de forma diferente: los elementos se corresponden directamente con nodos del DOM, mientras que los componentes pasan por un ciclo de vida de instancia (props, setup, estado reactivo, slots, emit) antes de renderizar su propio árbol de elementos.
@@ -14,7 +14,6 @@ Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un com
 <template>
   <!-- Elemento: se corresponde con un <div> real en el DOM -->
   <div class="container">
-
     <!-- Componente: Vue crea una instancia, ejecuta setup, renderiza su template -->
     <UserCard :user="user" @click="selectUser" />
 
@@ -47,11 +46,13 @@ El campo `type` es la diferencia clave. Para elementos, `type` es una cadena (`'
 ## Cómo procesa Vue cada uno
 
 **VNode de elemento** (`type: 'div'`):
+
 1. Crea o parchea el nodo del DOM
 2. Aplica atributos, listeners de eventos y estilos
 3. Procesa los hijos de forma recursiva
 
 **VNode de componente** (`type: UserCard`):
+
 1. Crea una instancia del componente (contexto reactivo, props, slots)
 2. Ejecuta `setup()` o el equivalente de la Options API
 3. Renderiza el template del componente en su propio árbol de VNodes
@@ -85,16 +86,16 @@ Vue DevTools muestra ambos niveles. La pestaña Components muestra el árbol de 
 
 ## Diferencia práctica
 
-| | Elemento | Componente |
-|---|---|---|
-| Qué es | Etiqueta HTML | Unidad de UI reutilizable |
-| Tipo del VNode | Cadena (`'div'`) | Objeto de componente |
-| Tiene instancia | No | Sí (estado reactivo, lifecycle) |
-| Tiene props/emit | No (tiene atributos) | Sí |
-| Tiene slots | No | Sí |
-| Aparece en el DOM | Sí | No (su output del template sí) |
-| Visibilidad en DevTools | Pestaña Elements | Pestaña Components |
-| Coste | Bajo (solo un nodo DOM) | Mayor (instancia + setup de reactividad) |
+|                         | Elemento                | Componente                               |
+| ----------------------- | ----------------------- | ---------------------------------------- |
+| Qué es                  | Etiqueta HTML           | Unidad de UI reutilizable                |
+| Tipo del VNode          | Cadena (`'div'`)        | Objeto de componente                     |
+| Tiene instancia         | No                      | Sí (estado reactivo, lifecycle)          |
+| Tiene props/emit        | No (tiene atributos)    | Sí                                       |
+| Tiene slots             | No                      | Sí                                       |
+| Aparece en el DOM       | Sí                      | No (su output del template sí)           |
+| Visibilidad en DevTools | Pestaña Elements        | Pestaña Components                       |
+| Coste                   | Bajo (solo un nodo DOM) | Mayor (instancia + setup de reactividad) |
 
 Ver también: [¿Qué es el Virtual DOM y cómo lo usa Vue?](/es/q/virtual-dom)
 

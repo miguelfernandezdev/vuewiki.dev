@@ -1,9 +1,9 @@
 ---
 order: 77
-title: "¿Qué son readonly y shallowReadonly?"
-difficulty: "intermediate"
-tags: ["reactivity", "provide-inject"]
-summary: "readonly() hace un objeto profundamente inmutable (escrituras advierten en dev, fallan en prod). shallowReadonly() solo protege el nivel superior."
+title: '¿Qué son readonly y shallowReadonly?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'provide-inject']
+summary: 'readonly() hace un objeto profundamente inmutable (escrituras advierten en dev, fallan en prod). shallowReadonly() solo protege el nivel superior.'
 ---
 
 `readonly()` crea un proxy reactivo profundamente inmutable. Se pueden leer todas las propiedades y siguen siendo reactivas ([computed](https://vuejs.org/api/reactivity-core.html#computed) y watchers continúan registrando cambios de la fuente original), pero cualquier intento de mutarlas genera un aviso en desarrollo y falla silenciosamente en producción. `shallowReadonly()` hace lo mismo pero solo en el primer nivel: los objetos anidados siguen siendo mutables.
@@ -104,23 +104,23 @@ Esto impone el flujo de datos unidireccional a través del árbol de provide/inj
 
 ## Cuándo usar cada uno
 
-| Escenario | Usar |
-|---|---|
-| Exponer estado desde un composable | `readonly(state)` |
-| Proveer datos reactivos a descendientes | `readonly(state)` vía `provide` |
-| Objeto de configuración grande donde solo importa el primer nivel | `shallowReadonly(config)` |
-| Objeto de terceros con estado anidado que no se puede controlar | `shallowReadonly(instance)` |
-| Datos inmutables que nunca cambian | `Object.freeze` (sin reactividad) |
+| Escenario                                                         | Usar                              |
+| ----------------------------------------------------------------- | --------------------------------- |
+| Exponer estado desde un composable                                | `readonly(state)`                 |
+| Proveer datos reactivos a descendientes                           | `readonly(state)` vía `provide`   |
+| Objeto de configuración grande donde solo importa el primer nivel | `shallowReadonly(config)`         |
+| Objeto de terceros con estado anidado que no se puede controlar   | `shallowReadonly(instance)`       |
+| Datos inmutables que nunca cambian                                | `Object.freeze` (sin reactividad) |
 
 ## readonly vs Object.freeze
 
-| | `readonly` | `Object.freeze` |
-|---|---|---|
-| Reactivo | Sí, registra la fuente | No, omite la reactividad completamente |
-| Prevención de mutación | Aviso en dev, fallo silencioso en prod | TypeError en modo estricto |
-| Profundidad | Profundo (todas las propiedades anidadas) | Superficial (hay que congelar recursivamente) |
-| ¿Se puede mutar la fuente? | Sí, a través de la referencia original | No, el objeto en sí está congelado |
-| Caso de uso | Acceso controlado a estado activo | Optimización de datos estáticos |
+|                            | `readonly`                                | `Object.freeze`                               |
+| -------------------------- | ----------------------------------------- | --------------------------------------------- |
+| Reactivo                   | Sí, registra la fuente                    | No, omite la reactividad completamente        |
+| Prevención de mutación     | Aviso en dev, fallo silencioso en prod    | TypeError en modo estricto                    |
+| Profundidad                | Profundo (todas las propiedades anidadas) | Superficial (hay que congelar recursivamente) |
+| ¿Se puede mutar la fuente? | Sí, a través de la referencia original    | No, el objeto en sí está congelado            |
+| Caso de uso                | Acceso controlado a estado activo         | Optimización de datos estáticos               |
 
 La diferencia clave: `readonly` crea una vista de solo lectura de datos que pueden seguir cambiando a través de la referencia original. `Object.freeze` hace los datos permanentemente inmutables para todos.
 

@@ -1,9 +1,9 @@
 ---
 order: 132
-title: "How would you handle internationalization (i18n) in Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "v-model"]
-summary: "Use vue-i18n for Vue apps or @nuxtjs/i18n for Nuxt. They provide reactive locale switching, interpolation, pluralization, and lazy-loaded translations."
+title: 'How would you handle internationalization (i18n) in Vue?'
+difficulty: 'intermediate'
+tags: ['architecture', 'v-model']
+summary: 'Use vue-i18n for Vue apps or @nuxtjs/i18n for Nuxt. They provide reactive locale switching, interpolation, pluralization, and lazy-loaded translations.'
 ---
 
 The standard solution is `vue-i18n` for Vue apps and `@nuxtjs/i18n` for Nuxt. They provide reactive locale switching, message interpolation, pluralization, date/number formatting, and lazy-loaded translations. For simpler needs, you can build a lightweight i18n system with a composable and JSON files.
@@ -98,9 +98,12 @@ vue-i18n uses pipe-separated forms: zero | one | many.
 ```
 
 ```vue
-<p>{{ t('messages', 0) }}</p>  <!-- No messages -->
-<p>{{ t('messages', 1) }}</p>  <!-- 1 message -->
-<p>{{ t('messages', 42) }}</p> <!-- 42 messages -->
+<p>{{ t('messages', 0) }}</p>
+<!-- No messages -->
+<p>{{ t('messages', 1) }}</p>
+<!-- 1 message -->
+<p>{{ t('messages', 42) }}</p>
+<!-- 42 messages -->
 ```
 
 ## Date and number formatting
@@ -128,8 +131,10 @@ const i18n = createI18n({
 ```
 
 ```vue
-<p>{{ d(new Date(), 'short') }}</p>   <!-- Jun 1, 2026 / 1 jun 2026 -->
-<p>{{ n(99.99, 'currency') }}</p>      <!-- $99.99 / 99,99 € -->
+<p>{{ d(new Date(), 'short') }}</p>
+<!-- Jun 1, 2026 / 1 jun 2026 -->
+<p>{{ n(99.99, 'currency') }}</p>
+<!-- $99.99 / 99,99 € -->
 ```
 
 ## Lazy-loading translations
@@ -180,6 +185,7 @@ export default defineNuxtConfig({
 ```
 
 This gives you:
+
 - `/about` for English, `/es/about` for Spanish
 - `<html lang="es">` set automatically
 - `useLocalePath()` for locale-aware links
@@ -227,12 +233,12 @@ This is simpler but lacks pluralization, interpolation, date formatting, and the
 
 ## When to use what
 
-| Need | Solution |
-|---|---|
-| Full i18n with pluralization, formatting, tooling | vue-i18n |
-| Nuxt with localized routes and SEO | @nuxtjs/i18n |
-| Small app, few strings, no plural rules | DIY composable |
-| Static site with a few pages per language | Separate markdown files per locale |
+| Need                                              | Solution                           |
+| ------------------------------------------------- | ---------------------------------- |
+| Full i18n with pluralization, formatting, tooling | vue-i18n                           |
+| Nuxt with localized routes and SEO                | @nuxtjs/i18n                       |
+| Small app, few strings, no plural rules           | DIY composable                     |
+| Static site with a few pages per language         | Separate markdown files per locale |
 
 See also: [How does the Vue plugin system work?](/q/plugin-system) · [What is a composable?](/q/what-is-a-composable) · [How does Nuxt file-based routing work?](/q/nuxt-file-based-routing)
 

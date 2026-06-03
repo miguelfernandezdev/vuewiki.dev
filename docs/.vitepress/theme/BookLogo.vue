@@ -8,7 +8,8 @@ const tiltY = ref(0)
 const wrapper = ref<HTMLElement>()
 const svgEl = ref<SVGSVGElement>()
 
-const SPLINE = '0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1'
+const SPLINE =
+  '0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1'
 const KEY_TIMES = '0;0.1;0.35;0.5;0.6;0.85;1'
 const VALUES = [
   'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z',
@@ -17,19 +18,43 @@ const VALUES = [
   'M190 358C190 330 212 310 244 311C342 313 442 345 512 410V650C512 661 496 668 484 663C404 626 308 606 222 607C205 607 190 595 190 578V358Z',
   'M190 358C190 330 212 310 244 311C342 313 442 345 512 410V650C512 661 496 668 484 663C404 626 308 606 222 607C205 607 190 595 190 578V358Z',
   'M512 358C512 330 512 310 512 311C512 313 512 345 512 410V650C512 661 512 668 512 663C512 626 512 606 512 607C512 607 512 595 512 578V358Z',
-  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z',
+  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z'
 ].join(';')
 
 const pages = [
-  { dur: '5s', begin: '1.5s', fill: '#D8D2C6', opacity: '0.65', fastDur: '3.2s' },
-  { dur: '4.5s', begin: '0s', fill: '#E0DBD0', opacity: '0.7', fastDur: '2.8s' },
-  { dur: '3.8s', begin: '0.8s', fill: '#E8E2D5', opacity: '0.75', fastDur: '2.5s' },
-  { dur: '4s', begin: '2.8s', fill: '#EDE8DC', opacity: '0.8', fastDur: '2.6s' },
-  { dur: '4.2s', begin: '2s', fill: '#F2ECE2', opacity: '0.7', fastDur: '2.9s' },
+  {
+    dur: '5s',
+    begin: '1.5s',
+    fill: '#D8D2C6',
+    opacity: '0.65',
+    fastDur: '3.2s'
+  },
+  {
+    dur: '4.5s',
+    begin: '0s',
+    fill: '#E0DBD0',
+    opacity: '0.7',
+    fastDur: '2.8s'
+  },
+  {
+    dur: '3.8s',
+    begin: '0.8s',
+    fill: '#E8E2D5',
+    opacity: '0.75',
+    fastDur: '2.5s'
+  },
+  {
+    dur: '4s',
+    begin: '2.8s',
+    fill: '#EDE8DC',
+    opacity: '0.8',
+    fastDur: '2.6s'
+  },
+  { dur: '4.2s', begin: '2s', fill: '#F2ECE2', opacity: '0.7', fastDur: '2.9s' }
 ]
 
 const activeDurs = computed(() =>
-  pages.map(p => isHovered.value ? p.fastDur : p.dur)
+  pages.map((p) => (isHovered.value ? p.fastDur : p.dur))
 )
 
 onMounted(() => {
@@ -43,7 +68,7 @@ onMounted(() => {
     ([entry]) => {
       isVisible.value = entry.isIntersecting
     },
-    { threshold: 0.2 },
+    { threshold: 0.2 }
   )
   observer.observe(wrapper.value)
   onUnmounted(() => observer.disconnect())
@@ -59,7 +84,9 @@ const prefersReducedMotion = ref(false)
 onMounted(() => {
   const mq = globalThis.matchMedia('(prefers-reduced-motion: reduce)')
   prefersReducedMotion.value = mq.matches
-  mq.addEventListener('change', (e) => { prefersReducedMotion.value = e.matches })
+  mq.addEventListener('change', (e) => {
+    prefersReducedMotion.value = e.matches
+  })
 })
 
 function onMouseMove(e: MouseEvent) {
@@ -79,10 +106,13 @@ function onMouseLeave() {
 
 const svgStyle = computed(() => ({
   transform: `perspective(600px) rotateX(${tiltX.value}deg) rotateY(${tiltY.value}deg)`,
-  transition: isHovered.value ? 'transform 0.1s ease-out' : 'transform 0.4s ease-out',
+  transition: isHovered.value
+    ? 'transform 0.1s ease-out'
+    : 'transform 0.4s ease-out'
 }))
 
-const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z'
+const RIGHT =
+  'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 661 528 668 540 663C620 626 716 606 802 607C819 607 834 595 834 578V358Z'
 </script>
 
 <template>
@@ -100,38 +130,92 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
       :style="svgStyle"
     >
       <defs>
-        <linearGradient id="leftPage" x1="214" y1="360" x2="504" y2="640" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="leftPage"
+          x1="214"
+          y1="360"
+          x2="504"
+          y2="640"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#0EBF9B" />
           <stop offset="1" stop-color="#05A67B" />
         </linearGradient>
-        <linearGradient id="rightPage" x1="810" y1="360" x2="514" y2="642" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="rightPage"
+          x1="810"
+          y1="360"
+          x2="514"
+          y2="642"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#20CFF3" />
           <stop offset="1" stop-color="#0A9DE8" />
         </linearGradient>
-        <linearGradient id="leftLip" x1="212" y1="325" x2="512" y2="429" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="leftLip"
+          x1="212"
+          y1="325"
+          x2="512"
+          y2="429"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#B6F5B8" />
           <stop offset="1" stop-color="#92EFA7" />
         </linearGradient>
-        <linearGradient id="rightLip" x1="512" y1="428" x2="812" y2="324" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="rightLip"
+          x1="512"
+          y1="428"
+          x2="812"
+          y2="324"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#BEEFFF" />
           <stop offset="1" stop-color="#9FE8FF" />
         </linearGradient>
-        <linearGradient id="spine" x1="512" y1="383" x2="512" y2="646" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="spine"
+          x1="512"
+          y1="383"
+          x2="512"
+          y2="646"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#073452" />
           <stop offset="1" stop-color="#03253D" />
         </linearGradient>
-        <linearGradient id="bottomShadowLeft" x1="230" y1="596" x2="512" y2="660" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="bottomShadowLeft"
+          x1="230"
+          y1="596"
+          x2="512"
+          y2="660"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#014457" />
           <stop offset="1" stop-color="#012A47" />
         </linearGradient>
-        <linearGradient id="bottomShadowRight" x1="794" y1="596" x2="512" y2="660" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="bottomShadowRight"
+          x1="794"
+          y1="596"
+          x2="512"
+          y2="660"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0" stop-color="#034B83" />
           <stop offset="1" stop-color="#00356D" />
         </linearGradient>
       </defs>
 
       <!-- turning pages (behind book) with SMIL animation -->
-      <path v-for="(page, i) in pages" :key="i" :fill="page.fill" :opacity="page.opacity">
+      <path
+        v-for="(page, i) in pages"
+        :key="i"
+        :fill="page.fill"
+        :opacity="page.opacity"
+      >
         <animate
           v-if="!prefersReducedMotion"
           attributeName="d"
@@ -147,32 +231,87 @@ const RIGHT = 'M834 358C834 330 812 310 780 311C682 313 582 345 512 410V650C512 
       </path>
 
       <!-- bottom thickness -->
-      <path d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V604C824 621 811 633 793 634C697 638 598 655 530 679C518 684 506 684 494 679C426 655 327 638 231 634C213 633 200 621 200 604V594C200 579 211 569 228 569Z" fill="#012F4D" opacity="0.9" />
-      <path d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V601C824 611 815 620 800 620C703 620 605 642 531 671C518 676 506 676 493 671C419 642 321 620 224 620C209 620 200 611 200 601V594C200 579 211 569 228 569Z" fill="url(#bottomShadowLeft)" opacity="0.65" />
-      <path d="M512 635C596 600 704 570 796 569C813 569 824 579 824 594V601C824 611 815 620 800 620C703 620 605 642 531 671C525 674 518 676 512 676V635Z" fill="url(#bottomShadowRight)" opacity="0.75" />
+      <path
+        d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V604C824 621 811 633 793 634C697 638 598 655 530 679C518 684 506 684 494 679C426 655 327 638 231 634C213 633 200 621 200 604V594C200 579 211 569 228 569Z"
+        fill="#012F4D"
+        opacity="0.9"
+      />
+      <path
+        d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V601C824 611 815 620 800 620C703 620 605 642 531 671C518 676 506 676 493 671C419 642 321 620 224 620C209 620 200 611 200 601V594C200 579 211 569 228 569Z"
+        fill="url(#bottomShadowLeft)"
+        opacity="0.65"
+      />
+      <path
+        d="M512 635C596 600 704 570 796 569C813 569 824 579 824 594V601C824 611 815 620 800 620C703 620 605 642 531 671C525 674 518 676 512 676V635Z"
+        fill="url(#bottomShadowRight)"
+        opacity="0.75"
+      />
 
       <!-- spine -->
-      <path d="M423 350C467 366 501 389 512 430C523 389 557 366 601 350L512 640L423 350Z" fill="url(#spine)" />
+      <path
+        d="M423 350C467 366 501 389 512 430C523 389 557 366 601 350L512 640L423 350Z"
+        fill="url(#spine)"
+      />
 
       <!-- page bodies -->
-      <path d="M200 366C200 338 222 318 253 319C347 321 445 351 512 415V642C512 653 500 660 489 655C409 618 313 598 228 599C211 599 200 587 200 570V366Z" fill="url(#leftPage)" />
-      <path d="M824 366C824 338 802 318 771 319C677 321 579 351 512 415V642C512 653 524 660 535 655C615 618 711 598 796 599C813 599 824 587 824 570V366Z" fill="url(#rightPage)" />
+      <path
+        d="M200 366C200 338 222 318 253 319C347 321 445 351 512 415V642C512 653 500 660 489 655C409 618 313 598 228 599C211 599 200 587 200 570V366Z"
+        fill="url(#leftPage)"
+      />
+      <path
+        d="M824 366C824 338 802 318 771 319C677 321 579 351 512 415V642C512 653 524 660 535 655C615 618 711 598 796 599C813 599 824 587 824 570V366Z"
+        fill="url(#rightPage)"
+      />
 
       <!-- crease overlays -->
-      <path d="M423 350C467 366 501 389 512 430V640L423 350Z" fill="#052F4A" opacity="0.38" />
-      <path d="M601 350C557 366 523 389 512 430V640L601 350Z" fill="#042E4C" opacity="0.34" />
+      <path
+        d="M423 350C467 366 501 389 512 430V640L423 350Z"
+        fill="#052F4A"
+        opacity="0.38"
+      />
+      <path
+        d="M601 350C557 366 523 389 512 430V640L601 350Z"
+        fill="#042E4C"
+        opacity="0.34"
+      />
 
       <!-- lips / covers -->
-      <path d="M200 364C200 337 221 318 252 319C349 322 447 353 512 415V450C445 380 340 345 248 344C219 344 200 350 200 364Z" fill="url(#leftLip)" />
-      <path d="M824 364C824 337 803 318 772 319C675 322 577 353 512 415V450C579 380 684 345 776 344C805 344 824 350 824 364Z" fill="url(#rightLip)" />
+      <path
+        d="M200 364C200 337 221 318 252 319C349 322 447 353 512 415V450C445 380 340 345 248 344C219 344 200 350 200 364Z"
+        fill="url(#leftLip)"
+      />
+      <path
+        d="M824 364C824 337 803 318 772 319C675 322 577 353 512 415V450C579 380 684 345 776 344C805 344 824 350 824 364Z"
+        fill="url(#rightLip)"
+      />
 
       <!-- page edge highlights -->
-      <path d="M201 371C201 354 217 344 247 344C340 345 445 380 512 450V415C447 353 349 322 252 319C221 318 200 337 200 364V371H201Z" fill="#B7F4B5" opacity="0.55" />
-      <path d="M823 371C823 354 807 344 777 344C684 345 579 380 512 450V415C577 353 675 322 772 319C803 318 824 337 824 364V371H823Z" fill="#C3F1FF" opacity="0.6" />
+      <path
+        d="M201 371C201 354 217 344 247 344C340 345 445 380 512 450V415C447 353 349 322 252 319C221 318 200 337 200 364V371H201Z"
+        fill="#B7F4B5"
+        opacity="0.55"
+      />
+      <path
+        d="M823 371C823 354 807 344 777 344C684 345 579 380 512 450V415C577 353 675 322 772 319C803 318 824 337 824 364V371H823Z"
+        fill="#C3F1FF"
+        opacity="0.6"
+      />
 
       <!-- separation lines -->
-      <path d="M512 415C579 353 675 322 772 319" stroke="#D3F7FF" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round" />
-      <path d="M512 415C447 353 349 322 252 319" stroke="#D0F7C2" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round" />
+      <path
+        d="M512 415C579 353 675 322 772 319"
+        stroke="#D3F7FF"
+        stroke-opacity="0.45"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M512 415C447 353 349 322 252 319"
+        stroke="#D0F7C2"
+        stroke-opacity="0.45"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
     </svg>
   </div>
 </template>

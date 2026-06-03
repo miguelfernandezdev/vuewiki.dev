@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "Si cada elemento de una lista tiene 5 componentes anidados y renderizas 100 elementos, ¿cuántas instancias se crean en total?",
-      "options": [
-        "100",
-        "200",
-        "500",
-        "1000"
-      ],
+      "options": ["100", "200", "500", "1000"],
       "answer": 2
     },
     {

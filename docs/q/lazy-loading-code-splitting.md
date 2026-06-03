@@ -1,9 +1,9 @@
 ---
 order: 123
-title: "How would you implement lazy loading and code splitting?"
-difficulty: "advanced"
-tags: ["performance", "vue-router", "vite"]
-summary: "Use dynamic import() in route definitions and defineAsyncComponent. Vite automatically creates separate chunks that load on demand."
+title: 'How would you implement lazy loading and code splitting?'
+difficulty: 'advanced'
+tags: ['performance', 'vue-router', 'vite']
+summary: 'Use dynamic import() in route definitions and defineAsyncComponent. Vite automatically creates separate chunks that load on demand.'
 ---
 
 Code splitting breaks your app into smaller JavaScript files (chunks) that load on demand instead of all at once. Lazy loading means loading a chunk only when the user actually needs it: navigating to a route, opening a modal, scrolling to a section. Vite handles this automatically when you use dynamic `import()`.
@@ -93,10 +93,10 @@ Vite automatically adds `<link rel="modulepreload">` for chunks linked from the 
 ```ts
 function prefetchRoute(path: string) {
   const route = router.resolve(path)
-  const components = route.matched.flatMap(r =>
+  const components = route.matched.flatMap((r) =>
     Object.values(r.components ?? {})
   )
-  components.forEach(c => {
+  components.forEach((c) => {
     if (typeof c === 'function') (c as Function)()
   })
 }
@@ -112,11 +112,13 @@ In **Webpack**, magic comments group related routes into the same chunk:
 const routes = [
   {
     path: '/settings/profile',
-    component: () => import(/* webpackChunkName: "settings" */ './views/SettingsProfile.vue')
+    component: () =>
+      import(/* webpackChunkName: "settings" */ './views/SettingsProfile.vue')
   },
   {
     path: '/settings/billing',
-    component: () => import(/* webpackChunkName: "settings" */ './views/SettingsBilling.vue')
+    component: () =>
+      import(/* webpackChunkName: "settings" */ './views/SettingsBilling.vue')
   }
 ]
 ```
@@ -143,23 +145,23 @@ export default defineConfig({
 
 ## What Vite does automatically
 
-| Feature | Automatic? |
-| --- | --- |
-| Split on dynamic `import()` | Yes |
-| Tree-shake unused exports | Yes |
-| CSS code splitting (per-component) | Yes |
-| `modulepreload` for entry chunks | Yes |
-| Vendor chunk separation | Yes (configurable) |
+| Feature                            | Automatic?         |
+| ---------------------------------- | ------------------ |
+| Split on dynamic `import()`        | Yes                |
+| Tree-shake unused exports          | Yes                |
+| CSS code splitting (per-component) | Yes                |
+| `modulepreload` for entry chunks   | Yes                |
+| Vendor chunk separation            | Yes (configurable) |
 
 ## When to split
 
-| Scenario | Approach |
-| --- | --- |
-| Different pages/routes | Route-level splitting (always do this) |
-| Heavy component behind a toggle | `defineAsyncComponent` |
-| Large library used on one page | Dynamic `import()` in the component |
-| Admin section most users never visit | Separate route chunk |
-| Components always visible on load | Don't split (adds latency) |
+| Scenario                             | Approach                               |
+| ------------------------------------ | -------------------------------------- |
+| Different pages/routes               | Route-level splitting (always do this) |
+| Heavy component behind a toggle      | `defineAsyncComponent`                 |
+| Large library used on one page       | Dynamic `import()` in the component    |
+| Admin section most users never visit | Separate route chunk                   |
+| Components always visible on load    | Don't split (adds latency)             |
 
 The biggest win is route-level splitting. It's the default in Vue Router and costs nothing to implement. Component-level splitting is for specific heavy components where the additional network request is worth the smaller initial bundle.
 

@@ -1,9 +1,9 @@
 ---
 order: 9
 title: "What's the purpose of :key in v-for?"
-difficulty: "beginner"
-tags: ["directives"]
-summary: ":key gives each list item a stable identity so Vue can reuse and reorder DOM elements correctly instead of patching by position."
+difficulty: 'beginner'
+tags: ['directives']
+summary: ':key gives each list item a stable identity so Vue can reuse and reorder DOM elements correctly instead of patching by position.'
 ---
 
 When Vue renders a list with [`v-for`](https://vuejs.org/guide/essentials/list.html), it needs a way to tell which DOM element corresponds to which item in the array. The `:key` attribute is that identifier. Without it (or with a bad key), Vue takes shortcuts that can cause real bugs.

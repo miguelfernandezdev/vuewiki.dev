@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "What file naming syntax creates a catch-all route that matches /posts/2024/my-article?",
-      "options": [
-        "[slug].vue",
-        "[[slug]].vue",
-        "[...slug].vue",
-        "*slug.vue"
-      ],
+      "options": ["[slug].vue", "[[slug]].vue", "[...slug].vue", "*slug.vue"],
       "answer": 2
     },
     {

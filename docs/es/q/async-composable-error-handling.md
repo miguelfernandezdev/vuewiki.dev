@@ -1,9 +1,9 @@
 ---
 order: 95
-title: "¿Cómo se gestionan los errores en composables asíncronos?"
-difficulty: "intermediate"
-tags: ["composables", "error-handling", "watchers"]
-summary: "Devuelve una ref error junto a data e isLoading. El composable captura errores internamente y los expone como estado reactivo."
+title: '¿Cómo se gestionan los errores en composables asíncronos?'
+difficulty: 'intermediate'
+tags: ['composables', 'error-handling', 'watchers']
+summary: 'Devuelve una ref error junto a data e isLoading. El composable captura errores internamente y los expone como estado reactivo.'
 ---
 
 Devuelve una ref `error` junto a `data` e `isLoading`. El composable captura los errores internamente y los expone como estado reactivo, para que el componente pueda renderizar la UI de error sin bloques try/catch en el template. Nunca dejes que los errores escapen en silencio, y nunca lances excepciones desde un composable a menos que quien lo llame lo espere explícitamente.
@@ -109,9 +109,8 @@ export function useFetchData<T>(url: MaybeRefOrGetter<string>) {
 ```vue
 <script setup>
 const userId = ref(1)
-const { data: user, error } = useFetchData<User>(
-  () => `/api/users/${userId.value}`
-)
+const { data: user, error } =
+  useFetchData < User > (() => `/api/users/${userId.value}`)
 </script>
 ```
 
@@ -164,9 +163,7 @@ function toFetchError(e: unknown): FetchError {
   <div v-else-if="error?.isValidationError">
     The submitted data was invalid.
   </div>
-  <div v-else-if="error">
-    Something went wrong: {{ error.message }}
-  </div>
+  <div v-else-if="error">Something went wrong: {{ error.message }}</div>
 </template>
 ```
 
@@ -177,7 +174,7 @@ Para errores que los composables no pueden gestionar (errores de ejecución ines
 ```vue
 <!-- ErrorBoundary.vue -->
 <script setup>
-const error = ref<Error | null>(null)
+const error = (ref < Error) | (null > null)
 
 onErrorCaptured((err) => {
   error.value = err
@@ -205,13 +202,13 @@ Esto captura errores de componentes descendientes lanzados durante: renders, wat
 
 ## Lista de comprobación
 
-| Práctica | Por qué |
-|---|---|
-| Devuelve ref `error`, no lances excepciones | El consumidor controla el renderizado del error |
-| Resetea el error antes de cada petición | Los errores obsoletos no persisten entre reintentos |
-| Expone una función `retry` | Permite a los usuarios recuperarse de fallos transitorios |
-| Tipifica los errores por categoría | Diferentes errores necesitan diferente UI |
-| Usa `onErrorCaptured` para errores inesperados | Evita fallos totales de la aplicación |
+| Práctica                                       | Por qué                                                   |
+| ---------------------------------------------- | --------------------------------------------------------- |
+| Devuelve ref `error`, no lances excepciones    | El consumidor controla el renderizado del error           |
+| Resetea el error antes de cada petición        | Los errores obsoletos no persisten entre reintentos       |
+| Expone una función `retry`                     | Permite a los usuarios recuperarse de fallos transitorios |
+| Tipifica los errores por categoría             | Diferentes errores necesitan diferente UI                 |
+| Usa `onErrorCaptured` para errores inesperados | Evita fallos totales de la aplicación                     |
 
 Ver también: [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching) · [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo funciona el manejo de errores en Vue?](/es/q/error-handling)
 

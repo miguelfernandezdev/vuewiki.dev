@@ -1,9 +1,9 @@
 ---
 order: 132
-title: "¿Cómo gestionarías la internacionalización (i18n) en Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "v-model"]
-summary: "Usa vue-i18n para apps Vue o @nuxtjs/i18n para Nuxt. Proveen cambio reactivo de idioma, interpolación, pluralización y traducciones lazy."
+title: '¿Cómo gestionarías la internacionalización (i18n) en Vue?'
+difficulty: 'intermediate'
+tags: ['architecture', 'v-model']
+summary: 'Usa vue-i18n para apps Vue o @nuxtjs/i18n para Nuxt. Proveen cambio reactivo de idioma, interpolación, pluralización y traducciones lazy.'
 ---
 
 La solución estándar es `vue-i18n` para apps Vue y `@nuxtjs/i18n` para Nuxt. Proporcionan cambio reactivo de locale, interpolación de mensajes, pluralización, formateo de fechas y números, y traducciones cargadas de forma diferida. Para necesidades más sencillas, puedes construir un sistema i18n ligero con un composable y archivos JSON.
@@ -98,9 +98,12 @@ vue-i18n usa formas separadas por pipe: cero | uno | muchos.
 ```
 
 ```vue
-<p>{{ t('messages', 0) }}</p>  <!-- No messages -->
-<p>{{ t('messages', 1) }}</p>  <!-- 1 message -->
-<p>{{ t('messages', 42) }}</p> <!-- 42 messages -->
+<p>{{ t('messages', 0) }}</p>
+<!-- No messages -->
+<p>{{ t('messages', 1) }}</p>
+<!-- 1 message -->
+<p>{{ t('messages', 42) }}</p>
+<!-- 42 messages -->
 ```
 
 ## Formateo de fechas y números
@@ -128,8 +131,10 @@ const i18n = createI18n({
 ```
 
 ```vue
-<p>{{ d(new Date(), 'short') }}</p>   <!-- Jun 1, 2026 / 1 jun 2026 -->
-<p>{{ n(99.99, 'currency') }}</p>      <!-- $99.99 / 99,99 € -->
+<p>{{ d(new Date(), 'short') }}</p>
+<!-- Jun 1, 2026 / 1 jun 2026 -->
+<p>{{ n(99.99, 'currency') }}</p>
+<!-- $99.99 / 99,99 € -->
 ```
 
 ## Carga diferida de traducciones
@@ -180,6 +185,7 @@ export default defineNuxtConfig({
 ```
 
 Esto proporciona:
+
 - `/about` para inglés, `/es/about` para español
 - `<html lang="es">` configurado automáticamente
 - `useLocalePath()` para enlaces que respetan el locale
@@ -227,12 +233,12 @@ Es más sencillo, pero carece de pluralización, interpolación, formateo de fec
 
 ## Cuándo usar cada opción
 
-| Necesidad | Solución |
-|---|---|
-| i18n completo con pluralización, formateo y herramientas | vue-i18n |
-| Nuxt con rutas localizadas y SEO | @nuxtjs/i18n |
-| App pequeña, pocas cadenas, sin reglas de plural | Composable DIY |
-| Sitio estático con pocas páginas por idioma | Archivos markdown separados por locale |
+| Necesidad                                                | Solución                               |
+| -------------------------------------------------------- | -------------------------------------- |
+| i18n completo con pluralización, formateo y herramientas | vue-i18n                               |
+| Nuxt con rutas localizadas y SEO                         | @nuxtjs/i18n                           |
+| App pequeña, pocas cadenas, sin reglas de plural         | Composable DIY                         |
+| Sitio estático con pocas páginas por idioma              | Archivos markdown separados por locale |
 
 Ver también: [¿Cómo funciona el sistema de plugins de Vue?](/es/q/plugin-system) · [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo funciona el routing basado en archivos en Nuxt?](/es/q/nuxt-file-based-routing)
 

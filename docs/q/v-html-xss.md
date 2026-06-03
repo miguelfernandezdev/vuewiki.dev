@@ -1,9 +1,9 @@
 ---
 order: 15
-title: "How do you inject raw HTML in Vue and why is it dangerous?"
-difficulty: "beginner"
-tags: ["directives", "security"]
-summary: "v-html renders raw HTML via innerHTML. Never use it with user input because it enables XSS attacks. Only use with trusted, sanitized content."
+title: 'How do you inject raw HTML in Vue and why is it dangerous?'
+difficulty: 'beginner'
+tags: ['directives', 'security']
+summary: 'v-html renders raw HTML via innerHTML. Never use it with user input because it enables XSS attacks. Only use with trusted, sanitized content.'
 ---
 
 The `v-html` directive renders a string as raw HTML instead of plain text. It bypasses Vue's template compilation and inserts the HTML directly into the DOM using `innerHTML`. This is useful for rendering trusted rich content (markdown output, CMS content from your own system), but it opens the door to Cross-Site Scripting (XSS) if the content comes from user input.
@@ -111,7 +111,9 @@ Content injected with `v-html` is raw DOM. Vue components, directives (`v-if`, `
 
 ```vue
 <style scoped>
-p { color: red; }
+p {
+  color: red;
+}
 </style>
 
 <template>
@@ -124,19 +126,21 @@ Scoped styles add a `data-v-xxxxx` attribute to elements compiled by Vue. Elemen
 
 ```vue
 <style scoped>
-div :deep(p) { color: red; }
+div :deep(p) {
+  color: red;
+}
 </style>
 ```
 
 ## Alternatives to v-html
 
-| Need | Approach |
-|---|---|
-| Display user text safely | `{{ text }}` (auto-escaped) |
-| Render markdown | Compile to HTML + DOMPurify + `v-html` |
-| Rich text from your CMS | `v-html` (trusted source) |
-| User-generated rich text | DOMPurify + `v-html` |
-| Dynamic Vue templates | Render functions or runtime compiler |
+| Need                     | Approach                               |
+| ------------------------ | -------------------------------------- |
+| Display user text safely | `{{ text }}` (auto-escaped)            |
+| Render markdown          | Compile to HTML + DOMPurify + `v-html` |
+| Rich text from your CMS  | `v-html` (trusted source)              |
+| User-generated rich text | DOMPurify + `v-html`                   |
+| Dynamic Vue templates    | Render functions or runtime compiler   |
 
 See also: [What are event modifiers?](/q/event-modifier-order) · [How would you implement global error handling?](/q/global-error-handling) · [What is the Virtual DOM?](/q/virtual-dom)
 

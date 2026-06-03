@@ -12,7 +12,12 @@
     },
     {
       "question": "¿Qué composable de VueUse crea estado compartido entre componentes sin necesidad de Pinia?",
-      "options": ["useSharedState()", "createGlobalState()", "useGlobal()", "sharedRef()"],
+      "options": [
+        "useSharedState()",
+        "createGlobalState()",
+        "useGlobal()",
+        "sharedRef()"
+      ],
       "answer": 1
     },
     {

@@ -1,9 +1,9 @@
 ---
 order: 149
-title: "What are Nuxt layouts and how do they work?"
-difficulty: "beginner"
-tags: ["nuxt", "components"]
-summary: "Layouts wrap pages with shared UI (headers, footers). Pages choose a layout via definePageMeta or default.vue applies automatically."
+title: 'What are Nuxt layouts and how do they work?'
+difficulty: 'beginner'
+tags: ['nuxt', 'components']
+summary: 'Layouts wrap pages with shared UI (headers, footers). Pages choose a layout via definePageMeta or default.vue applies automatically.'
 ---
 
 Layouts are wrapper components that surround your pages. They define shared UI like headers, footers, and sidebars. Instead of repeating that structure in every page, you define it once in a layout and let Nuxt wrap your pages automatically.
@@ -169,12 +169,12 @@ layouts/
 
 ## When to use layouts vs components
 
-| Need | Use |
-|---|---|
-| Shared header/footer/sidebar across many pages | Layout |
-| Wrapper that only a few components use | Regular component |
-| Different structure for public vs admin pages | Multiple layouts |
-| No wrapper at all (embed, widget) | `layout: false` |
+| Need                                           | Use               |
+| ---------------------------------------------- | ----------------- |
+| Shared header/footer/sidebar across many pages | Layout            |
+| Wrapper that only a few components use         | Regular component |
+| Different structure for public vs admin pages  | Multiple layouts  |
+| No wrapper at all (embed, widget)              | `layout: false`   |
 
 See also: [How does Nuxt handle state management?](/q/nuxt-state-management) · [How do slots work?](/q/slots)
 

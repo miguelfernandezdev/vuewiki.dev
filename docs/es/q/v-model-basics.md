@@ -1,9 +1,9 @@
 ---
 order: 17
-title: "¿Qué es v-model y en qué se diferencia de .sync en Vue 2?"
-difficulty: "intermediate"
-tags: ["directives", "migration", "v-model"]
-summary: "v-model crea enlace bidireccional. En inputs nativos: :value + @input. En componentes: prop :modelValue + evento @update:modelValue."
+title: '¿Qué es v-model y en qué se diferencia de .sync en Vue 2?'
+difficulty: 'intermediate'
+tags: ['directives', 'migration', 'v-model']
+summary: 'v-model crea enlace bidireccional. En inputs nativos: :value + @input. En componentes: prop :modelValue + evento @update:modelValue.'
 ---
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) crea un enlace bidireccional entre los datos del padre y un componente hijo (o un elemento de formulario). En elementos nativos es azúcar sintáctico para un binding `:value` más un listener `@input`. En componentes, vincula un prop y escucha un evento de actualización.
@@ -14,7 +14,10 @@ summary: "v-model crea enlace bidireccional. En inputs nativos: :value + @input.
 <template>
   <!-- Estas dos formas son equivalentes -->
   <input v-model="text" />
-  <input :value="text" @input="text = ($event.target as HTMLInputElement).value" />
+  <input
+    :value="text"
+    @input="text = ($event.target as HTMLInputElement).value"
+  />
 </template>
 
 <script setup>
@@ -25,13 +28,13 @@ const text = ref('')
 
 Distintos tipos de elementos usan diferentes pares prop/evento internamente:
 
-| Elemento | Prop vinculado | Evento |
-|---|---|---|
-| `<input type="text">` | `value` | `input` |
-| `<textarea>` | `value` | `input` |
-| `<input type="checkbox">` | `checked` | `change` |
-| `<input type="radio">` | `checked` | `change` |
-| `<select>` | `value` | `change` |
+| Elemento                  | Prop vinculado | Evento   |
+| ------------------------- | -------------- | -------- |
+| `<input type="text">`     | `value`        | `input`  |
+| `<textarea>`              | `value`        | `input`  |
+| `<input type="checkbox">` | `checked`      | `change` |
+| `<input type="radio">`    | `checked`      | `change` |
+| `<select>`                | `value`        | `change` |
 
 ## v-model en componentes (Vue 3)
 
@@ -66,8 +69,10 @@ En Vue 2, `v-model` usaba `value` + `input` y solo podías tener uno por compone
 
 <!-- Vue 2 internamente: -->
 <MyDialog
-  :value="isOpen" @input="isOpen = $event"
-  :title="dialogTitle" @update:title="dialogTitle = $event"
+  :value="isOpen"
+  @input="isOpen = $event"
+  :title="dialogTitle"
+  @update:title="dialogTitle = $event"
 />
 ```
 
@@ -79,43 +84,51 @@ En Vue 3, `.sync` fue eliminado. `v-model` ahora admite argumentos con nombre, p
 
 <!-- Vue 3 internamente: -->
 <MyDialog
-  :modelValue="isOpen" @update:modelValue="isOpen = $event"
-  :title="dialogTitle" @update:title="dialogTitle = $event"
+  :modelValue="isOpen"
+  @update:modelValue="isOpen = $event"
+  :title="dialogTitle"
+  @update:title="dialogTitle = $event"
 />
 ```
 
 ## Resumen de la migración
 
-| Vue 2 | Vue 3 |
-|---|---|
-| `v-model` vincula el prop `value` | `v-model` vincula el prop `modelValue` |
-| Evento: `input` | Evento: `update:modelValue` |
-| Un `v-model` por componente | Múltiples `v-model` con args con nombre |
-| `.sync` para bindings bidireccionales extra | `v-model:propName` con nombre |
-| Opción `model` para personalizar prop/evento | No es necesaria, usa `v-model:name` |
+| Vue 2                                        | Vue 3                                   |
+| -------------------------------------------- | --------------------------------------- |
+| `v-model` vincula el prop `value`            | `v-model` vincula el prop `modelValue`  |
+| Evento: `input`                              | Evento: `update:modelValue`             |
+| Un `v-model` por componente                  | Múltiples `v-model` con args con nombre |
+| `.sync` para bindings bidireccionales extra  | `v-model:propName` con nombre           |
+| Opción `model` para personalizar prop/evento | No es necesaria, usa `v-model:name`     |
 
 ## Modificadores de v-model
 
 Los modificadores integrados funcionan en elementos nativos:
 
 ```vue
-<input v-model.lazy="msg" />    <!-- sincroniza en change, no en input -->
-<input v-model.number="age" />  <!-- convierte a número -->
-<input v-model.trim="name" />   <!-- elimina espacios en blanco -->
+<input v-model.lazy="msg" />
+<!-- sincroniza en change, no en input -->
+<input v-model.number="age" />
+<!-- convierte a número -->
+<input v-model.trim="name" />
+<!-- elimina espacios en blanco -->
 ```
 
 Los componentes pueden definir modificadores personalizados con [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
 ```vue
 <script setup>
-const [model, modifiers] = defineModel<string>({
-  set(value) {
-    if (modifiers.capitalize) {
-      return value.charAt(0).toUpperCase() + value.slice(1)
+const [model, modifiers] =
+  defineModel <
+  string >
+  {
+    set(value) {
+      if (modifiers.capitalize) {
+        return value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      return value
     }
-    return value
   }
-})
 </script>
 ```
 

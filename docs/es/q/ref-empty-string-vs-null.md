@@ -1,8 +1,8 @@
 ---
 order: 67
 title: "¿Por qué inicializar un ref de búsqueda con '' en lugar de null?"
-difficulty: "beginner"
-tags: ["reactivity", "errors", "vueuse", "v-model"]
+difficulty: 'beginner'
+tags: ['reactivity', 'errors', 'vueuse', 'v-model']
 summary: "v-model en inputs siempre produce strings. Inicializa con '' en vez de null para evitar Ref<string | null> y comprobaciones de null innecesarias."
 ---
 
@@ -12,7 +12,7 @@ Cuando se enlaza un [ref](https://vuejs.org/api/reactivity-core.html#ref) a un i
 
 ```vue
 <script setup>
-const search = ref<string | null>(null)
+const search = (ref < string) | (null > null)
 </script>
 
 <template>
@@ -26,7 +26,7 @@ En el momento en que el usuario escribe algo, `search` se convierte en un string
 // Hay que gestionar null en todas partes
 const filtered = computed(() => {
   if (search.value === null) return items.value
-  return items.value.filter(i => i.name.includes(search.value!))
+  return items.value.filter((i) => i.name.includes(search.value!))
   //                                                        ^ aserción de no-null necesaria
 })
 
@@ -50,7 +50,7 @@ const search = ref('')
 // Limpio, sin comprobaciones de null
 const filtered = computed(() => {
   if (!search.value) return items.value
-  return items.value.filter(i => i.name.includes(search.value))
+  return items.value.filter((i) => i.name.includes(search.value))
 })
 
 const hasQuery = computed(() => search.value.length > 0)
@@ -63,12 +63,12 @@ Un string vacío es falsy, por lo que `if (!search.value)` captura tanto "vacío
 ```ts
 // Con null: el tipo es string | null
 const search = ref<string | null>(null)
-search.value.toLowerCase()  // Error de TS: posiblemente null
+search.value.toLowerCase() // Error de TS: posiblemente null
 search.value!.toLowerCase() // funciona pero no es seguro
 
 // Con string vacío: el tipo es string
 const search = ref('')
-search.value.toLowerCase()  // funciona, sin aserción necesaria
+search.value.toLowerCase() // funciona, sin aserción necesaria
 ```
 
 Cada llamada a `.length`, `.includes()`, `.toLowerCase()`, `.trim()` y `.startsWith()` funciona sin guardas de null.
@@ -77,11 +77,11 @@ Cada llamada a `.length`, `.includes()`, `.toLowerCase()`, `.trim()` y `.startsW
 
 ```ts
 // Preferir valores por defecto vacíos que coincidan con el tipo de salida del input
-const name = ref('')         // input de texto → string
-const bio = ref('')          // textarea → string
-const quantity = ref(0)      // input numérico → number
-const isActive = ref(false)  // checkbox → boolean
-const selected = ref('')     // select → string
+const name = ref('') // input de texto → string
+const bio = ref('') // textarea → string
+const quantity = ref(0) // input numérico → number
+const isActive = ref(false) // checkbox → boolean
+const selected = ref('') // select → string
 const tags = ref<string[]>([]) // multi-select → array
 ```
 

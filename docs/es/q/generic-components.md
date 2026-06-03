@@ -1,9 +1,9 @@
 ---
 order: 111
-title: "¿Cómo funcionan los componentes genéricos con TypeScript?"
-difficulty: "advanced"
-tags: ["typescript", "components", "v-model", "slots"]
-summary: "El atributo generic en <script setup> (Vue 3.3+) declara parámetros de tipo que fluyen por props, emits y slots con total seguridad de tipos."
+title: '¿Cómo funcionan los componentes genéricos con TypeScript?'
+difficulty: 'advanced'
+tags: ['typescript', 'components', 'v-model', 'slots']
+summary: 'El atributo generic en <script setup> (Vue 3.3+) declara parámetros de tipo que fluyen por props, emits y slots con total seguridad de tipos.'
 ---
 
 Los componentes genéricos permiten escribir un único componente que funciona con diferentes tipos de datos manteniendo la seguridad de tipos completa. El atributo `generic` en `<script setup>` (Vue 3.3+) declara parámetros de tipo que fluyen a través de las props, los emits y los slots.
@@ -124,7 +124,9 @@ function createGenericList<T>() {
     setup(props) {
       return () => (
         <ul>
-          {props.items?.map(item => <li>{String(item)}</li>)}
+          {props.items?.map((item) => (
+            <li>{String(item)}</li>
+          ))}
         </ul>
       )
     }
@@ -136,12 +138,12 @@ El atributo `generic` hace que este patrón sea accesible con templates SFC norm
 
 ## Cuándo usar componentes genéricos
 
-| Escenario | ¿Genérico? |
-|---|---|
-| Lista/tabla/select que funciona con cualquier tipo de datos | Sí |
-| Wrapper de campo de formulario con v-model tipado | Sí |
+| Escenario                                                    | ¿Genérico?              |
+| ------------------------------------------------------------ | ----------------------- |
+| Lista/tabla/select que funciona con cualquier tipo de datos  | Sí                      |
+| Wrapper de campo de formulario con v-model tipado            | Sí                      |
 | Componente que siempre trabaja con un tipo concreto conocido | No, usa tipos concretos |
-| Componentes UI simples (botones, tarjetas, modales) | No |
+| Componentes UI simples (botones, tarjetas, modales)          | No                      |
 
 Ver también: [¿Cómo declarar props con TypeScript?](/es/q/props-with-typescript) · [¿Cómo tipar slots con defineSlots?](/es/q/define-slots-typing) · [¿Cuáles son las limitaciones de los tipos en defineProps?](/es/q/defineprops-type-limitations)
 

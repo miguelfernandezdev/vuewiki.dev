@@ -12,12 +12,7 @@
     },
     {
       "question": "When using defineModel without a name (the default v-model), what prop name does it map to?",
-      "options": [
-        "value",
-        "modelValue",
-        "model",
-        "defaultValue"
-      ],
+      "options": ["value", "modelValue", "model", "defaultValue"],
       "answer": 1
     },
     {

@@ -1,9 +1,9 @@
 ---
 order: 44
-title: "¿Por qué puede ser mala idea pasar todas las props a un componente hijo con spread?"
-difficulty: "intermediate"
-tags: ["components"]
-summary: "Propagar todos los props oculta la API del componente, causa re-renders innecesarios y puede filtrar datos sensibles. Pasa solo lo que el hijo necesita."
+title: '¿Por qué puede ser mala idea pasar todas las props a un componente hijo con spread?'
+difficulty: 'intermediate'
+tags: ['components']
+summary: 'Propagar todos los props oculta la API del componente, causa re-renders innecesarios y puede filtrar datos sensibles. Pasa solo lo que el hijo necesita.'
 ---
 
 Pasar todas las props con `v-bind="$attrs"` o enviar un objeto entero como props manda al hijo todo lo que tiene el padre, incluyendo atributos que el hijo no necesita. Esto provoca re-renders innecesarios, oculta la API real del componente y puede filtrar datos sensibles o crear colisiones de nombres. Pasa solo lo que el hijo necesita, de forma explícita.
@@ -47,11 +47,13 @@ Las props no declaradas se convierten en atributos fallthrough. Acaban como atri
 
 ```html
 <!-- DOM renderizado -->
-<div class="user-card"
-     id="1"
-     role="admin"
-     internalnotes="High priority account"
-     passwordhash="...">
+<div
+  class="user-card"
+  id="1"
+  role="admin"
+  internalnotes="High priority account"
+  passwordhash="..."
+>
   Alice
 </div>
 ```

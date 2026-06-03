@@ -1,9 +1,9 @@
 ---
 order: 19
-title: "What is v-once and v-memo? When should you use them?"
-difficulty: "advanced"
-tags: ["directives", "performance", "v-model"]
-summary: "v-once renders content once, skipping all future updates. v-memo conditionally skips re-renders based on a dependency array (like React.memo)."
+title: 'What is v-once and v-memo? When should you use them?'
+difficulty: 'advanced'
+tags: ['directives', 'performance', 'v-model']
+summary: 'v-once renders content once, skipping all future updates. v-memo conditionally skips re-renders based on a dependency array (like React.memo).'
 ---
 
 `v-once` renders an element once and skips all future updates. `v-memo` conditionally skips re-renders based on a dependency array. Both reduce render work by telling Vue that certain parts of the template don't need to be re-evaluated.
@@ -36,11 +36,7 @@ Memoizes a subtree based on a dependency array. Vue skips re-rendering when all 
 
 ```vue
 <template>
-  <div
-    v-for="item in items"
-    :key="item.id"
-    v-memo="[item.id === selectedId]"
-  >
+  <div v-for="item in items" :key="item.id" v-memo="[item.id === selectedId]">
     <div :class="{ selected: item.id === selectedId }">
       <ExpensiveComponent :data="item" />
     </div>
@@ -50,8 +46,10 @@ Memoizes a subtree based on a dependency array. Vue skips re-rendering when all 
 <script setup>
 import { ref } from 'vue'
 
-const items = ref([/* 1,000 items */])
-const selectedId = ref<number | null>(null)
+const items = ref([
+  /* 1,000 items */
+])
+const selectedId = (ref < number) | (null > null)
 </script>
 ```
 
@@ -108,13 +106,13 @@ The item re-renders only when its selection or editing state changes.
 
 ## When to use which
 
-| Scenario | Use |
-|---|---|
-| Content that uses runtime data but never changes after mount | `v-once` |
-| Large list where only a few items change at a time | `v-memo` with the changing condition |
-| Completely static markup (no interpolation) | Neither, the compiler already hoists it |
-| Content with interactive children (inputs, v-model) | Neither, they need to re-render |
-| Small, simple elements | Neither, the optimization isn't worth it |
+| Scenario                                                     | Use                                      |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| Content that uses runtime data but never changes after mount | `v-once`                                 |
+| Large list where only a few items change at a time           | `v-memo` with the changing condition     |
+| Completely static markup (no interpolation)                  | Neither, the compiler already hoists it  |
+| Content with interactive children (inputs, v-model)          | Neither, they need to re-render          |
+| Small, simple elements                                       | Neither, the optimization isn't worth it |
 
 Profile with Vue DevTools before adding these directives. They're a targeted optimization for measured bottlenecks, not something to sprinkle everywhere.
 

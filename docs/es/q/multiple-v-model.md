@@ -1,9 +1,9 @@
 ---
 order: 37
-title: "¿Cómo funcionan los bindings múltiples de v-model en un componente?"
-difficulty: "intermediate"
-tags: ["components", "directives", "v-model"]
-summary: "Añade un nombre tras v-model: v-model:title, v-model:body. Cada uno enlaza un prop separado y emite update:title, update:body."
+title: '¿Cómo funcionan los bindings múltiples de v-model en un componente?'
+difficulty: 'intermediate'
+tags: ['components', 'directives', 'v-model']
+summary: 'Añade un nombre tras v-model: v-model:title, v-model:body. Cada uno enlaza un prop separado y emite update:title, update:body.'
 ---
 
 Desde Vue 3, puedes enlazar múltiples directivas `v-model` a un solo componente dándole un nombre a cada una. Esto reemplaza el patrón de Vue 2 de un `v-model` más modificadores `.sync`.
@@ -44,10 +44,7 @@ const lastName = defineModel('lastName')
 `v-model:firstName="first"` es una abreviatura de:
 
 ```vue
-<UserForm
-  :firstName="first"
-  @update:firstName="first = $event"
-/>
+<UserForm :firstName="first" @update:firstName="first = $event" />
 ```
 
 Y `defineModel('firstName')` es una abreviatura de:
@@ -79,8 +76,8 @@ El `v-model` por defecto (sin nombre) usa `modelValue` como nombre de prop:
 ```vue
 <!-- SearchInput.vue -->
 <script setup>
-const query = defineModel()              // corresponde a v-model (modelValue)
-const filters = defineModel('filters')   // corresponde a v-model:filters
+const query = defineModel() // corresponde a v-model (modelValue)
+const filters = defineModel('filters') // corresponde a v-model:filters
 </script>
 ```
 
@@ -126,12 +123,12 @@ const emit = defineEmits<{
 
 ## Cuándo usar múltiples v-model
 
-| Escenario | Enfoque |
-|---|---|
-| Un solo valor (input de búsqueda, toggle) | `v-model` (sin nombre) |
-| Formulario con varios campos relacionados | Múltiples `v-model` con nombre |
-| Objeto complejo como valor único | `v-model` único con un tipo de objeto |
-| Valores no relacionados que cambian de forma independiente | Múltiples `v-model` con nombre |
+| Escenario                                                  | Enfoque                               |
+| ---------------------------------------------------------- | ------------------------------------- |
+| Un solo valor (input de búsqueda, toggle)                  | `v-model` (sin nombre)                |
+| Formulario con varios campos relacionados                  | Múltiples `v-model` con nombre        |
+| Objeto complejo como valor único                           | `v-model` único con un tipo de objeto |
+| Valores no relacionados que cambian de forma independiente | Múltiples `v-model` con nombre        |
 
 Ver también: [¿Cómo funciona v-model en componentes personalizados?](/es/q/v-model-custom-components) · [¿Qué son los modificadores personalizados de v-model?](/es/q/custom-v-model-modifiers) · [¿Por qué mutar un objeto a través de defineModel no actualiza el padre?](/es/q/definemodel-object-mutation)
 

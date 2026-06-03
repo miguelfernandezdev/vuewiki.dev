@@ -1,9 +1,9 @@
 ---
 order: 47
-title: "What are functional components and when are they useful?"
-difficulty: "intermediate"
-tags: ["components", "performance"]
-summary: "Plain functions that receive props and return VNodes. No instance, no state, no lifecycle. In Vue 3, the performance gain over stateful components is negligible."
+title: 'What are functional components and when are they useful?'
+difficulty: 'intermediate'
+tags: ['components', 'performance']
+summary: 'Plain functions that receive props and return VNodes. No instance, no state, no lifecycle. In Vue 3, the performance gain over stateful components is negligible.'
 ---
 
 Functional components are components defined as plain functions that receive props and return VNodes. They have no instance, no reactive state, no lifecycle hooks, and no `this` context. In Vue 2, they offered a measurable performance advantage because they skipped the component instance creation overhead. In Vue 3, stateful components are already so fast that the performance difference is negligible. Functional components still exist but their main use is now programmatic rendering patterns, not optimization.
@@ -20,9 +20,13 @@ interface BadgeProps {
 }
 
 const Badge: FunctionalComponent<BadgeProps> = (props, { slots }) => {
-  return h('span', {
-    class: `badge badge-${props.color ?? 'blue'}`
-  }, props.label)
+  return h(
+    'span',
+    {
+      class: `badge badge-${props.color ?? 'blue'}`
+    },
+    props.label
+  )
 }
 
 Badge.props = {
@@ -39,25 +43,23 @@ Functional components feel more natural with JSX:
 
 ```tsx
 const Badge: FunctionalComponent<BadgeProps> = (props) => (
-  <span class={`badge badge-${props.color ?? 'blue'}`}>
-    {props.label}
-  </span>
+  <span class={`badge badge-${props.color ?? 'blue'}`}>{props.label}</span>
 )
 ```
 
 ## What they can't do
 
-| Feature | SFC component | Functional component |
-|---|---|---|
-| Reactive state (`ref`, `reactive`) | Yes | No |
-| Lifecycle hooks | Yes | No |
-| `watch` / `computed` | Yes | No |
-| Template syntax | Yes | No (render function only) |
-| `<style scoped>` | Yes | No |
-| Component instance (`this`) | Yes | No |
-| Slots | Yes | Yes |
-| Props validation | Yes | Yes |
-| Emit events | Yes | Yes |
+| Feature                            | SFC component | Functional component      |
+| ---------------------------------- | ------------- | ------------------------- |
+| Reactive state (`ref`, `reactive`) | Yes           | No                        |
+| Lifecycle hooks                    | Yes           | No                        |
+| `watch` / `computed`               | Yes           | No                        |
+| Template syntax                    | Yes           | No (render function only) |
+| `<style scoped>`                   | Yes           | No                        |
+| Component instance (`this`)        | Yes           | No                        |
+| Slots                              | Yes           | Yes                       |
+| Props validation                   | Yes           | Yes                       |
+| Emit events                        | Yes           | Yes                       |
 
 ## When they're actually useful
 

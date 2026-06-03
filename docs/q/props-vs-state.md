@@ -1,9 +1,9 @@
 ---
 order: 22
-title: "What is the difference between props and state in Vue?"
-difficulty: "beginner"
-tags: ["components", "reactivity", "v-model"]
-summary: "Props are read-only data passed down from a parent. State (ref/reactive) is data the component owns and can modify."
+title: 'What is the difference between props and state in Vue?'
+difficulty: 'beginner'
+tags: ['components', 'reactivity', 'v-model']
+summary: 'Props are read-only data passed down from a parent. State (ref/reactive) is data the component owns and can modify.'
 ---
 
 Props are data passed **down** from a parent component. State (local reactive data) is data the component **owns** and manages itself. The key difference: props are read-only, state is read-write. State is declared with [ref](https://vuejs.org/api/reactivity-core.html#ref) or [reactive](https://vuejs.org/api/reactivity-core.html#reactive).
@@ -47,12 +47,12 @@ const isExpanded = ref(false)
 
 ## Side by side
 
-| | Props | State |
-|---|---|---|
-| Who controls it | Parent | The component itself |
-| Mutable | No (read-only) | Yes |
-| Declared with | `defineProps` | `ref()` / `reactive()` |
-| Data flow | Parent to child (one-way) | Internal |
+|                    | Props                              | State                              |
+| ------------------ | ---------------------------------- | ---------------------------------- |
+| Who controls it    | Parent                             | The component itself               |
+| Mutable            | No (read-only)                     | Yes                                |
+| Declared with      | `defineProps`                      | `ref()` / `reactive()`             |
+| Data flow          | Parent to child (one-way)          | Internal                           |
 | Triggers re-render | Yes, when parent changes the value | Yes, when the component changes it |
 
 ## Why props are read-only
@@ -83,13 +83,13 @@ const emit = defineEmits<{ update: [value: number] }>()
 
 ## When to use which
 
-| Scenario | Use |
-|---|---|
-| Configuration passed from parent (label, color, size) | Props |
-| UI toggle local to the component (open/closed, hover) | State |
-| Form input value shared with parent | Props + emit (or `v-model`) |
-| Data fetched inside the component | State |
-| Data fetched by parent, displayed by child | Props |
+| Scenario                                              | Use                         |
+| ----------------------------------------------------- | --------------------------- |
+| Configuration passed from parent (label, color, size) | Props                       |
+| UI toggle local to the component (open/closed, hover) | State                       |
+| Form input value shared with parent                   | Props + emit (or `v-model`) |
+| Data fetched inside the component                     | State                       |
+| Data fetched by parent, displayed by child            | Props                       |
 
 See also: [Can you initialize state with a prop value?](/q/initialize-state-from-prop) · [What is Vue's reactivity system?](/q/reactivity-system)
 

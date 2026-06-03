@@ -1,9 +1,9 @@
 ---
 order: 101
-title: "What are Pinia plugins and how do you create one?"
-difficulty: "advanced"
-tags: ["state-management", "architecture", "pinia"]
-summary: "A function that runs for every store creation. Use them to add localStorage persistence, logging, shared properties, or action wrappers."
+title: 'What are Pinia plugins and how do you create one?'
+difficulty: 'advanced'
+tags: ['state-management', 'architecture', 'pinia']
+summary: 'A function that runs for every store creation. Use them to add localStorage persistence, logging, shared properties, or action wrappers.'
 ---
 
 Pinia plugins let you add behavior to every store globally: persist state to localStorage, add shared properties, wrap actions with logging, sync with external systems. A plugin is a function that receives a context object and runs once per store creation.
@@ -63,7 +63,9 @@ function piniaLogger(): PiniaPlugin {
 
       after(() => {
         const duration = (performance.now() - start).toFixed(1)
-        console.log(`[${store.$id}] ${name}(${JSON.stringify(args)}) — ${duration}ms`)
+        console.log(
+          `[${store.$id}] ${name}(${JSON.stringify(args)}) — ${duration}ms`
+        )
       })
 
       onError((error) => {
@@ -110,8 +112,12 @@ function piniaLoadingState(): PiniaPlugin {
 
     store.$onAction(({ after, onError }) => {
       isLoading.value = true
-      after(() => { isLoading.value = false })
-      onError(() => { isLoading.value = false })
+      after(() => {
+        isLoading.value = false
+      })
+      onError(() => {
+        isLoading.value = false
+      })
     })
 
     return { isLoading }
@@ -138,13 +144,16 @@ Check `store.$id` or use the options object to apply logic selectively:
 function piniaDebounce(): PiniaPlugin {
   return ({ store, options }) => {
     if (options.debounce) {
-      return Object.keys(options.debounce).reduce((debounced, action) => {
-        debounced[action] = useDebounceFn(
-          store[action],
-          options.debounce[action]
-        )
-        return debounced
-      }, {} as Record<string, Function>)
+      return Object.keys(options.debounce).reduce(
+        (debounced, action) => {
+          debounced[action] = useDebounceFn(
+            store[action],
+            options.debounce[action]
+          )
+          return debounced
+        },
+        {} as Record<string, Function>
+      )
     }
   }
 }
@@ -153,7 +162,9 @@ function piniaDebounce(): PiniaPlugin {
 ```ts
 defineStore('search', {
   actions: {
-    search() { /* ... */ }
+    search() {
+      /* ... */
+    }
   },
   debounce: {
     search: 300
@@ -176,18 +187,18 @@ export default defineNuxtPlugin(({ $pinia }) => {
 
 ## Popular community plugins
 
-| Plugin | What it does |
-|---|---|
+| Plugin                        | What it does                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------- |
 | `pinia-plugin-persistedstate` | Persist stores to localStorage/sessionStorage/cookies with fine-grained control |
-| `@pinia/colada` | Async state management (data fetching, caching, invalidation) |
+| `@pinia/colada`               | Async state management (data fetching, caching, invalidation)                   |
 
 ## Plugin vs store action vs composable
 
-| Need | Use |
-|---|---|
-| Behavior added to ALL stores (logging, persistence, shared state) | Plugin |
-| Business logic for one specific store | Store action |
-| Reusable logic not tied to a store | Composable |
+| Need                                                              | Use          |
+| ----------------------------------------------------------------- | ------------ |
+| Behavior added to ALL stores (logging, persistence, shared state) | Plugin       |
+| Business logic for one specific store                             | Store action |
+| Reusable logic not tied to a store                                | Composable   |
 
 See also: [How does Pinia work?](/q/how-pinia-works) · [What is Pinia Colada?](/q/pinia-colada) · [When should state live in Pinia vs a composable vs a local ref?](/q/pinia-vs-composable-vs-local)
 

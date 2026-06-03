@@ -1,8 +1,8 @@
 ---
 order: 80
-title: "Why do watchers created inside async callbacks cause memory leaks?"
-difficulty: "advanced"
-tags: ["reactivity", "errors", "watchers"]
+title: 'Why do watchers created inside async callbacks cause memory leaks?'
+difficulty: 'advanced'
+tags: ['reactivity', 'errors', 'watchers']
 summary: "Watchers created inside async callbacks (setTimeout, await) aren't bound to the component lifecycle. They keep running after unmount. Stop them manually."
 ---
 

@@ -12,12 +12,7 @@
     },
     {
       "question": "Which of these is a compiler macro available in <script setup> that does NOT need to be imported?",
-      "options": [
-        "ref()",
-        "computed()",
-        "defineProps()",
-        "watchEffect()"
-      ],
+      "options": ["ref()", "computed()", "defineProps()", "watchEffect()"],
       "answer": 2
     },
     {

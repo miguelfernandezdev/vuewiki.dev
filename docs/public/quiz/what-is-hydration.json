@@ -12,7 +12,12 @@
     },
     {
       "question": "Which function should you use on the client for an SSR application instead of `createApp`?",
-      "options": ["createClientApp()", "createSSRApp()", "hydrateApp()", "mountSSR()"],
+      "options": [
+        "createClientApp()",
+        "createSSRApp()",
+        "hydrateApp()",
+        "mountSSR()"
+      ],
       "answer": 1
     },
     {

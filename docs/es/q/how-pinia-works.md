@@ -1,9 +1,9 @@
 ---
 order: 98
-title: "¿Cómo funciona Pinia internamente? (stores, state, getters, actions)"
-difficulty: "intermediate"
-tags: ["state-management", "pinia", "vuex"]
-summary: "Cada store de Pinia es un objeto reactivo con state (refs), getters (computed) y actions (funciones). Los stores son aislados, tipados y soportan devtools."
+title: '¿Cómo funciona Pinia internamente? (stores, state, getters, actions)'
+difficulty: 'intermediate'
+tags: ['state-management', 'pinia', 'vuex']
+summary: 'Cada store de Pinia es un objeto reactivo con state (refs), getters (computed) y actions (funciones). Los stores son aislados, tipados y soportan devtools.'
 ---
 
 Pinia es la librería oficial de gestión de estado de Vue. Cada store es una unidad reactiva aislada con state, getters (valores computed) y actions (métodos). Bajo el capó, un store es un objeto `reactive` mejorado con integración de devtools, soporte de plugins y seguridad en SSR.
@@ -35,7 +35,7 @@ export const useCounterStore = defineStore('counter', {
       this.lastChanged = new Date()
     },
     async fetchCount() {
-      const { count } = await fetch('/api/count').then(r => r.json())
+      const { count } = await fetch('/api/count').then((r) => r.json())
       this.count = count
     }
   }
@@ -61,7 +61,7 @@ export const useCounterStore = defineStore('counter', () => {
   }
 
   async function fetchCount() {
-    const { count: c } = await fetch('/api/count').then(r => r.json())
+    const { count: c } = await fetch('/api/count').then((r) => r.json())
     count.value = c
   }
 
@@ -96,7 +96,7 @@ import { storeToRefs } from 'pinia'
 
 const counter = useCounterStore()
 const { count, doubled } = storeToRefs(counter) // refs reactivos
-const { increment } = counter                    // las actions no necesitan storeToRefs
+const { increment } = counter // las actions no necesitan storeToRefs
 </script>
 ```
 
@@ -130,7 +130,7 @@ store.$reset()
 const store = useCounterStore()
 
 store.$subscribe((mutation, state) => {
-  console.log(mutation.type)    // 'direct' | 'patch object' | 'patch function'
+  console.log(mutation.type) // 'direct' | 'patch object' | 'patch function'
   console.log(mutation.storeId) // 'counter'
   localStorage.setItem('counter', JSON.stringify(state))
 })

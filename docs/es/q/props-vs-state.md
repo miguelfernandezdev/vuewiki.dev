@@ -1,9 +1,9 @@
 ---
 order: 22
-title: "¿Cuál es la diferencia entre props y estado en Vue?"
-difficulty: "beginner"
-tags: ["components", "reactivity", "v-model"]
-summary: "Props son datos de solo lectura pasados desde el padre. State (ref/reactive) son datos que el componente posee y puede modificar."
+title: '¿Cuál es la diferencia entre props y estado en Vue?'
+difficulty: 'beginner'
+tags: ['components', 'reactivity', 'v-model']
+summary: 'Props son datos de solo lectura pasados desde el padre. State (ref/reactive) son datos que el componente posee y puede modificar.'
 ---
 
 Las props son datos que se pasan **hacia abajo** desde un componente padre. El estado (datos reactivos locales) es datos que el componente **posee** y gestiona él mismo. La diferencia clave: las props son de solo lectura, el estado es de lectura y escritura. El estado se declara con [ref](https://vuejs.org/api/reactivity-core.html#ref) o [reactive](https://vuejs.org/api/reactivity-core.html#reactive).
@@ -47,12 +47,12 @@ const isExpanded = ref(false)
 
 ## Comparativa
 
-| | Props | Estado |
-|---|---|---|
-| Quién lo controla | El padre | El propio componente |
-| Mutable | No (solo lectura) | Sí |
-| Se declara con | `defineProps` | `ref()` / `reactive()` |
-| Flujo de datos | De padre a hijo (unidireccional) | Interno |
+|                   | Props                               | Estado                             |
+| ----------------- | ----------------------------------- | ---------------------------------- |
+| Quién lo controla | El padre                            | El propio componente               |
+| Mutable           | No (solo lectura)                   | Sí                                 |
+| Se declara con    | `defineProps`                       | `ref()` / `reactive()`             |
+| Flujo de datos    | De padre a hijo (unidireccional)    | Interno                            |
 | Dispara re-render | Sí, cuando el padre cambia el valor | Sí, cuando el componente lo cambia |
 
 ## Por qué las props son de solo lectura
@@ -83,13 +83,13 @@ const emit = defineEmits<{ update: [value: number] }>()
 
 ## Cuándo usar cada uno
 
-| Escenario | Usar |
-|---|---|
-| Configuración pasada desde el padre (label, color, size) | Props |
-| Toggle de UI local al componente (abierto/cerrado, hover) | Estado |
-| Valor de input compartido con el padre | Props + emit (o `v-model`) |
-| Datos obtenidos dentro del componente | Estado |
-| Datos obtenidos por el padre y mostrados por el hijo | Props |
+| Escenario                                                 | Usar                       |
+| --------------------------------------------------------- | -------------------------- |
+| Configuración pasada desde el padre (label, color, size)  | Props                      |
+| Toggle de UI local al componente (abierto/cerrado, hover) | Estado                     |
+| Valor de input compartido con el padre                    | Props + emit (o `v-model`) |
+| Datos obtenidos dentro del componente                     | Estado                     |
+| Datos obtenidos por el padre y mostrados por el hijo      | Props                      |
 
 Ver también: [¿Puedes inicializar el state con el valor de una prop?](/es/q/initialize-state-from-prop) · [¿Cómo funciona el sistema de reactividad de Vue 3?](/es/q/reactivity-system)
 

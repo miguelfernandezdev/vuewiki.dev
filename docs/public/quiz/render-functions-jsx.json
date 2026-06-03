@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "What does the 'h' stand for in Vue's h() render function?",
-      "options": [
-        "handler",
-        "hyperscript",
-        "html",
-        "hook"
-      ],
+      "options": ["handler", "hyperscript", "html", "hook"],
       "answer": 1
     },
     {

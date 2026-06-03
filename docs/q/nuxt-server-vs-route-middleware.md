@@ -1,9 +1,9 @@
 ---
 order: 161
-title: "What is the difference between server middleware and route middleware in Nuxt?"
-difficulty: "intermediate"
-tags: ["nuxt"]
-summary: "Server middleware runs on every HTTP request in Nitro. Route middleware runs on page navigations in Vue with access to composables."
+title: 'What is the difference between server middleware and route middleware in Nuxt?'
+difficulty: 'intermediate'
+tags: ['nuxt']
+summary: 'Server middleware runs on every HTTP request in Nitro. Route middleware runs on page navigations in Vue with access to composables.'
 ---
 
 They run at completely different layers. Server middleware runs on every HTTP request hitting the Nitro server (before API routes, before page rendering). Route middleware runs on page navigations (both server-side during SSR and client-side during SPA navigation). Server middleware handles HTTP-level concerns like CORS, logging, and auth headers. Route middleware handles page-level concerns like access control and redirects.
@@ -104,17 +104,17 @@ export default defineNuxtRouteMiddleware((to) => {
 
 ## Side-by-side comparison
 
-| | Server middleware | Route middleware |
-|---|---|---|
-| Location | `server/middleware/` | `middleware/` |
-| Runs on | Every HTTP request | Page navigations |
-| Environment | Server only (Nitro) | Server (SSR) + Client (SPA navigation) |
-| Has access to | `event` (H3 event object) | `to`, `from` (Vue Router routes) |
-| Can use Vue composables | No | Yes |
-| Can use `navigateTo` | No (use `sendRedirect`) | Yes |
-| Can read cookies | `getCookie(event, name)` | `useCookie(name)` |
-| Blocks API routes | Yes | No (only affects pages) |
-| Typical use | CORS, logging, token parsing | Auth guards, redirects, analytics |
+|                         | Server middleware            | Route middleware                       |
+| ----------------------- | ---------------------------- | -------------------------------------- |
+| Location                | `server/middleware/`         | `middleware/`                          |
+| Runs on                 | Every HTTP request           | Page navigations                       |
+| Environment             | Server only (Nitro)          | Server (SSR) + Client (SPA navigation) |
+| Has access to           | `event` (H3 event object)    | `to`, `from` (Vue Router routes)       |
+| Can use Vue composables | No                           | Yes                                    |
+| Can use `navigateTo`    | No (use `sendRedirect`)      | Yes                                    |
+| Can read cookies        | `getCookie(event, name)`     | `useCookie(name)`                      |
+| Blocks API routes       | Yes                          | No (only affects pages)                |
+| Typical use             | CORS, logging, token parsing | Auth guards, redirects, analytics      |
 
 ## How they interact during SSR
 

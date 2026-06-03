@@ -1,9 +1,9 @@
 ---
 order: 31
-title: "¿Por qué los estilos con scoped no se aplican al contenido teletransportado?"
-difficulty: "intermediate"
-tags: ["components", "errors", "suspense", "teleport"]
-summary: "Los elementos teleportados salen del subárbol DOM del componente, así que los atributos scoped data-v no aplican. Usa :global() o un bloque de estilos sin scope."
+title: '¿Por qué los estilos con scoped no se aplican al contenido teletransportado?'
+difficulty: 'intermediate'
+tags: ['components', 'errors', 'suspense', 'teleport']
+summary: 'Los elementos teleportados salen del subárbol DOM del componente, así que los atributos scoped data-v no aplican. Usa :global() o un bloque de estilos sin scope.'
 ---
 
 Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a los elementos del subárbol DOM del componente. Cuando `<Teleport>` mueve elementos a otra parte del DOM (como `body`), esos elementos salen del subárbol del componente, por lo que los selectores de atributo con scoped dejan de coincidir.
@@ -36,13 +36,20 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 ```vue
 <style scoped>
 /* Los estilos normales del componente siguen con scoped */
-.trigger-button { color: blue; }
+.trigger-button {
+  color: blue;
+}
 </style>
 
 <style>
 /* El contenido teletransportado usa estilos sin scoped */
-.my-modal { background: white; padding: 20px; }
-.my-modal-text { color: blue; }
+.my-modal {
+  background: white;
+  padding: 20px;
+}
+.my-modal-text {
+  color: blue;
+}
 </style>
 ```
 
@@ -58,8 +65,13 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 </template>
 
 <style module>
-.modal { background: white; padding: 20px; }
-.text { color: blue; }
+.modal {
+  background: white;
+  padding: 20px;
+}
+.text {
+  color: blue;
+}
 </style>
 ```
 
@@ -67,8 +79,12 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 
 ```vue
 <style scoped>
-:deep(.modal) { background: white; }
-:deep(.modal-text) { color: blue; }
+:deep(.modal) {
+  background: white;
+}
+:deep(.modal-text) {
+  color: blue;
+}
 </style>
 ```
 

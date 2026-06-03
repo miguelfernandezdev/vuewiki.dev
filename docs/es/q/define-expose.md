@@ -1,9 +1,9 @@
 ---
 order: 56
-title: "¿Qué es defineExpose y cuándo es necesario?"
-difficulty: "intermediate"
-tags: ["composition-api", "components"]
-summary: "Los componentes con script setup están cerrados por defecto. defineExpose expone explícitamente propiedades y métodos a las template refs del padre."
+title: '¿Qué es defineExpose y cuándo es necesario?'
+difficulty: 'intermediate'
+tags: ['composition-api', 'components']
+summary: 'Los componentes con script setup están cerrados por defecto. defineExpose expone explícitamente propiedades y métodos a las template refs del padre.'
 ---
 
 Los componentes que usan [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html) están cerrados por defecto. Un padre que obtiene una template ref a un componente hijo recibe un objeto vacío a menos que el hijo exponga explícitamente propiedades con [`defineExpose`](https://vuejs.org/api/sfc-script-setup.html#defineexpose). Este es un cambio deliberado respecto a la [Options API](https://vuejs.org/guide/introduction.html#options-api), donde `this.$refs.child` daba acceso completo a toda la instancia.
@@ -16,7 +16,9 @@ Los componentes que usan [`<script setup>`](https://vuejs.org/api/sfc-script-set
 import { ref } from 'vue'
 
 const count = ref(0)
-function reset() { count.value = 0 }
+function reset() {
+  count.value = 0
+}
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const counterRef = useTemplateRef('counter')
 
 onMounted(() => {
   console.log(counterRef.value.count) // undefined
-  counterRef.value.reset()            // TypeError: not a function
+  counterRef.value.reset() // TypeError: not a function
 })
 </script>
 
@@ -53,7 +55,9 @@ import { ref } from 'vue'
 const count = ref(0)
 const internalState = ref('private')
 
-function reset() { count.value = 0 }
+function reset() {
+  count.value = 0
+}
 
 defineExpose({ count, reset })
 // internalState permanece privado
@@ -71,7 +75,7 @@ Los wrappers de input suelen exponer métodos imperativos como `focus` y `blur`:
 <script setup>
 import { ref } from 'vue'
 
-const inputEl = ref<HTMLInputElement | null>(null)
+const inputEl = (ref < HTMLInputElement) | (null > null)
 
 defineExpose({
   focus: () => inputEl.value?.focus(),
@@ -104,12 +108,12 @@ function openSearch() {
 
 ## Cuándo usar defineExpose
 
-| Situación | ¿Usar defineExpose? |
-|---|---|
-| El padre necesita llamar a métodos imperativos (focus, reset, validate) | Sí |
-| El padre necesita leer el estado del hijo para coordinarse | Sí, pero considera si props/emit es mejor |
-| Flujo de datos normal padre-hijo | No, usa props y emit |
-| Una librería de formularios necesita llamar a validate() en los inputs hijo | Sí |
+| Situación                                                                   | ¿Usar defineExpose?                       |
+| --------------------------------------------------------------------------- | ----------------------------------------- |
+| El padre necesita llamar a métodos imperativos (focus, reset, validate)     | Sí                                        |
+| El padre necesita leer el estado del hijo para coordinarse                  | Sí, pero considera si props/emit es mejor |
+| Flujo de datos normal padre-hijo                                            | No, usa props y emit                      |
+| Una librería de formularios necesita llamar a validate() en los inputs hijo | Sí                                        |
 
 Las refs de componentes crean un acoplamiento estrecho. Prefiere props y emit para el flujo de datos, y reserva `defineExpose` para acciones genuinamente imperativas que no encajan en un patrón declarativo.
 

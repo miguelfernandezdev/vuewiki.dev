@@ -1,9 +1,9 @@
 ---
 order: 153
-title: "How do Nuxt modules work and when would you create one?"
-difficulty: "intermediate"
-tags: ["nuxt", "architecture", "vite"]
-summary: "Modules are build-time plugins that extend Nuxt via @nuxt/kit. They register components, composables, server routes, and modify config."
+title: 'How do Nuxt modules work and when would you create one?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'architecture', 'vite']
+summary: 'Modules are build-time plugins that extend Nuxt via @nuxt/kit. They register components, composables, server routes, and modify config.'
 ---
 
 Nuxt modules are plugins that run at build time and extend the framework. They can register components, composables, server routes, plugins, and modify the Nuxt/Vite config. The ecosystem is full of them: `@nuxt/ui`, `@nuxt/image`, `@nuxtjs/i18n`, `@pinia/nuxt`.
@@ -83,14 +83,14 @@ export default defineNuxtConfig({
 
 ## What modules can register
 
-| @nuxt/kit helper | Registers |
-|---|---|
-| `addComponent` | A global component |
-| `addComponentsDir` | A directory of components |
-| `addImports` | An auto-imported composable/utility |
-| `addImportsDir` | A directory of auto-imports |
-| `addPlugin` | A client/server/universal plugin |
-| `addServerHandler` | A Nitro server route |
+| @nuxt/kit helper   | Registers                           |
+| ------------------ | ----------------------------------- |
+| `addComponent`     | A global component                  |
+| `addComponentsDir` | A directory of components           |
+| `addImports`       | An auto-imported composable/utility |
+| `addImportsDir`    | A directory of auto-imports         |
+| `addPlugin`        | A client/server/universal plugin    |
+| `addServerHandler` | A Nitro server route                |
 
 ```ts
 setup(options, nuxt) {
@@ -129,13 +129,13 @@ The `runtime/` directory contains code that runs in the app. Everything outside 
 
 ## When to create a module vs a plugin vs a composable
 
-| Need | Use |
-|---|---|
-| Add build-time config, register components/routes/plugins | Module |
-| Run code at app startup (client or server) | Plugin |
-| Reusable logic for individual components | Composable |
-| Share functionality across multiple Nuxt projects | Module (publishable to npm) |
-| One-off project-specific integration | Plugin or composable is usually enough |
+| Need                                                      | Use                                    |
+| --------------------------------------------------------- | -------------------------------------- |
+| Add build-time config, register components/routes/plugins | Module                                 |
+| Run code at app startup (client or server)                | Plugin                                 |
+| Reusable logic for individual components                  | Composable                             |
+| Share functionality across multiple Nuxt projects         | Module (publishable to npm)            |
+| One-off project-specific integration                      | Plugin or composable is usually enough |
 
 See also: [What are Nuxt layers?](/q/nuxt-layers) · [How do auto-imports work in Nuxt?](/q/nuxt-auto-imports) · [What is the Nuxt directory structure?](/q/nuxt-directory-structure)
 

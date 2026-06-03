@@ -1,8 +1,8 @@
 ---
 order: 163
-title: "What is SSR cross-request state pollution and how do you avoid it?"
-difficulty: "advanced"
-tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]
+title: 'What is SSR cross-request state pollution and how do you avoid it?'
+difficulty: 'advanced'
+tags: ['nuxt', 'ssr', 'state-management', 'pinia', 'provide-inject']
 summary: "Module-scope reactive state is shared across ALL server requests. Each request needs its own state instance: use app-level provide or Pinia's per-request stores."
 ---
 
@@ -88,8 +88,12 @@ export function createStore() {
 
   return {
     state: readonly(state),
-    setUser(user: User) { state.user = user },
-    addToCart(item: CartItem) { state.cart.push(item) }
+    setUser(user: User) {
+      state.user = user
+    },
+    addToCart(item: CartItem) {
+      state.cart.push(item)
+    }
   }
 }
 ```
@@ -110,11 +114,11 @@ export async function render(url: string) {
 
 Never declare mutable state at module scope in code that runs on the server. Always use one of:
 
-| Approach | When to use |
-|---|---|
-| `useState` | Nuxt projects, simple shared values |
-| Pinia with `@pinia/nuxt` | Nuxt projects, complex state with actions/getters |
-| Factory function + provide/inject | Vanilla Vue SSR without Nuxt |
+| Approach                          | When to use                                       |
+| --------------------------------- | ------------------------------------------------- |
+| `useState`                        | Nuxt projects, simple shared values               |
+| Pinia with `@pinia/nuxt`          | Nuxt projects, complex state with actions/getters |
+| Factory function + provide/inject | Vanilla Vue SSR without Nuxt                      |
 
 Immutable module-level values (constants, type definitions, pure functions) are safe because they don't change between requests.
 

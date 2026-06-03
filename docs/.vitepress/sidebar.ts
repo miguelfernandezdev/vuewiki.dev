@@ -45,7 +45,7 @@ const TAG_ORDER: Record<string, number> = {
   'provide-inject': 33,
   slots: 34,
   suspense: 35,
-  teleport: 36,
+  teleport: 36
 }
 
 const TAG_LABELS_EN: Record<string, string> = {
@@ -85,7 +85,7 @@ const TAG_LABELS_EN: Record<string, string> = {
   'provide-inject': 'Provide/Inject',
   slots: 'Slots',
   suspense: 'Suspense',
-  teleport: 'Teleport',
+  teleport: 'Teleport'
 }
 
 const TAG_LABELS_ES: Record<string, string> = {
@@ -125,7 +125,7 @@ const TAG_LABELS_ES: Record<string, string> = {
   'provide-inject': 'Provide/Inject',
   slots: 'Slots',
   suspense: 'Suspense',
-  teleport: 'Teleport',
+  teleport: 'Teleport'
 }
 
 function parseFrontmatter(content: string): QuestionFrontmatter | null {
@@ -137,7 +137,7 @@ function parseFrontmatter(content: string): QuestionFrontmatter | null {
   const order = Number(fm.match(/order:\s*(\d+)/)?.[1] ?? 0)
   const tagsMatch = fm.match(/tags:\s*\[(.+)\]/)
   const tags = tagsMatch
-    ? tagsMatch[1].split(',').map(t => t.trim().replace(/"/g, ''))
+    ? tagsMatch[1].split(',').map((t) => t.trim().replace(/"/g, ''))
     : []
 
   return { title, order, tags }
@@ -146,13 +146,16 @@ function parseFrontmatter(content: string): QuestionFrontmatter | null {
 function buildSidebarForLocale(
   docsDir: string,
   subdir: string,
-  labels: Record<string, string>,
+  labels: Record<string, string>
 ): DefaultTheme.SidebarItem[] {
   const qDir = path.join(docsDir, subdir)
   if (!fs.existsSync(qDir)) return []
 
-  const files = fs.readdirSync(qDir).filter(f => f.endsWith('.md'))
-  const groups = new Map<string, { title: string; order: number; slug: string }[]>()
+  const files = fs.readdirSync(qDir).filter((f) => f.endsWith('.md'))
+  const groups = new Map<
+    string,
+    { title: string; order: number; slug: string }[]
+  >()
 
   for (const file of files) {
     const content = fs.readFileSync(path.join(qDir, file), 'utf-8')
@@ -164,7 +167,7 @@ function buildSidebarForLocale(
     groups.get(primaryTag)!.push({
       title: fm.title,
       order: fm.order,
-      slug: file.replace('.md', ''),
+      slug: file.replace('.md', '')
     })
   }
 
@@ -177,10 +180,10 @@ function buildSidebarForLocale(
       collapsed: true,
       items: questions
         .sort((a, b) => a.order - b.order)
-        .map(q => ({
+        .map((q) => ({
           text: q.title,
-          link: `${urlPrefix}/q/${q.slug}`,
-        })),
+          link: `${urlPrefix}/q/${q.slug}`
+        }))
     }))
 }
 
@@ -190,6 +193,6 @@ export function generateSidebar(docsDir: string): DefaultTheme.Sidebar {
 
   return {
     '/q/': en,
-    '/es/q/': es,
+    '/es/q/': es
   }
 }

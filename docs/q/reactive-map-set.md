@@ -1,9 +1,9 @@
 ---
 order: 89
-title: "How do reactive Maps and Sets work in Vue 3?"
-difficulty: "advanced"
-tags: ["reactivity", "watchers"]
-summary: "reactive() supports Map, Set, WeakMap, and WeakSet natively. Vue intercepts collection methods (get, set, add, delete) for automatic tracking."
+title: 'How do reactive Maps and Sets work in Vue 3?'
+difficulty: 'advanced'
+tags: ['reactivity', 'watchers']
+summary: 'reactive() supports Map, Set, WeakMap, and WeakSet natively. Vue intercepts collection methods (get, set, add, delete) for automatic tracking.'
 ---
 
 Vue 3's [reactive()](https://vuejs.org/api/reactivity-core.html#reactive) supports `Map`, `Set`, `WeakMap`, and `WeakSet` out of the box. The [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) intercepts collection methods like `get`, `set`, `add`, `delete`, `has`, and `forEach`, tracking reads and triggering updates on writes. You use the standard JavaScript API, and Vue handles reactivity transparently. You can use either `reactive()` or `ref()`; both work. With `reactive()` you interact with the collection directly; with `ref()` you access it through `.value`.
@@ -45,19 +45,19 @@ function setScore(name: string, score: number) {
 
 Vue intercepts these operations:
 
-| Operation | Tracked (read) | Triggers update (write) |
-|---|---|---|
-| `map.get(key)` | Yes | No |
-| `map.set(key, value)` | No | Yes |
-| `map.has(key)` | Yes | No |
-| `map.delete(key)` | No | Yes |
-| `map.size` | Yes | No |
-| `map.forEach(fn)` | Yes (all entries) | No |
-| `set.add(value)` | No | Yes |
-| `set.has(value)` | Yes | No |
-| `set.delete(value)` | No | Yes |
-| `map.clear()` | No | Yes |
-| Iterating (`for...of`, spread) | Yes (all entries) | No |
+| Operation                      | Tracked (read)    | Triggers update (write) |
+| ------------------------------ | ----------------- | ----------------------- |
+| `map.get(key)`                 | Yes               | No                      |
+| `map.set(key, value)`          | No                | Yes                     |
+| `map.has(key)`                 | Yes               | No                      |
+| `map.delete(key)`              | No                | Yes                     |
+| `map.size`                     | Yes               | No                      |
+| `map.forEach(fn)`              | Yes (all entries) | No                      |
+| `set.add(value)`               | No                | Yes                     |
+| `set.has(value)`               | Yes               | No                      |
+| `set.delete(value)`            | No                | Yes                     |
+| `map.clear()`                  | No                | Yes                     |
+| Iterating (`for...of`, spread) | Yes (all entries) | No                      |
 
 This means computed properties and watchers that read from a reactive Map or Set will re-run when the collection is modified.
 
@@ -82,7 +82,7 @@ const scores = shallowRef(new Map<string, number>())
 
 async function refresh() {
   const data = await $fetch('/api/scores')
-  const newMap = new Map(data.map(d => [d.name, d.score]))
+  const newMap = new Map(data.map((d) => [d.name, d.score]))
   scores.value = newMap // triggers update
 }
 ```
@@ -91,11 +91,15 @@ async function refresh() {
 
 ```vue
 <script setup>
-const permissions = reactive(new Map<string, boolean>([
-  ['read', true],
-  ['write', false],
-  ['admin', false]
-]))
+const permissions = reactive(
+  new Map() < string,
+  boolean >
+    [
+      ['read', true],
+      ['write', false],
+      ['admin', false]
+    ]
+)
 
 const activePermissions = computed(() =>
   [...permissions.entries()]
@@ -114,17 +118,17 @@ The `computed` re-evaluates when any entry in the Map changes because spreading 
 
 ## When to use Map/Set over plain objects and arrays
 
-| Use a Map when | Use a plain object when |
-|---|---|
-| Keys are not strings (objects, numbers, symbols) | Keys are string-only |
-| You need insertion-order iteration guaranteed | Order doesn't matter |
-| You add/remove keys frequently (Maps are optimized for this) | The shape is static |
-| You need `.size` without `Object.keys().length` | Performance isn't a concern |
+| Use a Map when                                               | Use a plain object when     |
+| ------------------------------------------------------------ | --------------------------- |
+| Keys are not strings (objects, numbers, symbols)             | Keys are string-only        |
+| You need insertion-order iteration guaranteed                | Order doesn't matter        |
+| You add/remove keys frequently (Maps are optimized for this) | The shape is static         |
+| You need `.size` without `Object.keys().length`              | Performance isn't a concern |
 
-| Use a Set when | Use an array when |
-|---|---|
-| You need uniqueness enforced automatically | Duplicates are valid |
-| You check membership often (`has()` is O(1)) | You search by index |
+| Use a Set when                                    | Use an array when                |
+| ------------------------------------------------- | -------------------------------- |
+| You need uniqueness enforced automatically        | Duplicates are valid             |
+| You check membership often (`has()` is O(1))      | You search by index              |
 | You need union/intersection/difference operations | You need `map`/`filter`/`reduce` |
 
 ## Limitations

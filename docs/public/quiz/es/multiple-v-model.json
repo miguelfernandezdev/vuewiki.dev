@@ -12,12 +12,7 @@
     },
     {
       "question": "Al usar defineModel sin nombre (el v-model por defecto), ¿a qué nombre de prop se mapea?",
-      "options": [
-        "value",
-        "modelValue",
-        "model",
-        "defaultValue"
-      ],
+      "options": ["value", "modelValue", "model", "defaultValue"],
       "answer": 1
     },
     {

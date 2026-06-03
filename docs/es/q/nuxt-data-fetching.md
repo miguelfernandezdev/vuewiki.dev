@@ -1,9 +1,9 @@
 ---
 order: 151
-title: "¿Cuál es la diferencia entre useFetch, useAsyncData y $fetch?"
-difficulty: "intermediate"
-tags: ["nuxt", "data-fetching", "vueuse"]
-summary: "useFetch para datos de componentes con SSR, useAsyncData para lógica async personalizada, $fetch para acciones cliente como envío de formularios."
+title: '¿Cuál es la diferencia entre useFetch, useAsyncData y $fetch?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'data-fetching', 'vueuse']
+summary: 'useFetch para datos de componentes con SSR, useAsyncData para lógica async personalizada, $fetch para acciones cliente como envío de formularios.'
 ---
 
 Nuxt ofrece tres formas de obtener datos. Cada una resuelve un problema distinto relacionado con SSR, hydration y la doble petición.
@@ -63,12 +63,12 @@ const { data: post } = await useFetch(() => `/api/posts/${id.value}`)
 
 ```ts
 const { data } = await useFetch('/api/posts', {
-  pick: ['id', 'title'],           // solo mantener estos campos en el payload
+  pick: ['id', 'title'], // solo mantener estos campos en el payload
   transform: (posts) => posts.slice(0, 5), // transformar antes de cachear
-  default: () => [],                // valor por defecto mientras carga
-  lazy: true,                       // no bloquear la navegación
-  server: false,                    // omitir la petición en el servidor
-  immediate: false,                 // no hacer la petición hasta llamar a execute()
+  default: () => [], // valor por defecto mientras carga
+  lazy: true, // no bloquear la navegación
+  server: false, // omitir la petición en el servidor
+  immediate: false // no hacer la petición hasta llamar a execute()
 })
 ```
 
@@ -92,25 +92,25 @@ El primer argumento es una clave única para el caché y la deduplicación.
 
 ## Cuándo usar cada uno
 
-| Escenario | Usar |
-|---|---|
-| Obtener datos de un endpoint de API en un componente | `useFetch` |
-| Combinar varias peticiones en una | `useAsyncData` con `Promise.all` |
-| Obtener datos de una fuente no HTTP (base de datos, SDK) | `useAsyncData` |
-| Clic en botón, envío de formulario, acción del usuario | `$fetch` |
-| Datos iniciales en `setup` | `useFetch` o `useAsyncData`, nunca `$fetch` solo |
+| Escenario                                                | Usar                                             |
+| -------------------------------------------------------- | ------------------------------------------------ |
+| Obtener datos de un endpoint de API en un componente     | `useFetch`                                       |
+| Combinar varias peticiones en una                        | `useAsyncData` con `Promise.all`                 |
+| Obtener datos de una fuente no HTTP (base de datos, SDK) | `useAsyncData`                                   |
+| Clic en botón, envío de formulario, acción del usuario   | `$fetch`                                         |
+| Datos iniciales en `setup`                               | `useFetch` o `useAsyncData`, nunca `$fetch` solo |
 
 ## Valores de retorno compartidos
 
 Todos los composables devuelven la misma estructura:
 
-| Propiedad | Tipo | Descripción |
-|---|---|---|
-| `data` | `Ref<T>` | Los datos obtenidos |
-| `error` | `Ref<Error \| null>` | Error si la petición falló |
-| `status` | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Estado actual |
-| `refresh` / `execute` | `() => Promise` | Volver a obtener los datos (`execute` es un alias de `refresh`) |
-| `clear` | `() => void` | Resetea `data`, `error` y `status` (vuelve a `idle`), y cancela peticiones pendientes |
+| Propiedad             | Tipo                                               | Descripción                                                                           |
+| --------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `data`                | `Ref<T>`                                           | Los datos obtenidos                                                                   |
+| `error`               | `Ref<Error \| null>`                               | Error si la petición falló                                                            |
+| `status`              | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Estado actual                                                                         |
+| `refresh` / `execute` | `() => Promise`                                    | Volver a obtener los datos (`execute` es un alias de `refresh`)                       |
+| `clear`               | `() => void`                                       | Resetea `data`, `error` y `status` (vuelve a `idle`), y cancela peticiones pendientes |
 
 ## Compartir datos entre componentes
 

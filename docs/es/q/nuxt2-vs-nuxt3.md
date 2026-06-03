@@ -1,30 +1,30 @@
 ---
 order: 158
-title: "¿Cuáles son las diferencias entre Nuxt 2 y Nuxt 3?"
-difficulty: "intermediate"
-tags: ["nuxt", "migration", "pinia", "vite", "vueuse", "vuex"]
-summary: "Nuxt 3 reescribe todo sobre Vue 3, Vite y Nitro. Nuevas APIs para data fetching (useFetch), estado (useState) y DX TypeScript-first."
+title: '¿Cuáles son las diferencias entre Nuxt 2 y Nuxt 3?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'migration', 'pinia', 'vite', 'vueuse', 'vuex']
+summary: 'Nuxt 3 reescribe todo sobre Vue 3, Vite y Nitro. Nuevas APIs para data fetching (useFetch), estado (useState) y DX TypeScript-first.'
 ---
 
 Nuxt 3 es una reescritura completa sobre Vue 3, Vite y el motor de servidor Nitro. Los cambios van más allá del salto de Vue 2 a Vue 3: la herramienta de build, la capa de servidor, la obtención de datos, la gestión de estado, el sistema de módulos y la experiencia con TypeScript son todos distintos. La filosofía central es la misma (convención sobre configuración, enrutamiento basado en archivos, SSR por defecto), pero casi toda la superficie de API ha cambiado.
 
 ## Comparativa
 
-| Aspecto | Nuxt 2 | Nuxt 3 |
-|---|---|---|
-| Versión de Vue | Vue 2 (Options API) | Vue 3 (Composition API) |
-| Herramienta de build | Webpack | Vite (por defecto), Webpack opcional |
-| Motor de servidor | Connect | Nitro (basado en h3) |
-| Gestión de estado | Vuex | Pinia / `useState` |
-| Archivo de configuración | `nuxt.config.js` | `nuxt.config.ts` |
-| Auto-importaciones | Solo componentes (parcial) | Componentes, composables, utils, utils de servidor |
-| TypeScript | Opcional, configuración compleja | Primera clase, sin configuración |
-| Creación de módulos | Hooks de Nuxt 2 | API de `@nuxt/kit` |
-| Obtención de datos | `asyncData` / `fetch` (Options API) | `useFetch` / `useAsyncData` (Composition API) |
-| Middleware | Objeto `context` | Composables + `navigateTo` |
-| Plugins | `inject` + `context` | `defineNuxtPlugin` + `nuxtApp` |
-| Renderizado | SSR o estático | SSR, estático, híbrido (reglas por ruta) |
-| Despliegue | Principalmente Node.js | Universal (Node, Vercel, Netlify, Cloudflare, Deno) |
+| Aspecto                  | Nuxt 2                              | Nuxt 3                                              |
+| ------------------------ | ----------------------------------- | --------------------------------------------------- |
+| Versión de Vue           | Vue 2 (Options API)                 | Vue 3 (Composition API)                             |
+| Herramienta de build     | Webpack                             | Vite (por defecto), Webpack opcional                |
+| Motor de servidor        | Connect                             | Nitro (basado en h3)                                |
+| Gestión de estado        | Vuex                                | Pinia / `useState`                                  |
+| Archivo de configuración | `nuxt.config.js`                    | `nuxt.config.ts`                                    |
+| Auto-importaciones       | Solo componentes (parcial)          | Componentes, composables, utils, utils de servidor  |
+| TypeScript               | Opcional, configuración compleja    | Primera clase, sin configuración                    |
+| Creación de módulos      | Hooks de Nuxt 2                     | API de `@nuxt/kit`                                  |
+| Obtención de datos       | `asyncData` / `fetch` (Options API) | `useFetch` / `useAsyncData` (Composition API)       |
+| Middleware               | Objeto `context`                    | Composables + `navigateTo`                          |
+| Plugins                  | `inject` + `context`                | `defineNuxtPlugin` + `nuxtApp`                      |
+| Renderizado              | SSR o estático                      | SSR, estático, híbrido (reglas por ruta)            |
+| Despliegue               | Principalmente Node.js              | Universal (Node, Vercel, Netlify, Cloudflare, Deno) |
 
 ## Obtención de datos
 
@@ -94,10 +94,14 @@ Nuxt 3 también distingue entre middleware de rutas (se ejecuta en la navegació
 // Nuxt 2: store Vuex con mutations
 export const state = () => ({ count: 0 })
 export const mutations = {
-  INCREMENT(state) { state.count++ }
+  INCREMENT(state) {
+    state.count++
+  }
 }
 export const actions = {
-  increment({ commit }) { commit('INCREMENT') }
+  increment({ commit }) {
+    commit('INCREMENT')
+  }
 }
 ```
 
@@ -105,7 +109,9 @@ export const actions = {
 // Nuxt 3: store de Pinia (o useState para casos simples)
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
-  function increment() { count.value++ }
+  function increment() {
+    count.value++
+  }
   return { count, increment }
 })
 
@@ -169,7 +175,9 @@ Distintas páginas de la misma app pueden usar SSR, SSG, ISR o renderizado solo 
 ```ts
 // Nuxt 2: módulo con hooks
 export default function MyModule() {
-  this.nuxt.hook('build:before', () => { /* ... */ })
+  this.nuxt.hook('build:before', () => {
+    /* ... */
+  })
   this.addPlugin({ src: resolve(__dirname, 'plugin.js') })
 }
 ```

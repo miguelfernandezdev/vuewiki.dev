@@ -1,9 +1,9 @@
 ---
 order: 109
-title: "¿Cómo se tipan los manejadores de eventos en los templates de Vue?"
-difficulty: "intermediate"
-tags: ["typescript", "components"]
-summary: "Tipar el parámetro del evento (e: Event) y castear event.target al tipo correcto (e.target as HTMLInputElement) para acceder a .value o .checked."
+title: '¿Cómo se tipan los manejadores de eventos en los templates de Vue?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components']
+summary: 'Tipar el parámetro del evento (e: Event) y castear event.target al tipo correcto (e.target as HTMLInputElement) para acceder a .value o .checked.'
 ---
 
 Los manejadores de eventos DOM en templates de Vue reciben un objeto `Event`, pero TypeScript no sabe qué elemento específico lo disparó. Necesitas tipar el parámetro del evento explícitamente y hacer un cast de `event.target` al tipo de elemento correcto para acceder a propiedades como `.value` o `.checked`.
@@ -60,16 +60,16 @@ function handleSubmit(event: SubmitEvent) {
 
 ## Referencia de tipos de evento
 
-| Evento en el template | Tipo TypeScript | Propiedades clave |
-|---|---|---|
-| `@click`, `@dblclick` | `MouseEvent` | clientX, clientY, button, ctrlKey |
-| `@keydown`, `@keyup` | `KeyboardEvent` | key, code, ctrlKey, shiftKey |
-| `@input`, `@change` | `Event` | target (requiere cast) |
-| `@focus`, `@blur` | `FocusEvent` | relatedTarget |
-| `@submit` | `SubmitEvent` | submitter |
-| `@drag`, `@drop` | `DragEvent` | dataTransfer |
-| `@wheel` | `WheelEvent` | deltaX, deltaY |
-| `@touchstart`, `@touchend` | `TouchEvent` | touches, changedTouches |
+| Evento en el template      | Tipo TypeScript | Propiedades clave                 |
+| -------------------------- | --------------- | --------------------------------- |
+| `@click`, `@dblclick`      | `MouseEvent`    | clientX, clientY, button, ctrlKey |
+| `@keydown`, `@keyup`       | `KeyboardEvent` | key, code, ctrlKey, shiftKey      |
+| `@input`, `@change`        | `Event`         | target (requiere cast)            |
+| `@focus`, `@blur`          | `FocusEvent`    | relatedTarget                     |
+| `@submit`                  | `SubmitEvent`   | submitter                         |
+| `@drag`, `@drop`           | `DragEvent`     | dataTransfer                      |
+| `@wheel`                   | `WheelEvent`    | deltaX, deltaY                    |
+| `@touchstart`, `@touchend` | `TouchEvent`    | touches, changedTouches           |
 
 ## Aserciones de tipo por elemento
 

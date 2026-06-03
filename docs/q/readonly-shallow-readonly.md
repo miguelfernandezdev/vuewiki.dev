@@ -1,9 +1,9 @@
 ---
 order: 77
-title: "What is readonly and shallowReadonly?"
-difficulty: "intermediate"
-tags: ["reactivity", "provide-inject"]
-summary: "readonly() makes an object deeply immutable (writes warn in dev, fail silently in prod). shallowReadonly() only protects the top level."
+title: 'What is readonly and shallowReadonly?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'provide-inject']
+summary: 'readonly() makes an object deeply immutable (writes warn in dev, fail silently in prod). shallowReadonly() only protects the top level.'
 ---
 
 `readonly()` creates a deeply immutable reactive proxy. You can read all properties and they stay reactive ([computed](https://vuejs.org/api/reactivity-core.html#computed) and watchers still track changes from the original source), but any attempt to mutate them triggers a warning in development and silently fails in production. `shallowReadonly()` does the same but only for the top level: nested objects remain mutable.
@@ -104,23 +104,23 @@ This enforces unidirectional data flow through the provide/inject tree, similar 
 
 ## When to use each
 
-| Scenario | Use |
-|---|---|
-| Expose state from a composable | `readonly(state)` |
-| Provide reactive data to descendants | `readonly(state)` via `provide` |
-| Large config object where only top-level matters | `shallowReadonly(config)` |
-| Third-party object with nested state you can't control | `shallowReadonly(instance)` |
-| Immutable data that never changes | `Object.freeze` (not reactive at all) |
+| Scenario                                               | Use                                   |
+| ------------------------------------------------------ | ------------------------------------- |
+| Expose state from a composable                         | `readonly(state)`                     |
+| Provide reactive data to descendants                   | `readonly(state)` via `provide`       |
+| Large config object where only top-level matters       | `shallowReadonly(config)`             |
+| Third-party object with nested state you can't control | `shallowReadonly(instance)`           |
+| Immutable data that never changes                      | `Object.freeze` (not reactive at all) |
 
 ## readonly vs Object.freeze
 
-| | `readonly` | `Object.freeze` |
-|---|---|---|
-| Reactive | Yes, tracks the source | No, skips reactivity entirely |
-| Mutation prevention | Dev warning, silent fail in prod | TypeError in strict mode |
-| Depth | Deep (all nested properties) | Shallow (must freeze recursively) |
-| Can source be mutated? | Yes, through the original | No, the object itself is frozen |
-| Use case | Controlled access to live state | Static data optimization |
+|                        | `readonly`                       | `Object.freeze`                   |
+| ---------------------- | -------------------------------- | --------------------------------- |
+| Reactive               | Yes, tracks the source           | No, skips reactivity entirely     |
+| Mutation prevention    | Dev warning, silent fail in prod | TypeError in strict mode          |
+| Depth                  | Deep (all nested properties)     | Shallow (must freeze recursively) |
+| Can source be mutated? | Yes, through the original        | No, the object itself is frozen   |
+| Use case               | Controlled access to live state  | Static data optimization          |
 
 The key difference: `readonly` creates a read-only view of data that can still change through the original reference. `Object.freeze` makes the data permanently immutable for everyone.
 

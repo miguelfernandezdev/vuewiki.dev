@@ -1,9 +1,9 @@
 ---
 order: 79
-title: "¿Cuál es la diferencia entre computed y watch?"
-difficulty: "advanced"
-tags: ["reactivity", "composition-api", "watchers"]
-summary: "computed deriva un valor cacheado de datos reactivos (puro, sin efectos). watch ejecuta efectos secundarios cuando fuentes específicas cambian (APIs, DOM)."
+title: '¿Cuál es la diferencia entre computed y watch?'
+difficulty: 'advanced'
+tags: ['reactivity', 'composition-api', 'watchers']
+summary: 'computed deriva un valor cacheado de datos reactivos (puro, sin efectos). watch ejecuta efectos secundarios cuando fuentes específicas cambian (APIs, DOM).'
 ---
 
 Ambos reaccionan a cambios en datos reactivos, pero sirven para propósitos fundamentalmente distintos. Equivocarse lleva a estado duplicado (usar `watch` donde `computed` bastaría) o efectos secundarios inesperados (usar `computed` para cosas que no deberían ser puras).
@@ -53,13 +53,13 @@ Recibes tanto el valor nuevo como el anterior, y puedes hacer trabajo asíncrono
 
 Pregúntate: **"¿Estoy calculando un valor o haciendo algo?"**
 
-| Pregunta | Respuesta | Usar |
-|---|---|---|
-| ¿Necesito un valor derivado en la plantilla? | Sí | `computed` |
-| ¿Necesito obtener datos cuando algo cambia? | Sí | `watch` |
-| ¿Necesito el valor anterior? | Sí | `watch` |
-| ¿Necesito escribir en localStorage/cookies? | Sí | `watch` |
-| ¿Puede el resultado expresarse como una función pura de las entradas? | Sí | `computed` |
+| Pregunta                                                              | Respuesta | Usar       |
+| --------------------------------------------------------------------- | --------- | ---------- |
+| ¿Necesito un valor derivado en la plantilla?                          | Sí        | `computed` |
+| ¿Necesito obtener datos cuando algo cambia?                           | Sí        | `watch`    |
+| ¿Necesito el valor anterior?                                          | Sí        | `watch`    |
+| ¿Necesito escribir en localStorage/cookies?                           | Sí        | `watch`    |
+| ¿Puede el resultado expresarse como una función pura de las entradas? | Sí        | `computed` |
 
 ## El error más común
 
@@ -70,12 +70,16 @@ Usar `watch` + `ref` para hacer lo que `computed` hace de forma gratuita:
 const items = ref<Item[]>([])
 const activeCount = ref(0)
 
-watch(items, (val) => {
-  activeCount.value = val.filter(i => i.active).length
-}, { deep: true })
+watch(
+  items,
+  (val) => {
+    activeCount.value = val.filter((i) => i.active).length
+  },
+  { deep: true }
+)
 
 // ✅ Usa computed — siempre sincronizado, con caché, sin estado extra
-const activeCount = computed(() => items.value.filter(i => i.active).length)
+const activeCount = computed(() => items.value.filter((i) => i.active).length)
 ```
 
 Si te encuentras escribiendo un `watch` que asigna un `ref` a un valor derivado, reemplázalo con un `computed`.

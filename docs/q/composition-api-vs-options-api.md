@@ -1,9 +1,9 @@
 ---
 order: 53
-title: "What is the Composition API and how does it differ from the Options API?"
-difficulty: "beginner"
-tags: ["composition-api"]
-summary: "Options API organizes by option type (data, methods, computed). Composition API organizes by logical concern using setup() and composables."
+title: 'What is the Composition API and how does it differ from the Options API?'
+difficulty: 'beginner'
+tags: ['composition-api']
+summary: 'Options API organizes by option type (data, methods, computed). Composition API organizes by logical concern using setup() and composables.'
 ---
 
 Vue gives you two ways to write component logic.
@@ -19,10 +19,14 @@ export default {
     return { count: 0 }
   },
   computed: {
-    doubled() { return this.count * 2 }
+    doubled() {
+      return this.count * 2
+    }
   },
   methods: {
-    increment() { this.count++ }
+    increment() {
+      this.count++
+    }
   }
 }
 </script>
@@ -40,7 +44,9 @@ import { ref, computed } from 'vue'
 
 const count = ref(0)
 const doubled = computed(() => count.value * 2)
-function increment() { count.value++ }
+function increment() {
+  count.value++
+}
 </script>
 ```
 

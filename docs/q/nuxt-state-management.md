@@ -1,9 +1,9 @@
 ---
 order: 156
-title: "How does state management work in Nuxt? (useState, Pinia)"
-difficulty: "intermediate"
-tags: ["nuxt", "state-management", "pinia"]
-summary: "useState for SSR-safe shared state (serialized in the payload). Pinia for complex domains with actions and getters. Never use plain ref at module scope."
+title: 'How does state management work in Nuxt? (useState, Pinia)'
+difficulty: 'intermediate'
+tags: ['nuxt', 'state-management', 'pinia']
+summary: 'useState for SSR-safe shared state (serialized in the payload). Pinia for complex domains with actions and getters. Never use plain ref at module scope.'
 ---
 
 Nuxt provides `useState`, an SSR-safe composable for sharing reactive state across components. For complex state, you add Pinia as a module. The key rule: never use plain `ref` or `reactive` at module scope in Nuxt, because that state leaks between requests on the server.
@@ -112,7 +112,7 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Product) {
-    const existing = items.value.find(i => i.id === product.id)
+    const existing = items.value.find((i) => i.id === product.id)
     if (existing) {
       existing.qty++
     } else {
@@ -136,20 +136,20 @@ const cart = useCartStore()
 
 ## useState vs Pinia
 
-| | useState | Pinia |
-|---|---|---|
-| Setup | Built-in, zero config | Requires `@pinia/nuxt` module |
-| State shape | Single value per key | Grouped state + getters + actions |
-| DevTools | Basic | Full time-travel debugging |
-| SSR safe | Yes | Yes (with Nuxt module) |
-| Best for | Simple shared values (locale, theme, current user) | Complex domains (cart, auth, multi-step forms) |
+|             | useState                                           | Pinia                                          |
+| ----------- | -------------------------------------------------- | ---------------------------------------------- |
+| Setup       | Built-in, zero config                              | Requires `@pinia/nuxt` module                  |
+| State shape | Single value per key                               | Grouped state + getters + actions              |
+| DevTools    | Basic                                              | Full time-travel debugging                     |
+| SSR safe    | Yes                                                | Yes (with Nuxt module)                         |
+| Best for    | Simple shared values (locale, theme, current user) | Complex domains (cart, auth, multi-step forms) |
 
 ## Serialization limits
 
 `useState` values are serialized to JSON when transferring from server to client. You cannot store functions, class instances, symbols, or circular references:
 
 ```ts
-useState('fn', () => () => {})           // will break
+useState('fn', () => () => {}) // will break
 useState('data', () => ({ name: 'Vue' })) // works fine
 ```
 

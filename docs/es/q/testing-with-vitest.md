@@ -1,9 +1,9 @@
 ---
 order: 114
-title: "¿Cómo se testean componentes Vue con Vitest?"
-difficulty: "intermediate"
-tags: ["testing", "vitest", "v-model"]
-summary: "Vitest + @vue/test-utils: mount() para tests de integración con hijos, shallowMount() para tests aislados del padre. Se ejecuta en jsdom o happy-dom."
+title: '¿Cómo se testean componentes Vue con Vitest?'
+difficulty: 'intermediate'
+tags: ['testing', 'vitest', 'v-model']
+summary: 'Vitest + @vue/test-utils: mount() para tests de integración con hijos, shallowMount() para tests aislados del padre. Se ejecuta en jsdom o happy-dom.'
 ---
 
 Vitest ejecuta tests de componentes Vue usando `@vue/test-utils` para montar componentes y la propia API de aserciones de Vitest. Los tests corren en un entorno DOM simulado (jsdom o happy-dom), no en un navegador real, lo que mantiene el ciclo de feedback rápido. La contrapartida es que las APIs específicas del navegador son mocked. Para comportamiento real de navegador, considera Playwright o Cypress.
@@ -165,13 +165,13 @@ describe('UserProfile', () => {
 
 Céntrate en el comportamiento observable desde fuera: lo que el usuario ve o lo que el componente comunica a su padre.
 
-| Test | Ejemplo |
-| --- | --- |
-| Renderizado según las props | El componente muestra "estado vacío" cuando `items=[]` |
-| Interacciones del usuario | Clic en botón → el contador incrementa |
-| Eventos emitidos | Toggle del checkbox → emite `update:modelValue` con el nuevo valor |
-| Comportamiento computado | La lista filtrada muestra solo los elementos que coinciden |
-| Casos límite | Input vacío, valores en el límite, props null/undefined |
+| Test                        | Ejemplo                                                            |
+| --------------------------- | ------------------------------------------------------------------ |
+| Renderizado según las props | El componente muestra "estado vacío" cuando `items=[]`             |
+| Interacciones del usuario   | Clic en botón → el contador incrementa                             |
+| Eventos emitidos            | Toggle del checkbox → emite `update:modelValue` con el nuevo valor |
+| Comportamiento computado    | La lista filtrada muestra solo los elementos que coinciden         |
+| Casos límite                | Input vacío, valores en el límite, props null/undefined            |
 
 Qué NO testear: detalles de implementación como la estructura interna del estado reactivo (testear que `count` está almacenado como `ref` vs propiedad `reactive`), comportamiento del framework (`v-if` funcionando correctamente es responsabilidad de Vue, no tuya), ni estilos CSS.
 

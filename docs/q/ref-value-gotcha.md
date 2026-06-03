@@ -1,8 +1,8 @@
 ---
 order: 64
-title: "Why does forgetting .value with ref cause bugs?"
-difficulty: "beginner"
-tags: ["reactivity", "errors"]
+title: 'Why does forgetting .value with ref cause bugs?'
+difficulty: 'beginner'
+tags: ['reactivity', 'errors']
 summary: "ref() wraps the value in an object. Access it via .value in script. Forgetting .value means you're operating on the wrapper, not the data."
 ---
 
@@ -11,12 +11,12 @@ Because [ref()](https://vuejs.org/api/reactivity-core.html#ref) wraps your value
 ```ts
 const count = ref(0)
 
-count++             // does nothing useful, you're incrementing an object
-count = 5           // reassigns the variable, loses reactivity entirely
-console.log(count)  // "[object Object]", not 0
+count++ // does nothing useful, you're incrementing an object
+count = 5 // reassigns the variable, loses reactivity entirely
+console.log(count) // "[object Object]", not 0
 
 const items = ref([1, 2, 3])
-items.push(4)       // TypeError: push is not a function
+items.push(4) // TypeError: push is not a function
 ```
 
 The correct way:
@@ -24,12 +24,12 @@ The correct way:
 ```ts
 const count = ref(0)
 
-count.value++             // 1
-count.value = 5           // 5
-console.log(count.value)  // 5
+count.value++ // 1
+count.value = 5 // 5
+console.log(count.value) // 5
 
 const items = ref([1, 2, 3])
-items.value.push(4)       // [1, 2, 3, 4]
+items.value.push(4) // [1, 2, 3, 4]
 ```
 
 ## The template exception

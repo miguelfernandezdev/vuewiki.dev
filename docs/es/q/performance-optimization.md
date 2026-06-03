@@ -1,9 +1,9 @@
 ---
 order: 122
-title: "¿Cómo optimizarías el rendimiento de una app Vue?"
-difficulty: "advanced"
-tags: ["performance", "vite", "watchers", "slots"]
-summary: "Mide primero, luego corrige: lazy loading, v-once/v-memo, shallowRef para datos grandes, listas virtuales, code splitting. Nunca optimices sin perfilar."
+title: '¿Cómo optimizarías el rendimiento de una app Vue?'
+difficulty: 'advanced'
+tags: ['performance', 'vite', 'watchers', 'slots']
+summary: 'Mide primero, luego corrige: lazy loading, v-once/v-memo, shallowRef para datos grandes, listas virtuales, code splitting. Nunca optimices sin perfilar.'
 ---
 
 La optimización de rendimiento no es una lista de trucos que se aplican de antemano. Es un ciclo: **medir -> identificar el cuello de botella -> corregirlo -> medir de nuevo**. Usa Vue DevTools, la pestaña Performance del navegador y Lighthouse para encontrar dónde se va realmente el tiempo antes de cambiar cualquier código.
@@ -44,11 +44,7 @@ defineProps<{
 
 <template>
   <ul>
-    <li
-      v-for="item in items"
-      :key="item.id"
-      v-memo="[item.id === selectedId]"
-    >
+    <li v-for="item in items" :key="item.id" v-memo="[item.id === selectedId]">
       {{ item.label }}
     </li>
   </ul>
@@ -147,15 +143,15 @@ Puedes aplicar el mismo patrón de lazy loading a componentes individuales, no s
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
 
-const RichTextEditor = defineAsyncComponent(() =>
-  import('@/components/RichTextEditor.vue')
+const RichTextEditor = defineAsyncComponent(
+  () => import('@/components/RichTextEditor.vue')
 )
 
 const ChartWidget = defineAsyncComponent({
   loader: () => import('@/components/ChartWidget.vue'),
   loadingComponent: LoadingSpinner,
   errorComponent: ErrorDisplay,
-  delay: 200,      // Mostrar el spinner solo después de 200ms
+  delay: 200, // Mostrar el spinner solo después de 200ms
   timeout: 5000
 })
 </script>
@@ -256,13 +252,13 @@ const STATUS_LABELS = Object.freeze({
 
 Ningún esfuerzo de optimización está completo sin medición. Estas son las herramientas a las que debes acudir primero:
 
-| Herramienta | Qué muestra |
-| --- | --- |
+| Herramienta                         | Qué muestra                                            |
+| ----------------------------------- | ------------------------------------------------------ |
 | Pestaña Performance de Vue DevTools | Tiempos de render de componentes, número de re-renders |
-| Pestaña Performance del navegador | Flame chart, tareas largas, cambios de layout |
-| Lighthouse | Puntuaciones de Core Web Vitals |
-| vite-bundle-visualizer | Composición y tamaños del bundle |
-| Pestaña Network | Peticiones redundantes, payloads grandes |
+| Pestaña Performance del navegador   | Flame chart, tareas largas, cambios de layout          |
+| Lighthouse                          | Puntuaciones de Core Web Vitals                        |
+| vite-bundle-visualizer              | Composición y tamaños del bundle                       |
+| Pestaña Network                     | Peticiones redundantes, payloads grandes               |
 
 La pestaña Performance de Vue DevTools es el punto de partida más útil para problemas en tiempo de ejecución. Muestra qué componente se re-renderiza, con qué frecuencia y durante cuánto tiempo. La pestaña Performance del navegador va más a fondo en el hilo principal, mostrando la ejecución de JavaScript junto con el layout y la pintura. Lighthouse te da una puntuación de resumen y métricas CWV específicas (LCP, CLS, INP) que reflejan lo que experimentan los usuarios reales. `vite-bundle-visualizer` (`npx vite-bundle-visualizer`) visualiza tus chunks de salida como un treemap, lo que hace evidente cuando una sola dependencia está dominando tu bundle.
 

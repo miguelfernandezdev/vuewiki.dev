@@ -1,9 +1,9 @@
 ---
 order: 23
-title: "¿Qué es lifting state up y cuándo deberías hacerlo?"
-difficulty: "beginner"
-tags: ["components", "architecture", "pinia", "provide-inject"]
-summary: "Mueve datos compartidos al ancestro común más cercano. Los hijos los reciben via props y comunican cambios via eventos. Evita estado duplicado y desincronizado."
+title: '¿Qué es lifting state up y cuándo deberías hacerlo?'
+difficulty: 'beginner'
+tags: ['components', 'architecture', 'pinia', 'provide-inject']
+summary: 'Mueve datos compartidos al ancestro común más cercano. Los hijos los reciben via props y comunican cambios via eventos. Evita estado duplicado y desincronizado.'
 ---
 
 Lifting state up significa mover datos compartidos desde un componente hijo al ancestro común más cercano para que varios hijos puedan acceder al mismo state y mantenerse sincronizados.
@@ -73,12 +73,12 @@ Ahora el padre es la única fuente de verdad. Ambos inputs siempre muestran valo
 
 ## Cuándo subir el state
 
-| Situación | Acción |
-|---|---|
-| Solo un componente usa los datos | Mantenlo local |
-| Padre e hijo comparten datos | Props hacia abajo, emit hacia arriba |
-| Hermanos necesitan los mismos datos | Subir al ancestro común más cercano |
-| Componentes distantes por el árbol | `provide`/`inject` o Pinia |
+| Situación                           | Acción                               |
+| ----------------------------------- | ------------------------------------ |
+| Solo un componente usa los datos    | Mantenlo local                       |
+| Padre e hijo comparten datos        | Props hacia abajo, emit hacia arriba |
+| Hermanos necesitan los mismos datos | Subir al ancestro común más cercano  |
+| Componentes distantes por el árbol  | `provide`/`inject` o Pinia           |
 
 ## Cuándo se vuelve doloroso
 

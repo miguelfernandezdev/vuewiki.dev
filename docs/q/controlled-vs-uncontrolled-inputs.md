@@ -1,9 +1,9 @@
 ---
 order: 39
-title: "What is the difference between controlled and uncontrolled inputs?"
-difficulty: "intermediate"
-tags: ["components", "forms", "v-model"]
-summary: "Controlled inputs use v-model (state drives the value). Uncontrolled inputs let the DOM own the value and read it via template refs when needed."
+title: 'What is the difference between controlled and uncontrolled inputs?'
+difficulty: 'intermediate'
+tags: ['components', 'forms', 'v-model']
+summary: 'Controlled inputs use v-model (state drives the value). Uncontrolled inputs let the DOM own the value and read it via template refs when needed.'
 ---
 
 A controlled input has its value driven by reactive state. Every keystroke updates the state, and the state dictates what the input displays. An uncontrolled input manages its own value internally through the DOM. You read it when needed (on submit, on blur) rather than tracking every change.
@@ -49,14 +49,14 @@ The DOM owns the value. You only read it when you need it.
 
 ## When to use which
 
-| Situation | Approach | Why |
-|---|---|---|
-| Real-time validation | Controlled | You need the value on every keystroke |
-| Derived display (character count, preview) | Controlled | Computed properties depend on the value |
-| Conditional logic (disable button until valid) | Controlled | Template needs reactive access |
-| Simple form submitted on button click | Either works | Uncontrolled is simpler if you don't need live updates |
-| File inputs | Uncontrolled | `<input type="file">` is read-only, v-model doesn't apply |
-| Third-party DOM libraries | Uncontrolled | The library manages its own DOM state |
+| Situation                                      | Approach     | Why                                                       |
+| ---------------------------------------------- | ------------ | --------------------------------------------------------- |
+| Real-time validation                           | Controlled   | You need the value on every keystroke                     |
+| Derived display (character count, preview)     | Controlled   | Computed properties depend on the value                   |
+| Conditional logic (disable button until valid) | Controlled   | Template needs reactive access                            |
+| Simple form submitted on button click          | Either works | Uncontrolled is simpler if you don't need live updates    |
+| File inputs                                    | Uncontrolled | `<input type="file">` is read-only, v-model doesn't apply |
+| Third-party DOM libraries                      | Uncontrolled | The library manages its own DOM state                     |
 
 ## Default values
 

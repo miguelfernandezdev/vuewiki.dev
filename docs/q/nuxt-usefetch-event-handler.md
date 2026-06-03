@@ -1,9 +1,9 @@
 ---
 order: 160
-title: "What happens if you call useFetch inside an event handler?"
-difficulty: "intermediate"
-tags: ["nuxt", "errors", "vueuse"]
-summary: "useFetch needs component context. Call it at the top of setup(), not inside event handlers. Use $fetch for user-triggered requests."
+title: 'What happens if you call useFetch inside an event handler?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'errors', 'vueuse']
+summary: 'useFetch needs component context. Call it at the top of setup(), not inside event handlers. Use $fetch for user-triggered requests.'
 ---
 
 It doesn't work as expected. `useFetch` and `useAsyncData` must be called at the top level of `<script setup>` (or in a plugin/middleware, or at the top level of a function in lifecycle hooks), not inside event handlers or callbacks. They rely on Nuxt's component context to register themselves for SSR payload transfer and deduplication. Inside an event handler, that context is gone. Use `$fetch` directly for requests triggered by user actions.
@@ -89,9 +89,7 @@ function handleSubmit() {
 </script>
 
 <template>
-  <button @click="handleSubmit" :disabled="status === 'pending'">
-    Submit
-  </button>
+  <button @click="handleSubmit" :disabled="status === 'pending'">Submit</button>
   <p v-if="error">{{ error.message }}</p>
   <p v-if="data">Done!</p>
 </template>
@@ -138,13 +136,13 @@ async function handleDelete(id: number) {
 
 ## Quick reference
 
-| Scenario | Use |
-|---|---|
-| Load data on page render (SSR) | `useFetch` / `useAsyncData` at top level |
-| Submit form on button click | `$fetch` in the handler |
-| Load data on demand (lazy) | `useFetch` with `immediate: false` + `execute()` |
-| Reload existing data after mutation | `refresh()` on the existing `useFetch` |
-| Fetch in a utility function | `$fetch` (no component context needed) |
+| Scenario                            | Use                                              |
+| ----------------------------------- | ------------------------------------------------ |
+| Load data on page render (SSR)      | `useFetch` / `useAsyncData` at top level         |
+| Submit form on button click         | `$fetch` in the handler                          |
+| Load data on demand (lazy)          | `useFetch` with `immediate: false` + `execute()` |
+| Reload existing data after mutation | `refresh()` on the existing `useFetch`           |
+| Fetch in a utility function         | `$fetch` (no component context needed)           |
 
 See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [How does the SSR payload work in Nuxt?](/q/nuxt-payload) · [How do Nitro server routes work?](/q/nuxt-nitro-server-routes)
 

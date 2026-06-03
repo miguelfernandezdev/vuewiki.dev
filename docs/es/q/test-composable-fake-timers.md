@@ -1,9 +1,9 @@
 ---
 order: 118
-title: "¿Cómo se prueba un composable que usa setTimeout?"
-difficulty: "advanced"
-tags: ["testing", "composables", "pinia", "vitest", "watchers"]
-summary: "Usa vi.useFakeTimers() para controlar el tiempo, await nextTick() para ejecutar el watcher de Vue, luego vi.advanceTimersByTime() para disparar el timeout."
+title: '¿Cómo se prueba un composable que usa setTimeout?'
+difficulty: 'advanced'
+tags: ['testing', 'composables', 'pinia', 'vitest', 'watchers']
+summary: 'Usa vi.useFakeTimers() para controlar el tiempo, await nextTick() para ejecutar el watcher de Vue, luego vi.advanceTimersByTime() para disparar el timeout.'
 ---
 
 Usa los timers falsos de Vitest (`vi.useFakeTimers`) para controlar el tiempo, y el `nextTick` de Vue para vaciar las actualizaciones reactivas entre pasos. El patrón es: activa los timers falsos, llama al composable, cambia el estado reactivo, `await nextTick()` para que se ejecute el watcher de Vue, y luego `vi.advanceTimersByTime()` para disparar el timeout. Sin `nextTick`, el watcher que inicia el timer nunca se ejecuta. Sin los timers falsos, el test tiene que esperar tiempo real.
@@ -49,8 +49,8 @@ describe('useDebounceSearch', () => {
     const { query, debouncedQuery } = useDebounceSearch(300)
 
     query.value = 'hello'
-    await nextTick()              // vacía el watcher (inicia setTimeout)
-    vi.advanceTimersByTime(300)   // avanza 300ms
+    await nextTick() // vacía el watcher (inicia setTimeout)
+    vi.advanceTimersByTime(300) // avanza 300ms
 
     expect(debouncedQuery.value).toBe('hello')
   })
@@ -60,19 +60,19 @@ describe('useDebounceSearch', () => {
 
     query.value = 'h'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 100ms transcurridos
+    vi.advanceTimersByTime(100) // 100ms transcurridos
 
     query.value = 'he'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 200ms totales, timer reiniciado a 100ms
+    vi.advanceTimersByTime(100) // 200ms totales, timer reiniciado a 100ms
 
     query.value = 'hel'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 300ms totales, timer reiniciado a 200ms
+    vi.advanceTimersByTime(100) // 300ms totales, timer reiniciado a 200ms
 
-    expect(debouncedQuery.value).toBe('')  // no ha pasado suficiente tiempo desde el último cambio
+    expect(debouncedQuery.value).toBe('') // no ha pasado suficiente tiempo desde el último cambio
 
-    vi.advanceTimersByTime(200)   // 500ms totales, 300ms desde el último cambio
+    vi.advanceTimersByTime(200) // 500ms totales, 300ms desde el último cambio
 
     expect(debouncedQuery.value).toBe('hel')
   })
@@ -84,7 +84,7 @@ describe('useDebounceSearch', () => {
     await nextTick()
     vi.advanceTimersByTime(299)
 
-    expect(debouncedQuery.value).toBe('')  // 1ms de diferencia
+    expect(debouncedQuery.value).toBe('') // 1ms de diferencia
   })
 })
 ```
@@ -168,13 +168,13 @@ Si lo olvidas, los timers falsos se filtran a otros tests. Las promesas que depe
 
 ## Referencia rápida
 
-| Paso | Qué hace | Cuándo se necesita |
-|---|---|---|
-| `vi.useFakeTimers()` | Reemplaza setTimeout/setInterval por versiones falsas | Antes de cualquier test que use timers |
-| `await nextTick()` | Vacía la cola de reactividad de Vue | Después de cambiar estado reactivo, antes de avanzar el tiempo |
-| `vi.advanceTimersByTime(ms)` | Avanza el tiempo falso | Para disparar callbacks de setTimeout/setInterval |
-| `vi.runAllTimers()` | Ejecuta todos los timers pendientes inmediatamente | Cuando no importa el timing específico |
-| `vi.useRealTimers()` | Restaura las funciones de timer reales | En afterEach, siempre |
+| Paso                         | Qué hace                                              | Cuándo se necesita                                             |
+| ---------------------------- | ----------------------------------------------------- | -------------------------------------------------------------- |
+| `vi.useFakeTimers()`         | Reemplaza setTimeout/setInterval por versiones falsas | Antes de cualquier test que use timers                         |
+| `await nextTick()`           | Vacía la cola de reactividad de Vue                   | Después de cambiar estado reactivo, antes de avanzar el tiempo |
+| `vi.advanceTimersByTime(ms)` | Avanza el tiempo falso                                | Para disparar callbacks de setTimeout/setInterval              |
+| `vi.runAllTimers()`          | Ejecuta todos los timers pendientes inmediatamente    | Cuando no importa el timing específico                         |
+| `vi.useRealTimers()`         | Restaura las funciones de timer reales                | En afterEach, siempre                                          |
 
 Ver también: [¿Cómo testear un store de Pinia?](/es/q/test-pinia-store) · [¿Cómo testear un composable que usa fetch?](/es/q/testing-composable-fetch)
 

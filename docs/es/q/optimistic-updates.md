@@ -1,9 +1,9 @@
 ---
 order: 87
-title: "¿Cómo implementarías actualizaciones optimistas en Vue?"
-difficulty: "advanced"
-tags: ["reactivity", "performance", "pinia"]
-summary: "Actualiza la UI inmediatamente, guarda el estado previo con toRaw, envía la petición y revierte en caso de fallo."
+title: '¿Cómo implementarías actualizaciones optimistas en Vue?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance', 'pinia']
+summary: 'Actualiza la UI inmediatamente, guarda el estado previo con toRaw, envía la petición y revierte en caso de fallo.'
 ---
 
 Las actualizaciones optimistas cambian la interfaz de inmediato antes de que el servidor confirme la acción. El patrón se apoya en [ref](https://vuejs.org/api/reactivity-core.html#ref) y [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) para capturar y restaurar el estado. Si la petición al servidor tiene éxito, nada cambia visualmente. Si falla, se revierte al estado anterior. La app se siente instantánea porque el usuario no espera un viaje de red de ida y vuelta.
@@ -49,7 +49,11 @@ async function toggleTodo(todo: Todo) {
   <ul>
     <li v-for="todo in todos" :key="todo.id">
       <label>
-        <input type="checkbox" :checked="todo.done" @change="toggleTodo(todo)" />
+        <input
+          type="checkbox"
+          :checked="todo.done"
+          @change="toggleTodo(todo)"
+        />
         {{ todo.text }}
       </label>
     </li>
@@ -63,7 +67,7 @@ Eliminar es más delicado porque hay que recordar el elemento y su posición:
 
 ```ts
 async function deleteTodo(id: string) {
-  const index = todos.value.findIndex(t => t.id === id)
+  const index = todos.value.findIndex((t) => t.id === id)
   if (index === -1) return
 
   const removed = todos.value[index]
@@ -98,11 +102,11 @@ async function addTodo(text: string) {
       body: { text }
     })
     // Reemplaza el temporal con la respuesta real del servidor
-    const index = todos.value.findIndex(t => t.id === tempId)
+    const index = todos.value.findIndex((t) => t.id === tempId)
     if (index !== -1) todos.value[index] = created
   } catch {
     // Revertir: eliminar el elemento optimista
-    todos.value = todos.value.filter(t => t.id !== tempId)
+    todos.value = todos.value.filter((t) => t.id !== tempId)
   }
 }
 ```
@@ -133,15 +137,12 @@ export function useOptimistic<T>(
 ```
 
 ```ts
-const { execute: toggleOptimistic } = useOptimistic(
-  todos,
-  async (updated) => {
-    await $fetch('/api/todos', { method: 'PUT', body: updated })
-  }
-)
+const { execute: toggleOptimistic } = useOptimistic(todos, async (updated) => {
+  await $fetch('/api/todos', { method: 'PUT', body: updated })
+})
 
 function toggleTodo(id: string) {
-  const updated = todos.value.map(t =>
+  const updated = todos.value.map((t) =>
     t.id === id ? { ...t, done: !t.done } : t
   )
   toggleOptimistic(updated)
@@ -156,7 +157,7 @@ export const useTodoStore = defineStore('todos', () => {
   const items = ref<Todo[]>([])
 
   async function toggle(id: string) {
-    const todo = items.value.find(t => t.id === id)
+    const todo = items.value.find((t) => t.id === id)
     if (!todo) return
 
     const previous = todo.done
@@ -190,7 +191,7 @@ const { mutate } = useMutation({
   onMutate: (todo) => {
     const previous = queryCache.getQueryData<Todo[]>(['todos'])
     queryCache.setQueryData(['todos'], (old) =>
-      old?.map(t => t.id === todo.id ? { ...t, done: !t.done } : t)
+      old?.map((t) => (t.id === todo.id ? { ...t, done: !t.done } : t))
     )
     return { previous }
   },
@@ -202,13 +203,13 @@ const { mutate } = useMutation({
 
 ## Cuándo usar actualizaciones optimistas
 
-| Acción | ¿Optimista? | Por qué |
-|---|---|---|
-| Marcar like/marcador | Sí | Respuesta rápida, bajo riesgo |
-| Eliminar un elemento | Sí | Pero muestra un toast con opción de deshacer |
-| Editar contenido de texto | Quizás | Riesgo de conflicto si otros también editan |
-| Pago/checkout | No | Hay que esperar la confirmación del servidor |
-| Subida de archivo | No | No se puede simular el resultado |
+| Acción                    | ¿Optimista? | Por qué                                      |
+| ------------------------- | ----------- | -------------------------------------------- |
+| Marcar like/marcador      | Sí          | Respuesta rápida, bajo riesgo                |
+| Eliminar un elemento      | Sí          | Pero muestra un toast con opción de deshacer |
+| Editar contenido de texto | Quizás      | Riesgo de conflicto si otros también editan  |
+| Pago/checkout             | No          | Hay que esperar la confirmación del servidor |
+| Subida de archivo         | No          | No se puede simular el resultado             |
 
 La regla: usa actualizaciones optimistas cuando la acción tiene muchas probabilidades de éxito y la experiencia de revertir es aceptable.
 

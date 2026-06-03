@@ -1,9 +1,9 @@
 ---
 order: 3
-title: "¿Vue es una librería o un framework? ¿Por qué?"
-difficulty: "beginner"
-tags: ["core", "pinia", "vite"]
-summary: "Vue es un framework progresivo. El core es una librería de vistas, pero su ecosistema oficial (Router, Pinia, Vite) le da capacidades de framework completo."
+title: '¿Vue es una librería o un framework? ¿Por qué?'
+difficulty: 'beginner'
+tags: ['core', 'pinia', 'vite']
+summary: 'Vue es un framework progresivo. El core es una librería de vistas, pero su ecosistema oficial (Router, Pinia, Vite) le da capacidades de framework completo.'
 ---
 
 Vue se describe oficialmente como un "[framework progresivo](https://vuejs.org/guide/introduction.html)". El paquete principal (`vue`) es una librería de vistas centrada en renderizar la interfaz, comparable en alcance a React. Pero a diferencia de una librería pura, Vue incluye un ecosistema oficial ([Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), scaffolding con [Vite](https://vite.dev/), [DevTools](https://devtools.vuejs.org/), SSR) que le da capacidades de framework completo. Empiezas solo con la capa de vista y adoptas más piezas a medida que tu proyecto las necesita.
@@ -24,17 +24,17 @@ Si solo usas el paquete principal, Vue se comporta como una librería:
 <div id="app"></div>
 
 <script type="module">
-import { createApp, ref } from 'vue'
+  import { createApp, ref } from 'vue'
 
-const App = {
-  setup() {
-    const count = ref(0)
-    return { count }
-  },
-  template: `<button @click="count++">{{ count }}</button>`
-}
+  const App = {
+    setup() {
+      const count = ref(0)
+      return { count }
+    },
+    template: `<button @click="count++">{{ count }}</button>`
+  }
 
-createApp(App).mount('#app')
+  createApp(App).mount('#app')
 </script>
 ```
 
@@ -84,14 +84,14 @@ En el paso 1, Vue es una librería. En el paso 4, es un framework completo. Avan
 
 ## Comparación con React y Angular
 
-| | Vue | React | Angular |
-|---|---|---|---|
-| Núcleo | Capa de vista (reactividad + render) | Capa de vista (render) | Framework completo |
-| Enrutamiento | Oficial (Vue Router) pero opcional | De terceros (React Router) | Integrado (@angular/router) |
-| Gestión de estado | Oficial (Pinia) pero opcional | De terceros (Redux, Zustand) | Integrado (Services + RxJS) |
-| Herramienta de compilación | Oficial (Vite) pero opcional | De terceros (Vite, Webpack) | Integrado (Angular CLI) |
-| Estructura de proyecto | Sugerida, no impuesta | Sin convención | Impuesta por el CLI |
-| Clasificación | Framework progresivo | Librería | Framework |
+|                            | Vue                                  | React                        | Angular                     |
+| -------------------------- | ------------------------------------ | ---------------------------- | --------------------------- |
+| Núcleo                     | Capa de vista (reactividad + render) | Capa de vista (render)       | Framework completo          |
+| Enrutamiento               | Oficial (Vue Router) pero opcional   | De terceros (React Router)   | Integrado (@angular/router) |
+| Gestión de estado          | Oficial (Pinia) pero opcional        | De terceros (Redux, Zustand) | Integrado (Services + RxJS) |
+| Herramienta de compilación | Oficial (Vite) pero opcional         | De terceros (Vite, Webpack)  | Integrado (Angular CLI)     |
+| Estructura de proyecto     | Sugerida, no impuesta                | Sin convención               | Impuesta por el CLI         |
+| Clasificación              | Framework progresivo                 | Librería                     | Framework                   |
 
 React se llama a sí mismo una librería porque solo gestiona el render. Angular se llama a sí mismo un framework porque incluye todo. Vue empieza como librería y se convierte en framework al añadir su ecosistema oficial.
 

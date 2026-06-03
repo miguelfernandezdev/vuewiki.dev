@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "¿Qué sintaxis de nombre de archivo crea una ruta catch-all que coincide con /posts/2024/my-article?",
-      "options": [
-        "[slug].vue",
-        "[[slug]].vue",
-        "[...slug].vue",
-        "*slug.vue"
-      ],
+      "options": ["[slug].vue", "[[slug]].vue", "[...slug].vue", "*slug.vue"],
       "answer": 2
     },
     {

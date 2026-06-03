@@ -1,9 +1,9 @@
 ---
 order: 94
-title: "¿Cómo cancelas una petición API en un composable?"
-difficulty: "intermediate"
-tags: ["composables", "vueuse", "watchers", "v-model"]
-summary: "Crea un AbortController, pasa su signal a fetch, y llama a abort() al desmontar o cuando una nueva petición reemplaza una obsoleta."
+title: '¿Cómo cancelas una petición API en un composable?'
+difficulty: 'intermediate'
+tags: ['composables', 'vueuse', 'watchers', 'v-model']
+summary: 'Crea un AbortController, pasa su signal a fetch, y llama a abort() al desmontar o cuando una nueva petición reemplaza una obsoleta.'
 ---
 
 Usa la API `AbortController` del navegador. Crea un controller, pasa su `signal` a `fetch`, y llama a `controller.abort()` cuando necesites cancelar. En Vue, los dos motivos más comunes para cancelar son el desmontaje del componente (evitar actualizaciones de estado en componentes destruidos) y las peticiones nuevas que reemplazan a las antiguas (prevención de condiciones de carrera).
@@ -14,9 +14,9 @@ Usa la API `AbortController` del navegador. Crea un controller, pasa su `signal`
 const controller = new AbortController()
 
 fetch('/api/users', { signal: controller.signal })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => {
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => {
     if (err.name === 'AbortError') {
       console.log('Request was cancelled')
     }
@@ -159,10 +159,7 @@ async function execute() {
   controller = new AbortController()
 
   const timeoutSignal = AbortSignal.timeout(5000)
-  const combinedSignal = AbortSignal.any([
-    controller.signal,
-    timeoutSignal
-  ])
+  const combinedSignal = AbortSignal.any([controller.signal, timeoutSignal])
 
   const response = await fetch(toValue(url), {
     signal: combinedSignal
@@ -192,13 +189,13 @@ No se necesita `AbortController` manual. Esta es una de las razones para preferi
 
 ## Cuándo cancelar
 
-| Escenario | Por qué cancelar |
-|---|---|
-| El componente se desmonta | Evitar actualizaciones de estado en componente destruido |
-| El campo de búsqueda cambia | Evitar que resultados obsoletos sobreescriban los nuevos |
-| Navegación de ruta | Dejar de cargar datos de una página que el usuario abandonó |
-| Timeout | Fallar rápido en lugar de esperar indefinidamente |
-| El usuario pulsa "cancelar" | Respetar la intención explícita del usuario |
+| Escenario                   | Por qué cancelar                                            |
+| --------------------------- | ----------------------------------------------------------- |
+| El componente se desmonta   | Evitar actualizaciones de estado en componente destruido    |
+| El campo de búsqueda cambia | Evitar que resultados obsoletos sobreescriban los nuevos    |
+| Navegación de ruta          | Dejar de cargar datos de una página que el usuario abandonó |
+| Timeout                     | Fallar rápido en lugar de esperar indefinidamente           |
+| El usuario pulsa "cancelar" | Respetar la intención explícita del usuario                 |
 
 Ver también: [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching) · [¿Qué es un composable?](/es/q/what-is-a-composable) · [¿Cómo manejan los composables asíncronos errores y estado de carga?](/es/q/async-composable-error-handling)
 

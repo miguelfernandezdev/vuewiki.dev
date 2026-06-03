@@ -1,9 +1,9 @@
 ---
 order: 102
-title: "¿Qué es Pinia Colada y cómo gestiona el estado asíncrono?"
-difficulty: "advanced"
-tags: ["state-management", "data-fetching", "pinia"]
-summary: "La respuesta de Vue a TanStack Query. Gestiona data fetching, caché, invalidación, actualizaciones optimistas y deduplicación sobre Pinia."
+title: '¿Qué es Pinia Colada y cómo gestiona el estado asíncrono?'
+difficulty: 'advanced'
+tags: ['state-management', 'data-fetching', 'pinia']
+summary: 'La respuesta de Vue a TanStack Query. Gestiona data fetching, caché, invalidación, actualizaciones optimistas y deduplicación sobre Pinia.'
 ---
 
 Pinia Colada es una capa de gestión de estado asíncrono para Vue, desarrollada por Eduardo San Martin Morote (el creador de Pinia y Vue Router). Gestiona peticiones de datos, caché, invalidación, actualizaciones optimistas y deduplicación. Funciona como la respuesta de Vue a TanStack Query (React Query), pero diseñada en torno a la reactividad de Vue y el ecosistema de Pinia.
@@ -23,7 +23,7 @@ async function fetchUsers() {
   isLoading.value = true
   error.value = null
   try {
-    users.value = await fetch('/api/users').then(r => r.json())
+    users.value = await fetch('/api/users').then((r) => r.json())
   } catch (e) {
     error.value = e as Error
   } finally {
@@ -37,9 +37,13 @@ onMounted(fetchUsers)
 Con Pinia Colada:
 
 ```ts
-const { data: users, isLoading, error } = useQuery({
+const {
+  data: users,
+  isLoading,
+  error
+} = useQuery({
   key: ['users'],
-  query: () => fetch('/api/users').then(r => r.json())
+  query: () => fetch('/api/users').then((r) => r.json())
 })
 ```
 
@@ -67,7 +71,7 @@ import { useQuery } from '@pinia/colada'
 
 const { data, isLoading, error, refresh } = useQuery({
   key: ['users'],
-  query: () => fetch('/api/users').then(r => r.json())
+  query: () => fetch('/api/users').then((r) => r.json())
 })
 ```
 
@@ -80,7 +84,7 @@ const props = defineProps<{ userId: string }>()
 
 const { data: user } = useQuery({
   key: () => ['users', props.userId],
-  query: () => fetch(`/api/users/${props.userId}`).then(r => r.json())
+  query: () => fetch(`/api/users/${props.userId}`).then((r) => r.json())
 })
 ```
 
@@ -112,7 +116,7 @@ const { mutate, isLoading } = useMutation({
     fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify(newUser)
-    }).then(r => r.json()),
+    }).then((r) => r.json()),
   onSettled: () => {
     queryCache.invalidateQueries({ key: ['users'] })
   }
@@ -146,11 +150,11 @@ const { mutate } = useMutation({
     fetch(`/api/todos/${todo.id}`, {
       method: 'PATCH',
       body: JSON.stringify({ done: !todo.done })
-    }).then(r => r.json()),
+    }).then((r) => r.json()),
   onMutate: (todo) => {
     const previous = queryCache.getQueryData<Todo[]>(['todos'])
     queryCache.setQueryData(['todos'], (old) =>
-      old?.map(t => t.id === todo.id ? { ...t, done: !t.done } : t)
+      old?.map((t) => (t.id === todo.id ? { ...t, done: !t.done } : t))
     )
     return { previous }
   },
@@ -162,14 +166,14 @@ const { mutate } = useMutation({
 
 ## Pinia Colada vs TanStack Query vs composables puros
 
-| | Pinia Colada | TanStack Vue Query | Composables puros |
-|---|---|---|---|
-| Nativo para Vue | Sí (construido sobre Pinia) | Adaptado desde React | Sí |
-| Caché + deduplicación | Integrado | Integrado | Manual |
-| Devtools | Devtools de Pinia | Devtools dedicados | Ninguno |
-| SSR (Nuxt) | Compatible | Compatible | Manual |
-| Tamaño del bundle | Pequeño | Mayor | Cero |
-| Ideal para | Proyectos Vue/Pinia que quieren estado asíncrono integrado | Equipos familiarizados con TanStack desde React | Apps sencillas con pocas llamadas a la API |
+|                       | Pinia Colada                                               | TanStack Vue Query                              | Composables puros                          |
+| --------------------- | ---------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------ |
+| Nativo para Vue       | Sí (construido sobre Pinia)                                | Adaptado desde React                            | Sí                                         |
+| Caché + deduplicación | Integrado                                                  | Integrado                                       | Manual                                     |
+| Devtools              | Devtools de Pinia                                          | Devtools dedicados                              | Ninguno                                    |
+| SSR (Nuxt)            | Compatible                                                 | Compatible                                      | Manual                                     |
+| Tamaño del bundle     | Pequeño                                                    | Mayor                                           | Cero                                       |
+| Ideal para            | Proyectos Vue/Pinia que quieren estado asíncrono integrado | Equipos familiarizados con TanStack desde React | Apps sencillas con pocas llamadas a la API |
 
 Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Qué son los plugins de Pinia?](/es/q/pinia-plugins) · [¿Cómo construirías un composable para data fetching?](/es/q/composable-data-fetching)
 

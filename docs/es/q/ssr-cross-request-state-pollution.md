@@ -1,9 +1,9 @@
 ---
 order: 163
-title: "¿Qué es la contaminación de estado entre peticiones en SSR y cómo se evita?"
-difficulty: "advanced"
-tags: ["nuxt", "ssr", "state-management", "pinia", "provide-inject"]
-summary: "El estado reactivo a nivel de módulo se comparte entre TODAS las peticiones del servidor. Cada petición necesita su propia instancia de estado."
+title: '¿Qué es la contaminación de estado entre peticiones en SSR y cómo se evita?'
+difficulty: 'advanced'
+tags: ['nuxt', 'ssr', 'state-management', 'pinia', 'provide-inject']
+summary: 'El estado reactivo a nivel de módulo se comparte entre TODAS las peticiones del servidor. Cada petición necesita su propia instancia de estado.'
 ---
 
 En SSR, el proceso del servidor gestiona múltiples peticiones. Si declaras estado reactivo en el ámbito del módulo, ese estado es un singleton compartido por TODAS las peticiones. Los datos del usuario A pueden filtrarse a la respuesta del usuario B. Esto es una vulnerabilidad de seguridad, no solo un bug.
@@ -88,8 +88,12 @@ export function createStore() {
 
   return {
     state: readonly(state),
-    setUser(user: User) { state.user = user },
-    addToCart(item: CartItem) { state.cart.push(item) }
+    setUser(user: User) {
+      state.user = user
+    },
+    addToCart(item: CartItem) {
+      state.cart.push(item)
+    }
   }
 }
 ```
@@ -110,11 +114,11 @@ export async function render(url: string) {
 
 Nunca declares estado mutable en el ámbito de módulo en código que se ejecuta en el servidor. Usa siempre una de estas opciones:
 
-| Enfoque | Cuándo usarlo |
-|---|---|
-| `useState` | Proyectos Nuxt, valores compartidos simples |
-| Pinia con `@pinia/nuxt` | Proyectos Nuxt, estado complejo con acciones y getters |
-| Factory function + provide/inject | Vue SSR sin Nuxt |
+| Enfoque                           | Cuándo usarlo                                          |
+| --------------------------------- | ------------------------------------------------------ |
+| `useState`                        | Proyectos Nuxt, valores compartidos simples            |
+| Pinia con `@pinia/nuxt`           | Proyectos Nuxt, estado complejo con acciones y getters |
+| Factory function + provide/inject | Vue SSR sin Nuxt                                       |
 
 Los valores inmutables a nivel de módulo (constantes, definiciones de tipos, funciones puras) son seguros porque no cambian entre peticiones.
 

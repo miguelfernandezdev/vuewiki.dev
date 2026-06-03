@@ -1,9 +1,9 @@
 ---
 order: 139
-title: "¿Cómo se arquitectura una app Vue 3 para escalar con múltiples equipos?"
-difficulty: "advanced"
-tags: ["architecture", "pinia"]
-summary: "Organiza por dominio de negocio (módulos de feature), no por capas técnicas. Cada equipo posee un slice vertical con sus componentes, stores y rutas."
+title: '¿Cómo se arquitectura una app Vue 3 para escalar con múltiples equipos?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia']
+summary: 'Organiza por dominio de negocio (módulos de feature), no por capas técnicas. Cada equipo posee un slice vertical con sus componentes, stores y rutas.'
 ---
 
 Organizar el código por dominio de negocio, no por capa técnica. Cada equipo posee un corte vertical de la aplicación (un módulo de funcionalidad) con sus propios componentes, composables, stores y rutas. El código compartido va en un paquete separado con límites de API claros. El objetivo es que los equipos puedan entregar de forma independiente sin pisarse el código.
@@ -87,7 +87,10 @@ export const billingRoutes: RouteRecordRaw[] = [
     path: '/billing',
     component: () => import('./components/BillingLayout.vue'),
     children: [
-      { path: '', component: () => import('./components/BillingDashboard.vue') },
+      {
+        path: '',
+        component: () => import('./components/BillingDashboard.vue')
+      },
       { path: 'invoices', component: () => import('./components/Invoices.vue') }
     ]
   }
@@ -101,11 +104,7 @@ import { billingRoutes } from '@/features/billing'
 import { dashboardRoutes } from '@/features/dashboard'
 
 const router = createRouter({
-  routes: [
-    ...authRoutes,
-    ...billingRoutes,
-    ...dashboardRoutes
-  ]
+  routes: [...authRoutes, ...billingRoutes, ...dashboardRoutes]
 })
 ```
 
@@ -148,14 +147,14 @@ Cada paquete tiene su propio `package.json`, tests y pipeline de build. El paque
 
 ## Principios clave
 
-| Principio | Por qué |
-|---|---|
-| Módulos por feature en lugar de capas técnicas | Los equipos poseen verticales, no horizontales |
-| Barrel exports como API pública | Previene el acoplamiento a la estructura interna |
-| El código compartido es explícito y versionado | Los cambios en código compartido son visibles para todos los consumidores |
-| Las features no importan internos de otras features | Usar contratos compartidos (composables, tipos, eventos) |
-| Rutas con lazy loading por feature | Cada feature es un chunk separado, reduciendo la carga inicial |
-| Las reglas de lint refuerzan los límites | Los humanos olvidan, los linters no |
+| Principio                                           | Por qué                                                                   |
+| --------------------------------------------------- | ------------------------------------------------------------------------- |
+| Módulos por feature en lugar de capas técnicas      | Los equipos poseen verticales, no horizontales                            |
+| Barrel exports como API pública                     | Previene el acoplamiento a la estructura interna                          |
+| El código compartido es explícito y versionado      | Los cambios en código compartido son visibles para todos los consumidores |
+| Las features no importan internos de otras features | Usar contratos compartidos (composables, tipos, eventos)                  |
+| Rutas con lazy loading por feature                  | Cada feature es un chunk separado, reduciendo la carga inicial            |
+| Las reglas de lint refuerzan los límites            | Los humanos olvidan, los linters no                                       |
 
 Ver también: [¿Cómo estructurar un proyecto Vue grande?](/es/q/large-project-structure) · [¿Cómo estructurar un micro-frontend con Vue?](/es/q/micro-frontends-vue) · [¿Cuáles son los anti-patrones comunes en codebases Vue grandes?](/es/q/vue-anti-patterns)
 

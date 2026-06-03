@@ -1,9 +1,9 @@
 ---
 order: 45
-title: "¿Cómo explicarías v-model a alguien que viene de React?"
-difficulty: "intermediate"
-tags: ["components", "directives", "v-model"]
-summary: "v-model = value + onChange de React en una línea. Es azúcar sintáctico: internamente enlaza un prop y escucha un evento de actualización."
+title: '¿Cómo explicarías v-model a alguien que viene de React?'
+difficulty: 'intermediate'
+tags: ['components', 'directives', 'v-model']
+summary: 'v-model = value + onChange de React en una línea. Es azúcar sintáctico: internamente enlaza un prop y escucha un evento de actualización.'
 ---
 
 En React, el estado de los formularios es siempre unidireccional: el estado fluye hacia abajo a través de `value` y los cambios suben a través de `onChange`. Dos líneas por cada input. En Vue, `v-model` gestiona ambas direcciones en una sola declaración. Es azúcar sintáctico: internamente vincula un prop de valor y escucha un evento de actualización, pero escribes una línea en lugar de dos. El compromiso es explicitez frente a conveniencia.
@@ -14,9 +14,7 @@ En React, el estado de los formularios es siempre unidireccional: el estado fluy
 // React: explícito, unidireccional
 function Form() {
   const [name, setName] = useState('')
-  return (
-    <input value={name} onChange={e => setName(e.target.value)} />
-  )
+  return <input value={name} onChange={(e) => setName(e.target.value)} />
 }
 ```
 
@@ -57,7 +55,7 @@ function CustomInput({ value, onChange }) {
   return <input value={value} onChange={onChange} />
 }
 
-<CustomInput value={name} onChange={e => setName(e.target.value)} />
+;<CustomInput value={name} onChange={(e) => setName(e.target.value)} />
 ```
 
 En Vue 3, `v-model` en un componente usa `modelValue` como prop y `update:modelValue` como evento:
@@ -78,7 +76,10 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>
 
 <template>
-  <input :value="modelValue" @input="emit('update:modelValue', $event.target.value)" />
+  <input
+    :value="modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
 </template>
 ```
 
@@ -102,8 +103,10 @@ React no tiene un equivalente nativo para esto. Tendrías que pasar múltiples p
 ```jsx
 // React: múltiples valores controlados
 <UserForm
-  name={name} onNameChange={setName}
-  email={email} onEmailChange={setEmail}
+  name={name}
+  onNameChange={setName}
+  email={email}
+  onEmailChange={setEmail}
 />
 ```
 
@@ -117,8 +120,8 @@ Vue 3 admite bindings v-model con nombre:
 ```vue
 <!-- UserForm.vue -->
 <script setup>
-const name = defineModel<string>('name')
-const email = defineModel<string>('email')
+const name = defineModel < string > 'name'
+const email = defineModel < string > 'email'
 </script>
 
 <template>
@@ -148,14 +151,14 @@ En React, manejarías estas transformaciones dentro del handler `onChange` de fo
 
 ## La diferencia filosófica
 
-| | Vue (v-model) | React (inputs controlados) |
-|---|---|---|
-| Flujo de datos | Bidireccional (por convención) | Unidireccional (siempre) |
-| Verbosidad | Una línea por binding | Dos props por binding |
-| Control | Conexión implícita | Conexión explícita |
-| Depuración | Menos obvio dónde se originan los cambios | Siempre claro quién muta el estado |
-| Transformaciones personalizadas | Modificadores (`.trim`, `.number`) | Manual en onChange |
-| Múltiples bindings | `v-model:name`, `v-model:email` | Múltiples pares value/onChange como props |
+|                                 | Vue (v-model)                             | React (inputs controlados)                |
+| ------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| Flujo de datos                  | Bidireccional (por convención)            | Unidireccional (siempre)                  |
+| Verbosidad                      | Una línea por binding                     | Dos props por binding                     |
+| Control                         | Conexión implícita                        | Conexión explícita                        |
+| Depuración                      | Menos obvio dónde se originan los cambios | Siempre claro quién muta el estado        |
+| Transformaciones personalizadas | Modificadores (`.trim`, `.number`)        | Manual en onChange                        |
+| Múltiples bindings              | `v-model:name`, `v-model:email`           | Múltiples pares value/onChange como props |
 
 El enfoque de Vue es más conciso. El de React es más trazable. Por debajo, ambos hacen lo mismo: vincular un valor y escuchar cambios. Vue genera la conexión en tiempo de compilación; React te pide que la escribas tú mismo.
 

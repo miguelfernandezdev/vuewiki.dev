@@ -1,9 +1,9 @@
 ---
 order: 11
-title: "¿Por qué v-show no funciona en elementos template?"
-difficulty: "beginner"
-tags: ["directives", "errors"]
-summary: "v-show cambia CSS display, pero <template> no se renderiza en el DOM. No hay elemento para poner display:none. Usa v-if en su lugar."
+title: '¿Por qué v-show no funciona en elementos template?'
+difficulty: 'beginner'
+tags: ['directives', 'errors']
+summary: 'v-show cambia CSS display, pero <template> no se renderiza en el DOM. No hay elemento para poner display:none. Usa v-if en su lugar.'
 ---
 
 Porque `v-show` funciona alternando la propiedad CSS `display`, y los elementos `<template>` no se renderizan en el DOM. No existe un elemento real al que aplicar `display: none`.
@@ -22,7 +22,8 @@ Otra limitación: `v-show` no admite `v-else`.
 ```vue
 <!-- v-else NO funciona con v-show -->
 <div v-show="isLoggedIn">Welcome!</div>
-<div v-else>Please log in</div> <!-- roto -->
+<div v-else>Please log in</div>
+<!-- roto -->
 ```
 
 ## Cómo solucionarlo
@@ -52,12 +53,12 @@ Otra limitación: `v-show` no admite `v-else`.
 
 ## Referencia rápida
 
-| Necesidad | Usa |
-|---|---|
-| Alternar múltiples elementos sin un contenedor | `<template v-if>` |
-| Alternado frecuente, elemento único | `v-show` en el elemento |
-| Alternado frecuente, necesitas "else" | Dos `v-show` con condiciones negadas |
-| Ramas v-else / v-else-if | `v-if` / `v-else` |
+| Necesidad                                      | Usa                                  |
+| ---------------------------------------------- | ------------------------------------ |
+| Alternar múltiples elementos sin un contenedor | `<template v-if>`                    |
+| Alternado frecuente, elemento único            | `v-show` en el elemento              |
+| Alternado frecuente, necesitas "else"          | Dos `v-show` con condiciones negadas |
+| Ramas v-else / v-else-if                       | `v-if` / `v-else`                    |
 
 Ver también: [¿Por qué no se puede usar v-if y v-for en el mismo elemento?](/es/q/v-if-with-v-for) · [¿Qué son los modificadores de eventos?](/es/q/event-modifier-order) · [¿Qué es v-once y v-memo?](/es/q/v-once-v-memo)
 

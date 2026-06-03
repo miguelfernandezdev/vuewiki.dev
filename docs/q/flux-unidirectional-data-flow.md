@@ -1,9 +1,17 @@
 ---
 order: 133
-title: "What is Flux/unidirectional data flow and how does Vue implement it?"
-difficulty: "intermediate"
-tags: ["architecture", "state-management", "pinia", "vuex", "v-model", "provide-inject"]
-summary: "Data flows one way: actions change state, state updates the view, views dispatch actions. Vue implements this with props down/events up and Pinia stores."
+title: 'What is Flux/unidirectional data flow and how does Vue implement it?'
+difficulty: 'intermediate'
+tags:
+  [
+    'architecture',
+    'state-management',
+    'pinia',
+    'vuex',
+    'v-model',
+    'provide-inject'
+  ]
+summary: 'Data flows one way: actions change state, state updates the view, views dispatch actions. Vue implements this with props down/events up and Pinia stores.'
 ---
 
 Flux is an architecture pattern where data flows in one direction: actions trigger state changes, state changes trigger view updates, and views dispatch new actions. There is no two-way binding between the view and the store. Vue implements this principle at two levels: within components (props down, events up) and at application scale (Pinia stores follow the same action-state-view cycle).
@@ -36,7 +44,9 @@ Vue enforces unidirectional flow between parent and child components by design:
 <!-- Parent: owns the state, passes it down -->
 <script setup>
 const count = ref(0)
-function increment() { count.value++ }
+function increment() {
+  count.value++
+}
 </script>
 
 <template>
@@ -110,7 +120,9 @@ const store = createStore({
 
   // Mutations: synchronous state changes (the ONLY way to change state)
   mutations: {
-    INCREMENT(state) { state.count++ }
+    INCREMENT(state) {
+      state.count++
+    }
   },
 
   // Actions: can be async, commit mutations
@@ -122,7 +134,7 @@ const store = createStore({
   },
 
   getters: {
-    doubled: state => state.count * 2
+    doubled: (state) => state.count * 2
   }
 })
 
@@ -158,14 +170,14 @@ Data still flows one way: state to view (`:value`), and events back up (`@input`
 
 ## Comparison
 
-| | Unidirectional (Flux) | Bidirectional |
-|---|---|---|
-| Data flow | Action → State → View | View ↔ State (both directions) |
-| Debugging | Trace the action chain | Check every possible mutation source |
-| Predictability | High (one path to follow) | Low (changes come from anywhere) |
-| Boilerplate | More (actions, stores) | Less (direct mutation) |
-| Vue implementation | Props/emit, Pinia, Vuex | v-model (sugar over unidirectional) |
-| Best for | Shared state, complex apps | Local form state |
+|                    | Unidirectional (Flux)      | Bidirectional                        |
+| ------------------ | -------------------------- | ------------------------------------ |
+| Data flow          | Action → State → View      | View ↔ State (both directions)       |
+| Debugging          | Trace the action chain     | Check every possible mutation source |
+| Predictability     | High (one path to follow)  | Low (changes come from anywhere)     |
+| Boilerplate        | More (actions, stores)     | Less (direct mutation)               |
+| Vue implementation | Props/emit, Pinia, Vuex    | v-model (sugar over unidirectional)  |
+| Best for           | Shared state, complex apps | Local form state                     |
 
 See also: [How does Pinia work?](/q/how-pinia-works) · [How does Vuex work?](/q/how-vuex-works) · [How does provide/inject work?](/q/provide-inject)
 

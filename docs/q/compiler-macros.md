@@ -1,8 +1,8 @@
 ---
 order: 58
-title: "What are all the compiler macros in Vue?"
-difficulty: "advanced"
-tags: ["composition-api", "typescript", "v-model", "slots"]
+title: 'What are all the compiler macros in Vue?'
+difficulty: 'advanced'
+tags: ['composition-api', 'typescript', 'v-model', 'slots']
 summary: "defineProps, defineEmits, defineExpose, defineModel, defineSlots, and defineOptions. They run at compile time and don't need imports."
 ---
 
@@ -20,12 +20,15 @@ const props = defineProps<{
 }>()
 
 // With defaults
-const props = withDefaults(defineProps<{
-  title: string
-  items?: string[]
-}>(), {
-  items: () => []
-})
+const props = withDefaults(
+  defineProps<{
+    title: string
+    items?: string[]
+  }>(),
+  {
+    items: () => []
+  }
+)
 </script>
 ```
 
@@ -71,7 +74,9 @@ Controls what the component exposes to parent template refs. Without it, `<scrip
 import { ref } from 'vue'
 
 const count = ref(0)
-function reset() { count.value = 0 }
+function reset() {
+  count.value = 0
+}
 
 defineExpose({ count, reset })
 </script>
@@ -110,14 +115,14 @@ This doesn't change runtime behavior. It only provides type checking for slot pr
 
 ## Summary table
 
-| Macro | Since | Purpose | Returns |
-|---|---|---|---|
-| `defineProps` | 3.0 | Declare props | Reactive props object |
-| `defineEmits` | 3.0 | Declare events | Typed emit function |
-| `defineModel` | 3.4 | Two-way v-model binding | Writable ref |
-| `defineExpose` | 3.0 | Control public API for refs | void |
-| `defineOptions` | 3.3 | Set name, inheritAttrs, etc. | void |
-| `defineSlots` | 3.3 | Type slot props | Slots object |
+| Macro           | Since | Purpose                      | Returns               |
+| --------------- | ----- | ---------------------------- | --------------------- |
+| `defineProps`   | 3.0   | Declare props                | Reactive props object |
+| `defineEmits`   | 3.0   | Declare events               | Typed emit function   |
+| `defineModel`   | 3.4   | Two-way v-model binding      | Writable ref          |
+| `defineExpose`  | 3.0   | Control public API for refs  | void                  |
+| `defineOptions` | 3.3   | Set name, inheritAttrs, etc. | void                  |
+| `defineSlots`   | 3.3   | Type slot props              | Slots object          |
 
 ## Rules that apply to all macros
 

@@ -1,9 +1,9 @@
 ---
 order: 164
-title: "¿Cómo gestionas la autenticación en Nuxt 3?"
-difficulty: "advanced"
-tags: ["nuxt", "architecture"]
-summary: "Combina un composable useAuth, un plugin para iniciar sesión, middleware de rutas para proteger páginas, y cookies (no localStorage) para tokens compatibles con SSR."
+title: '¿Cómo gestionas la autenticación en Nuxt 3?'
+difficulty: 'advanced'
+tags: ['nuxt', 'architecture']
+summary: 'Combina un composable useAuth, un plugin para iniciar sesión, middleware de rutas para proteger páginas, y cookies (no localStorage) para tokens compatibles con SSR.'
 ---
 
 El patrón estándar usa cuatro piezas que trabajan juntas: un composable `useAuth` que expone el state de autenticación y sus métodos, un plugin que inicializa la sesión de usuario al arrancar la app, un middleware de ruta que protege páginas, y un middleware de servidor que protege las rutas de la API. Los tokens se almacenan en cookies (no en localStorage) porque las cookies son accesibles durante SSR.
@@ -17,7 +17,7 @@ localStorage no existe en el servidor. Durante SSR, el servidor necesita saber q
 export function useAuth() {
   const user = useState<User | null>('auth-user', () => null)
   const token = useCookie('auth-token', {
-    maxAge: 60 * 60 * 24 * 7,  // 7 días
+    maxAge: 60 * 60 * 24 * 7, // 7 días
     sameSite: 'lax',
     secure: true
   })
@@ -122,7 +122,7 @@ export default defineEventHandler((event) => {
   const url = getRequestURL(event).pathname
 
   if (!url.startsWith('/api/') || url.startsWith('/api/auth/')) {
-    return  // omitir rutas no-API y endpoints de auth públicos
+    return // omitir rutas no-API y endpoints de auth públicos
   }
 
   const token = getCookie(event, 'auth-token')
@@ -157,8 +157,11 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event)
 
   const user = await findUserByEmail(email)
-  if (!user || !await verifyPassword(password, user.passwordHash)) {
-    throw createError({ statusCode: 401, statusMessage: 'Credenciales inválidas' })
+  if (!user || !(await verifyPassword(password, user.passwordHash))) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Credenciales inválidas'
+    })
   }
 
   const token = signJWT({ userId: user.id, role: user.role })
@@ -175,7 +178,9 @@ export default defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24 * 7
   })
 
-  return { user: { id: user.id, name: user.name, email: user.email, role: user.role } }
+  return {
+    user: { id: user.id, name: user.name, email: user.email, role: user.role }
+  }
 })
 ```
 
@@ -209,14 +214,14 @@ Usuario hace clic en logout
 
 ## Resumen
 
-| Pieza | Ubicación | Responsabilidad |
-|---|---|---|
-| Composable `useAuth` | `composables/` | State de auth, métodos login/logout |
-| Plugin de auth | `plugins/` | Inicializar sesión al arrancar la app |
-| Middleware de ruta | `middleware/` | Proteger páginas, redirigir usuarios no autenticados |
-| Middleware de servidor | `server/middleware/` | Proteger rutas de la API, validar tokens |
-| Rutas de la API de servidor | `server/api/auth/` | Login, logout, gestión de tokens |
-| Cookie | Enviada con cada petición | Almacenamiento del token (compatible con SSR) |
+| Pieza                       | Ubicación                 | Responsabilidad                                      |
+| --------------------------- | ------------------------- | ---------------------------------------------------- |
+| Composable `useAuth`        | `composables/`            | State de auth, métodos login/logout                  |
+| Plugin de auth              | `plugins/`                | Inicializar sesión al arrancar la app                |
+| Middleware de ruta          | `middleware/`             | Proteger páginas, redirigir usuarios no autenticados |
+| Middleware de servidor      | `server/middleware/`      | Proteger rutas de la API, validar tokens             |
+| Rutas de la API de servidor | `server/api/auth/`        | Login, logout, gestión de tokens                     |
+| Cookie                      | Enviada con cada petición | Almacenamiento del token (compatible con SSR)        |
 
 Ver también: [¿Cómo implementar autenticación con Vue Router?](/es/q/auth-with-vue-router) · [¿Qué es el middleware de Nuxt?](/es/q/nuxt-middleware) · [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware)
 

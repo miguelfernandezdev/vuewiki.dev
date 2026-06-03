@@ -1,8 +1,8 @@
 ---
 order: 44
-title: "Why can spreading all props to a child component be a bad idea?"
-difficulty: "intermediate"
-tags: ["components"]
+title: 'Why can spreading all props to a child component be a bad idea?'
+difficulty: 'intermediate'
+tags: ['components']
 summary: "Spreading all props hides the component's API, causes unnecessary re-renders, and can leak sensitive data. Pass only what the child explicitly needs."
 ---
 
@@ -47,11 +47,13 @@ Undeclared props become fallthrough attributes. They end up as HTML attributes o
 
 ```html
 <!-- Rendered DOM -->
-<div class="user-card"
-     id="1"
-     role="admin"
-     internalnotes="High priority account"
-     passwordhash="...">
+<div
+  class="user-card"
+  id="1"
+  role="admin"
+  internalnotes="High priority account"
+  passwordhash="..."
+>
   Alice
 </div>
 ```

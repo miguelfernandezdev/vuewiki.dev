@@ -1,9 +1,9 @@
 ---
 order: 165
-title: "¿Cómo depuras peticiones SSR que no pasan por el navegador?"
-difficulty: "advanced"
-tags: ["nuxt", "ssr", "debugging", "vueuse"]
-summary: "Usa interceptores de $fetch, variables DEBUG, la pestaña servidor de Nuxt DevTools o proxies. El DevTools del navegador no ve peticiones del servidor."
+title: '¿Cómo depuras peticiones SSR que no pasan por el navegador?'
+difficulty: 'advanced'
+tags: ['nuxt', 'ssr', 'debugging', 'vueuse']
+summary: 'Usa interceptores de $fetch, variables DEBUG, la pestaña servidor de Nuxt DevTools o proxies. El DevTools del navegador no ve peticiones del servidor.'
 ---
 
 Durante el SSR, las peticiones HTTP salen desde el proceso Node.js del servidor, no desde el navegador. No hay pestaña de Red. El servidor obtiene los datos, renderiza el HTML y lo envía al cliente. Si una llamada a la API falla o devuelve datos inesperados durante el SSR, no lo verás en las DevTools del navegador. Necesitas observabilidad del lado del servidor: interceptores que registren en el terminal, herramientas proxy que capturen el tráfico saliente y el panel de peticiones del servidor de Nuxt DevTools.
@@ -118,13 +118,15 @@ Para rutas del servidor Nitro, usa `createError` con mensajes descriptivos:
 ```ts
 // server/api/users.get.ts
 export default defineEventHandler(async (event) => {
-  const response = await $fetch('https://api.example.com/users').catch((err) => {
-    console.error('[Server] Upstream API failed:', err.status, err.message)
-    throw createError({
-      statusCode: 502,
-      statusMessage: 'Upstream API unavailable'
-    })
-  })
+  const response = await $fetch('https://api.example.com/users').catch(
+    (err) => {
+      console.error('[Server] Upstream API failed:', err.status, err.message)
+      throw createError({
+        statusCode: 502,
+        statusMessage: 'Upstream API unavailable'
+      })
+    }
+  )
   return response
 })
 ```
@@ -143,14 +145,14 @@ Luego abre `chrome://inspect` en Chrome y conéctate al proceso Node. Puedes est
 
 ## Lista de verificación para depuración
 
-| Herramienta | Qué muestra | Cuándo usarla |
-|---|---|---|
-| Plugin interceptor de `$fetch` | Todas las peticiones HTTP SSR en el terminal | Lo primero que añadir para depurar SSR |
-| `console.log` en el servidor | Comprobaciones rápidas | Problemas sencillos |
-| Variable de entorno `DEBUG=*` | Internos detallados de la librería | Problemas profundos a nivel de protocolo |
-| Pestaña de servidor de Nuxt DevTools | Peticiones con detalle completo | Desarrollo, inspección visual |
-| Charles Proxy / mitmproxy | Captura completa del tráfico HTTP | Flujos de autenticación, problemas SSL, redirecciones |
-| Inspector de Node.js | Puntos de interrupción, ejecución paso a paso | Errores en lógica compleja |
+| Herramienta                          | Qué muestra                                   | Cuándo usarla                                         |
+| ------------------------------------ | --------------------------------------------- | ----------------------------------------------------- |
+| Plugin interceptor de `$fetch`       | Todas las peticiones HTTP SSR en el terminal  | Lo primero que añadir para depurar SSR                |
+| `console.log` en el servidor         | Comprobaciones rápidas                        | Problemas sencillos                                   |
+| Variable de entorno `DEBUG=*`        | Internos detallados de la librería            | Problemas profundos a nivel de protocolo              |
+| Pestaña de servidor de Nuxt DevTools | Peticiones con detalle completo               | Desarrollo, inspección visual                         |
+| Charles Proxy / mitmproxy            | Captura completa del tráfico HTTP             | Flujos de autenticación, problemas SSL, redirecciones |
+| Inspector de Node.js                 | Puntos de interrupción, ejecución paso a paso | Errores en lógica compleja                            |
 
 Ver también: [¿Cómo funciona el data fetching en Nuxt?](/es/q/nuxt-data-fetching) · [¿Cómo funciona el payload de SSR en Nuxt?](/es/q/nuxt-payload) · [¿Cómo funcionan las rutas de servidor de Nitro?](/es/q/nuxt-nitro-server-routes)
 

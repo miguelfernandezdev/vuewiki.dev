@@ -1,9 +1,9 @@
 ---
 order: 50
-title: "How would you handle complex forms in Vue?"
-difficulty: "advanced"
-tags: ["components", "composables", "v-model"]
-summary: "Use a reactive object for form data, a parallel object for errors, and extract validation into a composable. For large forms, consider VeeValidate or FormKit."
+title: 'How would you handle complex forms in Vue?'
+difficulty: 'advanced'
+tags: ['components', 'composables', 'v-model']
+summary: 'Use a reactive object for form data, a parallel object for errors, and extract validation into a composable. For large forms, consider VeeValidate or FormKit.'
 ---
 
 A "complex form" usually means one or more of: many fields, multi-step wizards, dynamic sections (add/remove fields), nested objects, cross-field validation, or async validation (check if username is taken). The challenge isn't any single field. It's keeping validation, state, dirty tracking, and submit logic organized as the form grows.
@@ -43,10 +43,11 @@ function validate(field: keyof UserForm) {
   }
 }
 
-const isValid = computed(() =>
-  form.name.trim().length > 0
-  && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
-  && Object.values(errors).every(e => !e)
+const isValid = computed(
+  () =>
+    form.name.trim().length > 0 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &&
+    Object.values(errors).every((e) => !e)
 )
 </script>
 
@@ -100,11 +101,11 @@ export function useForm<T extends Record<string, any>>(
     for (const field of Object.keys(rules) as (keyof T)[]) {
       validate(field)
     }
-    return Object.values(errors).every(e => !e)
+    return Object.values(errors).every((e) => !e)
   }
 
   const isValid = computed(() =>
-    Object.keys(rules).every(field => !errors[field as keyof T])
+    Object.keys(rules).every((field) => !errors[field as keyof T])
   )
 
   return { form, errors, touched, touch, validate, validateAll, isValid }
@@ -120,8 +121,9 @@ import { useForm } from '@/composables/useForm'
 const { form, errors, touch, validateAll, isValid } = useForm(
   { name: '', email: '', role: 'user' as const },
   {
-    name: (v) => v.trim() ? undefined : 'Required',
-    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? undefined : 'Invalid email'
+    name: (v) => (v.trim() ? undefined : 'Required'),
+    email: (v) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? undefined : 'Invalid email'
   }
 )
 
@@ -144,10 +146,10 @@ Build your own composable when the form is specific to your app and doesn't need
 
 Popular choices:
 
-| Library | Approach |
-| --- | --- |
+| Library                                              | Approach                                                                        |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [VeeValidate](https://vee-validate.logaretm.com/v4/) | Composition API composables (`useForm`, `useField`), works with Zod/Yup/Valibot |
-| [FormKit](https://formkit.com/) | Component-based, renders inputs for you, built-in validation and accessibility |
+| [FormKit](https://formkit.com/)                      | Component-based, renders inputs for you, built-in validation and accessibility  |
 
 Both handle the tedious parts (dirty tracking, submit state, field arrays, error display) so you focus on your actual form logic.
 

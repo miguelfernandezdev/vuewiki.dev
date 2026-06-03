@@ -1,9 +1,9 @@
 ---
 order: 110
-title: "¿Cómo funciona withDefaults y cuáles son sus errores habituales?"
-difficulty: "intermediate"
-tags: ["typescript", "components"]
-summary: "withDefaults provee valores por defecto para defineProps tipados. Trampa: defaults mutables (arrays, objetos) DEBEN usar funciones factory para evitar referencias compartidas."
+title: '¿Cómo funciona withDefaults y cuáles son sus errores habituales?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components']
+summary: 'withDefaults provee valores por defecto para defineProps tipados. Trampa: defaults mutables (arrays, objetos) DEBEN usar funciones factory para evitar referencias compartidas.'
 ---
 
 `withDefaults` proporciona valores por defecto para `defineProps` basado en tipos. El principal error: los defaults mutables (arrays, objetos) DEBEN usar funciones factory; de lo contrario, todas las instancias del componente comparten la misma referencia. Vue 3.5+ introduce defaults con desestructuración que gestionan esto automáticamente.
@@ -58,30 +58,31 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: 'Default',              // primitivo, no necesita factory
-  disabled: false,               // primitivo, no necesita factory
-  items: () => [],               // array, factory necesaria
-  config: () => ({               // objeto, factory necesaria
+  title: 'Default', // primitivo, no necesita factory
+  disabled: false, // primitivo, no necesita factory
+  items: () => [], // array, factory necesaria
+  config: () => ({
+    // objeto, factory necesaria
     theme: 'light',
     locale: 'en'
   }),
-  selectedIds: () => new Set()   // Set, factory necesaria
+  selectedIds: () => new Set() // Set, factory necesaria
 })
 </script>
 ```
 
 ## Cuándo necesitas una función factory
 
-| Tipo | Factory necesaria | Sintaxis del default |
-|---|---|---|
-| `string` | No | `'hello'` |
-| `number` | No | `42` |
-| `boolean` | No | `false` |
-| `null` | No | `null` |
-| `Array` | Sí | `() => []` |
-| `Object` | Sí | `() => ({})` |
-| `Map` / `Set` | Sí | `() => new Map()` |
-| `Date` | Sí | `() => new Date()` |
+| Tipo          | Factory necesaria | Sintaxis del default |
+| ------------- | ----------------- | -------------------- |
+| `string`      | No                | `'hello'`            |
+| `number`      | No                | `42`                 |
+| `boolean`     | No                | `false`              |
+| `null`        | No                | `null`               |
+| `Array`       | Sí                | `() => []`           |
+| `Object`      | Sí                | `() => ({})`         |
+| `Map` / `Set` | Sí                | `() => new Map()`    |
+| `Date`        | Sí                | `() => new Date()`   |
 
 La regla: si `typeof value === 'object'`, usa una factory.
 
@@ -112,22 +113,22 @@ Sin `withDefaults`, sin funciones factory. Cada instancia del componente obtiene
 ```vue
 <!-- Vue 3.4 e inferior: withDefaults -->
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  items?: string[]
-  label?: string
-}>(), {
-  items: () => [],
-  label: 'Default'
-})
+const props = withDefaults(
+  defineProps<{
+    items?: string[]
+    label?: string
+  }>(),
+  {
+    items: () => [],
+    label: 'Default'
+  }
+)
 // acceso: props.items, props.label
 </script>
 
 <!-- Vue 3.5+: defaults con desestructuración -->
 <script setup lang="ts">
-const {
-  items = [],
-  label = 'Default'
-} = defineProps<{
+const { items = [], label = 'Default' } = defineProps<{
   items?: string[]
   label?: string
 }>()

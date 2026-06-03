@@ -1,9 +1,9 @@
 ---
 order: 120
-title: "How would you implement infinite scroll with Vue?"
-difficulty: "intermediate"
-tags: ["performance", "composables", "vueuse", "watchers"]
-summary: "Use IntersectionObserver on a sentinel element at the bottom of the list. When it enters the viewport, fetch the next page."
+title: 'How would you implement infinite scroll with Vue?'
+difficulty: 'intermediate'
+tags: ['performance', 'composables', 'vueuse', 'watchers']
+summary: 'Use IntersectionObserver on a sentinel element at the bottom of the list. When it enters the viewport, fetch the next page.'
 ---
 
 Infinite scroll loads more content as the user scrolls near the bottom of the page. The standard approach uses `IntersectionObserver` on a sentinel element at the end of the list. When the sentinel enters the viewport, you fetch the next page.
@@ -130,8 +130,13 @@ export function useInfiniteScroll<T>(
 
 ```vue
 <script setup>
-const { items: posts, isLoading, hasMore, sentinel } = useInfiniteScroll(
-  (page) => $fetch('/api/posts', { params: { page, limit: 20 } })
+const {
+  items: posts,
+  isLoading,
+  hasMore,
+  sentinel
+} = useInfiniteScroll((page) =>
+  $fetch('/api/posts', { params: { page, limit: 20 } })
 )
 </script>
 
@@ -151,7 +156,7 @@ VueUse provides `useIntersectionObserver` which simplifies the observer setup:
 <script setup>
 import { useIntersectionObserver } from '@vueuse/core'
 
-const sentinel = ref<HTMLElement | null>(null)
+const sentinel = (ref < HTMLElement) | (null > null)
 
 useIntersectionObserver(
   sentinel,
@@ -216,13 +221,13 @@ This way you load data incrementally AND only render visible items.
 
 ## Infinite scroll vs pagination
 
-| | Infinite scroll | Pagination |
-|---|---|---|
-| UX | Seamless browsing | Explicit page control |
-| Back button | Loses scroll position | Easy to return to a page |
-| SEO | Harder (content not in initial HTML) | Each page is a URL |
-| Performance | Risk of large DOM over time | Constant DOM size |
-| Best for | Social feeds, image galleries | Search results, data tables |
+|             | Infinite scroll                      | Pagination                  |
+| ----------- | ------------------------------------ | --------------------------- |
+| UX          | Seamless browsing                    | Explicit page control       |
+| Back button | Loses scroll position                | Easy to return to a page    |
+| SEO         | Harder (content not in initial HTML) | Each page is a URL          |
+| Performance | Risk of large DOM over time          | Constant DOM size           |
+| Best for    | Social feeds, image galleries        | Search results, data tables |
 
 See also: [How do template refs work?](/q/template-refs) · [What is VueUse?](/q/vueuse)
 

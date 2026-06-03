@@ -1,9 +1,17 @@
 ---
 order: 133
-title: "¿Qué es Flux/flujo de datos unidireccional y cómo lo implementa Vue?"
-difficulty: "intermediate"
-tags: ["architecture", "state-management", "pinia", "vuex", "v-model", "provide-inject"]
-summary: "Los datos fluyen en una dirección: acciones cambian estado, estado actualiza la vista, vistas despachan acciones. Vue lo implementa con props/events y Pinia."
+title: '¿Qué es Flux/flujo de datos unidireccional y cómo lo implementa Vue?'
+difficulty: 'intermediate'
+tags:
+  [
+    'architecture',
+    'state-management',
+    'pinia',
+    'vuex',
+    'v-model',
+    'provide-inject'
+  ]
+summary: 'Los datos fluyen en una dirección: acciones cambian estado, estado actualiza la vista, vistas despachan acciones. Vue lo implementa con props/events y Pinia.'
 ---
 
 Flux es un patrón de arquitectura donde los datos fluyen en una sola dirección: las acciones disparan cambios de estado, los cambios de estado disparan actualizaciones de la vista, y las vistas despachan nuevas acciones. No hay enlace bidireccional entre la vista y el store. Vue implementa este principio en dos niveles: dentro de los componentes (props hacia abajo, eventos hacia arriba) y a escala de aplicación (los stores de Pinia siguen el mismo ciclo acción-estado-vista).
@@ -36,7 +44,9 @@ Vue impone el flujo unidireccional entre componentes padre e hijo por diseño:
 <!-- Padre: posee el estado, lo pasa hacia abajo -->
 <script setup>
 const count = ref(0)
-function increment() { count.value++ }
+function increment() {
+  count.value++
+}
 </script>
 
 <template>
@@ -110,7 +120,9 @@ const store = createStore({
 
   // Mutaciones: cambios de estado síncronos (la ÚNICA forma de cambiar el estado)
   mutations: {
-    INCREMENT(state) { state.count++ }
+    INCREMENT(state) {
+      state.count++
+    }
   },
 
   // Acciones: pueden ser asíncronas, confirman mutaciones
@@ -122,7 +134,7 @@ const store = createStore({
   },
 
   getters: {
-    doubled: state => state.count * 2
+    doubled: (state) => state.count * 2
   }
 })
 
@@ -158,14 +170,14 @@ Los datos siguen fluyendo en una sola dirección: estado a vista (`:value`), y e
 
 ## Comparación
 
-| | Unidireccional (Flux) | Bidireccional |
-|---|---|---|
-| Flujo de datos | Acción → Estado → Vista | Vista ↔ Estado (ambas direcciones) |
-| Depuración | Rastrear la cadena de acciones | Revisar cada fuente de mutación posible |
-| Predecibilidad | Alta (una sola ruta a seguir) | Baja (los cambios vienen de cualquier parte) |
-| Boilerplate | Más (acciones, stores) | Menos (mutación directa) |
-| Implementación en Vue | Props/emit, Pinia, Vuex | v-model (azúcar sobre unidireccional) |
-| Mejor para | Estado compartido, apps complejas | Estado local de formularios |
+|                       | Unidireccional (Flux)             | Bidireccional                                |
+| --------------------- | --------------------------------- | -------------------------------------------- |
+| Flujo de datos        | Acción → Estado → Vista           | Vista ↔ Estado (ambas direcciones)           |
+| Depuración            | Rastrear la cadena de acciones    | Revisar cada fuente de mutación posible      |
+| Predecibilidad        | Alta (una sola ruta a seguir)     | Baja (los cambios vienen de cualquier parte) |
+| Boilerplate           | Más (acciones, stores)            | Menos (mutación directa)                     |
+| Implementación en Vue | Props/emit, Pinia, Vuex           | v-model (azúcar sobre unidireccional)        |
+| Mejor para            | Estado compartido, apps complejas | Estado local de formularios                  |
 
 Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cómo funciona Vuex?](/es/q/how-vuex-works) · [¿Cómo funciona provide/inject?](/es/q/provide-inject)
 

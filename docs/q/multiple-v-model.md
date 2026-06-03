@@ -1,9 +1,9 @@
 ---
 order: 37
-title: "How do multiple v-model bindings work on a component?"
-difficulty: "intermediate"
-tags: ["components", "directives", "v-model"]
-summary: "Add a name after v-model: v-model:title, v-model:body. Each binds a separate prop and emits update:title, update:body."
+title: 'How do multiple v-model bindings work on a component?'
+difficulty: 'intermediate'
+tags: ['components', 'directives', 'v-model']
+summary: 'Add a name after v-model: v-model:title, v-model:body. Each binds a separate prop and emits update:title, update:body.'
 ---
 
 Since Vue 3, you can bind multiple `v-model` directives to a single component by giving each one a name. This replaces the Vue 2 pattern of one `v-model` plus `.sync` modifiers.
@@ -44,10 +44,7 @@ const lastName = defineModel('lastName')
 `v-model:firstName="first"` is shorthand for:
 
 ```vue
-<UserForm
-  :firstName="first"
-  @update:firstName="first = $event"
-/>
+<UserForm :firstName="first" @update:firstName="first = $event" />
 ```
 
 And `defineModel('firstName')` is shorthand for:
@@ -79,8 +76,8 @@ The default `v-model` (without a name) uses `modelValue` as the prop name:
 ```vue
 <!-- SearchInput.vue -->
 <script setup>
-const query = defineModel()              // maps to v-model (modelValue)
-const filters = defineModel('filters')   // maps to v-model:filters
+const query = defineModel() // maps to v-model (modelValue)
+const filters = defineModel('filters') // maps to v-model:filters
 </script>
 ```
 
@@ -126,12 +123,12 @@ const emit = defineEmits<{
 
 ## When to use multiple v-model
 
-| Scenario | Approach |
-|---|---|
-| Single value (search input, toggle) | `v-model` (unnamed) |
-| Form with several related fields | Multiple named `v-model` |
-| Complex object as a single value | Single `v-model` with an object type |
-| Unrelated values that change independently | Multiple named `v-model` |
+| Scenario                                   | Approach                             |
+| ------------------------------------------ | ------------------------------------ |
+| Single value (search input, toggle)        | `v-model` (unnamed)                  |
+| Form with several related fields           | Multiple named `v-model`             |
+| Complex object as a single value           | Single `v-model` with an object type |
+| Unrelated values that change independently | Multiple named `v-model`             |
 
 See also: [How does v-model work on custom components?](/q/v-model-custom-components) · [What are custom v-model modifiers?](/q/custom-v-model-modifiers) · [Why doesn't mutating an object through defineModel update the parent?](/q/definemodel-object-mutation)
 

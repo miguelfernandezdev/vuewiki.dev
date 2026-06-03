@@ -1,9 +1,9 @@
 ---
 order: 18
-title: "What are event modifiers and why does order matter?"
-difficulty: "intermediate"
-tags: ["directives"]
-summary: "Modifiers compile left to right. .prevent.self and .self.prevent produce different behavior. Order matters because each modifier transforms the handler chain."
+title: 'What are event modifiers and why does order matter?'
+difficulty: 'intermediate'
+tags: ['directives']
+summary: 'Modifiers compile left to right. .prevent.self and .self.prevent produce different behavior. Order matters because each modifier transforms the handler chain.'
 ---
 
 Event modifiers are suffixes on `v-on` (or `@`) that handle common event patterns declaratively. Vue compiles them into JavaScript in the exact order you write them, and that order changes behavior.
@@ -14,13 +14,13 @@ Vue generates code for each modifier left to right. `.prevent.self` and `.self.p
 
 ```ts
 // @click.prevent.self compiles to:
-event.preventDefault()               // runs first, on ALL clicks
+event.preventDefault() // runs first, on ALL clicks
 if (event.target !== event.currentTarget) return
 handler()
 
 // @click.self.prevent compiles to:
-if (event.target !== event.currentTarget) return  // check first
-event.preventDefault()               // only runs if the click was on the element itself
+if (event.target !== event.currentTarget) return // check first
+event.preventDefault() // only runs if the click was on the element itself
 handler()
 ```
 
@@ -30,25 +30,27 @@ In practice:
 <template>
   <!-- .prevent.self: prevents default on children too -->
   <div @click.prevent.self="handleClick">
-    <a href="/page">Link</a> <!-- default prevented even though click is on child -->
+    <a href="/page">Link</a>
+    <!-- default prevented even though click is on child -->
   </div>
 
   <!-- .self.prevent: only prevents default on the div itself -->
   <div @click.self.prevent="handleClick">
-    <a href="/page">Link</a> <!-- navigation works normally -->
+    <a href="/page">Link</a>
+    <!-- navigation works normally -->
   </div>
 </template>
 ```
 
 ## All event modifiers
 
-| Modifier | What it does |
-|---|---|
-| `.prevent` | Calls `event.preventDefault()` |
-| `.stop` | Calls `event.stopPropagation()` |
-| `.self` | Only fires if `event.target === event.currentTarget` |
-| `.once` | Removes the listener after the first trigger |
-| `.capture` | Uses capture phase instead of bubbling |
+| Modifier   | What it does                                                           |
+| ---------- | ---------------------------------------------------------------------- |
+| `.prevent` | Calls `event.preventDefault()`                                         |
+| `.stop`    | Calls `event.stopPropagation()`                                        |
+| `.self`    | Only fires if `event.target === event.currentTarget`                   |
+| `.once`    | Removes the listener after the first trigger                           |
+| `.capture` | Uses capture phase instead of bubbling                                 |
 | `.passive` | Sets `{ passive: true }` on the listener (improves scroll performance) |
 
 ## Common combinations
@@ -82,9 +84,7 @@ If the modifier chain gets confusing, split the logic into explicit handlers:
 ```vue
 <template>
   <div @click.self="handleSelfClick">
-    <button @click.prevent="handleChildClick">
-      Child
-    </button>
+    <button @click.prevent="handleChildClick">Child</button>
   </div>
 </template>
 ```

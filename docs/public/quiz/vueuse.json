@@ -12,7 +12,12 @@
     },
     {
       "question": "Which VueUse composable creates shared state across components without Pinia?",
-      "options": ["useSharedState()", "createGlobalState()", "useGlobal()", "sharedRef()"],
+      "options": [
+        "useSharedState()",
+        "createGlobalState()",
+        "useGlobal()",
+        "sharedRef()"
+      ],
       "answer": 1
     },
     {

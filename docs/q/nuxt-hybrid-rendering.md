@@ -1,9 +1,9 @@
 ---
 order: 155
-title: "How does hybrid rendering (route rules) work in Nuxt?"
-difficulty: "intermediate"
-tags: ["nuxt", "ssr", "performance"]
-summary: "routeRules lets you mix prerender, ISR, SWR, and SPA strategies per route in the same Nuxt app."
+title: 'How does hybrid rendering (route rules) work in Nuxt?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'ssr', 'performance']
+summary: 'routeRules lets you mix prerender, ISR, SWR, and SPA strategies per route in the same Nuxt app.'
 ---
 
 Hybrid rendering lets you mix rendering strategies per route in the same Nuxt app. A marketing page can be prerendered at build time, the blog can use ISR, and the admin panel can be client-only. You configure all of this in `routeRules`.
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     '/about': { prerender: true },
     '/blog/**': { isr: 3600 },
     '/admin/**': { ssr: false },
-    '/api/**': { cors: true },
+    '/api/**': { cors: true }
   }
 })
 ```
@@ -26,16 +26,16 @@ Each key is a route pattern. Glob patterns (`**`) match nested paths.
 
 ## Available rules
 
-| Rule | What it does |
-|---|---|
-| `prerender: true` | Generate static HTML at build time |
-| `ssr: false` | Client-side only (SPA for that route) |
-| `isr: number` | Incremental Static Regeneration, cache for N seconds |
-| `swr: number \| true` | Stale-While-Revalidate, serve stale and refresh in background |
-| `cache: { maxAge: number }` | Server response cache with TTL |
-| `redirect: string` | HTTP redirect |
-| `cors: true` | Add CORS headers |
-| `headers: object` | Custom response headers |
+| Rule                        | What it does                                                  |
+| --------------------------- | ------------------------------------------------------------- |
+| `prerender: true`           | Generate static HTML at build time                            |
+| `ssr: false`                | Client-side only (SPA for that route)                         |
+| `isr: number`               | Incremental Static Regeneration, cache for N seconds          |
+| `swr: number \| true`       | Stale-While-Revalidate, serve stale and refresh in background |
+| `cache: { maxAge: number }` | Server response cache with TTL                                |
+| `redirect: string`          | HTTP redirect                                                 |
+| `cors: true`                | Add CORS headers                                              |
+| `headers: object`           | Custom response headers                                       |
 
 ## When to use each strategy
 
@@ -109,12 +109,12 @@ routeRules: {
 
 ## ISR vs SWR vs prerender
 
-| | prerender | ISR | SWR |
-|---|---|---|---|
-| When HTML is generated | Build time | First request, then on interval | First request, then on interval |
-| Stale content shown | Never (until next deploy) | Only while regenerating | Always (refreshes in background) |
-| Needs a server | No (static files) | Yes | Yes |
-| Good for | Landing pages, docs | Blog posts, product pages | Feeds, dashboards |
+|                        | prerender                 | ISR                             | SWR                              |
+| ---------------------- | ------------------------- | ------------------------------- | -------------------------------- |
+| When HTML is generated | Build time                | First request, then on interval | First request, then on interval  |
+| Stale content shown    | Never (until next deploy) | Only while regenerating         | Always (refreshes in background) |
+| Needs a server         | No (static files)         | Yes                             | Yes                              |
+| Good for               | Landing pages, docs       | Blog posts, product pages       | Feeds, dashboards                |
 
 See also: [What are the rendering modes in Nuxt?](/q/nuxt-rendering-modes) · [How do you deploy a Nuxt app?](/q/nuxt-deployment) · [How does data fetching work in Nuxt?](/q/nuxt-data-fetching)
 

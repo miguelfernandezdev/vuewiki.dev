@@ -1,9 +1,9 @@
 ---
 order: 113
-title: "¿Cuáles son las limitaciones de defineProps basado en tipos?"
-difficulty: "advanced"
-tags: ["typescript", "components"]
-summary: "El compilador de Vue resuelve tipos estáticamente. Tipos condicionales, mapped types profundos y globals ambientales fallan. Aplana tipos en interfaces."
+title: '¿Cuáles son las limitaciones de defineProps basado en tipos?'
+difficulty: 'advanced'
+tags: ['typescript', 'components']
+summary: 'El compilador de Vue resuelve tipos estáticamente. Tipos condicionales, mapped types profundos y globals ambientales fallan. Aplana tipos en interfaces.'
 ---
 
 `defineProps<T>()` basado en tipos funciona con interfaces importadas y alias de tipo desde Vue 3.3, pero algunos patrones complejos de TypeScript fallan en tiempo de compilación porque el compilador de Vue resuelve los tipos estáticamente, no a través del sistema completo de tipos de TypeScript.
@@ -159,11 +159,11 @@ El bloque script regular tiene acceso completo a TypeScript. El tipo resuelto es
 
 ## Historial de versiones
 
-| Versión de Vue | Qué está soportado |
-|---|---|
-| 3.2 | Solo tipos inline (sin imports) |
-| 3.3 | Interfaces importadas, alias de tipo, enums |
-| 3.4+ | Mejor soporte para `Pick`, `Omit`, genéricos entre archivos |
+| Versión de Vue | Qué está soportado                                          |
+| -------------- | ----------------------------------------------------------- |
+| 3.2            | Solo tipos inline (sin imports)                             |
+| 3.3            | Interfaces importadas, alias de tipo, enums                 |
+| 3.4+           | Mejor soporte para `Pick`, `Omit`, genéricos entre archivos |
 
 Ver también: [¿Cómo declarar props con TypeScript?](/es/q/props-with-typescript) · [¿Cómo funcionan los componentes genéricos?](/es/q/generic-components) · [¿Cuáles son los gotchas de withDefaults?](/es/q/withdefaults-gotchas)
 

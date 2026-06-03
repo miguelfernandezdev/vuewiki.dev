@@ -1,8 +1,8 @@
 ---
 order: 35
-title: "What are async components and defineAsyncComponent?"
-difficulty: "intermediate"
-tags: ["components", "performance", "vite", "suspense", "teleport"]
+title: 'What are async components and defineAsyncComponent?'
+difficulty: 'intermediate'
+tags: ['components', 'performance', 'vite', 'suspense', 'teleport']
 summary: "defineAsyncComponent wraps a dynamic import so the component's code loads only when needed, creating a separate chunk automatically."
 ---
 
@@ -36,13 +36,13 @@ const AsyncDashboard = defineAsyncComponent({
 })
 ```
 
-| Option | Purpose |
-|---|---|
-| `loader` | The dynamic import function |
-| `loadingComponent` | Shown while loading |
-| `delay` | Milliseconds before showing the loading component (default: 200) |
-| `errorComponent` | Shown if the import fails or times out |
-| `timeout` | Milliseconds before treating it as a failure |
+| Option             | Purpose                                                          |
+| ------------------ | ---------------------------------------------------------------- |
+| `loader`           | The dynamic import function                                      |
+| `loadingComponent` | Shown while loading                                              |
+| `delay`            | Milliseconds before showing the loading component (default: 200) |
+| `errorComponent`   | Shown if the import fails or times out                           |
+| `timeout`          | Milliseconds before treating it as a failure                     |
 
 The `delay` prevents a spinner from flashing for components that load quickly. Keep it around 200ms unless you have a reason to change it.
 
@@ -97,12 +97,12 @@ This reduces the JavaScript the browser has to process before the page becomes i
 
 ## Async components vs route-level splitting
 
-| | `defineAsyncComponent` | Route lazy loading |
-|---|---|---|
-| Scope | Any component | Route-level views |
-| Setup | Manual | Built into Vue Router |
-| Loading UI | `loadingComponent` option | Router navigation guards |
-| Use case | Conditional UI, heavy widgets | Page-level code splitting |
+|            | `defineAsyncComponent`        | Route lazy loading        |
+| ---------- | ----------------------------- | ------------------------- |
+| Scope      | Any component                 | Route-level views         |
+| Setup      | Manual                        | Built into Vue Router     |
+| Loading UI | `loadingComponent` option     | Router navigation guards  |
+| Use case   | Conditional UI, heavy widgets | Page-level code splitting |
 
 Route-level splitting (`() => import('./views/Page.vue')`) is the most common form of code splitting. `defineAsyncComponent` is for splitting within a page.
 

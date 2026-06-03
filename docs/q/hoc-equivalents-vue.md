@@ -1,8 +1,8 @@
 ---
 order: 60
-title: "What are higher-order components (HOC) equivalent in Vue?"
-difficulty: "advanced"
-tags: ["composition-api", "architecture", "vueuse", "watchers", "slots"]
+title: 'What are higher-order components (HOC) equivalent in Vue?'
+difficulty: 'advanced'
+tags: ['composition-api', 'architecture', 'vueuse', 'watchers', 'slots']
 summary: "Vue doesn't use HOCs. Composables replace them for logic reuse, and renderless components (via slots) for logic + rendering patterns."
 ---
 
@@ -143,15 +143,15 @@ const { isAuthenticated } = useAuth()
 
 ## Composables vs renderless components vs HOCs
 
-| | Composable | Renderless component | HOC |
-|---|---|---|---|
-| Reuses | Logic only | Logic + slot template | Logic + wrapping |
-| How consumed | Function call in setup | `<Component v-slot>` | Wraps component definition |
-| Props visible | Explicit return values | Scoped slot props | Hidden, passed through |
-| TypeScript | Full inference | Full inference | Poor inference |
-| DevTools | No extra nesting | One extra component | One extra component per HOC |
-| Composability | Call multiple composables | Nesting gets verbose | Nesting gets deep |
-| Vue idiom | Primary pattern | Useful for libraries | Avoid |
+|               | Composable                | Renderless component  | HOC                         |
+| ------------- | ------------------------- | --------------------- | --------------------------- |
+| Reuses        | Logic only                | Logic + slot template | Logic + wrapping            |
+| How consumed  | Function call in setup    | `<Component v-slot>`  | Wraps component definition  |
+| Props visible | Explicit return values    | Scoped slot props     | Hidden, passed through      |
+| TypeScript    | Full inference            | Full inference        | Poor inference              |
+| DevTools      | No extra nesting          | One extra component   | One extra component per HOC |
+| Composability | Call multiple composables | Nesting gets verbose  | Nesting gets deep           |
+| Vue idiom     | Primary pattern           | Useful for libraries  | Avoid                       |
 
 ## When to use each
 

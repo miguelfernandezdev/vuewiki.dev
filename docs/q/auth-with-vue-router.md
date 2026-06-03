@@ -1,9 +1,9 @@
 ---
 order: 104
-title: "How would you implement authentication with Vue Router?"
-difficulty: "advanced"
-tags: ["vue-router", "architecture"]
-summary: "Combine an auth store/composable, a beforeEach navigation guard, and route meta fields. Store tokens in cookies for SSR compatibility."
+title: 'How would you implement authentication with Vue Router?'
+difficulty: 'advanced'
+tags: ['vue-router', 'architecture']
+summary: 'Combine an auth store/composable, a beforeEach navigation guard, and route meta fields. Store tokens in cookies for SSR compatibility.'
 ---
 
 The standard approach combines a composable or store for auth state, a navigation guard to protect routes, and route meta to declare which pages need authentication. The guard checks auth state before every navigation and redirects unauthenticated users to login.

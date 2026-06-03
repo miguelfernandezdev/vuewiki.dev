@@ -1,9 +1,9 @@
 ---
 order: 116
-title: "¿Cómo se prueba un store de Pinia?"
-difficulty: "intermediate"
-tags: ["testing", "state-management", "pinia", "vitest"]
-summary: "Llama setActivePinia(createPinia()) en beforeEach para aislamiento. Luego llama la función del store, ejecuta actions y verifica state y getters."
+title: '¿Cómo se prueba un store de Pinia?'
+difficulty: 'intermediate'
+tags: ['testing', 'state-management', 'pinia', 'vitest']
+summary: 'Llama setActivePinia(createPinia()) en beforeEach para aislamiento. Luego llama la función del store, ejecuta actions y verifica state y getters.'
 ---
 
 Crea una instancia de Pinia nueva en `beforeEach` con `setActivePinia(createPinia())`. Esto le da a cada test un store aislado con estado limpio. Luego llama a la función composable del store, interactúa con sus acciones y comprueba su estado y getters. Para acciones asíncronas que llaman a APIs, simula `fetch` o `$fetch` con `vi.fn()`.
@@ -34,7 +34,7 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function removeItem(id: number) {
-    items.value = items.value.filter(i => i.id !== id)
+    items.value = items.value.filter((i) => i.id !== id)
   }
 
   async function checkout() {
@@ -177,7 +177,9 @@ describe('useOrderStore', () => {
 
   it('rechaza cuando el carrito está vacío', async () => {
     const order = useOrderStore()
-    await expect(order.placeOrder('Calle Mayor 123')).rejects.toThrow('Cart is empty')
+    await expect(order.placeOrder('Calle Mayor 123')).rejects.toThrow(
+      'Cart is empty'
+    )
   })
 })
 ```
@@ -220,14 +222,14 @@ it('notifica cuando cambia el estado', () => {
 
 ## Lista de comprobación
 
-| Paso | Por qué |
-|---|---|
-| `setActivePinia(createPinia())` en `beforeEach` | Aislar el estado del store entre tests |
-| Llamar a las acciones del store directamente | Probar el comportamiento, no la implementación |
-| Simular `fetch` / `$fetch` con `vi.fn()` | Controlar las respuestas de la API sin servidor |
-| Comprobar el estado Y los getters | Los getters son computed, verifica que reaccionan a los cambios de estado |
-| Probar los caminos de error | Verifica que el store gestiona los fallos de la API correctamente |
-| Restaurar los mocks en `afterEach` si es necesario | Evitar que los mocks se filtren entre archivos de test |
+| Paso                                               | Por qué                                                                   |
+| -------------------------------------------------- | ------------------------------------------------------------------------- |
+| `setActivePinia(createPinia())` en `beforeEach`    | Aislar el estado del store entre tests                                    |
+| Llamar a las acciones del store directamente       | Probar el comportamiento, no la implementación                            |
+| Simular `fetch` / `$fetch` con `vi.fn()`           | Controlar las respuestas de la API sin servidor                           |
+| Comprobar el estado Y los getters                  | Los getters son computed, verifica que reaccionan a los cambios de estado |
+| Probar los caminos de error                        | Verifica que el store gestiona los fallos de la API correctamente         |
+| Restaurar los mocks en `afterEach` si es necesario | Evitar que los mocks se filtren entre archivos de test                    |
 
 Ver también: [¿Cómo funciona Pinia?](/es/q/how-pinia-works) · [¿Cómo testear un composable que usa fetch?](/es/q/testing-composable-fetch)
 

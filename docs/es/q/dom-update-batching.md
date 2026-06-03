@@ -1,9 +1,9 @@
 ---
 order: 85
-title: "¿Cómo agrupa Vue las actualizaciones del DOM?"
-difficulty: "advanced"
-tags: ["reactivity", "performance", "watchers"]
-summary: "Vue agrupa todos los cambios de estado síncronos en un tick en una sola actualización del DOM. Usa nextTick() para leer el DOM después."
+title: '¿Cómo agrupa Vue las actualizaciones del DOM?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance', 'watchers']
+summary: 'Vue agrupa todos los cambios de estado síncronos en un tick en una sola actualización del DOM. Usa nextTick() para leer el DOM después.'
 ---
 
 Vue no actualiza el DOM en cada cambio de estado reactivo. Agrupa todas las mutaciones síncronas dentro del mismo tick del event loop y las aplica en una única actualización del DOM. Los watchers y los [computed](https://vuejs.org/api/reactivity-core.html#computed) también se disparan una sola vez con el valor final, no con cada cambio intermedio.
@@ -47,11 +47,11 @@ function addMany() {
 
 Vue programa tres tipos de flush de efectos:
 
-| Flush | Cuándo se ejecuta | Usado por |
-|---|---|---|
-| `'pre'` (por defecto para `watch` y `watchEffect`) | Antes de la actualización del DOM | La mayoría de watchers y efectos |
-| `'post'` | Después de la actualización del DOM | Efectos que necesitan leer del DOM actualizado |
-| `'sync'` | Inmediatamente en cada cambio | Depuración, casos extremos poco frecuentes |
+| Flush                                              | Cuándo se ejecuta                   | Usado por                                      |
+| -------------------------------------------------- | ----------------------------------- | ---------------------------------------------- |
+| `'pre'` (por defecto para `watch` y `watchEffect`) | Antes de la actualización del DOM   | La mayoría de watchers y efectos               |
+| `'post'`                                           | Después de la actualización del DOM | Efectos que necesitan leer del DOM actualizado |
+| `'sync'`                                           | Inmediatamente en cada cambio       | Depuración, casos extremos poco frecuentes     |
 
 ```ts
 // Por defecto: se dispara una vez por tick, antes de la actualización del DOM
@@ -92,9 +92,13 @@ Al rellenar un formulario con datos guardados, la validación se ejecuta una sol
 ```ts
 const form = reactive({ email: '', password: '' })
 
-watch(form, (data) => {
-  validateForm(data)
-}, { deep: true })
+watch(
+  form,
+  (data) => {
+    validateForm(data)
+  },
+  { deep: true }
+)
 
 function loadSavedData(saved: { email: string; password: string }) {
   form.email = saved.email
@@ -108,9 +112,13 @@ function loadSavedData(saved: { email: string; password: string }) {
 Los watchers síncronos omiten el batching y se disparan en cada cambio individual. Esto es útil para depuración, pero perjudicial para el rendimiento:
 
 ```ts
-watch(count, (val) => {
-  console.log('immediate:', val)
-}, { flush: 'sync' })
+watch(
+  count,
+  (val) => {
+    console.log('immediate:', val)
+  },
+  { flush: 'sync' }
+)
 
 count.value = 1 // registra: "immediate: 1"
 count.value = 2 // registra: "immediate: 2"

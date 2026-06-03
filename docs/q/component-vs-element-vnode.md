@@ -1,9 +1,9 @@
 ---
 order: 43
-title: "What is the difference between a component and an element in Vue?"
-difficulty: "intermediate"
-tags: ["components", "core"]
-summary: "An element is a plain HTML tag (<div>, <button>). A component is a reusable UI unit with its own state, lifecycle, props, and emit."
+title: 'What is the difference between a component and an element in Vue?'
+difficulty: 'intermediate'
+tags: ['components', 'core']
+summary: 'An element is a plain HTML tag (<div>, <button>). A component is a reusable UI unit with its own state, lifecycle, props, and emit.'
 ---
 
 An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is a reusable piece of UI defined by you (`<UserCard>`, `<Modal>`, `<AppHeader>`). Both produce [VNodes](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) (Virtual DOM nodes) at render time, but Vue handles them differently: elements map directly to DOM nodes, while components go through an instance lifecycle (props, setup, reactive state, slots, emit) before eventually rendering their own tree of elements.
@@ -14,7 +14,6 @@ An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is 
 <template>
   <!-- Element: maps to a real <div> in the DOM -->
   <div class="container">
-
     <!-- Component: Vue creates an instance, runs setup, renders its template -->
     <UserCard :user="user" @click="selectUser" />
 
@@ -47,11 +46,13 @@ The `type` field is the key difference. For elements, `type` is a string (`'div'
 ## How Vue processes each
 
 **Element VNode** (`type: 'div'`):
+
 1. Create or patch the DOM node
 2. Apply attributes, event listeners, styles
 3. Process children recursively
 
 **Component VNode** (`type: UserCard`):
+
 1. Create a component instance (reactive context, props, slots)
 2. Run `setup()` or the Options API equivalent
 3. Render the component's template into its own VNode tree
@@ -85,16 +86,16 @@ Vue DevTools shows both levels. The Components tab displays the component tree (
 
 ## Practical difference
 
-| | Element | Component |
-|---|---|---|
-| What it is | HTML tag | Reusable UI unit |
-| VNode type | String (`'div'`) | Component object |
-| Has instance | No | Yes (reactive state, lifecycle) |
-| Has props/emit | No (has attributes) | Yes |
-| Has slots | No | Yes |
-| Appears in DOM | Yes | No (its template output does) |
-| DevTools visibility | Elements tab | Components tab |
-| Cost | Cheap (just a DOM node) | Higher (instance + reactivity setup) |
+|                     | Element                 | Component                            |
+| ------------------- | ----------------------- | ------------------------------------ |
+| What it is          | HTML tag                | Reusable UI unit                     |
+| VNode type          | String (`'div'`)        | Component object                     |
+| Has instance        | No                      | Yes (reactive state, lifecycle)      |
+| Has props/emit      | No (has attributes)     | Yes                                  |
+| Has slots           | No                      | Yes                                  |
+| Appears in DOM      | Yes                     | No (its template output does)        |
+| DevTools visibility | Elements tab            | Components tab                       |
+| Cost                | Cheap (just a DOM node) | Higher (instance + reactivity setup) |
 
 See also: [What is the Virtual DOM and how does Vue use it?](/q/virtual-dom)
 

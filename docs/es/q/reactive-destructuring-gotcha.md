@@ -1,9 +1,9 @@
 ---
 order: 63
-title: "¿Por qué pierdo reactividad al desestructurar un objeto reactive?"
-difficulty: "beginner"
-tags: ["reactivity", "errors"]
-summary: "Destructurar extrae valores planos del Proxy reactivo, rompiendo la conexión reactiva. Usa toRefs() para mantener la reactividad."
+title: '¿Por qué pierdo reactividad al desestructurar un objeto reactive?'
+difficulty: 'beginner'
+tags: ['reactivity', 'errors']
+summary: 'Destructurar extrae valores planos del Proxy reactivo, rompiendo la conexión reactiva. Usa toRefs() para mantener la reactividad.'
 ---
 
 Porque `reactive()` usa un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) para registrar el acceso a propiedades. Al desestructurar, extraes **valores planos** fuera del proxy y la conexión reactiva desaparece.
@@ -11,7 +11,7 @@ Porque `reactive()` usa un [Proxy](https://developer.mozilla.org/en-US/docs/Web/
 ```ts
 const state = reactive({ count: 0, name: 'Vue' })
 
-const { count, name } = state  // count ahora es solo el número 0
+const { count, name } = state // count ahora es solo el número 0
 
 state.count++
 console.log(count) // sigue siendo 0, se perdió la reactividad

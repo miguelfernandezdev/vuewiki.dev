@@ -1,9 +1,9 @@
 ---
 order: 51
-title: "¿Cómo funcionan los modificadores personalizados de v-model?"
-difficulty: "advanced"
-tags: ["components", "directives", "v-model"]
-summary: "Define transformaciones set/get en defineModel para crear modificadores como .capitalize o .round que transforman valores de v-model."
+title: '¿Cómo funcionan los modificadores personalizados de v-model?'
+difficulty: 'advanced'
+tags: ['components', 'directives', 'v-model']
+summary: 'Define transformaciones set/get en defineModel para crear modificadores como .capitalize o .round que transforman valores de v-model.'
 ---
 
 Vue tiene tres modificadores integrados para `v-model` en inputs nativos (`.lazy`, `.number`, `.trim`). En componentes personalizados, puedes definir los tuyos propios que transforman el valor según fluye hacia dentro o hacia fuera.
@@ -12,9 +12,12 @@ Vue tiene tres modificadores integrados para `v-model` en inputs nativos (`.lazy
 
 ```vue
 <template>
-  <input v-model.lazy="msg" />    <!-- sincroniza en change, no en input -->
-  <input v-model.number="age" />  <!-- convierte a número con parseFloat -->
-  <input v-model.trim="name" />   <!-- elimina espacios en blanco -->
+  <input v-model.lazy="msg" />
+  <!-- sincroniza en change, no en input -->
+  <input v-model.number="age" />
+  <!-- convierte a número con parseFloat -->
+  <input v-model.trim="name" />
+  <!-- elimina espacios en blanco -->
 </template>
 ```
 
@@ -109,7 +112,10 @@ const [lastName, lastModifiers] = defineModel<string>('lastName')
 ```
 
 ```vue
-<UserForm v-model:first-name.capitalize="first" v-model:last-name.capitalize="last" />
+<UserForm
+  v-model:first-name.capitalize="first"
+  v-model:last-name.capitalize="last"
+/>
 ```
 
 ## Antes de defineModel (Vue < 3.4)

@@ -1,9 +1,9 @@
 ---
 order: 6
-title: "¿Qué es Vite y cómo funciona?"
-difficulty: "beginner"
-tags: ["tooling", "vite"]
-summary: "Una herramienta de build que sirve código via ES modules nativos en dev (inicio instantáneo) y empaqueta con Rollup para producción. Creado por Evan You."
+title: '¿Qué es Vite y cómo funciona?'
+difficulty: 'beginner'
+tags: ['tooling', 'vite']
+summary: 'Una herramienta de build que sirve código via ES modules nativos en dev (inicio instantáneo) y empaqueta con Rollup para producción. Creado por Evan You.'
 ---
 
 Vite es una herramienta de compilación creada por Evan You (también el creador de Vue). Sirve tu código durante el desarrollo usando módulos ES nativos, lo que hace que el servidor de desarrollo arranque al instante independientemente del tamaño del proyecto. Para producción, empaqueta con Rollup.
@@ -57,6 +57,7 @@ vite build
 ```
 
 Rollup produce:
+
 - Chunks con división de código (las importaciones dinámicas se convierten en archivos separados)
 - Salida con tree-shaking (las exportaciones no usadas se eliminan)
 - JavaScript y CSS minificados
@@ -110,14 +111,14 @@ export default defineConfig({
 
 ## Vite vs Webpack
 
-| | Vite | Webpack |
-|---|---|---|
-| Arranque del servidor de desarrollo | Instantáneo (sin empaquetar) | Lento (lo empaqueta todo antes) |
-| Velocidad del HMR | Constante (solo procesa el archivo modificado) | Empeora con el tamaño del proyecto |
-| Configuración | Mínima por defecto | Detallada, requiere loaders y plugins |
-| Empaquetador de producción | Rollup | Webpack |
-| Módulos ES | Nativos en desarrollo | Empaquetados en desarrollo |
-| Ecosistema | En crecimiento, plugins compatibles con Rollup | Masivo y maduro |
+|                                     | Vite                                           | Webpack                               |
+| ----------------------------------- | ---------------------------------------------- | ------------------------------------- |
+| Arranque del servidor de desarrollo | Instantáneo (sin empaquetar)                   | Lento (lo empaqueta todo antes)       |
+| Velocidad del HMR                   | Constante (solo procesa el archivo modificado) | Empeora con el tamaño del proyecto    |
+| Configuración                       | Mínima por defecto                             | Detallada, requiere loaders y plugins |
+| Empaquetador de producción          | Rollup                                         | Webpack                               |
+| Módulos ES                          | Nativos en desarrollo                          | Empaquetados en desarrollo            |
+| Ecosistema                          | En crecimiento, plugins compatibles con Rollup | Masivo y maduro                       |
 
 ## Nuxt y Vite
 

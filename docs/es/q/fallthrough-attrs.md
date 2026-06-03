@@ -1,9 +1,9 @@
 ---
 order: 38
-title: "¿Qué son los fallthrough attributes?"
-difficulty: "intermediate"
-tags: ["components", "watchers"]
-summary: "Los atributos no declarados en defineProps o defineEmits (class, style, id, aria-*, listeners) se reenvían automáticamente al elemento raíz."
+title: '¿Qué son los fallthrough attributes?'
+difficulty: 'intermediate'
+tags: ['components', 'watchers']
+summary: 'Los atributos no declarados en defineProps o defineEmits (class, style, id, aria-*, listeners) se reenvían automáticamente al elemento raíz.'
 ---
 
 Los fallthrough attributes son props y listeners de eventos que se pasan a un componente sin estar declarados en `defineProps` ni en `defineEmits`. Vue los reenvía automáticamente al elemento raíz del componente. Esto incluye `class`, `style`, `id`, `data-*`, `aria-*` y listeners de eventos.
@@ -68,12 +68,12 @@ function handleClick(event: MouseEvent) {
 
 ## Nombres de atributos en $attrs
 
-| Template del padre | Clave en `$attrs` |
-|---|---|
-| `class="foo"` | `attrs.class` |
-| `data-id="123"` | `attrs['data-id']` |
-| `aria-label="..."` | `attrs['aria-label']` |
-| `@click="fn"` | `attrs.onClick` |
+| Template del padre   | Clave en `$attrs`     |
+| -------------------- | --------------------- |
+| `class="foo"`        | `attrs.class`         |
+| `data-id="123"`      | `attrs['data-id']`    |
+| `aria-label="..."`   | `attrs['aria-label']` |
+| `@click="fn"`        | `attrs.onClick`       |
 | `@custom-event="fn"` | `attrs.onCustomEvent` |
 
 Los atributos con guiones requieren notación de corchetes. Los listeners de eventos se convierten en claves camelCase `onX`.
@@ -86,7 +86,12 @@ Los atributos con guiones requieren notación de corchetes. Los listeners de eve
 const attrs = useAttrs()
 
 // Este watcher nunca se dispara al cambiar los attrs
-watch(() => attrs.class, (val) => { /* código muerto */ })
+watch(
+  () => attrs.class,
+  (val) => {
+    /* código muerto */
+  }
+)
 
 // Usa onBeforeUpdate en su lugar
 onBeforeUpdate(() => {
@@ -98,12 +103,12 @@ Si necesitas reaccionar al cambio de un atributo específico, promuévelo a prop
 
 ## Cuándo importan los fallthrough attrs
 
-| Escenario | Qué hacer |
-|---|---|
-| Wrapper sobre un elemento nativo (input, button) | Dejar que los attrs pasen, o vincular `$attrs` al elemento correcto |
-| Componente con múltiples raíces | Establecer `inheritAttrs: false`, vincular `$attrs` explícitamente |
-| Necesitas interceptar un evento antes de reenviarlo | Leer `attrs.onClick`, llamarlo después de tu lógica |
-| Necesitas acceso reactivo a un attr específico | Promuévelo a prop declarada |
+| Escenario                                           | Qué hacer                                                           |
+| --------------------------------------------------- | ------------------------------------------------------------------- |
+| Wrapper sobre un elemento nativo (input, button)    | Dejar que los attrs pasen, o vincular `$attrs` al elemento correcto |
+| Componente con múltiples raíces                     | Establecer `inheritAttrs: false`, vincular `$attrs` explícitamente  |
+| Necesitas interceptar un evento antes de reenviarlo | Leer `attrs.onClick`, llamarlo después de tu lógica                 |
+| Necesitas acceso reactivo a un attr específico      | Promuévelo a prop declarada                                         |
 
 Ver también: [¿Qué es defineExpose?](/es/q/define-expose) · [¿Qué son los slots?](/es/q/slots) · [¿Qué son los componentes funcionales?](/es/q/functional-components)
 

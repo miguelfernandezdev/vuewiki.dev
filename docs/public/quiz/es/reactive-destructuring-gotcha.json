@@ -12,12 +12,7 @@
     },
     {
       "question": "¿Qué utilidad conserva la reactividad al desestructurar?",
-      "options": [
-        "toRaw()",
-        "markRaw()",
-        "toRefs()",
-        "shallowRef()"
-      ],
+      "options": ["toRaw()", "markRaw()", "toRefs()", "shallowRef()"],
       "answer": 2
     },
     {

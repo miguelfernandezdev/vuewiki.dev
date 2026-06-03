@@ -1,9 +1,9 @@
 ---
 order: 164
-title: "How do you handle authentication in Nuxt 3?"
-difficulty: "advanced"
-tags: ["nuxt", "architecture"]
-summary: "Combine a useAuth composable, a plugin for session init, route middleware for page protection, and cookies (not localStorage) for SSR-safe token storage."
+title: 'How do you handle authentication in Nuxt 3?'
+difficulty: 'advanced'
+tags: ['nuxt', 'architecture']
+summary: 'Combine a useAuth composable, a plugin for session init, route middleware for page protection, and cookies (not localStorage) for SSR-safe token storage.'
 ---
 
 The standard pattern uses four pieces working together: a `useAuth` composable that exposes the auth state and methods, a plugin that initializes the user session on app start, a route middleware that protects pages, and a server middleware that protects API routes. Tokens are stored in cookies (not localStorage) because cookies are accessible during SSR.
@@ -17,7 +17,7 @@ localStorage doesn't exist on the server. During SSR, the server needs to know w
 export function useAuth() {
   const user = useState<User | null>('auth-user', () => null)
   const token = useCookie('auth-token', {
-    maxAge: 60 * 60 * 24 * 7,  // 7 days
+    maxAge: 60 * 60 * 24 * 7, // 7 days
     sameSite: 'lax',
     secure: true
   })
@@ -122,7 +122,7 @@ export default defineEventHandler((event) => {
   const url = getRequestURL(event).pathname
 
   if (!url.startsWith('/api/') || url.startsWith('/api/auth/')) {
-    return  // skip non-API routes and public auth endpoints
+    return // skip non-API routes and public auth endpoints
   }
 
   const token = getCookie(event, 'auth-token')
@@ -157,7 +157,7 @@ export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event)
 
   const user = await findUserByEmail(email)
-  if (!user || !await verifyPassword(password, user.passwordHash)) {
+  if (!user || !(await verifyPassword(password, user.passwordHash))) {
     throw createError({ statusCode: 401, statusMessage: 'Invalid credentials' })
   }
 
@@ -174,7 +174,9 @@ export default defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24 * 7
   })
 
-  return { user: { id: user.id, name: user.name, email: user.email, role: user.role } }
+  return {
+    user: { id: user.id, name: user.name, email: user.email, role: user.role }
+  }
 })
 ```
 
@@ -208,14 +210,14 @@ User clicks logout
 
 ## Summary
 
-| Piece | Location | Responsibility |
-|---|---|---|
-| `useAuth` composable | `composables/` | Auth state, login/logout methods |
-| Auth plugin | `plugins/` | Initialize session on app start |
-| Route middleware | `middleware/` | Protect pages, redirect unauthenticated users |
-| Server middleware | `server/middleware/` | Protect API routes, validate tokens |
-| Server API routes | `server/api/auth/` | Login, logout, token management |
-| Cookie | Sent with every request | Token storage (SSR-safe) |
+| Piece                | Location                | Responsibility                                |
+| -------------------- | ----------------------- | --------------------------------------------- |
+| `useAuth` composable | `composables/`          | Auth state, login/logout methods              |
+| Auth plugin          | `plugins/`              | Initialize session on app start               |
+| Route middleware     | `middleware/`           | Protect pages, redirect unauthenticated users |
+| Server middleware    | `server/middleware/`    | Protect API routes, validate tokens           |
+| Server API routes    | `server/api/auth/`      | Login, logout, token management               |
+| Cookie               | Sent with every request | Token storage (SSR-safe)                      |
 
 See also: [How do you implement authentication with Vue Router?](/q/auth-with-vue-router) · [What is Nuxt middleware?](/q/nuxt-middleware) · [What is the difference between server and route middleware?](/q/nuxt-server-vs-route-middleware)
 

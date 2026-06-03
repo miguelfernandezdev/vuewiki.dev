@@ -1,9 +1,9 @@
 ---
 order: 127
-title: "How does computed object stability affect re-renders?"
-difficulty: "advanced"
-tags: ["performance", "reactivity", "watchers"]
-summary: "A computed that returns a new object each time triggers all dependents even if values are identical. Compare manually or return primitives."
+title: 'How does computed object stability affect re-renders?'
+difficulty: 'advanced'
+tags: ['performance', 'reactivity', 'watchers']
+summary: 'A computed that returns a new object each time triggers all dependents even if values are identical. Compare manually or return primitives.'
 ---
 
 A [computed](https://vuejs.org/api/reactivity-core.html#computed) property that returns a new object every time creates a new reference on each evaluation. Vue sees a new reference and triggers every watcher, effect, and child component that depends on it, even if the actual values inside the object are identical. For primitives, Vue 3.4+ handles this automatically. For objects, you need to compare manually.
@@ -40,11 +40,11 @@ const count = ref(0)
 
 const isEven = computed(() => count.value % 2 === 0)
 
-watchEffect(() => console.log(isEven.value))  // true
+watchEffect(() => console.log(isEven.value)) // true
 
-count.value = 2  // isEven still true → effect does NOT run
-count.value = 4  // isEven still true → effect does NOT run
-count.value = 3  // isEven now false → effect runs
+count.value = 2 // isEven still true → effect does NOT run
+count.value = 4 // isEven still true → effect does NOT run
+count.value = 3 // isEven now false → effect runs
 ```
 
 Vue checks `oldValue === newValue` internally. If the primitive hasn't changed, dependents don't re-run. This only works for primitives because `{} === {}` is always `false`.
@@ -123,7 +123,8 @@ const filters = ref({ category: 'all', sortBy: 'date', page: 1 })
 const activeFilters = computed((oldValue) => {
   const newValue = {
     ...filters.value,
-    hasFilters: filters.value.category !== 'all' || filters.value.sortBy !== 'date'
+    hasFilters:
+      filters.value.category !== 'all' || filters.value.sortBy !== 'date'
   }
 
   if (oldValue && isEqual(oldValue, newValue)) {
@@ -156,13 +157,13 @@ Each primitive computed gets Vue 3.4+ automatic stability for free. Components t
 
 ## Comparison
 
-| Approach | Stability | Effort |
-|---|---|---|
-| Object computed (default) | None, new reference every time | Zero |
-| Primitive computed (Vue 3.4+) | Automatic | Zero |
-| Object computed with manual comparison | Stable when values match | Shallow comparison code |
-| Object computed with deep comparison | Stable for nested objects | lodash/custom utility |
-| Split into primitive computeds | Automatic per property | Restructure consuming code |
+| Approach                               | Stability                      | Effort                     |
+| -------------------------------------- | ------------------------------ | -------------------------- |
+| Object computed (default)              | None, new reference every time | Zero                       |
+| Primitive computed (Vue 3.4+)          | Automatic                      | Zero                       |
+| Object computed with manual comparison | Stable when values match       | Shallow comparison code    |
+| Object computed with deep comparison   | Stable for nested objects      | lodash/custom utility      |
+| Split into primitive computeds         | Automatic per property         | Restructure consuming code |
 
 See also: [Why does my computed property not update when a dependency changes?](/q/computed-conditional-dependencies) · [How does Vue batch DOM updates?](/q/dom-update-batching)
 

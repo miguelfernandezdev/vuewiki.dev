@@ -1,9 +1,9 @@
 ---
 order: 75
-title: "¿Rompe la reactividad reasignar una propiedad en un objeto reactive?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors", "watchers"]
-summary: "Reasignar una propiedad en un objeto reactive funciona bien (el Proxy lo intercepta). Lo que rompe la reactividad es reasignar toda la variable a un nuevo objeto."
+title: '¿Rompe la reactividad reasignar una propiedad en un objeto reactive?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors', 'watchers']
+summary: 'Reasignar una propiedad en un objeto reactive funciona bien (el Proxy lo intercepta). Lo que rompe la reactividad es reasignar toda la variable a un nuevo objeto.'
 ---
 
 No. Reasignar una propiedad en un objeto `reactive()` NO rompe la reactividad. Es una pregunta trampa habitual en entrevistas. Como `reactive()` devuelve un [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), el trap `set` del proxy intercepta la asignación y dispara las actualizaciones correctamente. Lo que SÍ rompe la reactividad es reasignar la variable completa a un nuevo objeto, porque eso reemplaza la referencia al proxy.
@@ -70,12 +70,12 @@ const proxy = reactive({ count: 0 })
 watchEffect(() => console.log(proxy.count))
 
 // Asignación de propiedad: el trap set del proxy se dispara → watcher notificado
-proxy.count = 1  // funciona
+proxy.count = 1 // funciona
 
 // Reasignación de variable: solo cambia a qué apunta la variable
 // El proxy sigue existiendo, pero ya nadie lo referencia
 let state = proxy
-state = reactive({ count: 2 })  // rompe — el watcher observa proxy, no state
+state = reactive({ count: 2 }) // rompe — el watcher observa proxy, no state
 ```
 
 ## La misma trampa con ref que contiene objetos
@@ -101,13 +101,13 @@ Con `ref`, reasignar `.value` funciona porque `ref` tiene su propio getter/sette
 ```js
 // reactive: no se puede reasignar, hay que mutar las propiedades
 const state = reactive({ name: 'Alice' })
-state.name = 'Bob'           // funciona
+state.name = 'Bob' // funciona
 // state = { name: 'Bob' }   // rompe la reactividad
 
 // ref: se puede reasignar .value O mutar las propiedades
 const state = ref({ name: 'Alice' })
-state.value = { name: 'Bob' }   // funciona (setter del ref)
-state.value.name = 'Charlie'    // funciona (setter del proxy interno)
+state.value = { name: 'Bob' } // funciona (setter del ref)
+state.value.name = 'Charlie' // funciona (setter del proxy interno)
 ```
 
 ## La respuesta en una entrevista

@@ -1,9 +1,9 @@
 ---
 order: 4
-title: "What JavaScript do you need to learn before Vue?"
-difficulty: "beginner"
-tags: ["core", "vueuse", "watchers"]
-summary: "ES Modules, destructuring, arrow functions, Promises/async-await, array methods (map, filter), template literals, and the spread operator."
+title: 'What JavaScript do you need to learn before Vue?'
+difficulty: 'beginner'
+tags: ['core', 'vueuse', 'watchers']
+summary: 'ES Modules, destructuring, arrow functions, Promises/async-await, array methods (map, filter), template literals, and the spread operator.'
 ---
 
 You need solid fundamentals in modern JavaScript (ES6+) before Vue will make sense. Vue's reactivity system, component model, and Composition API are all built on core JS concepts.
@@ -16,7 +16,9 @@ Every Vue file uses modules. You need to understand named vs default exports, re
 
 ```js
 // Named export
-export function useCounter() { /* ... */ }
+export function useCounter() {
+  /* ... */
+}
 
 // Default export
 export default { name: 'MyComponent' }
@@ -53,7 +55,7 @@ watch(source, (newVal, oldVal) => {
   console.log(newVal)
 })
 
-const items = users.filter(u => u.active).map(u => u.name)
+const items = users.filter((u) => u.active).map((u) => u.name)
 ```
 
 Understanding `this` binding matters too. Arrow functions don't have their own `this`, which is why Vue 3's Composition API avoids `this` entirely and uses closures instead.
@@ -75,7 +77,9 @@ Props forwarding, merging objects, function arguments.
 const defaults = { theme: 'light', lang: 'en' }
 const config = { ...defaults, ...userPrefs }
 
-function setup(...args) { /* ... */ }
+function setup(...args) {
+  /* ... */
+}
 
 const newItems = [...items, newItem]
 ```
@@ -87,9 +91,9 @@ Data fetching, API calls, and Nuxt's `useFetch` all deal with async code.
 ```js
 // Promise chain
 fetch('/api/users')
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.error(err))
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err))
 
 // async/await (preferred)
 async function loadUsers() {
@@ -108,10 +112,10 @@ async function loadUsers() {
 `v-for` renders lists, but you manipulate them with array methods: `map`, `filter`, `find`, `some`, `every`, `reduce`, `sort`, `flatMap`.
 
 ```js
-const activeUsers = users.filter(u => u.active)
-const names = users.map(u => u.name)
-const admin = users.find(u => u.role === 'admin')
-const hasAdmin = users.some(u => u.role === 'admin')
+const activeUsers = users.filter((u) => u.active)
+const names = users.map((u) => u.name)
+const admin = users.find((u) => u.role === 'admin')
+const hasAdmin = users.some((u) => u.role === 'admin')
 const total = items.reduce((sum, item) => sum + item.price, 0)
 ```
 
@@ -142,7 +146,9 @@ const data = { [field]: 'alice@example.com' }
 
 // Shorthand methods
 const store = {
-  increment() { this.count++ }
+  increment() {
+    this.count++
+  }
 }
 ```
 
@@ -170,8 +176,12 @@ Vue 3's reactivity system uses `Proxy` to intercept property access and mutation
 
 ```js
 const handler = {
-  get(target, key) { /* track dependency */ },
-  set(target, key, value) { /* trigger effects */ }
+  get(target, key) {
+    /* track dependency */
+  },
+  set(target, key, value) {
+    /* trigger effects */
+  }
 }
 const proxy = new Proxy(target, handler)
 ```
@@ -208,18 +218,18 @@ Not required to start, but most Vue 3 projects use TypeScript. Interfaces, gener
 
 ## The checklist
 
-| Concept | Why it matters for Vue |
-|---|---|
-| ES Modules | Every file imports/exports |
-| Destructuring | Props, composable returns, reactive state |
-| Arrow functions | Computed, watchers, event handlers |
-| Template literals | Dynamic strings, URLs |
-| Spread/rest | Object merging, props forwarding |
-| Promises/async-await | Data fetching, API calls |
-| Array methods | List rendering, filtering, transforming |
-| Optional chaining | Safe access to API data |
-| Closures | Composition API is built on them |
-| Proxy (concept) | Understand Vue's reactivity |
+| Concept              | Why it matters for Vue                    |
+| -------------------- | ----------------------------------------- |
+| ES Modules           | Every file imports/exports                |
+| Destructuring        | Props, composable returns, reactive state |
+| Arrow functions      | Computed, watchers, event handlers        |
+| Template literals    | Dynamic strings, URLs                     |
+| Spread/rest          | Object merging, props forwarding          |
+| Promises/async-await | Data fetching, API calls                  |
+| Array methods        | List rendering, filtering, transforming   |
+| Optional chaining    | Safe access to API data                   |
+| Closures             | Composition API is built on them          |
+| Proxy (concept)      | Understand Vue's reactivity               |
 
 See also: [What is Vue and what are its main features?](/q/what-is-vue)
 

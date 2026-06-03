@@ -1,9 +1,9 @@
 ---
 order: 16
-title: "¿Cómo se crean directivas personalizadas en Vue?"
-difficulty: "intermediate"
-tags: ["directives", "v-model"]
-summary: "Las directivas personalizadas dan acceso bajo nivel al DOM via hooks (mounted, updated, unmounted). Úsalas para auto-focus, observers o integraciones."
+title: '¿Cómo se crean directivas personalizadas en Vue?'
+difficulty: 'intermediate'
+tags: ['directives', 'v-model']
+summary: 'Las directivas personalizadas dan acceso bajo nivel al DOM via hooks (mounted, updated, unmounted). Úsalas para auto-focus, observers o integraciones.'
 ---
 
 Las [directivas personalizadas](https://vuejs.org/guide/reusability/custom-directives.html) te dan acceso de bajo nivel a los elementos del DOM cuando las directivas integradas (`v-if`, `v-show`, `v-model`) no son suficientes. Son ideales para cosas como auto-focus, intersection observers o integración con librerías de terceros.
@@ -46,23 +46,23 @@ const vFocus = (el: HTMLElement) => el.focus()
 
 ```ts
 const vExample = {
-  created(el, binding) {},      // antes de que se apliquen los attrs/eventos del elemento
-  beforeMount(el, binding) {},  // antes de insertarlo en el DOM
-  mounted(el, binding) {},      // elemento insertado en el DOM
+  created(el, binding) {}, // antes de que se apliquen los attrs/eventos del elemento
+  beforeMount(el, binding) {}, // antes de insertarlo en el DOM
+  mounted(el, binding) {}, // elemento insertado en el DOM
   beforeUpdate(el, binding) {}, // antes de que el componente padre se actualice
-  updated(el, binding) {},      // después de que el componente padre se haya actualizado
+  updated(el, binding) {}, // después de que el componente padre se haya actualizado
   beforeUnmount(el, binding) {},
-  unmounted(el, binding) {}     // elemento eliminado del DOM
+  unmounted(el, binding) {} // elemento eliminado del DOM
 }
 ```
 
 El objeto `binding` contiene:
 
-| Propiedad | Descripción |
-|---|---|
-| `value` | El valor actual pasado a la directiva |
-| `oldValue` | El valor anterior (solo en `updated`) |
-| `arg` | El argumento después de los dos puntos (`v-dir:arg`) |
+| Propiedad   | Descripción                                                 |
+| ----------- | ----------------------------------------------------------- |
+| `value`     | El valor actual pasado a la directiva                       |
+| `oldValue`  | El valor anterior (solo en `updated`)                       |
+| `arg`       | El argumento después de los dos puntos (`v-dir:arg`)        |
 | `modifiers` | Un objeto de modificadores (`v-dir.mod` da `{ mod: true }`) |
 
 ## Usar argumentos, modificadores y valores
@@ -117,17 +117,19 @@ Para directivas usadas en toda la aplicación, regístralas en la instancia de l
 const app = createApp(App)
 
 app.directive('focus', {
-  mounted(el) { el.focus() }
+  mounted(el) {
+    el.focus()
+  }
 })
 ```
 
 ## Cuándo usar directivas frente a composables frente a componentes
 
-| Necesidad | Usar |
-|---|---|
-| Manipulación directa del DOM (foco, scroll, atributos) | Directiva |
+| Necesidad                                                | Usar       |
+| -------------------------------------------------------- | ---------- |
+| Manipulación directa del DOM (foco, scroll, atributos)   | Directiva  |
 | Lógica reutilizable con estado (fetch, debounce, timers) | Composable |
-| UI reutilizable con template/estructura | Componente |
+| UI reutilizable con template/estructura                  | Componente |
 
 Las directivas deben mantenerse simples. Si te encuentras gestionando estado complejo o emitiendo eventos dentro de una directiva, probablemente quieras un composable o un componente.
 

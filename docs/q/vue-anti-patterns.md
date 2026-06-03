@@ -1,9 +1,9 @@
 ---
 order: 140
-title: "What are common anti-patterns in large Vue codebases?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "watchers", "provide-inject"]
-summary: "God components, everything in stores, watchers instead of computed, prop drilling without provide/inject, and tight coupling to external libraries."
+title: 'What are common anti-patterns in large Vue codebases?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'watchers', 'provide-inject']
+summary: 'God components, everything in stores, watchers instead of computed, prop drilling without provide/inject, and tight coupling to external libraries.'
 ---
 
 The most damaging anti-patterns in Vue projects aren't syntax mistakes. They're structural decisions that feel productive early on but create compounding problems as the codebase grows. Here are the ones that show up repeatedly in real production code.
@@ -34,12 +34,22 @@ onMounted(async () => {
   }
 })
 
-const filteredUsers = computed(() => { /* 30 lines of filtering and sorting */ })
+const filteredUsers = computed(() => {
+  /* 30 lines of filtering and sorting */
+})
 
-function selectUser(user) { /* ... */ }
-function deleteUser(id) { /* ... */ }
-function exportToCsv() { /* ... */ }
-function sendInvitation(email) { /* ... */ }
+function selectUser(user) {
+  /* ... */
+}
+function deleteUser(id) {
+  /* ... */
+}
+function exportToCsv() {
+  /* ... */
+}
+function sendInvitation(email) {
+  /* ... */
+}
 </script>
 
 <template>
@@ -73,9 +83,13 @@ const firstName = ref('John')
 const lastName = ref('Doe')
 const fullName = ref('')
 
-watch([firstName, lastName], ([f, l]) => {
-  fullName.value = `${f} ${l}`
-}, { immediate: true })
+watch(
+  [firstName, lastName],
+  ([f, l]) => {
+    fullName.value = `${f} ${l}`
+  },
+  { immediate: true }
+)
 
 // GOOD: let the reactivity system do its job
 const fullName = computed(() => `${firstName.value} ${lastName.value}`)
@@ -87,14 +101,21 @@ Every unnecessary watcher is a synchronization bug waiting to happen.
 
 ```ts
 // BAD: deep watching a large object to detect one property change
-watch(user, (newUser) => {
-  updateHeader(newUser.name)
-}, { deep: true })
+watch(
+  user,
+  (newUser) => {
+    updateHeader(newUser.name)
+  },
+  { deep: true }
+)
 
 // GOOD: watch only what you need
-watch(() => user.value.name, (newName) => {
-  updateHeader(newName)
-})
+watch(
+  () => user.value.name,
+  (newName) => {
+    updateHeader(newName)
+  }
+)
 ```
 
 `deep: true` traverses every nested property on every change. For large objects, this is expensive and runs the watcher on every mutation to any property, not just the one you care about.
@@ -177,16 +198,16 @@ Prefer composable components over configurable ones: slots for customization, sm
 
 ## Summary
 
-| Anti-pattern | Fix |
-|---|---|
-| God components | Split into container + presentational, extract composables |
-| Everything in Pinia | Local ref for local state, composable for reusable logic |
-| Watch instead of computed | Use computed for derived values |
-| deep: true everywhere | Watch specific properties with a getter |
-| Mutating props | Emit events, let the parent own mutations |
-| Business logic in components | Extract to pure functions or composables |
-| Event bus | Use props/emit, provide/inject, or Pinia |
-| Mega-config components | Composition with slots and smaller components |
+| Anti-pattern                 | Fix                                                        |
+| ---------------------------- | ---------------------------------------------------------- |
+| God components               | Split into container + presentational, extract composables |
+| Everything in Pinia          | Local ref for local state, composable for reusable logic   |
+| Watch instead of computed    | Use computed for derived values                            |
+| deep: true everywhere        | Watch specific properties with a getter                    |
+| Mutating props               | Emit events, let the parent own mutations                  |
+| Business logic in components | Extract to pure functions or composables                   |
+| Event bus                    | Use props/emit, provide/inject, or Pinia                   |
+| Mega-config components       | Composition with slots and smaller components              |
 
 See also: [How would you structure a large Vue project?](/q/large-project-structure) · [How do you architect a Vue 3 app to scale across multiple teams?](/q/scale-vue-multiple-teams) · [What is a composable?](/q/what-is-a-composable)
 

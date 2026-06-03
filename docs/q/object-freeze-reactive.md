@@ -1,8 +1,8 @@
 ---
 order: 76
-title: "What happens when you use Object.freeze() on reactive data?"
-difficulty: "intermediate"
-tags: ["reactivity"]
+title: 'What happens when you use Object.freeze() on reactive data?'
+difficulty: 'intermediate'
+tags: ['reactivity']
 summary: "Vue can't make frozen objects reactive because Proxy set traps silently fail. Useful as a performance optimization for large, read-only datasets."
 ---
 
@@ -12,10 +12,12 @@ Vue cannot make a frozen object reactive. `Object.freeze()` prevents property mo
 
 ```vue
 <script setup>
-const frozenList = reactive(Object.freeze([
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' }
-]))
+const frozenList = reactive(
+  Object.freeze([
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' }
+  ])
+)
 </script>
 
 <template>
@@ -25,9 +27,7 @@ const frozenList = reactive(Object.freeze([
   </p>
 
   <!-- This button does nothing visible -->
-  <button @click="frozenList[0].name = 'Changed'">
-    Try to mutate
-  </button>
+  <button @click="frozenList[0].name = 'Changed'">Try to mutate</button>
 </template>
 ```
 
@@ -59,9 +59,11 @@ When you have large arrays of data that are read-only (reference tables, configu
 <script setup>
 import { shallowRef } from 'vue'
 
-const countries = shallowRef(Object.freeze(
-  await $fetch('/api/countries') // 250 objects with nested properties
-))
+const countries = shallowRef(
+  Object.freeze(
+    await $fetch('/api/countries') // 250 objects with nested properties
+  )
+)
 </script>
 
 <template>
@@ -106,12 +108,12 @@ map.set('key', 'value') // works, but Vue won't track it
 const chartInstance = markRaw(new Chart(canvas, config))
 ```
 
-| | `Object.freeze` | `markRaw` |
-|---|---|---|
-| Prevents reactivity | Yes | Yes |
-| Prevents mutation | Yes | No |
-| Use case | Static data, lookup tables | Third-party objects (Chart.js, maps, editors) |
-| Nested objects | Must freeze recursively | Applies only to the top level |
+|                     | `Object.freeze`            | `markRaw`                                     |
+| ------------------- | -------------------------- | --------------------------------------------- |
+| Prevents reactivity | Yes                        | Yes                                           |
+| Prevents mutation   | Yes                        | No                                            |
+| Use case            | Static data, lookup tables | Third-party objects (Chart.js, maps, editors) |
+| Nested objects      | Must freeze recursively    | Applies only to the top level                 |
 
 See also: [When should you use markRaw and toRaw?](/q/markraw-toraw) · [When would you use shallowRef / shallowReactive?](/q/shallow-ref-reactive)
 

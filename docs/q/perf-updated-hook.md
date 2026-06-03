@@ -1,9 +1,9 @@
 ---
 order: 128
-title: "When should you use the updated hook and what are its performance implications?"
-difficulty: "advanced"
-tags: ["performance", "reactivity", "watchers"]
-summary: "onUpdated fires after ANY state change, not just the one you care about. Prefer watch or computed for targeted reactions."
+title: 'When should you use the updated hook and what are its performance implications?'
+difficulty: 'advanced'
+tags: ['performance', 'reactivity', 'watchers']
+summary: 'onUpdated fires after ANY state change, not just the one you care about. Prefer watch or computed for targeted reactions.'
 ---
 
 The `updated` hook (`onUpdated` in Composition API) runs after every reactive state change that causes a re-render. It fires for ANY state change in the component, not just the one you care about. This makes it a dangerous place for expensive operations, API calls, or state mutations. For most use cases, [watch](https://vuejs.org/api/reactivity-core.html#watch) or [computed](https://vuejs.org/api/reactivity-core.html#computed) is a better choice.
@@ -95,9 +95,13 @@ const syncToServer = useDebounceFn((newItems) => {
   fetch('/api/sync', { method: 'POST', body: JSON.stringify(newItems) })
 }, 500)
 
-watch(items, (newItems) => {
-  syncToServer(newItems)
-}, { deep: true })
+watch(
+  items,
+  (newItems) => {
+    syncToServer(newItems)
+  },
+  { deep: true }
+)
 </script>
 ```
 
@@ -145,7 +149,7 @@ Some libraries (chart renderers, syntax highlighters) need to know when the DOM 
 <script setup>
 import { ref, onUpdated } from 'vue'
 
-const chatContainer = ref<HTMLElement | null>(null)
+const chatContainer = (ref < HTMLElement) | (null > null)
 
 onUpdated(() => {
   if (chatContainer.value) {
@@ -185,14 +189,14 @@ The guard prevents the operation from running when unrelated state changes cause
 
 ## When to use what
 
-| Need | Use |
-|---|---|
-| React to a specific data change | `watch` / `watchEffect` |
-| Derive a value from reactive state | `computed` |
-| Sync third-party library after DOM update | `onUpdated` |
-| Scroll or measure DOM after render | `onUpdated` |
-| API calls when data changes | `watch` with debounce |
-| Update derived state | `computed` (never `updated`) |
+| Need                                      | Use                          |
+| ----------------------------------------- | ---------------------------- |
+| React to a specific data change           | `watch` / `watchEffect`      |
+| Derive a value from reactive state        | `computed`                   |
+| Sync third-party library after DOM update | `onUpdated`                  |
+| Scroll or measure DOM after render        | `onUpdated`                  |
+| API calls when data changes               | `watch` with debounce        |
+| Update derived state                      | `computed` (never `updated`) |
 
 See also: [How does Vue batch DOM updates?](/q/dom-update-batching) · [What is nextTick and when do you need it?](/q/nexttick)
 

@@ -1,9 +1,9 @@
 ---
 order: 124
-title: "¿Cómo virtualizarías una lista de miles de elementos?"
-difficulty: "advanced"
-tags: ["performance", "slots"]
-summary: "Renderiza solo los elementos visibles en el viewport con vue-virtual-scroller. Una lista de 10.000 elementos usa ~20 nodos DOM en vez de 10.000."
+title: '¿Cómo virtualizarías una lista de miles de elementos?'
+difficulty: 'advanced'
+tags: ['performance', 'slots']
+summary: 'Renderiza solo los elementos visibles en el viewport con vue-virtual-scroller. Una lista de 10.000 elementos usa ~20 nodos DOM en vez de 10.000.'
 ---
 
 La virtualización de listas renderiza solo los elementos visibles en el viewport en lugar de crear nodos del DOM para cada elemento. Una lista de 10.000 elementos con virtualización sigue usando alrededor de 20 nodos del DOM, igual que una lista de 100.
@@ -71,7 +71,12 @@ Un virtualizador headless que te da control total sobre el renderizado. Sin esti
 ```vue
 <template>
   <div ref="parentRef" class="list-container">
-    <div :style="{ height: `${virtualizer.getTotalSize()}px`, position: 'relative' }">
+    <div
+      :style="{
+        height: `${virtualizer.getTotalSize()}px`,
+        position: 'relative'
+      }"
+    >
       <div
         v-for="row in virtualizer.getVirtualItems()"
         :key="row.key"
@@ -94,7 +99,9 @@ Un virtualizador headless que te da control total sobre el renderizado. Sin esti
 import { ref } from 'vue'
 import { useVirtualizer } from '@tanstack/vue-virtual'
 
-const users = ref([/* miles de elementos */])
+const users = ref([
+  /* miles de elementos */
+])
 const parentRef = ref(null)
 
 const virtualizer = useVirtualizer({
@@ -115,11 +122,11 @@ const virtualizer = useVirtualizer({
 
 ## Comparativa de librerías
 
-| Librería | Enfoque | Ideal para |
-|---|---|---|
-| `vue-virtual-scroller` | Basado en componentes, todo incluido | Configuración rápida, mayoría de casos |
-| `@tanstack/vue-virtual` | Composable headless | Layouts personalizados, control total |
-| `vue-virtual-scroll-grid` | Virtualización 2D | Layouts de cuadrícula o galería |
+| Librería                  | Enfoque                              | Ideal para                             |
+| ------------------------- | ------------------------------------ | -------------------------------------- |
+| `vue-virtual-scroller`    | Basado en componentes, todo incluido | Configuración rápida, mayoría de casos |
+| `@tanstack/vue-virtual`   | Composable headless                  | Layouts personalizados, control total  |
+| `vue-virtual-scroll-grid` | Virtualización 2D                    | Layouts de cuadrícula o galería        |
 
 ## Cuándo NO virtualizar
 

@@ -1,9 +1,9 @@
 ---
 order: 32
-title: "¿Por qué mutar un objeto a través de defineModel no actualiza al padre?"
-difficulty: "intermediate"
-tags: ["components", "errors", "v-model"]
-summary: "Mutar propiedades del objeto no cambia la referencia, así que defineModel no emite. Reemplaza el objeto completo con spread para disparar la actualización."
+title: '¿Por qué mutar un objeto a través de defineModel no actualiza al padre?'
+difficulty: 'intermediate'
+tags: ['components', 'errors', 'v-model']
+summary: 'Mutar propiedades del objeto no cambia la referencia, así que defineModel no emite. Reemplaza el objeto completo con spread para disparar la actualización.'
 ---
 
 Porque `defineModel()` solo emite `update:modelValue` cuando reasignas `model.value` en sí mismo. Mutar una propiedad dentro del objeto (`model.value.name = 'x'`) cambia el objeto en su lugar sin cambiar la referencia, por lo que Vue nunca dispara el evento `update:modelValue`. Los watchers del padre sobre el binding v-model no detectan el cambio, aunque el template del padre sigue reflejando la mutación porque ambos lados comparten el mismo objeto reactivo.

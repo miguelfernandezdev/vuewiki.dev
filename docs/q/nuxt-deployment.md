@@ -1,9 +1,9 @@
 ---
 order: 157
-title: "How do you deploy a Nuxt app?"
-difficulty: "intermediate"
-tags: ["nuxt", "tooling"]
-summary: "Nitro compiles your app for any platform. nuxt build for SSR servers/serverless, nuxt generate for static files."
+title: 'How do you deploy a Nuxt app?'
+difficulty: 'intermediate'
+tags: ['nuxt', 'tooling']
+summary: 'Nitro compiles your app for any platform. nuxt build for SSR servers/serverless, nuxt generate for static files.'
 ---
 
 Nuxt uses Nitro as its server engine, which compiles your app for any hosting platform. You build once, and Nitro adapts the output to the target: Node.js server, static files, serverless functions, or edge workers.
@@ -109,12 +109,12 @@ docker run -p 3000:3000 my-app
 
 ## Choosing a platform
 
-| Need | Platform |
-|---|---|
-| Fastest setup, great DX | Vercel |
-| Static site with built-in forms | Netlify |
-| Best global performance, low cost at scale | Cloudflare Pages |
-| Full control, existing infrastructure | Node.js on VPS or Docker |
+| Need                                       | Platform                 |
+| ------------------------------------------ | ------------------------ |
+| Fastest setup, great DX                    | Vercel                   |
+| Static site with built-in forms            | Netlify                  |
+| Best global performance, low cost at scale | Cloudflare Pages         |
+| Full control, existing infrastructure      | Node.js on VPS or Docker |
 
 ## Environment variables in production
 
@@ -124,9 +124,9 @@ Runtime config values come from environment variables:
 // nuxt.config.ts
 export default defineNuxtConfig({
   runtimeConfig: {
-    secretKey: '',          // server-only, reads NUXT_SECRET_KEY
+    secretKey: '', // server-only, reads NUXT_SECRET_KEY
     public: {
-      apiBase: ''           // client + server, reads NUXT_PUBLIC_API_BASE
+      apiBase: '' // client + server, reads NUXT_PUBLIC_API_BASE
     }
   }
 })

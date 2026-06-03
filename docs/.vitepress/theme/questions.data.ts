@@ -20,8 +20,8 @@ export default createContentLoader('{,es/}q/*.md', {
         tags: (page.frontmatter.tags || []) as string[],
         url: page.url,
         locale: page.url.startsWith('/es/') ? 'es' : 'en',
-        summary: (page.frontmatter.summary as string) ?? '',
+        summary: (page.frontmatter.summary as string) ?? ''
       }))
       .sort((a, b) => a.order - b.order) as QuestionData[]
-  },
+  }
 })

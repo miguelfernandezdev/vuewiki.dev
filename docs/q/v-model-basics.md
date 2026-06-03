@@ -1,9 +1,9 @@
 ---
 order: 17
-title: "What is v-model and how does it differ from .sync in Vue 2?"
-difficulty: "intermediate"
-tags: ["directives", "migration", "v-model"]
-summary: "v-model creates two-way binding. On native inputs: :value + @input. On components: :modelValue prop + @update:modelValue event."
+title: 'What is v-model and how does it differ from .sync in Vue 2?'
+difficulty: 'intermediate'
+tags: ['directives', 'migration', 'v-model']
+summary: 'v-model creates two-way binding. On native inputs: :value + @input. On components: :modelValue prop + @update:modelValue event.'
 ---
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) creates a two-way binding between a parent's data and a child component (or a form element). On native elements it's syntactic sugar for a `:value` binding plus an `@input` listener. On components, it binds a prop and listens for an update event.
@@ -14,7 +14,10 @@ summary: "v-model creates two-way binding. On native inputs: :value + @input. On
 <template>
   <!-- These two are equivalent -->
   <input v-model="text" />
-  <input :value="text" @input="text = ($event.target as HTMLInputElement).value" />
+  <input
+    :value="text"
+    @input="text = ($event.target as HTMLInputElement).value"
+  />
 </template>
 
 <script setup>
@@ -25,13 +28,13 @@ const text = ref('')
 
 Different element types use different prop/event pairs under the hood:
 
-| Element | Bound prop | Event |
-|---|---|---|
-| `<input type="text">` | `value` | `input` |
-| `<textarea>` | `value` | `input` |
-| `<input type="checkbox">` | `checked` | `change` |
-| `<input type="radio">` | `checked` | `change` |
-| `<select>` | `value` | `change` |
+| Element                   | Bound prop | Event    |
+| ------------------------- | ---------- | -------- |
+| `<input type="text">`     | `value`    | `input`  |
+| `<textarea>`              | `value`    | `input`  |
+| `<input type="checkbox">` | `checked`  | `change` |
+| `<input type="radio">`    | `checked`  | `change` |
+| `<select>`                | `value`    | `change` |
 
 ## v-model on components (Vue 3)
 
@@ -66,8 +69,10 @@ In Vue 2, `v-model` used `value` + `input` and you could only have one per compo
 
 <!-- Vue 2 internally: -->
 <MyDialog
-  :value="isOpen" @input="isOpen = $event"
-  :title="dialogTitle" @update:title="dialogTitle = $event"
+  :value="isOpen"
+  @input="isOpen = $event"
+  :title="dialogTitle"
+  @update:title="dialogTitle = $event"
 />
 ```
 
@@ -79,43 +84,51 @@ In Vue 3, `.sync` was removed. `v-model` now supports named arguments, so you ge
 
 <!-- Vue 3 internally: -->
 <MyDialog
-  :modelValue="isOpen" @update:modelValue="isOpen = $event"
-  :title="dialogTitle" @update:title="dialogTitle = $event"
+  :modelValue="isOpen"
+  @update:modelValue="isOpen = $event"
+  :title="dialogTitle"
+  @update:title="dialogTitle = $event"
 />
 ```
 
 ## Migration summary
 
-| Vue 2 | Vue 3 |
-|---|---|
-| `v-model` binds `value` prop | `v-model` binds `modelValue` prop |
-| Event: `input` | Event: `update:modelValue` |
-| One `v-model` per component | Multiple `v-model` with named args |
-| `.sync` for extra two-way bindings | Named `v-model:propName` |
-| `model` option to customize prop/event | Not needed, use `v-model:name` |
+| Vue 2                                  | Vue 3                              |
+| -------------------------------------- | ---------------------------------- |
+| `v-model` binds `value` prop           | `v-model` binds `modelValue` prop  |
+| Event: `input`                         | Event: `update:modelValue`         |
+| One `v-model` per component            | Multiple `v-model` with named args |
+| `.sync` for extra two-way bindings     | Named `v-model:propName`           |
+| `model` option to customize prop/event | Not needed, use `v-model:name`     |
 
 ## v-model modifiers
 
 Built-in modifiers work on native elements:
 
 ```vue
-<input v-model.lazy="msg" />    <!-- sync on change, not input -->
-<input v-model.number="age" />  <!-- cast to number -->
-<input v-model.trim="name" />   <!-- trim whitespace -->
+<input v-model.lazy="msg" />
+<!-- sync on change, not input -->
+<input v-model.number="age" />
+<!-- cast to number -->
+<input v-model.trim="name" />
+<!-- trim whitespace -->
 ```
 
 Components can define custom modifiers with [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
 ```vue
 <script setup>
-const [model, modifiers] = defineModel<string>({
-  set(value) {
-    if (modifiers.capitalize) {
-      return value.charAt(0).toUpperCase() + value.slice(1)
+const [model, modifiers] =
+  defineModel <
+  string >
+  {
+    set(value) {
+      if (modifiers.capitalize) {
+        return value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      return value
     }
-    return value
   }
-})
 </script>
 ```
 

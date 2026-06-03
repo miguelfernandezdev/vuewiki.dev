@@ -1,8 +1,8 @@
 ---
 order: 70
-title: "Why does my computed property not update when a dependency changes?"
-difficulty: "intermediate"
-tags: ["reactivity", "errors"]
+title: 'Why does my computed property not update when a dependency changes?'
+difficulty: 'intermediate'
+tags: ['reactivity', 'errors']
 summary: "Computed tracks dependencies by recording which reactive properties are READ during execution. If a branch skips reading a property, it's not tracked."
 ---
 

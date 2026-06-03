@@ -1,9 +1,9 @@
 ---
 order: 94
-title: "How do you cancel an API request in a composable?"
-difficulty: "intermediate"
-tags: ["composables", "vueuse", "watchers", "v-model"]
-summary: "Create an AbortController, pass its signal to fetch, and call abort() on unmount or when a new request replaces a stale one."
+title: 'How do you cancel an API request in a composable?'
+difficulty: 'intermediate'
+tags: ['composables', 'vueuse', 'watchers', 'v-model']
+summary: 'Create an AbortController, pass its signal to fetch, and call abort() on unmount or when a new request replaces a stale one.'
 ---
 
 Use the browser's `AbortController` API. Create a controller, pass its `signal` to `fetch`, and call `controller.abort()` when you need to cancel. In Vue, the two most common triggers for cancellation are component unmount (prevent state updates on destroyed components) and new requests replacing stale ones (race condition prevention).
@@ -14,9 +14,9 @@ Use the browser's `AbortController` API. Create a controller, pass its `signal` 
 const controller = new AbortController()
 
 fetch('/api/users', { signal: controller.signal })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => {
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => {
     if (err.name === 'AbortError') {
       console.log('Request was cancelled')
     }
@@ -159,10 +159,7 @@ async function execute() {
   controller = new AbortController()
 
   const timeoutSignal = AbortSignal.timeout(5000)
-  const combinedSignal = AbortSignal.any([
-    controller.signal,
-    timeoutSignal
-  ])
+  const combinedSignal = AbortSignal.any([controller.signal, timeoutSignal])
 
   const response = await fetch(toValue(url), {
     signal: combinedSignal
@@ -192,13 +189,13 @@ No manual `AbortController` needed. This is one of the reasons to prefer Nuxt's 
 
 ## When to cancel
 
-| Scenario | Why cancel |
-|---|---|
-| Component unmounts | Prevent state updates on destroyed component |
+| Scenario             | Why cancel                                        |
+| -------------------- | ------------------------------------------------- |
+| Component unmounts   | Prevent state updates on destroyed component      |
 | Search input changes | Prevent stale results from overwriting fresh ones |
-| Route navigation | Stop fetching data for a page the user left |
-| Timeout | Fail fast instead of waiting indefinitely |
-| User clicks "cancel" | Respect explicit user intent |
+| Route navigation     | Stop fetching data for a page the user left       |
+| Timeout              | Fail fast instead of waiting indefinitely         |
+| User clicks "cancel" | Respect explicit user intent                      |
 
 See also: [How would you build a composable for data fetching?](/q/composable-data-fetching) · [What is a composable?](/q/what-is-a-composable) · [How do async composables handle errors and loading state?](/q/async-composable-error-handling)
 

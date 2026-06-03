@@ -1,9 +1,9 @@
 ---
 order: 161
-title: "¿Cuál es la diferencia entre el middleware de servidor y el middleware de rutas en Nuxt?"
-difficulty: "intermediate"
-tags: ["nuxt"]
-summary: "El middleware de servidor se ejecuta en cada petición HTTP en Nitro. El de rutas se ejecuta en navegaciones de página en Vue con acceso a composables."
+title: '¿Cuál es la diferencia entre el middleware de servidor y el middleware de rutas en Nuxt?'
+difficulty: 'intermediate'
+tags: ['nuxt']
+summary: 'El middleware de servidor se ejecuta en cada petición HTTP en Nitro. El de rutas se ejecuta en navegaciones de página en Vue con acceso a composables.'
 ---
 
 Se ejecutan en capas completamente distintas. El middleware de servidor se ejecuta en cada petición HTTP que llega al servidor Nitro (antes de las rutas de API, antes del renderizado de páginas). El middleware de rutas se ejecuta en las navegaciones de página (tanto en el servidor durante SSR como en el cliente durante la navegación SPA). El middleware de servidor gestiona aspectos HTTP como CORS, logging y cabeceras de autenticación. El middleware de rutas gestiona aspectos de página como el control de acceso y las redirecciones.
@@ -104,17 +104,17 @@ export default defineNuxtRouteMiddleware((to) => {
 
 ## Comparativa
 
-| | Middleware de servidor | Middleware de rutas |
-|---|---|---|
-| Ubicación | `server/middleware/` | `middleware/` |
-| Se ejecuta en | Cada petición HTTP | Navegaciones de página |
-| Entorno | Solo servidor (Nitro) | Servidor (SSR) + Cliente (navegación SPA) |
-| Tiene acceso a | `event` (objeto H3 event) | `to`, `from` (rutas de Vue Router) |
-| Puede usar composables Vue | No | Sí |
-| Puede usar `navigateTo` | No (usa `sendRedirect`) | Sí |
-| Puede leer cookies | `getCookie(event, name)` | `useCookie(name)` |
-| Bloquea rutas de API | Sí | No (solo afecta a páginas) |
-| Uso habitual | CORS, logging, parseo de tokens | Guards de autenticación, redirecciones, analíticas |
+|                            | Middleware de servidor          | Middleware de rutas                                |
+| -------------------------- | ------------------------------- | -------------------------------------------------- |
+| Ubicación                  | `server/middleware/`            | `middleware/`                                      |
+| Se ejecuta en              | Cada petición HTTP              | Navegaciones de página                             |
+| Entorno                    | Solo servidor (Nitro)           | Servidor (SSR) + Cliente (navegación SPA)          |
+| Tiene acceso a             | `event` (objeto H3 event)       | `to`, `from` (rutas de Vue Router)                 |
+| Puede usar composables Vue | No                              | Sí                                                 |
+| Puede usar `navigateTo`    | No (usa `sendRedirect`)         | Sí                                                 |
+| Puede leer cookies         | `getCookie(event, name)`        | `useCookie(name)`                                  |
+| Bloquea rutas de API       | Sí                              | No (solo afecta a páginas)                         |
+| Uso habitual               | CORS, logging, parseo de tokens | Guards de autenticación, redirecciones, analíticas |
 
 ## Cómo interactúan durante SSR
 

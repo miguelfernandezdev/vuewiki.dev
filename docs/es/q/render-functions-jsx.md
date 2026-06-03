@@ -1,9 +1,9 @@
 ---
 order: 40
-title: "¿Cómo funcionan las render functions y JSX en Vue?"
-difficulty: "intermediate"
-tags: ["components", "v-model"]
-summary: "h() crea vnodes programáticamente en lugar de usar templates. JSX es azúcar sintáctico para h(). Los templates se compilan a render functions en build."
+title: '¿Cómo funcionan las render functions y JSX en Vue?'
+difficulty: 'intermediate'
+tags: ['components', 'v-model']
+summary: 'h() crea vnodes programáticamente en lugar de usar templates. JSX es azúcar sintáctico para h(). Los templates se compilan a render functions en build.'
 ---
 
 Las render functions son una alternativa a los templates. En lugar de escribir markup estilo HTML, se usa la función `h()` (o JSX) para crear vnodes de forma programática. Los templates se compilan en render functions en tiempo de build, así que las render functions son lo que Vue ejecuta realmente.
@@ -19,9 +19,14 @@ export default {
   setup() {
     const count = ref(0)
 
-    return () => h('button', {
-      onClick: () => count.value++
-    }, `Count: ${count.value}`)
+    return () =>
+      h(
+        'button',
+        {
+          onClick: () => count.value++
+        },
+        `Count: ${count.value}`
+      )
   }
 }
 ```
@@ -40,9 +45,7 @@ export default defineComponent({
     const count = ref(0)
 
     return () => (
-      <button onClick={() => count.value++}>
-        Count: {count.value}
-      </button>
+      <button onClick={() => count.value++}>Count: {count.value}</button>
     )
   }
 })
@@ -77,9 +80,11 @@ Hacer esto en un template requeriría una cadena de `v-if` para cada nivel de en
 **Las listas necesitan keys**, igual que en los templates:
 
 ```ts
-return () => h('ul',
-  items.value.map(item => h('li', { key: item.id }, item.name))
-)
+return () =>
+  h(
+    'ul',
+    items.value.map((item) => h('li', { key: item.id }, item.name))
+  )
 ```
 
 **Los modificadores de evento** usan `withModifiers` y `withKeys`:
@@ -87,9 +92,13 @@ return () => h('ul',
 ```ts
 import { h, withModifiers, withKeys } from 'vue'
 
-h('button', {
-  onClick: withModifiers(handleClick, ['stop', 'prevent'])
-}, 'Click')
+h(
+  'button',
+  {
+    onClick: withModifiers(handleClick, ['stop', 'prevent'])
+  },
+  'Click'
+)
 
 h('input', {
   onKeyup: withKeys(handleEnter, ['enter'])
@@ -101,7 +110,9 @@ h('input', {
 ```ts
 h(CustomInput, {
   modelValue: text.value,
-  'onUpdate:modelValue': (val) => { text.value = val }
+  'onUpdate:modelValue': (val) => {
+    text.value = val
+  }
 })
 ```
 
@@ -117,13 +128,13 @@ withDirectives(h('input'), [[vFocus]])
 
 ## Templates vs render functions
 
-| | Templates | Render functions / JSX |
-|---|---|---|
-| Legibilidad | Estilo HTML, familiar | JavaScript, más verboso |
-| Optimizaciones del compilador | Static hoisting, patch flags | Ninguna (se opta por salir) |
-| Output dinámico | Limitado por la sintaxis de directivas | Flexibilidad total de JavaScript |
-| Soporte en IDE | Herramientas específicas de Vue (Volar) | TypeScript/JSX estándar |
-| Caso de uso | La mayoría de componentes | Lógica de render muy dinámica |
+|                               | Templates                               | Render functions / JSX           |
+| ----------------------------- | --------------------------------------- | -------------------------------- |
+| Legibilidad                   | Estilo HTML, familiar                   | JavaScript, más verboso          |
+| Optimizaciones del compilador | Static hoisting, patch flags            | Ninguna (se opta por salir)      |
+| Output dinámico               | Limitado por la sintaxis de directivas  | Flexibilidad total de JavaScript |
+| Soporte en IDE                | Herramientas específicas de Vue (Volar) | TypeScript/JSX estándar          |
+| Caso de uso                   | La mayoría de componentes               | Lógica de render muy dinámica    |
 
 Preferir templates por defecto. Usar render functions cuando el template sería incómodo o imposible de expresar de forma declarativa.
 

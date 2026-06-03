@@ -1,9 +1,9 @@
 ---
 order: 166
-title: "What are the main friction points when migrating Nuxt 2 to Nuxt 3?"
-difficulty: "advanced"
-tags: ["nuxt", "migration", "pinia", "vueuse", "vuex", "provide-inject"]
-summary: "Main friction: Vuex to Pinia, asyncData to composables, broken third-party ecosystem, and Composition API reactivity gotchas."
+title: 'What are the main friction points when migrating Nuxt 2 to Nuxt 3?'
+difficulty: 'advanced'
+tags: ['nuxt', 'migration', 'pinia', 'vueuse', 'vuex', 'provide-inject']
+summary: 'Main friction: Vuex to Pinia, asyncData to composables, broken third-party ecosystem, and Composition API reactivity gotchas.'
 ---
 
 There are four axes of friction: state management (Vuex to Pinia requires rethinking data flow, not just syntax), data fetching (asyncData/fetch to composables), the ecosystem (third-party libraries without Vue 3 support), and the Composition API shift (team conventions, losing `this`, new reactivity gotchas). The migration should be incremental, ideally using Nuxt Bridge as a stepping stone.
@@ -17,7 +17,9 @@ This is not a find-and-replace. The entire mental model changes:
 // store/user.js
 export const state = () => ({ user: null })
 export const mutations = {
-  SET_USER(state, user) { state.user = user }
+  SET_USER(state, user) {
+    state.user = user
+  }
 }
 export const actions = {
   async fetchUser({ commit }, id) {
@@ -42,6 +44,7 @@ export const useUserStore = defineStore('user', () => {
 ```
 
 What changes:
+
 - Mutations are gone. Actions modify state directly.
 - Namespaced modules become independent stores that import each other.
 - `this.$store.dispatch('user/fetchUser', id)` becomes `useUserStore().fetchUser(id)`.
@@ -77,6 +80,7 @@ const { data: user, error } = await useFetch(`/api/users/${route.params.id}`)
 ```
 
 What changes:
+
 - `asyncData` and `fetch` (the Nuxt 2 component option) don't exist.
 - The `context` object (`{ $axios, store, redirect, error }`) is gone. Each capability is now a separate composable (`useRoute`, `useRouter`, `navigateTo`, `useFetch`).
 - `$axios` is typically replaced by `$fetch` (built into Nuxt 3 via ofetch).
@@ -130,14 +134,14 @@ Every plugin that used `inject` needs rewriting. Components that accessed inject
 
 Many Vue 2 / Nuxt 2 libraries didn't survive the transition:
 
-| Library | Status |
-|---|---|
-| `vue-class-component` | Dead, no Vue 3 equivalent |
-| `vue-property-decorator` | Dead |
-| `vuetify@2` | Vuetify 3 exists but the migration took years |
-| `@nuxtjs/axios` | Replaced by built-in `$fetch` |
-| `@nuxtjs/auth` | No official Nuxt 3 version, use `sidebase/nuxt-auth` or build custom |
-| `nuxt-community` modules | Some migrated, many abandoned |
+| Library                  | Status                                                               |
+| ------------------------ | -------------------------------------------------------------------- |
+| `vue-class-component`    | Dead, no Vue 3 equivalent                                            |
+| `vue-property-decorator` | Dead                                                                 |
+| `vuetify@2`              | Vuetify 3 exists but the migration took years                        |
+| `@nuxtjs/axios`          | Replaced by built-in `$fetch`                                        |
+| `@nuxtjs/auth`           | No official Nuxt 3 version, use `sidebase/nuxt-auth` or build custom |
+| `nuxt-community` modules | Some migrated, many abandoned                                        |
 
 You need to audit every dependency early. Some have Nuxt 3 equivalents, some need replacement, some need custom reimplementation.
 

@@ -1,8 +1,8 @@
 ---
 order: 118
-title: "How do you test a composable that uses setTimeout?"
-difficulty: "advanced"
-tags: ["testing", "composables", "pinia", "vitest", "watchers"]
+title: 'How do you test a composable that uses setTimeout?'
+difficulty: 'advanced'
+tags: ['testing', 'composables', 'pinia', 'vitest', 'watchers']
 summary: "Use vi.useFakeTimers() to control time, await nextTick() to flush Vue's watcher, then vi.advanceTimersByTime() to trigger the timeout."
 ---
 
@@ -49,8 +49,8 @@ describe('useDebounceSearch', () => {
     const { query, debouncedQuery } = useDebounceSearch(300)
 
     query.value = 'hello'
-    await nextTick()              // flush the watcher (starts setTimeout)
-    vi.advanceTimersByTime(300)   // fast-forward 300ms
+    await nextTick() // flush the watcher (starts setTimeout)
+    vi.advanceTimersByTime(300) // fast-forward 300ms
 
     expect(debouncedQuery.value).toBe('hello')
   })
@@ -60,19 +60,19 @@ describe('useDebounceSearch', () => {
 
     query.value = 'h'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 100ms passed
+    vi.advanceTimersByTime(100) // 100ms passed
 
     query.value = 'he'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 200ms total, timer restarted at 100ms
+    vi.advanceTimersByTime(100) // 200ms total, timer restarted at 100ms
 
     query.value = 'hel'
     await nextTick()
-    vi.advanceTimersByTime(100)   // 300ms total, timer restarted at 200ms
+    vi.advanceTimersByTime(100) // 300ms total, timer restarted at 200ms
 
-    expect(debouncedQuery.value).toBe('')  // not enough time since last change
+    expect(debouncedQuery.value).toBe('') // not enough time since last change
 
-    vi.advanceTimersByTime(200)   // 500ms total, 300ms since last change
+    vi.advanceTimersByTime(200) // 500ms total, 300ms since last change
 
     expect(debouncedQuery.value).toBe('hel')
   })
@@ -84,7 +84,7 @@ describe('useDebounceSearch', () => {
     await nextTick()
     vi.advanceTimersByTime(299)
 
-    expect(debouncedQuery.value).toBe('')  // 1ms short
+    expect(debouncedQuery.value).toBe('') // 1ms short
   })
 })
 ```
@@ -168,13 +168,13 @@ If you forget, fake timers leak into other tests. Promises that depend on real t
 
 ## Quick reference
 
-| Step | What it does | When needed |
-|---|---|---|
-| `vi.useFakeTimers()` | Replaces setTimeout/setInterval with fakes | Before any test using timers |
-| `await nextTick()` | Flushes Vue's reactivity queue | After changing reactive state, before advancing time |
-| `vi.advanceTimersByTime(ms)` | Fast-forwards fake time | To trigger setTimeout/setInterval callbacks |
-| `vi.runAllTimers()` | Runs all pending timers immediately | When you don't care about specific timing |
-| `vi.useRealTimers()` | Restores real timer functions | In afterEach, always |
+| Step                         | What it does                               | When needed                                          |
+| ---------------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| `vi.useFakeTimers()`         | Replaces setTimeout/setInterval with fakes | Before any test using timers                         |
+| `await nextTick()`           | Flushes Vue's reactivity queue             | After changing reactive state, before advancing time |
+| `vi.advanceTimersByTime(ms)` | Fast-forwards fake time                    | To trigger setTimeout/setInterval callbacks          |
+| `vi.runAllTimers()`          | Runs all pending timers immediately        | When you don't care about specific timing            |
+| `vi.useRealTimers()`         | Restores real timer functions              | In afterEach, always                                 |
 
 See also: [How do you test a Pinia store?](/q/test-pinia-store) · [How do you test a composable that uses fetch?](/q/testing-composable-fetch)
 

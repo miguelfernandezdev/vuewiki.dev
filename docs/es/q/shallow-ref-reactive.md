@@ -1,9 +1,9 @@
 ---
 order: 78
-title: "¿Cuándo usarías shallowRef / shallowReactive?"
-difficulty: "advanced"
-tags: ["reactivity", "performance"]
-summary: "shallowRef solo rastrea reemplazo de .value (no cambios anidados). shallowReactive solo rastrea propiedades del nivel superior. Úsalos para objetos grandes que reemplazas enteros."
+title: '¿Cuándo usarías shallowRef / shallowReactive?'
+difficulty: 'advanced'
+tags: ['reactivity', 'performance']
+summary: 'shallowRef solo rastrea reemplazo de .value (no cambios anidados). shallowReactive solo rastrea propiedades del nivel superior. Úsalos para objetos grandes que reemplazas enteros.'
 ---
 
 Por defecto, `ref` y `reactive` hacen tus datos profundamente reactivos. Vue rastrea cada propiedad anidada, sin importar cuán profunda sea. Esto es conveniente pero tiene un coste: Vue recorre todo el árbol de objetos y envuelve cada objeto anidado en un Proxy. Para objetos pequeños está bien. Para una lista de 10.000 elementos, cada uno con propiedades anidadas, es trabajo desperdiciado si nunca editas elementos individuales en su lugar.
@@ -42,9 +42,9 @@ const state = shallowReactive({
   nested: { deep: 'value' }
 })
 
-state.count++              // ✅ rastreado — propiedad raíz
+state.count++ // ✅ rastreado — propiedad raíz
 state.nested = { deep: 1 } // ✅ rastreado — propiedad raíz reemplazada
-state.nested.deep = 2      // ❌ NO rastreado — mutación anidada
+state.nested.deep = 2 // ❌ NO rastreado — mutación anidada
 ```
 
 ## Cuándo usarlos
@@ -71,12 +71,12 @@ async function refresh() {
 
 ## Profundo vs superficial: la compensación
 
-| | `ref` / `reactive` | `shallowRef` / `shallowReactive` |
-|---|---|---|
-| Qué se rastrea | Todo, recursivamente | Solo el primer nivel |
-| Coste de configuración | Mayor (envuelve cada objeto anidado) | Menor |
-| Estilo de mutación | Muta cualquier cosa, en cualquier lugar | Reemplaza el valor del primer nivel o usa `triggerRef` |
-| Cuándo usar | Por defecto para la mayoría de datos | Conjuntos de datos grandes, objetos externos, rutas críticas de rendimiento |
+|                        | `ref` / `reactive`                      | `shallowRef` / `shallowReactive`                                            |
+| ---------------------- | --------------------------------------- | --------------------------------------------------------------------------- |
+| Qué se rastrea         | Todo, recursivamente                    | Solo el primer nivel                                                        |
+| Coste de configuración | Mayor (envuelve cada objeto anidado)    | Menor                                                                       |
+| Estilo de mutación     | Muta cualquier cosa, en cualquier lugar | Reemplaza el valor del primer nivel o usa `triggerRef`                      |
+| Cuándo usar            | Por defecto para la mayoría de datos    | Conjuntos de datos grandes, objetos externos, rutas críticas de rendimiento |
 
 **Empieza con `ref`/`reactive`.** Solo cambia a variantes superficiales cuando midas un problema de rendimiento o cuando la reactividad profunda no tenga sentido para tus datos (como un contexto Canvas o una instancia WebSocket).
 

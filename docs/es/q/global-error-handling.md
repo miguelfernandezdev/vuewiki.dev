@@ -1,9 +1,9 @@
 ---
 order: 167
-title: "¿Cómo implementarías el manejo global de errores en una app Vue?"
-difficulty: "advanced"
-tags: ["error-handling", "architecture"]
-summary: "app.config.errorHandler captura todos los errores no manejados globalmente. Combínalo con onErrorCaptured para subárboles y try/catch para operaciones async."
+title: '¿Cómo implementarías el manejo global de errores en una app Vue?'
+difficulty: 'advanced'
+tags: ['error-handling', 'architecture']
+summary: 'app.config.errorHandler captura todos los errores no manejados globalmente. Combínalo con onErrorCaptured para subárboles y try/catch para operaciones async.'
 ---
 
 Vue proporciona múltiples capas para capturar errores: `app.config.errorHandler` para errores no capturados de forma global, `onErrorCaptured` para errores en un subárbol de componentes, y try/catch para operaciones asíncronas. Una app en producción debería combinar los tres, más una interfaz de error visible para el usuario.
@@ -26,11 +26,11 @@ app.config.errorHandler = (err, instance, info) => {
 }
 ```
 
-| Parámetro | Qué contiene |
-|---|---|
-| `err` | El objeto Error |
-| `instance` | La instancia del componente que lanzó el error (o null) |
-| `info` | Donde ocurrio el error: `'setup function'`, `'render function'`, `'watcher callback'`, etc. En builds de produccion, `info` es un codigo numerico abreviado en lugar de la cadena completa. Consulta la [Error Reference](https://vuejs.org/error-reference/) para las correspondencias. |
+| Parámetro  | Qué contiene                                                                                                                                                                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `err`      | El objeto Error                                                                                                                                                                                                                                                                          |
+| `instance` | La instancia del componente que lanzó el error (o null)                                                                                                                                                                                                                                  |
+| `info`     | Donde ocurrio el error: `'setup function'`, `'render function'`, `'watcher callback'`, etc. En builds de produccion, `info` es un codigo numerico abreviado en lugar de la cadena completa. Consulta la [Error Reference](https://vuejs.org/error-reference/) para las correspondencias. |
 
 ## onErrorCaptured (barrera a nivel de componente)
 
@@ -77,9 +77,9 @@ Si una página falla, la cabecera y el pie permanecen visibles. El usuario ve un
 
 ## Valor de retorno de onErrorCaptured
 
-| Retorno | Efecto |
-|---|---|
-| `false` | Error capturado, deja de propagarse |
+| Retorno       | Efecto                                                                       |
+| ------------- | ---------------------------------------------------------------------------- |
+| `false`       | Error capturado, deja de propagarse                                          |
 | `true` o nada | El error continúa hacia el padre y eventualmente a `app.config.errorHandler` |
 
 ## Manejo de errores asíncronos
@@ -141,8 +141,12 @@ export function useAsyncAction<T>(action: () => Promise<T>) {
 
 ```vue
 <script setup>
-const { execute: submit, isLoading, error } = useAsyncAction(
-  () => $fetch('/api/submit', { method: 'POST', body: formData })
+const {
+  execute: submit,
+  isLoading,
+  error
+} = useAsyncAction(() =>
+  $fetch('/api/submit', { method: 'POST', body: formData })
 )
 </script>
 ```

@@ -1,9 +1,9 @@
 ---
 order: 127
-title: "¿Cómo afecta la estabilidad de objetos en computed a los re-renders?"
-difficulty: "advanced"
-tags: ["performance", "reactivity", "watchers"]
-summary: "Un computed que devuelve un nuevo objeto cada vez dispara todos los dependientes aunque los valores sean iguales. Compara manualmente o devuelve primitivos."
+title: '¿Cómo afecta la estabilidad de objetos en computed a los re-renders?'
+difficulty: 'advanced'
+tags: ['performance', 'reactivity', 'watchers']
+summary: 'Un computed que devuelve un nuevo objeto cada vez dispara todos los dependientes aunque los valores sean iguales. Compara manualmente o devuelve primitivos.'
 ---
 
 Una propiedad [computed](https://vuejs.org/api/reactivity-core.html#computed) que devuelve un objeto nuevo en cada evaluación crea una nueva referencia en cada ejecución. Vue detecta la nueva referencia y dispara cada watcher, efecto y componente hijo que dependa de ella, aunque los valores dentro del objeto sean idénticos. Para primitivos, Vue 3.4+ lo gestiona automáticamente. Para objetos, hay que comparar de forma manual.
@@ -40,11 +40,11 @@ const count = ref(0)
 
 const isEven = computed(() => count.value % 2 === 0)
 
-watchEffect(() => console.log(isEven.value))  // true
+watchEffect(() => console.log(isEven.value)) // true
 
-count.value = 2  // isEven sigue siendo true → el efecto NO se ejecuta
-count.value = 4  // isEven sigue siendo true → el efecto NO se ejecuta
-count.value = 3  // isEven ahora es false → el efecto se ejecuta
+count.value = 2 // isEven sigue siendo true → el efecto NO se ejecuta
+count.value = 4 // isEven sigue siendo true → el efecto NO se ejecuta
+count.value = 3 // isEven ahora es false → el efecto se ejecuta
 ```
 
 Vue comprueba `oldValue === newValue` internamente. Si el primitivo no ha cambiado, los dependientes no se vuelven a ejecutar. Esto solo funciona con primitivos porque `{} === {}` siempre es `false`.
@@ -123,7 +123,8 @@ const filters = ref({ category: 'all', sortBy: 'date', page: 1 })
 const activeFilters = computed((oldValue) => {
   const newValue = {
     ...filters.value,
-    hasFilters: filters.value.category !== 'all' || filters.value.sortBy !== 'date'
+    hasFilters:
+      filters.value.category !== 'all' || filters.value.sortBy !== 'date'
   }
 
   if (oldValue && isEqual(oldValue, newValue)) {
@@ -156,13 +157,13 @@ Cada computed primitivo obtiene la estabilidad automática de Vue 3.4+ sin coste
 
 ## Comparativa
 
-| Enfoque | Estabilidad | Esfuerzo |
-|---|---|---|
-| Object computed (por defecto) | Ninguna, nueva referencia siempre | Cero |
-| Primitive computed (Vue 3.4+) | Automática | Cero |
-| Object computed con comparación manual | Estable cuando los valores coinciden | Código de comparación superficial |
-| Object computed con comparación profunda | Estable para objetos anidados | lodash o utilidad personalizada |
-| Dividir en computeds primitivos | Automática por propiedad | Reestructurar el código consumidor |
+| Enfoque                                  | Estabilidad                          | Esfuerzo                           |
+| ---------------------------------------- | ------------------------------------ | ---------------------------------- |
+| Object computed (por defecto)            | Ninguna, nueva referencia siempre    | Cero                               |
+| Primitive computed (Vue 3.4+)            | Automática                           | Cero                               |
+| Object computed con comparación manual   | Estable cuando los valores coinciden | Código de comparación superficial  |
+| Object computed con comparación profunda | Estable para objetos anidados        | lodash o utilidad personalizada    |
+| Dividir en computeds primitivos          | Automática por propiedad             | Reestructurar el código consumidor |
 
 Ver también: [¿Por qué mi propiedad computed no se actualiza cuando cambia una dependencia?](/es/q/computed-conditional-dependencies) · [¿Cómo agrupa Vue las actualizaciones del DOM?](/es/q/dom-update-batching)
 

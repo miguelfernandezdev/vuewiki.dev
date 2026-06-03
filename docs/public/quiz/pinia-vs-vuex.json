@@ -2,12 +2,7 @@
   "questions": [
     {
       "question": "What major Vuex concept does Pinia eliminate entirely?",
-      "options": [
-        "Getters",
-        "Actions",
-        "Mutations",
-        "Modules"
-      ],
+      "options": ["Getters", "Actions", "Mutations", "Modules"],
       "answer": 2
     },
     {

@@ -1,8 +1,8 @@
 ---
 order: 45
-title: "How would you explain v-model to someone coming from React?"
-difficulty: "intermediate"
-tags: ["components", "directives", "v-model"]
+title: 'How would you explain v-model to someone coming from React?'
+difficulty: 'intermediate'
+tags: ['components', 'directives', 'v-model']
 summary: "v-model = React's value + onChange in one line. It's syntactic sugar: internally binds a prop and listens for an update event."
 ---
 
@@ -14,9 +14,7 @@ In React, form state is always unidirectional: state flows down through `value` 
 // React: explicit, unidirectional
 function Form() {
   const [name, setName] = useState('')
-  return (
-    <input value={name} onChange={e => setName(e.target.value)} />
-  )
+  return <input value={name} onChange={(e) => setName(e.target.value)} />
 }
 ```
 
@@ -57,7 +55,7 @@ function CustomInput({ value, onChange }) {
   return <input value={value} onChange={onChange} />
 }
 
-<CustomInput value={name} onChange={e => setName(e.target.value)} />
+;<CustomInput value={name} onChange={(e) => setName(e.target.value)} />
 ```
 
 In Vue 3, `v-model` on a component uses `modelValue` as the prop and `update:modelValue` as the event:
@@ -78,7 +76,10 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>
 
 <template>
-  <input :value="modelValue" @input="emit('update:modelValue', $event.target.value)" />
+  <input
+    :value="modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
 </template>
 ```
 
@@ -102,8 +103,10 @@ React has no built-in equivalent for this. You'd pass multiple value/onChange pa
 ```jsx
 // React: multiple controlled values
 <UserForm
-  name={name} onNameChange={setName}
-  email={email} onEmailChange={setEmail}
+  name={name}
+  onNameChange={setName}
+  email={email}
+  onEmailChange={setEmail}
 />
 ```
 
@@ -117,8 +120,8 @@ Vue 3 supports named v-model bindings:
 ```vue
 <!-- UserForm.vue -->
 <script setup>
-const name = defineModel<string>('name')
-const email = defineModel<string>('email')
+const name = defineModel < string > 'name'
+const email = defineModel < string > 'email'
 </script>
 
 <template>
@@ -148,14 +151,14 @@ In React, you'd handle these transformations inside the `onChange` handler manua
 
 ## The philosophical difference
 
-| | Vue (v-model) | React (controlled inputs) |
-|---|---|---|
-| Data flow | Bidirectional (by convention) | Unidirectional (always) |
-| Verbosity | One line per binding | Two props per binding |
-| Control | Implicit wiring | Explicit wiring |
-| Debugging | Less obvious where changes originate | Always clear who mutates state |
-| Custom transforms | Modifiers (`.trim`, `.number`) | Manual in onChange |
-| Multiple bindings | `v-model:name`, `v-model:email` | Multiple value/onChange prop pairs |
+|                   | Vue (v-model)                        | React (controlled inputs)          |
+| ----------------- | ------------------------------------ | ---------------------------------- |
+| Data flow         | Bidirectional (by convention)        | Unidirectional (always)            |
+| Verbosity         | One line per binding                 | Two props per binding              |
+| Control           | Implicit wiring                      | Explicit wiring                    |
+| Debugging         | Less obvious where changes originate | Always clear who mutates state     |
+| Custom transforms | Modifiers (`.trim`, `.number`)       | Manual in onChange                 |
+| Multiple bindings | `v-model:name`, `v-model:email`      | Multiple value/onChange prop pairs |
 
 Vue's approach is more concise. React's approach is more traceable. Under the hood, both are doing the same thing: binding a value and listening for changes. Vue generates the wiring at compile time; React asks you to write it yourself.
 

@@ -1,9 +1,9 @@
 ---
 order: 112
-title: "What are the key TypeScript utility types for Vue?"
-difficulty: "advanced"
-tags: ["typescript", "watchers", "provide-inject"]
-summary: "Key types: PropType (runtime props), ComponentPublicInstance (component refs), ExtractPropTypes, MaybeRef/MaybeRefOrGetter (composable inputs)."
+title: 'What are the key TypeScript utility types for Vue?'
+difficulty: 'advanced'
+tags: ['typescript', 'watchers', 'provide-inject']
+summary: 'Key types: PropType (runtime props), ComponentPublicInstance (component refs), ExtractPropTypes, MaybeRef/MaybeRefOrGetter (composable inputs).'
 ---
 
 Vue exports several utility types that help you type props, refs, components, and events correctly. Knowing them saves you from writing complex generics manually and gives you better IDE support.
@@ -148,24 +148,24 @@ The type of a virtual DOM node. Useful when working with render functions or slo
 import type { VNode } from 'vue'
 
 function renderItems(items: string[]): VNode[] {
-  return items.map(item => h('li', item))
+  return items.map((item) => h('li', item))
 }
 ```
 
 ## Quick reference
 
-| Type | Use case |
-|---|---|
-| `PropType<T>` | Type a runtime prop declaration |
-| `ExtractPropTypes<T>` | Get resolved prop types (internal, defaults applied) |
-| `ExtractPublicPropTypes<T>` | Get prop types as seen by the parent |
-| `InstanceType<typeof Comp>` | Type a template ref to a child component |
-| `ComponentPublicInstance` | Generic component ref type |
-| `MaybeRef<T>` | Composable param that accepts `T` or `Ref<T>` |
-| `MaybeRefOrGetter<T>` | Also accepts `() => T` |
-| `InjectionKey<T>` | Type-safe provide/inject key |
-| `Ref<T>` / `ComputedRef<T>` | Explicit ref types for function signatures |
-| `VNode` | Virtual DOM node (render functions) |
+| Type                        | Use case                                             |
+| --------------------------- | ---------------------------------------------------- |
+| `PropType<T>`               | Type a runtime prop declaration                      |
+| `ExtractPropTypes<T>`       | Get resolved prop types (internal, defaults applied) |
+| `ExtractPublicPropTypes<T>` | Get prop types as seen by the parent                 |
+| `InstanceType<typeof Comp>` | Type a template ref to a child component             |
+| `ComponentPublicInstance`   | Generic component ref type                           |
+| `MaybeRef<T>`               | Composable param that accepts `T` or `Ref<T>`        |
+| `MaybeRefOrGetter<T>`       | Also accepts `() => T`                               |
+| `InjectionKey<T>`           | Type-safe provide/inject key                         |
+| `Ref<T>` / `ComputedRef<T>` | Explicit ref types for function signatures           |
+| `VNode`                     | Virtual DOM node (render functions)                  |
 
 See also: [How do you declare props with TypeScript?](/q/props-with-typescript) · [What is the Virtual DOM?](/q/virtual-dom) · [What is a composable?](/q/what-is-a-composable)
 

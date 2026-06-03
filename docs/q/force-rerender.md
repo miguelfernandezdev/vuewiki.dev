@@ -1,8 +1,8 @@
 ---
 order: 46
-title: "How do you force a component to re-render?"
-difficulty: "intermediate"
-tags: ["components", "reactivity"]
+title: 'How do you force a component to re-render?'
+difficulty: 'intermediate'
+tags: ['components', 'reactivity']
 summary: "Change the component's :key. Vue destroys the old instance and creates a new one from scratch. Avoid $forceUpdate, it signals broken reactivity."
 ---
 
@@ -46,8 +46,8 @@ If you feel the need to force a re-render, the reactive state is probably not se
 items[0] = newItem
 
 // GOOD: Vue tracks this
-items.value[0] = newItem  // with ref
-items[0] = newItem        // with reactive (Proxy catches it)
+items.value[0] = newItem // with ref
+items[0] = newItem // with reactive (Proxy catches it)
 ```
 
 **Reading a non-reactive value in the template:**
@@ -64,9 +64,7 @@ const count = ref(0)
 
 ```ts
 // This only re-evaluates when items.value changes
-const total = computed(() =>
-  items.value.reduce((sum, i) => sum + i.price, 0)
-)
+const total = computed(() => items.value.reduce((sum, i) => sum + i.price, 0))
 ```
 
 Fix the reactivity, and Vue updates the DOM automatically. That's the whole point of the system.
@@ -90,22 +88,22 @@ There is no `$forceUpdate` equivalent in the Composition API because the assumpt
 
 ## When key-based re-render is legitimate
 
-| Scenario | Why key works |
-|---|---|
+| Scenario                                                               | Why key works                                                        |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | Switching between entities on the same route (`/users/1` → `/users/2`) | Resets local state (form values, scroll position) for the new entity |
-| Third-party component with internal state you can't control | Forces fresh initialization |
-| After a locale/theme change that requires full reinitialization | Some i18n libraries need components to remount |
-| Resetting a form to its initial state | Simpler than manually resetting every field |
+| Third-party component with internal state you can't control            | Forces fresh initialization                                          |
+| After a locale/theme change that requires full reinitialization        | Some i18n libraries need components to remount                       |
+| Resetting a form to its initial state                                  | Simpler than manually resetting every field                          |
 
 ## Key change vs reactive update
 
-| | Key change | Reactive update |
-|---|---|---|
-| Lifecycle hooks | All run again (`onMounted`, etc.) | None run |
-| Local state | Reset to initial values | Preserved |
-| Child components | Destroyed and recreated | Patched in place |
-| DOM | Fully replaced | Minimally patched |
-| Performance | Expensive (full teardown + setup) | Cheap (targeted updates) |
+|                  | Key change                        | Reactive update          |
+| ---------------- | --------------------------------- | ------------------------ |
+| Lifecycle hooks  | All run again (`onMounted`, etc.) | None run                 |
+| Local state      | Reset to initial values           | Preserved                |
+| Child components | Destroyed and recreated           | Patched in place         |
+| DOM              | Fully replaced                    | Minimally patched        |
+| Performance      | Expensive (full teardown + setup) | Cheap (targeted updates) |
 
 Use reactive updates by default. Reserve key-based re-rendering for cases where you genuinely need a fresh component instance.
 

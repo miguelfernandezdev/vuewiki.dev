@@ -1,9 +1,9 @@
 ---
 order: 137
-title: "How would you structure a micro-frontend with Vue?"
-difficulty: "advanced"
-tags: ["architecture", "pinia", "vite", "provide-inject"]
-summary: "Split the frontend into independent apps using Module Federation, Web Components, or iframes. Each team deploys independently."
+title: 'How would you structure a micro-frontend with Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'pinia', 'vite', 'provide-inject']
+summary: 'Split the frontend into independent apps using Module Federation, Web Components, or iframes. Each team deploys independently.'
 ---
 
 Micro-frontends split a large frontend into independent apps that are developed, deployed, and run separately. Each team owns a feature and ships it without coordinating releases with others. In Vue, the main approaches are Module Federation, Web Components, and iframe-based composition.
@@ -100,9 +100,11 @@ Micro-frontends are isolated, so they need explicit communication channels:
 
 ```ts
 // Micro-frontend A dispatches
-window.dispatchEvent(new CustomEvent('cart:updated', {
-  detail: { itemCount: 3 }
-}))
+window.dispatchEvent(
+  new CustomEvent('cart:updated', {
+    detail: { itemCount: 3 }
+  })
+)
 
 // Micro-frontend B listens
 window.addEventListener('cart:updated', (e: CustomEvent) => {
@@ -122,10 +124,13 @@ type EventMap = {
 const listeners = new Map<string, Set<Function>>()
 
 export function emit<K extends keyof EventMap>(event: K, data: EventMap[K]) {
-  listeners.get(event)?.forEach(fn => fn(data))
+  listeners.get(event)?.forEach((fn) => fn(data))
 }
 
-export function on<K extends keyof EventMap>(event: K, fn: (data: EventMap[K]) => void) {
+export function on<K extends keyof EventMap>(
+  event: K,
+  fn: (data: EventMap[K]) => void
+) {
   if (!listeners.has(event)) listeners.set(event, new Set())
   listeners.get(event)!.add(fn)
   return () => listeners.get(event)!.delete(fn)
@@ -160,13 +165,13 @@ apps/
 
 ## When to use micro-frontends
 
-| Situation | Use micro-frontends? |
-|---|---|
-| Multiple teams working on separate features independently | Yes |
-| Need to deploy features without full app release | Yes |
-| Single team, medium-sized app | No, use a monolith with good architecture |
-| Performance is critical (minimal overhead) | Probably no, adds loading complexity |
-| Mixing Vue with React or Angular in one page | Yes, Web Components approach |
+| Situation                                                 | Use micro-frontends?                      |
+| --------------------------------------------------------- | ----------------------------------------- |
+| Multiple teams working on separate features independently | Yes                                       |
+| Need to deploy features without full app release          | Yes                                       |
+| Single team, medium-sized app                             | No, use a monolith with good architecture |
+| Performance is critical (minimal overhead)                | Probably no, adds loading complexity      |
+| Mixing Vue with React or Angular in one page              | Yes, Web Components approach              |
 
 ## Tradeoffs
 

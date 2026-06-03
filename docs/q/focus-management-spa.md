@@ -1,9 +1,9 @@
 ---
 order: 170
-title: "How do you manage focus in Vue SPAs?"
-difficulty: "advanced"
-tags: ["accessibility", "vue-router", "watchers", "suspense"]
-summary: "Move focus to the main heading after route changes, trap focus inside modals, and restore focus when dynamic content is dismissed."
+title: 'How do you manage focus in Vue SPAs?'
+difficulty: 'advanced'
+tags: ['accessibility', 'vue-router', 'watchers', 'suspense']
+summary: 'Move focus to the main heading after route changes, trap focus inside modals, and restore focus when dynamic content is dismissed.'
 ---
 
 In a traditional website, the browser moves focus to the top of the page on every navigation. SPAs break this because the page never reloads. After a client-side route change, focus stays wherever it was, which means a screen reader user has no idea the page changed. You need to move focus manually on route changes, trap it inside modals, and return it when dynamic content is dismissed.
@@ -37,11 +37,14 @@ An alternative is a route announcer that reads the page title without moving vis
 const route = useRoute()
 const announcement = ref('')
 
-watch(() => route.path, () => {
-  nextTick(() => {
-    announcement.value = document.title
-  })
-})
+watch(
+  () => route.path,
+  () => {
+    nextTick(() => {
+      announcement.value = document.title
+    })
+  }
+)
 </script>
 
 <template>
@@ -186,14 +189,14 @@ The link is hidden until it receives focus, then it jumps to the top of the scre
 
 ## Summary
 
-| Scenario | Action |
-|---|---|
-| Route change | Move focus to `h1` or announce page title via live region |
-| Modal opens | Use `<dialog>` with `showModal()`, or trap focus manually |
-| Modal closes | Return focus to the element that triggered it |
-| Item deleted | Move focus to the next item or the list container |
-| Content loaded | Focus the new content or announce it with `aria-live` |
-| Skip navigation | Provide a skip link as the first focusable element |
+| Scenario        | Action                                                    |
+| --------------- | --------------------------------------------------------- |
+| Route change    | Move focus to `h1` or announce page title via live region |
+| Modal opens     | Use `<dialog>` with `showModal()`, or trap focus manually |
+| Modal closes    | Return focus to the element that triggered it             |
+| Item deleted    | Move focus to the next item or the list container         |
+| Content loaded  | Focus the new content or announce it with `aria-live`     |
+| Skip navigation | Provide a skip link as the first focusable element        |
 
 See also: [How do you handle accessibility in Vue?](/q/accessibility-in-vue) · [How does Vue Router work?](/q/vue-router-navigation-guards) · [What are teleport, fragments, and Suspense?](/q/teleport-fragments-suspense)
 

@@ -22,7 +22,12 @@
     },
     {
       "question": "Which directive supports `v-else` and `v-else-if` chains?",
-      "options": ["v-show", "v-if", "Both support v-else", "Neither supports v-else"],
+      "options": [
+        "v-show",
+        "v-if",
+        "Both support v-else",
+        "Neither supports v-else"
+      ],
       "answer": 1
     }
   ]

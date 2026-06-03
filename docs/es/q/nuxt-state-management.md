@@ -1,9 +1,9 @@
 ---
 order: 156
-title: "¿Cómo funciona la gestión de estado en Nuxt? (useState, Pinia)"
-difficulty: "intermediate"
-tags: ["nuxt", "state-management", "pinia"]
-summary: "useState para estado compartido compatible con SSR (serializado en el payload). Pinia para dominios complejos. Nunca uses ref plano a nivel de módulo."
+title: '¿Cómo funciona la gestión de estado en Nuxt? (useState, Pinia)'
+difficulty: 'intermediate'
+tags: ['nuxt', 'state-management', 'pinia']
+summary: 'useState para estado compartido compatible con SSR (serializado en el payload). Pinia para dominios complejos. Nunca uses ref plano a nivel de módulo.'
 ---
 
 Nuxt proporciona `useState`, un composable compatible con SSR para compartir estado reactivo entre componentes. Para estado complejo, se añade Pinia como módulo. La regla principal: nunca uses `ref` o `reactive` en el ámbito de módulo en Nuxt, porque ese estado se filtra entre peticiones en el servidor.
@@ -112,7 +112,7 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Product) {
-    const existing = items.value.find(i => i.id === product.id)
+    const existing = items.value.find((i) => i.id === product.id)
     if (existing) {
       existing.qty++
     } else {
@@ -136,20 +136,20 @@ const cart = useCartStore()
 
 ## useState vs Pinia
 
-| | useState | Pinia |
-|---|---|---|
-| Configuración | Integrado, sin configuración | Requiere el módulo `@pinia/nuxt` |
-| Estructura del estado | Un valor por clave | Estado agrupado + getters + acciones |
-| DevTools | Básico | Depuración con viaje en el tiempo |
-| Compatible con SSR | Sí | Sí (con el módulo de Nuxt) |
-| Mejor para | Valores simples compartidos (idioma, tema, usuario actual) | Dominios complejos (carrito, auth, formularios multipaso) |
+|                       | useState                                                   | Pinia                                                     |
+| --------------------- | ---------------------------------------------------------- | --------------------------------------------------------- |
+| Configuración         | Integrado, sin configuración                               | Requiere el módulo `@pinia/nuxt`                          |
+| Estructura del estado | Un valor por clave                                         | Estado agrupado + getters + acciones                      |
+| DevTools              | Básico                                                     | Depuración con viaje en el tiempo                         |
+| Compatible con SSR    | Sí                                                         | Sí (con el módulo de Nuxt)                                |
+| Mejor para            | Valores simples compartidos (idioma, tema, usuario actual) | Dominios complejos (carrito, auth, formularios multipaso) |
 
 ## Límites de serialización
 
 Los valores de `useState` se serializan a JSON al transferirse del servidor al cliente. No puedes almacenar funciones, instancias de clases, símbolos o referencias circulares:
 
 ```ts
-useState('fn', () => () => {})           // fallará
+useState('fn', () => () => {}) // fallará
 useState('data', () => ({ name: 'Vue' })) // funciona bien
 ```
 

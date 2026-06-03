@@ -1,9 +1,10 @@
 ---
 order: 99
-title: "¿Cuándo usar Pinia, un composable o estado local?"
-difficulty: "intermediate"
-tags: ["state-management", "architecture", "pinia", "watchers", "provide-inject"]
-summary: "Estado local por defecto. Composable cuando la lógica es reutilizable. Pinia cuando el estado debe compartirse globalmente o sobrevivir a la navegación."
+title: '¿Cuándo usar Pinia, un composable o estado local?'
+difficulty: 'intermediate'
+tags:
+  ['state-management', 'architecture', 'pinia', 'watchers', 'provide-inject']
+summary: 'Estado local por defecto. Composable cuando la lógica es reutilizable. Pinia cuando el estado debe compartirse globalmente o sobrevivir a la navegación.'
 ---
 
 Estado local por defecto. Pinia solo cuando hay una razón clara. La decisión depende de tres preguntas: cuántos componentes necesitan estos datos, si deben sobrevivir a la navegación entre páginas y si la lógica es reutilizable. El anti-patrón es meter todo en un store "por si acaso", lo que genera un estado global inflado donde el 80% es estado local disfrazado.
@@ -98,16 +99,21 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Product) {
-    const existing = items.value.find(i => i.productId === product.id)
+    const existing = items.value.find((i) => i.productId === product.id)
     if (existing) {
       existing.quantity++
     } else {
-      items.value.push({ productId: product.id, name: product.name, price: product.price, quantity: 1 })
+      items.value.push({
+        productId: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1
+      })
     }
   }
 
   function removeItem(productId: string) {
-    items.value = items.value.filter(i => i.productId !== productId)
+    items.value = items.value.filter((i) => i.productId !== productId)
   }
 
   return { items, total, addItem, removeItem }
@@ -120,17 +126,17 @@ Usar para: usuario autenticado, carrito de compra, filtros compartidos, cola de 
 
 ## Ejemplos concretos
 
-| Estado | Dónde | Por qué |
-|---|---|---|
-| Usuario autenticado | Pinia | Global, persiste entre páginas, se usa en todas partes |
-| Artículos del carrito | Pinia | Compartido entre página de producto, cabecera y checkout |
-| Filtros de búsqueda usados por varios componentes | Pinia | Compartido entre sidebar y lista de resultados |
-| Respuesta de API cacheada usada en varias páginas | Pinia | Sobrevive la navegación, evita re-fetch |
-| Modal abierto/cerrado | ref local | Solo le importa al componente que tiene el modal |
-| Pestaña activa en un componente de pestañas | ref local | Estado de UI, ningún otro componente lo necesita |
-| Valores de un formulario | ref local | Local al formulario |
-| Lógica de búsqueda con debounce reutilizable | Composable | Mismo patrón, instancias independientes |
-| Lógica de Intersection Observer | Composable | Reutilizable, cada componente observa su propio elemento |
+| Estado                                            | Dónde      | Por qué                                                  |
+| ------------------------------------------------- | ---------- | -------------------------------------------------------- |
+| Usuario autenticado                               | Pinia      | Global, persiste entre páginas, se usa en todas partes   |
+| Artículos del carrito                             | Pinia      | Compartido entre página de producto, cabecera y checkout |
+| Filtros de búsqueda usados por varios componentes | Pinia      | Compartido entre sidebar y lista de resultados           |
+| Respuesta de API cacheada usada en varias páginas | Pinia      | Sobrevive la navegación, evita re-fetch                  |
+| Modal abierto/cerrado                             | ref local  | Solo le importa al componente que tiene el modal         |
+| Pestaña activa en un componente de pestañas       | ref local  | Estado de UI, ningún otro componente lo necesita         |
+| Valores de un formulario                          | ref local  | Local al formulario                                      |
+| Lógica de búsqueda con debounce reutilizable      | Composable | Mismo patrón, instancias independientes                  |
+| Lógica de Intersection Observer                   | Composable | Reutilizable, cada componente observa su propio elemento |
 
 ## El patrón de composable compartido (singleton)
 

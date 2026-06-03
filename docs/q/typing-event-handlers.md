@@ -1,9 +1,9 @@
 ---
 order: 109
-title: "How do you type event handlers in Vue templates?"
-difficulty: "intermediate"
-tags: ["typescript", "components"]
-summary: "Type the event parameter explicitly (e: Event) and cast event.target to the correct element type (e.target as HTMLInputElement) to access .value or .checked."
+title: 'How do you type event handlers in Vue templates?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components']
+summary: 'Type the event parameter explicitly (e: Event) and cast event.target to the correct element type (e.target as HTMLInputElement) to access .value or .checked.'
 ---
 
 DOM event handlers in Vue templates receive an `Event` object, but TypeScript doesn't know which specific element triggered it. You need to type the event parameter explicitly and cast `event.target` to the correct element type to access properties like `.value` or `.checked`.
@@ -60,16 +60,16 @@ function handleSubmit(event: SubmitEvent) {
 
 ## Event type reference
 
-| Template event | TypeScript type | Key properties |
-|---|---|---|
-| `@click`, `@dblclick` | `MouseEvent` | clientX, clientY, button, ctrlKey |
-| `@keydown`, `@keyup` | `KeyboardEvent` | key, code, ctrlKey, shiftKey |
-| `@input`, `@change` | `Event` | target (needs cast) |
-| `@focus`, `@blur` | `FocusEvent` | relatedTarget |
-| `@submit` | `SubmitEvent` | submitter |
-| `@drag`, `@drop` | `DragEvent` | dataTransfer |
-| `@wheel` | `WheelEvent` | deltaX, deltaY |
-| `@touchstart`, `@touchend` | `TouchEvent` | touches, changedTouches |
+| Template event             | TypeScript type | Key properties                    |
+| -------------------------- | --------------- | --------------------------------- |
+| `@click`, `@dblclick`      | `MouseEvent`    | clientX, clientY, button, ctrlKey |
+| `@keydown`, `@keyup`       | `KeyboardEvent` | key, code, ctrlKey, shiftKey      |
+| `@input`, `@change`        | `Event`         | target (needs cast)               |
+| `@focus`, `@blur`          | `FocusEvent`    | relatedTarget                     |
+| `@submit`                  | `SubmitEvent`   | submitter                         |
+| `@drag`, `@drop`           | `DragEvent`     | dataTransfer                      |
+| `@wheel`                   | `WheelEvent`    | deltaX, deltaY                    |
+| `@touchstart`, `@touchend` | `TouchEvent`    | touches, changedTouches           |
 
 ## Element type assertions
 

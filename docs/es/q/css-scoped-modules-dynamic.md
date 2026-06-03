@@ -1,9 +1,9 @@
 ---
 order: 21
-title: "¿Cómo funcionan los estilos con scoped, CSS Modules y clases dinámicas en Vue?"
-difficulty: "beginner"
-tags: ["components", "styling", "teleport"]
-summary: "Scoped styles añade atributos data-v para aislar. CSS Modules genera hash en nombres de clase. :class y :style enlazan clases/estilos dinámicamente."
+title: '¿Cómo funcionan los estilos con scoped, CSS Modules y clases dinámicas en Vue?'
+difficulty: 'beginner'
+tags: ['components', 'styling', 'teleport']
+summary: 'Scoped styles añade atributos data-v para aislar. CSS Modules genera hash en nombres de clase. :class y :style enlazan clases/estilos dinámicamente.'
 ---
 
 Los Single-File Components de Vue ofrecen tres formas de aplicar estilos a los componentes, cada una resolviendo un problema diferente.
@@ -14,7 +14,9 @@ Añadir `scoped` a un bloque `<style>` limita el CSS al componente actual. Vue a
 
 ```vue
 <style scoped>
-.title { color: blue; }
+.title {
+  color: blue;
+}
 /* Compila a: .title[data-v-abc123] { color: blue; } */
 </style>
 ```
@@ -31,7 +33,9 @@ CSS Modules hace hash de los nombres de clase en tiempo de compilación. Los enl
 </template>
 
 <style module>
-.title { color: blue; }
+.title {
+  color: blue;
+}
 /* Compila a: .title_abc1 { color: blue; } */
 </style>
 ```
@@ -79,13 +83,13 @@ Vue añade automáticamente prefijos de vendor para propiedades CSS específicas
 
 ## Cuándo usar cada opción
 
-| Necesidad | Usar |
-|---|---|
-| Aislamiento simple del componente | `<style scoped>` |
-| Contenido teleportado o dinámico | `<style module>` |
-| Alternar una clase según el estado | `:class="{ active: isActive }"` |
+| Necesidad                             | Usar                                      |
+| ------------------------------------- | ----------------------------------------- |
+| Aislamiento simple del componente     | `<style scoped>`                          |
+| Contenido teleportado o dinámico      | `<style module>`                          |
+| Alternar una clase según el estado    | `:class="{ active: isActive }"`           |
 | Combinar clases estáticas y dinámicas | `:class="['base', { active: isActive }]"` |
-| Sobrescrituras inline puntuales | `:style="{ color: x }"` |
+| Sobrescrituras inline puntuales       | `:style="{ color: x }"`                   |
 
 Ver también: [¿Por qué el CSS scoped no estila elementos de componentes hijos?](/es/q/scoped-css-child-components) · [¿Cómo interactúan los estilos scoped con Teleport?](/es/q/teleport-scoped-styles)
 

@@ -1,9 +1,10 @@
 ---
 order: 99
-title: "When should you use Pinia vs a composable vs local state?"
-difficulty: "intermediate"
-tags: ["state-management", "architecture", "pinia", "watchers", "provide-inject"]
-summary: "Local state by default. Composable when logic is reusable across components. Pinia when state must be shared globally or survive navigation."
+title: 'When should you use Pinia vs a composable vs local state?'
+difficulty: 'intermediate'
+tags:
+  ['state-management', 'architecture', 'pinia', 'watchers', 'provide-inject']
+summary: 'Local state by default. Composable when logic is reusable across components. Pinia when state must be shared globally or survive navigation.'
 ---
 
 Local state by default. Pinia only when there's a clear reason. The decision depends on three questions: how many components need this data, whether it must survive page navigation, and whether the logic is reusable. The anti-pattern is putting everything in a store "just in case," which creates a bloated global state where 80% is local state in disguise.
@@ -98,16 +99,21 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Product) {
-    const existing = items.value.find(i => i.productId === product.id)
+    const existing = items.value.find((i) => i.productId === product.id)
     if (existing) {
       existing.quantity++
     } else {
-      items.value.push({ productId: product.id, name: product.name, price: product.price, quantity: 1 })
+      items.value.push({
+        productId: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1
+      })
     }
   }
 
   function removeItem(productId: string) {
-    items.value = items.value.filter(i => i.productId !== productId)
+    items.value = items.value.filter((i) => i.productId !== productId)
   }
 
   return { items, total, addItem, removeItem }
@@ -120,17 +126,17 @@ Use for: authenticated user, shopping cart, shared filters, notification queue, 
 
 ## Concrete examples
 
-| State | Where | Why |
-|---|---|---|
-| Authenticated user | Pinia | Global, persists across pages, used everywhere |
-| Shopping cart items | Pinia | Shared across product page, header, checkout |
-| Search filters used by multiple components | Pinia | Shared between sidebar and results list |
-| Cached API response used on multiple pages | Pinia | Survives navigation, avoids refetching |
-| Modal open/closed | Local ref | Only the component with the modal cares |
-| Active tab in a tab component | Local ref | UI state, no other component needs it |
-| Form input values | Local ref | Local to the form |
-| Reusable debounced search logic | Composable | Same pattern, independent instances |
-| Intersection observer logic | Composable | Reusable, each component observes its own element |
+| State                                      | Where      | Why                                               |
+| ------------------------------------------ | ---------- | ------------------------------------------------- |
+| Authenticated user                         | Pinia      | Global, persists across pages, used everywhere    |
+| Shopping cart items                        | Pinia      | Shared across product page, header, checkout      |
+| Search filters used by multiple components | Pinia      | Shared between sidebar and results list           |
+| Cached API response used on multiple pages | Pinia      | Survives navigation, avoids refetching            |
+| Modal open/closed                          | Local ref  | Only the component with the modal cares           |
+| Active tab in a tab component              | Local ref  | UI state, no other component needs it             |
+| Form input values                          | Local ref  | Local to the form                                 |
+| Reusable debounced search logic            | Composable | Same pattern, independent instances               |
+| Intersection observer logic                | Composable | Reusable, each component observes its own element |
 
 ## The shared composable pattern (singleton)
 

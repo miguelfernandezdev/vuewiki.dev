@@ -1,9 +1,9 @@
 ---
 order: 136
-title: "¿Cómo construirías un carrito de compra con Vue?"
-difficulty: "advanced"
-tags: ["architecture", "state-management", "pinia"]
-summary: "Usa un store Pinia para el estado del carrito compartido entre páginas. Actions manejan añadir/eliminar, getters calculan totales. Persiste en localStorage."
+title: '¿Cómo construirías un carrito de compra con Vue?'
+difficulty: 'advanced'
+tags: ['architecture', 'state-management', 'pinia']
+summary: 'Usa un store Pinia para el estado del carrito compartido entre páginas. Actions manejan añadir/eliminar, getters calculan totales. Persiste en localStorage.'
 ---
 
 Un carrito de compra es un problema clásico de gestión de estado. El estado del carrito debe compartirse entre varias páginas (lista de productos, cajón del carrito, checkout), persistir al recargar la página y actualizarse desde distintos lugares. Un store de Pinia es la solución natural.
@@ -32,7 +32,7 @@ export const useCartStore = defineStore('cart', () => {
   )
 
   function addItem(product: Omit<CartItem, 'qty'>, qty = 1) {
-    const existing = items.value.find(i => i.id === product.id)
+    const existing = items.value.find((i) => i.id === product.id)
     if (existing) {
       existing.qty += qty
     } else {
@@ -41,11 +41,11 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   function removeItem(id: string) {
-    items.value = items.value.filter(i => i.id !== id)
+    items.value = items.value.filter((i) => i.id !== id)
   }
 
   function updateQty(id: string, qty: number) {
-    const item = items.value.find(i => i.id === id)
+    const item = items.value.find((i) => i.id === id)
     if (!item) return
     if (qty <= 0) {
       removeItem(id)
@@ -58,7 +58,15 @@ export const useCartStore = defineStore('cart', () => {
     items.value = []
   }
 
-  return { items, totalItems, totalPrice, addItem, removeItem, updateQty, clear }
+  return {
+    items,
+    totalItems,
+    totalPrice,
+    addItem,
+    removeItem,
+    updateQty,
+    clear
+  }
 })
 ```
 
@@ -160,11 +168,15 @@ npm install pinia-plugin-persistedstate
 
 ```ts
 // stores/cart.ts
-export const useCartStore = defineStore('cart', () => {
-  // ... igual que antes
-}, {
-  persist: true
-})
+export const useCartStore = defineStore(
+  'cart',
+  () => {
+    // ... igual que antes
+  },
+  {
+    persist: true
+  }
+)
 ```
 
 ## Badge del carrito en la cabecera
@@ -199,7 +211,7 @@ async function placeOrder() {
     await $fetch('/api/orders', {
       method: 'POST',
       body: {
-        items: cart.items.map(i => ({ id: i.id, qty: i.qty }))
+        items: cart.items.map((i) => ({ id: i.id, qty: i.qty }))
       }
     })
     cart.clear()
@@ -214,9 +226,12 @@ async function placeOrder() {
   <div>
     <h1>Checkout</h1>
     <div v-for="item in cart.items" :key="item.id">
-      {{ item.name }} × {{ item.qty }} — {{ (item.price * item.qty).toFixed(2) }} €
+      {{ item.name }} × {{ item.qty }} —
+      {{ (item.price * item.qty).toFixed(2) }} €
     </div>
-    <p><strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong></p>
+    <p>
+      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
+    </p>
     <button :disabled="isSubmitting || !cart.items.length" @click="placeOrder">
       Place order
     </button>

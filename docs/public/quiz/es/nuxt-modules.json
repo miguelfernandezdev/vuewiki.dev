@@ -22,12 +22,7 @@
     },
     {
       "question": "¿Qué propiedad del objeto meta de defineNuxtModule establece la clave de configuración usada en nuxt.config.ts?",
-      "options": [
-        "key",
-        "name",
-        "id",
-        "configKey"
-      ],
+      "options": ["key", "name", "id", "configKey"],
       "answer": 3
     }
   ]

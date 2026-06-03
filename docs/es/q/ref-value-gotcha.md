@@ -1,9 +1,9 @@
 ---
 order: 64
-title: "¿Por qué olvidar .value con ref provoca bugs?"
-difficulty: "beginner"
-tags: ["reactivity", "errors"]
-summary: "ref() envuelve el valor en un objeto. Accédelo via .value en script. Olvidar .value significa que operas sobre el wrapper, no sobre los datos."
+title: '¿Por qué olvidar .value con ref provoca bugs?'
+difficulty: 'beginner'
+tags: ['reactivity', 'errors']
+summary: 'ref() envuelve el valor en un objeto. Accédelo via .value en script. Olvidar .value significa que operas sobre el wrapper, no sobre los datos.'
 ---
 
 Porque [ref()](https://vuejs.org/api/reactivity-core.html#ref) envuelve tu valor dentro de un objeto. Los datos reales viven en `.value`, no en el ref en sí. Si se olvida `.value` en JavaScript, se está operando sobre el objeto envolvente, no sobre los datos.
@@ -11,12 +11,12 @@ Porque [ref()](https://vuejs.org/api/reactivity-core.html#ref) envuelve tu valor
 ```ts
 const count = ref(0)
 
-count++             // no hace nada útil, estás incrementando un objeto
-count = 5           // reasigna la variable, pierde la reactividad por completo
-console.log(count)  // "[object Object]", no 0
+count++ // no hace nada útil, estás incrementando un objeto
+count = 5 // reasigna la variable, pierde la reactividad por completo
+console.log(count) // "[object Object]", no 0
 
 const items = ref([1, 2, 3])
-items.push(4)       // TypeError: push is not a function
+items.push(4) // TypeError: push is not a function
 ```
 
 La forma correcta:
@@ -24,12 +24,12 @@ La forma correcta:
 ```ts
 const count = ref(0)
 
-count.value++             // 1
-count.value = 5           // 5
-console.log(count.value)  // 5
+count.value++ // 1
+count.value = 5 // 5
+console.log(count.value) // 5
 
 const items = ref([1, 2, 3])
-items.value.push(4)       // [1, 2, 3, 4]
+items.value.push(4) // [1, 2, 3, 4]
 ```
 
 ## La excepción en el template

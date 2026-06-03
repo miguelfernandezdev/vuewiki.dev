@@ -13,7 +13,7 @@ const { t } = useI18n()
 const { readCount, isRead } = useReadTracker()
 
 const questions = computed(() =>
-  allQuestions.filter(q => q.locale === lang.value),
+  allQuestions.filter((q) => q.locale === lang.value)
 )
 
 const PAGE_SIZE = 30
@@ -23,11 +23,20 @@ const activeFilter = ref<string | null>(null)
 const activeTags = ref<Set<string>>(new Set())
 
 const TECHNOLOGY_TAGS = new Set([
-  'nuxt', 'typescript', 'vue-router', 'pinia', 'vite', 'vitest', 'vueuse', 'vuex',
+  'nuxt',
+  'typescript',
+  'vue-router',
+  'pinia',
+  'vite',
+  'vitest',
+  'vueuse',
+  'vuex'
 ])
 
 const DIFFICULTY_ORDER: Record<string, number> = {
-  beginner: 0, intermediate: 1, advanced: 2,
+  beginner: 0,
+  intermediate: 1,
+  advanced: 2
 }
 
 type SortKey = 'recommended' | 'easiest' | 'hardest'
@@ -57,7 +66,8 @@ function syncUrlParams() {
   const params = new URLSearchParams()
 
   if (activeFilter.value) params.set('difficulty', activeFilter.value)
-  if (activeTags.value.size > 0) params.set('tags', [...activeTags.value].join(','))
+  if (activeTags.value.size > 0)
+    params.set('tags', [...activeTags.value].join(','))
   if (activeSort.value !== 'recommended') params.set('sort', activeSort.value)
   if (search.value) params.set('q', search.value)
 
@@ -79,12 +89,14 @@ function setSort(key: SortKey) {
 
 const difficultyFilteredQuestions = computed(() => {
   if (!activeFilter.value) return questions.value
-  return questions.value.filter(q => q.difficulty === activeFilter.value)
+  return questions.value.filter((q) => q.difficulty === activeFilter.value)
 })
 
 const tagFilteredQuestions = computed(() => {
   if (activeTags.value.size === 0) return questions.value
-  return questions.value.filter(q => q.tags.some(tag => activeTags.value.has(tag)))
+  return questions.value.filter((q) =>
+    q.tags.some((tag) => activeTags.value.has(tag))
+  )
 })
 
 const tagCounts = computed(() => {
@@ -107,9 +119,11 @@ const difficultyCounts = computed(() => {
 
 const allTags = computed(() => {
   const tags = new Set<string>()
-  questions.value.forEach(q => q.tags.forEach(tag => tags.add(tag)))
+  questions.value.forEach((q) => q.tags.forEach((tag) => tags.add(tag)))
   const counts = tagCounts.value
-  return Array.from(tags).sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0))
+  return Array.from(tags).sort(
+    (a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0)
+  )
 })
 
 const groupedTags = computed(() => {
@@ -132,8 +146,10 @@ const dropdownRef = ref<HTMLElement | null>(null)
 const filteredTopics = computed(() => {
   if (!topicSearch.value) return groupedTags.value.topics
   const q = topicSearch.value.toLowerCase()
-  return groupedTags.value.topics.filter(tag =>
-    t(`tags.${tag}`).toLowerCase().includes(q) || tag.toLowerCase().includes(q),
+  return groupedTags.value.topics.filter(
+    (tag) =>
+      t(`tags.${tag}`).toLowerCase().includes(q) ||
+      tag.toLowerCase().includes(q)
   )
 })
 
@@ -144,8 +160,10 @@ const techDropdownRef = ref<HTMLElement | null>(null)
 const filteredTech = computed(() => {
   if (!techSearch.value) return groupedTags.value.technologies
   const q = techSearch.value.toLowerCase()
-  return groupedTags.value.technologies.filter(tag =>
-    t(`tags.${tag}`).toLowerCase().includes(q) || tag.toLowerCase().includes(q),
+  return groupedTags.value.technologies.filter(
+    (tag) =>
+      t(`tags.${tag}`).toLowerCase().includes(q) ||
+      tag.toLowerCase().includes(q)
   )
 })
 
@@ -167,10 +185,16 @@ function onClickOutside(e: MouseEvent) {
   if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
     topicDropdownOpen.value = false
   }
-  if (techDropdownRef.value && !techDropdownRef.value.contains(e.target as Node)) {
+  if (
+    techDropdownRef.value &&
+    !techDropdownRef.value.contains(e.target as Node)
+  ) {
     techDropdownOpen.value = false
   }
-  if (sortDropdownRef.value && !sortDropdownRef.value.contains(e.target as Node)) {
+  if (
+    sortDropdownRef.value &&
+    !sortDropdownRef.value.contains(e.target as Node)
+  ) {
     sortDropdownOpen.value = false
   }
 }
@@ -181,17 +205,18 @@ onMounted(() => {
 })
 onUnmounted(() => document.removeEventListener('click', onClickOutside))
 
-watch(
-  [search, activeFilter, activeTags, activeSort],
-  () => syncUrlParams(),
-  { deep: true },
-)
+watch([search, activeFilter, activeTags, activeSort], () => syncUrlParams(), {
+  deep: true
+})
 
-const fuse = computed(() => new Fuse(questions.value, {
-  keys: ['title'],
-  threshold: 0.4,
-  includeMatches: true,
-}))
+const fuse = computed(
+  () =>
+    new Fuse(questions.value, {
+      keys: ['title'],
+      threshold: 0.4,
+      includeMatches: true
+    })
+)
 
 const fuseResults = computed(() => {
   if (!search.value) return null
@@ -199,30 +224,48 @@ const fuseResults = computed(() => {
 })
 
 const filteredQuestions = computed(() => {
-  let results: { title: string; url: string; difficulty: string; tags: string[]; order: number; highlights?: [number, number][] }[]
+  let results: {
+    title: string
+    url: string
+    difficulty: string
+    tags: string[]
+    order: number
+    highlights?: [number, number][]
+  }[]
 
   if (fuseResults.value) {
-    results = fuseResults.value.map(r => ({
+    results = fuseResults.value.map((r) => ({
       ...r.item,
-      highlights: r.matches?.[0]?.indices as [number, number][] | undefined,
+      highlights: r.matches?.[0]?.indices as [number, number][] | undefined
     }))
   } else {
-    results = questions.value.map(q => ({ ...q, highlights: undefined }))
+    results = questions.value.map((q) => ({ ...q, highlights: undefined }))
   }
 
-  const filtered = results.filter(q => {
-    const matchesFilter = !activeFilter.value || q.difficulty === activeFilter.value
-    const matchesTag = activeTags.value.size === 0 || q.tags.some(tag => activeTags.value.has(tag))
+  const filtered = results.filter((q) => {
+    const matchesFilter =
+      !activeFilter.value || q.difficulty === activeFilter.value
+    const matchesTag =
+      activeTags.value.size === 0 ||
+      q.tags.some((tag) => activeTags.value.has(tag))
     return matchesFilter && matchesTag
   })
 
   if (fuseResults.value) return filtered
 
   if (activeSort.value === 'easiest') {
-    return filtered.sort((a, b) => (DIFFICULTY_ORDER[a.difficulty] ?? 0) - (DIFFICULTY_ORDER[b.difficulty] ?? 0) || a.order - b.order)
+    return filtered.sort(
+      (a, b) =>
+        (DIFFICULTY_ORDER[a.difficulty] ?? 0) -
+          (DIFFICULTY_ORDER[b.difficulty] ?? 0) || a.order - b.order
+    )
   }
   if (activeSort.value === 'hardest') {
-    return filtered.sort((a, b) => (DIFFICULTY_ORDER[b.difficulty] ?? 0) - (DIFFICULTY_ORDER[a.difficulty] ?? 0) || a.order - b.order)
+    return filtered.sort(
+      (a, b) =>
+        (DIFFICULTY_ORDER[b.difficulty] ?? 0) -
+          (DIFFICULTY_ORDER[a.difficulty] ?? 0) || a.order - b.order
+    )
   }
   return filtered
 })
@@ -242,11 +285,11 @@ function highlightTitle(title: string, indices?: [number, number][]) {
 }
 
 const visibleQuestions = computed(() =>
-  filteredQuestions.value.slice(0, visibleCount.value),
+  filteredQuestions.value.slice(0, visibleCount.value)
 )
 
-const hasMore = computed(() =>
-  visibleCount.value < filteredQuestions.value.length,
+const hasMore = computed(
+  () => visibleCount.value < filteredQuestions.value.length
 )
 
 function showMore() {
@@ -287,7 +330,7 @@ function clearTags() {
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',
   intermediate: 'badge-intermediate',
-  advanced: 'badge-advanced',
+  advanced: 'badge-advanced'
 }
 
 let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
@@ -297,7 +340,7 @@ watch(search, (value) => {
   searchDebounceTimer = setTimeout(() => {
     posthog.capture('question_searched', {
       query: value,
-      result_count: filteredQuestions.value.length,
+      result_count: filteredQuestions.value.length
     })
   }, 800)
 })
@@ -306,9 +349,26 @@ watch(search, (value) => {
 <template>
   <div class="home-page">
     <div class="search-wrapper">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <circle cx="7.5" cy="7.5" r="5.75" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <svg
+        class="search-icon"
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+      >
+        <circle
+          cx="7.5"
+          cy="7.5"
+          r="5.75"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <path
+          d="M12 12L16 16"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
       </svg>
       <input
         v-model="search"
@@ -318,7 +378,12 @@ watch(search, (value) => {
       />
       <button v-if="search" class="search-clear" @click="search = ''">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path
+            d="M3.5 3.5L10.5 10.5M10.5 3.5L3.5 10.5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
         </svg>
       </button>
     </div>
@@ -328,10 +393,16 @@ watch(search, (value) => {
         <div class="progress-bar">
           <div
             class="progress-fill"
-            :style="{ width: questions.length ? `${(readCount / questions.length) * 100}%` : '0%' }"
+            :style="{
+              width: questions.length
+                ? `${(readCount / questions.length) * 100}%`
+                : '0%'
+            }"
           />
         </div>
-        <span class="progress-label">{{ readCount }}/{{ questions.length }}</span>
+        <span class="progress-label"
+          >{{ readCount }}/{{ questions.length }}</span
+        >
       </div>
 
       <div class="filters">
@@ -339,12 +410,28 @@ watch(search, (value) => {
           <button
             v-for="f in [
               { label: t('filters.all'), value: null, count: questions.length },
-              { label: t('filters.beginner'), value: 'beginner', count: difficultyCounts['beginner'] ?? 0 },
-              { label: t('filters.intermediate'), value: 'intermediate', count: difficultyCounts['intermediate'] ?? 0 },
-              { label: t('filters.advanced'), value: 'advanced', count: difficultyCounts['advanced'] ?? 0 },
+              {
+                label: t('filters.beginner'),
+                value: 'beginner',
+                count: difficultyCounts['beginner'] ?? 0
+              },
+              {
+                label: t('filters.intermediate'),
+                value: 'intermediate',
+                count: difficultyCounts['intermediate'] ?? 0
+              },
+              {
+                label: t('filters.advanced'),
+                value: 'advanced',
+                count: difficultyCounts['advanced'] ?? 0
+              }
             ]"
             :key="f.label"
-            :class="['filter-btn', { active: activeFilter === f.value }, f.value ? `filter-${f.value}` : '']"
+            :class="[
+              'filter-btn',
+              { active: activeFilter === f.value },
+              f.value ? `filter-${f.value}` : ''
+            ]"
             @click="setFilter(f.value)"
           >
             {{ f.label }} ({{ f.count }})
@@ -354,9 +441,31 @@ watch(search, (value) => {
         <div ref="dropdownRef" class="topic-dropdown">
           <button class="dropdown-trigger" @click="toggleDropdown">
             <span>{{ t('tags.topicsGroup') }}</span>
-            <span v-if="activeTags.size > 0 && [...activeTags].some(t => !TECHNOLOGY_TAGS.has(t))" class="trigger-count">{{ [...activeTags].filter(t => !TECHNOLOGY_TAGS.has(t)).length }}</span>
-            <svg class="dropdown-chevron" :class="{ open: topicDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <span
+              v-if="
+                activeTags.size > 0 &&
+                [...activeTags].some((t) => !TECHNOLOGY_TAGS.has(t))
+              "
+              class="trigger-count"
+              >{{
+                [...activeTags].filter((t) => !TECHNOLOGY_TAGS.has(t)).length
+              }}</span
+            >
+            <svg
+              class="dropdown-chevron"
+              :class="{ open: topicDropdownOpen }"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
           <div v-show="topicDropdownOpen" class="dropdown-panel">
@@ -372,8 +481,21 @@ watch(search, (value) => {
                   :class="['dropdown-option', { active: activeTags.has(tag) }]"
                   @click="toggleTag(tag)"
                 >
-                  <svg v-if="activeTags.has(tag)" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg
+                    v-if="activeTags.has(tag)"
+                    class="check-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 7L6 10L11 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                   <span>{{ t(`tags.${tag}`) }}</span>
                   <span class="tag-count">({{ tagCounts.get(tag) ?? 0 }})</span>
@@ -386,9 +508,28 @@ watch(search, (value) => {
         <div ref="techDropdownRef" class="topic-dropdown">
           <button class="dropdown-trigger" @click="toggleTechDropdown">
             <span>{{ t('tags.techGroup') }}</span>
-            <span v-if="[...activeTags].some(t => TECHNOLOGY_TAGS.has(t))" class="trigger-count">{{ [...activeTags].filter(t => TECHNOLOGY_TAGS.has(t)).length }}</span>
-            <svg class="dropdown-chevron" :class="{ open: techDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <span
+              v-if="[...activeTags].some((t) => TECHNOLOGY_TAGS.has(t))"
+              class="trigger-count"
+              >{{
+                [...activeTags].filter((t) => TECHNOLOGY_TAGS.has(t)).length
+              }}</span
+            >
+            <svg
+              class="dropdown-chevron"
+              :class="{ open: techDropdownOpen }"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
           <div v-show="techDropdownOpen" class="dropdown-panel">
@@ -404,8 +545,21 @@ watch(search, (value) => {
                   :class="['dropdown-option', { active: activeTags.has(tag) }]"
                   @click="toggleTag(tag)"
                 >
-                  <svg v-if="activeTags.has(tag)" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg
+                    v-if="activeTags.has(tag)"
+                    class="check-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 7L6 10L11 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                   <span>{{ t(`tags.${tag}`) }}</span>
                   <span class="tag-count">({{ tagCounts.get(tag) ?? 0 }})</span>
@@ -418,22 +572,56 @@ watch(search, (value) => {
         <div ref="sortDropdownRef" class="topic-dropdown">
           <button class="dropdown-trigger" @click="toggleSortDropdown">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 4H12M4 7H10M6 10H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path
+                d="M2 4H12M4 7H10M6 10H8"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
             </svg>
             <span>{{ t(`sort.${activeSort}`) }}</span>
-            <svg class="dropdown-chevron" :class="{ open: sortDropdownOpen }" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              class="dropdown-chevron"
+              :class="{ open: sortDropdownOpen }"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
           <div v-show="sortDropdownOpen" class="dropdown-panel">
             <ul class="dropdown-list">
-              <li v-for="key in (['recommended', 'easiest', 'hardest'] as const)" :key="key">
+              <li
+                v-for="key in ['recommended', 'easiest', 'hardest'] as const"
+                :key="key"
+              >
                 <button
                   :class="['dropdown-option', { active: activeSort === key }]"
                   @click="setSort(key)"
                 >
-                  <svg v-if="activeSort === key" class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg
+                    v-if="activeSort === key"
+                    class="check-icon"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 7L6 10L11 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                   <span>{{ t(`sort.${key}`) }}</span>
                 </button>
@@ -451,7 +639,12 @@ watch(search, (value) => {
           >
             {{ t(`tags.${tag}`) }}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M3 3L9 9M9 3L3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path
+                d="M3 3L9 9M9 3L3 9"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
             </svg>
           </button>
           <button class="clear-tags" @click="clearTags">
@@ -465,16 +658,35 @@ watch(search, (value) => {
           v-for="q in visibleQuestions"
           :key="q.url"
           :href="q.url"
-          :class="['question-card', `card-${q.difficulty}`, { 'is-read': isRead(q.url) }]"
+          :class="[
+            'question-card',
+            `card-${q.difficulty}`,
+            { 'is-read': isRead(q.url) }
+          ]"
         >
           <div class="question-content">
             <div class="question-title-row">
               <span :class="['read-check', { read: isRead(q.url) }]">
-                <svg v-if="isRead(q.url)" width="12" height="12" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 7L6 10L11 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg
+                  v-if="isRead(q.url)"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                >
+                  <path
+                    d="M3 7L6 10L11 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
-              <span class="question-title" v-html="highlightTitle(q.title, q.highlights)" />
+              <span
+                class="question-title"
+                v-html="highlightTitle(q.title, q.highlights)"
+              />
             </div>
             <div class="question-tags">
               <span v-for="tag in q.tags" :key="tag" class="tag-badge">
@@ -489,7 +701,11 @@ watch(search, (value) => {
       </div>
 
       <button v-if="hasMore" class="show-more-btn" @click="showMore">
-        {{ t('home.showMore', { remaining: filteredQuestions.length - visibleCount }) }}
+        {{
+          t('home.showMore', {
+            remaining: filteredQuestions.length - visibleCount
+          })
+        }}
       </button>
 
       <p v-if="filteredQuestions.length === 0" class="no-results">

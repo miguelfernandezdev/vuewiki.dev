@@ -1,9 +1,9 @@
 ---
 order: 107
-title: "How do you type slots with defineSlots?"
-difficulty: "intermediate"
-tags: ["typescript", "components", "slots"]
-summary: "defineSlots (Vue 3.3+) declares the type contract for slot props, giving consumers autocomplete and type checking on scoped slots."
+title: 'How do you type slots with defineSlots?'
+difficulty: 'intermediate'
+tags: ['typescript', 'components', 'slots']
+summary: 'defineSlots (Vue 3.3+) declares the type contract for slot props, giving consumers autocomplete and type checking on scoped slots.'
 ---
 
 `defineSlots` is a compiler macro (Vue 3.3+) that declares the type contract for your component's slots. Without it, scoped slot props are untyped and consumers get no autocomplete or type checking. With it, the parent template knows exactly what props each slot exposes.
@@ -101,7 +101,12 @@ defineSlots<{
       <template v-if="rows.length">
         <tr v-for="row in rows" :key="row.id">
           <td v-for="col in columns" :key="String(col.key)">
-            <slot name="cell" :row="row" :column="col.key" :value="row[col.key]">
+            <slot
+              name="cell"
+              :row="row"
+              :column="col.key"
+              :value="row[col.key]"
+            >
               {{ row[col.key] }}
             </slot>
           </td>

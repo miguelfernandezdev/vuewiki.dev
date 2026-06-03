@@ -1,9 +1,9 @@
 ---
 order: 48
-title: "How does the `is` attribute work for dynamic component rendering?"
-difficulty: "intermediate"
-tags: ["components", "vite"]
-summary: "<component :is> accepts a component definition, a registered name string, or an HTML tag. Vue resolves it at runtime and renders the match."
+title: 'How does the `is` attribute work for dynamic component rendering?'
+difficulty: 'intermediate'
+tags: ['components', 'vite']
+summary: '<component :is> accepts a component definition, a registered name string, or an HTML tag. Vue resolves it at runtime and renders the match.'
 ---
 
 The `is` attribute on `<component>` accepts a component definition object, a component name string, or an HTML tag name string. Vue resolves it at runtime and renders the matching component or element. Beyond the standard `<component :is>` pattern, `is` has special behavior on native HTML elements and interacts with web components through the `vue:` prefix.

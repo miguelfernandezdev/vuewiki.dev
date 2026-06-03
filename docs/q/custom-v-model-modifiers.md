@@ -1,9 +1,9 @@
 ---
 order: 51
-title: "How do custom v-model modifiers work?"
-difficulty: "advanced"
-tags: ["components", "directives", "v-model"]
-summary: "Define set/get transforms in defineModel to create modifiers like .capitalize or .round that transform v-model values as they flow in or out."
+title: 'How do custom v-model modifiers work?'
+difficulty: 'advanced'
+tags: ['components', 'directives', 'v-model']
+summary: 'Define set/get transforms in defineModel to create modifiers like .capitalize or .round that transform v-model values as they flow in or out.'
 ---
 
 Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.number`, `.trim`). On custom components, you can define your own modifiers that transform the value as it flows in or out.
@@ -12,9 +12,12 @@ Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.numb
 
 ```vue
 <template>
-  <input v-model.lazy="msg" />    <!-- sync on change, not input -->
-  <input v-model.number="age" />  <!-- cast to number via parseFloat -->
-  <input v-model.trim="name" />   <!-- trim whitespace -->
+  <input v-model.lazy="msg" />
+  <!-- sync on change, not input -->
+  <input v-model.number="age" />
+  <!-- cast to number via parseFloat -->
+  <input v-model.trim="name" />
+  <!-- trim whitespace -->
 </template>
 ```
 
@@ -109,7 +112,10 @@ const [lastName, lastModifiers] = defineModel<string>('lastName')
 ```
 
 ```vue
-<UserForm v-model:first-name.capitalize="first" v-model:last-name.capitalize="last" />
+<UserForm
+  v-model:first-name.capitalize="first"
+  v-model:last-name.capitalize="last"
+/>
 ```
 
 ## Before defineModel (Vue < 3.4)
