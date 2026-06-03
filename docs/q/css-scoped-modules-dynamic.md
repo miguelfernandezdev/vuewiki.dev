@@ -85,12 +85,9 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Object syntax: key is class name, value is condition -->
-  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
-&#10;  <!-- Array syntax: combine multiple sources -->
-  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
-&#10;  <!-- With CSS Modules -->
-  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
+&#10;  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
+&#10;  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
+&#10;  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
@@ -112,10 +109,8 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Object syntax -->
-  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
-&#10;  <!-- Array syntax: merges multiple style objects -->
-  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
+&#10;  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
+&#10;  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
 </template>" />
 
 Vue auto-prefixes vendor-specific CSS properties at runtime, so you don't need to write `-webkit-` or `-moz-` yourself.

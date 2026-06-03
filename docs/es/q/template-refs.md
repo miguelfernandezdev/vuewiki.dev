@@ -37,10 +37,7 @@ import { ref, onMounted } from 'vue'
 })
 </script>
 &#10;<template>
-  <!-- el nombre DEBE ser &quot;inputEl&quot; para coincidir con la variable -->
-  <input ref=&quot;inputEl&quot; />
-</template>" />
-
+&#10;  <input ref=&quot;inputEl&quot; />
 </template>" />
 
 El punto frágil: renombra la variable durante una refactorización y la conexión se rompe silenciosamente.
@@ -74,8 +71,6 @@ import { useTemplateRef, onMounted } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;search-box&quot; type=&quot;search&quot; />
-</template>" />
-
 </template>" />
 
 Ventajas: autocompletado en el IDE para nombres de ref, mejor inferencia de TypeScript, y los errores tipográficos producen errores visibles en lugar de nulls silenciosos.
@@ -187,8 +182,7 @@ defineExpose({ validate })
 </script>
 ```
 
-<PlaygroundLink code="<!-- ChildForm.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref } from 'vue'
 &#10;const formData = ref({ name: '' })
 &#10;function validate() {
@@ -217,8 +211,7 @@ function submit() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { useTemplateRef } from 'vue'
 &#10;const formRef = useTemplateRef('child-form')
 &#10;function submit() {
@@ -230,9 +223,6 @@ import { useTemplateRef } from 'vue'
 &#10;<template>
   <ChildForm ref=&quot;child-form&quot; />
   <button @click=&quot;submit&quot;>Enviar</button>
-</template>" />
-
-<button @click=&quot;submit&quot;>Enviar</button>
 </template>" />
 
 ## Cuándo usar template refs

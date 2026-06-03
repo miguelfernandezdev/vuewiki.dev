@@ -35,15 +35,6 @@ Because Vue scoped CSS works by adding a unique `data-v-xxxxx` attribute to elem
 }
 </style>" />
 
-  </div>
-</template>
-&#10;<style scoped>
-/* This won't work — .calendar-popup is inside DatePicker's template */
-.wrapper .calendar-popup {
-  background: white;
-}
-</style>" />
-
 Generated CSS looks like `.wrapper[data-v-abc123] .calendar-popup[data-v-abc123]`, but `.calendar-popup` doesn't have `data-v-abc123`.
 
 ## How to fix it

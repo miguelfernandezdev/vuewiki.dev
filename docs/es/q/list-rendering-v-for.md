@@ -88,8 +88,7 @@ const user = { name: 'Ana', role: 'Dev', level: 'Senior' }
 <span v-for="n in 5" :key="n">{{ n }}</span>
 ```
 
-<PlaygroundLink code="<!-- Renderiza del 1 al 5 -->
-<span v-for=&quot;n in 5&quot; :key=&quot;n&quot;>{{ n }}</span>" />
+<PlaygroundLink code="<span v-for=&quot;n in 5&quot; :key=&quot;n&quot;>{{ n }}</span>" />
 
 ## Por qué importa `:key`
 
@@ -103,10 +102,8 @@ Sin `:key`, Vue reutiliza los elementos del DOM por posición. Esto falla cuando
 <li v-for="item in items" :key="item.id">...</li>
 ```
 
-<PlaygroundLink code="<!-- Incorrecto: el índice como key tiene el mismo problema que ninguna key al reordenar -->
-<li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>...</li>
-&#10;<!-- Correcto: identificador único y estable -->
-<li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>...</li>" />
+<PlaygroundLink code="<li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>...</li>
+&#10;<li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>...</li>" />
 
 ## v-for en template
 
@@ -152,8 +149,6 @@ Cuando necesitas renderizar varios elementos por iteración sin un wrapper:
     :user=&quot;user&quot;
     @remove=&quot;removeUser(user.id)&quot;
   />
-</template>" />
-
 </template>" />
 
 Las props no se inyectan automáticamente desde la iteración. Tienes que enlazarlas explícitamente.

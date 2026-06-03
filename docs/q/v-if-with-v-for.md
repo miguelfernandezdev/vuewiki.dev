@@ -18,9 +18,7 @@ In **Vue 2**, `v-for` runs first. In **Vue 3**, `v-if` runs first. This means th
 </li>
 ```
 
-<PlaygroundLink code="<!-- Vue 2: iterates all users, then filters by isActive (works but wasteful) -->
-<!-- Vue 3: checks user.isActive BEFORE the loop, but user doesn't exist yet → error -->
-<li v-for=&quot;user in users&quot; v-if=&quot;user.isActive&quot; :key=&quot;user.id&quot;>
+<PlaygroundLink code="<li v-for=&quot;user in users&quot; v-if=&quot;user.isActive&quot; :key=&quot;user.id&quot;>
   {{ user.name }}
 </li>" />
 

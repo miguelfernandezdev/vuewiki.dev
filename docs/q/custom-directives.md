@@ -37,8 +37,6 @@ const vFocus = {
   <input v-focus />
 </template>" />
 
-</template>" />
-
 In `<script setup>`, any variable starting with `v` followed by an uppercase letter is automatically available as a directive in the template.
 
 ## Function shorthand
@@ -60,8 +58,6 @@ const vFocus = (el: HTMLElement) => el.focus()
 </script>
 &#10;<template>
   <input v-focus />
-</template>" />
-
 </template>" />
 
 ## Directive hooks

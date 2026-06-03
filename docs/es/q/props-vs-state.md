@@ -21,16 +21,8 @@ const userRole = ref('Developer')
 </script>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <UserCard :name=&quot;userName&quot; :role=&quot;userRole&quot; />
-</template>
-&#10;<script setup>
-import { ref } from 'vue'
-const userName = ref('Ana')
-const userRole = ref('Developer')
-</script>" />
-
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
@@ -62,8 +54,7 @@ const isExpanded = ref(false)
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 // Props: recibidas del padre, solo lectura
 const props = defineProps<{
   name: string
@@ -118,16 +109,14 @@ const emit = defineEmits<{ update: [value: number] }>()
 <Counter :count="total" @update="total = $event" />
 ```
 
-<PlaygroundLink code="<!-- Child -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ count: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
 </script>
 &#10;<template>
   <button @click=&quot;emit('update', count + 1)&quot;>+1</button>
 </template>
-&#10;<!-- Parent -->
-<Counter :count=&quot;total&quot; @update=&quot;total = $event&quot; />" />
+&#10;<Counter :count=&quot;total&quot; @update=&quot;total = $event&quot; />" />
 
 ## Cuándo usar cada uno
 

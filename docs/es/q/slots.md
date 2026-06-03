@@ -26,21 +26,12 @@ La forma más simple. El hijo define un placeholder `<slot />`, y cualquier cosa
 </Card>
 ```
 
-<PlaygroundLink code="<!-- Card.vue -->
-<template>
+<PlaygroundLink code="<template>
   <div class=&quot;card&quot;>
     <slot />
   </div>
 </template>
-&#10;<!-- Uso -->
-<Card>
-  <p>Este párrafo reemplaza el slot</p>
-</Card>" />
-
-  </div>
-</template>
-&#10;<!-- Uso -->
-<Card>
+&#10;<Card>
   <p>Este párrafo reemplaza el slot</p>
 </Card>" />
 
@@ -72,14 +63,12 @@ Cuando un componente tiene múltiples puntos de inserción, dale un nombre a cad
 </PageLayout>
 ```
 
-<PlaygroundLink code="<!-- PageLayout.vue -->
-<template>
+<PlaygroundLink code="<template>
   <header><slot name=&quot;header&quot; /></header>
   <main><slot /></main>
   <footer><slot name=&quot;footer&quot; /></footer>
 </template>
-&#10;<!-- Uso -->
-<PageLayout>
+&#10;<PageLayout>
   <template #header>
     <h1>Dashboard</h1>
   </template>
@@ -117,8 +106,7 @@ defineProps<{ items: string[] }>()
 </ItemList>
 ```
 
-<PlaygroundLink code="<!-- ItemList.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 defineProps<{ items: string[] }>()
 </script>
 &#10;<template>
@@ -128,18 +116,7 @@ defineProps<{ items: string[] }>()
     </li>
   </ul>
 </template>
-&#10;<!-- Uso: el padre decide cómo se ve cada item -->
-<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
-  <template #item=&quot;{ value, index }&quot;>
-    <strong>{{ index + 1 }}.</strong> {{ value }}
-  </template>
-</ItemList>" />
-
-    </li>
-  </ul>
-</template>
-&#10;<!-- Uso: el padre decide cómo se ve cada item -->
-<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
+&#10;<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
   <template #item=&quot;{ value, index }&quot;>
     <strong>{{ index + 1 }}.</strong> {{ value }}
   </template>

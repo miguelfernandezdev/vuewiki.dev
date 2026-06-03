@@ -55,8 +55,7 @@ watch(
 </template>
 ```
 
-<PlaygroundLink code="<!-- App.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const route = useRoute()
 const announcement = ref('')
 &#10;watch(
@@ -73,8 +72,6 @@ const announcement = ref('')
     {{ announcement }}
   </div>
   <RouterView />
-</template>" />
-
 </template>" />
 
 Esto anuncia el nuevo título de la página a los lectores de pantalla sin interrumpir el foco visual, lo que puede ser mejor para los usuarios con teclado que no quieren que su posición de scroll cambie.
@@ -132,12 +129,6 @@ const triggerRef = ref<HTMLElement>()
       <input type=&quot;text&quot; />
     </label>
     <button @click=&quot;close&quot;>Done</button>
-  </dialog>
-</template>" />
-
-</label>
-<button @click=&quot;close&quot;>Done</button>
-
   </dialog>
 </template>" />
 
@@ -258,28 +249,9 @@ Permite a los usuarios de teclado saltar la navegación repetitiva:
 </style>
 ```
 
-<PlaygroundLink code="<!-- App.vue -->
-<template>
+<PlaygroundLink code="<template>
   <a href=&quot;#main-content&quot; class=&quot;skip-link&quot;>Skip to content</a>
   <TheNavbar />
-  <main id=&quot;main-content&quot; tabindex=&quot;-1&quot;>
-    <RouterView />
-  </main>
-</template>
-&#10;<style>
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: 0;
-  z-index: 100;
-  padding: 0.5rem 1rem;
-  background: white;
-}
-.skip-link:focus {
-  top: 0;
-}
-</style>" />
-
   <main id=&quot;main-content&quot; tabindex=&quot;-1&quot;>
     <RouterView />
   </main>

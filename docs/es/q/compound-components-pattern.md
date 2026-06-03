@@ -53,8 +53,7 @@ provide('tabs', {
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/Tabs.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const activeTab = ref(0)
 const tabs = ref<string[]>([])
 &#10;function register(label: string) {
@@ -88,10 +87,6 @@ const tabs = ref<string[]>([])
   </div>
 </template>" />
 
-    </div>
-  </div>
-</template>" />
-
 ```vue
 <!-- components/Tab.vue -->
 <script setup lang="ts">
@@ -110,8 +105,7 @@ const isActive = computed(() => activeTab.value === index)
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/Tab.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const props = defineProps<{ label: string }>()
 &#10;const { activeTab, register } = inject('tabs')!
 const index = register(props.label)
@@ -120,9 +114,6 @@ const index = register(props.label)
 &#10;<template>
   <div v-show=&quot;isActive&quot;>
     <slot />
-  </div>
-</template>" />
-
   </div>
 </template>" />
 
@@ -148,16 +139,6 @@ const index = register(props.label)
   <Tabs>
     <Tab label=&quot;Profile&quot;>
       <UserProfile />
-    </Tab>
-    <Tab label=&quot;Settings&quot;>
-      <UserSettings />
-    </Tab>
-    <Tab label=&quot;Billing&quot;>
-      <BillingInfo />
-    </Tab>
-  </Tabs>
-</template>" />
-
     </Tab>
     <Tab label=&quot;Settings&quot;>
       <UserSettings />
@@ -195,8 +176,7 @@ provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
 </script>
 ```
 
-<PlaygroundLink code="<!-- Tabs.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { TABS_KEY } from '@/composables/useTabs'
 provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
 </script>" />
@@ -210,8 +190,7 @@ if (!ctx) throw new Error('Tab must be used inside Tabs')
 </script>
 ```
 
-<PlaygroundLink code="<!-- Tab.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { TABS_KEY } from '@/composables/useTabs'
 const ctx = inject(TABS_KEY)
 if (!ctx) throw new Error('Tab must be used inside Tabs')
@@ -246,8 +225,7 @@ provide('accordion', { toggle, isOpen })
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/Accordion.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const openItems = ref<Set<string>>(new Set())
 &#10;function toggle(id: string) {
   if (openItems.value.has(id)) {
@@ -264,9 +242,6 @@ const openItems = ref<Set<string>>(new Set())
 &#10;<template>
   <div class=&quot;accordion&quot;>
     <slot />
-  </div>
-</template>" />
-
   </div>
 </template>" />
 
@@ -290,8 +265,7 @@ const { toggle, isOpen } = inject('accordion')!
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/AccordionItem.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const props = defineProps<{ id: string; title: string }>()
 const { toggle, isOpen } = inject('accordion')!
 </script>
@@ -303,10 +277,6 @@ const { toggle, isOpen } = inject('accordion')!
     </button>
     <div v-show=&quot;isOpen(id)&quot;>
       <slot />
-    </div>
-  </div>
-</template>" />
-
     </div>
   </div>
 </template>" />
@@ -364,21 +334,13 @@ El enfoque solo con props pasa todos los datos a un único componente:
 </Tabs>
 ```
 
-<PlaygroundLink code="<!-- Solo props: menos flexible, más simple para casos pequeños -->
-<Tabs
+<PlaygroundLink code="<Tabs
   :items=&quot;[
     { label: 'Profile', content: '...' },
     { label: 'Settings', content: '...' }
   ]&quot;
 />
-&#10;<!-- Compuesto: más flexible, el consumidor controla el layout -->
-<Tabs>
-  <Tab label=&quot;Profile&quot;><UserProfile /></Tab>
-  <Tab label=&quot;Settings&quot;><UserSettings /></Tab>
-</Tabs>" />
-
-&#10;<!-- Compuesto: más flexible, el consumidor controla el layout -->
-<Tabs>
+&#10;<Tabs>
   <Tab label=&quot;Profile&quot;><UserProfile /></Tab>
   <Tab label=&quot;Settings&quot;><UserSettings /></Tab>
 </Tabs>" />

@@ -32,9 +32,6 @@ import { ref } from 'vue'
   <p>Current value: {{ name }}</p>
 </template>" />
 
-  <p>Current value: {{ name }}</p>
-</template>" />
-
 Cada carácter que escribe el usuario fluye a través de: evento input → actualiza `name` → Vue re-renderiza → el input muestra el nuevo valor. Siempre tienes el valor actual en `name`.
 
 ## No controlado (template ref)
@@ -67,9 +64,6 @@ import { useTemplateRef } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;name-input&quot; />
-  <button @click=&quot;handleSubmit&quot;>Submit</button>
-</template>" />
-
   <button @click=&quot;handleSubmit&quot;>Submit</button>
 </template>" />
 
@@ -114,10 +108,7 @@ Los inputs no controlados usan el atributo HTML `value`:
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Se actualiza solo cuando el usuario abandona el campo después de modificarlo -->
-  <input v-model.lazy=&quot;search&quot; />
-</template>" />
-
+&#10;  <input v-model.lazy=&quot;search&quot; />
 </template>" />
 
 Esto evita el re-renderizado en cada pulsación mientras mantiene el valor en estado reactivo.

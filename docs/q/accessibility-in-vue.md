@@ -32,16 +32,14 @@ The most impactful accessibility decision has nothing to do with Vue:
 </template>
 ```
 
-<PlaygroundLink code="<!-- BAD: div soup with ARIA band-aids -->
-<template>
+<PlaygroundLink code="<template>
   <div role=&quot;navigation&quot;>
     <div role=&quot;list&quot;>
       <div role=&quot;listitem&quot; @click=&quot;navigate&quot;>Home</div>
     </div>
   </div>
 </template>
-&#10;<!-- GOOD: native elements that work out of the box -->
-<template>
+&#10;<template>
   <nav aria-label=&quot;Main navigation&quot;>
     <ul>
       <li><RouterLink to=&quot;/&quot;>Home</RouterLink></li>
@@ -206,8 +204,7 @@ const notification = ref('')
 </script>
 &#10;<template>
   <form @submit.prevent=&quot;save&quot;>
-    <!-- form fields -->
-    <button type=&quot;submit&quot;>Save</button>
+&#10;    <button type=&quot;submit&quot;>Save</button>
   </form>
 &#10;  <div aria-live=&quot;polite&quot; role=&quot;status&quot; class=&quot;sr-only&quot;>
     {{ notification }}
@@ -246,10 +243,6 @@ Content that should be available to screen readers but not visible on screen:
 <PlaygroundLink code="<template>
   <button @click=&quot;removeItem(item)&quot;>
     <TrashIcon />
-    <span class=&quot;sr-only&quot;>Remove {{ item.name }}</span>
-  </button>
-</template>" />
-
     <span class=&quot;sr-only&quot;>Remove {{ item.name }}</span>
   </button>
 </template>" />

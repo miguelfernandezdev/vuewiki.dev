@@ -60,13 +60,10 @@ A mismatch happens when the HTML the client would render differs from what the s
 <!-- Vue expects the original — mismatch -->
 ```
 
-<PlaygroundLink code="<!-- Server sends this -->
-<p><div>Content</div></p>
-&#10;<!-- Browser corrects to this -->
-<p></p>
+<PlaygroundLink code="<p><div>Content</div></p>
+&#10;<p></p>
 <div>Content</div>
-<p></p>
-&#10;<!-- Vue expects the original — mismatch -->" />
+<p></p>" />
 
 **Different values on server vs client.** `Date.now()`, `Math.random()`, or locale-dependent formatting produce different output:
 
@@ -78,8 +75,7 @@ A mismatch happens when the HTML the client would render differs from what the s
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Server: &quot;6/1/2026&quot; — Client: &quot;01/06/2026&quot; (different locale) -->
-  <span>{{ new Date().toLocaleDateString() }}</span>
+&#10;  <span>{{ new Date().toLocaleDateString() }}</span>
 </template>" />
 
 **Browser-only APIs used during SSR.** Accessing `window.innerWidth` on the server returns `undefined`, but returns a number on the client.
@@ -128,12 +124,6 @@ const now = ref('')
 <PlaygroundLink code="<template>
   <ClientOnly>
     <BrowserOnlyChart />
-    <template #fallback>
-      <p>Loading chart...</p>
-    </template>
-  </ClientOnly>
-</template>" />
-
     <template #fallback>
       <p>Loading chart...</p>
     </template>
@@ -193,11 +183,6 @@ Nuxt lets you defer hydration of specific components to reduce TTI:
 
 <PlaygroundLink code="<template>
   <LazyComments hydrate-on-visible />
-  <LazyAnalytics hydrate-on-idle />
-  <LazyDropdown hydrate-on-interaction />
-  <LazyStaticFooter hydrate-never />
-</template>" />
-
   <LazyAnalytics hydrate-on-idle />
   <LazyDropdown hydrate-on-interaction />
   <LazyStaticFooter hydrate-never />

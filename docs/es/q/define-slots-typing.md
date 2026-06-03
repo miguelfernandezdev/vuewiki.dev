@@ -36,8 +36,7 @@ defineSlots<{
 </template>
 ```
 
-<PlaygroundLink code="<!-- DataList.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 interface Item {
   id: number
   label: string
@@ -52,11 +51,6 @@ interface Item {
   <ul v-if=&quot;items.length&quot;>
     <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot;>
       <slot :item=&quot;item&quot; :index=&quot;index&quot; />
-    </li>
-  </ul>
-  <slot v-else name=&quot;empty&quot; />
-</template>" />
-
     </li>
   </ul>
   <slot v-else name=&quot;empty&quot; />
@@ -78,8 +72,7 @@ Ahora cuando un padre usa este componente, las props del slot tienen tipo:
 ```
 
 <PlaygroundLink code="<DataList :items=&quot;products&quot;>
-  <!-- 'item' tiene tipo Item, 'index' tiene tipo number -->
-  <template #default=&quot;{ item, index }&quot;>
+&#10;  <template #default=&quot;{ item, index }&quot;>
     <span>{{ index + 1 }}. {{ item.label }}</span>
   </template>
 &#10;  <template #empty>
@@ -158,8 +151,7 @@ defineSlots<{
 </template>
 ```
 
-<PlaygroundLink code="<!-- DataTable.vue -->
-<script setup lang=&quot;ts&quot; generic=&quot;T extends { id: string | number }&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T extends { id: string | number }&quot;>
 defineProps<{
   rows: T[]
   columns: Array<{ key: keyof T; label: string }>
@@ -244,16 +236,6 @@ defineSlots<{
   <div class=&quot;card&quot;>
     <header v-if=&quot;$slots.header&quot; class=&quot;card-header&quot;>
       <slot name=&quot;header&quot; />
-    </header>
-    <div class=&quot;card-body&quot;>
-      <slot />
-    </div>
-    <footer v-if=&quot;$slots.footer&quot; class=&quot;card-footer&quot;>
-      <slot name=&quot;footer&quot; />
-    </footer>
-  </div>
-</template>" />
-
     </header>
     <div class=&quot;card-body&quot;>
       <slot />

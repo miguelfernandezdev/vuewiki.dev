@@ -36,8 +36,7 @@ defineEmits<{
 </template>
 ```
 
-<PlaygroundLink code="<!-- GenericList.vue -->
-<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
 defineProps<{
   items: T[]
   selected?: T
@@ -54,10 +53,6 @@ defineProps<{
       @click=&quot;$emit('select', item)&quot;
     >
       <slot :item=&quot;item&quot; />
-    </li>
-  </ul>
-</template>" />
-
     </li>
   </ul>
 </template>" />
@@ -93,8 +88,7 @@ function onSelect(user: User) {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { ref } from 'vue'
 &#10;interface User {
   id: number
@@ -112,8 +106,7 @@ import { ref } from 'vue'
 &#10;<template>
   <GenericList :items=&quot;users&quot; @select=&quot;onSelect&quot;>
     <template #default=&quot;{ item }&quot;>
-      <!-- item is typed as User -->
-      {{ item.name }}
+&#10;      {{ item.name }}
     </template>
   </GenericList>
 </template>" />
@@ -164,11 +157,7 @@ defineProps<{
 </script>
 &#10;<template>
   <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
-    <!-- TypeScript knows item.id exists -->
-    <slot :item=&quot;item&quot; />
-  </div>
-</template>" />
-
+&#10;    <slot :item=&quot;item&quot; />
   </div>
 </template>" />
 

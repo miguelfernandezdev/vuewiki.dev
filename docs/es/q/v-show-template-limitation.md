@@ -17,12 +17,10 @@ Porque `v-show` funciona alternando la propiedad CSS `display`, y los elementos 
 <!-- Estos elementos SIEMPRE serán visibles -->
 ```
 
-<PlaygroundLink code="<!-- v-show en <template> no hace nada en silencio -->
-<template v-show=&quot;isVisible&quot;>
+<PlaygroundLink code="<template v-show=&quot;isVisible&quot;>
   <h1>Title</h1>
   <p>Content</p>
-</template>
-<!-- Estos elementos SIEMPRE serán visibles -->" />
+</template>" />
 
 Otra limitación: `v-show` no admite `v-else`.
 
@@ -33,10 +31,8 @@ Otra limitación: `v-show` no admite `v-else`.
 <!-- roto -->
 ```
 
-<PlaygroundLink code="<!-- v-else NO funciona con v-show -->
-<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
-<div v-else>Please log in</div>
-<!-- roto -->" />
+<PlaygroundLink code="<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
+<div v-else>Please log in</div>" />
 
 ## Cómo solucionarlo
 
@@ -56,13 +52,11 @@ Otra limitación: `v-show` no admite `v-else`.
 </div>
 ```
 
-<PlaygroundLink code="<!-- v-if funciona en <template> -->
-<template v-if=&quot;isVisible&quot;>
+<PlaygroundLink code="<template v-if=&quot;isVisible&quot;>
   <h1>Title</h1>
   <p>Content</p>
 </template>
-&#10;<!-- O envuelve en un elemento real -->
-<div v-show=&quot;isVisible&quot;>
+&#10;<div v-show=&quot;isVisible&quot;>
   <h1>Title</h1>
   <p>Content</p>
 </div>" />

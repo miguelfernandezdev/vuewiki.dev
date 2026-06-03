@@ -140,10 +140,8 @@ const filteredItems = computed(() => items.value.filter((i) => i.active))
 <div v-for="item in filteredItems" :key="item.id">
 ```
 
-<PlaygroundLink code="<!-- BAD: expensiveFilter() runs on every render -->
-<div v-for=&quot;item in expensiveFilter(items)&quot; :key=&quot;item.id&quot;>
-&#10;<!-- GOOD: runs only when items change -->
-<div v-for=&quot;item in filteredItems&quot; :key=&quot;item.id&quot;>" />
+<PlaygroundLink code="<div v-for=&quot;item in expensiveFilter(items)&quot; :key=&quot;item.id&quot;>
+&#10;<div v-for=&quot;item in filteredItems&quot; :key=&quot;item.id&quot;>" />
 
 ## Step 5: Check rendering issues
 

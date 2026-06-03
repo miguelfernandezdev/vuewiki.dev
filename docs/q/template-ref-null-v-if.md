@@ -36,9 +36,6 @@ const showInput = ref(true)
   <button @click=&quot;showInput = !showInput&quot;>Toggle</button>
 </template>" />
 
-  <button @click=&quot;showInput = !showInput&quot;>Toggle</button>
-</template>" />
-
 When `showInput` becomes `false`, Vue removes the `<input>` from the DOM and sets `inputEl.value` to `null`. The `watchEffect` re-runs and crashes.
 
 ## How to fix it
@@ -93,8 +90,6 @@ const input = useTemplateRef<HTMLInputElement>('my-input')
 </script>
 &#10;<template>
   <input v-if=&quot;showInput&quot; ref=&quot;my-input&quot; />
-</template>" />
-
 </template>" />
 
 The null check is still needed, but the typing and naming are more explicit.

@@ -29,8 +29,7 @@ const activeId = (ref < number) | (null > null)
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const items = ref([
   /* 100 items */
 ])
@@ -45,8 +44,6 @@ const activeId = (ref < number) | (null > null)
   />
 </template>" />
 
-</template>" />
-
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -58,8 +55,7 @@ const props = defineProps<{ id: number; activeId: number | null }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- ListItem.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ id: number; activeId: number | null }>()
 </script>
 &#10;<template>
@@ -82,16 +78,13 @@ When `activeId` changes from 1 to 2, the `activeId` prop changes for ALL 100 ite
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<template>
+<PlaygroundLink code="<template>
   <ListItem
     v-for=&quot;item in items&quot;
     :key=&quot;item.id&quot;
     :id=&quot;item.id&quot;
     :active=&quot;item.id === activeId&quot;
   />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -105,8 +98,7 @@ defineProps<{ id: number; active: boolean }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- ListItem.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ id: number; active: boolean }>()
 </script>
 &#10;<template>
@@ -137,17 +129,8 @@ Now when `activeId` changes from 1 to 2:
 />
 ```
 
-<PlaygroundLink code="<!-- BAD: all items re-render when any selection changes -->
-<Item v-for=&quot;item in items&quot; :key=&quot;item.id&quot; :selected-ids=&quot;selectedIds&quot; />
-&#10;<!-- GOOD: only affected items re-render -->
-<Item
-  v-for=&quot;item in items&quot;
-  :key=&quot;item.id&quot;
-  :selected=&quot;selectedIds.has(item.id)&quot;
-/>" />
-
-&#10;<!-- GOOD: only affected items re-render -->
-<Item
+<PlaygroundLink code="<Item v-for=&quot;item in items&quot; :key=&quot;item.id&quot; :selected-ids=&quot;selectedIds&quot; />
+&#10;<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :selected=&quot;selectedIds.has(item.id)&quot;
@@ -172,22 +155,13 @@ Now when `activeId` changes from 1 to 2:
 />
 ```
 
-<PlaygroundLink code="<!-- BAD: total changes whenever the list changes -->
-<Item
+<PlaygroundLink code="<Item
   v-for=&quot;(item, index) in items&quot;
   :key=&quot;item.id&quot;
   :index=&quot;index&quot;
   :total=&quot;items.length&quot;
 />
-&#10;<!-- GOOD: pass only what the child actually needs -->
-<Item
-  v-for=&quot;item in items&quot;
-  :key=&quot;item.id&quot;
-  :is-last=&quot;item === items[items.length - 1]&quot;
-/>" />
-
-&#10;<!-- GOOD: pass only what the child actually needs -->
-<Item
+&#10;<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :is-last=&quot;item === items[items.length - 1]&quot;
@@ -205,8 +179,7 @@ Now when `activeId` changes from 1 to 2:
 />
 ```
 
-<PlaygroundLink code="<!-- BAD: new object on every render → always different reference -->
-<Item
+<PlaygroundLink code="<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :style=&quot;{ color: item.color }&quot;

@@ -50,28 +50,12 @@ function updateFromFahrenheit(f: number) {
 </script>
 ```
 
-<PlaygroundLink code="<!-- App.vue -->
-<template>
+<PlaygroundLink code="<template>
   <TemperatureInput
     label=&quot;Celsius&quot;
     :value=&quot;celsius&quot;
     @update=&quot;celsius = $event&quot;
   />
-  <TemperatureInput
-    label=&quot;Fahrenheit&quot;
-    :value=&quot;fahrenheit&quot;
-    @update=&quot;updateFromFahrenheit&quot;
-  />
-</template>
-&#10;<script setup>
-import { ref, computed } from 'vue'
-&#10;const celsius = ref(0)
-&#10;const fahrenheit = computed(() => celsius.value * 9 / 5 + 32)
-&#10;function updateFromFahrenheit(f: number) {
-  celsius.value = (f - 32) * 5 / 9
-}
-</script>" />
-
   <TemperatureInput
     label=&quot;Fahrenheit&quot;
     :value=&quot;fahrenheit&quot;
@@ -106,8 +90,7 @@ const emit = defineEmits<{ update: [value: number] }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- TemperatureInput.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ label: string; value: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
 </script>
@@ -120,9 +103,6 @@ const emit = defineEmits<{ update: [value: number] }>()
       @input=&quot;emit('update', Number(($event.target as HTMLInputElement).value))&quot;
     />
   </label>
-</template>" />
-
-</label>
 </template>" />
 
 Now the parent is the single source of truth. Both inputs always show consistent values.

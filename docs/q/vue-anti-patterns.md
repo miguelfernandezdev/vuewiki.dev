@@ -57,8 +57,7 @@ function sendInvitation(email) {
 </template>
 ```
 
-<PlaygroundLink code="<!-- BAD: UserDashboard.vue doing everything -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const users = ref([])
 const searchQuery = ref('')
 const sortBy = ref('name')
@@ -93,8 +92,7 @@ function sendInvitation(email) {
 }
 </script>
 &#10;<template>
-  <!-- 200 lines of template -->
-</template>" />
+&#10;</template>" />
 
 The fix: extract data fetching into a composable, split into container and presentational components, move business logic out of the component entirely.
 
@@ -233,8 +231,7 @@ Components with dozens of props that control everything, no consistent naming, a
 />
 ```
 
-<PlaygroundLink code="<!-- Anti-pattern: prop-driven spaghetti -->
-<DataTable
+<PlaygroundLink code="<DataTable
   :data=&quot;items&quot;
   :columns=&quot;cols&quot;
   :sortable=&quot;true&quot;

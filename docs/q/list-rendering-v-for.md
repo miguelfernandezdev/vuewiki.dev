@@ -88,8 +88,7 @@ const user = { name: 'Ana', role: 'Dev', level: 'Senior' }
 <span v-for="n in 5" :key="n">{{ n }}</span>
 ```
 
-<PlaygroundLink code="<!-- Renders 1 through 5 -->
-<span v-for=&quot;n in 5&quot; :key=&quot;n&quot;>{{ n }}</span>" />
+<PlaygroundLink code="<span v-for=&quot;n in 5&quot; :key=&quot;n&quot;>{{ n }}</span>" />
 
 ## Why :key matters
 
@@ -103,10 +102,8 @@ Without `:key`, Vue reuses DOM elements by position. This breaks when items are 
 <li v-for="item in items" :key="item.id">...</li>
 ```
 
-<PlaygroundLink code="<!-- Wrong: index as key has the same problem as no key on reorder -->
-<li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>...</li>
-&#10;<!-- Right: unique, stable identifier -->
-<li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>...</li>" />
+<PlaygroundLink code="<li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>...</li>
+&#10;<li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>...</li>" />
 
 ## v-for on template
 
@@ -152,8 +149,6 @@ When you need to render multiple elements per iteration without a wrapper:
     :user=&quot;user&quot;
     @remove=&quot;removeUser(user.id)&quot;
   />
-</template>" />
-
 </template>" />
 
 Props are not automatically injected from the iteration. You have to bind them explicitly.

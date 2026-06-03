@@ -83,12 +83,9 @@ Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compile
 <PlaygroundLink code="<template>
   <div>
     <h1>Static title</h1>
-    <!-- hoisted, skipped during diff -->
-    <p>{{ dynamicContent }}</p>
-    <!-- patch flag: TEXT -->
-    <span :class=&quot;activeClass&quot;>ok</span>
-    <!-- patch flag: CLASS -->
-  </div>
+&#10;    <p>{{ dynamicContent }}</p>
+&#10;    <span :class=&quot;activeClass&quot;>ok</span>
+&#10;  </div>
 </template>" />
 
 ## Virtual DOM vs no Virtual DOM

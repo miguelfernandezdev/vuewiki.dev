@@ -116,8 +116,7 @@ const {
 }>()
 </script>
 &#10;<template>
-  <!-- `title` y `count` son reactivos — no necesitan `.value` en el template -->
-  <h2>{{ title }}</h2>
+&#10;  <h2>{{ title }}</h2>
 </template>" />
 
 Esto reemplaza `withDefaults` en la mayoría de casos. Las variables destructuradas son reactivas en el template y en `watch`/`computed`, pero si las pasas a una función normal, son solo valores en ese momento.

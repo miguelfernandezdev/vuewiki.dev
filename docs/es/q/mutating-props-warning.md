@@ -46,16 +46,14 @@ function increment() {
 <Counter :count="count" @update="count = $event" />
 ```
 
-<PlaygroundLink code="<!-- Hijo -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const props = defineProps<{ count: number }>()
 const emit = defineEmits<{ update: [value: number] }>()
 &#10;function increment() {
   emit('update', props.count + 1)
 }
 </script>
-&#10;<!-- Padre -->
-<Counter :count=&quot;count&quot; @update=&quot;count = $event&quot; />" />
+&#10;<Counter :count=&quot;count&quot; @update=&quot;count = $event&quot; />" />
 
 **Opción 2:** Usar `v-model` (atajo para el patrón anterior).
 
@@ -73,15 +71,13 @@ const count = defineModel<number>()
 <Counter v-model="count" />
 ```
 
-<PlaygroundLink code="<!-- Hijo -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const count = defineModel<number>()
 </script>
 &#10;<template>
   <button @click=&quot;count++&quot;>{{ count }}</button>
 </template>
-&#10;<!-- Padre -->
-<Counter v-model=&quot;count&quot; />" />
+&#10;<Counter v-model=&quot;count&quot; />" />
 
 **Opción 3:** Usar una copia local si la prop es solo un valor inicial.
 

@@ -56,24 +56,11 @@ import { ref } from 'vue'
 }
 </script>
 &#10;<template>
-  <!-- ❌ key=index: after removing Apple, the input that had Apple's
-       typed text now sits next to Banana — state is mismatched -->
-  <div v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
+&#10;  <div v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
     <span>{{ item.name }}</span>
     <input placeholder=&quot;Type something&quot; />
   </div>
-&#10;  <!-- ✅ key=item.id: Vue correctly removes Apple's entire DOM node,
-       Banana and Cherry keep their inputs and state -->
-  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
-    <span>{{ item.name }}</span>
-    <input placeholder=&quot;Type something&quot; />
-  </div>
-</template>" />
-
-  </div>
-&#10;  <!-- ✅ key=item.id: Vue correctly removes Apple's entire DOM node,
-       Banana and Cherry keep their inputs and state -->
-  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+&#10;  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
     <span>{{ item.name }}</span>
     <input placeholder=&quot;Type something&quot; />
   </div>
@@ -99,12 +86,9 @@ Type something in each input, then remove the first item. With `key=index`, the 
 <li v-for="(item, i) in items" :key="i">{{ item.name }}</li>
 ```
 
-<PlaygroundLink code="<!-- ✅ Good: stable ID from the data -->
-<li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
-&#10;<!-- ✅ Good: stable unique string -->
-<li v-for=&quot;tab in tabs&quot; :key=&quot;tab.slug&quot;>{{ tab.label }}</li>
-&#10;<!-- ❌ Bad: index shifts when array changes -->
-<li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;>{{ item.name }}</li>" />
+<PlaygroundLink code="<li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+&#10;<li v-for=&quot;tab in tabs&quot; :key=&quot;tab.slug&quot;>{{ tab.label }}</li>
+&#10;<li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;>{{ item.name }}</li>" />
 
 ## When index is fine
 

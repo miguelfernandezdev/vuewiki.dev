@@ -20,8 +20,6 @@ Cambia el atributo `key` del componente. Cuando la key cambia, Vue destruye la i
   <UserProfile :user=&quot;user&quot; :key=&quot;user.id&quot; />
 </template>" />
 
-</template>" />
-
 Cuando `user.id` cambia, Vue desmonta el `UserProfile` antiguo y monta uno nuevo. Esto es útil cuando un componente tiene estado interno que necesita reiniciarse al cambiar la entidad subyacente (como cambiar entre perfiles de usuario que comparten la misma ruta).
 
 Una versión más explícita cuando necesitas un disparador manual:
@@ -49,9 +47,6 @@ const componentKey = ref(0)
 </script>
 &#10;<template>
   <ExpensiveComponent :key=&quot;componentKey&quot; />
-  <button @click=&quot;forceRecreate&quot;>Reset</button>
-</template>" />
-
   <button @click=&quot;forceRecreate&quot;>Reset</button>
 </template>" />
 

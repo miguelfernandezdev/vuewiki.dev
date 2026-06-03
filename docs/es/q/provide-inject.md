@@ -22,8 +22,7 @@ provide('theme', theme)
 </script>
 ```
 
-<PlaygroundLink code="<!-- GrandParent.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { provide, ref } from 'vue'
 &#10;const theme = ref('dark')
 provide('theme', theme)
@@ -38,8 +37,7 @@ const theme = inject('theme') // 'dark' — sin props pasadas por componentes in
 </script>
 ```
 
-<PlaygroundLink code="<!-- DeeplyNestedChild.vue (cualquier nivel por debajo de GrandParent) -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { inject } from 'vue'
 &#10;const theme = inject('theme') // 'dark' — sin props pasadas por componentes intermedios
 </script>" />

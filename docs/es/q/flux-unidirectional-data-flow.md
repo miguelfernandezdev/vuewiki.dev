@@ -55,18 +55,14 @@ function increment() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Padre: posee el estado, lo pasa hacia abajo -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const count = ref(0)
 function increment() {
   count.value++
 }
 </script>
 &#10;<template>
-  <!-- Las props van HACIA ABAJO -->
-  <Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
-</template>" />
-
+&#10;  <Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
 </template>" />
 
 ```vue
@@ -81,8 +77,7 @@ const emit = defineEmits<{ increment: [] }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- Counter.vue: recibe props, emite eventos HACIA ARRIBA -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ count: number }>()
 const emit = defineEmits<{ increment: [] }>()
 </script>
@@ -131,8 +126,7 @@ const counter = useCounterStore()
 </template>
 ```
 
-<PlaygroundLink code="<!-- Cualquier componente -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const counter = useCounterStore()
 </script>
 &#10;<template>
@@ -199,13 +193,8 @@ El `v-model` de Vue parece un enlace bidireccional, pero es azúcar sintáctico 
 <input :value="name" @input="name = $event.target.value" />
 ```
 
-<PlaygroundLink code="<!-- Esto -->
-<input v-model=&quot;name&quot; />
-&#10;<!-- Es equivalente a esto -->
-<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
-
-&#10;<!-- Es equivalente a esto -->
-<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
+<PlaygroundLink code="<input v-model=&quot;name&quot; />
+&#10;<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 
 Los datos siguen fluyendo en una sola dirección: estado a vista (`:value`), y eventos de vuelta hacia arriba (`@input`). La directiva `v-model` simplemente escribe ambos lados por ti.
 

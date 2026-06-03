@@ -98,12 +98,6 @@ interface Todo {
   </ul>
 </template>" />
 
-        {{ todo.text }}
-      </label>
-    </li>
-  </ul>
-</template>" />
-
 ## Example: deleting from a list
 
 Deleting is trickier because you need to remember the item and its position:

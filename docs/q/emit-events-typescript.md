@@ -67,19 +67,8 @@ function handleDelete(id: number) {
 </script>
 ```
 
-<PlaygroundLink code="<!-- ChildComponent emits: { update: [value: string] } -->
-&#10;<template>
+<PlaygroundLink code="<template>
   <ChildComponent @update=&quot;handleUpdate&quot; @delete=&quot;handleDelete&quot; />
-</template>
-&#10;<script setup lang=&quot;ts&quot;>
-function handleUpdate(value: string) {
-  // `value` is correctly typed as string
-}
-&#10;function handleDelete(id: number) {
-  // `id` is correctly typed as number
-}
-</script>" />
-
 </template>
 &#10;<script setup lang=&quot;ts&quot;>
 function handleUpdate(value: string) {

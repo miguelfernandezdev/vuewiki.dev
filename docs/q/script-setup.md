@@ -37,8 +37,7 @@ export default defineComponent({
 </script>
 ```
 
-<PlaygroundLink code="<!-- Without <script setup> — lots of boilerplate -->
-<script lang=&quot;ts&quot;>
+<PlaygroundLink code="<script lang=&quot;ts&quot;>
 import { defineComponent, ref, computed } from 'vue'
 &#10;export default defineComponent({
   props: {
@@ -77,8 +76,7 @@ function increment() {
 </script>
 ```
 
-<PlaygroundLink code="<!-- With <script setup> — same result, half the code -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 import { ref, computed } from 'vue'
 &#10;const props = defineProps<{ initialCount?: number }>()
 const emit = defineEmits<{ update: [value: number] }>()

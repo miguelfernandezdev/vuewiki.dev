@@ -41,22 +41,10 @@ import InfoBox from './InfoBox.vue'
 &#10;const currentComponent = shallowRef(AlertBox)
 </script>
 &#10;<template>
-  <!-- 1. Component definition object (recommended) -->
-  <component :is=&quot;currentComponent&quot; />
-&#10;  <!-- 2. Registered component name (string) -->
-  <component is=&quot;AlertBox&quot; />
-&#10;  <!-- 3. HTML element name (string) -->
-  <component is=&quot;div&quot; />
-&#10;  <!-- 4. Inline render function -->
-  <component :is=&quot;() => h('span', 'hello')&quot; />
-</template>" />
-
-&#10;  <!-- 2. Registered component name (string) -->
-  <component is=&quot;AlertBox&quot; />
-&#10;  <!-- 3. HTML element name (string) -->
-  <component is=&quot;div&quot; />
-&#10;  <!-- 4. Inline render function -->
-  <component :is=&quot;() => h('span', 'hello')&quot; />
+&#10;  <component :is=&quot;currentComponent&quot; />
+&#10;  <component is=&quot;AlertBox&quot; />
+&#10;  <component is=&quot;div&quot; />
+&#10;  <component :is=&quot;() => h('span', 'hello')&quot; />
 </template>" />
 
 When using a reactive variable, use `shallowRef` instead of `ref`. A `ref` would attempt to deeply unwrap the component object, which is unnecessary and can cause issues with complex component definitions.
@@ -71,9 +59,7 @@ The `is` attribute on regular HTML elements behaves differently than on `<compon
 <!-- This tells the browser to upgrade the <button> with a custom element class -->
 ```
 
-<PlaygroundLink code="<!-- HTML spec behavior: &quot;is&quot; on native elements creates customized built-in elements -->
-<button is=&quot;my-custom-button&quot;>Click</button>
-<!-- This tells the browser to upgrade the <button> with a custom element class -->" />
+<PlaygroundLink code="<button is=&quot;my-custom-button&quot;>Click</button>" />
 
 To render a Vue component as a replacement for a native element, use the `vue:` prefix:
 
@@ -87,10 +73,8 @@ To render a Vue component as a replacement for a native element, use the `vue:` 
 </table>
 ```
 
-<PlaygroundLink code="<!-- This renders the MyButton Vue component, not a native <button> -->
-<button is=&quot;vue:MyButton&quot;>Click</button>
-&#10;<!-- Useful when you need a Vue component inside elements that restrict children -->
-<table>
+<PlaygroundLink code="<button is=&quot;vue:MyButton&quot;>Click</button>
+&#10;<table>
   <tr is=&quot;vue:MyTableRow&quot;></tr>
 </table>" />
 
@@ -110,12 +94,10 @@ HTML parsing rules restrict which elements can appear inside `<table>`, `<ul>`, 
 </table>
 ```
 
-<PlaygroundLink code="<!-- BAD: browser moves <BlogPost> outside <table> during HTML parsing -->
-<table>
-  <BlogPost />  <!-- ends up above the table in the DOM -->
+<PlaygroundLink code="<table>
+  <BlogPost />  
 </table>
-&#10;<!-- GOOD: use is=&quot;vue:&quot; to bypass the restriction -->
-<table>
+&#10;<table>
   <tr is=&quot;vue:BlogPost&quot;></tr>
 </table>" />
 
@@ -182,8 +164,6 @@ import type { Component } from 'vue'
   />
 </template>" />
 
-</template>" />
-
 This pattern is cleaner than a chain of `v-if`/`v-else-if` and scales to any number of block types without modifying the template.
 
 ## Resolution order
@@ -212,10 +192,6 @@ If the string doesn't match any component or HTML element, Vue renders nothing a
   <KeepAlive :max=&quot;5&quot;>
     <Transition name=&quot;fade&quot; mode=&quot;out-in&quot;>
       <component :is=&quot;currentTab&quot; :key=&quot;currentTabName&quot; />
-    </Transition>
-  </KeepAlive>
-</template>" />
-
     </Transition>
   </KeepAlive>
 </template>" />

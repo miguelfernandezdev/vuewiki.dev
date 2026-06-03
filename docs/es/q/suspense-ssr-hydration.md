@@ -47,10 +47,6 @@ const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
   </Suspense>
 </template>" />
 
-    <template #fallback>Cargando...</template>
-  </Suspense>
-</template>" />
-
 Esto funciona en CSR pero provoca parpadeo de hidratación en SSR porque el chunk puede no estar listo cuando comienza la hidratación.
 
 ## Solución 1: usar async setup en lugar de defineAsyncComponent
@@ -68,8 +64,7 @@ const { data } = await useFetch('/api/dashboard')
 </template>
 ```
 
-<PlaygroundLink code="<!-- Dashboard.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const { data } = await useFetch('/api/dashboard')
 </script>
 &#10;<template>
@@ -86,14 +81,9 @@ const { data } = await useFetch('/api/dashboard')
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <Suspense>
     <Dashboard />
-    <template #fallback><DashboardSkeleton /></template>
-  </Suspense>
-</template>" />
-
     <template #fallback><DashboardSkeleton /></template>
   </Suspense>
 </template>" />
@@ -122,14 +112,6 @@ Para componentes donde el SSR no es crítico, omite el renderizado en el servido
   <ClientOnly>
     <Suspense>
       <AsyncDashboard />
-      <template #fallback>Cargando panel...</template>
-    </Suspense>
-    <template #fallback>
-      <DashboardSkeleton />
-    </template>
-  </ClientOnly>
-</template>" />
-
       <template #fallback>Cargando panel...</template>
     </Suspense>
     <template #fallback>
@@ -169,19 +151,6 @@ En lugar de un Suspense que envuelva todo, dale a cada sección asíncrona su pr
   <div class=&quot;dashboard&quot;>
     <Suspense>
       <AsyncHeader />
-      <template #fallback><HeaderSkeleton /></template>
-    </Suspense>
-&#10;    <Suspense>
-      <AsyncStats />
-      <template #fallback><StatsSkeleton /></template>
-    </Suspense>
-&#10;    <Suspense>
-      <AsyncTable />
-      <template #fallback><TableSkeleton /></template>
-    </Suspense>
-  </div>
-</template>" />
-
       <template #fallback><HeaderSkeleton /></template>
     </Suspense>
 &#10;    <Suspense>

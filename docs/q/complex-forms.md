@@ -114,16 +114,6 @@ import { reactive, computed } from 'vue'
   </form>
 </template>" />
 
-      <span v-if=&quot;errors.name&quot;>{{ errors.name }}</span>
-    </div>
-&#10;    <div>
-      <input v-model=&quot;form.email&quot; @blur=&quot;validate('email')&quot; />
-      <span v-if=&quot;errors.email&quot;>{{ errors.email }}</span>
-    </div>
-&#10;    <button :disabled=&quot;!isValid&quot;>Submit</button>
-  </form>
-</template>" />
-
 This works for simple forms, but notice the problems as it grows: validation logic is mixed into the component, every field needs manual wiring, and there's no dirty/touched tracking.
 
 ## Extract a composable for reusable form logic

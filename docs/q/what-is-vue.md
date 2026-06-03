@@ -72,8 +72,7 @@ App
 // logic
 </script>
 &#10;<template>
-  <!-- markup -->
-</template>
+&#10;</template>
 &#10;<style scoped>
 /* styles isolated to this component */
 </style>" />

@@ -112,8 +112,7 @@ const cart = useCartStore()
 </template>
 ```
 
-<PlaygroundLink code="<!-- Antes: Vuex -->
-<script>
+<PlaygroundLink code="<script>
 import { mapGetters, mapActions } from 'vuex'
 &#10;export default {
   computed: {
@@ -124,8 +123,7 @@ import { mapGetters, mapActions } from 'vuex'
   }
 }
 </script>
-&#10;<!-- Después: Pinia -->
-<script setup lang=&quot;ts&quot;>
+&#10;<script setup lang=&quot;ts&quot;>
 import { useCartStore } from '@/stores/cart'
 &#10;const cart = useCartStore()
 </script>

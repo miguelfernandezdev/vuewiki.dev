@@ -29,17 +29,9 @@ const richContent = ref('<p>Hello <strong>world</strong></p>')
 const richContent = ref('<p>Hello <strong>world</strong></p>')
 </script>
 &#10;<template>
-  <!-- Se renderiza como HTML con estilos -->
-  <div v-html=&quot;richContent&quot; />
-&#10;  <!-- Comparado con la interpolación de texto -->
-  <div>{{ richContent }}</div>
-  <!-- Muestra: <p>Hello <strong>world</strong></p> como texto plano -->
-</template>" />
-
-&#10;  <!-- Comparado con la interpolación de texto -->
-  <div>{{ richContent }}</div>
-  <!-- Muestra: <p>Hello <strong>world</strong></p> como texto plano -->
-</template>" />
+&#10;  <div v-html=&quot;richContent&quot; />
+&#10;  <div>{{ richContent }}</div>
+&#10;</template>" />
 
 Las dobles llaves `{{ }}` escapan las entidades HTML automáticamente. `v-html` no lo hace.
 
@@ -66,10 +58,7 @@ const userComment = ref(
 )
 </script>
 &#10;<template>
-  <!-- Esto ejecuta el JavaScript del atacante -->
-  <div v-html=&quot;userComment&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;userComment&quot; />
 </template>" />
 
 El manejador `onerror` se ejecuta en cuanto el navegador intenta cargar la imagen rota. El atacante ya tiene las cookies del usuario. Otros vectores de ataque incluyen etiquetas `<script>` (aunque `innerHTML` no las ejecuta), `<iframe>`, `<svg onload>` y manejadores de eventos en cualquier elemento.
@@ -100,8 +89,6 @@ const rendered = computed(() => marked(markdownSource))
 </script>
 &#10;<template>
   <article v-html=&quot;rendered&quot; />
-</template>" />
-
 </template>" />
 
 Incluso con contenido de confianza, sanea el HTML como capa adicional de defensa.
@@ -135,10 +122,7 @@ import DOMPurify from 'dompurify'
 &#10;const safeHtml = computed(() => DOMPurify.sanitize(userContent.value))
 </script>
 &#10;<template>
-  <!-- La etiqueta script se elimina, solo queda <p>Hello</p> -->
-  <div v-html=&quot;safeHtml&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;safeHtml&quot; />
 </template>" />
 
 DOMPurify elimina etiquetas y atributos peligrosos mientras mantiene los elementos de formato seguros como `<p>`, `<strong>`, `<em>`, `<a>` (con `href` saneado) e `<img>` (sin manejadores de eventos).
@@ -162,10 +146,7 @@ const html = ref('<my-component>Hello</my-component>')
 const html = ref('<my-component>Hello</my-component>')
 </script>
 &#10;<template>
-  <!-- my-component NO se montará como componente Vue -->
-  <div v-html=&quot;html&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;html&quot; />
 </template>" />
 
 El contenido inyectado con `v-html` es DOM crudo. Los componentes Vue, las directivas (`v-if`, `v-for`) y la sintaxis de template (`{{ }}`) dentro de él se ignoran. Si necesitas templates dinámicos, usa funciones render o el compilador en tiempo de ejecución.
@@ -191,10 +172,7 @@ p {
 }
 </style>
 &#10;<template>
-  <!-- El <p> dentro de v-html no será rojo -->
-  <div v-html=&quot;'<p>Sin estilos</p>'&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;'<p>Sin estilos</p>'&quot; />
 </template>" />
 
 Los estilos con scoped añaden un atributo `data-v-xxxxx` a los elementos compilados por Vue. Los elementos inyectados por `v-html` no reciben ese atributo, así que los selectores con scoped no coinciden. Usa `:deep()` para apuntarlos:

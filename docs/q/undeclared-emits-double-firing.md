@@ -20,19 +20,12 @@ Because when you re-emit a native event (like `click`) without declaring it in `
 <MyButton @click="handleClick">Click me</MyButton>
 ```
 
-<PlaygroundLink code="<!-- MyButton.vue — NO defineEmits -->
-<template>
+<PlaygroundLink code="<template>
   <button @click=&quot;$emit('click', $event)&quot;>
     <slot />
   </button>
 </template>
-&#10;<!-- Parent.vue -->
-<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
-
-  </button>
-</template>
-&#10;<!-- Parent.vue -->
-<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
+&#10;<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
 
 What happens on each click:
 
@@ -67,9 +60,6 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
   </button>
 </template>" />
 
-  </button>
-</template>" />
-
 **Option 2:** Don't re-emit at all. If the component has a single root element, the native event falls through automatically.
 
 ```vue
@@ -84,19 +74,12 @@ const emit = defineEmits<{ click: [event: MouseEvent] }>()
 <MyButton @click="handleClick">Click me</MyButton>
 ```
 
-<PlaygroundLink code="<!-- MyButton.vue — no emit needed, click falls through to <button> -->
-<template>
+<PlaygroundLink code="<template>
   <button>
     <slot />
   </button>
 </template>
-&#10;<!-- Parent.vue — works, fires once -->
-<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
-
-  </button>
-</template>
-&#10;<!-- Parent.vue — works, fires once -->
-<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
+&#10;<MyButton @click=&quot;handleClick&quot;>Click me</MyButton>" />
 
 The rule is simple: if you explicitly `$emit` a native event name, you must declare it in `defineEmits`. Otherwise the listener exists in two places.
 

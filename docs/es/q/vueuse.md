@@ -201,8 +201,6 @@ const isMobile = useMediaQuery('(max-width: 768px)')
   />
 </template>" />
 
-</template>" />
-
 ## VueUse frente a escribir el tuyo propio
 
 Escribe tu propio composable cuando la lógica es específica de tu dominio. Usa VueUse cuando el problema es genérico: debounce, almacenamiento, media queries, portapapeles, intersection observer. Los composables de VueUse gestionan casos borde, compatibilidad con SSR y limpieza que de otro modo tendrías que implementar tú mismo.

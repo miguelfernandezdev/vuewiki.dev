@@ -27,8 +27,7 @@ const company = 'Acme Corp'
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Se renderiza una vez, nunca se vuelve a evaluar -->
-  <footer v-once>
+&#10;  <footer v-once>
     <p>Copyright {{ year }} {{ company }}</p>
   </footer>
 </template>
@@ -79,17 +78,6 @@ import { ref } from 'vue'
 const selectedId = (ref < number) | (null > null)
 </script>" />
 
-    </div>
-  </div>
-</template>
-&#10;<script setup>
-import { ref } from 'vue'
-&#10;const items = ref([
-  /* 1.000 elementos */
-])
-const selectedId = (ref < number) | (null > null)
-</script>" />
-
 Cuando cambia `selectedId`, solo dos elementos se re-renderizan: el que estaba seleccionado antes (de true a false) y el recién seleccionado (de false a true). Los otros 998 elementos se omiten por completo.
 
 ## v-memo con múltiples dependencias
@@ -121,9 +109,6 @@ Cuando cambia `selectedId`, solo dos elementos se re-renderizan: el que estaba s
       :selected=&quot;item.id === selectedId&quot;
       :editing=&quot;item.id === editingId&quot;
     />
-  </div>
-</template>" />
-
   </div>
 </template>" />
 
@@ -163,21 +148,13 @@ El elemento se re-renderiza solo cuando cambia su estado de selección o edició
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Error: count nunca se actualizará en la interfaz -->
-  <div v-once>
+&#10;  <div v-once>
     <span>Count: {{ count }}</span>
   </div>
-&#10;  <!-- Error: v-model dentro de un subárbol memoizado no funcionará correctamente -->
-  <div v-memo=&quot;[selected]&quot;>
+&#10;  <div v-memo=&quot;[selected]&quot;>
     <input v-model=&quot;item.name&quot; />
   </div>
-&#10;  <!-- Innecesario: el coste de la memoización supera al del re-render de un <span> -->
-  <span v-once>{{ label }}</span>
-</template>" />
-
-  </div>
-&#10;  <!-- Innecesario: el coste de la memoización supera al del re-render de un <span> -->
-  <span v-once>{{ label }}</span>
+&#10;  <span v-once>{{ label }}</span>
 </template>" />
 
 ## Cuándo usar cada uno

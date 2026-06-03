@@ -43,10 +43,7 @@ const currentTab = shallowRef(TabHome)
   <button v-for=&quot;(comp, name) in tabs&quot; :key=&quot;name&quot; @click=&quot;currentTab = comp&quot;>
     {{ name }}
   </button>
-&#10;  <!-- Destroyed and recreated on every switch -->
-  <component :is=&quot;currentTab&quot; />
-</template>" />
-
+&#10;  <component :is=&quot;currentTab&quot; />
 </template>" />
 
 Without `KeepAlive`, any local state in `TabSettings` (form inputs, scroll position, expanded sections) resets every time you switch away and back.
@@ -66,9 +63,6 @@ Wrap `<component>` in `<KeepAlive>` to cache instances instead of destroying the
 <PlaygroundLink code="<template>
   <KeepAlive>
     <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-</template>" />
-
   </KeepAlive>
 </template>" />
 
@@ -98,27 +92,13 @@ Use `include`, `exclude`, and `max` to limit caching.
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Only cache these two -->
-  <KeepAlive include=&quot;TabHome,TabSettings&quot;>
+&#10;  <KeepAlive include=&quot;TabHome,TabSettings&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
-&#10;  <!-- Cache everything except this one -->
-  <KeepAlive exclude=&quot;TabProfile&quot;>
+&#10;  <KeepAlive exclude=&quot;TabProfile&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
-&#10;  <!-- Cache at most 5 instances (LRU eviction) -->
-  <KeepAlive :max=&quot;5&quot;>
-    <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-</template>" />
-
-  </KeepAlive>
-&#10;  <!-- Cache everything except this one -->
-  <KeepAlive exclude=&quot;TabProfile&quot;>
-    <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-&#10;  <!-- Cache at most 5 instances (LRU eviction) -->
-  <KeepAlive :max=&quot;5&quot;>
+&#10;  <KeepAlive :max=&quot;5&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
 </template>" />
@@ -191,10 +171,6 @@ onMounted → onActivated → (user switches away) → onDeactivated
   <router-view v-slot=&quot;{ Component, route }&quot;>
     <KeepAlive>
       <component :is=&quot;Component&quot; :key=&quot;route.fullPath&quot; />
-    </KeepAlive>
-  </router-view>
-</template>" />
-
     </KeepAlive>
   </router-view>
 </template>" />

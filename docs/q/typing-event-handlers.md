@@ -84,12 +84,6 @@ function handleInput(event: Event) {
   <form @submit=&quot;handleSubmit&quot;>...</form>
 </template>" />
 
-<button @click=&quot;handleClick&quot;>Click</button>
-<input @keydown=&quot;handleKeydown&quot; />
-
-  <form @submit=&quot;handleSubmit&quot;>...</form>
-</template>" />
-
 ## Event type reference
 
 | Template event             | TypeScript type | Key properties                    |
@@ -143,8 +137,6 @@ For simple cases, cast directly in the template:
   <input @input=&quot;name = ($event.target as HTMLInputElement).value&quot; />
 </template>" />
 
-</template>" />
-
 Or use an inline arrow function:
 
 ```vue
@@ -155,8 +147,6 @@ Or use an inline arrow function:
 
 <PlaygroundLink code="<template>
   <input @input=&quot;(e: Event) => name = (e.target as HTMLInputElement).value&quot; />
-</template>" />
-
 </template>" />
 
 ## Custom component events
@@ -172,8 +162,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-<PlaygroundLink code="<!-- ChildComponent.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const emit = defineEmits<{
   select: [item: { id: number; name: string }]
 }>()
@@ -192,16 +181,13 @@ function handleSelect(item: { id: number; name: string }) {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 function handleSelect(item: { id: number; name: string }) {
   console.log(item.id) // fully typed
 }
 </script>
 &#10;<template>
   <ChildComponent @select=&quot;handleSelect&quot; />
-</template>" />
-
 </template>" />
 
 ## target vs currentTarget

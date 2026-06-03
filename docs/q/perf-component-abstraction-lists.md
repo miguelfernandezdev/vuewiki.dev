@@ -24,18 +24,10 @@ Every Vue component instance has a cost: reactive setup, vnode creation, lifecyc
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue — deeply nested -->
-<template>
+<PlaygroundLink code="<template>
   <Card>
     <CardHeader>
       <UserAvatar :src=&quot;user.avatar&quot; />
-    </CardHeader>
-    <CardBody>
-      <Text>{{ user.name }}</Text>
-    </CardBody>
-  </Card>
-</template>" />
-
     </CardHeader>
     <CardBody>
       <Text>{{ user.name }}</Text>
@@ -48,8 +40,7 @@ Every Vue component instance has a cost: reactive setup, vnode creation, lifecyc
 <UserCard v-for="user in users" :key="user.id" :user="user" />
 ```
 
-<PlaygroundLink code="<!-- 100 users = 500+ component instances -->
-<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
+<PlaygroundLink code="<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
 
 Each `Card`, `CardHeader`, `CardBody`, `UserAvatar`, and `Text` is a separate component instance. Multiply by 100 list items and you get significant memory and render overhead.
 
@@ -75,21 +66,13 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue — flattened -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </script>
 &#10;<template>
   <div class=&quot;card&quot;>
     <div class=&quot;card-header&quot;>
       <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
-    </div>
-    <div class=&quot;card-body&quot;>
-      <span>{{ user.name }}</span>
-    </div>
-  </div>
-</template>" />
-
     </div>
     <div class=&quot;card-body&quot;>
       <span>{{ user.name }}</span>
@@ -129,11 +112,7 @@ Not every list needs flattening. Keep component abstractions when:
 
 <PlaygroundLink code="<RecycleScroller :items=&quot;items&quot; :item-size=&quot;80&quot;>
   <template #default=&quot;{ item }&quot;>
-    <!-- OK — only ~20 instances exist regardless of list length -->
-    <ComplexItemCard :item=&quot;item&quot; />
-  </template>
-</RecycleScroller>" />
-
+&#10;    <ComplexItemCard :item=&quot;item&quot; />
   </template>
 </RecycleScroller>" />
 

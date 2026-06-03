@@ -26,8 +26,7 @@ Vue's reactivity system is efficient by design, but it cannot know which parts o
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Rendered once, never diffed again -->
-  <footer v-once>
+&#10;  <footer v-once>
     <p>© 2024 Acme Corp. All rights reserved.</p>
   </footer>
 </template>" />
@@ -235,9 +234,6 @@ import { defineAsyncComponent } from 'vue'
   <ChartWidget />
 </template>" />
 
-  <ChartWidget />
-</template>" />
-
 ### Lazy hydration in Nuxt
 
 In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the component enters the viewport (or is needed). The component is still server-rendered as HTML, but the client-side hydration (which is what makes it interactive) is delayed. This directly improves Time to Interactive on content-heavy pages.
@@ -254,15 +250,8 @@ In Nuxt, prefixing a component with `Lazy` defers its JavaScript until the compo
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Hydrated immediately -->
-  <HeroSection />
-&#10;  <!-- Hydration deferred until the component is needed -->
-  <LazyCommentSection />
-  <LazyRecommendedArticles />
-</template>" />
-
-&#10;  <!-- Hydration deferred until the component is needed -->
-  <LazyCommentSection />
+&#10;  <HeroSection />
+&#10;  <LazyCommentSection />
   <LazyRecommendedArticles />
 </template>" />
 
@@ -319,9 +308,6 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
   </RecycleScroller>
 </template>" />
 
-  </RecycleScroller>
-</template>" />
-
 **Props stability** is a related pattern. When you pass computed values into a list item that change on every parent re-render, every item re-renders too, even when its own data did not change. Prefer passing the derived boolean directly:
 
 ```vue
@@ -342,23 +328,13 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 />
 ```
 
-<PlaygroundLink code="<!-- Unstable: `activeId` prop changes cause all items to re-render -->
-<UserRow
+<PlaygroundLink code="<UserRow
   v-for=&quot;user in users&quot;
   :key=&quot;user.id&quot;
   :user=&quot;user&quot;
   :active-id=&quot;activeId&quot;
 />
-&#10;<!-- Stable: only the item whose `active` value changes re-renders -->
-<UserRow
-  v-for=&quot;user in users&quot;
-  :key=&quot;user.id&quot;
-  :user=&quot;user&quot;
-  :active=&quot;user.id === activeId&quot;
-/>" />
-
-&#10;<!-- Stable: only the item whose `active` value changes re-renders -->
-<UserRow
+&#10;<UserRow
   v-for=&quot;user in users&quot;
   :key=&quot;user.id&quot;
   :user=&quot;user&quot;

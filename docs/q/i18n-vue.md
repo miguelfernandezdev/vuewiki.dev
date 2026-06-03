@@ -124,11 +124,8 @@ vue-i18n uses pipe-separated forms: zero | one | many.
 ```
 
 <PlaygroundLink code="<p>{{ t('messages', 0) }}</p>
-<!-- No messages -->
-<p>{{ t('messages', 1) }}</p>
-<!-- 1 message -->
-<p>{{ t('messages', 42) }}</p>
-<!-- 42 messages -->" />
+&#10;<p>{{ t('messages', 1) }}</p>
+&#10;<p>{{ t('messages', 42) }}</p>" />
 
 ## Date and number formatting
 
@@ -162,9 +159,7 @@ const i18n = createI18n({
 ```
 
 <PlaygroundLink code="<p>{{ d(new Date(), 'short') }}</p>
-<!-- Jun 1, 2026 / 1 jun 2026 -->
-<p>{{ n(99.99, 'currency') }}</p>
-<!-- $99.99 / 99,99 € -->" />
+&#10;<p>{{ n(99.99, 'currency') }}</p>" />
 
 ## Lazy-loading translations
 

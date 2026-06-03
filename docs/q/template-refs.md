@@ -37,10 +37,7 @@ import { ref, onMounted } from 'vue'
 })
 </script>
 &#10;<template>
-  <!-- name MUST be &quot;inputEl&quot; to match the variable -->
-  <input ref=&quot;inputEl&quot; />
-</template>" />
-
+&#10;  <input ref=&quot;inputEl&quot; />
 </template>" />
 
 The fragile part: rename the variable during refactoring and the connection breaks silently.
@@ -74,8 +71,6 @@ import { useTemplateRef, onMounted } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;search-box&quot; type=&quot;search&quot; />
-</template>" />
-
 </template>" />
 
 Benefits: IDE auto-completion for ref names, better TypeScript inference, and typos cause visible errors instead of silent nulls.
@@ -187,8 +182,7 @@ defineExpose({ validate })
 </script>
 ```
 
-<PlaygroundLink code="<!-- ChildForm.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref } from 'vue'
 &#10;const formData = ref({ name: '' })
 &#10;function validate() {
@@ -217,8 +211,7 @@ function submit() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { useTemplateRef } from 'vue'
 &#10;const formRef = useTemplateRef('child-form')
 &#10;function submit() {
@@ -230,9 +223,6 @@ import { useTemplateRef } from 'vue'
 &#10;<template>
   <ChildForm ref=&quot;child-form&quot; />
   <button @click=&quot;submit&quot;>Submit</button>
-</template>" />
-
-<button @click=&quot;submit&quot;>Submit</button>
 </template>" />
 
 ## When to use template refs

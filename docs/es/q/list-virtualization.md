@@ -20,12 +20,8 @@ La virtualización de listas renderiza solo los elementos visibles en el viewpor
 ```
 
 <PlaygroundLink code="<template>
-  <!-- 10.000 componentes UserCard montados a la vez -->
-  <div class=&quot;list&quot;>
+&#10;  <div class=&quot;list&quot;>
     <UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />
-  </div>
-</template>" />
-
   </div>
 </template>" />
 
@@ -81,18 +77,6 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 }
 </style>" />
 
-  </RecycleScroller>
-</template>
-&#10;<script setup>
-import { RecycleScroller } from 'vue-virtual-scroller'
-import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
-</script>
-&#10;<style scoped>
-.list {
-  height: 600px; /* el contenedor debe tener altura fija */
-}
-</style>" />
-
 Para elementos de altura variable, usa `DynamicScroller`:
 
 ```vue
@@ -112,11 +96,6 @@ Para elementos de altura variable, usa `DynamicScroller`:
     <template #default=&quot;{ item, index, active }&quot;>
       <DynamicScrollerItem :item=&quot;item&quot; :active=&quot;active&quot; :data-index=&quot;index&quot;>
         <ChatMessage :message=&quot;item&quot; />
-      </DynamicScrollerItem>
-    </template>
-  </DynamicScroller>
-</template>" />
-
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
@@ -199,31 +178,6 @@ const virtualizer = useVirtualizer({
         }&quot;
       >
         <UserCard :user=&quot;users[row.index]&quot; />
-      </div>
-    </div>
-  </div>
-</template>
-&#10;<script setup>
-import { ref } from 'vue'
-import { useVirtualizer } from '@tanstack/vue-virtual'
-&#10;const users = ref([
-  /* miles de elementos */
-])
-const parentRef = ref(null)
-&#10;const virtualizer = useVirtualizer({
-  count: users.value.length,
-  getScrollElement: () => parentRef.value,
-  estimateSize: () => 80,
-  overscan: 5
-})
-</script>
-&#10;<style scoped>
-.list-container {
-  height: 600px;
-  overflow: auto;
-}
-</style>" />
-
       </div>
     </div>
   </div>

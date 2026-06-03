@@ -85,12 +85,9 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Sintaxis de objeto: la clave es el nombre de clase, el valor es la condición -->
-  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
-&#10;  <!-- Sintaxis de array: combina varias fuentes -->
-  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
-&#10;  <!-- Con CSS Modules -->
-  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
+&#10;  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
+&#10;  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
+&#10;  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
@@ -112,10 +109,8 @@ const baseClass = ref('card')
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Sintaxis de objeto -->
-  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
-&#10;  <!-- Sintaxis de array: combina varios objetos de estilo -->
-  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
+&#10;  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
+&#10;  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
 </template>" />
 
 Vue añade automáticamente prefijos de vendor para propiedades CSS específicas del navegador, así que no necesitas escribir `-webkit-` ni `-moz-` tú mismo.

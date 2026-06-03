@@ -47,10 +47,6 @@ const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
   </Suspense>
 </template>" />
 
-    <template #fallback>Loading...</template>
-  </Suspense>
-</template>" />
-
 This works in CSR but causes hydration flicker in SSR because the chunk might not be ready when hydration starts.
 
 ## Solution 1: use async setup instead of defineAsyncComponent
@@ -68,8 +64,7 @@ const { data } = await useFetch('/api/dashboard')
 </template>
 ```
 
-<PlaygroundLink code="<!-- Dashboard.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const { data } = await useFetch('/api/dashboard')
 </script>
 &#10;<template>
@@ -86,14 +81,9 @@ const { data } = await useFetch('/api/dashboard')
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <Suspense>
     <Dashboard />
-    <template #fallback><DashboardSkeleton /></template>
-  </Suspense>
-</template>" />
-
     <template #fallback><DashboardSkeleton /></template>
   </Suspense>
 </template>" />
@@ -122,14 +112,6 @@ For components where SSR is not critical, skip server rendering entirely:
   <ClientOnly>
     <Suspense>
       <AsyncDashboard />
-      <template #fallback>Loading dashboard...</template>
-    </Suspense>
-    <template #fallback>
-      <DashboardSkeleton />
-    </template>
-  </ClientOnly>
-</template>" />
-
       <template #fallback>Loading dashboard...</template>
     </Suspense>
     <template #fallback>
@@ -169,19 +151,6 @@ Instead of one Suspense wrapping everything, give each async section its own bou
   <div class=&quot;dashboard&quot;>
     <Suspense>
       <AsyncHeader />
-      <template #fallback><HeaderSkeleton /></template>
-    </Suspense>
-&#10;    <Suspense>
-      <AsyncStats />
-      <template #fallback><StatsSkeleton /></template>
-    </Suspense>
-&#10;    <Suspense>
-      <AsyncTable />
-      <template #fallback><TableSkeleton /></template>
-    </Suspense>
-  </div>
-</template>" />
-
       <template #fallback><HeaderSkeleton /></template>
     </Suspense>
 &#10;    <Suspense>

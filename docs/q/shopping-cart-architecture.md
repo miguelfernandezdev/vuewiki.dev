@@ -104,8 +104,7 @@ function addToCart() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/ProductCard.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const props = defineProps<{
   id: string
   name: string
@@ -125,12 +124,6 @@ const props = defineProps<{
 &#10;<template>
   <div class=&quot;product-card&quot;>
     <img :src=&quot;image&quot; :alt=&quot;name&quot; />
-    <h3>{{ name }}</h3>
-    <p>{{ price.toFixed(2) }} €</p>
-    <button @click=&quot;addToCart&quot;>Add to cart</button>
-  </div>
-</template>" />
-
     <h3>{{ name }}</h3>
     <p>{{ price.toFixed(2) }} €</p>
     <button @click=&quot;addToCart&quot;>Add to cart</button>
@@ -173,8 +166,7 @@ const cart = useCartStore()
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/CartDrawer.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const cart = useCartStore()
 </script>
 &#10;<template>
@@ -183,24 +175,6 @@ const cart = useCartStore()
 &#10;    <p v-if=&quot;!cart.items.length&quot;>Your cart is empty.</p>
 &#10;    <div v-for=&quot;item in cart.items&quot; :key=&quot;item.id&quot; class=&quot;cart-item&quot;>
       <img :src=&quot;item.image&quot; :alt=&quot;item.name&quot; />
-      <div>
-        <p>{{ item.name }}</p>
-        <p>{{ item.price.toFixed(2) }} € × {{ item.qty }}</p>
-      </div>
-      <div class=&quot;qty-controls&quot;>
-        <button @click=&quot;cart.updateQty(item.id, item.qty - 1)&quot;>−</button>
-        <span>{{ item.qty }}</span>
-        <button @click=&quot;cart.updateQty(item.id, item.qty + 1)&quot;>+</button>
-      </div>
-      <button @click=&quot;cart.removeItem(item.id)&quot;>Remove</button>
-    </div>
-&#10;    <div v-if=&quot;cart.items.length&quot; class=&quot;cart-total&quot;>
-      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
-      <NuxtLink to=&quot;/checkout&quot;>Checkout</NuxtLink>
-    </div>
-  </aside>
-</template>" />
-
       <div>
         <p>{{ item.name }}</p>
         <p>{{ item.price.toFixed(2) }} € × {{ item.qty }}</p>
@@ -274,8 +248,7 @@ const cart = useCartStore()
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/CartBadge.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const cart = useCartStore()
 </script>
 &#10;<template>
@@ -329,8 +302,7 @@ async function placeOrder() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- pages/checkout.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const cart = useCartStore()
 const isSubmitting = ref(false)
 &#10;async function placeOrder() {

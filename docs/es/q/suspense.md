@@ -26,17 +26,8 @@ summary: '<Suspense> renderiza contenido de respaldo mientras los hijos async se
 
 <PlaygroundLink code="<template>
   <Suspense>
-    <!-- Slot por defecto: el contenido asíncrono -->
-    <AsyncDashboard />
-&#10;    <!-- Slot fallback: se muestra mientras carga -->
-    <template #fallback>
-      <LoadingSkeleton />
-    </template>
-  </Suspense>
-</template>" />
-
-&#10;    <!-- Slot fallback: se muestra mientras carga -->
-    <template #fallback>
+&#10;    <AsyncDashboard />
+&#10;    <template #fallback>
       <LoadingSkeleton />
     </template>
   </Suspense>
@@ -61,16 +52,13 @@ const posts = await fetchPosts(user.id)
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserProfile.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const user = await fetchUser() // await de nivel superior
 const posts = await fetchPosts(user.id)
 </script>
 &#10;<template>
   <h1>{{ user.name }}</h1>
   <PostList :posts=&quot;posts&quot; />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -83,14 +71,9 @@ const posts = await fetchPosts(user.id)
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <Suspense>
     <UserProfile />
-    <template #fallback>Cargando perfil...</template>
-  </Suspense>
-</template>" />
-
     <template #fallback>Cargando perfil...</template>
   </Suspense>
 </template>" />
@@ -132,17 +115,6 @@ Suspense rastrea un único hijo inmediato por slot. Envuelve varios elementos:
   </Suspense>
 </template>" />
 
-      <AsyncContent />
-    </div>
-&#10;    <template #fallback>
-      <div>
-        <LoadingSpinner />
-        <p>Cargando...</p>
-      </div>
-    </template>
-  </Suspense>
-</template>" />
-
 ## Timeout para re-activaciones
 
 Cuando Suspense ya está resuelto y comienza nuevo trabajo asíncrono (por ejemplo, al cambiar de vista), el contenido anterior permanece visible hasta que expira un timeout. Configura `timeout` para controlar cuándo vuelve a aparecer el fallback:
@@ -158,13 +130,8 @@ Cuando Suspense ya está resuelto y comienza nuevo trabajo asíncrono (por ejemp
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Muestra el fallback tras 200ms si la nueva vista no ha resuelto -->
-  <Suspense :timeout=&quot;200&quot;>
+&#10;  <Suspense :timeout=&quot;200&quot;>
     <component :is=&quot;currentView&quot; :key=&quot;currentView&quot; />
-    <template #fallback>Cargando...</template>
-  </Suspense>
-</template>" />
-
     <template #fallback>Cargando...</template>
   </Suspense>
 </template>" />
@@ -201,12 +168,6 @@ const isLoading = ref(false)
   </Suspense>
 </template>" />
 
-&#10;  <Suspense @pending=&quot;isLoading = true&quot; @resolve=&quot;isLoading = false&quot;>
-    <AsyncPage />
-    <template #fallback><PageSkeleton /></template>
-  </Suspense>
-</template>" />
-
 ## Anidamiento con RouterView, Transition y KeepAlive
 
 El orden correcto de anidamiento es RouterView, luego Transition, luego KeepAlive y luego Suspense:
@@ -232,13 +193,6 @@ El orden correcto de anidamiento es RouterView, luego Transition, luego KeepAliv
       <KeepAlive>
         <Suspense>
           <component :is=&quot;Component&quot; />
-          <template #fallback>Cargando...</template>
-        </Suspense>
-      </KeepAlive>
-    </Transition>
-  </RouterView>
-</template>" />
-
           <template #fallback>Cargando...</template>
         </Suspense>
       </KeepAlive>

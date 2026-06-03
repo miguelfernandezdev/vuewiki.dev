@@ -59,8 +59,7 @@ const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserList.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
 </script>
 &#10;<template>
@@ -78,8 +77,7 @@ const { data: products, isLoading } = useFetch<Product[]>('/api/products')
 </script>
 ```
 
-<PlaygroundLink code="<!-- ProductList.vue — same composable, different component -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const { data: products, isLoading } = useFetch<Product[]>('/api/products')
 </script>" />
 
@@ -101,15 +99,12 @@ const { data, error, isLoading } = useFetch<T>(props.url)
 </template>
 ```
 
-<PlaygroundLink code="<!-- FetchProvider.vue -->
-<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
 const props = defineProps<{ url: string }>()
 const { data, error, isLoading } = useFetch<T>(props.url)
 </script>
 &#10;<template>
   <slot :data=&quot;data&quot; :error=&quot;error&quot; :is-loading=&quot;isLoading&quot; />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -122,8 +117,7 @@ const { data, error, isLoading } = useFetch<T>(props.url)
 </FetchProvider>
 ```
 
-<PlaygroundLink code="<!-- Usage -->
-<FetchProvider url=&quot;/api/users&quot; v-slot=&quot;{ data: users, isLoading }&quot;>
+<PlaygroundLink code="<FetchProvider url=&quot;/api/users&quot; v-slot=&quot;{ data: users, isLoading }&quot;>
   <p v-if=&quot;isLoading&quot;>Loading...</p>
   <ul v-else>
     <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
@@ -164,10 +158,7 @@ This works, but it has problems:
 <!-- TypeScript can't infer the wrapped component's props -->
 ```
 
-<PlaygroundLink code="<!-- The component tree shows ProtectedDashboard > Dashboard -->
-<!-- In DevTools, the wrapper obscures the real component -->
-<!-- Props must pass through the wrapper manually -->
-<!-- TypeScript can't infer the wrapped component's props -->" />
+<PlaygroundLink code="" />
 
 The composable version is simpler and has none of these issues:
 
@@ -187,9 +178,6 @@ const { isAuthenticated } = useAuth()
 </script>
 &#10;<template>
   <Dashboard v-if=&quot;isAuthenticated&quot; />
-  <p v-else>Not authorized</p>
-</template>" />
-
   <p v-else>Not authorized</p>
 </template>" />
 

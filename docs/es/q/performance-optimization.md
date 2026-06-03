@@ -26,8 +26,7 @@ El sistema de reactividad de Vue es eficiente por diseño, pero no puede saber q
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Se renderiza una vez, nunca vuelve a ser diffeado -->
-  <footer v-once>
+&#10;  <footer v-once>
     <p>© 2024 Acme Corp. Todos los derechos reservados.</p>
   </footer>
 </template>" />
@@ -235,9 +234,6 @@ import { defineAsyncComponent } from 'vue'
   <ChartWidget />
 </template>" />
 
-  <ChartWidget />
-</template>" />
-
 ### Lazy hydration en Nuxt
 
 En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el componente entra en el viewport (o se necesita). El componente sigue siendo renderizado por el servidor como HTML, pero la hidratación del lado del cliente (que es lo que lo hace interactivo) se retrasa. Esto mejora directamente el Time to Interactive en páginas con mucho contenido.
@@ -254,15 +250,8 @@ En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el co
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Se hidrata de inmediato -->
-  <HeroSection />
-&#10;  <!-- La hidratación se difiere hasta que el componente se necesite -->
-  <LazyCommentSection />
-  <LazyRecommendedArticles />
-</template>" />
-
-&#10;  <!-- La hidratación se difiere hasta que el componente se necesite -->
-  <LazyCommentSection />
+&#10;  <HeroSection />
+&#10;  <LazyCommentSection />
   <LazyRecommendedArticles />
 </template>" />
 
@@ -319,9 +308,6 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
   </RecycleScroller>
 </template>" />
 
-  </RecycleScroller>
-</template>" />
-
 La **estabilidad de props** es un patrón relacionado. Cuando pasas valores derivados a un elemento de lista que cambian en cada re-render del padre, todos los elementos se re-renderizan también, aunque sus propios datos no hayan cambiado. Prefiere pasar el booleano derivado directamente:
 
 ```vue
@@ -342,23 +328,13 @@ La **estabilidad de props** es un patrón relacionado. Cuando pasas valores deri
 />
 ```
 
-<PlaygroundLink code="<!-- Inestable: el prop `activeId` hace que todos los elementos se re-rendericen -->
-<UserRow
+<PlaygroundLink code="<UserRow
   v-for=&quot;user in users&quot;
   :key=&quot;user.id&quot;
   :user=&quot;user&quot;
   :active-id=&quot;activeId&quot;
 />
-&#10;<!-- Estable: solo el elemento cuyo valor `active` cambia se re-renderiza -->
-<UserRow
-  v-for=&quot;user in users&quot;
-  :key=&quot;user.id&quot;
-  :user=&quot;user&quot;
-  :active=&quot;user.id === activeId&quot;
-/>" />
-
-&#10;<!-- Estable: solo el elemento cuyo valor `active` cambia se re-renderiza -->
-<UserRow
+&#10;<UserRow
   v-for=&quot;user in users&quot;
   :key=&quot;user.id&quot;
   :user=&quot;user&quot;

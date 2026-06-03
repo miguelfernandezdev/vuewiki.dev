@@ -65,14 +65,11 @@ import CheckoutForm from 'checkout/CheckoutForm'
 </template>
 ```
 
-<PlaygroundLink code="<!-- In the shell app -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import CheckoutForm from 'checkout/CheckoutForm'
 </script>
 &#10;<template>
   <CheckoutForm />
-</template>" />
-
 </template>" />
 
 The `shared` config ensures both apps use the same Vue instance, so reactivity and provide/inject work across boundaries.
@@ -102,8 +99,6 @@ customElements.define('checkout-form', CheckoutElement)
 
 <PlaygroundLink code="<template>
   <checkout-form :cart-id=&quot;cartId&quot; @order-placed=&quot;handleOrder&quot; />
-</template>" />
-
 </template>" />
 
 Pros: framework-agnostic, true isolation. Cons: no shared Vue context (provide/inject, devtools), CSS isolation can be tricky.

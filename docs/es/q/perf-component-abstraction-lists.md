@@ -24,18 +24,10 @@ Cada instancia de componente Vue tiene un coste: configuración reactiva, creaci
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue — profundamente anidado -->
-<template>
+<PlaygroundLink code="<template>
   <Card>
     <CardHeader>
       <UserAvatar :src=&quot;user.avatar&quot; />
-    </CardHeader>
-    <CardBody>
-      <Text>{{ user.name }}</Text>
-    </CardBody>
-  </Card>
-</template>" />
-
     </CardHeader>
     <CardBody>
       <Text>{{ user.name }}</Text>
@@ -48,8 +40,7 @@ Cada instancia de componente Vue tiene un coste: configuración reactiva, creaci
 <UserCard v-for="user in users" :key="user.id" :user="user" />
 ```
 
-<PlaygroundLink code="<!-- 100 usuarios = 500+ instancias de componentes -->
-<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
+<PlaygroundLink code="<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
 
 Cada `Card`, `CardHeader`, `CardBody`, `UserAvatar` y `Text` es una instancia de componente independiente. Multiplica por 100 elementos de lista y obtienes una sobrecarga significativa de memoria y renderizado.
 
@@ -75,21 +66,13 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue — aplanado -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 defineProps<{ user: { id: string; name: string; avatar: string } }>()
 </script>
 &#10;<template>
   <div class=&quot;card&quot;>
     <div class=&quot;card-header&quot;>
       <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
-    </div>
-    <div class=&quot;card-body&quot;>
-      <span>{{ user.name }}</span>
-    </div>
-  </div>
-</template>" />
-
     </div>
     <div class=&quot;card-body&quot;>
       <span>{{ user.name }}</span>
@@ -129,11 +112,7 @@ No todas las listas necesitan aplanarse. Mantén las abstracciones de componente
 
 <PlaygroundLink code="<RecycleScroller :items=&quot;items&quot; :item-size=&quot;80&quot;>
   <template #default=&quot;{ item }&quot;>
-    <!-- Bien: solo existen ~20 instancias independientemente del tamaño de la lista -->
-    <ComplexItemCard :item=&quot;item&quot; />
-  </template>
-</RecycleScroller>" />
-
+&#10;    <ComplexItemCard :item=&quot;item&quot; />
   </template>
 </RecycleScroller>" />
 

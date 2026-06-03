@@ -51,17 +51,10 @@ The elements must be siblings. You can't put other elements between `v-if` and `
 <div v-else>No</div>
 ```
 
-<PlaygroundLink code="<!-- Wrong: the <hr> breaks the chain -->
-<div v-if=&quot;ok&quot;>Yes</div>
+<PlaygroundLink code="<div v-if=&quot;ok&quot;>Yes</div>
 <hr />
 <div v-else>No</div>
-&#10;<!-- Right: siblings, no gap -->
-<div v-if=&quot;ok&quot;>Yes</div>
-<div v-else>No</div>" />
-
-<div v-else>No</div>
-&#10;<!-- Right: siblings, no gap -->
-<div v-if=&quot;ok&quot;>Yes</div>
+&#10;<div v-if=&quot;ok&quot;>Yes</div>
 <div v-else>No</div>" />
 
 ## v-if on template
@@ -119,12 +112,10 @@ Never put `v-if` and `v-for` on the same element. In Vue 3, `v-if` has higher pr
 </li>
 ```
 
-<PlaygroundLink code="<!-- Wrong: v-if can't see &quot;item&quot; -->
-<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
+<PlaygroundLink code="<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
   {{ item.name }}
 </li>
-&#10;<!-- Right: filter with computed -->
-<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
+&#10;<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
   {{ item.name }}
 </li>" />
 

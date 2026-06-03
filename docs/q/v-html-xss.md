@@ -29,17 +29,9 @@ const richContent = ref('<p>Hello <strong>world</strong></p>')
 const richContent = ref('<p>Hello <strong>world</strong></p>')
 </script>
 &#10;<template>
-  <!-- Renders as styled HTML -->
-  <div v-html=&quot;richContent&quot; />
-&#10;  <!-- Compare with text interpolation -->
-  <div>{{ richContent }}</div>
-  <!-- Shows: <p>Hello <strong>world</strong></p> as plain text -->
-</template>" />
-
-&#10;  <!-- Compare with text interpolation -->
-  <div>{{ richContent }}</div>
-  <!-- Shows: <p>Hello <strong>world</strong></p> as plain text -->
-</template>" />
+&#10;  <div v-html=&quot;richContent&quot; />
+&#10;  <div>{{ richContent }}</div>
+&#10;</template>" />
 
 Double curly braces `{{ }}` escape HTML entities automatically. `v-html` does not.
 
@@ -66,10 +58,7 @@ const userComment = ref(
 )
 </script>
 &#10;<template>
-  <!-- This executes the attacker's JavaScript -->
-  <div v-html=&quot;userComment&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;userComment&quot; />
 </template>" />
 
 The `onerror` handler runs as soon as the browser tries to load the broken image. The attacker now has the user's cookies. Other attack vectors include `<script>` tags (though `innerHTML` doesn't execute them), `<iframe>`, `<svg onload>`, and event handlers on any element.
@@ -100,8 +89,6 @@ const rendered = computed(() => marked(markdownSource))
 </script>
 &#10;<template>
   <article v-html=&quot;rendered&quot; />
-</template>" />
-
 </template>" />
 
 Even with trusted content, sanitize as an extra layer of defense.
@@ -135,10 +122,7 @@ import DOMPurify from 'dompurify'
 &#10;const safeHtml = computed(() => DOMPurify.sanitize(userContent.value))
 </script>
 &#10;<template>
-  <!-- Script tag is stripped, only <p>Hello</p> remains -->
-  <div v-html=&quot;safeHtml&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;safeHtml&quot; />
 </template>" />
 
 DOMPurify strips dangerous tags and attributes while keeping safe formatting elements like `<p>`, `<strong>`, `<em>`, `<a>` (with sanitized `href`), and `<img>` (without event handlers).
@@ -162,10 +146,7 @@ const html = ref('<my-component>Hello</my-component>')
 const html = ref('<my-component>Hello</my-component>')
 </script>
 &#10;<template>
-  <!-- my-component will NOT be mounted as a Vue component -->
-  <div v-html=&quot;html&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;html&quot; />
 </template>" />
 
 Content injected with `v-html` is raw DOM. Vue components, directives (`v-if`, `v-for`), and template syntax (`{{ }}`) inside it are ignored. If you need dynamic templates, use render functions or the runtime compiler.
@@ -191,10 +172,7 @@ p {
 }
 </style>
 &#10;<template>
-  <!-- The <p> inside v-html won't be red -->
-  <div v-html=&quot;'<p>Not styled</p>'&quot; />
-</template>" />
-
+&#10;  <div v-html=&quot;'<p>Not styled</p>'&quot; />
 </template>" />
 
 Scoped styles add a `data-v-xxxxx` attribute to elements compiled by Vue. Elements injected by `v-html` don't get that attribute, so scoped selectors don't match. Use `:deep()` to target them:

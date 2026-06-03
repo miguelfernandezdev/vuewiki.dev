@@ -98,12 +98,6 @@ interface Todo {
   </ul>
 </template>" />
 
-        {{ todo.text }}
-      </label>
-    </li>
-  </ul>
-</template>" />
-
 ## Ejemplo: eliminar de una lista
 
 Eliminar es más delicado porque hay que recordar el elemento y su posición:

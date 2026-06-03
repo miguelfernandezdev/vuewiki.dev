@@ -43,16 +43,12 @@ En la práctica:
 ```
 
 <PlaygroundLink code="<template>
-  <!-- .prevent.self: previene el comportamiento predeterminado también en los hijos -->
-  <div @click.prevent.self=&quot;handleClick&quot;>
+&#10;  <div @click.prevent.self=&quot;handleClick&quot;>
     <a href=&quot;/page&quot;>Link</a>
-    <!-- el default se previene aunque el clic sea en el hijo -->
-  </div>
-&#10;  <!-- .self.prevent: solo previene el default en el propio div -->
-  <div @click.self.prevent=&quot;handleClick&quot;>
+&#10;  </div>
+&#10;  <div @click.self.prevent=&quot;handleClick&quot;>
     <a href=&quot;/page&quot;>Link</a>
-    <!-- la navegación funciona con normalidad -->
-  </div>
+&#10;  </div>
 </template>" />
 
 ## Todos los modificadores de eventos
@@ -85,14 +81,10 @@ En la práctica:
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Detener propagación Y prevenir default (el orden no importa aquí) -->
-  <a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
-&#10;  <!-- Disparar solo una vez, en fase de captura -->
-  <div @click.capture.once=&quot;handleOnce&quot;>...</div>
-&#10;  <!-- Solo disparar si se pulsa EXACTAMENTE Ctrl (sin Shift, sin Alt) -->
-  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl+Click</button>
-&#10;  <!-- Prevenir el envío del formulario, gestionar en JavaScript -->
-  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+&#10;  <a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
+&#10;  <div @click.capture.once=&quot;handleOnce&quot;>...</div>
+&#10;  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl+Click</button>
+&#10;  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
 </template>" />
 
 ## Cuándo el orden no importa

@@ -29,8 +29,7 @@ const user = ref({
 </template>
 ```
 
-<PlaygroundLink code="<!-- Padre -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const user = ref({
   id: 1,
   name: 'Alice',
@@ -41,10 +40,7 @@ const user = ref({
 })
 </script>
 &#10;<template>
-  <!-- MAL: pasa todo, incluyendo datos que el hijo no debería ver -->
-  <UserCard v-bind=&quot;user&quot; />
-</template>" />
-
+&#10;  <UserCard v-bind=&quot;user&quot; />
 </template>" />
 
 ```vue
@@ -55,8 +51,7 @@ defineProps<{ name: string; email: string }>()
 </script>
 ```
 
-<PlaygroundLink code="<!-- UserCard.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ name: string; email: string }>()
 // Solo usa name y email, pero recibe id, role, internalNotes, passwordHash también
 </script>" />
@@ -99,14 +94,8 @@ Cada propiedad del spread se convierte en una prop. Cuando cualquier propiedad c
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Cada vez que user.lastLoginAt cambia, UserCard se re-renderiza -->
-  <UserCard v-bind=&quot;user&quot; />
-&#10;  <!-- Solo se re-renderiza cuando name o email cambian -->
-  <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />
-</template>" />
-
-&#10;  <!-- Solo se re-renderiza cuando name o email cambian -->
-  <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />
+&#10;  <UserCard v-bind=&quot;user&quot; />
+&#10;  <UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />
 </template>" />
 
 ### 3. API del componente oculta
@@ -121,13 +110,8 @@ Las props explícitas documentan la interfaz del componente. Con spread, no pued
 <ProfileHeader :name="user.name" :avatar="user.avatar" :role="user.role" />
 ```
 
-<PlaygroundLink code="<!-- ¿Qué necesita ProfileHeader exactamente? No hay manera de saberlo. -->
-<ProfileHeader v-bind=&quot;user&quot; />
-&#10;<!-- Claro: necesita name, avatar y role -->
-<ProfileHeader :name=&quot;user.name&quot; :avatar=&quot;user.avatar&quot; :role=&quot;user.role&quot; />" />
-
-&#10;<!-- Claro: necesita name, avatar y role -->
-<ProfileHeader :name=&quot;user.name&quot; :avatar=&quot;user.avatar&quot; :role=&quot;user.role&quot; />" />
+<PlaygroundLink code="<ProfileHeader v-bind=&quot;user&quot; />
+&#10;<ProfileHeader :name=&quot;user.name&quot; :avatar=&quot;user.avatar&quot; :role=&quot;user.role&quot; />" />
 
 ### 4. Colisiones de nombres
 
@@ -159,13 +143,8 @@ Cuando haces spread de un objeto genérico, TypeScript no puede validar que el h
 <UserCard :name="someObject.name" :email="someObject.email" />
 ```
 
-<PlaygroundLink code="<!-- TypeScript no puede verificar esto -->
-<UserCard v-bind=&quot;someObject&quot; />
-&#10;<!-- TypeScript valida cada prop -->
-<UserCard :name=&quot;someObject.name&quot; :email=&quot;someObject.email&quot; />" />
-
-&#10;<!-- TypeScript valida cada prop -->
-<UserCard :name=&quot;someObject.name&quot; :email=&quot;someObject.email&quot; />" />
+<PlaygroundLink code="<UserCard v-bind=&quot;someObject&quot; />
+&#10;<UserCard :name=&quot;someObject.name&quot; :email=&quot;someObject.email&quot; />" />
 
 ## Cuándo es apropiado v-bind="$attrs"
 
@@ -186,8 +165,7 @@ defineProps<{ label: string }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- BaseInput.vue: un wrapper fino que reenvía todos los attrs al input real -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineOptions({ inheritAttrs: false })
 defineProps<{ label: string }>()
 </script>
@@ -198,16 +176,12 @@ defineProps<{ label: string }>()
   </label>
 </template>" />
 
-</label>
-</template>" />
-
 ```vue
 <!-- Padre -->
 <BaseInput label="Email" type="email" placeholder="you@example.com" required />
 ```
 
-<PlaygroundLink code="<!-- Padre -->
-<BaseInput label=&quot;Email&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; required />" />
+<PlaygroundLink code="<BaseInput label=&quot;Email&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; required />" />
 
 Aquí el wrapper existe específicamente para reenviar atributos. El `type`, `placeholder` y `required` del padre llegan al `<input>` como se espera. Esto es distinto a hacer spread ciegamente de un objeto de datos.
 
@@ -221,13 +195,8 @@ Aquí el wrapper existe específicamente para reenviar atributos. El `type`, `pl
 <UserCard :name="user.name" :email="user.email" />
 ```
 
-<PlaygroundLink code="<!-- MAL -->
-<UserCard v-bind=&quot;user&quot; />
-&#10;<!-- BIEN -->
-<UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />" />
-
-&#10;<!-- BIEN -->
-<UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />" />
+<PlaygroundLink code="<UserCard v-bind=&quot;user&quot; />
+&#10;<UserCard :name=&quot;user.name&quot; :email=&quot;user.email&quot; />" />
 
 Si varios componentes necesitan el mismo subconjunto de datos del usuario, crea un computed o un tipo para ello:
 
@@ -261,8 +230,6 @@ interface UserSummary {
 </script>
 &#10;<template>
   <UserCard v-bind=&quot;userSummary&quot; />
-</template>" />
-
 </template>" />
 
 Ahora el spread es intencional y tiene tipado. El objeto contiene exactamente lo que `UserCard` espera, nada más.

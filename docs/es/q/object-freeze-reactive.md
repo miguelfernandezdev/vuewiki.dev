@@ -40,12 +40,10 @@ const frozenList = reactive(
 )
 </script>
 &#10;<template>
-  <!-- Se renderiza bien en la carga inicial -->
-  <p v-for=&quot;item in frozenList&quot; :key=&quot;item.id&quot;>
+&#10;  <p v-for=&quot;item in frozenList&quot; :key=&quot;item.id&quot;>
     {{ item.name }}
   </p>
-&#10;  <!-- Este botón no hace nada visible -->
-  <button @click=&quot;frozenList[0].name = 'Cambiado'&quot;>Intentar mutar</button>
+&#10;  <button @click=&quot;frozenList[0].name = 'Cambiado'&quot;>Intentar mutar</button>
 </template>" />
 
 Al pulsar el botón, el DOM no se actualiza. En modo estricto, la mutación lanza un `TypeError`. En modo no estricto, falla silenciosamente. En cualquier caso, Vue no vuelve a renderizar.

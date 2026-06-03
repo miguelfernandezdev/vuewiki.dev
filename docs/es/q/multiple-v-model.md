@@ -24,16 +24,8 @@ const last = ref('García')
 </script>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <UserForm v-model:first-name=&quot;first&quot; v-model:last-name=&quot;last&quot; />
-</template>
-&#10;<script setup>
-import { ref } from 'vue'
-&#10;const first = ref('Ana')
-const last = ref('García')
-</script>" />
-
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
@@ -54,17 +46,13 @@ const lastName = defineModel('lastName')
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserForm.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const firstName = defineModel('firstName')
 const lastName = defineModel('lastName')
 </script>
 &#10;<template>
   <input v-model=&quot;firstName&quot; placeholder=&quot;Nombre&quot; />
   <input v-model=&quot;lastName&quot; placeholder=&quot;Apellido&quot; />
-</template>" />
-
-<input v-model=&quot;lastName&quot; placeholder=&quot;Apellido&quot; />
 </template>" />
 
 `defineModel` (Vue 3.4+) crea un binding bidireccional automáticamente. Cada modelo con nombre corresponde a un `v-model:nombre` en el padre.
@@ -115,11 +103,8 @@ El `v-model` por defecto (sin nombre) usa `modelValue` como nombre de prop:
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <SearchInput v-model=&quot;query&quot; v-model:filters=&quot;activeFilters&quot; />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -130,8 +115,7 @@ const filters = defineModel('filters') // corresponde a v-model:filters
 </script>
 ```
 
-<PlaygroundLink code="<!-- SearchInput.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const query = defineModel() // corresponde a v-model (modelValue)
 const filters = defineModel('filters') // corresponde a v-model:filters
 </script>" />
@@ -194,12 +178,6 @@ const props = defineProps<{
     :value=&quot;firstName&quot;
     @input=&quot;emit('update:firstName', ($event.target as HTMLInputElement).value)&quot;
   />
-  <input
-    :value=&quot;lastName&quot;
-    @input=&quot;emit('update:lastName', ($event.target as HTMLInputElement).value)&quot;
-  />
-</template>" />
-
   <input
     :value=&quot;lastName&quot;
     @input=&quot;emit('update:lastName', ($event.target as HTMLInputElement).value)&quot;

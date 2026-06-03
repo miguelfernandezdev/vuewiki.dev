@@ -35,8 +35,7 @@ onErrorCaptured((err, instance, info) => {
 </template>
 ```
 
-<PlaygroundLink code="<!-- ErrorBoundary.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref, onErrorCaptured } from 'vue'
 &#10;const error = (ref < Error) | (null > null)
 &#10;onErrorCaptured((err, instance, info) => {
@@ -53,8 +52,6 @@ import { ref, onErrorCaptured } from 'vue'
   <slot v-else />
 </template>" />
 
-</template>" />
-
 ```vue
 <!-- Usage -->
 <template>
@@ -64,13 +61,9 @@ import { ref, onErrorCaptured } from 'vue'
 </template>
 ```
 
-<PlaygroundLink code="<!-- Usage -->
-<template>
+<PlaygroundLink code="<template>
   <ErrorBoundary>
     <DashboardWidget />
-  </ErrorBoundary>
-</template>" />
-
   </ErrorBoundary>
 </template>" />
 
@@ -172,20 +165,6 @@ Wrap independent sections so one failure doesn't take down the whole page:
   <header>
     <ErrorBoundary>
       <Navigation />
-    </ErrorBoundary>
-  </header>
-&#10;  <main>
-    <ErrorBoundary>
-      <RouterView />
-    </ErrorBoundary>
-  </main>
-&#10;  <aside>
-    <ErrorBoundary>
-      <Sidebar />
-    </ErrorBoundary>
-  </aside>
-</template>" />
-
     </ErrorBoundary>
   </header>
 &#10;  <main>

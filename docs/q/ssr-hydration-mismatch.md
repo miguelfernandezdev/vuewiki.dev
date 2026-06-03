@@ -22,8 +22,7 @@ A hydration mismatch happens when the HTML the client renders differs from what 
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Browser splits this into <p></p><div>...</div><p></p> -->
-  <p>
+&#10;  <p>
     <div>This breaks hydration</div>
   </p>
 </template>" />
@@ -41,14 +40,8 @@ A hydration mismatch happens when the HTML the client renders differs from what 
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Server: &quot;field-0.847...&quot; / Client: &quot;field-0.231...&quot; -->
-  <input :id=&quot;'field-' + Math.random()&quot; />
-&#10;  <!-- Server timezone != client timezone -->
-  <span>{{ new Date().toLocaleTimeString() }}</span>
-</template>" />
-
-&#10; <!-- Server timezone != client timezone -->
-<span>{{ new Date().toLocaleTimeString() }}</span>
+&#10;  <input :id=&quot;'field-' + Math.random()&quot; />
+&#10;  <span>{{ new Date().toLocaleTimeString() }}</span>
 </template>" />
 
 Fix: defer non-deterministic values to `onMounted`.

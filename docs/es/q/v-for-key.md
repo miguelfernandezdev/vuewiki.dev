@@ -56,24 +56,11 @@ import { ref } from 'vue'
 }
 </script>
 &#10;<template>
-  <!-- ❌ key=index: tras eliminar Apple, el input que tenía el texto de Apple
-       ahora aparece junto a Banana — el estado no coincide -->
-  <div v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
+&#10;  <div v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
     <span>{{ item.name }}</span>
     <input placeholder=&quot;Escribe algo&quot; />
   </div>
-&#10;  <!-- ✅ key=item.id: Vue elimina correctamente el nodo DOM de Apple,
-       Banana y Cherry conservan sus inputs y su estado -->
-  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
-    <span>{{ item.name }}</span>
-    <input placeholder=&quot;Escribe algo&quot; />
-  </div>
-</template>" />
-
-  </div>
-&#10;  <!-- ✅ key=item.id: Vue elimina correctamente el nodo DOM de Apple,
-       Banana y Cherry conservan sus inputs y su estado -->
-  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+&#10;  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
     <span>{{ item.name }}</span>
     <input placeholder=&quot;Escribe algo&quot; />
   </div>
@@ -99,12 +86,9 @@ Escribe algo en cada input y luego elimina el primer elemento. Con `key=index`, 
 <li v-for="(item, i) in items" :key="i">{{ item.name }}</li>
 ```
 
-<PlaygroundLink code="<!-- ✅ Bien: ID estable de los datos -->
-<li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
-&#10;<!-- ✅ Bien: string único y estable -->
-<li v-for=&quot;tab in tabs&quot; :key=&quot;tab.slug&quot;>{{ tab.label }}</li>
-&#10;<!-- ❌ Mal: el índice cambia cuando el array cambia -->
-<li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;>{{ item.name }}</li>" />
+<PlaygroundLink code="<li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+&#10;<li v-for=&quot;tab in tabs&quot; :key=&quot;tab.slug&quot;>{{ tab.label }}</li>
+&#10;<li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;>{{ item.name }}</li>" />
 
 ## Cuándo el índice es válido
 

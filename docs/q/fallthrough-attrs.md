@@ -23,16 +23,13 @@ Fallthrough attributes are props and event listeners passed to a component that 
 <button class="primary" data-testid="submit">Save</button>
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<BaseButton class=&quot;primary&quot; data-testid=&quot;submit&quot; @click=&quot;save&quot;>
+<PlaygroundLink code="<BaseButton class=&quot;primary&quot; data-testid=&quot;submit&quot; @click=&quot;save&quot;>
   Save
 </BaseButton>
-&#10;<!-- BaseButton.vue (no class or click declared) -->
-<template>
+&#10;<template>
   <button><slot /></button>
 </template>
-&#10;<!-- Rendered HTML: attrs fall through to the root <button> -->
-<button class=&quot;primary&quot; data-testid=&quot;submit&quot;>Save</button>" />
+&#10;<button class=&quot;primary&quot; data-testid=&quot;submit&quot;>Save</button>" />
 
 ## Disabling automatic fallthrough
 
@@ -57,12 +54,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 &#10;<template>
   <div class=&quot;wrapper&quot;>
-    <!-- Forward all attrs to the inner input, not the wrapper -->
-    <input v-bind=&quot;$attrs&quot; />
-    <span class=&quot;icon&quot;>🔍</span>
-  </div>
-</template>" />
-
+&#10;    <input v-bind=&quot;$attrs&quot; />
     <span class=&quot;icon&quot;>🔍</span>
   </div>
 </template>" />

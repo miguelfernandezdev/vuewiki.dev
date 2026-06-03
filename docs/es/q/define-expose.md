@@ -26,8 +26,7 @@ function reset() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Counter.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref } from 'vue'
 &#10;const count = ref(0)
 function reset() {
@@ -55,8 +54,7 @@ onMounted(() => {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { useTemplateRef, onMounted } from 'vue'
 const counterRef = useTemplateRef('counter')
 &#10;onMounted(() => {
@@ -66,8 +64,6 @@ const counterRef = useTemplateRef('counter')
 </script>
 &#10;<template>
   <Counter ref=&quot;counter&quot; />
-</template>" />
-
 </template>" />
 
 El padre ve `{}` porque no se expuso nada.
@@ -91,8 +87,7 @@ defineExpose({ count, reset })
 </script>
 ```
 
-<PlaygroundLink code="<!-- Counter.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref } from 'vue'
 &#10;const count = ref(0)
 const internalState = ref('private')
@@ -127,8 +122,7 @@ defineExpose({
 </template>
 ```
 
-<PlaygroundLink code="<!-- BaseInput.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { ref } from 'vue'
 &#10;const inputEl = (ref < HTMLInputElement) | (null > null)
 &#10;defineExpose({
@@ -138,8 +132,6 @@ import { ref } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;inputEl&quot; v-bind=&quot;$attrs&quot; />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -160,8 +152,7 @@ function openSearch() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 import { useTemplateRef } from 'vue'
 &#10;const input = useTemplateRef('search')
 &#10;function openSearch() {
@@ -171,9 +162,6 @@ import { useTemplateRef } from 'vue'
 &#10;<template>
   <BaseInput ref=&quot;search&quot; placeholder=&quot;Search...&quot; />
   <button @click=&quot;openSearch&quot;>Search</button>
-</template>" />
-
-<button @click=&quot;openSearch&quot;>Search</button>
 </template>" />
 
 ## Cuándo usar defineExpose

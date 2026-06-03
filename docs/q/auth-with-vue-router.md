@@ -196,8 +196,7 @@ definePageMeta({
 </script>
 ```
 
-<PlaygroundLink code="<!-- pages/dashboard.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 definePageMeta({
   middleware: 'auth'
 })

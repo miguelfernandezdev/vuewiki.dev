@@ -27,18 +27,7 @@ const text = ref('')
 ```
 
 <PlaygroundLink code="<template>
-  <!-- These two are equivalent -->
-  <input v-model=&quot;text&quot; />
-  <input
-    :value=&quot;text&quot;
-    @input=&quot;text = ($event.target as HTMLInputElement).value&quot;
-  />
-</template>
-&#10;<script setup>
-import { ref } from 'vue'
-const text = ref('')
-</script>" />
-
+&#10;  <input v-model=&quot;text&quot; />
   <input
     :value=&quot;text&quot;
     @input=&quot;text = ($event.target as HTMLInputElement).value&quot;
@@ -69,13 +58,8 @@ Different element types use different prop/event pairs under the hood:
 <CustomInput :modelValue="search" @update:modelValue="search = $event" />
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<CustomInput v-model=&quot;search&quot; />
-&#10;<!-- Equivalent to: -->
-<CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
-
-&#10;<!-- Equivalent to: -->
-<CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
+<PlaygroundLink code="<CustomInput v-model=&quot;search&quot; />
+&#10;<CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
 
 The component receives a `modelValue` prop and emits `update:modelValue`:
 
@@ -90,14 +74,11 @@ const model = defineModel<string>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- CustomInput.vue (Vue 3.4+ with defineModel) -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const model = defineModel<string>()
 </script>
 &#10;<template>
   <input v-model=&quot;model&quot; />
-</template>" />
-
 </template>" />
 
 ## What changed from Vue 2
@@ -117,18 +98,8 @@ In Vue 2, `v-model` used `value` + `input` and you could only have one per compo
 />
 ```
 
-<PlaygroundLink code="<!-- Vue 2 -->
-<MyDialog v-model=&quot;isOpen&quot; :title.sync=&quot;dialogTitle&quot; />
-&#10;<!-- Vue 2 internally: -->
-<MyDialog
-  :value=&quot;isOpen&quot;
-  @input=&quot;isOpen = $event&quot;
-  :title=&quot;dialogTitle&quot;
-  @update:title=&quot;dialogTitle = $event&quot;
-/>" />
-
-&#10;<!-- Vue 2 internally: -->
-<MyDialog
+<PlaygroundLink code="<MyDialog v-model=&quot;isOpen&quot; :title.sync=&quot;dialogTitle&quot; />
+&#10;<MyDialog
   :value=&quot;isOpen&quot;
   @input=&quot;isOpen = $event&quot;
   :title=&quot;dialogTitle&quot;
@@ -150,18 +121,8 @@ In Vue 3, `.sync` was removed. `v-model` now supports named arguments, so you ge
 />
 ```
 
-<PlaygroundLink code="<!-- Vue 3 -->
-<MyDialog v-model=&quot;isOpen&quot; v-model:title=&quot;dialogTitle&quot; />
-&#10;<!-- Vue 3 internally: -->
-<MyDialog
-  :modelValue=&quot;isOpen&quot;
-  @update:modelValue=&quot;isOpen = $event&quot;
-  :title=&quot;dialogTitle&quot;
-  @update:title=&quot;dialogTitle = $event&quot;
-/>" />
-
-&#10;<!-- Vue 3 internally: -->
-<MyDialog
+<PlaygroundLink code="<MyDialog v-model=&quot;isOpen&quot; v-model:title=&quot;dialogTitle&quot; />
+&#10;<MyDialog
   :modelValue=&quot;isOpen&quot;
   @update:modelValue=&quot;isOpen = $event&quot;
   :title=&quot;dialogTitle&quot;
@@ -192,17 +153,8 @@ Built-in modifiers work on native elements:
 ```
 
 <PlaygroundLink code="<input v-model.lazy=&quot;msg&quot; />
-<!-- sync on change, not input -->
-<input v-model.number=&quot;age&quot; />
-<!-- cast to number -->
-<input v-model.trim=&quot;name&quot; />
-<!-- trim whitespace -->" />
-
-<!-- sync on change, not input -->
-<input v-model.number=&quot;age&quot; />
-<!-- cast to number -->
-<input v-model.trim=&quot;name&quot; />
-<!-- trim whitespace -->" />
+&#10;<input v-model.number=&quot;age&quot; />
+&#10;<input v-model.trim=&quot;name&quot; />" />
 
 Components can define custom modifiers with [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
@@ -241,8 +193,7 @@ const [model, modifiers] =
 <CustomInput v-model.capitalize="text" />
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<CustomInput v-model.capitalize=&quot;text&quot; />" />
+<PlaygroundLink code="<CustomInput v-model.capitalize=&quot;text&quot; />" />
 
 See also: [Using multiple v-model bindings](/q/multiple-v-model) · [How does v-model work on custom components?](/q/v-model-custom-components) · [How do you create custom v-model modifiers?](/q/custom-v-model-modifiers)
 

@@ -144,8 +144,6 @@ const userStore = useUserStore()
   <Spinner v-if=&quot;userStore.isLoading&quot; />
 </template>" />
 
-</template>" />
-
 ## Targeting specific stores
 
 Check `store.$id` or use the options object to apply logic selectively:

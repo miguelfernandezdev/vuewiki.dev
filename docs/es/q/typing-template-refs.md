@@ -34,8 +34,6 @@ const inputRef = ref<HTMLInputElement | null>(null)
   <input ref=&quot;inputRef&quot; />
 </template>" />
 
-</template>" />
-
 El tipo es `HTMLInputElement | null` porque el ref es `null` durante el setup y se convierte en el elemento solo después de que el componente se monta.
 
 ## useTemplateRef (Vue 3.5+)
@@ -64,8 +62,6 @@ const input = useTemplateRef<HTMLInputElement>('my-input')
 </script>
 &#10;<template>
   <input ref=&quot;my-input&quot; />
-</template>" />
-
 </template>" />
 
 La cadena `'my-input'` coincide con el atributo `ref` en el template. El nombre de la variable `input` es independiente.
@@ -101,8 +97,6 @@ import ChildForm from './ChildForm.vue'
   <ChildForm ref=&quot;formRef&quot; />
 </template>" />
 
-</template>" />
-
 El hijo debe exponer el método con `defineExpose`:
 
 ```vue
@@ -117,8 +111,7 @@ defineExpose({ validate })
 </script>
 ```
 
-<PlaygroundLink code="<!-- ChildForm.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 function validate() {
   // lógica de validación
   return isValid.value

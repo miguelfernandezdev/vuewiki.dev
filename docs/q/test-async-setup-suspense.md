@@ -24,8 +24,7 @@ const user = await $fetch(`/api/users/${props.userId}`)
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserProfile.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ userId: number }>()
 &#10;const user = await $fetch(`/api/users/${props.userId}`)
 </script>

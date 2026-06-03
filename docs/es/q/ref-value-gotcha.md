@@ -45,8 +45,7 @@ En `<template>`, Vue desenvuelve los refs automáticamente. NO se escribe `.valu
 ```
 
 <PlaygroundLink code="<template>
-  <!-- .value NO se necesita aquí -->
-  <p>{{ count }}</p>
+&#10;  <p>{{ count }}</p>
   <button @click=&quot;count++&quot;>Increment</button>
 </template>" />
 

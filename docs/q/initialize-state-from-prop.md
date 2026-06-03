@@ -41,8 +41,7 @@ This pattern works when the prop is truly an initial seed, not a live binding:
 <UserForm :initial-name="user.name" @save="updateUser" />
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<UserForm :initial-name=&quot;user.name&quot; @save=&quot;updateUser&quot; />" />
+<PlaygroundLink code="<UserForm :initial-name=&quot;user.name&quot; @save=&quot;updateUser&quot; />" />
 
 ```vue
 <!-- UserForm.vue -->
@@ -59,8 +58,7 @@ const name = ref(props.initialName)
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserForm.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ initialName: string }>()
 const emit = defineEmits<{ save: [name: string] }>()
 &#10;const name = ref(props.initialName)
@@ -68,9 +66,6 @@ const emit = defineEmits<{ save: [name: string] }>()
 &#10;<template>
   <input v-model=&quot;name&quot; />
   <button @click=&quot;emit('save', name)&quot;>Save</button>
-</template>" />
-
-<button @click=&quot;emit('save', name)&quot;>Save</button>
 </template>" />
 
 The form edits a local copy. The parent's data only updates when the user explicitly saves.

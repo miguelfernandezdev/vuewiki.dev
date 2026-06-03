@@ -29,8 +29,7 @@ const activeId = (ref < number) | (null > null)
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const items = ref([
   /* 100 items */
 ])
@@ -45,8 +44,6 @@ const activeId = (ref < number) | (null > null)
   />
 </template>" />
 
-</template>" />
-
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -58,8 +55,7 @@ const props = defineProps<{ id: number; activeId: number | null }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- ListItem.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ id: number; activeId: number | null }>()
 </script>
 &#10;<template>
@@ -82,16 +78,13 @@ Cuando `activeId` cambia de 1 a 2, la prop `activeId` cambia para los 100 elemen
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<template>
+<PlaygroundLink code="<template>
   <ListItem
     v-for=&quot;item in items&quot;
     :key=&quot;item.id&quot;
     :id=&quot;item.id&quot;
     :active=&quot;item.id === activeId&quot;
   />
-</template>" />
-
 </template>" />
 
 ```vue
@@ -105,8 +98,7 @@ defineProps<{ id: number; active: boolean }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- ListItem.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ id: number; active: boolean }>()
 </script>
 &#10;<template>
@@ -137,17 +129,8 @@ Ahora cuando `activeId` cambia de 1 a 2:
 />
 ```
 
-<PlaygroundLink code="<!-- MAL: todos los elementos se re-renderizan cuando cambia cualquier selección -->
-<Item v-for=&quot;item in items&quot; :key=&quot;item.id&quot; :selected-ids=&quot;selectedIds&quot; />
-&#10;<!-- BIEN: solo los elementos afectados se re-renderizan -->
-<Item
-  v-for=&quot;item in items&quot;
-  :key=&quot;item.id&quot;
-  :selected=&quot;selectedIds.has(item.id)&quot;
-/>" />
-
-&#10;<!-- BIEN: solo los elementos afectados se re-renderizan -->
-<Item
+<PlaygroundLink code="<Item v-for=&quot;item in items&quot; :key=&quot;item.id&quot; :selected-ids=&quot;selectedIds&quot; />
+&#10;<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :selected=&quot;selectedIds.has(item.id)&quot;
@@ -172,22 +155,13 @@ Ahora cuando `activeId` cambia de 1 a 2:
 />
 ```
 
-<PlaygroundLink code="<!-- MAL: total cambia cada vez que cambia la lista -->
-<Item
+<PlaygroundLink code="<Item
   v-for=&quot;(item, index) in items&quot;
   :key=&quot;item.id&quot;
   :index=&quot;index&quot;
   :total=&quot;items.length&quot;
 />
-&#10;<!-- BIEN: pasar solo lo que el hijo realmente necesita -->
-<Item
-  v-for=&quot;item in items&quot;
-  :key=&quot;item.id&quot;
-  :is-last=&quot;item === items[items.length - 1]&quot;
-/>" />
-
-&#10;<!-- BIEN: pasar solo lo que el hijo realmente necesita -->
-<Item
+&#10;<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :is-last=&quot;item === items[items.length - 1]&quot;
@@ -205,8 +179,7 @@ Ahora cuando `activeId` cambia de 1 a 2:
 />
 ```
 
-<PlaygroundLink code="<!-- MAL: nuevo objeto en cada render → referencia siempre diferente -->
-<Item
+<PlaygroundLink code="<Item
   v-for=&quot;item in items&quot;
   :key=&quot;item.id&quot;
   :style=&quot;{ color: item.color }&quot;

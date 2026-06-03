@@ -57,8 +57,7 @@ function sendInvitation(email) {
 </template>
 ```
 
-<PlaygroundLink code="<!-- MAL: UserDashboard.vue haciendo todo -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const users = ref([])
 const searchQuery = ref('')
 const sortBy = ref('name')
@@ -93,8 +92,7 @@ function sendInvitation(email) {
 }
 </script>
 &#10;<template>
-  <!-- 200 líneas de template -->
-</template>" />
+&#10;</template>" />
 
 La solución: extrae la obtención de datos a un composable, divide en componentes contenedor y presentacional, saca la lógica de negocio del componente por completo.
 
@@ -233,8 +231,7 @@ Componentes con docenas de props que controlan todo, sin nombres consistentes y 
 />
 ```
 
-<PlaygroundLink code="<!-- Antipatrón: espagueti basado en props -->
-<DataTable
+<PlaygroundLink code="<DataTable
   :data=&quot;items&quot;
   :columns=&quot;cols&quot;
   :sortable=&quot;true&quot;

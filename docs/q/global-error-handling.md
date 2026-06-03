@@ -61,8 +61,7 @@ function retry() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- components/ErrorBoundary.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const error = ref<Error | null>(null)
 &#10;onErrorCaptured((err) => {
   error.value = err
@@ -81,8 +80,6 @@ const error = ref<Error | null>(null)
   <slot v-else />
 </template>" />
 
-</template>" />
-
 Wrap sections of your app that can fail:
 
 ```vue
@@ -97,12 +94,6 @@ Wrap sections of your app that can fail:
 
 <PlaygroundLink code="<template>
   <AppHeader />
-  <ErrorBoundary>
-    <RouterView />
-  </ErrorBoundary>
-  <AppFooter />
-</template>" />
-
   <ErrorBoundary>
     <RouterView />
   </ErrorBoundary>
@@ -243,8 +234,7 @@ function goHome() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- error.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const props = defineProps<{ error: { statusCode: number; message: string } }>()
 &#10;function goHome() {
   clearError({ redirect: '/' })
@@ -282,13 +272,6 @@ throw createError({ statusCode: 404, statusMessage: 'Page not found' })
 <PlaygroundLink code="<template>
   <NuxtErrorBoundary>
     <SomeRiskyComponent />
-    <template #error=&quot;{ error, clearError }&quot;>
-      <p>{{ error.message }}</p>
-      <button @click=&quot;clearError&quot;>Retry</button>
-    </template>
-  </NuxtErrorBoundary>
-</template>" />
-
     <template #error=&quot;{ error, clearError }&quot;>
       <p>{{ error.message }}</p>
       <button @click=&quot;clearError&quot;>Retry</button>

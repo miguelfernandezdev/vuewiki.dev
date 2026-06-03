@@ -37,8 +37,6 @@ const vFocus = {
   <input v-focus />
 </template>" />
 
-</template>" />
-
 En `<script setup>`, cualquier variable que empiece por `v` seguida de una letra mayúscula está automáticamente disponible como directiva en el template.
 
 ## Atajo de función
@@ -60,8 +58,6 @@ const vFocus = (el: HTMLElement) => el.focus()
 </script>
 &#10;<template>
   <input v-focus />
-</template>" />
-
 </template>" />
 
 ## Lifecycle hooks de la directiva

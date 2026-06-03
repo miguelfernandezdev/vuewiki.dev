@@ -22,8 +22,7 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
 ```
 
 <PlaygroundLink code="<template>
-  <!-- El navegador lo divide en <p></p><div>...</div><p></p> -->
-  <p>
+&#10;  <p>
     <div>Esto rompe la hidratación</div>
   </p>
 </template>" />
@@ -41,14 +40,8 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Servidor: &quot;field-0.847...&quot; / Cliente: &quot;field-0.231...&quot; -->
-  <input :id=&quot;'field-' + Math.random()&quot; />
-&#10;  <!-- La zona horaria del servidor != zona horaria del cliente -->
-  <span>{{ new Date().toLocaleTimeString() }}</span>
-</template>" />
-
-&#10; <!-- La zona horaria del servidor != zona horaria del cliente -->
-<span>{{ new Date().toLocaleTimeString() }}</span>
+&#10;  <input :id=&quot;'field-' + Math.random()&quot; />
+&#10;  <span>{{ new Date().toLocaleTimeString() }}</span>
 </template>" />
 
 Solución: aplaza los valores no deterministas a `onMounted`.

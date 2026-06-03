@@ -63,14 +63,10 @@ function log(msg: string, event: MouseEvent) {
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Inline: la expresión se evalúa directamente -->
-  <button @click=&quot;count++&quot;>+1</button>
-&#10;  <!-- Método: referencia a una función -->
-  <button @click=&quot;increment&quot;>+1</button>
-&#10;  <!-- Método con argumentos -->
-  <button @click=&quot;addAmount(5)&quot;>+5</button>
-&#10;  <!-- Acceder al evento nativo junto con argumentos personalizados -->
-  <button @click=&quot;log('clicked', $event)&quot;>Log</button>
+&#10;  <button @click=&quot;count++&quot;>+1</button>
+&#10;  <button @click=&quot;increment&quot;>+1</button>
+&#10;  <button @click=&quot;addAmount(5)&quot;>+5</button>
+&#10;  <button @click=&quot;log('clicked', $event)&quot;>Log</button>
 </template>
 &#10;<script setup>
 import { ref } from 'vue'
@@ -112,16 +108,11 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Prevenir el comportamiento predeterminado del navegador -->
-  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
-&#10;  <!-- Detener la propagación a elementos padre -->
-  <button @click.stop=&quot;doThis&quot;>Click</button>
-&#10;  <!-- Disparar solo una vez -->
-  <button @click.once=&quot;initialize&quot;>Init</button>
-&#10;  <!-- Encadenar modificadores -->
-  <a @click.stop.prevent=&quot;handleLink&quot;>Link</a>
-&#10;  <!-- Solo disparar si el target del evento es el propio elemento, no un hijo -->
-  <div @click.self=&quot;onDivClick&quot;>
+&#10;  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+&#10;  <button @click.stop=&quot;doThis&quot;>Click</button>
+&#10;  <button @click.once=&quot;initialize&quot;>Init</button>
+&#10;  <a @click.stop.prevent=&quot;handleLink&quot;>Link</a>
+&#10;  <div @click.self=&quot;onDivClick&quot;>
     <button>Clicking here won't trigger onDivClick</button>
   </div>
 </template>" />
@@ -144,23 +135,11 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Teclas específicas -->
-  <input @keyup.enter=&quot;submit&quot; />
+&#10;  <input @keyup.enter=&quot;submit&quot; />
   <input @keyup.escape=&quot;cancel&quot; />
-&#10;  <!-- Teclas modificadoras del sistema -->
-  <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
+&#10;  <input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
   <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
-&#10;  <!-- .exact: solo disparar cuando estén presionados EXACTAMENTE estos modificadores -->
-  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
-</template>" />
-
-<input @keyup.escape=&quot;cancel&quot; />
-&#10; <!-- Teclas modificadoras del sistema -->
-<input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
-
-  <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
-&#10;  <!-- .exact: solo disparar cuando estén presionados EXACTAMENTE estos modificadores -->
-  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
+&#10;  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
 </template>" />
 
 ## Modificadores de botón del ratón

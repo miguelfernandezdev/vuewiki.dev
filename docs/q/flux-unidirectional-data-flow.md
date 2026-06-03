@@ -55,18 +55,14 @@ function increment() {
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent: owns the state, passes it down -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const count = ref(0)
 function increment() {
   count.value++
 }
 </script>
 &#10;<template>
-  <!-- Props go DOWN -->
-  <Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
-</template>" />
-
+&#10;  <Counter :count=&quot;count&quot; @increment=&quot;increment&quot; />
 </template>" />
 
 ```vue
@@ -81,8 +77,7 @@ const emit = defineEmits<{ increment: [] }>()
 </template>
 ```
 
-<PlaygroundLink code="<!-- Counter.vue: receives props, emits events UP -->
-<script setup>
+<PlaygroundLink code="<script setup>
 defineProps<{ count: number }>()
 const emit = defineEmits<{ increment: [] }>()
 </script>
@@ -131,8 +126,7 @@ const counter = useCounterStore()
 </template>
 ```
 
-<PlaygroundLink code="<!-- Any component -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const counter = useCounterStore()
 </script>
 &#10;<template>
@@ -199,13 +193,8 @@ Vue's `v-model` looks like two-way binding, but it's syntactic sugar over the un
 <input :value="name" @input="name = $event.target.value" />
 ```
 
-<PlaygroundLink code="<!-- This -->
-<input v-model=&quot;name&quot; />
-&#10;<!-- Is equivalent to this -->
-<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
-
-&#10;<!-- Is equivalent to this -->
-<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
+<PlaygroundLink code="<input v-model=&quot;name&quot; />
+&#10;<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 
 Data still flows one way: state to view (`:value`), and events back up (`@input`). The `v-model` directive just writes both sides for you.
 

@@ -22,8 +22,7 @@ const user = await response.json()
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserProfile.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const response = await fetch('/api/user/1')
 const user = await response.json()
 </script>
@@ -65,21 +64,9 @@ Un componente asíncrono debe tener un ancestro `<Suspense>`. Sin él, el compon
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
-  <!-- MAL: sin Suspense → UserProfile nunca aparece -->
-  <UserProfile />
-&#10;  <!-- BIEN: Suspense gestiona el estado pendiente -->
-  <Suspense>
-    <UserProfile />
-    <template #fallback>
-      <p>Loading profile...</p>
-    </template>
-  </Suspense>
-</template>" />
-
-&#10;  <!-- BIEN: Suspense gestiona el estado pendiente -->
-  <Suspense>
+<PlaygroundLink code="<template>
+&#10;  <UserProfile />
+&#10;  <Suspense>
     <UserProfile />
     <template #fallback>
       <p>Loading profile...</p>
@@ -105,8 +92,7 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 </template>
 ```
 
-<PlaygroundLink code="<!-- pages/users/[id].vue — página Nuxt -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const route = useRoute()
 const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 </script>

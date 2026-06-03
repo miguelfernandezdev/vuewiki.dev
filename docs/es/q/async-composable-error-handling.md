@@ -222,8 +222,7 @@ onErrorCaptured((err) => {
 </template>
 ```
 
-<PlaygroundLink code="<!-- ErrorBoundary.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const error = (ref < Error) | (null > null)
 &#10;onErrorCaptured((err) => {
   error.value = err
@@ -238,8 +237,6 @@ const error = (ref < Error) | (null > null)
   <slot v-else />
 </template>" />
 
-</template>" />
-
 ```vue
 <!-- Uso -->
 <ErrorBoundary>
@@ -247,11 +244,8 @@ const error = (ref < Error) | (null > null)
 </ErrorBoundary>
 ```
 
-<PlaygroundLink code="<!-- Uso -->
-<ErrorBoundary>
+<PlaygroundLink code="<ErrorBoundary>
   <UserProfile :user-id=&quot;1&quot; />
-</ErrorBoundary>" />
-
 </ErrorBoundary>" />
 
 Esto captura errores de componentes descendientes lanzados durante: renders, watchers, lifecycle hooks, manejadores de eventos, `setup()`, hooks de directivas personalizadas y hooks de transiciones. Evita que toda la aplicacion falle.

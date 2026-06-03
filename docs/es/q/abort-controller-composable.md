@@ -128,11 +128,6 @@ const searchUrl = computed(() => `/api/search?q=${query.value}`)
   </ul>
 </template>" />
 
-  <ul v-if=&quot;results&quot;>
-    <li v-for=&quot;item in results&quot; :key=&quot;item.id&quot;>{{ item.name }}</li>
-  </ul>
-</template>" />
-
 Cuando `query` cambia de "vu" a "vue", el watcher ejecuta `execute`, que cancela la petición "vu" e inicia la petición "vue". Solo llega el último resultado.
 
 ## Con axios

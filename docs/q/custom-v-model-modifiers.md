@@ -23,19 +23,9 @@ Vue has three built-in modifiers for `v-model` on native inputs (`.lazy`, `.numb
 
 <PlaygroundLink code="<template>
   <input v-model.lazy=&quot;msg&quot; />
-  <!-- sync on change, not input -->
-  <input v-model.number=&quot;age&quot; />
-  <!-- cast to number via parseFloat -->
-  <input v-model.trim=&quot;name&quot; />
-  <!-- trim whitespace -->
-</template>" />
-
-  <!-- sync on change, not input -->
-  <input v-model.number=&quot;age&quot; />
-  <!-- cast to number via parseFloat -->
-  <input v-model.trim=&quot;name&quot; />
-  <!-- trim whitespace -->
-</template>" />
+&#10;  <input v-model.number=&quot;age&quot; />
+&#10;  <input v-model.trim=&quot;name&quot; />
+&#10;</template>" />
 
 The `.number` modifier has a gotcha: it returns an empty string (not `0` or `NaN`) when the input is cleared, and `parseFloat("123abc")` returns `123`, not `NaN`.
 
@@ -61,8 +51,7 @@ const [model, modifiers] = defineModel<number>({
 </template>
 ```
 
-<PlaygroundLink code="<!-- CurrencyInput.vue -->
-<script setup lang=&quot;ts&quot;>
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
 const [model, modifiers] = defineModel<number>({
   set(value) {
     if (modifiers.round) {
@@ -76,8 +65,6 @@ const [model, modifiers] = defineModel<number>({
   <input type=&quot;number&quot; v-model=&quot;model&quot; />
 </template>" />
 
-</template>" />
-
 ```vue
 <!-- Parent.vue -->
 <template>
@@ -85,11 +72,8 @@ const [model, modifiers] = defineModel<number>({
 </template>
 ```
 
-<PlaygroundLink code="<!-- Parent.vue -->
-<template>
+<PlaygroundLink code="<template>
   <CurrencyInput v-model.round=&quot;price&quot; />
-</template>" />
-
 </template>" />
 
 When the user types `9.7`, the parent receives `10`.
@@ -135,8 +119,7 @@ const [model, modifiers] = defineModel<string>({
 <TextInput v-model.capitalize.trim="name" />
 ```
 
-<PlaygroundLink code="<!-- Parent -->
-<TextInput v-model.capitalize.trim=&quot;name&quot; />" />
+<PlaygroundLink code="<TextInput v-model.capitalize.trim=&quot;name&quot; />" />
 
 ## get transform
 
@@ -247,8 +230,6 @@ const props = defineProps<{
 </script>
 &#10;<template>
   <input :value=&quot;modelValue&quot; @input=&quot;handleInput&quot; />
-</template>" />
-
 </template>" />
 
 `defineModel` eliminates all this boilerplate.

@@ -32,9 +32,6 @@ import { ref } from 'vue'
   <p>Current value: {{ name }}</p>
 </template>" />
 
-  <p>Current value: {{ name }}</p>
-</template>" />
-
 Every character the user types flows through: input event → update `name` → Vue re-renders → input shows new value. You always have the current value in `name`.
 
 ## Uncontrolled (template ref)
@@ -67,9 +64,6 @@ import { useTemplateRef } from 'vue'
 </script>
 &#10;<template>
   <input ref=&quot;name-input&quot; />
-  <button @click=&quot;handleSubmit&quot;>Submit</button>
-</template>" />
-
   <button @click=&quot;handleSubmit&quot;>Submit</button>
 </template>" />
 
@@ -114,10 +108,7 @@ Uncontrolled inputs use the HTML `value` attribute:
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Updates only when the user leaves the field after changing it -->
-  <input v-model.lazy=&quot;search&quot; />
-</template>" />
-
+&#10;  <input v-model.lazy=&quot;search&quot; />
 </template>" />
 
 This avoids re-rendering on every keystroke while still keeping the value in reactive state.

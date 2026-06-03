@@ -83,12 +83,9 @@ El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#c
 <PlaygroundLink code="<template>
   <div>
     <h1>Static title</h1>
-    <!-- elevado, omitido en la comparación -->
-    <p>{{ dynamicContent }}</p>
-    <!-- flag de parche: TEXT -->
-    <span :class=&quot;activeClass&quot;>ok</span>
-    <!-- flag de parche: CLASS -->
-  </div>
+&#10;    <p>{{ dynamicContent }}</p>
+&#10;    <span :class=&quot;activeClass&quot;>ok</span>
+&#10;  </div>
 </template>" />
 
 ## Virtual DOM frente a sin Virtual DOM

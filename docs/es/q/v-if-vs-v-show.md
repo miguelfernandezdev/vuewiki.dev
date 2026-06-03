@@ -23,11 +23,7 @@ Ambas directivas muestran y ocultan elementos según una condición, pero lo hac
 
 <PlaygroundLink code="<template>
   <div v-if=&quot;showPanel&quot;>
-    <!-- Este componente completo se destruye cuando showPanel es false -->
-    <ExpensiveChart :data=&quot;chartData&quot; />
-  </div>
-</template>" />
-
+&#10;    <ExpensiveChart :data=&quot;chartData&quot; />
   </div>
 </template>" />
 
@@ -48,11 +44,7 @@ Alternar `v-if` es costoso: Vue tiene que desmontar y reconstruir el subárbol d
 
 <PlaygroundLink code="<template>
   <div v-show=&quot;showPanel&quot;>
-    <!-- Siempre en el DOM, solo oculto via CSS cuando showPanel es false -->
-    <ExpensiveChart :data=&quot;chartData&quot; />
-  </div>
-</template>" />
-
+&#10;    <ExpensiveChart :data=&quot;chartData&quot; />
   </div>
 </template>" />
 

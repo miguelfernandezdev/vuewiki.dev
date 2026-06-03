@@ -66,8 +66,7 @@ In Vue 2, every component needed a single root element. This forced unnecessary 
 </template>
 ```
 
-<PlaygroundLink code="<!-- Vue 2: required single root -->
-<template>
+<PlaygroundLink code="<template>
   <div>
     <header>Header</header>
     <main>Content</main>
@@ -85,8 +84,7 @@ Vue 3 supports **fragments**, meaning multiple root elements with no wrapper:
 </template>
 ```
 
-<PlaygroundLink code="<!-- Vue 3: multiple roots, no wrapper needed -->
-<template>
+<PlaygroundLink code="<template>
   <header>Header</header>
   <main>Content</main>
   <footer>Footer</footer>
@@ -115,13 +113,6 @@ One caveat: [fallthrough attributes](/q/fallthrough-attrs) don't work automatica
   <Suspense>
     <template #default>
       <UserDashboard />
-    </template>
-    <template #fallback>
-      <LoadingSpinner />
-    </template>
-  </Suspense>
-</template>" />
-
     </template>
     <template #fallback>
       <LoadingSpinner />

@@ -115,11 +115,6 @@ const sentinel = ref<HTMLElement | null>(null)
   </div>
 </template>" />
 
-&#10;    <p v-if=&quot;isLoading&quot;>Cargando...</p>
-    <p v-if=&quot;!hasMore&quot;>No hay más publicaciones.</p>
-  </div>
-</template>" />
-
 El `rootMargin: '200px'` activa la carga 200px antes de que el centinela sea visible, de modo que el contenido aparece antes de que el usuario llegue al fondo.
 
 ## Versión con composable
@@ -212,10 +207,6 @@ const {
 &#10;<template>
   <div v-for=&quot;post in posts&quot; :key=&quot;post.id&quot;>{{ post.title }}</div>
   <div ref=&quot;sentinel&quot; />
-  <p v-if=&quot;isLoading&quot;>Cargando...</p>
-  <p v-if=&quot;!hasMore&quot;>Fin de la lista.</p>
-</template>" />
-
   <p v-if=&quot;isLoading&quot;>Cargando...</p>
   <p v-if=&quot;!hasMore&quot;>Fin de la lista.</p>
 </template>" />
@@ -316,9 +307,6 @@ import { useVirtualList } from '@vueuse/core'
       </div>
     </div>
     <div ref=&quot;sentinel&quot; />
-  </div>
-</template>" />
-
   </div>
 </template>" />
 

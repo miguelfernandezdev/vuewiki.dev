@@ -41,22 +41,10 @@ import InfoBox from './InfoBox.vue'
 &#10;const currentComponent = shallowRef(AlertBox)
 </script>
 &#10;<template>
-  <!-- 1. Objeto de definición de componente (recomendado) -->
-  <component :is=&quot;currentComponent&quot; />
-&#10;  <!-- 2. Nombre de componente registrado (string) -->
-  <component is=&quot;AlertBox&quot; />
-&#10;  <!-- 3. Nombre de elemento HTML (string) -->
-  <component is=&quot;div&quot; />
-&#10;  <!-- 4. Función de render inline -->
-  <component :is=&quot;() => h('span', 'hello')&quot; />
-</template>" />
-
-&#10;  <!-- 2. Nombre de componente registrado (string) -->
-  <component is=&quot;AlertBox&quot; />
-&#10;  <!-- 3. Nombre de elemento HTML (string) -->
-  <component is=&quot;div&quot; />
-&#10;  <!-- 4. Función de render inline -->
-  <component :is=&quot;() => h('span', 'hello')&quot; />
+&#10;  <component :is=&quot;currentComponent&quot; />
+&#10;  <component is=&quot;AlertBox&quot; />
+&#10;  <component is=&quot;div&quot; />
+&#10;  <component :is=&quot;() => h('span', 'hello')&quot; />
 </template>" />
 
 Al usar una variable reactiva, usa `shallowRef` en lugar de `ref`. Un `ref` intentaría desempaquetar profundamente el objeto del componente, lo cual es innecesario y puede causar problemas con definiciones de componentes complejas.
@@ -71,9 +59,7 @@ El atributo `is` en elementos HTML normales se comporta de forma distinta que en
 <!-- Esto le indica al navegador que actualice el <button> con una clase de custom element -->
 ```
 
-<PlaygroundLink code="<!-- Comportamiento según la spec HTML: &quot;is&quot; en elementos nativos crea elementos integrados personalizados -->
-<button is=&quot;my-custom-button&quot;>Click</button>
-<!-- Esto le indica al navegador que actualice el <button> con una clase de custom element -->" />
+<PlaygroundLink code="<button is=&quot;my-custom-button&quot;>Click</button>" />
 
 Para renderizar un componente Vue como sustituto de un elemento nativo, usa el prefijo `vue:`:
 
@@ -87,10 +73,8 @@ Para renderizar un componente Vue como sustituto de un elemento nativo, usa el p
 </table>
 ```
 
-<PlaygroundLink code="<!-- Esto renderiza el componente Vue MyButton, no un <button> nativo -->
-<button is=&quot;vue:MyButton&quot;>Click</button>
-&#10;<!-- Útil cuando necesitas un componente Vue dentro de elementos con restricciones de hijos -->
-<table>
+<PlaygroundLink code="<button is=&quot;vue:MyButton&quot;>Click</button>
+&#10;<table>
   <tr is=&quot;vue:MyTableRow&quot;></tr>
 </table>" />
 
@@ -110,12 +94,10 @@ Las reglas de parseo HTML restringen qué elementos pueden aparecer dentro de `<
 </table>
 ```
 
-<PlaygroundLink code="<!-- MAL: el navegador mueve <BlogPost> fuera de <table> durante el parseo HTML -->
-<table>
-  <BlogPost />  <!-- acaba por encima de la tabla en el DOM -->
+<PlaygroundLink code="<table>
+  <BlogPost />  
 </table>
-&#10;<!-- BIEN: usa is=&quot;vue:&quot; para evitar la restricción -->
-<table>
+&#10;<table>
   <tr is=&quot;vue:BlogPost&quot;></tr>
 </table>" />
 
@@ -182,8 +164,6 @@ import type { Component } from 'vue'
   />
 </template>" />
 
-</template>" />
-
 Este patrón es más limpio que una cadena de `v-if`/`v-else-if` y escala a cualquier número de tipos de bloque sin modificar el template.
 
 ## Orden de resolución
@@ -212,10 +192,6 @@ Si el string no coincide con ningún componente ni elemento HTML, Vue no renderi
   <KeepAlive :max=&quot;5&quot;>
     <Transition name=&quot;fade&quot; mode=&quot;out-in&quot;>
       <component :is=&quot;currentTab&quot; :key=&quot;currentTabName&quot; />
-    </Transition>
-  </KeepAlive>
-</template>" />
-
     </Transition>
   </KeepAlive>
 </template>" />

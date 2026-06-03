@@ -43,10 +43,7 @@ const currentTab = shallowRef(TabHome)
   <button v-for=&quot;(comp, name) in tabs&quot; :key=&quot;name&quot; @click=&quot;currentTab = comp&quot;>
     {{ name }}
   </button>
-&#10;  <!-- Se destruye y recrea en cada cambio -->
-  <component :is=&quot;currentTab&quot; />
-</template>" />
-
+&#10;  <component :is=&quot;currentTab&quot; />
 </template>" />
 
 Sin `KeepAlive`, cualquier estado local en `TabSettings` (inputs de formulario, posición de scroll, secciones expandidas) se reinicia cada vez que cambias de pestaña y vuelves.
@@ -66,9 +63,6 @@ Envuelve `<component>` en `<KeepAlive>` para almacenar las instancias en caché 
 <PlaygroundLink code="<template>
   <KeepAlive>
     <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-</template>" />
-
   </KeepAlive>
 </template>" />
 
@@ -98,27 +92,13 @@ Usa `include`, `exclude` y `max` para limitar el almacenamiento en caché.
 ```
 
 <PlaygroundLink code="<template>
-  <!-- Solo almacenar estos dos en caché -->
-  <KeepAlive include=&quot;TabHome,TabSettings&quot;>
+&#10;  <KeepAlive include=&quot;TabHome,TabSettings&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
-&#10;  <!-- Almacenar todo excepto este -->
-  <KeepAlive exclude=&quot;TabProfile&quot;>
+&#10;  <KeepAlive exclude=&quot;TabProfile&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
-&#10;  <!-- Almacenar en caché como máximo 5 instancias (expulsión LRU) -->
-  <KeepAlive :max=&quot;5&quot;>
-    <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-</template>" />
-
-  </KeepAlive>
-&#10;  <!-- Almacenar todo excepto este -->
-  <KeepAlive exclude=&quot;TabProfile&quot;>
-    <component :is=&quot;currentTab&quot; />
-  </KeepAlive>
-&#10;  <!-- Almacenar en caché como máximo 5 instancias (expulsión LRU) -->
-  <KeepAlive :max=&quot;5&quot;>
+&#10;  <KeepAlive :max=&quot;5&quot;>
     <component :is=&quot;currentTab&quot; />
   </KeepAlive>
 </template>" />
@@ -191,10 +171,6 @@ onMounted → onActivated → (el usuario cambia de pestaña) → onDeactivated
   <router-view v-slot=&quot;{ Component, route }&quot;>
     <KeepAlive>
       <component :is=&quot;Component&quot; :key=&quot;route.fullPath&quot; />
-    </KeepAlive>
-  </router-view>
-</template>" />
-
     </KeepAlive>
   </router-view>
 </template>" />

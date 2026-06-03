@@ -81,11 +81,6 @@ const taxRate = ref(0.21)
   <p>Base price: {{ price.toFixed(2) }}</p>
 </template>" />
 
-</label>
-
-  <p>Base price: {{ price.toFixed(2) }}</p>
-</template>" />
-
 El usuario edita el total y el setter calcula el precio base.
 
 ## Patrón de formateo

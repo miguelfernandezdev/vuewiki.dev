@@ -72,8 +72,7 @@ App
 // lógica
 </script>
 &#10;<template>
-  <!-- marcado -->
-</template>
+&#10;</template>
 &#10;<style scoped>
 /* estilos aislados a este componente */
 </style>" />

@@ -51,17 +51,10 @@ Los elementos deben ser hermanos. No puedes poner otros elementos entre `v-if` y
 <div v-else>No</div>
 ```
 
-<PlaygroundLink code="<!-- Incorrecto: el <hr> rompe la cadena -->
-<div v-if=&quot;ok&quot;>Yes</div>
+<PlaygroundLink code="<div v-if=&quot;ok&quot;>Yes</div>
 <hr />
 <div v-else>No</div>
-&#10;<!-- Correcto: hermanos, sin separación -->
-<div v-if=&quot;ok&quot;>Yes</div>
-<div v-else>No</div>" />
-
-<div v-else>No</div>
-&#10;<!-- Correcto: hermanos, sin separación -->
-<div v-if=&quot;ok&quot;>Yes</div>
+&#10;<div v-if=&quot;ok&quot;>Yes</div>
 <div v-else>No</div>" />
 
 ## v-if en template
@@ -119,12 +112,10 @@ Nunca pongas `v-if` y `v-for` en el mismo elemento. En Vue 3, `v-if` tiene mayor
 </li>
 ```
 
-<PlaygroundLink code="<!-- Incorrecto: v-if no puede ver &quot;item&quot; -->
-<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
+<PlaygroundLink code="<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
   {{ item.name }}
 </li>
-&#10;<!-- Correcto: filtra con computed -->
-<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
+&#10;<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
   {{ item.name }}
 </li>" />
 

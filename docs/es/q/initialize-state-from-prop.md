@@ -41,8 +41,7 @@ Este patrón funciona cuando la prop es realmente un valor semilla, no un bindin
 <UserForm :initial-name="user.name" @save="updateUser" />
 ```
 
-<PlaygroundLink code="<!-- Padre -->
-<UserForm :initial-name=&quot;user.name&quot; @save=&quot;updateUser&quot; />" />
+<PlaygroundLink code="<UserForm :initial-name=&quot;user.name&quot; @save=&quot;updateUser&quot; />" />
 
 ```vue
 <!-- UserForm.vue -->
@@ -59,8 +58,7 @@ const name = ref(props.initialName)
 </template>
 ```
 
-<PlaygroundLink code="<!-- UserForm.vue -->
-<script setup>
+<PlaygroundLink code="<script setup>
 const props = defineProps<{ initialName: string }>()
 const emit = defineEmits<{ save: [name: string] }>()
 &#10;const name = ref(props.initialName)
@@ -68,9 +66,6 @@ const emit = defineEmits<{ save: [name: string] }>()
 &#10;<template>
   <input v-model=&quot;name&quot; />
   <button @click=&quot;emit('save', name)&quot;>Guardar</button>
-</template>" />
-
-<button @click=&quot;emit('save', name)&quot;>Guardar</button>
 </template>" />
 
 El formulario edita una copia local. Los datos del padre solo se actualizan cuando el usuario guarda explícitamente.
