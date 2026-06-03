@@ -26,8 +26,8 @@ function useDebouncedRef<T>(initialValue: T, delay = 300) {
     },
     set(newValue) {
       clearTimeout(timeout)
-      value = newValue
       timeout = setTimeout(() => {
+        value = newValue
         trigger()
       }, delay)
     }
@@ -48,7 +48,7 @@ const searchQuery = useDebouncedRef('', 500)
 </template>
 ```
 
-Every keystroke updates the internal `value` variable, but `trigger()` is only called after the user stops typing for 500ms. That means watchers, computed properties, and template re-renders all wait.
+Every keystroke resets the debounce timer. The internal `value` and `trigger()` are only called after the user stops typing for 500ms. That means watchers, computed properties, and template re-renders all wait.
 
 ## track() and trigger() explained
 

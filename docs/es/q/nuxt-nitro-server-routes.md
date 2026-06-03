@@ -126,6 +126,8 @@ export default defineNitroPlugin((nitro) => {
 })
 ```
 
+> **Nota Nuxt 4:** `defineNitroPlugin` es la API de Nuxt 3. En Nuxt 4, los plugins de servidor usan `definePlugin` importado desde `'nitro'`. Si estás migrando a Nuxt 4, reemplaza `defineNitroPlugin` con `import { definePlugin } from 'nitro'`. Ambas APIs funcionan de la misma manera — solo cambian el import y el nombre de la función.
+
 ## Llamar a rutas de servidor desde el cliente
 
 Usa `useFetch` o `$fetch`. Ambos tienen tipado cuando la ruta de servidor está en tu proyecto:

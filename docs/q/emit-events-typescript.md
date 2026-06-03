@@ -30,6 +30,8 @@ emit('typo')                // ❌ Type error: unknown event
 
 The named tuple syntax (`[value: string]`) gives parameter names that show up in IDE tooltips. You can also use unnamed tuples (`[string]`), but named ones are clearer.
 
+> **Note:** This object-based emit type syntax (`defineEmits<{ event: [args] }>()`) requires **Vue 3.3+**. In Vue 3.2 and earlier, you must use the call-signature syntax instead: `defineEmits<{ (e: 'change', id: number): void }>()`.
+
 ## The parent side
 
 When a component emits typed events, the parent uses `@eventName` (or `v-on:eventName`) and gets full type inference on the callback parameters:

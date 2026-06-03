@@ -6,7 +6,7 @@ tags: ["composition-api", "nuxt", "vueuse", "watchers", "suspense"]
 summary: "Yes — the compiler wraps it in async setup(). The catch: the parent must provide a <Suspense> boundary. Nuxt does this automatically."
 ---
 
-Yes, you can use top-level `await` in [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). The compiler wraps the setup block in an `async setup()` function automatically. The catch: async components require a `<Suspense>` boundary in the parent to handle the pending state while the await resolves. Without `<Suspense>`, the component never renders. Nuxt wraps every page in `<Suspense>` by default, so in Nuxt you can use `await` freely in pages and layouts without thinking about it.
+Yes, you can use top-level `await` in [`<script setup>`](https://vuejs.org/api/sfc-script-setup.html). The compiler wraps the setup block in an `async setup()` function automatically. The catch: async components require a `<Suspense>` boundary in the parent to handle the pending state while the await resolves. Without a `<Suspense>` boundary in a parent component, the async component may not render as expected. Nuxt wraps every page in `<Suspense>` by default, so in Nuxt you can use `await` freely in pages and layouts without thinking about it.
 
 ## Basic example
 

@@ -22,7 +22,7 @@ The `.number` modifier has a gotcha: it returns an empty string (not `0` or `NaN
 
 ## Custom modifiers with defineModel (Vue 3.4+)
 
-`defineModel` returns a tuple `[ref, modifiers]` when you provide a `set` transform:
+`defineModel` returns a tuple `[ref, modifiers]` when you destructure it. The `set` transform is optional — you only need it when you want to modify the value before it's stored:
 
 ```vue
 <!-- CurrencyInput.vue -->

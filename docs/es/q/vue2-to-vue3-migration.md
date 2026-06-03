@@ -20,7 +20,7 @@ Recorre el código y documenta:
 - **Uso del event bus** — si tienes una instancia global de Vue usada como `bus.$on(...)` / `bus.$off(...)`, esos métodos de instancia ya no existen. Necesitas una estrategia de reemplazo.
 - **Stores de Vuex** — Vuex 4 funciona con Vue 3 (como puente), pero el movimiento recomendado a largo plazo es Pinia.
 - **Librerías de terceros** — este es habitualmente el mayor riesgo. Comprueba si cada librería tiene una versión compatible con Vue 3. Algunas librerías populares de Vue 2 fueron abandonadas y nunca actualizadas.
-- **Directivas personalizadas** — los nombres de los hooks del ciclo de vida de las directivas cambiaron en Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `updated`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
+- **Directivas personalizadas** — los nombres de los hooks del ciclo de vida de las directivas cambiaron en Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
 - **Render functions** — la firma de la función `h` cambió. Las props ahora son planas (sin objetos anidados `attrs`, `on`, `class`). En Vue 3, `h` se importa directamente desde Vue, no se recibe como parámetro.
 
 Esta auditoría te da un alcance real de la migración. Sin ella, descubrirás bloqueos a mitad del proceso cuando sea más difícil recuperarse.

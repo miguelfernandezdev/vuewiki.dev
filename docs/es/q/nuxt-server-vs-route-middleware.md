@@ -29,7 +29,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-El middleware de servidor no devuelve una respuesta (a menos que quiera bloquear la petición). Procesa la petición y la pasa al siguiente handler. El orden sigue el nombre alfabético de los archivos.
+El middleware de servidor no devuelve una respuesta (a menos que quiera bloquear la petición). Procesa la petición y la pasa al siguiente handler. El orden de ejecución se determina por el nombre de los archivos.
 
 ### Casos de uso habituales
 

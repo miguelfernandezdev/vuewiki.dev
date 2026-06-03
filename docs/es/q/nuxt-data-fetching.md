@@ -109,8 +109,8 @@ Todos los composables devuelven la misma estructura:
 | `data` | `Ref<T>` | Los datos obtenidos |
 | `error` | `Ref<Error \| null>` | Error si la petición falló |
 | `status` | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Estado actual |
-| `refresh` | `() => Promise` | Volver a obtener los datos |
-| `clear` | `() => void` | Resetear datos y error |
+| `refresh` / `execute` | `() => Promise` | Volver a obtener los datos (`execute` es un alias de `refresh`) |
+| `clear` | `() => void` | Resetea `data`, `error` y `status` (vuelve a `idle`), y cancela peticiones pendientes |
 
 ## Compartir datos entre componentes
 

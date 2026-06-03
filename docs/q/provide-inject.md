@@ -61,7 +61,7 @@ import { inject } from 'vue'
 import { UserKey } from '@/keys'
 
 const user = inject(UserKey) // Ref<User> | undefined
-const user = inject(UserKey, ref({ name: 'Guest', role: 'viewer' })) // with default
+const userWithDefault = inject(UserKey, ref({ name: 'Guest', role: 'viewer' })) // with default
 ```
 
 ## When to use it (and when not to)

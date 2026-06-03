@@ -25,11 +25,12 @@ export function useAuth() {
   const loggedIn = computed(() => !!user.value)
 
   async function login(email: string, password: string) {
-    const response = await $fetch<{ user: User; token: string }>('/api/auth/login', {
+    const response = await $fetch<{ user: User }>('/api/auth/login', {
       method: 'POST',
       body: { email, password }
     })
-    token.value = response.token
+    // No need to set token.value manually — the server sets it via
+    // setCookie, and useCookie('auth-token') picks it up automatically
     user.value = response.user
   }
 

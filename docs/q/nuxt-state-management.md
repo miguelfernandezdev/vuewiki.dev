@@ -101,7 +101,7 @@ For complex state with actions, getters, and devtools integration, add Pinia:
 npx nuxi module add pinia
 ```
 
-Stores work like regular Pinia, but are auto-imported from `stores/`:
+Stores work like regular Pinia. The `@pinia/nuxt` module auto-imports them from `stores/`:
 
 ```ts
 // stores/cart.ts

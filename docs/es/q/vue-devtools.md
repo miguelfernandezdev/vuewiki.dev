@@ -58,7 +58,7 @@ Las DevTools muestran cada store de Pinia con:
 - Valores del estado actual (editables en el panel)
 - Getters y sus valores computed
 - Una línea de tiempo de cada llamada a una acción con argumentos y tiempos
-- Depuración con viaje en el tiempo: haz clic en cualquier instantánea de estado anterior para revertir la interfaz a ese punto
+- Depuración con viaje en el tiempo para inspeccionar estados anteriores
 
 Esta es una de las razones principales para usar Pinia sobre composables hechos a mano para estado complejo.
 

@@ -73,7 +73,7 @@ app.mount('#app')
 
 ## Why Vite and not Webpack
 
-Vue CLI (based on Webpack) is in maintenance mode. Vite is the recommended build tool since Vue 3.3:
+Vue CLI (based on Webpack) is in maintenance mode. Vite is the recommended build tool for new Vue projects:
 
 | | Vite | Webpack (Vue CLI) |
 |---|---|---|

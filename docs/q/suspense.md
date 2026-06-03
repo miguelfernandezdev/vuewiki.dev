@@ -130,7 +130,7 @@ The correct nesting order is RouterView, then Transition, then KeepAlive, then S
 
 ## Suspense is still experimental
 
-As of Vue 3.5, Suspense works but is marked as experimental. The API could change in future releases. In production, keep Suspense boundaries minimal and document where you use them.
+Suspense is still an experimental API. It works, but the API could change in future releases. In production, keep Suspense boundaries minimal and document where you use them.
 
 See also: [What are async components?](/q/async-components) · [What are Teleport, Fragments, and Suspense?](/q/teleport-fragments-suspense) · [How does error handling work?](/q/error-handling)
 

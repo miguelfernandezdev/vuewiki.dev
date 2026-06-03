@@ -160,6 +160,8 @@ export function loadConfig() {
 | Hook | ¿Se ejecuta en el servidor? | ¿Se ejecuta en el cliente? |
 |---|---|---|
 | `setup()` / `<script setup>` | Sí | Sí |
+| `beforeCreate` (Options API) | Sí | Sí |
+| `created` (Options API) | Sí | Sí |
 | `onServerPrefetch` | Sí | No |
 | `onBeforeMount` | No | Sí |
 | `onMounted` | No | Sí |

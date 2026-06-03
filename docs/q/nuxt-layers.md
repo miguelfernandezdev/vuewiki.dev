@@ -60,7 +60,8 @@ Your project always wins over the layer. If the layer provides `components/BaseB
 
 Priority order (highest to lowest):
 1. Your project files
-2. Layers in `extends` (first entry wins over later ones)
+2. Auto-scanned layers from `~~/layers` directory (sorted alphabetically, Z has higher priority than A)
+3. Layers in `extends` (first entry wins over later ones)
 
 ## Auto-scanned layers
 

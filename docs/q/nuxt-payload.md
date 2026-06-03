@@ -153,6 +153,6 @@ See also: [How does data fetching work in Nuxt?](/q/nuxt-data-fetching) · [What
 
 ## References
 
-- [Payload](https://nuxt.com/docs/api/composables/use-nuxt-data) - Nuxt docs
+- [Payload](https://nuxt.com/docs/api/composables/use-nuxt-app#payload) - Nuxt docs
 - [Data Fetching](https://nuxt.com/docs/getting-started/data-fetching) - Nuxt docs
 - [useState](https://nuxt.com/docs/api/composables/use-state) - Nuxt docs

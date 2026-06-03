@@ -74,11 +74,11 @@ Uncontrolled inputs use the HTML `value` attribute:
 
 ## The hybrid pattern: lazy v-model
 
-`v-model.lazy` syncs on `change` (blur/enter) instead of `input`, giving you a middle ground:
+`v-model.lazy` syncs after `change` events instead of `input` events, giving you a middle ground. The `change` event fires when the input loses focus after its value has changed:
 
 ```vue
 <template>
-  <!-- Updates only when the user leaves the field or presses Enter -->
+  <!-- Updates only when the user leaves the field after changing it -->
   <input v-model.lazy="search" />
 </template>
 ```

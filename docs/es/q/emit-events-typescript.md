@@ -30,6 +30,8 @@ emit('typo')                // ❌ Error de tipo: evento desconocido
 
 La sintaxis de tupla con nombre (`[value: string]`) da nombres a los parámetros que aparecen en los tooltips del IDE. También puedes usar tuplas sin nombre (`[string]`), pero las nombradas son más claras.
 
+> **Nota:** Esta sintaxis de tipo emit basada en objeto (`defineEmits<{ event: [args] }>()`) requiere **Vue 3.3+**. En Vue 3.2 y anteriores, debes usar la sintaxis de firma de llamada: `defineEmits<{ (e: 'change', id: number): void }>()`.
+
 ## El lado del padre
 
 Cuando un componente emite eventos tipados, el padre usa `@nombreEvento` (o `v-on:nombreEvento`) y obtiene inferencia de tipos completa en los parámetros del callback:

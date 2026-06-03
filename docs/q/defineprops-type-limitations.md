@@ -135,7 +135,7 @@ Some complex types from external packages can fail if they use advanced generics
 
 If Vue's compiler can statically resolve the type to a set of property names with concrete types, it works. If the type requires runtime evaluation, conditional branching, or recursive type resolution, it fails.
 
-**Works:** interfaces, type aliases, union literals, `Pick`, `Omit`, `Partial`, `Required`, simple generics.
+**Works:** interfaces, type aliases, union literals, `Pick`, `Omit`, `Partial`, `Required` (Vue 3.3+), simple generics.
 
 **Fails:** conditional types (`T extends X ? A : B`), deeply recursive mapped types, ambient globals, some cross-package types.
 

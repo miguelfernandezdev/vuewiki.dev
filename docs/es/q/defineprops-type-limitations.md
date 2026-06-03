@@ -135,7 +135,7 @@ Algunos tipos complejos de paquetes externos pueden fallar si internamente usan 
 
 Si el compilador de Vue puede resolver el tipo estáticamente como un conjunto de nombres de propiedades con tipos concretos, funciona. Si el tipo requiere evaluación en runtime, ramificación condicional o resolución recursiva de tipos, falla.
 
-**Funciona:** interfaces, alias de tipo, uniones literales, `Pick`, `Omit`, `Partial`, `Required`, genéricos simples.
+**Funciona:** interfaces, alias de tipo, uniones literales, `Pick`, `Omit`, `Partial`, `Required` (Vue 3.3+), genéricos simples.
 
 **Falla:** tipos condicionales (`T extends X ? A : B`), tipos mapeados recursivos profundos, globals ambientales, algunos tipos entre paquetes.
 

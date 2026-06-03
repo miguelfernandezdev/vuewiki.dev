@@ -29,7 +29,7 @@ export default defineEventHandler((event) => {
 })
 ```
 
-Server middleware does not return a response (unless it wants to block the request). It processes the request and passes it along to the next handler. The order follows alphabetical file naming.
+Server middleware does not return a response (unless it wants to block the request). It processes the request and passes it along to the next handler. Execution order is determined by file naming.
 
 ### Typical use cases
 

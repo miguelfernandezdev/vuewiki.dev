@@ -155,7 +155,7 @@ function onEnter(el: HTMLElement, done: () => void) {
 | Hijos | Un elemento o componente | Múltiples (lista con v-for) |
 | Prop `mode` | Compatible (`out-in`, `in-out`) | No compatible |
 | Clase `.move` | No | Sí (anima reordenaciones) |
-| Prop `tag` | No (no renderiza un wrapper) | Sí (renderiza un elemento wrapper) |
+| Prop `tag` | No (no renderiza un wrapper) | Sí (opcional, sin wrapper por defecto) |
 
 Ver también: [¿Qué son los componentes dinámicos y KeepAlive?](/es/q/dynamic-components-keepalive) · [¿Cómo funcionan los estilos scoped?](/es/q/css-scoped-modules-dynamic)
 

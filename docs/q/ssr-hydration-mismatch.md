@@ -6,7 +6,7 @@ tags: ["ssr", "errors", "vite"]
 summary: "Happens when client HTML differs from server HTML. Common causes: invalid HTML nesting, browser-only APIs, Date.now(), and missing v-if guards."
 ---
 
-A hydration mismatch happens when the HTML the client renders differs from what the server sent. Vue tries to recover by discarding the mismatched nodes and re-rendering them, which causes flickering, performance loss, and broken event handlers.
+A hydration mismatch happens when the HTML the client renders differs from what the server sent. Vue tries to recover by discarding the mismatched nodes and re-rendering them, which can cause flickering and performance loss. In most cases, the app should continue to work as expected after recovery.
 
 ## Common causes
 

@@ -30,6 +30,8 @@ Even though `year` and `company` are interpolated at runtime, `v-once` tells Vue
 
 ## v-memo
 
+> **Note:** `v-memo` was introduced in **Vue 3.2**.
+
 Memoizes a subtree based on a dependency array. Vue skips re-rendering when all values in the array are the same as the previous render. This is most useful inside `v-for` loops.
 
 ```vue

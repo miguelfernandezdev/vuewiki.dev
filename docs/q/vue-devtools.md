@@ -58,7 +58,7 @@ DevTools show every Pinia store with:
 - Current state values (editable in the panel)
 - Getters and their computed values
 - A timeline of every action call with arguments and timing
-- Time-travel debugging: click any previous state snapshot to revert the UI to that point
+- Time-travel debugging to inspect previous state
 
 This is one of the main reasons to use Pinia over hand-rolled composables for complex state.
 

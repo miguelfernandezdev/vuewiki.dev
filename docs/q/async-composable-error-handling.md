@@ -201,7 +201,7 @@ onErrorCaptured((err) => {
 </ErrorBoundary>
 ```
 
-This catches any error thrown during rendering or lifecycle hooks in child components, preventing the entire app from crashing.
+This catches errors from descendant components thrown during: renders, watchers, lifecycle hooks, event handlers, `setup()`, custom directive hooks, and transition hooks. It prevents the entire app from crashing.
 
 ## Checklist
 

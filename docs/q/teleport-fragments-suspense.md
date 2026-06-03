@@ -82,7 +82,7 @@ One caveat: [fallthrough attributes](/q/fallthrough-attrs) don't work automatica
 
 If `UserDashboard` has an async `setup` (returns a promise), Suspense shows `LoadingSpinner` until the promise resolves. You can also handle errors with [`onErrorCaptured`](/q/error-handling) in the parent.
 
-> **Note:** Suspense is still an experimental API as of Vue 3.5. The core behavior is stable, but the API may have minor changes.
+> **Note:** Suspense is still an experimental API. The core behavior is stable, but the API may have minor changes.
 
 See also: [How does Suspense work for async components?](/q/suspense) · [What are async components?](/q/async-components) · [What are fallthrough attributes?](/q/fallthrough-attrs)
 

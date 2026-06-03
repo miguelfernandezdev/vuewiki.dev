@@ -30,6 +30,8 @@ Aunque `year` y `company` se interpolan en tiempo de ejecución, `v-once` le dic
 
 ## v-memo
 
+> **Nota:** `v-memo` fue introducido en **Vue 3.2**.
+
 Memoiza un subárbol basándose en un array de dependencias. Vue omite el re-render cuando todos los valores del array son iguales a los del render anterior. Es más útil dentro de bucles `v-for`.
 
 ```vue

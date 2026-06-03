@@ -73,7 +73,7 @@ app.mount('#app')
 
 ## Por qué Vite y no Webpack
 
-Vue CLI (basado en Webpack) está en modo mantenimiento. Vite es la herramienta de build recomendada desde Vue 3.3:
+Vue CLI (basado en Webpack) está en modo mantenimiento. Vite es la herramienta de build recomendada para nuevos proyectos Vue:
 
 | | Vite | Webpack (Vue CLI) |
 |---|---|---|

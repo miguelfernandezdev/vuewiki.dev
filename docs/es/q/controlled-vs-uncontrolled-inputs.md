@@ -74,11 +74,11 @@ Los inputs no controlados usan el atributo HTML `value`:
 
 ## El patrón híbrido: v-model.lazy
 
-`v-model.lazy` sincroniza en el evento `change` (blur/enter) en lugar de `input`, ofreciendo un punto intermedio:
+`v-model.lazy` sincroniza tras eventos `change` en lugar de `input`, ofreciendo un punto intermedio. El evento `change` se dispara cuando el input pierde el foco después de que su valor haya cambiado:
 
 ```vue
 <template>
-  <!-- Se actualiza solo cuando el usuario abandona el campo o pulsa Enter -->
+  <!-- Se actualiza solo cuando el usuario abandona el campo después de modificarlo -->
   <input v-model.lazy="search" />
 </template>
 ```

@@ -60,7 +60,8 @@ Tu proyecto siempre tiene prioridad sobre el layer. Si el layer provee `componen
 
 Orden de prioridad (de mayor a menor):
 1. Los archivos de tu proyecto
-2. Los layers en `extends` (la primera entrada gana sobre las siguientes)
+2. Los layers auto-detectados del directorio `~~/layers` (ordenados alfabéticamente, Z tiene mayor prioridad que A)
+3. Los layers en `extends` (la primera entrada gana sobre las siguientes)
 
 ## Layers auto-detectados
 

@@ -70,7 +70,6 @@ export default defineNuxtConfig({
 | `ssr: false` | Client-side only (SPA) |
 | `isr: 3600` | Incremental Static Regeneration, regenerate after 1 hour |
 | `swr: true` | Stale-While-Revalidate, serve cached and regenerate in background |
-| `cache: { maxAge: 600 }` | Cache the server response for 10 minutes |
 
 You can also define route rules inline in a page:
 
@@ -117,6 +116,6 @@ See also: [How does hybrid rendering work in Nuxt?](/q/nuxt-hybrid-rendering) ·
 
 ## References
 
-- [Rendering](https://nuxt.com/docs/getting-started/rendering) - Nuxt docs
+- [Rendering](https://nuxt.com/docs/guide/concepts/rendering) - Nuxt docs
 - [Route Rules](https://nuxt.com/docs/api/nuxt-config#routerules) - Nuxt docs
 - [Prerendering](https://nuxt.com/docs/getting-started/prerendering) - Nuxt docs

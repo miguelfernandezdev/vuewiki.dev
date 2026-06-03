@@ -6,7 +6,7 @@ tags: ["ssr", "errors", "vite"]
 summary: "Ocurre cuando el HTML del cliente difiere del servidor. Causas comunes: HTML inválido anidado, APIs solo de navegador, Date.now() y falta de v-if guards."
 ---
 
-Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere del que envió el servidor. Vue intenta recuperarse descartando los nodos que no coinciden y re-renderizándolos, lo que provoca parpadeos, pérdida de rendimiento y manejadores de eventos rotos.
+Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere del que envió el servidor. Vue intenta recuperarse descartando los nodos que no coinciden y re-renderizándolos, lo que puede provocar parpadeos y pérdida de rendimiento. En la mayoría de los casos, la app debería seguir funcionando correctamente tras la recuperación.
 
 ## Causas habituales
 

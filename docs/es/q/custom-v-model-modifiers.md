@@ -22,7 +22,7 @@ El modificador `.number` tiene un problema: devuelve una cadena vacía (no `0` n
 
 ## Modificadores personalizados con defineModel (Vue 3.4+)
 
-`defineModel` devuelve una tupla `[ref, modifiers]` cuando proporcionas una transformación `set`:
+`defineModel` devuelve una tupla `[ref, modifiers]` al desestructurarlo. La transformación `set` es opcional — solo la necesitas cuando quieres modificar el valor antes de almacenarlo:
 
 ```vue
 <!-- CurrencyInput.vue -->

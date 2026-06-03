@@ -201,7 +201,7 @@ onErrorCaptured((err) => {
 </ErrorBoundary>
 ```
 
-Esto captura cualquier error lanzado durante el renderizado o los lifecycle hooks de componentes hijos, evitando que toda la aplicación falle.
+Esto captura errores de componentes descendientes lanzados durante: renders, watchers, lifecycle hooks, manejadores de eventos, `setup()`, hooks de directivas personalizadas y hooks de transiciones. Evita que toda la aplicacion falle.
 
 ## Lista de comprobación
 

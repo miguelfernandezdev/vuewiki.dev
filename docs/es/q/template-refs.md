@@ -55,7 +55,9 @@ Ventajas: autocompletado en el IDE para nombres de ref, mejor inferencia de Type
 
 ## Refs con v-for
 
-Cuando se usan dentro de `v-for`, el ref se puebla automáticamente con un array de elementos.
+Cuando se usan dentro de `v-for`, el ref se puebla automaticamente con un array de elementos.
+
+> **Advertencia:** El array de refs **no** garantiza el mismo orden que el array de origen. Si necesitas hacer coincidir elementos con items del array por indice, usa una estrategia diferente como un Map con clave por ID del item o un function ref.
 
 ### useTemplateRef (Vue 3.5+, recomendado)
 

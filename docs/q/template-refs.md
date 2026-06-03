@@ -57,6 +57,8 @@ Benefits: IDE auto-completion for ref names, better TypeScript inference, and ty
 
 When used inside `v-for`, the ref is automatically populated with an array of elements.
 
+> **Caveat:** The ref array does **not** guarantee the same order as the source array. If you need to match elements to source items by index, use a different strategy such as a Map keyed by item ID or a function ref.
+
 ### useTemplateRef (Vue 3.5+, recommended)
 
 ```vue

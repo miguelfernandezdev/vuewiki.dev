@@ -109,8 +109,8 @@ All composables return the same shape:
 | `data` | `Ref<T>` | The fetched data |
 | `error` | `Ref<Error \| null>` | Error if the request failed |
 | `status` | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Current state |
-| `refresh` | `() => Promise` | Refetch the data |
-| `clear` | `() => void` | Reset data and error |
+| `refresh` / `execute` | `() => Promise` | Refetch the data (`execute` is an alias for `refresh`) |
+| `clear` | `() => void` | Reset `data`, `error`, and `status` (back to `idle`), and cancel any pending requests |
 
 ## Sharing data across components
 

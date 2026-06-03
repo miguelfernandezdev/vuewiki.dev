@@ -86,7 +86,7 @@ No `commit`, no `dispatch`, no `mapGetters`. Just import the store and use it.
 | Store structure | One store, namespaced modules | Independent stores |
 | DevTools | Yes | Yes (time-travel, state editing) |
 | SSR | Requires careful setup | Built-in support |
-| Bundle size | ~6kb | ~1.5kb |
+| Bundle size | ~6kb | ~1kb |
 
 See also: [How does Vuex work?](/q/how-vuex-works) · [How does Pinia work internally?](/q/how-pinia-works) · [How would you migrate a Vuex module to Pinia?](/q/vuex-module-to-pinia)
 

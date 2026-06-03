@@ -20,7 +20,7 @@ Go through your codebase and document:
 - **Event bus usage** — if you have a global Vue instance used as `bus.$on(...)` / `bus.$off(...)`, those instance methods no longer exist. You need a replacement strategy.
 - **Vuex stores** — Vuex 4 works with Vue 3 (as a bridge), but the recommended long-term move is Pinia.
 - **Third-party libraries** — this is often the biggest risk. Check each library for a Vue 3-compatible version. Some popular Vue 2 libraries were abandoned and never updated.
-- **Custom directives** — directive lifecycle hooks were renamed in Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `updated`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
+- **Custom directives** — directive lifecycle hooks were renamed in Vue 3 (`bind` → `beforeMount`, `inserted` → `mounted`, `update` → `beforeUpdate`, `componentUpdated` → `updated`, `unbind` → `unmounted`).
 - **Render functions** — the `h` function signature changed. Props are now flat (no nested `attrs`, `on`, `class` objects). In Vue 3, `h` is imported directly from Vue, not received as a parameter.
 
 This audit gives you a real migration scope. Without it, you will discover blockers mid-migration when it is harder to recover.

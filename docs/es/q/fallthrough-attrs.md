@@ -88,8 +88,8 @@ const attrs = useAttrs()
 // Este watcher nunca se dispara al cambiar los attrs
 watch(() => attrs.class, (val) => { /* código muerto */ })
 
-// Usa onUpdated en su lugar
-onUpdated(() => {
+// Usa onBeforeUpdate en su lugar
+onBeforeUpdate(() => {
   console.log('current attrs:', attrs)
 })
 ```
