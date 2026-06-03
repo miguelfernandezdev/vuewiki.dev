@@ -5,7 +5,15 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -13,6 +21,9 @@
     ]
   },
   "devDependencies": {
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.3",
+    "simple-git-hooks": "^2.13.1",
     "vitepress": "^1.6.3",
     "vitepress-plugin-llms": "^1.13.1",
     "vue": "^3.5.34"
