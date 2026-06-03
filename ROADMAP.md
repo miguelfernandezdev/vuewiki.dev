@@ -54,7 +54,7 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [ ] Pinia patterns and best practices (#3)
 - [ ] Vitest testing guides (#4)
 - [ ] Dedicated Nuxt section (#5)
-- [ ] Interactive code examples (#6)
+- [x] Interactive code examples (#6)
 
 ## Phase 6 — Translations
 
