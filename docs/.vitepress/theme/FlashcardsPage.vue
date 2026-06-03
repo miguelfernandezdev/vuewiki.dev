@@ -319,8 +319,8 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
             </a>
           </div>
         </div>
-        <div class="swipe-indicator swipe-indicator-left">✗</div>
-        <div class="swipe-indicator swipe-indicator-right">✓</div>
+        <button v-if="revealed" class="swipe-indicator swipe-indicator-left" :class="{ dragging: Math.abs(dragX) >= 30 && dragX < 0 }" @pointerdown.stop @click="answer('review')">✗</button>
+        <button v-if="revealed" class="swipe-indicator swipe-indicator-right" :class="{ dragging: Math.abs(dragX) >= 30 && dragX > 0 }" @pointerdown.stop @click="answer('got-it')">✓</button>
       </div>
 
       <div class="card-stats">
@@ -748,34 +748,41 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  opacity: 0;
-  transition: opacity 0.15s;
-  pointer-events: none;
-  width: 48px;
-  height: 48px;
+  opacity: 0.4;
+  transition: all 0.15s;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.swipe-indicator:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
+.swipe-indicator.dragging {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
 }
 
 .swipe-indicator-left {
-  left: 12px;
+  left: -20px;
   color: var(--vp-c-red-2);
   background: var(--vp-c-red-soft);
 }
 
 .swipe-indicator-right {
-  right: 12px;
+  right: -20px;
   color: var(--vp-c-green-2);
   background: var(--vp-c-green-soft);
-}
-
-.swipe-left .swipe-indicator-left,
-.swipe-right .swipe-indicator-right {
-  opacity: 1;
 }
 
 .swipe-left .card {
@@ -884,5 +891,10 @@ onUnmounted(() => globalThis.removeEventListener('keydown', onKeydown))
 .badge-advanced {
   background: var(--vp-c-red-soft);
   color: var(--vp-c-red-2);
+}
+
+@media (max-width: 640px) {
+  .swipe-indicator-left { left: -10px; }
+  .swipe-indicator-right { right: -10px; }
 }
 </style>
