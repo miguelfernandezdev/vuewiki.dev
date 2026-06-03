@@ -29,6 +29,24 @@ const activeId = (ref < number) | (null > null)
 </template>
 ```
 
+<PlaygroundLink code="<!-- Parent -->
+
+<script setup>
+const items = ref([
+  /* 100 items */
+])
+const activeId = (ref < number) | (null > null)
+</script>
+
+&#10;<template>
+<ListItem
+v-for=&quot;item in items&quot;
+:key=&quot;item.id&quot;
+:id=&quot;item.id&quot;
+:active-id=&quot;activeId&quot;
+/>
+</template>" />
+
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -39,6 +57,17 @@ const props = defineProps<{ id: number; activeId: number | null }>()
   <div :class="{ active: id === activeId }">{{ id }}</div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- ListItem.vue -->
+
+<script setup>
+const props = defineProps<{ id: number; activeId: number | null }>()
+</script>
+
+&#10;<template>
+
+  <div :class=&quot;{ active: id === activeId }&quot;>{{ id }}</div>
+</template>" />
 
 Cuando `activeId` cambia de 1 a 2, la prop `activeId` cambia para los 100 elementos. Vue re-renderiza cada `ListItem`, aunque solo dos elementos necesiten una actualización visual: el que estaba activo antes y el que pasa a estar activo.
 
@@ -56,6 +85,16 @@ Cuando `activeId` cambia de 1 a 2, la prop `activeId` cambia para los 100 elemen
 </template>
 ```
 
+<PlaygroundLink code="<!-- Parent -->
+<template>
+  <ListItem
+    v-for=&quot;item in items&quot;
+    :key=&quot;item.id&quot;
+    :id=&quot;item.id&quot;
+    :active=&quot;item.id === activeId&quot;
+  />
+</template>" />
+
 ```vue
 <!-- ListItem.vue -->
 <script setup>
@@ -66,6 +105,17 @@ defineProps<{ id: number; active: boolean }>()
   <div :class="{ active }">{{ id }}</div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- ListItem.vue -->
+
+<script setup>
+defineProps<{ id: number; active: boolean }>()
+</script>
+
+&#10;<template>
+
+  <div :class=&quot;{ active }&quot;>{{ id }}</div>
+</template>" />
 
 Ahora cuando `activeId` cambia de 1 a 2:
 
@@ -91,6 +141,15 @@ Ahora cuando `activeId` cambia de 1 a 2:
 />
 ```
 
+<PlaygroundLink code="<!-- MAL: todos los elementos se re-renderizan cuando cambia cualquier selección -->
+<Item v-for=&quot;item in items&quot; :key=&quot;item.id&quot; :selected-ids=&quot;selectedIds&quot; />
+&#10;<!-- BIEN: solo los elementos afectados se re-renderizan -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :selected=&quot;selectedIds.has(item.id)&quot;
+/>" />
+
 **Pasar la longitud de la lista o el índice:**
 
 ```vue
@@ -110,6 +169,20 @@ Ahora cuando `activeId` cambia de 1 a 2:
 />
 ```
 
+<PlaygroundLink code="<!-- MAL: total cambia cada vez que cambia la lista -->
+<Item
+  v-for=&quot;(item, index) in items&quot;
+  :key=&quot;item.id&quot;
+  :index=&quot;index&quot;
+  :total=&quot;items.length&quot;
+/>
+&#10;<!-- BIEN: pasar solo lo que el hijo realmente necesita -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :is-last=&quot;item === items[items.length - 1]&quot;
+/>" />
+
 **Pasar un objeto o función inline:**
 
 ```vue
@@ -121,6 +194,14 @@ Ahora cuando `activeId` cambia de 1 a 2:
   :on-click="() => select(item.id)"
 />
 ```
+
+<PlaygroundLink code="<!-- MAL: nuevo objeto en cada render → referencia siempre diferente -->
+<Item
+  v-for=&quot;item in items&quot;
+  :key=&quot;item.id&quot;
+  :style=&quot;{ color: item.color }&quot;
+  :on-click=&quot;() => select(item.id)&quot;
+/>" />
 
 Los objetos inline y las arrow functions crean una nueva referencia en cada render. Vue detecta una prop "nueva" y re-renderiza el hijo. Si el rendimiento importa, moverlos a computed o métodos.
 

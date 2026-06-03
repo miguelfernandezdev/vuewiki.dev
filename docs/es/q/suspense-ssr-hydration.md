@@ -37,6 +37,16 @@ const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const AsyncDashboard = defineAsyncComponent(() => import('./Dashboard.vue'))
+</script>
+&#10;<template>
+  <Suspense>
+    <AsyncDashboard />
+    <template #fallback>Cargando...</template>
+  </Suspense>
+</template>" />
+
 Esto funciona en CSR pero provoca parpadeo de hidratación en SSR porque el chunk puede no estar listo cuando comienza la hidratación.
 
 ## Solución 1: usar async setup en lugar de defineAsyncComponent
@@ -54,6 +64,17 @@ const { data } = await useFetch('/api/dashboard')
 </template>
 ```
 
+<PlaygroundLink code="<!-- Dashboard.vue -->
+
+<script setup>
+const { data } = await useFetch('/api/dashboard')
+</script>
+
+&#10;<template>
+
+  <div>{{ data }}</div>
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <template>
@@ -63,6 +84,14 @@ const { data } = await useFetch('/api/dashboard')
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <Suspense>
+    <Dashboard />
+    <template #fallback><DashboardSkeleton /></template>
+  </Suspense>
+</template>" />
 
 Los datos se serializan en el payload, así que la hidratación tiene todo lo que necesita sin esperar a un chunk separado.
 
@@ -83,6 +112,18 @@ Para componentes donde el SSR no es crítico, omite el renderizado en el servido
   </ClientOnly>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <ClientOnly>
+    <Suspense>
+      <AsyncDashboard />
+      <template #fallback>Cargando panel...</template>
+    </Suspense>
+    <template #fallback>
+      <DashboardSkeleton />
+    </template>
+  </ClientOnly>
+</template>" />
 
 El servidor renderiza el esqueleto. El cliente carga y resuelve el componente asíncrono. No hay error de hidratación porque el servidor nunca renderizó el contenido real.
 
@@ -111,6 +152,24 @@ En lugar de un Suspense que envuelva todo, dale a cada sección asíncrona su pr
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div class=&quot;dashboard&quot;>
+    <Suspense>
+      <AsyncHeader />
+      <template #fallback><HeaderSkeleton /></template>
+    </Suspense>
+&#10;    <Suspense>
+      <AsyncStats />
+      <template #fallback><StatsSkeleton /></template>
+    </Suspense>
+&#10;    <Suspense>
+      <AsyncTable />
+      <template #fallback><TableSkeleton /></template>
+    </Suspense>
+  </div>
+</template>" />
+
 Cada sección se resuelve de forma independiente. Un chunk lento solo afecta a su propio límite Suspense, no a toda la página.
 
 ## Solución 4: evitar useQuery después de await
@@ -130,6 +189,17 @@ const { data, suspense } = useQuery({
 await suspense()
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+// Todas las queries ANTES del await
+const { data, suspense } = useQuery({
+  queryKey: ['dashboard'],
+  queryFn: fetchDashboard,
+  staleTime: 5 * 60 * 1000
+})
+&#10;// El await DESPUÉS de configurar todas las queries
+await suspense()
+</script>" />
 
 Configurar un `staleTime` adecuado evita que el cliente vuelva a pedir datos que ya se obtuvieron en el servidor.
 

@@ -24,6 +24,16 @@ const last = ref('García')
 </script>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <UserForm v-model:first-name=&quot;first&quot; v-model:last-name=&quot;last&quot; />
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const first = ref('Ana')
+const last = ref('García')
+</script>" />
+
 ```vue
 <!-- UserForm.vue -->
 <script setup>
@@ -37,6 +47,18 @@ const lastName = defineModel('lastName')
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserForm.vue -->
+
+<script setup>
+const firstName = defineModel('firstName')
+const lastName = defineModel('lastName')
+</script>
+
+&#10;<template>
+<input v-model=&quot;firstName&quot; placeholder=&quot;First name&quot; />
+<input v-model=&quot;lastName&quot; placeholder=&quot;Last name&quot; />
+</template>" />
+
 `defineModel` (Vue 3.4+) creates a two-way binding automatically. Each named model corresponds to a `v-model:name` on the parent.
 
 ## How it works under the hood
@@ -46,6 +68,8 @@ const lastName = defineModel('lastName')
 ```vue
 <UserForm :firstName="first" @update:firstName="first = $event" />
 ```
+
+<PlaygroundLink code="<UserForm :firstName=&quot;first&quot; @update:firstName=&quot;first = $event&quot; />" />
 
 And `defineModel('firstName')` is shorthand for:
 
@@ -62,6 +86,16 @@ const firstName = computed({
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ firstName: string }>()
+const emit = defineEmits<{ 'update:firstName': [value: string] }>()
+&#10;// A writable computed that proxies the prop
+const firstName = computed({
+  get: () => props.firstName,
+  set: (val) => emit('update:firstName', val)
+})
+</script>" />
+
 ## Default (unnamed) v-model alongside named ones
 
 The default `v-model` (without a name) uses `modelValue` as the prop name:
@@ -73,6 +107,11 @@ The default `v-model` (without a name) uses `modelValue` as the prop name:
 </template>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <SearchInput v-model=&quot;query&quot; v-model:filters=&quot;activeFilters&quot; />
+</template>" />
+
 ```vue
 <!-- SearchInput.vue -->
 <script setup>
@@ -80,6 +119,13 @@ const query = defineModel() // maps to v-model (modelValue)
 const filters = defineModel('filters') // maps to v-model:filters
 </script>
 ```
+
+<PlaygroundLink code="<!-- SearchInput.vue -->
+
+<script setup>
+const query = defineModel() // maps to v-model (modelValue)
+const filters = defineModel('filters') // maps to v-model:filters
+</script>" />
 
 ## Adding types
 
@@ -89,6 +135,11 @@ const firstName = defineModel<string>('firstName', { required: true })
 const age = defineModel<number>('age', { default: 0 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const firstName = defineModel<string>('firstName', { required: true })
+const age = defineModel<number>('age', { default: 0 })
+</script>" />
 
 ## Before defineModel (Vue < 3.4)
 
@@ -118,6 +169,27 @@ const emit = defineEmits<{
   />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const props = defineProps<{
+  firstName: string
+  lastName: string
+}>()
+&#10;const emit = defineEmits<{
+  'update:firstName': [value: string]
+  'update:lastName': [value: string]
+}>()
+</script>
+&#10;<template>
+  <input
+    :value=&quot;firstName&quot;
+    @input=&quot;emit('update:firstName', ($event.target as HTMLInputElement).value)&quot;
+  />
+  <input
+    :value=&quot;lastName&quot;
+    @input=&quot;emit('update:lastName', ($event.target as HTMLInputElement).value)&quot;
+  />
+</template>" />
 
 `defineModel` removes all this boilerplate.
 

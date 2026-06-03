@@ -26,6 +26,19 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+  title?: string
+  count?: number
+  items?: string[]
+}
+&#10;const props = withDefaults(defineProps<Props>(), {
+  title: 'Untitled',
+  count: 0,
+  items: () => []
+})
+</script>" />
+
 `withDefaults` only applies to optional props (the ones with `?`). Required props don't need defaults.
 
 ## The mutable default problem
@@ -40,6 +53,13 @@ const props = withDefaults(defineProps<{ tags?: string[] }>(), {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// BUG: all instances share the same array
+const props = withDefaults(defineProps<{ tags?: string[] }>(), {
+  tags: ['default']
+})
+</script>" />
 
 If one component instance mutates `tags`, every other instance sees the change. This causes bugs like "selecting a row in one table selects it in all tables."
 
@@ -70,6 +90,27 @@ const props = withDefaults(defineProps<Props>(), {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+  title?: string
+  disabled?: boolean
+  items?: string[]
+  config?: { theme: string; locale: string }
+  selectedIds?: Set<string>
+}
+&#10;const props = withDefaults(defineProps<Props>(), {
+  title: 'Default', // primitive — no factory needed
+  disabled: false, // primitive — no factory needed
+  items: () => [], // array — factory required
+  config: () => ({
+    // object — factory required
+    theme: 'light',
+    locale: 'en'
+  }),
+  selectedIds: () => new Set() // Set — factory required
+})
+</script>" />
 
 ## When you need a factory function
 
@@ -106,6 +147,20 @@ const {
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const {
+  title = 'Untitled',
+  count = 0,
+  items = ['default'],
+  config = { theme: 'light' }
+} = defineProps<{
+  title?: string
+  count?: number
+  items?: string[]
+  config?: { theme: string }
+}>()
+</script>" />
+
 No `withDefaults`, no factory functions. Each component instance gets its own copy. This is the recommended approach on Vue 3.5+.
 
 ## withDefaults vs destructured defaults
@@ -135,6 +190,32 @@ const { items = [], label = 'Default' } = defineProps<{
 // access: items, label (directly, no 'props.' prefix)
 </script>
 ```
+
+<PlaygroundLink code="<!-- Vue 3.4 and below: withDefaults -->
+
+<script setup lang=&quot;ts&quot;>
+const props = withDefaults(
+  defineProps<{
+    items?: string[]
+    label?: string
+  }>(),
+  {
+    items: () => [],
+    label: 'Default'
+  }
+)
+// access: props.items, props.label
+</script>
+
+&#10;<!-- Vue 3.5+: destructured defaults -->
+
+<script setup lang=&quot;ts&quot;>
+const { items = [], label = 'Default' } = defineProps<{
+  items?: string[]
+  label?: string
+}>()
+// access: items, label (directly, no 'props.' prefix)
+</script>" />
 
 Both approaches are valid. `withDefaults` gives you a single `props` object. Destructuring gives you individual variables. On Vue 3.5+, destructuring is simpler and avoids the factory function footgun entirely.
 

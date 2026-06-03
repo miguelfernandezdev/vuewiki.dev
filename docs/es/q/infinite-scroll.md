@@ -69,6 +69,53 @@ loadMore()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Post {
+id: number
+title: string
+}
+&#10;const posts = ref<Post[]>([])
+const page = ref(1)
+const isLoading = ref(false)
+const hasMore = ref(true)
+const sentinel = ref<HTMLElement | null>(null)
+&#10;async function loadMore() {
+if (isLoading.value || !hasMore.value) return
+&#10; isLoading.value = true
+const newPosts = await $fetch<Post[]>('/api/posts', {
+params: { page: page.value, limit: 20 }
+})
+&#10; posts.value.push(...newPosts)
+hasMore.value = newPosts.length === 20
+page.value++
+isLoading.value = false
+}
+&#10;onMounted(() => {
+const observer = new IntersectionObserver(
+([entry]) => {
+if (entry.isIntersecting) loadMore()
+},
+{ rootMargin: '200px' }
+)
+&#10; watchEffect(() => {
+if (sentinel.value) observer.observe(sentinel.value)
+})
+&#10; onUnmounted(() => observer.disconnect())
+})
+&#10;loadMore()
+</script>
+&#10;<template>
+
+  <div>
+    <div v-for=&quot;post in posts&quot; :key=&quot;post.id&quot; class=&quot;post&quot;>
+      <h3>{{ post.title }}</h3>
+    </div>
+&#10;    <div ref=&quot;sentinel&quot; />
+&#10;    <p v-if=&quot;isLoading&quot;>Cargando...</p>
+    <p v-if=&quot;!hasMore&quot;>No hay más publicaciones.</p>
+  </div>
+</template>" />
+
 El `rootMargin: '200px'` activa la carga 200px antes de que el centinela sea visible, de modo que el contenido aparece antes de que el usuario llegue al fondo.
 
 ## Versión con composable
@@ -148,6 +195,24 @@ const {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const {
+items: posts,
+isLoading,
+hasMore,
+sentinel
+} = useInfiniteScroll((page) =>
+$fetch('/api/posts', { params: { page, limit: 20 } })
+)
+</script>
+&#10;<template>
+
+  <div v-for=&quot;post in posts&quot; :key=&quot;post.id&quot;>{{ post.title }}</div>
+  <div ref=&quot;sentinel&quot; />
+  <p v-if=&quot;isLoading&quot;>Cargando...</p>
+  <p v-if=&quot;!hasMore&quot;>Fin de la lista.</p>
+</template>" />
+
 ## Con VueUse
 
 VueUse proporciona `useIntersectionObserver` que simplifica la configuración del observer:
@@ -167,6 +232,18 @@ useIntersectionObserver(
 )
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useIntersectionObserver } from '@vueuse/core'
+&#10;const sentinel = (ref < HTMLElement) | (null > null)
+&#10;useIntersectionObserver(
+  sentinel,
+  ([entry]) => {
+    if (entry.isIntersecting) loadMore()
+  },
+  { rootMargin: '200px' }
+)
+</script>" />
 
 ## Paginación basada en cursor
 
@@ -216,6 +293,25 @@ const { list, containerProps, wrapperProps } = useVirtualList(items, {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useVirtualList } from '@vueuse/core'
+&#10;const { items, isLoading, hasMore, sentinel } = useInfiniteScroll(fetchPosts)
+&#10;const { list, containerProps, wrapperProps } = useVirtualList(items, {
+itemHeight: 80
+})
+</script>
+&#10;<template>
+
+  <div v-bind=&quot;containerProps&quot; style=&quot;height: 600px; overflow-y: auto&quot;>
+    <div v-bind=&quot;wrapperProps&quot;>
+      <div v-for=&quot;{ data, index } in list&quot; :key=&quot;data.id&quot; style=&quot;height: 80px&quot;>
+        {{ data.title }}
+      </div>
+    </div>
+    <div ref=&quot;sentinel&quot; />
+  </div>
+</template>" />
 
 Así cargas datos de forma incremental Y solo renderizas los elementos visibles.
 

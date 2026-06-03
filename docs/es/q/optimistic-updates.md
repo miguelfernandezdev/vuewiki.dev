@@ -61,6 +61,44 @@ async function toggleTodo(todo: Todo) {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Todo {
+id: string
+text: string
+done: boolean
+}
+&#10;const todos = ref<Todo[]>([])
+&#10;async function toggleTodo(todo: Todo) {
+const previousValue = todo.done
+&#10; // Optimista: actualiza de inmediato
+todo.done = !todo.done
+&#10; try {
+await $fetch(`/api/todos/${todo.id}`, {
+method: 'PATCH',
+body: { done: todo.done }
+})
+} catch {
+// Revertir en caso de error
+todo.done = previousValue
+}
+}
+</script>
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;todo in todos&quot; :key=&quot;todo.id&quot;>
+      <label>
+        <input
+          type=&quot;checkbox&quot;
+          :checked=&quot;todo.done&quot;
+          @change=&quot;toggleTodo(todo)&quot;
+        />
+        {{ todo.text }}
+      </label>
+    </li>
+  </ul>
+</template>" />
+
 ## Ejemplo: eliminar de una lista
 
 Eliminar es más delicado porque hay que recordar el elemento y su posición:

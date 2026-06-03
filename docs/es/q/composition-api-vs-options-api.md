@@ -32,6 +32,24 @@ export default {
 </script>
 ```
 
+<PlaygroundLink code="<script>
+export default {
+  data() {
+    return { count: 0 }
+  },
+  computed: {
+    doubled() {
+      return this.count * 2
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    }
+  }
+}
+</script>" />
+
 Esto funciona bien en componentes pequeños. El problema aparece cuando un componente crece: la lógica de una sola funcionalidad (por ejemplo, búsqueda) se dispersa entre `data`, `computed`, `methods` y `watch`. Acabas saltando entre secciones para entender una sola feature.
 
 ## Composition API
@@ -49,6 +67,15 @@ function increment() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref, computed } from 'vue'
+&#10;const count = ref(0)
+const doubled = computed(() => count.value * 2)
+function increment() {
+  count.value++
+}
+</script>" />
 
 El estado reactivo (`ref`), los valores derivados (`computed`) y las funciones conviven juntos. Cuando el componente crece, puedes extraer la lógica relacionada en un [composable](/es/q/what-is-a-composable) (una función que devuelve estado reactivo) y reutilizarlo en otros componentes.
 

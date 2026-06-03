@@ -44,6 +44,13 @@ In `<template>`, Vue unwraps refs automatically. You do NOT write `.value` there
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- .value is NOT needed here -->
+  <p>{{ count }}</p>
+  <button @click=&quot;count++&quot;>Increment</button>
+</template>" />
+
 This inconsistency (`.value` in script, no `.value` in template) is the #1 source of confusion for people learning Vue 3. TypeScript helps catch it early because the types won't match if you forget `.value`.
 
 See also: [Why doesn't reactive() work with primitives?](/q/reactive-with-primitives) · [What is the difference between ref and reactive?](/q/ref-vs-reactive)

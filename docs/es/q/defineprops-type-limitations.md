@@ -35,6 +35,15 @@ defineProps<{
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User, Status } from '@/types/props'
+&#10;defineProps<{
+  user: User
+  status: Status
+  items: string[]
+}>()
+</script>" />
+
 Usar una interfaz importada directamente como tipo de props también funciona:
 
 ```vue
@@ -44,6 +53,11 @@ import type { User } from '@/types/props'
 defineProps<User>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User } from '@/types/props'
+&#10;defineProps<User>()
+</script>" />
 
 ## Qué no funciona
 
@@ -62,6 +76,11 @@ defineProps<InputProps<string>>()
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// ERROR: Vue no puede resolver tipos condicionales para el objeto de props
+defineProps<InputProps<string>>()
+</script>" />
+
 **Solución:** resuelve el tipo manualmente:
 
 ```vue
@@ -74,6 +93,14 @@ interface StringInputProps {
 defineProps<StringInputProps>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface StringInputProps {
+  value: string
+  onChange: (v: string) => void
+}
+&#10;defineProps<StringInputProps>()
+</script>" />
 
 ### Tipos mapeados complejos
 
@@ -89,6 +116,11 @@ export type DeepReadonly<T> = {
 defineProps<DeepReadonly<User>>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// Puede fallar o producir declaraciones de runtime incorrectas
+defineProps<DeepReadonly<User>>()
+</script>" />
 
 **Solución:** aplana el tipo en una interfaz explícita:
 
@@ -116,6 +148,11 @@ interface AppConfig {
 defineProps<{ config: AppConfig }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// ERROR: &quot;Unresolvable type reference&quot;
+defineProps<{ config: AppConfig }>()
+</script>" />
 
 **Solución:** usa exports e imports explícitos en lugar de declaraciones ambientales:
 
@@ -154,6 +191,14 @@ type Resolved = ComplexGeneric<'variant-a'>
 defineProps<Resolved>()
 </script>
 ```
+
+<PlaygroundLink code="<script lang=&quot;ts&quot;>
+import type { ComplexGeneric } from '@/types'
+&#10;type Resolved = ComplexGeneric<'variant-a'>
+</script>
+&#10;<script setup lang=&quot;ts&quot;>
+defineProps<Resolved>()
+</script>" />
 
 El bloque script regular tiene acceso completo a TypeScript. El tipo resuelto es entonces suficientemente simple para que `<script setup>` lo gestione.
 

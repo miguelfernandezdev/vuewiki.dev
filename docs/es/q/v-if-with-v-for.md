@@ -18,6 +18,13 @@ En **Vue 2**, `v-for` se ejecuta primero. En **Vue 3**, `v-if` se ejecuta primer
 </li>
 ```
 
+<PlaygroundLink code="<!-- Vue 2: itera todos los usuarios, luego filtra por isActive (funciona pero es ineficiente) -->
+
+<!-- Vue 3: comprueba user.isActive ANTES del bucle, pero user aún no existe → error -->
+<li v-for=&quot;user in users&quot; v-if=&quot;user.isActive&quot; :key=&quot;user.id&quot;>
+  {{ user.name }}
+</li>" />
+
 ## La forma correcta de filtrar una lista
 
 Usa una propiedad `computed`:
@@ -34,6 +41,16 @@ const activeUsers = computed(() => props.users.filter((user) => user.isActive))
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const activeUsers = computed(() => props.users.filter((user) => user.isActive))
+</script>
+&#10;<template>
+
+  <li v-for=&quot;user in activeUsers&quot; :key=&quot;user.id&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
+
 Es mejor en todos los sentidos: con caché, testeable, reutilizable y sin ambigüedad.
 
 ## La forma correcta de ocultar una lista completa
@@ -48,6 +65,13 @@ Envuelve con `<template v-if>`:
 </template>
 ```
 
+<PlaygroundLink code="<template v-if=&quot;shouldShowList&quot;>
+
+  <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
+
 ## Condición por elemento dentro del bucle
 
 Usa `<template v-for>` con `v-if` en un elemento hijo:
@@ -59,6 +83,13 @@ Usa `<template v-for>` con `v-if` en un elemento hijo:
   </li>
 </template>
 ```
+
+<PlaygroundLink code="<template v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
+
+  <li v-if=&quot;user.isActive&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
 
 La regla ESLint `vue/no-use-v-if-with-v-for` detecta esto automáticamente.
 

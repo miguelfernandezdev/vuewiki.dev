@@ -21,6 +21,14 @@ Both hide and show elements based on a condition, but they do it in completely d
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-if=&quot;showPanel&quot;>
+    <!-- This entire component is destroyed when showPanel is false -->
+    <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
+
 This means toggling `v-if` is expensive: Vue has to tear down and rebuild the DOM subtree every time. But if the condition is `false` on initial render, nothing is created at all. Zero cost.
 
 ## v-show: hides with CSS
@@ -35,6 +43,14 @@ This means toggling `v-if` is expensive: Vue has to tear down and rebuild the DO
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div v-show=&quot;showPanel&quot;>
+    <!-- Always in the DOM, just hidden via CSS when showPanel is false -->
+    <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
 
 Toggling is cheap (one CSS property change), but the initial render always pays the full cost even if the element starts hidden.
 

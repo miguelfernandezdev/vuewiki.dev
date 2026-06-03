@@ -85,6 +85,24 @@ const { t, locale } = useI18n()
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { useI18n } from 'vue-i18n'
+&#10;const { t, locale } = useI18n()
+</script>
+&#10;<template>
+
+  <p>{{ t('greeting', { name: 'Miguel' }) }}</p>
+  <p>{{ t('items', 5) }}</p>
+&#10;  <nav>
+    <a href=&quot;/&quot;>{{ t('nav.home') }}</a>
+    <a href=&quot;/about&quot;>{{ t('nav.about') }}</a>
+  </nav>
+&#10;  <select v-model=&quot;locale&quot;>
+    <option value=&quot;en&quot;>English</option>
+    <option value=&quot;es&quot;>Español</option>
+  </select>
+</template>" />
+
 Cambiar `locale` actualiza reactivamente todas las traducciones en la app.
 
 ## Pluralización
@@ -105,6 +123,14 @@ vue-i18n usa formas separadas por pipe: cero | uno | muchos.
 <p>{{ t('messages', 42) }}</p>
 <!-- 42 messages -->
 ```
+
+<PlaygroundLink code="<p>{{ t('messages', 0) }}</p>
+
+<!-- No messages -->
+<p>{{ t('messages', 1) }}</p>
+<!-- 1 message -->
+<p>{{ t('messages', 42) }}</p>
+<!-- 42 messages -->" />
 
 ## Formateo de fechas y números
 
@@ -137,6 +163,12 @@ const i18n = createI18n({
 <!-- $99.99 / 99,99 € -->
 ```
 
+<PlaygroundLink code="<p>{{ d(new Date(), 'short') }}</p>
+
+<!-- Jun 1, 2026 / 1 jun 2026 -->
+<p>{{ n(99.99, 'currency') }}</p>
+<!-- $99.99 / 99,99 € -->" />
+
 ## Carga diferida de traducciones
 
 Para apps con muchos locales, carga las traducciones bajo demanda en lugar de incluirlas todas en el bundle:
@@ -156,6 +188,13 @@ async function loadLocale(locale: string) {
   <option value="fr">Français</option>
 </select>
 ```
+
+<PlaygroundLink code="<select @change=&quot;loadLocale(($event.target as HTMLSelectElement).value)&quot;>
+
+  <option value=&quot;en&quot;>English</option>
+  <option value=&quot;es&quot;>Español</option>
+  <option value=&quot;fr&quot;>Français</option>
+</select>" />
 
 Solo el locale activo está en el bundle. Los demás se cargan cuando se seleccionan.
 
@@ -202,6 +241,15 @@ const { locale, setLocale } = useI18n()
   <button @click="setLocale('es')">Español</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const localePath = useLocalePath()
+const { locale, setLocale } = useI18n()
+</script>
+&#10;<template>
+  <NuxtLink :to=&quot;localePath('/about')&quot;>{{ $t('nav.about') }}</NuxtLink>
+  <button @click=&quot;setLocale('es')&quot;>Español</button>
+</template>" />
 
 ## Enfoque DIY ligero
 

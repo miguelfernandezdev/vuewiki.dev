@@ -18,6 +18,13 @@ function updateName(newName: string) {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const model = defineModel<{ name: string; age: number }>()
+&#10;function updateName(newName: string) {
+  model.value.name = newName // parent never knows
+}
+</script>" />
+
 ## How to fix it
 
 **Replace the entire object** so the reference changes and the event fires.

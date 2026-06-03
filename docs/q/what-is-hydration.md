@@ -60,6 +60,15 @@ A mismatch happens when the HTML the client would render differs from what the s
 <!-- Vue expects the original — mismatch -->
 ```
 
+<PlaygroundLink code="<!-- Server sends this -->
+
+<p><div>Content</div></p>
+&#10;<!-- Browser corrects to this -->
+<p></p>
+<div>Content</div>
+<p></p>
+&#10;<!-- Vue expects the original — mismatch -->" />
+
 **Different values on server vs client.** `Date.now()`, `Math.random()`, or locale-dependent formatting produce different output:
 
 ```vue
@@ -68,6 +77,13 @@ A mismatch happens when the HTML the client would render differs from what the s
   <span>{{ new Date().toLocaleDateString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Server: &quot;6/1/2026&quot; — Client: &quot;01/06/2026&quot; (different locale) -->
+
+<span>{{ new Date().toLocaleDateString() }}</span>
+</template>" />
 
 **Browser-only APIs used during SSR.** Accessing `window.innerWidth` on the server returns `undefined`, but returns a number on the client.
 
@@ -89,6 +105,16 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const now = ref('')
+&#10;onMounted(() => {
+  now.value = new Date().toLocaleString()
+})
+</script>
+&#10;<template>
+  <span>{{ now }}</span>
+</template>" />
+
 **Use ClientOnly (Nuxt) for browser-only components:**
 
 ```vue
@@ -102,6 +128,15 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <ClientOnly>
+    <BrowserOnlyChart />
+    <template #fallback>
+      <p>Loading chart...</p>
+    </template>
+  </ClientOnly>
+</template>" />
+
 **Allow intentional mismatches (Vue 3.5+):**
 
 ```vue
@@ -109,6 +144,10 @@ onMounted(() => {
   <span data-allow-mismatch>{{ new Date().toLocaleString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <span data-allow-mismatch>{{ new Date().toLocaleString() }}</span>
+</template>" />
 
 This suppresses the warning for cases where you know the mismatch is harmless.
 
@@ -148,6 +187,13 @@ Nuxt lets you defer hydration of specific components to reduce TTI:
   <LazyStaticFooter hydrate-never />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <LazyComments hydrate-on-visible />
+  <LazyAnalytics hydrate-on-idle />
+  <LazyDropdown hydrate-on-interaction />
+  <LazyStaticFooter hydrate-never />
+</template>" />
 
 The component's HTML is visible from SSR, but Vue only hydrates it (attaches JS) when the trigger fires. Content below the fold or non-critical components can hydrate later without blocking the main page.
 

@@ -58,6 +58,33 @@ function handleSubmit(event: SubmitEvent) {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+function handleInput(event: Event) {
+const target = event.target as HTMLInputElement
+console.log(target.value)
+}
+&#10;function handleClick(event: MouseEvent) {
+console.log(event.clientX, event.clientY)
+}
+&#10;function handleKeydown(event: KeyboardEvent) {
+if (event.key === 'Enter') {
+submit()
+}
+}
+&#10;function handleSubmit(event: SubmitEvent) {
+event.preventDefault()
+const form = event.target as HTMLFormElement
+const data = new FormData(form)
+}
+</script>
+&#10;<template>
+<input @input=&quot;handleInput&quot; />
+<button @click=&quot;handleClick&quot;>Click</button>
+<input @keydown=&quot;handleKeydown&quot; />
+
+  <form @submit=&quot;handleSubmit&quot;>...</form>
+</template>" />
+
 ## Event type reference
 
 | Template event             | TypeScript type | Key properties                    |
@@ -107,6 +134,10 @@ For simple cases, cast directly in the template:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <input @input=&quot;name = ($event.target as HTMLInputElement).value&quot; />
+</template>" />
+
 Or use an inline arrow function:
 
 ```vue
@@ -114,6 +145,10 @@ Or use an inline arrow function:
   <input @input="(e: Event) => name = (e.target as HTMLInputElement).value" />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <input @input=&quot;(e: Event) => name = (e.target as HTMLInputElement).value&quot; />
+</template>" />
 
 ## Custom component events
 
@@ -128,6 +163,14 @@ const emit = defineEmits<{
 </script>
 ```
 
+<PlaygroundLink code="<!-- ChildComponent.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const emit = defineEmits<{
+  select: [item: { id: number; name: string }]
+}>()
+</script>" />
+
 ```vue
 <!-- Parent.vue -->
 <script setup lang="ts">
@@ -140,6 +183,18 @@ function handleSelect(item: { id: number; name: string }) {
   <ChildComponent @select="handleSelect" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup lang=&quot;ts&quot;>
+function handleSelect(item: { id: number; name: string }) {
+  console.log(item.id) // fully typed
+}
+</script>
+
+&#10;<template>
+<ChildComponent @select=&quot;handleSelect&quot; />
+</template>" />
 
 ## target vs currentTarget
 

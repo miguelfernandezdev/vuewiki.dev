@@ -54,6 +54,21 @@ const { data: users, error, isLoading, retry } = useFetchData<User[]>('/api/user
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const { data: users, error, isLoading, retry } = useFetchData<User[]>('/api/users')
+</script>
+&#10;<template>
+
+  <div v-if=&quot;isLoading&quot;>Loading...</div>
+  <div v-else-if=&quot;error&quot;>
+    <p>Failed to load: {{ error.message }}</p>
+    <button @click=&quot;retry&quot;>Try again</button>
+  </div>
+  <ul v-else-if=&quot;users&quot;>
+    <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+  </ul>
+</template>" />
+
 El componente gestiona los tres estados (carga, error, éxito) de forma declarativa. La función `retry` permite al usuario recuperarse de fallos transitorios.
 
 ## Por qué no lanzar excepciones
@@ -114,6 +129,12 @@ const { data: user, error } =
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const userId = ref(1)
+const { data: user, error } =
+  useFetchData < User > (() => `/api/users/${userId.value}`)
+</script>" />
+
 Cada vez que `userId` cambia, el composable carga la nueva URL y resetea el estado de error.
 
 ## Errores tipados para distintos tipos de fallo
@@ -167,6 +188,18 @@ function toFetchError(e: unknown): FetchError {
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-if=&quot;error?.isNetworkError&quot;>
+    Check your connection.
+    <button @click=&quot;retry&quot;>Retry</button>
+  </div>
+  <div v-else-if=&quot;error?.isValidationError&quot;>
+    The submitted data was invalid.
+  </div>
+  <div v-else-if=&quot;error&quot;>Something went wrong: {{ error.message }}</div>
+</template>" />
+
 ## Gestión global de errores con onErrorCaptured
 
 Para errores que los composables no pueden gestionar (errores de ejecución inesperados), usa `onErrorCaptured` en un componente padre:
@@ -191,12 +224,36 @@ onErrorCaptured((err) => {
 </template>
 ```
 
+<PlaygroundLink code="<!-- ErrorBoundary.vue -->
+
+<script setup>
+const error = (ref < Error) | (null > null)
+&#10;onErrorCaptured((err) => {
+  error.value = err
+  return false
+})
+</script>
+
+&#10;<template>
+
+  <div v-if=&quot;error&quot;>
+    <p>Something went wrong: {{ error.message }}</p>
+    <button @click=&quot;error = null&quot;>Dismiss</button>
+  </div>
+  <slot v-else />
+</template>" />
+
 ```vue
 <!-- Uso -->
 <ErrorBoundary>
   <UserProfile :user-id="1" />
 </ErrorBoundary>
 ```
+
+<PlaygroundLink code="<!-- Uso -->
+<ErrorBoundary>
+  <UserProfile :user-id=&quot;1&quot; />
+</ErrorBoundary>" />
 
 Esto captura errores de componentes descendientes lanzados durante: renders, watchers, lifecycle hooks, manejadores de eventos, `setup()`, hooks de directivas personalizadas y hooks de transiciones. Evita que toda la aplicacion falle.
 

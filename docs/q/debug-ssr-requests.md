@@ -18,6 +18,12 @@ const { data } = await useFetch('/api/users')
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// During SSR, this request happens on the server
+// If it fails, the error appears in the terminal, not in the browser
+const { data } = await useFetch('/api/users')
+</script>" />
+
 If `/api/users` returns a 500 during SSR, the page renders with empty data (or an error state). The browser Network tab only shows the final HTML response from the Nuxt server, not the upstream API calls the server made to build that HTML.
 
 ## Log with $fetch interceptors
@@ -112,6 +118,17 @@ if (error.value) {
 }
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const { data, error } = await useFetch('/api/users')
+&#10;if (error.value) {
+  console.error('[SSR] Failed to load users:', {
+    status: error.value.statusCode,
+    message: error.value.statusMessage,
+    url: '/api/users'
+  })
+}
+</script>" />
 
 For Nitro server routes, use `createError` with descriptive messages:
 

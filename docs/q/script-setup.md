@@ -37,6 +37,27 @@ export default defineComponent({
 </script>
 ```
 
+<PlaygroundLink code="<!-- Without <script setup> — lots of boilerplate -->
+
+<script lang=&quot;ts&quot;>
+import { defineComponent, ref, computed } from 'vue'
+&#10;export default defineComponent({
+  props: {
+    initialCount: { type: Number, default: 0 }
+  },
+  emits: ['update'],
+  setup(props, { emit }) {
+    const count = ref(props.initialCount)
+    const doubled = computed(() => count.value * 2)
+&#10;    function increment() {
+      count.value++
+      emit('update', count.value)
+    }
+&#10;    return { count, doubled, increment }
+  }
+})
+</script>" />
+
 With `<script setup>`, all of that disappears. Every top-level variable, function, and import is automatically available in the template:
 
 ```vue
@@ -56,6 +77,20 @@ function increment() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<!-- With <script setup> — same result, half the code -->
+
+<script setup lang=&quot;ts&quot;>
+import { ref, computed } from 'vue'
+&#10;const props = defineProps<{ initialCount?: number }>()
+const emit = defineEmits<{ update: [value: number] }>()
+&#10;const count = ref(props.initialCount ?? 0)
+const doubled = computed(() => count.value * 2)
+&#10;function increment() {
+  count.value++
+  emit('update', count.value)
+}
+</script>" />
 
 No `export default`. No `setup()` function. No `return` statement. Everything declared at the top level is exposed to the template automatically.
 
@@ -82,6 +117,17 @@ defineExpose({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ title: string }>()
+const emit = defineEmits<{ close: [] }>()
+const model = defineModel<string>()
+&#10;defineExpose({
+  reset() {
+    /* ... */
+  }
+})
+</script>" />
+
 ## When you still need a regular `<script>`
 
 Occasionally you need both `<script setup>` and a regular `<script>` block in the same component. For example, to set `inheritAttrs: false` or declare named exports:
@@ -95,6 +141,13 @@ export default { inheritAttrs: false }
 const attrs = useAttrs()
 </script>
 ```
+
+<PlaygroundLink code="<script lang=&quot;ts&quot;>
+export default { inheritAttrs: false }
+</script>
+&#10;<script setup lang=&quot;ts&quot;>
+const attrs = useAttrs()
+</script>" />
 
 This is rare. For the vast majority of components, `<script setup>` alone is all you need.
 

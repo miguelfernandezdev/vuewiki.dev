@@ -53,6 +53,20 @@ const HeavyChart = defineAsyncComponent({
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { defineAsyncComponent } from 'vue'
+&#10;const HeavyChart = defineAsyncComponent({
+  loader: () => import('./components/HeavyChart.vue'),
+  loadingComponent: ChartSkeleton,
+  errorComponent: ChartError,
+  delay: 200,
+  timeout: 10000
+})
+</script>
+&#10;<template>
+  <HeavyChart v-if=&quot;showChart&quot; />
+</template>" />
+
 `delay` prevents showing the loading component for fast loads (avoids a flash). `timeout` shows the error component if loading takes too long.
 
 For simple cases without loading/error states:
@@ -85,6 +99,20 @@ async function loadAdmin() {
   <component :is="AdminPanel" v-if="AdminPanel" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { defineAsyncComponent, shallowRef } from 'vue'
+&#10;const AdminPanel = shallowRef(null)
+&#10;async function loadAdmin() {
+  AdminPanel.value = defineAsyncComponent(
+    () => import('./components/AdminPanel.vue')
+  )
+}
+</script>
+&#10;<template>
+  <button @click=&quot;loadAdmin&quot;>Open Admin</button>
+  <component :is=&quot;AdminPanel&quot; v-if=&quot;AdminPanel&quot; />
+</template>" />
 
 ## Prefetching and preloading
 

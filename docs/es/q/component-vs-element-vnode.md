@@ -23,6 +23,17 @@ Un elemento es una etiqueta HTML simple (`<div>`, `<button>`, `<input>`). Un com
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Elemento: se corresponde con un <div> real en el DOM -->
+  <div class=&quot;container&quot;>
+    <!-- Componente: Vue crea una instancia, ejecuta setup, renderiza su template -->
+    <UserCard :user=&quot;user&quot; @click=&quot;selectUser&quot; />
+&#10;    <!-- Elemento: se corresponde con un <p> real -->
+    <p>{{ user.bio }}</p>
+  </div>
+</template>" />
+
 El compilador de templates de Vue los trata de forma diferente. Cuando ve una etiqueta en minúsculas (`div`, `span`, `input`), crea un VNode de elemento. Cuando ve un nombre registrado en PascalCase o kebab-case (`UserCard`, `user-card`), crea un VNode de componente.
 
 ## Qué es un VNode

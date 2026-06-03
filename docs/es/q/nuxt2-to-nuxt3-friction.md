@@ -79,6 +79,13 @@ const { data: user, error } = await useFetch(`/api/users/${route.params.id}`)
 </script>
 ```
 
+<PlaygroundLink code="<!-- Nuxt 3: composables en script setup -->
+
+<script setup>
+const route = useRoute()
+const { data: user, error } = await useFetch(`/api/users/${route.params.id}`)
+</script>" />
+
 Qué cambia:
 
 - `asyncData` y `fetch` (la opción de componente de Nuxt 2) no existen.

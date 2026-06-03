@@ -17,6 +17,14 @@ Porque `v-show` funciona alternando la propiedad CSS `display`, y los elementos 
 <!-- Estos elementos SIEMPRE serán visibles -->
 ```
 
+<PlaygroundLink code="<!-- v-show en <template> no hace nada en silencio -->
+<template v-show=&quot;isVisible&quot;>
+
+  <h1>Title</h1>
+  <p>Content</p>
+</template>
+<!-- Estos elementos SIEMPRE serán visibles -->" />
+
 Otra limitación: `v-show` no admite `v-else`.
 
 ```vue
@@ -25,6 +33,12 @@ Otra limitación: `v-show` no admite `v-else`.
 <div v-else>Please log in</div>
 <!-- roto -->
 ```
+
+<PlaygroundLink code="<!-- v-else NO funciona con v-show -->
+
+<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
+<div v-else>Please log in</div>
+<!-- roto -->" />
 
 ## Cómo solucionarlo
 
@@ -44,12 +58,28 @@ Otra limitación: `v-show` no admite `v-else`.
 </div>
 ```
 
+<PlaygroundLink code="<!-- v-if funciona en <template> -->
+<template v-if=&quot;isVisible&quot;>
+
+  <h1>Title</h1>
+  <p>Content</p>
+</template>
+&#10;<!-- O envuelve en un elemento real -->
+<div v-show=&quot;isVisible&quot;>
+  <h1>Title</h1>
+  <p>Content</p>
+</div>" />
+
 **Para el comportamiento "else" con v-show:** usa una condición negada.
 
 ```vue
 <div v-show="isLoggedIn">Welcome!</div>
 <div v-show="!isLoggedIn">Please log in</div>
 ```
+
+<PlaygroundLink code="<div v-show=&quot;isLoggedIn&quot;>Welcome!</div>
+
+<div v-show=&quot;!isLoggedIn&quot;>Please log in</div>" />
 
 ## Referencia rápida
 

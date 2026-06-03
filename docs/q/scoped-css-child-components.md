@@ -23,6 +23,19 @@ Because Vue scoped CSS works by adding a unique `data-v-xxxxx` attribute to elem
 </style>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div class=&quot;wrapper&quot;>
+    <DatePicker />
+  </div>
+</template>
+&#10;<style scoped>
+/* This won't work — .calendar-popup is inside DatePicker's template */
+.wrapper .calendar-popup {
+  background: white;
+}
+</style>" />
+
 Generated CSS looks like `.wrapper[data-v-abc123] .calendar-popup[data-v-abc123]`, but `.calendar-popup` doesn't have `data-v-abc123`.
 
 ## How to fix it
@@ -41,6 +54,15 @@ Use the `:deep()` selector to pierce into child components:
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+.wrapper :deep(.calendar-popup) {
+  background: white;
+}
+&#10;.wrapper :deep(.date-input) {
+  border-color: blue;
+}
+</style>" />
+
 Always scope `:deep()` to a parent class to limit its reach:
 
 ```vue
@@ -57,6 +79,17 @@ Always scope `:deep()` to a parent class to limit its reach:
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+/* Too broad — affects ALL .btn in any child */
+:deep(.btn) {
+  background: blue;
+}
+&#10;/* Better — only .btn inside .wrapper */
+.wrapper :deep(.btn) {
+  background: blue;
+}
+</style>" />
+
 ## Exception: the child's root element
 
 A child component's **root element** IS affected by parent scoped CSS. Vue does this intentionally so parents can control layout (margins, positioning) of their children:
@@ -69,6 +102,13 @@ A child component's **root element** IS affected by parent scoped CSS. Vue does 
 }
 </style>
 ```
+
+<PlaygroundLink code="<style scoped>
+/* This works without :deep() — targets child's root element */
+.date-picker {
+  margin-bottom: 1rem;
+}
+</style>" />
 
 ## Old syntax (don't use)
 

@@ -24,10 +24,25 @@ Cada instancia de componente Vue tiene un coste: configuración reactiva, creaci
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserCard.vue — profundamente anidado -->
+<template>
+  <Card>
+    <CardHeader>
+      <UserAvatar :src=&quot;user.avatar&quot; />
+    </CardHeader>
+    <CardBody>
+      <Text>{{ user.name }}</Text>
+    </CardBody>
+  </Card>
+</template>" />
+
 ```vue
 <!-- 100 usuarios = 500+ instancias de componentes -->
 <UserCard v-for="user in users" :key="user.id" :user="user" />
 ```
+
+<PlaygroundLink code="<!-- 100 usuarios = 500+ instancias de componentes -->
+<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
 
 Cada `Card`, `CardHeader`, `CardBody`, `UserAvatar` y `Text` es una instancia de componente independiente. Multiplica por 100 elementos de lista y obtienes una sobrecarga significativa de memoria y renderizado.
 
@@ -52,6 +67,24 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- UserCard.vue — aplanado -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{ user: { id: string; name: string; avatar: string } }>()
+</script>
+
+&#10;<template>
+
+  <div class=&quot;card&quot;>
+    <div class=&quot;card-header&quot;>
+      <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
+    </div>
+    <div class=&quot;card-body&quot;>
+      <span>{{ user.name }}</span>
+    </div>
+  </div>
+</template>" />
 
 100 usuarios ahora crean 100 instancias de componente en lugar de 500. El resultado visual es idéntico.
 
@@ -82,6 +115,13 @@ No todas las listas necesitan aplanarse. Mantén las abstracciones de componente
   </template>
 </RecycleScroller>
 ```
+
+<PlaygroundLink code="<RecycleScroller :items=&quot;items&quot; :item-size=&quot;80&quot;>
+  <template #default=&quot;{ item }&quot;>
+    <!-- Bien: solo existen ~20 instancias independientemente del tamaño de la lista -->
+    <ComplexItemCard :item=&quot;item&quot; />
+  </template>
+</RecycleScroller>" />
 
 **El componente tiene lógica real** (tooltips, estado, manejo de eventos), no solo estilos. Extraer un `UserStatusBadge` con lógica de renderizado condicional y un tooltip merece la sobrecarga.
 

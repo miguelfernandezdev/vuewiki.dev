@@ -32,6 +32,23 @@ const props = withDefaults(
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{
+  title: string
+  count?: number
+}>()
+&#10;// With defaults
+const props = withDefaults(
+  defineProps<{
+    title: string
+    items?: string[]
+  }>(),
+  {
+    items: () => []
+  }
+)
+</script>" />
+
 ## defineEmits
 
 Declares the events the component can emit. Returns a typed emit function.
@@ -46,6 +63,14 @@ const emit = defineEmits<{
 emit('submit', formData)
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits<{
+  submit: [data: FormData]
+  cancel: []
+}>()
+&#10;emit('submit', formData)
+</script>" />
 
 ## defineModel (Vue 3.4+)
 
@@ -65,6 +90,17 @@ const [text, modifiers] = defineModel<string>({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const name = defineModel<string>('name', { required: true })
+const checked = defineModel<boolean>({ default: false })
+&#10;// With custom modifiers
+const [text, modifiers] = defineModel<string>({
+  set(value) {
+    return modifiers.trim ? value.trim() : value
+  }
+})
+</script>" />
+
 ## defineExpose
 
 Controls what the component exposes to parent template refs. Without it, `<script setup>` components expose nothing.
@@ -82,6 +118,15 @@ defineExpose({ count, reset })
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const count = ref(0)
+function reset() {
+  count.value = 0
+}
+&#10;defineExpose({ count, reset })
+</script>" />
+
 ## defineOptions (Vue 3.3+)
 
 Sets component options that don't have a macro equivalent, like `name` and `inheritAttrs`.
@@ -94,6 +139,13 @@ defineOptions({
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+defineOptions({
+  name: 'MyComponent',
+  inheritAttrs: false
+})
+</script>" />
 
 Before 3.3, you needed a separate `<script>` block for these.
 
@@ -110,6 +162,14 @@ const slots = defineSlots<{
 }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const slots = defineSlots<{
+  default: (props: { item: User }) => any
+  header: (props: { title: string }) => any
+  empty: () => any
+}>()
+</script>" />
 
 This doesn't change runtime behavior. It only provides type checking for slot props in the template and for consumers using the component.
 

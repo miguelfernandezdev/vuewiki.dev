@@ -32,6 +32,13 @@ items.value.push('new item')
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- No .value needed in templates -->
+  <p>{{ count }}</p>
+  <p>{{ user.name }}</p>
+</template>" />
+
 ## reactive: objects only, no `.value`
 
 `reactive` wraps an object (or array, Map, Set) and makes its properties reactive directly, no `.value` needed. But it **only works with objects**. You can't pass it a number or string.

@@ -42,6 +42,20 @@ En la práctica:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- .prevent.self: previene el comportamiento predeterminado también en los hijos -->
+  <div @click.prevent.self=&quot;handleClick&quot;>
+    <a href=&quot;/page&quot;>Link</a>
+    <!-- el default se previene aunque el clic sea en el hijo -->
+  </div>
+&#10;  <!-- .self.prevent: solo previene el default en el propio div -->
+  <div @click.self.prevent=&quot;handleClick&quot;>
+    <a href=&quot;/page&quot;>Link</a>
+    <!-- la navegación funciona con normalidad -->
+  </div>
+</template>" />
+
 ## Todos los modificadores de eventos
 
 | Modificador | Qué hace                                                                        |
@@ -71,6 +85,20 @@ En la práctica:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Detener propagación Y prevenir default (el orden no importa aquí) -->
+
+<a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
+&#10; <!-- Disparar solo una vez, en fase de captura -->
+
+  <div @click.capture.once=&quot;handleOnce&quot;>...</div>
+&#10;  <!-- Solo disparar si se pulsa EXACTAMENTE Ctrl (sin Shift, sin Alt) -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl+Click</button>
+&#10;  <!-- Prevenir el envío del formulario, gestionar en JavaScript -->
+  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+</template>" />
+
 ## Cuándo el orden no importa
 
 Para la mayoría de combinaciones, el orden es irrelevante. `.stop.prevent` y `.prevent.stop` llaman a `stopPropagation()` y `preventDefault()` incondicionalmente.
@@ -88,6 +116,13 @@ Si la cadena de modificadores se vuelve confusa, divide la lógica en manejadore
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div @click.self=&quot;handleSelfClick&quot;>
+    <button @click.prevent=&quot;handleChildClick&quot;>Child</button>
+  </div>
+</template>" />
 
 La claridad es más valiosa que la brevedad.
 

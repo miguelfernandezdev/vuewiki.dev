@@ -27,6 +27,18 @@ const data = ref(null)
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-if=&quot;status === 'loading'&quot;>Loading...</div>
+  <div v-else-if=&quot;status === 'error'&quot;>Something went wrong</div>
+  <div v-else>{{ data }}</div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const status = ref('loading')
+const data = ref(null)
+</script>" />
+
 Los elementos deben ser hermanos. No puedes poner otros elementos entre `v-if` y `v-else`:
 
 ```vue
@@ -40,6 +52,15 @@ Los elementos deben ser hermanos. No puedes poner otros elementos entre `v-if` y
 <div v-else>No</div>
 ```
 
+<PlaygroundLink code="<!-- Incorrecto: el <hr> rompe la cadena -->
+
+<div v-if=&quot;ok&quot;>Yes</div>
+<hr />
+<div v-else>No</div>
+&#10;<!-- Correcto: hermanos, sin separación -->
+<div v-if=&quot;ok&quot;>Yes</div>
+<div v-else>No</div>" />
+
 ## v-if en template
 
 Para renderizar condicionalmente varios elementos sin añadir un wrapper al DOM:
@@ -51,6 +72,12 @@ Para renderizar condicionalmente varios elementos sin añadir un wrapper al DOM:
 </template>
 ```
 
+<PlaygroundLink code="<template v-if=&quot;loggedIn&quot;>
+
+  <h1>Welcome back</h1>
+  <p>Your dashboard is ready</p>
+</template>" />
+
 ## v-show
 
 `v-show` mantiene el elemento en el DOM y alterna `display: none`.
@@ -58,6 +85,8 @@ Para renderizar condicionalmente varios elementos sin añadir un wrapper al DOM:
 ```vue
 <div v-show="isVisible">Always in the DOM, just hidden</div>
 ```
+
+<PlaygroundLink code="<div v-show=&quot;isVisible&quot;>Always in the DOM, just hidden</div>" />
 
 ## v-if frente a v-show
 
@@ -87,6 +116,16 @@ Nunca pongas `v-if` y `v-for` en el mismo elemento. En Vue 3, `v-if` tiene mayor
   {{ item.name }}
 </li>
 ```
+
+<PlaygroundLink code="<!-- Incorrecto: v-if no puede ver &quot;item&quot; -->
+
+<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
+  {{ item.name }}
+</li>
+&#10;<!-- Correcto: filtra con computed -->
+<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
+  {{ item.name }}
+</li>" />
 
 ```ts
 const activeItems = computed(() => items.value.filter((i) => i.active))

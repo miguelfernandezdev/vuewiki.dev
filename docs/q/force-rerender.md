@@ -16,6 +16,10 @@ Change the component's `key` attribute. When the key changes, Vue destroys the o
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <UserProfile :user=&quot;user&quot; :key=&quot;user.id&quot; />
+</template>" />
+
 When `user.id` changes, Vue unmounts the old `UserProfile` and mounts a fresh one. This is useful when a component has internal state that needs to reset when the underlying entity changes (like switching between user profiles that share the same route).
 
 A more explicit version when you need a manual trigger:
@@ -34,6 +38,17 @@ function forceRecreate() {
   <button @click="forceRecreate">Reset</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const componentKey = ref(0)
+&#10;function forceRecreate() {
+  componentKey.value++
+}
+</script>
+&#10;<template>
+  <ExpensiveComponent :key=&quot;componentKey&quot; />
+  <button @click=&quot;forceRecreate&quot;>Reset</button>
+</template>" />
 
 ## Why you rarely need this
 

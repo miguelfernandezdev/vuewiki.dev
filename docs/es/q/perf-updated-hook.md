@@ -25,6 +25,17 @@ onUpdated(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, onUpdated } from 'vue'
+&#10;const name = ref('Alice')
+const count = ref(0)
+&#10;onUpdated(() => {
+  console.log('Component re-rendered')
+  // Se dispara cuando name O count cambian
+  // No sabes cuál lo provocó
+})
+</script>" />
+
 El hook no tiene información sobre qué cambió. Solo indica que el DOM fue actualizado. Si el componente tiene 10 propiedades reactivas, el hook se dispara cuando cualquiera de ellas cambia.
 
 ## Los peligros
@@ -105,6 +116,22 @@ watch(
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, watch } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
+&#10;const items = ref([])
+&#10;const syncToServer = useDebounceFn((newItems) => {
+  fetch('/api/sync', { method: 'POST', body: JSON.stringify(newItems) })
+}, 500)
+&#10;watch(
+  items,
+  (newItems) => {
+    syncToServer(newItems)
+  },
+  { deep: true }
+)
+</script>" />
+
 Esto solo se dispara cuando `items` cambia, no cuando cualquier otro estado del componente cambia. El debounce evita saturar el servidor.
 
 ## Usar computed para datos derivados
@@ -141,6 +168,13 @@ onUpdated(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { onUpdated } from 'vue'
+&#10;onUpdated(() => {
+  thirdPartyWidget.refresh()
+})
+</script>" />
+
 Algunas librerías (renderizadores de gráficos, resaltadores de sintaxis) necesitan saber cuándo cambió el DOM para volver a medir o redibujar.
 
 ### Auto-scroll tras cambios de contenido
@@ -164,6 +198,22 @@ onUpdated(() => {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { ref, onUpdated } from 'vue'
+&#10;const chatContainer = (ref < HTMLElement) | (null > null)
+&#10;onUpdated(() => {
+if (chatContainer.value) {
+chatContainer.value.scrollTop = chatContainer.value.scrollHeight
+}
+})
+</script>
+&#10;<template>
+
+  <div ref=&quot;chatContainer&quot; class=&quot;chat&quot;>
+    <div v-for=&quot;msg in messages&quot; :key=&quot;msg.id&quot;>{{ msg.text }}</div>
+  </div>
+</template>" />
 
 La posición del scroll depende de la altura del DOM renderizado, no directamente de los datos. Este es uno de los pocos casos donde `updated` tiene sentido.
 

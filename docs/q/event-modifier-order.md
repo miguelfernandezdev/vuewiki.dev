@@ -42,6 +42,20 @@ In practice:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- .prevent.self: prevents default on children too -->
+  <div @click.prevent.self=&quot;handleClick&quot;>
+    <a href=&quot;/page&quot;>Link</a>
+    <!-- default prevented even though click is on child -->
+  </div>
+&#10;  <!-- .self.prevent: only prevents default on the div itself -->
+  <div @click.self.prevent=&quot;handleClick&quot;>
+    <a href=&quot;/page&quot;>Link</a>
+    <!-- navigation works normally -->
+  </div>
+</template>" />
+
 ## All event modifiers
 
 | Modifier   | What it does                                                           |
@@ -71,6 +85,20 @@ In practice:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Stop propagation AND prevent default (order doesn't matter here) -->
+
+<a @click.stop.prevent=&quot;handleClick&quot;>Link</a>
+&#10; <!-- Fire only once, in capture phase -->
+
+  <div @click.capture.once=&quot;handleOnce&quot;>...</div>
+&#10;  <!-- Only fire if EXACTLY Ctrl is held (no Shift, no Alt) -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl+Click</button>
+&#10;  <!-- Prevent form submission, handle in JavaScript -->
+  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+</template>" />
+
 ## When order doesn't matter
 
 For most combinations, order is irrelevant. `.stop.prevent` and `.prevent.stop` both call `stopPropagation()` and `preventDefault()` unconditionally.
@@ -88,6 +116,13 @@ If the modifier chain gets confusing, split the logic into explicit handlers:
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div @click.self=&quot;handleSelfClick&quot;>
+    <button @click.prevent=&quot;handleChildClick&quot;>Child</button>
+  </div>
+</template>" />
 
 Clarity beats cleverness.
 

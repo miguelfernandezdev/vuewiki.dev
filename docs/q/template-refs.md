@@ -29,6 +29,19 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, onMounted } from 'vue'
+&#10;const inputEl = (ref < HTMLInputElement) | (null > null)
+&#10;onMounted(() => {
+inputEl.value?.focus()
+})
+</script>
+&#10;<template>
+
+  <!-- name MUST be &quot;inputEl&quot; to match the variable -->
+  <input ref=&quot;inputEl&quot; />
+</template>" />
+
 The fragile part: rename the variable during refactoring and the connection breaks silently.
 
 ## useTemplateRef (Vue 3.5+)
@@ -50,6 +63,17 @@ onMounted(() => {
   <input ref="search-box" type="search" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+&#10;const searchInput = useTemplateRef('search-box')
+&#10;onMounted(() => {
+  searchInput.value?.focus()
+})
+</script>
+&#10;<template>
+  <input ref=&quot;search-box&quot; type=&quot;search&quot; />
+</template>" />
 
 Benefits: IDE auto-completion for ref names, better TypeScript inference, and typos cause visible errors instead of silent nulls.
 
@@ -83,6 +107,24 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+&#10;const itemRefs = useTemplateRef<HTMLLIElement[]>('items')
+&#10;onMounted(() => {
+itemRefs.value?.forEach(el => {
+console.log(el.textContent)
+})
+})
+</script>
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;item in items&quot; ref=&quot;items&quot; :key=&quot;item.id&quot;>
+      {{ item.text }}
+    </li>
+  </ul>
+</template>" />
+
 ### ref() pattern (before Vue 3.5)
 
 ```vue
@@ -107,6 +149,24 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, onMounted } from 'vue'
+&#10;const itemRefs = ref<HTMLLIElement[]>([])
+&#10;onMounted(() => {
+itemRefs.value.forEach(el => {
+console.log(el.textContent)
+})
+})
+</script>
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;item in items&quot; ref=&quot;itemRefs&quot; :key=&quot;item.id&quot;>
+      {{ item.text }}
+    </li>
+  </ul>
+</template>" />
+
 ## Refs on components
 
 A template ref on a child component gives you the component's public instance, not a DOM element. With `<script setup>`, the child exposes nothing by default. You need `defineExpose` to make properties accessible.
@@ -125,6 +185,17 @@ function validate() {
 defineExpose({ validate })
 </script>
 ```
+
+<PlaygroundLink code="<!-- ChildForm.vue -->
+
+<script setup>
+import { ref } from 'vue'
+&#10;const formData = ref({ name: '' })
+&#10;function validate() {
+  return formData.value.name.length > 0
+}
+&#10;defineExpose({ validate })
+</script>" />
 
 ```vue
 <!-- Parent.vue -->
@@ -145,6 +216,23 @@ function submit() {
   <button @click="submit">Submit</button>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup>
+import { useTemplateRef } from 'vue'
+&#10;const formRef = useTemplateRef('child-form')
+&#10;function submit() {
+  if (formRef.value?.validate()) {
+    // proceed
+  }
+}
+</script>
+
+&#10;<template>
+<ChildForm ref=&quot;child-form&quot; />
+<button @click=&quot;submit&quot;>Submit</button>
+</template>" />
 
 ## When to use template refs
 

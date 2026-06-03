@@ -35,6 +35,15 @@ defineProps<{
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User, Status } from '@/types/props'
+&#10;defineProps<{
+  user: User
+  status: Status
+  items: string[]
+}>()
+</script>" />
+
 Using an imported interface directly as the props type also works:
 
 ```vue
@@ -44,6 +53,11 @@ import type { User } from '@/types/props'
 defineProps<User>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User } from '@/types/props'
+&#10;defineProps<User>()
+</script>" />
 
 ## What doesn't work
 
@@ -62,6 +76,11 @@ defineProps<InputProps<string>>()
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// ERROR: Vue can't resolve conditional types for the props object
+defineProps<InputProps<string>>()
+</script>" />
+
 **Fix:** resolve the type manually:
 
 ```vue
@@ -74,6 +93,14 @@ interface StringInputProps {
 defineProps<StringInputProps>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface StringInputProps {
+  value: string
+  onChange: (v: string) => void
+}
+&#10;defineProps<StringInputProps>()
+</script>" />
 
 ### Complex mapped types
 
@@ -89,6 +116,11 @@ export type DeepReadonly<T> = {
 defineProps<DeepReadonly<User>>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// May fail or produce incorrect runtime declarations
+defineProps<DeepReadonly<User>>()
+</script>" />
 
 **Fix:** flatten the type into an explicit interface:
 
@@ -116,6 +148,11 @@ interface AppConfig {
 defineProps<{ config: AppConfig }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+// ERROR: &quot;Unresolvable type reference&quot;
+defineProps<{ config: AppConfig }>()
+</script>" />
 
 **Fix:** use explicit exports and imports instead of ambient declarations:
 
@@ -154,6 +191,14 @@ type Resolved = ComplexGeneric<'variant-a'>
 defineProps<Resolved>()
 </script>
 ```
+
+<PlaygroundLink code="<script lang=&quot;ts&quot;>
+import type { ComplexGeneric } from '@/types'
+&#10;type Resolved = ComplexGeneric<'variant-a'>
+</script>
+&#10;<script setup lang=&quot;ts&quot;>
+defineProps<Resolved>()
+</script>" />
 
 The regular script block has full TypeScript access. The resolved type is then simple enough for `<script setup>` to handle.
 

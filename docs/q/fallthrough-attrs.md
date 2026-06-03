@@ -23,6 +23,17 @@ Fallthrough attributes are props and event listeners passed to a component that 
 <button class="primary" data-testid="submit">Save</button>
 ```
 
+<PlaygroundLink code="<!-- Parent -->
+<BaseButton class=&quot;primary&quot; data-testid=&quot;submit&quot; @click=&quot;save&quot;>
+  Save
+</BaseButton>
+&#10;<!-- BaseButton.vue (no class or click declared) -->
+<template>
+  <button><slot /></button>
+</template>
+&#10;<!-- Rendered HTML: attrs fall through to the root <button> -->
+<button class=&quot;primary&quot; data-testid=&quot;submit&quot;>Save</button>" />
+
 ## Disabling automatic fallthrough
 
 When a component has multiple root elements, or you need to apply attrs to a non-root element, disable inheritance and bind `$attrs` manually:
@@ -40,6 +51,18 @@ defineOptions({ inheritAttrs: false })
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+defineOptions({ inheritAttrs: false })
+</script>
+&#10;<template>
+
+  <div class=&quot;wrapper&quot;>
+    <!-- Forward all attrs to the inner input, not the wrapper -->
+    <input v-bind=&quot;$attrs&quot; />
+    <span class=&quot;icon&quot;>🔍</span>
+  </div>
+</template>" />
 
 ## Accessing attrs in script
 
@@ -65,6 +88,21 @@ function handleClick(event: MouseEvent) {
   <button @click="handleClick"><slot /></button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useAttrs } from 'vue'
+&#10;defineOptions({ inheritAttrs: false })
+&#10;const attrs = useAttrs()
+&#10;function handleClick(event: MouseEvent) {
+  console.log('internal logic first')
+  // Forward the original click listener
+  const onClick = attrs.onClick as ((e: MouseEvent) => void) | undefined
+  onClick?.(event)
+}
+</script>
+&#10;<template>
+  <button @click=&quot;handleClick&quot;><slot /></button>
+</template>" />
 
 ## Attribute naming in $attrs
 

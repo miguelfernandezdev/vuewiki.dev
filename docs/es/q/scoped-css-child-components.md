@@ -23,6 +23,19 @@ Porque el CSS con scoped en Vue funciona añadiendo un atributo único `data-v-x
 </style>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div class=&quot;wrapper&quot;>
+    <DatePicker />
+  </div>
+</template>
+&#10;<style scoped>
+/* Esto no funcionará — .calendar-popup está dentro del template de DatePicker */
+.wrapper .calendar-popup {
+  background: white;
+}
+</style>" />
+
 El CSS generado tiene la forma `.wrapper[data-v-abc123] .calendar-popup[data-v-abc123]`, pero `.calendar-popup` no tiene `data-v-abc123`.
 
 ## Cómo solucionarlo
@@ -41,6 +54,15 @@ Usar el selector `:deep()` para penetrar en los componentes hijos:
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+.wrapper :deep(.calendar-popup) {
+  background: white;
+}
+&#10;.wrapper :deep(.date-input) {
+  border-color: blue;
+}
+</style>" />
+
 Siempre acotar `:deep()` a una clase padre para limitar su alcance:
 
 ```vue
@@ -57,6 +79,17 @@ Siempre acotar `:deep()` a una clase padre para limitar su alcance:
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+/* Demasiado amplio — afecta a TODOS los .btn en cualquier hijo */
+:deep(.btn) {
+  background: blue;
+}
+&#10;/* Mejor — solo .btn dentro de .wrapper */
+.wrapper :deep(.btn) {
+  background: blue;
+}
+</style>" />
+
 ## Excepción: el elemento raíz del hijo
 
 El **elemento raíz** de un componente hijo SÍ se ve afectado por el CSS con scoped del padre. Vue lo hace intencionalmente para que los padres puedan controlar el layout (márgenes, posicionamiento) de sus hijos:
@@ -69,6 +102,13 @@ El **elemento raíz** de un componente hijo SÍ se ve afectado por el CSS con sc
 }
 </style>
 ```
+
+<PlaygroundLink code="<style scoped>
+/* Esto funciona sin :deep() — apunta al elemento raíz del hijo */
+.date-picker {
+  margin-bottom: 1rem;
+}
+</style>" />
 
 ## Sintaxis antigua (no usar)
 

@@ -28,6 +28,19 @@ emit('typo') // ❌ Type error: unknown event
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits<{
+  update: [value: string]
+  delete: [id: number]
+  submit: []
+}>()
+&#10;emit('update', 'new value') // ✅
+emit('update', 42) // ❌ Type error: expected string
+emit('submit') // ✅
+emit('submit', 'extra') // ❌ Type error: expected 0 arguments
+emit('typo') // ❌ Type error: unknown event
+</script>" />
+
 The named tuple syntax (`[value: string]`) gives parameter names that show up in IDE tooltips. You can also use unnamed tuples (`[string]`), but named ones are clearer.
 
 > **Note:** This object-based emit type syntax (`defineEmits<{ event: [args] }>()`) requires **Vue 3.3+**. In Vue 3.2 and earlier, you must use the call-signature syntax instead: `defineEmits<{ (e: 'change', id: number): void }>()`.
@@ -54,6 +67,19 @@ function handleDelete(id: number) {
 </script>
 ```
 
+<PlaygroundLink code="<!-- ChildComponent emits: { update: [value: string] } -->
+&#10;<template>
+  <ChildComponent @update=&quot;handleUpdate&quot; @delete=&quot;handleDelete&quot; />
+</template>
+&#10;<script setup lang=&quot;ts&quot;>
+function handleUpdate(value: string) {
+  // `value` is correctly typed as string
+}
+&#10;function handleDelete(id: number) {
+  // `id` is correctly typed as number
+}
+</script>" />
+
 ## Emits with validation (runtime syntax)
 
 If you need runtime validation, not just type checking, use the object syntax instead:
@@ -71,6 +97,17 @@ const emit = defineEmits({
 
 emit('update', '') // emits, but Vue logs a warning because validation returned false
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits({
+  update(value: string) {
+    return value.length > 0
+  },
+  submit() {
+    return true
+  }
+})
+&#10;emit('update', '') // emits, but Vue logs a warning because validation returned false" />
 
 The validation function runs at runtime and logs a warning (in development) when it returns `false`. This is separate from TypeScript's compile-time checking. You can combine both approaches in different situations.
 

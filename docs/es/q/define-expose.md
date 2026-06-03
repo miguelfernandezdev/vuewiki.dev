@@ -26,6 +26,20 @@ function reset() {
 </template>
 ```
 
+<PlaygroundLink code="<!-- Counter.vue -->
+
+<script setup>
+import { ref } from 'vue'
+&#10;const count = ref(0)
+function reset() {
+  count.value = 0
+}
+</script>
+
+&#10;<template>
+<span>{{ count }}</span>
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <script setup>
@@ -42,6 +56,21 @@ onMounted(() => {
   <Counter ref="counter" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+const counterRef = useTemplateRef('counter')
+&#10;onMounted(() => {
+  console.log(counterRef.value.count) // undefined
+  counterRef.value.reset() // TypeError: not a function
+})
+</script>
+
+&#10;<template>
+<Counter ref=&quot;counter&quot; />
+</template>" />
 
 El padre ve `{}` porque no se expuso nada.
 
@@ -63,6 +92,19 @@ defineExpose({ count, reset })
 // internalState permanece privado
 </script>
 ```
+
+<PlaygroundLink code="<!-- Counter.vue -->
+
+<script setup>
+import { ref } from 'vue'
+&#10;const count = ref(0)
+const internalState = ref('private')
+&#10;function reset() {
+  count.value = 0
+}
+&#10;defineExpose({ count, reset })
+// internalState permanece privado
+</script>" />
 
 Ahora el padre puede acceder a `count` y `reset()`, pero no a `internalState`. Tú controlas la API pública de forma explícita.
 
@@ -88,6 +130,21 @@ defineExpose({
 </template>
 ```
 
+<PlaygroundLink code="<!-- BaseInput.vue -->
+
+<script setup>
+import { ref } from 'vue'
+&#10;const inputEl = (ref < HTMLInputElement) | (null > null)
+&#10;defineExpose({
+  focus: () => inputEl.value?.focus(),
+  blur: () => inputEl.value?.blur()
+})
+</script>
+
+&#10;<template>
+<input ref=&quot;inputEl&quot; v-bind=&quot;$attrs&quot; />
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <script setup>
@@ -105,6 +162,21 @@ function openSearch() {
   <button @click="openSearch">Search</button>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup>
+import { useTemplateRef } from 'vue'
+&#10;const input = useTemplateRef('search')
+&#10;function openSearch() {
+  input.value?.focus()
+}
+</script>
+
+&#10;<template>
+<BaseInput ref=&quot;search&quot; placeholder=&quot;Search...&quot; />
+<button @click=&quot;openSearch&quot;>Search</button>
+</template>" />
 
 ## Cuándo usar defineExpose
 

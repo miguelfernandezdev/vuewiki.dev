@@ -10,6 +10,7 @@ import BookLogo from './BookLogo.vue'
 import FooterCta from './FooterCta.vue'
 import QuizSection from './QuizSection.vue'
 import TranslationBanner from './TranslationBanner.vue'
+import PlaygroundLink from './PlaygroundLink.vue'
 import './style.css'
 
 export default {
@@ -37,5 +38,6 @@ export default {
     app.component('HomePage', HomePage)
     app.component('QuestionsPage', QuestionsPage)
     app.component('FlashcardsPage', FlashcardsPage)
+    app.component('PlaygroundLink', PlaygroundLink)
   }
 } satisfies Theme

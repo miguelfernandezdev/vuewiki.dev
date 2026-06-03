@@ -36,6 +36,31 @@ defineEmits<{
 </template>
 ```
 
+<PlaygroundLink code="<!-- GenericList.vue -->
+
+<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
+defineProps<{
+  items: T[]
+  selected?: T
+}>()
+&#10;defineEmits<{
+  select: [item: T]
+}>()
+</script>
+
+&#10;<template>
+
+  <ul>
+    <li
+      v-for=&quot;(item, index) in items&quot;
+      :key=&quot;index&quot;
+      @click=&quot;$emit('select', item)&quot;
+    >
+      <slot :item=&quot;item&quot; />
+    </li>
+  </ul>
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <script setup lang="ts">
@@ -67,6 +92,33 @@ function onSelect(user: User) {
 </template>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup lang=&quot;ts&quot;>
+import { ref } from 'vue'
+&#10;interface User {
+  id: number
+  name: string
+}
+&#10;const users = ref<User[]>([
+  { id: 1, name: 'Ana' },
+  { id: 2, name: 'Luis' }
+])
+&#10;function onSelect(user: User) {
+  // user is typed as User, not unknown
+  console.log(user.name)
+}
+</script>
+
+&#10;<template>
+<GenericList :items=&quot;users&quot; @select=&quot;onSelect&quot;>
+<template #default=&quot;{ item }&quot;>
+<!-- item is typed as User -->
+{{ item.name }}
+</template>
+</GenericList>
+</template>" />
+
 TypeScript infers `T = User` from the `items` prop. The `select` event and the slot's `item` are both typed as `User` automatically.
 
 ## Multiple type parameters
@@ -79,6 +131,13 @@ defineProps<{
 }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T, U extends string&quot;>
+defineProps<{
+  data: T[]
+  labelKey: U
+}>()
+</script>" />
 
 ## Constraints
 
@@ -99,6 +158,19 @@ defineProps<{
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T extends { id: number }&quot;>
+defineProps<{
+items: T[]
+}>()
+</script>
+&#10;<template>
+
+  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+    <!-- TypeScript knows item.id exists -->
+    <slot :item=&quot;item&quot; />
+  </div>
+</template>" />
+
 ## Importing types in generic declarations
 
 ```vue
@@ -110,6 +182,13 @@ defineProps<{
 }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot; generic=&quot;T extends BaseItem&quot;>
+import type { BaseItem } from '@/types'
+&#10;defineProps<{
+  items: T[]
+}>()
+</script>" />
 
 ## Before Vue 3.3
 

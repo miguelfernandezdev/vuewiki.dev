@@ -21,6 +21,16 @@ const userRole = ref('Developer')
 </script>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <UserCard :name=&quot;userName&quot; :role=&quot;userRole&quot; />
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const userName = ref('Ana')
+const userRole = ref('Developer')
+</script>" />
+
 ```vue
 <!-- UserCard.vue -->
 <script setup>
@@ -44,6 +54,29 @@ const isExpanded = ref(false)
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- UserCard.vue -->
+
+<script setup>
+// Props: received from parent, read-only
+const props = defineProps<{
+  name: string
+  role: string
+}>()
+&#10;// State: owned by this component, read-write
+const isExpanded = ref(false)
+</script>
+
+&#10;<template>
+
+  <div>
+    <h2>{{ name }} ({{ role }})</h2>
+    <button @click=&quot;isExpanded = !isExpanded&quot;>
+      {{ isExpanded ? 'Collapse' : 'Expand' }}
+    </button>
+    <p v-if=&quot;isExpanded&quot;>Profile details here...</p>
+  </div>
+</template>" />
 
 ## Side by side
 
@@ -80,6 +113,19 @@ const emit = defineEmits<{ update: [value: number] }>()
 <!-- Parent -->
 <Counter :count="total" @update="total = $event" />
 ```
+
+<PlaygroundLink code="<!-- Child -->
+
+<script setup>
+const props = defineProps<{ count: number }>()
+const emit = defineEmits<{ update: [value: number] }>()
+</script>
+
+&#10;<template>
+<button @click=&quot;emit('update', count + 1)&quot;>+1</button>
+</template>
+&#10;<!-- Parent -->
+<Counter :count=&quot;total&quot; @update=&quot;total = $event&quot; />" />
 
 ## When to use which
 

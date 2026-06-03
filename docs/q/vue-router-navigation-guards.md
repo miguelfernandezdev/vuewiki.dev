@@ -89,6 +89,19 @@ onBeforeRouteUpdate((to, from) => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
+&#10;onBeforeRouteLeave((to, from) => {
+  if (hasUnsavedChanges.value) {
+    return confirm('Leave without saving?')
+  }
+})
+&#10;onBeforeRouteUpdate((to, from) => {
+  // same component, different params (e.g. /users/1 → /users/2)
+  loadUser(to.params.id)
+})
+</script>" />
+
 ## Guard execution order
 
 When navigating from `/a` to `/b`:

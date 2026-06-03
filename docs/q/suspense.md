@@ -24,6 +24,17 @@ summary: '<Suspense> renders fallback content while async children resolve. Work
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <Suspense>
+    <!-- Default slot: the async content -->
+    <AsyncDashboard />
+&#10;    <!-- Fallback slot: shown while loading -->
+    <template #fallback>
+      <LoadingSkeleton />
+    </template>
+  </Suspense>
+</template>" />
+
 `Suspense` waits for all async dependencies inside the default slot to resolve before swapping from the fallback to the real content.
 
 ## Async setup
@@ -43,6 +54,19 @@ const posts = await fetchPosts(user.id)
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserProfile.vue -->
+
+<script setup>
+const user = await fetchUser() // top-level await
+const posts = await fetchPosts(user.id)
+</script>
+
+&#10;<template>
+
+  <h1>{{ user.name }}</h1>
+  <PostList :posts=&quot;posts&quot; />
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <template>
@@ -52,6 +76,14 @@ const posts = await fetchPosts(user.id)
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <Suspense>
+    <UserProfile />
+    <template #fallback>Loading profile...</template>
+  </Suspense>
+</template>" />
 
 ## Single root in both slots
 
@@ -75,6 +107,21 @@ Suspense tracks one immediate child per slot. Wrap multiple elements:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <Suspense>
+    <div>
+      <AsyncHeader />
+      <AsyncContent />
+    </div>
+&#10;    <template #fallback>
+      <div>
+        <LoadingSpinner />
+        <p>Loading...</p>
+      </div>
+    </template>
+  </Suspense>
+</template>" />
+
 ## Timeout for re-triggers
 
 When Suspense is already resolved and new async work starts (e.g., switching views), the old content stays visible until a timeout elapses. Set `timeout` to control when the fallback reappears:
@@ -88,6 +135,15 @@ When Suspense is already resolved and new async work starts (e.g., switching vie
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Show fallback after 200ms if the new view hasn't resolved -->
+  <Suspense :timeout=&quot;200&quot;>
+    <component :is=&quot;currentView&quot; :key=&quot;currentView&quot; />
+    <template #fallback>Loading...</template>
+  </Suspense>
+</template>" />
 
 ## Suspense events
 
@@ -109,6 +165,18 @@ const isLoading = ref(false)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+const isLoading = ref(false)
+</script>
+&#10;<template>
+  <ProgressBar v-if=&quot;isLoading&quot; />
+&#10;  <Suspense @pending=&quot;isLoading = true&quot; @resolve=&quot;isLoading = false&quot;>
+    <AsyncPage />
+    <template #fallback><PageSkeleton /></template>
+  </Suspense>
+</template>" />
+
 ## Nesting with RouterView, Transition, KeepAlive
 
 The correct nesting order is RouterView, then Transition, then KeepAlive, then Suspense:
@@ -127,6 +195,19 @@ The correct nesting order is RouterView, then Transition, then KeepAlive, then S
   </RouterView>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <RouterView v-slot=&quot;{ Component }&quot;>
+    <Transition mode=&quot;out-in&quot;>
+      <KeepAlive>
+        <Suspense>
+          <component :is=&quot;Component&quot; />
+          <template #fallback>Loading...</template>
+        </Suspense>
+      </KeepAlive>
+    </Transition>
+  </RouterView>
+</template>" />
 
 ## Suspense is still experimental
 

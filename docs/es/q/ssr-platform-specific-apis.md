@@ -47,6 +47,18 @@ onMounted(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const width = ref(0)
+const theme = ref('light')
+&#10;onMounted(() => {
+  width.value = window.innerWidth
+  theme.value = localStorage.getItem('theme') || 'light'
+&#10;  window.addEventListener('resize', () => {
+    width.value = window.innerWidth
+  })
+})
+</script>" />
+
 Inicializa los refs con valores seguros que funcionen en el servidor y actualízalos tras el montaje.
 
 ## Solución 2: comprobación con typeof
@@ -78,6 +90,15 @@ if (import.meta.server) {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+if (import.meta.client) {
+  window.analytics.track('page_view')
+}
+&#10;if (import.meta.server) {
+  console.log('Renderizando en el servidor')
+}
+</script>" />
+
 El código dentro de `import.meta.server` se elimina del bundle del cliente, y viceversa. Es mejor que una comprobación en tiempo de ejecución porque reduce el tamaño del bundle.
 
 ## Solución 4: componente ClientOnly (Nuxt)
@@ -94,6 +115,15 @@ Envuelve los componentes exclusivos del navegador para que solo se rendericen en
   </ClientOnly>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <ClientOnly>
+    <BrowserChart :data=&quot;chartData&quot; />
+    <template #fallback>
+      <div class=&quot;skeleton&quot; />
+    </template>
+  </ClientOnly>
+</template>" />
 
 El slot `#fallback` se renderiza durante el SSR para que el layout no salte cuando el componente carga.
 
@@ -114,6 +144,17 @@ const MapView = defineAsyncComponent(() =>
   </ClientOnly>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const MapView = defineAsyncComponent(() =>
+  import('leaflet-vue').then((m) => m.MapView)
+)
+</script>
+&#10;<template>
+  <ClientOnly>
+    <MapView :center=&quot;[40, -3]&quot; />
+  </ClientOnly>
+</template>" />
 
 ## Patrón de composable seguro para SSR
 

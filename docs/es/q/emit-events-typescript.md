@@ -28,6 +28,19 @@ emit('typo') // ❌ Error de tipo: evento desconocido
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits<{
+  update: [value: string]
+  delete: [id: number]
+  submit: []
+}>()
+&#10;emit('update', 'new value') // ✅
+emit('update', 42) // ❌ Error de tipo: se esperaba string
+emit('submit') // ✅
+emit('submit', 'extra') // ❌ Error de tipo: se esperaban 0 argumentos
+emit('typo') // ❌ Error de tipo: evento desconocido
+</script>" />
+
 La sintaxis de tupla con nombre (`[value: string]`) da nombres a los parámetros que aparecen en los tooltips del IDE. También puedes usar tuplas sin nombre (`[string]`), pero las nombradas son más claras.
 
 > **Nota:** Esta sintaxis de tipo emit basada en objeto (`defineEmits<{ event: [args] }>()`) requiere **Vue 3.3+**. En Vue 3.2 y anteriores, debes usar la sintaxis de firma de llamada: `defineEmits<{ (e: 'change', id: number): void }>()`.
@@ -54,6 +67,19 @@ function handleDelete(id: number) {
 </script>
 ```
 
+<PlaygroundLink code="<!-- ChildComponent emite: { update: [value: string] } -->
+&#10;<template>
+  <ChildComponent @update=&quot;handleUpdate&quot; @delete=&quot;handleDelete&quot; />
+</template>
+&#10;<script setup lang=&quot;ts&quot;>
+function handleUpdate(value: string) {
+  // `value` está correctamente tipado como string
+}
+&#10;function handleDelete(id: number) {
+  // `id` está correctamente tipado como number
+}
+</script>" />
+
 ## Emits con validación (sintaxis runtime)
 
 Si necesitas validación en runtime, no solo verificación de tipos, usa la sintaxis de objeto:
@@ -71,6 +97,17 @@ const emit = defineEmits({
 
 emit('update', '') // emite, pero Vue muestra un warning porque la validación devolvió false
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits({
+  update(value: string) {
+    return value.length > 0
+  },
+  submit() {
+    return true
+  }
+})
+&#10;emit('update', '') // emite, pero Vue muestra un warning porque la validación devolvió false" />
 
 La función de validación se ejecuta en runtime y muestra un warning (en desarrollo) cuando devuelve `false`. Esto es independiente de la verificación en tiempo de compilación de TypeScript. Puedes combinar ambos enfoques en diferentes situaciones.
 

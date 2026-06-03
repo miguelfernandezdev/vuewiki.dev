@@ -57,6 +57,49 @@ function sendInvitation(email) {
 </template>
 ```
 
+<PlaygroundLink code="<!-- BAD: UserDashboard.vue doing everything -->
+
+<script setup>
+const users = ref([])
+const searchQuery = ref('')
+const sortBy = ref('name')
+const isLoading = ref(false)
+const error = ref(null)
+const selectedUser = ref(null)
+const isModalOpen = ref(false)
+&#10;onMounted(async () => {
+  isLoading.value = true
+  try {
+    users.value = await $fetch('/api/users')
+  } catch (e) {
+    error.value = e.message
+  } finally {
+    isLoading.value = false
+  }
+})
+&#10;const filteredUsers = computed(() => {
+  /* 30 lines of filtering and sorting */
+})
+&#10;function selectUser(user) {
+  /* ... */
+}
+function deleteUser(id) {
+  /* ... */
+}
+function exportToCsv() {
+  /* ... */
+}
+function sendInvitation(email) {
+  /* ... */
+}
+</script>
+
+&#10;<template>
+
+  <!-- 200 lines of template -->
+
+</template>" />
+
 The fix: extract data fetching into a composable, split into container and presentational components, move business logic out of the component entirely.
 
 ## 2. Putting everything in Pinia
@@ -193,6 +236,24 @@ Components with dozens of props that control everything, no consistent naming, a
   :loading="isLoading"
 />
 ```
+
+<PlaygroundLink code="<!-- Anti-pattern: prop-driven spaghetti -->
+<DataTable
+  :data=&quot;items&quot;
+  :columns=&quot;cols&quot;
+  :sortable=&quot;true&quot;
+  :filterable=&quot;true&quot;
+  :paginated=&quot;true&quot;
+  :page-size=&quot;20&quot;
+  :show-header=&quot;true&quot;
+  :show-footer=&quot;false&quot;
+  :selectable=&quot;true&quot;
+  :selection-mode=&quot;'multi'&quot;
+  :row-click-action=&quot;'expand'&quot;
+  :expandable=&quot;true&quot;
+  :export-csv=&quot;true&quot;
+  :loading=&quot;isLoading&quot;
+/>" />
 
 Prefer composable components over configurable ones: slots for customization, smaller focused components over one mega-component, and composition over configuration.
 

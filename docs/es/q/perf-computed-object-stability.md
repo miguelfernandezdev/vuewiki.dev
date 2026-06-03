@@ -29,6 +29,20 @@ watchEffect(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, computed, watchEffect } from 'vue'
+&#10;const count = ref(0)
+&#10;const stats = computed(() => {
+  return {
+    isEven: count.value % 2 === 0,
+    doubled: count.value * 2
+  }
+})
+&#10;watchEffect(() => {
+  console.log('Stats changed:', stats.value)
+})
+</script>" />
+
 Cada vez que `count` cambia, `stats` devuelve un objeto completamente nuevo. Vue compara por referencia (`===`), detecta un objeto diferente y ejecuta el efecto. Si `count` pasa de 0 a 2 a 4, `isEven` es `true` las tres veces, pero el efecto se dispara en cada cambio porque la referencia del objeto es nueva.
 
 ## Estabilidad de primitivos (Vue 3.4+)
@@ -82,6 +96,29 @@ watchEffect(() => {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { ref, computed, watchEffect } from 'vue'
+&#10;const count = ref(0)
+&#10;const stats = computed((oldValue) => {
+  const newValue = {
+    isEven: count.value % 2 === 0,
+    category: count.value < 10 ? 'small' : 'large'
+  }
+&#10;  if (
+    oldValue &amp;&amp;
+    oldValue.isEven === newValue.isEven &amp;&amp;
+    oldValue.category === newValue.category
+  ) {
+    return oldValue
+  }
+&#10;  return newValue
+})
+&#10;watchEffect(() => {
+  console.log('Stats changed:', stats.value)
+  // Solo se ejecuta cuando isEven o category cambian de verdad
+})
+</script>" />
 
 Devolver la referencia antigua le indica a Vue que no hubo cambios. No se disparan watchers ni se re-renderizan componentes hijos.
 

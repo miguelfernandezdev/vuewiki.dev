@@ -75,6 +75,15 @@ const cart = useCartStore()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { useCartStore } from '@/stores/cart'
+&#10;const cart = useCartStore()
+</script>
+&#10;<template>
+  <span>{{ cart.items.length }} items, {{ cart.total }}€</span>
+  <button @click=&quot;cart.checkout()&quot;>Checkout</button>
+</template>" />
+
 Sin `commit`, sin `dispatch`, sin `mapGetters`. Solo importa el store y úsalo.
 
 ## Tabla de diferencias clave

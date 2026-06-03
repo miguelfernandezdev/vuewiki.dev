@@ -34,6 +34,24 @@ const currentComponent = shallowRef(AlertBox)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { shallowRef } from 'vue'
+import AlertBox from './AlertBox.vue'
+import InfoBox from './InfoBox.vue'
+&#10;const currentComponent = shallowRef(AlertBox)
+</script>
+&#10;<template>
+
+  <!-- 1. Objeto de definición de componente (recomendado) -->
+  <component :is=&quot;currentComponent&quot; />
+&#10;  <!-- 2. Nombre de componente registrado (string) -->
+  <component is=&quot;AlertBox&quot; />
+&#10;  <!-- 3. Nombre de elemento HTML (string) -->
+  <component is=&quot;div&quot; />
+&#10;  <!-- 4. Función de render inline -->
+  <component :is=&quot;() => h('span', 'hello')&quot; />
+</template>" />
+
 Al usar una variable reactiva, usa `shallowRef` en lugar de `ref`. Un `ref` intentaría desempaquetar profundamente el objeto del componente, lo cual es innecesario y puede causar problemas con definiciones de componentes complejas.
 
 ## `is` en elementos HTML nativos
@@ -46,6 +64,11 @@ El atributo `is` en elementos HTML normales se comporta de forma distinta que en
 <!-- Esto le indica al navegador que actualice el <button> con una clase de custom element -->
 ```
 
+<PlaygroundLink code="<!-- Comportamiento según la spec HTML: &quot;is&quot; en elementos nativos crea elementos integrados personalizados -->
+<button is=&quot;my-custom-button&quot;>Click</button>
+
+<!-- Esto le indica al navegador que actualice el <button> con una clase de custom element -->" />
+
 Para renderizar un componente Vue como sustituto de un elemento nativo, usa el prefijo `vue:`:
 
 ```vue
@@ -57,6 +80,14 @@ Para renderizar un componente Vue como sustituto de un elemento nativo, usa el p
   <tr is="vue:MyTableRow"></tr>
 </table>
 ```
+
+<PlaygroundLink code="<!-- Esto renderiza el componente Vue MyButton, no un <button> nativo -->
+<button is=&quot;vue:MyButton&quot;>Click</button>
+&#10;<!-- Útil cuando necesitas un componente Vue dentro de elementos con restricciones de hijos -->
+
+<table>
+  <tr is=&quot;vue:MyTableRow&quot;></tr>
+</table>" />
 
 ## El problema con `<table>`
 
@@ -73,6 +104,16 @@ Las reglas de parseo HTML restringen qué elementos pueden aparecer dentro de `<
   <tr is="vue:BlogPost"></tr>
 </table>
 ```
+
+<PlaygroundLink code="<!-- MAL: el navegador mueve <BlogPost> fuera de <table> durante el parseo HTML -->
+
+<table>
+  <BlogPost />  <!-- acaba por encima de la tabla en el DOM -->
+</table>
+&#10;<!-- BIEN: usa is=&quot;vue:&quot; para evitar la restricción -->
+<table>
+  <tr is=&quot;vue:BlogPost&quot;></tr>
+</table>" />
 
 Esto solo es un problema cuando los templates se parsean como HTML (templates in-DOM). Los SFCs compilados con Vite no tienen este problema porque el template se compila en tiempo de build, no se parsea como HTML.
 
@@ -111,6 +152,32 @@ const blocks = ref([
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import TextBlock from './TextBlock.vue'
+import ImageBlock from './ImageBlock.vue'
+import VideoBlock from './VideoBlock.vue'
+import type { Component } from 'vue'
+&#10;const blockComponents: Record<string, Component> = {
+  text: TextBlock,
+  image: ImageBlock,
+  video: VideoBlock
+}
+&#10;const blocks = ref([
+  { type: 'text', content: 'Hello' },
+  { type: 'image', src: '/photo.jpg' },
+  { type: 'text', content: 'World' },
+  { type: 'video', src: '/clip.mp4' }
+])
+</script>
+&#10;<template>
+  <component
+    v-for=&quot;(block, i) in blocks&quot;
+    :key=&quot;i&quot;
+    :is=&quot;blockComponents[block.type]&quot;
+    v-bind=&quot;block&quot;
+  />
+</template>" />
+
 Este patrón es más limpio que una cadena de `v-if`/`v-else-if` y escala a cualquier número de tipos de bloque sin modificar el template.
 
 ## Orden de resolución
@@ -134,6 +201,14 @@ Si el string no coincide con ningún componente ni elemento HTML, Vue no renderi
   </KeepAlive>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <KeepAlive :max=&quot;5&quot;>
+    <Transition name=&quot;fade&quot; mode=&quot;out-in&quot;>
+      <component :is=&quot;currentTab&quot; :key=&quot;currentTabName&quot; />
+    </Transition>
+  </KeepAlive>
+</template>" />
 
 Añade `:key` al usar `<Transition>` para que Vue trate cada cambio de componente como una transición entre elementos distintos, en lugar de parchear el mismo componente.
 

@@ -196,6 +196,14 @@ definePageMeta({
 </script>
 ```
 
+<PlaygroundLink code="<!-- pages/dashboard.vue -->
+
+<script setup>
+definePageMeta({
+  middleware: 'auth'
+})
+</script>" />
+
 Usa `useCookie` en lugar de `localStorage` para el almacenamiento del token compatible con SSR:
 
 ```ts

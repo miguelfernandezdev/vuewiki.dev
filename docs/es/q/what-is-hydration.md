@@ -60,6 +60,15 @@ Un desajuste ocurre cuando el HTML que el cliente renderizaría difiere del que 
 <!-- Vue espera el original: desajuste -->
 ```
 
+<PlaygroundLink code="<!-- El servidor envía esto -->
+
+<p><div>Content</div></p>
+&#10;<!-- El navegador lo corrige a esto -->
+<p></p>
+<div>Content</div>
+<p></p>
+&#10;<!-- Vue espera el original: desajuste -->" />
+
 **Valores distintos en el servidor y en el cliente.** `Date.now()`, `Math.random()` o el formateo dependiente de la configuración regional producen salidas diferentes:
 
 ```vue
@@ -68,6 +77,13 @@ Un desajuste ocurre cuando el HTML que el cliente renderizaría difiere del que 
   <span>{{ new Date().toLocaleDateString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Servidor: &quot;6/1/2026&quot; — Cliente: &quot;01/06/2026&quot; (configuración regional diferente) -->
+
+<span>{{ new Date().toLocaleDateString() }}</span>
+</template>" />
 
 **APIs solo del navegador usadas durante SSR.** Acceder a `window.innerWidth` en el servidor devuelve `undefined`, pero devuelve un número en el cliente.
 
@@ -89,6 +105,16 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const now = ref('')
+&#10;onMounted(() => {
+  now.value = new Date().toLocaleString()
+})
+</script>
+&#10;<template>
+  <span>{{ now }}</span>
+</template>" />
+
 **Usa ClientOnly (Nuxt) para componentes solo del navegador:**
 
 ```vue
@@ -102,6 +128,15 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <ClientOnly>
+    <BrowserOnlyChart />
+    <template #fallback>
+      <p>Loading chart...</p>
+    </template>
+  </ClientOnly>
+</template>" />
+
 **Permite desajustes intencionales (Vue 3.5+):**
 
 ```vue
@@ -109,6 +144,10 @@ onMounted(() => {
   <span data-allow-mismatch>{{ new Date().toLocaleString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <span data-allow-mismatch>{{ new Date().toLocaleString() }}</span>
+</template>" />
 
 Esto suprime la advertencia para casos en los que sabes que el desajuste es inofensivo.
 
@@ -148,6 +187,13 @@ Nuxt permite diferir la hidratación de componentes específicos para reducir el
   <LazyStaticFooter hydrate-never />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <LazyComments hydrate-on-visible />
+  <LazyAnalytics hydrate-on-idle />
+  <LazyDropdown hydrate-on-interaction />
+  <LazyStaticFooter hydrate-never />
+</template>" />
 
 El HTML del componente es visible desde el SSR, pero Vue solo lo hidrata (adjunta el JS) cuando se activa el trigger. Los componentes por debajo del pliegue o no críticos pueden hidratarse más tarde sin bloquear la página principal.
 

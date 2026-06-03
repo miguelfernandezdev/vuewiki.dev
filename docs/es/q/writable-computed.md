@@ -62,6 +62,26 @@ const priceWithTax = computed({
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, computed } from 'vue'
+&#10;const price = ref(100)
+const taxRate = ref(0.21)
+&#10;const priceWithTax = computed({
+get: () => price.value \* (1 + taxRate.value),
+set: (total: number) => {
+price.value = total / (1 + taxRate.value)
+}
+})
+</script>
+&#10;<template>
+<label>
+Price (with tax):
+<input v-model.number=&quot;priceWithTax&quot; type=&quot;number&quot; />
+</label>
+
+  <p>Base price: {{ price.toFixed(2) }}</p>
+</template>" />
+
 El usuario edita el total y el setter calcula el precio base.
 
 ## Patrón de formateo
@@ -110,6 +130,13 @@ const theme = computed({
   </select>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <select v-model=&quot;theme&quot;>
+    <option value=&quot;light&quot;>Light</option>
+    <option value=&quot;dark&quot;>Dark</option>
+  </select>
+</template>" />
 
 ## Reglas
 

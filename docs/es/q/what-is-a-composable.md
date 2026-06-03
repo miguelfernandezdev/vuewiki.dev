@@ -51,6 +51,20 @@ const { count, increment, reset } = useCounter(10)
 </template>
 ```
 
+<PlaygroundLink code="<!-- Cualquier componente que necesite un contador -->
+
+<script setup>
+import { useCounter } from '@/composables/useCounter'
+&#10;const { count, increment, reset } = useCounter(10)
+</script>
+
+&#10;<template>
+
+  <p>{{ count }}</p>
+  <button @click=&quot;increment&quot;>+</button>
+  <button @click=&quot;reset&quot;>Reset</button>
+</template>" />
+
 Cada componente que llama a `useCounter()` obtiene su propia instancia independiente. No comparten estado a menos que diseñes explícitamente el composable para ello.
 
 ## Un ejemplo del mundo real: useFetch
@@ -90,6 +104,11 @@ import { useFetch } from '@/composables/useFetch'
 const { data: users, loading, error } = useFetch<User[]>(() => '/api/users')
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useFetch } from '@/composables/useFetch'
+&#10;const { data: users, loading, error } = useFetch<User[]>(() => '/api/users')
+</script>" />
 
 Ahora cada componente que obtiene datos recibe estado de carga, manejo de errores y rastreo reactivo de URL de forma gratuita.
 

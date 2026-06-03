@@ -55,6 +55,29 @@ watch(
 </template>
 ```
 
+<PlaygroundLink code="<!-- App.vue -->
+
+<script setup>
+const route = useRoute()
+const announcement = ref('')
+&#10;watch(
+  () => route.path,
+  () => {
+    nextTick(() => {
+      announcement.value = document.title
+    })
+  }
+)
+</script>
+
+&#10;<template>
+
+  <div aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot; class=&quot;sr-only&quot;>
+    {{ announcement }}
+  </div>
+  <RouterView />
+</template>" />
+
 Esto anuncia el nuevo título de la página a los lectores de pantalla sin interrumpir el foco visual, lo que puede ser mejor para los usuarios con teclado que no quieren que su posición de scroll cambie.
 
 ## Trampa de foco en modales
@@ -89,6 +112,30 @@ function close() {
   </dialog>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const dialogRef = ref<HTMLDialogElement>()
+const triggerRef = ref<HTMLElement>()
+&#10;function open() {
+dialogRef.value?.showModal()
+}
+&#10;function close() {
+dialogRef.value?.close()
+triggerRef.value?.focus()
+}
+</script>
+&#10;<template>
+<button ref=&quot;triggerRef&quot; @click=&quot;open&quot;>Settings</button>
+&#10; <dialog ref=&quot;dialogRef&quot; @close=&quot;triggerRef?.focus()&quot;>
+<h2>Settings</h2>
+<label>
+Name
+<input type=&quot;text&quot; />
+</label>
+<button @click=&quot;close&quot;>Done</button>
+
+  </dialog>
+</template>" />
 
 `showModal()` hace tres cosas que el navegador gestiona por ti: mueve el foco al primer elemento enfocable del interior, atrapa el ciclo de tabulación dentro del diálogo y restaura el foco cuando el diálogo se cierra con la tecla Escape.
 
@@ -154,6 +201,29 @@ async function deleteItem(id: number) {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const items = ref([...])
+const listRef = ref<HTMLElement>()
+&#10;async function deleteItem(id: number) {
+const index = items.value.findIndex(i => i.id === id)
+items.value = items.value.filter(i => i.id !== id)
+&#10; await nextTick()
+&#10; if (items.value.length === 0) {
+listRef.value?.focus()
+}
+}
+</script>
+&#10;<template>
+
+  <ul ref=&quot;listRef&quot; tabindex=&quot;-1&quot; aria-label=&quot;Items&quot;>
+    <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+      {{ item.name }}
+      <button @click=&quot;deleteItem(item.id)&quot;>Delete</button>
+    </li>
+  </ul>
+  <p v-if=&quot;items.length === 0&quot;>No items remaining.</p>
+</template>" />
+
 Sin esto, eliminar el elemento enfocado deja el foco del usuario en el limbo, lo que desorienta.
 
 ## Skip links
@@ -184,6 +254,29 @@ Permite a los usuarios de teclado saltar la navegación repetitiva:
 }
 </style>
 ```
+
+<PlaygroundLink code="<!-- App.vue -->
+<template>
+<a href=&quot;#main-content&quot; class=&quot;skip-link&quot;>Skip to content</a>
+<TheNavbar />
+
+  <main id=&quot;main-content&quot; tabindex=&quot;-1&quot;>
+    <RouterView />
+  </main>
+</template>
+&#10;<style>
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: white;
+}
+.skip-link:focus {
+  top: 0;
+}
+</style>" />
 
 El enlace está oculto hasta que recibe el foco, momento en que salta a la parte superior de la pantalla.
 

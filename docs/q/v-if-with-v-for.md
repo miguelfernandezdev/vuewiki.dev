@@ -18,6 +18,13 @@ In **Vue 2**, `v-for` runs first. In **Vue 3**, `v-if` runs first. This means th
 </li>
 ```
 
+<PlaygroundLink code="<!-- Vue 2: iterates all users, then filters by isActive (works but wasteful) -->
+
+<!-- Vue 3: checks user.isActive BEFORE the loop, but user doesn't exist yet → error -->
+<li v-for=&quot;user in users&quot; v-if=&quot;user.isActive&quot; :key=&quot;user.id&quot;>
+  {{ user.name }}
+</li>" />
+
 ## The right way to filter a list
 
 Use a `computed` property:
@@ -34,6 +41,16 @@ const activeUsers = computed(() => props.users.filter((user) => user.isActive))
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const activeUsers = computed(() => props.users.filter((user) => user.isActive))
+</script>
+&#10;<template>
+
+  <li v-for=&quot;user in activeUsers&quot; :key=&quot;user.id&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
+
 This is better in every way: cached, testable, reusable, and no ambiguity.
 
 ## The right way to hide an entire list
@@ -48,6 +65,13 @@ Wrap with `<template v-if>`:
 </template>
 ```
 
+<PlaygroundLink code="<template v-if=&quot;shouldShowList&quot;>
+
+  <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
+
 ## Per-item condition inside the loop
 
 Use `<template v-for>` with `v-if` on a child element:
@@ -59,6 +83,13 @@ Use `<template v-for>` with `v-if` on a child element:
   </li>
 </template>
 ```
+
+<PlaygroundLink code="<template v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>
+
+  <li v-if=&quot;user.isActive&quot;>
+    {{ user.name }}
+  </li>
+</template>" />
 
 The ESLint rule `vue/no-use-v-if-with-v-for` catches this automatically.
 

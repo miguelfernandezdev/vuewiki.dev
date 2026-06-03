@@ -25,6 +25,17 @@ watchEffect(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, watchEffect } from 'vue'
+&#10;// Este código se ejecuta UNA VEZ cuando se crea el componente
+const count = ref(0)
+console.log('setup') // se registra una vez
+&#10;watchEffect(() => {
+  // Esto se ejecuta cuando cambian las dependencias, no en cada renderizado
+  console.log(count.value)
+})
+</script>" />
+
 En React, la función de componente equivalente se vuelve a ejecutar en cada cambio de estado, cada cambio de prop, cada re-renderizado del padre. Eso crea problemas que Vue no tiene.
 
 ## Sin closures obsoletas

@@ -101,6 +101,11 @@ const { data } = await http.get('/users')
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const http = useHttp()
+&#10;const { data } = await http.get('/users')
+</script>" />
+
 ## Plugin with options (typed)
 
 ```ts

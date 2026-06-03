@@ -26,6 +26,20 @@ const text = ref('')
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- These two are equivalent -->
+  <input v-model=&quot;text&quot; />
+  <input
+    :value=&quot;text&quot;
+    @input=&quot;text = ($event.target as HTMLInputElement).value&quot;
+  />
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const text = ref('')
+</script>" />
+
 Different element types use different prop/event pairs under the hood:
 
 | Element                   | Bound prop | Event    |
@@ -46,6 +60,11 @@ Different element types use different prop/event pairs under the hood:
 <CustomInput :modelValue="search" @update:modelValue="search = $event" />
 ```
 
+<PlaygroundLink code="<!-- Parent -->
+<CustomInput v-model=&quot;search&quot; />
+&#10;<!-- Equivalent to: -->
+<CustomInput :modelValue=&quot;search&quot; @update:modelValue=&quot;search = $event&quot; />" />
+
 The component receives a `modelValue` prop and emits `update:modelValue`:
 
 ```vue
@@ -58,6 +77,16 @@ const model = defineModel<string>()
   <input v-model="model" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- CustomInput.vue (Vue 3.4+ with defineModel) -->
+
+<script setup>
+const model = defineModel<string>()
+</script>
+
+&#10;<template>
+<input v-model=&quot;model&quot; />
+</template>" />
 
 ## What changed from Vue 2
 
@@ -76,6 +105,16 @@ In Vue 2, `v-model` used `value` + `input` and you could only have one per compo
 />
 ```
 
+<PlaygroundLink code="<!-- Vue 2 -->
+<MyDialog v-model=&quot;isOpen&quot; :title.sync=&quot;dialogTitle&quot; />
+&#10;<!-- Vue 2 internally: -->
+<MyDialog
+  :value=&quot;isOpen&quot;
+  @input=&quot;isOpen = $event&quot;
+  :title=&quot;dialogTitle&quot;
+  @update:title=&quot;dialogTitle = $event&quot;
+/>" />
+
 In Vue 3, `.sync` was removed. `v-model` now supports named arguments, so you get multiple bindings without a separate API:
 
 ```vue
@@ -90,6 +129,16 @@ In Vue 3, `.sync` was removed. `v-model` now supports named arguments, so you ge
   @update:title="dialogTitle = $event"
 />
 ```
+
+<PlaygroundLink code="<!-- Vue 3 -->
+<MyDialog v-model=&quot;isOpen&quot; v-model:title=&quot;dialogTitle&quot; />
+&#10;<!-- Vue 3 internally: -->
+<MyDialog
+  :modelValue=&quot;isOpen&quot;
+  @update:modelValue=&quot;isOpen = $event&quot;
+  :title=&quot;dialogTitle&quot;
+  @update:title=&quot;dialogTitle = $event&quot;
+/>" />
 
 ## Migration summary
 
@@ -114,6 +163,14 @@ Built-in modifiers work on native elements:
 <!-- trim whitespace -->
 ```
 
+<PlaygroundLink code="<input v-model.lazy=&quot;msg&quot; />
+
+<!-- sync on change, not input -->
+<input v-model.number=&quot;age&quot; />
+<!-- cast to number -->
+<input v-model.trim=&quot;name&quot; />
+<!-- trim whitespace -->" />
+
 Components can define custom modifiers with [`defineModel`](https://vuejs.org/api/sfc-script-setup.html#definemodel):
 
 ```vue
@@ -132,10 +189,27 @@ const [model, modifiers] =
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const [model, modifiers] =
+  defineModel <
+  string >
+  {
+    set(value) {
+      if (modifiers.capitalize) {
+        return value.charAt(0).toUpperCase() + value.slice(1)
+      }
+      return value
+    }
+  }
+</script>" />
+
 ```vue
 <!-- Parent -->
 <CustomInput v-model.capitalize="text" />
 ```
+
+<PlaygroundLink code="<!-- Parent -->
+<CustomInput v-model.capitalize=&quot;text&quot; />" />
 
 See also: [Using multiple v-model bindings](/q/multiple-v-model) · [How does v-model work on custom components?](/q/v-model-custom-components) · [How do you create custom v-model modifiers?](/q/custom-v-model-modifiers)
 

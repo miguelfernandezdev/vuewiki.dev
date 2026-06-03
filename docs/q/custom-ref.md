@@ -48,6 +48,17 @@ const searchQuery = useDebouncedRef('', 500)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const searchQuery = useDebouncedRef('', 500)
+</script>
+&#10;<template>
+
+  <!-- Typing updates the internal value immediately,
+       but watchers and computed only fire after 500ms of inactivity -->
+  <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <p>Debounced value: {{ searchQuery }}</p>
+</template>" />
+
 Every keystroke resets the debounce timer. The internal `value` and `trigger()` are only called after the user stops typing for 500ms. That means watchers, computed properties, and template re-renders all wait.
 
 ## track() and trigger() explained

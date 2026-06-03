@@ -20,6 +20,13 @@ const search = (ref < string) | (null > null)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const search = (ref < string) | (null > null)
+</script>
+&#10;<template>
+  <input v-model=&quot;search&quot; placeholder=&quot;Search...&quot; />
+</template>" />
+
 The moment the user types anything, `search` becomes a string. But before the user interacts, it's `null`. Every computed or watcher that uses it needs to handle both:
 
 ```ts
@@ -45,6 +52,13 @@ const search = ref('')
   <input v-model="search" placeholder="Search..." />
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const search = ref('')
+</script>
+&#10;<template>
+  <input v-model=&quot;search&quot; placeholder=&quot;Search...&quot; />
+</template>" />
 
 ```ts
 // Clean — no null checks

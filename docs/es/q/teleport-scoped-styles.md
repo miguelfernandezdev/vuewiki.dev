@@ -29,6 +29,23 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <Teleport to=&quot;body&quot;>
+    <div class=&quot;modal&quot;>
+      <p class=&quot;modal-text&quot;>Este texto no tendrá estilos</p>
+    </div>
+  </Teleport>
+</template>
+&#10;<style scoped>
+/* .modal[data-v-abc123] — pero .modal está ahora bajo <body>, no aquí */
+.modal {
+  background: white;
+}
+&#10;.modal-text {
+  color: blue; /* no se aplica */
+}
+</style>" />
+
 ## Cómo solucionarlo
 
 **Opción 1 (recomendada):** Usa un bloque de estilos separado sin scoped con nombres de clase con prefijo.
@@ -53,6 +70,23 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+/* Los estilos normales del componente siguen con scoped */
+.trigger-button {
+  color: blue;
+}
+</style>
+&#10;<style>
+/* El contenido teletransportado usa estilos sin scoped */
+.my-modal {
+  background: white;
+  padding: 20px;
+}
+.my-modal-text {
+  color: blue;
+}
+</style>" />
+
 **Opción 2:** Usa CSS Modules. Los nombres de clase se procesan en tiempo de compilación, así que el ámbito no depende de la posición en el DOM.
 
 ```vue
@@ -75,6 +109,23 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <Teleport to=&quot;body&quot;>
+    <div :class=&quot;$style.modal&quot;>
+      <p :class=&quot;$style.text&quot;>Con estilos correctamente aplicados</p>
+    </div>
+  </Teleport>
+</template>
+&#10;<style module>
+.modal {
+  background: white;
+  padding: 20px;
+}
+.text {
+  color: blue;
+}
+</style>" />
+
 **Opción 3:** Usa `:deep()` desde un bloque con scoped.
 
 ```vue
@@ -87,6 +138,15 @@ Porque los estilos con scoped funcionan añadiendo un atributo `data-v-xxxxx` a 
 }
 </style>
 ```
+
+<PlaygroundLink code="<style scoped>
+:deep(.modal) {
+  background: white;
+}
+:deep(.modal-text) {
+  color: blue;
+}
+</style>" />
 
 Esto funciona pero anula el propósito del scoped. CSS Modules o un bloque dedicado sin scoped son soluciones más limpias para el contenido teletransportado.
 

@@ -48,6 +48,13 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 </script>
 ```
 
+<PlaygroundLink code="<!-- Nuxt 3: composable in script setup -->
+
+<script setup>
+const route = useRoute()
+const { data: user } = await useFetch(`/api/users/${route.params.id}`)
+</script>" />
+
 `useFetch` handles caching, deduplication, SSR payload transfer, and request cancellation automatically. In Nuxt 2, you managed all of that manually.
 
 ## Server engine: Nitro

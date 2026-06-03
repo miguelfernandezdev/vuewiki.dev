@@ -61,6 +61,49 @@ function onDragOver(event: DragEvent) {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const items = ref(['Item 1', 'Item 2', 'Item 3'])
+const dropped = ref<string[]>([])
+&#10;function onDragStart(event: DragEvent, item: string) {
+event.dataTransfer!.setData('text/plain', item)
+event.dataTransfer!.effectAllowed = 'move'
+}
+&#10;function onDrop(event: DragEvent) {
+const item = event.dataTransfer!.getData('text/plain')
+if (!dropped.value.includes(item)) {
+dropped.value.push(item)
+items.value = items.value.filter((i) => i !== item)
+}
+}
+&#10;function onDragOver(event: DragEvent) {
+event.preventDefault()
+event.dataTransfer!.dropEffect = 'move'
+}
+</script>
+&#10;<template>
+
+  <div class=&quot;columns&quot;>
+    <div class=&quot;column&quot;>
+      <h3>Available</h3>
+      <div
+        v-for=&quot;item in items&quot;
+        :key=&quot;item&quot;
+        draggable=&quot;true&quot;
+        @dragstart=&quot;onDragStart($event, item)&quot;
+        class=&quot;drag-item&quot;
+      >
+        {{ item }}
+      </div>
+    </div>
+&#10;    <div class=&quot;column drop-zone&quot; @drop=&quot;onDrop&quot; @dragover=&quot;onDragOver&quot;>
+      <h3>Dropped</h3>
+      <div v-for=&quot;item in dropped&quot; :key=&quot;item&quot; class=&quot;drag-item&quot;>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+</template>" />
+
 The native API works but has quirks: no touch support by default, limited visual feedback, and complex index management for sortable lists.
 
 ## vue-draggable-plus (recommended for sortable lists)
@@ -99,6 +142,27 @@ const tasks = ref([
 </style>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { VueDraggable } from 'vue-draggable-plus'
+&#10;const tasks = ref([
+  { id: 1, name: 'Design mockups' },
+  { id: 2, name: 'Write tests' },
+  { id: 3, name: 'Deploy to staging' }
+])
+</script>
+&#10;<template>
+  <VueDraggable v-model=&quot;tasks&quot; animation=&quot;150&quot; ghostClass=&quot;ghost&quot;>
+    <div v-for=&quot;task in tasks&quot; :key=&quot;task.id&quot; class=&quot;task-item&quot;>
+      {{ task.name }}
+    </div>
+  </VueDraggable>
+</template>
+&#10;<style>
+.ghost {
+  opacity: 0.4;
+}
+</style>" />
+
 The array order updates automatically when items are dragged. No manual index swapping needed.
 
 ### Kanban board (cross-list dragging)
@@ -136,6 +200,36 @@ const columns = ref({
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { VueDraggable } from 'vue-draggable-plus'
+&#10;const columns = ref({
+todo: [
+{ id: 1, title: 'Research' },
+{ id: 2, title: 'Design' }
+],
+doing: [{ id: 3, title: 'Implement API' }],
+done: [{ id: 4, title: 'Write docs' }]
+})
+</script>
+&#10;<template>
+
+  <div class=&quot;kanban&quot;>
+    <div v-for=&quot;(tasks, status) in columns&quot; :key=&quot;status&quot; class=&quot;kanban-column&quot;>
+      <h3>{{ status }}</h3>
+      <VueDraggable
+        v-model=&quot;columns[status]&quot;
+        group=&quot;kanban&quot;
+        animation=&quot;150&quot;
+        ghostClass=&quot;ghost&quot;
+      >
+        <div v-for=&quot;task in tasks&quot; :key=&quot;task.id&quot; class=&quot;kanban-card&quot;>
+          {{ task.title }}
+        </div>
+      </VueDraggable>
+    </div>
+  </div>
+</template>" />
+
 The `group="kanban"` prop lets items move between lists. Each list's array updates independently.
 
 ### Handling the reorder event
@@ -156,6 +250,20 @@ function onReorder() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<VueDraggable v-model=&quot;tasks&quot; @update=&quot;onReorder&quot;>
+  ...
+</VueDraggable>
+&#10;<script setup>
+function onReorder() {
+  // tasks array is already updated by v-model
+  // persist the new order to the server
+  $fetch('/api/tasks/reorder', {
+    method: 'POST',
+    body: tasks.value.map((t, i) => ({ id: t.id, order: i }))
+  })
+}
+</script>" />
 
 ## Custom drag with pointer events
 
@@ -201,6 +309,42 @@ function onPointerUp() {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const position = ref({ x: 100, y: 100 })
+const isDragging = ref(false)
+const offset = ref({ x: 0, y: 0 })
+&#10;function onPointerDown(event: PointerEvent) {
+isDragging.value = true
+offset.value = {
+x: event.clientX - position.value.x,
+y: event.clientY - position.value.y
+}
+;(event.target as HTMLElement).setPointerCapture(event.pointerId)
+}
+&#10;function onPointerMove(event: PointerEvent) {
+if (!isDragging.value) return
+position.value = {
+x: event.clientX - offset.value.x,
+y: event.clientY - offset.value.y
+}
+}
+&#10;function onPointerUp() {
+isDragging.value = false
+}
+</script>
+&#10;<template>
+
+  <div
+    class=&quot;draggable-box&quot;
+    :style=&quot;{ left: position.x + 'px', top: position.y + 'px' }&quot;
+    @pointerdown=&quot;onPointerDown&quot;
+    @pointermove=&quot;onPointerMove&quot;
+    @pointerup=&quot;onPointerUp&quot;
+  >
+    Drag me
+  </div>
+</template>" />
 
 Pointer events work on both mouse and touch devices without extra handling.
 

@@ -68,6 +68,53 @@ const isValid = computed(
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { reactive, computed } from 'vue'
+&#10;interface UserForm {
+name: string
+email: string
+role: 'admin' | 'user'
+}
+&#10;const form = reactive<UserForm>({
+name: '',
+email: '',
+role: 'user'
+})
+&#10;const errors = reactive<Partial<Record<keyof UserForm, string>>>({})
+&#10;function validate(field: keyof UserForm) {
+switch (field) {
+case 'name':
+errors.name = form.name.trim() ? undefined : 'Name is required'
+break
+case 'email':
+errors.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+        ? undefined
+        : 'Invalid email'
+      break
+  }
+}
+&#10;const isValid = computed(
+  () =>
+    form.name.trim().length > 0 &amp;&amp;
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) &amp;&amp;
+Object.values(errors).every((e) => !e)
+)
+</script>
+&#10;<template>
+
+  <form @submit.prevent=&quot;handleSubmit&quot;>
+    <div>
+      <input v-model=&quot;form.name&quot; @blur=&quot;validate('name')&quot; />
+      <span v-if=&quot;errors.name&quot;>{{ errors.name }}</span>
+    </div>
+&#10;    <div>
+      <input v-model=&quot;form.email&quot; @blur=&quot;validate('email')&quot; />
+      <span v-if=&quot;errors.email&quot;>{{ errors.email }}</span>
+    </div>
+&#10;    <button :disabled=&quot;!isValid&quot;>Submit</button>
+  </form>
+</template>" />
+
 This works for simple forms, but notice the problems as it grows: validation logic is mixed into the component, every field needs manual wiring, and there's no dirty/touched tracking.
 
 ## Extract a composable for reusable form logic
@@ -133,6 +180,22 @@ async function handleSubmit() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { useForm } from '@/composables/useForm'
+&#10;const { form, errors, touch, validateAll, isValid } = useForm(
+  { name: '', email: '', role: 'user' as const },
+  {
+    name: (v) => (v.trim() ? undefined : 'Required'),
+    email: (v) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? undefined : 'Invalid email'
+  }
+)
+&#10;async function handleSubmit() {
+  if (!validateAll()) return
+  await fetch('/api/users', { method: 'POST', body: JSON.stringify(form) })
+}
+</script>" />
 
 ## When to use a form library
 

@@ -24,6 +24,16 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const inputRef = ref<HTMLInputElement | null>(null)
+&#10;onMounted(() => {
+  inputRef.value?.focus()
+})
+</script>
+&#10;<template>
+  <input ref=&quot;inputRef&quot; />
+</template>" />
+
 El tipo es `HTMLInputElement | null` porque el ref es `null` durante el setup y se convierte en el elemento solo después de que el componente se monta.
 
 ## useTemplateRef (Vue 3.5+)
@@ -43,6 +53,16 @@ onMounted(() => {
   <input ref="my-input" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const input = useTemplateRef<HTMLInputElement>('my-input')
+&#10;onMounted(() => {
+  input.value?.focus()
+})
+</script>
+&#10;<template>
+  <input ref=&quot;my-input&quot; />
+</template>" />
 
 La cadena `'my-input'` coincide con el atributo `ref` en el template. El nombre de la variable `input` es independiente.
 
@@ -66,6 +86,17 @@ function submit() {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import ChildForm from './ChildForm.vue'
+&#10;const formRef = ref<InstanceType<typeof ChildForm> | null>(null)
+&#10;function submit() {
+  formRef.value?.validate()
+}
+</script>
+&#10;<template>
+  <ChildForm ref=&quot;formRef&quot; />
+</template>" />
+
 El hijo debe exponer el método con `defineExpose`:
 
 ```vue
@@ -79,6 +110,16 @@ function validate() {
 defineExpose({ validate })
 </script>
 ```
+
+<PlaygroundLink code="<!-- ChildForm.vue -->
+
+<script setup lang=&quot;ts&quot;>
+function validate() {
+  // lógica de validación
+  return isValid.value
+}
+&#10;defineExpose({ validate })
+</script>" />
 
 Sin `defineExpose`, el padre no puede acceder a ningún estado interno ni a los métodos del hijo.
 
@@ -102,6 +143,20 @@ watch(modalRef, (el) => {
   <div v-if="showModal" ref="modalRef" tabindex="-1">Contenido del modal</div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const showModal = ref(false)
+const modalRef = ref<HTMLDivElement | null>(null)
+&#10;watch(modalRef, (el) => {
+if (el) {
+el.focus() // el elemento acaba de montarse
+}
+})
+</script>
+&#10;<template>
+
+  <div v-if=&quot;showModal&quot; ref=&quot;modalRef&quot; tabindex=&quot;-1&quot;>Contenido del modal</div>
+</template>" />
 
 Usa siempre optional chaining o comprobaciones de null cuando el target del ref puede renderizarse de forma condicional.
 
@@ -135,6 +190,30 @@ onMounted(() => {
   </ul>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const items = ref(['a', 'b', 'c'])
+const itemRefs = ref<(HTMLLIElement | null)[]>([])
+&#10;onMounted(() => {
+itemRefs.value[0]?.focus()
+})
+</script>
+&#10;<template>
+
+  <ul>
+    <li
+      v-for=&quot;(item, index) in items&quot;
+      :key=&quot;item&quot;
+      :ref=&quot;
+        (el) => {
+          itemRefs[index] = el as HTMLLIElement
+        }
+      &quot;
+    >
+      {{ item }}
+    </li>
+  </ul>
+</template>" />
 
 ## Tras operaciones asíncronas
 

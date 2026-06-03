@@ -59,12 +59,33 @@ const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserList.vue -->
+
+<script setup>
+const { data: users, isLoading, error } = useFetch<User[]>('/api/users')
+</script>
+
+&#10;<template>
+
+  <p v-if=&quot;isLoading&quot;>Cargando...</p>
+  <p v-else-if=&quot;error&quot;>{{ error.message }}</p>
+  <ul v-else>
+    <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+  </ul>
+</template>" />
+
 ```vue
 <!-- ProductList.vue — mismo composable, componente diferente -->
 <script setup>
 const { data: products, isLoading } = useFetch<Product[]>('/api/products')
 </script>
 ```
+
+<PlaygroundLink code="<!-- ProductList.vue — mismo composable, componente diferente -->
+
+<script setup>
+const { data: products, isLoading } = useFetch<Product[]>('/api/products')
+</script>" />
 
 Sin componente wrapper. Sin props ocultas. Cada componente llama explícitamente a `useFetch` y decide qué hacer con el estado devuelto.
 
@@ -84,6 +105,17 @@ const { data, error, isLoading } = useFetch<T>(props.url)
 </template>
 ```
 
+<PlaygroundLink code="<!-- FetchProvider.vue -->
+
+<script setup lang=&quot;ts&quot; generic=&quot;T&quot;>
+const props = defineProps<{ url: string }>()
+const { data, error, isLoading } = useFetch<T>(props.url)
+</script>
+
+&#10;<template>
+<slot :data=&quot;data&quot; :error=&quot;error&quot; :is-loading=&quot;isLoading&quot; />
+</template>" />
+
 ```vue
 <!-- Uso -->
 <FetchProvider url="/api/users" v-slot="{ data: users, isLoading }">
@@ -93,6 +125,15 @@ const { data, error, isLoading } = useFetch<T>(props.url)
   </ul>
 </FetchProvider>
 ```
+
+<PlaygroundLink code="<!-- Uso -->
+<FetchProvider url=&quot;/api/users&quot; v-slot=&quot;{ data: users, isLoading }&quot;>
+
+  <p v-if=&quot;isLoading&quot;>Cargando...</p>
+  <ul v-else>
+    <li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+  </ul>
+</FetchProvider>" />
 
 El componente no tiene template propio. Proporciona lógica a través del slot, y el consumidor decide cómo renderizar. Es similar al patrón render props de React.
 
@@ -128,6 +169,12 @@ Funciona, pero tiene problemas:
 <!-- TypeScript no puede inferir las props del componente envuelto -->
 ```
 
+<PlaygroundLink code="<!-- El árbol de componentes muestra ProtectedDashboard > Dashboard -->
+
+<!-- En DevTools, el wrapper oculta el componente real -->
+<!-- Las props deben pasar a través del wrapper manualmente -->
+<!-- TypeScript no puede inferir las props del componente envuelto -->" />
+
 La versión con composable es más sencilla y no tiene ninguno de estos problemas:
 
 ```vue
@@ -140,6 +187,15 @@ const { isAuthenticated } = useAuth()
   <p v-else>No autorizado</p>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const { isAuthenticated } = useAuth()
+</script>
+&#10;<template>
+<Dashboard v-if=&quot;isAuthenticated&quot; />
+
+  <p v-else>No autorizado</p>
+</template>" />
 
 ## Composables vs componentes renderless vs HOCs
 

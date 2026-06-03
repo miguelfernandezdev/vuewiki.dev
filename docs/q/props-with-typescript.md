@@ -29,6 +29,20 @@ const props = defineProps<Props>()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+title: string
+count?: number
+items: string[]
+}
+&#10;const props = defineProps<Props>()
+</script>
+&#10;<template>
+
+  <h2>{{ props.title }}</h2>
+  <span>{{ props.count }} items</span>
+</template>" />
+
 Optional props (marked with `?`) are allowed to be `undefined`. Required props cause a runtime warning if the parent doesn't provide them.
 
 ## Default values with withDefaults
@@ -51,6 +65,20 @@ const props = withDefaults(defineProps<Props>(), {
 // props.tags is now `string[]` (not `string[] | undefined`)
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+  title: string
+  count?: number
+  tags?: string[]
+}
+&#10;const props = withDefaults(defineProps<Props>(), {
+  count: 0,
+  tags: () => ['vue']
+})
+// props.count is now `number` (not `number | undefined`)
+// props.tags is now `string[]` (not `string[] | undefined`)
+</script>" />
 
 For arrays and objects, use a factory function (`() => ['vue']`), same reason as `data()` in the Options API: each component instance needs its own copy.
 
@@ -77,6 +105,23 @@ const {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const {
+title,
+count = 0,
+tags = ['vue']
+} = defineProps<{
+title: string
+count?: number
+tags?: string[]
+}>()
+</script>
+&#10;<template>
+
+  <!-- `title` and `count` are reactive — no `.value` needed in the template -->
+  <h2>{{ title }}</h2>
+</template>" />
+
 This replaces `withDefaults` for most cases. The destructured variables are reactive in the template and in `watch`/`computed`, but if you pass them to a plain function, they're just values at that point.
 
 ## Complex types
@@ -96,6 +141,16 @@ interface Props {
 const props = defineProps<Props>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User } from '@/types'
+&#10;interface Props {
+  user: User
+  status: 'active' | 'inactive' | 'pending'
+  onUpdate?: (user: User) => void
+}
+&#10;const props = defineProps<Props>()
+</script>" />
 
 There are [limitations on the types you can use](/q/defineprops-type-limitations). For example, you can't use conditional types or imported type aliases that resolve to complex generics in some cases.
 

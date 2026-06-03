@@ -24,10 +24,25 @@ Every Vue component instance has a cost: reactive setup, vnode creation, lifecyc
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserCard.vue — deeply nested -->
+<template>
+  <Card>
+    <CardHeader>
+      <UserAvatar :src=&quot;user.avatar&quot; />
+    </CardHeader>
+    <CardBody>
+      <Text>{{ user.name }}</Text>
+    </CardBody>
+  </Card>
+</template>" />
+
 ```vue
 <!-- 100 users = 500+ component instances -->
 <UserCard v-for="user in users" :key="user.id" :user="user" />
 ```
+
+<PlaygroundLink code="<!-- 100 users = 500+ component instances -->
+<UserCard v-for=&quot;user in users&quot; :key=&quot;user.id&quot; :user=&quot;user&quot; />" />
 
 Each `Card`, `CardHeader`, `CardBody`, `UserAvatar`, and `Text` is a separate component instance. Multiply by 100 list items and you get significant memory and render overhead.
 
@@ -52,6 +67,24 @@ defineProps<{ user: { id: string; name: string; avatar: string } }>()
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- UserCard.vue — flattened -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{ user: { id: string; name: string; avatar: string } }>()
+</script>
+
+&#10;<template>
+
+  <div class=&quot;card&quot;>
+    <div class=&quot;card-header&quot;>
+      <img :src=&quot;user.avatar&quot; :alt=&quot;user.name&quot; class=&quot;avatar&quot; />
+    </div>
+    <div class=&quot;card-body&quot;>
+      <span>{{ user.name }}</span>
+    </div>
+  </div>
+</template>" />
 
 100 users now create 100 component instances instead of 500. The visual result is identical.
 
@@ -82,6 +115,13 @@ Not every list needs flattening. Keep component abstractions when:
   </template>
 </RecycleScroller>
 ```
+
+<PlaygroundLink code="<RecycleScroller :items=&quot;items&quot; :item-size=&quot;80&quot;>
+  <template #default=&quot;{ item }&quot;>
+    <!-- OK — only ~20 instances exist regardless of list length -->
+    <ComplexItemCard :item=&quot;item&quot; />
+  </template>
+</RecycleScroller>" />
 
 **The component has real logic** (tooltips, state, event handling), not just styling. Extracting a `UserStatusBadge` that has conditional rendering logic and a tooltip is worth the overhead.
 

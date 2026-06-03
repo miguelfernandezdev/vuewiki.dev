@@ -31,6 +31,22 @@ const currentTab = shallowRef(TabHome)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, shallowRef } from 'vue'
+import TabHome from './TabHome.vue'
+import TabSettings from './TabSettings.vue'
+import TabProfile from './TabProfile.vue'
+&#10;const tabs = { TabHome, TabSettings, TabProfile }
+const currentTab = shallowRef(TabHome)
+</script>
+&#10;<template>
+  <button v-for=&quot;(comp, name) in tabs&quot; :key=&quot;name&quot; @click=&quot;currentTab = comp&quot;>
+    {{ name }}
+  </button>
+&#10;  <!-- Se destruye y recrea en cada cambio -->
+  <component :is=&quot;currentTab&quot; />
+</template>" />
+
 Sin `KeepAlive`, cualquier estado local en `TabSettings` (inputs de formulario, posición de scroll, secciones expandidas) se reinicia cada vez que cambias de pestaña y vuelves.
 
 ## Añadir KeepAlive
@@ -44,6 +60,12 @@ Envuelve `<component>` en `<KeepAlive>` para almacenar las instancias en caché 
   </KeepAlive>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <KeepAlive>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+</template>" />
 
 Ahora cambiar de pestaña conserva el estado completo de cada componente.
 
@@ -70,6 +92,22 @@ Usa `include`, `exclude` y `max` para limitar el almacenamiento en caché.
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Solo almacenar estos dos en caché -->
+  <KeepAlive include=&quot;TabHome,TabSettings&quot;>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+&#10;  <!-- Almacenar todo excepto este -->
+  <KeepAlive exclude=&quot;TabProfile&quot;>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+&#10;  <!-- Almacenar en caché como máximo 5 instancias (expulsión LRU) -->
+  <KeepAlive :max=&quot;5&quot;>
+    <component :is=&quot;currentTab&quot; />
+  </KeepAlive>
+</template>" />
+
 `include` y `exclude` comparan con el `name` del componente. Establécelo explícitamente con `defineOptions`:
 
 ```vue
@@ -77,6 +115,10 @@ Usa `include`, `exclude` y `max` para limitar el almacenamiento en caché.
 defineOptions({ name: 'TabSettings' })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+defineOptions({ name: 'TabSettings' })
+</script>" />
 
 ## Lifecycle hooks para componentes en caché
 
@@ -98,6 +140,18 @@ onDeactivated(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { onActivated, onDeactivated } from 'vue'
+&#10;onActivated(() => {
+  // El componente volvió a ser visible, refresca datos si es necesario
+  refreshData()
+})
+&#10;onDeactivated(() => {
+  // Componente oculto pero aún vivo, pausa el trabajo en segundo plano
+  pausePolling()
+})
+</script>" />
+
 Ciclo de vida completo de un componente en caché:
 
 ```
@@ -117,6 +171,14 @@ onMounted → onActivated → (el usuario cambia de pestaña) → onDeactivated
   </router-view>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <router-view v-slot=&quot;{ Component, route }&quot;>
+    <KeepAlive>
+      <component :is=&quot;Component&quot; :key=&quot;route.fullPath&quot; />
+    </KeepAlive>
+  </router-view>
+</template>" />
 
 Usar `route.fullPath` como key significa que `/users/1` y `/users/2` se almacenan en caché por separado.
 

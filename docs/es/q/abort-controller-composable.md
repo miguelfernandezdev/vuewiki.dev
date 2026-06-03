@@ -77,6 +77,11 @@ const { data: users, isLoading } = useFetch<User[]>('/api/users')
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const { data: users, isLoading } = useFetch<User[]>('/api/users')
+// Si el componente se desmonta, la petición se cancela automáticamente
+</script>" />
+
 El hook `onUnmounted` cancela cualquier petición en curso. El catch de `AbortError` mantiene el estado de error limpio.
 
 ## Cancelar peticiones obsoletas (condición de carrera)
@@ -110,6 +115,19 @@ const { data: results, isLoading } = useFetch(searchUrl)
   </ul>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const query = ref('')
+const searchUrl = computed(() => `/api/search?q=${query.value}`)
+&#10;const { data: results, isLoading } = useFetch(searchUrl)
+</script>
+&#10;<template>
+<input v-model=&quot;query&quot; placeholder=&quot;Search...&quot; />
+
+  <ul v-if=&quot;results&quot;>
+    <li v-for=&quot;item in results&quot; :key=&quot;item.id&quot;>{{ item.name }}</li>
+  </ul>
+</template>" />
 
 Cuando `query` cambia de "vu" a "vue", el watcher ejecuta `execute`, que cancela la petición "vu" e inicia la petición "vue". Solo llega el último resultado.
 
@@ -184,6 +202,14 @@ const { data: results } = useFetch('/api/search', {
 // Nuxt cancela las peticiones obsoletas y limpia al desmontar
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const query = ref('')
+&#10;const { data: results } = useFetch('/api/search', {
+  query: { q: query }
+})
+// Nuxt cancela las peticiones obsoletas y limpia al desmontar
+</script>" />
 
 No se necesita `AbortController` manual. Esta es una de las razones para preferir la obtención de datos de Nuxt sobre `fetch` directo en aplicaciones Nuxt.
 

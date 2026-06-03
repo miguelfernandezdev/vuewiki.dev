@@ -42,6 +42,19 @@ const [users, posts, stats] = await Promise.all([
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// MAL: secuencial — tiempo total = A + B + C
+const users = await fetch('/api/users').then((r) => r.json())
+const posts = await fetch('/api/posts').then((r) => r.json())
+const stats = await fetch('/api/stats').then((r) => r.json())
+&#10;// BIEN: paralelo — tiempo total = max(A, B, C)
+const [users, posts, stats] = await Promise.all([
+  fetch('/api/users').then((r) => r.json()),
+  fetch('/api/posts').then((r) => r.json()),
+  fetch('/api/stats').then((r) => r.json())
+])
+</script>" />
+
 **Demasiadas peticiones**: 20 llamadas a la API al cargar la página significa 20 viajes de ida y vuelta. Combínalas en menos endpoints o usa el patrón BFF (Backend for Frontend).
 
 **Payloads grandes**: una API que devuelve 500 KB de JSON cuando la página solo necesita 10 campos. Añade paginación, selección de campos o comprime la respuesta.
@@ -84,6 +97,13 @@ const HeavyChart = defineAsyncComponent(() => import('./HeavyChart.vue'))
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// MAL: la librería de gráficos carga aunque la pestaña no sea visible
+import HeavyChart from './HeavyChart.vue'
+&#10;// BIEN: carga solo cuando se renderiza
+const HeavyChart = defineAsyncComponent(() => import('./HeavyChart.vue'))
+</script>" />
+
 ## Paso 4: Revisar problemas de reactividad de Vue
 
 Abre Vue DevTools y observa la pestaña de rendimiento. Ordena los componentes por tiempo de render.
@@ -120,6 +140,12 @@ const filteredItems = computed(() => items.value.filter((i) => i.active))
 <div v-for="item in filteredItems" :key="item.id">
 ```
 
+<PlaygroundLink code="<!-- MAL: expensiveFilter() se ejecuta en cada render -->
+
+<div v-for=&quot;item in expensiveFilter(items)&quot; :key=&quot;item.id&quot;>
+&#10;<!-- BIEN: se ejecuta solo cuando items cambia -->
+<div v-for=&quot;item in filteredItems&quot; :key=&quot;item.id&quot;>" />
+
 ## Paso 5: Revisar problemas de renderizado
 
 **v-if vs v-show**: `v-if` destruye y recrea el DOM. Para algo que alterna con frecuencia (pestañas, tooltips), `v-show` solo alterna `display: none`.
@@ -137,6 +163,13 @@ const { list, containerProps, wrapperProps } = useVirtualList(items, {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useVirtualList } from '@vueuse/core'
+&#10;const { list, containerProps, wrapperProps } = useVirtualList(items, {
+  itemHeight: 50
+})
+</script>" />
 
 **Componentes que se re-renderizan innecesariamente**: comprueba en Vue DevTools los componentes que se re-renderizan cuando no deberían. Causa habitual: props inestables (pasar una nueva referencia de objeto en cada render).
 

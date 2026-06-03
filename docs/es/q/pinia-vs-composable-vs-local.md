@@ -43,6 +43,12 @@ const searchQuery = ref('')
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const isModalOpen = ref(false)
+const activeTab = ref('general')
+const searchQuery = ref('')
+</script>" />
+
 Usar para: inputs de formulario, estados toggle, interacciones de UI, cualquier cosa que solo importe a este componente.
 
 ## Composable (lógica reutilizable, instancia propia por consumidor)
@@ -82,6 +88,18 @@ const { query, results, isLoading } = useSearch('/api/products')
 const { query, results, isLoading } = useSearch('/api/users')
 </script>
 ```
+
+<PlaygroundLink code="<!-- ProductSearch.vue — tiene su propio query, results, loading -->
+
+<script setup>
+const { query, results, isLoading } = useSearch('/api/products')
+</script>
+
+&#10;<!-- UserSearch.vue — instancia completamente independiente -->
+
+<script setup>
+const { query, results, isLoading } = useSearch('/api/users')
+</script>" />
 
 Usar para: patrones de petición de datos, validación de formularios, timers, APIs del navegador, cualquier lógica reutilizable donde cada consumidor necesite su propio estado.
 

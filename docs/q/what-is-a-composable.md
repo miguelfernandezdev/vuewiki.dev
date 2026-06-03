@@ -51,6 +51,20 @@ const { count, increment, reset } = useCounter(10)
 </template>
 ```
 
+<PlaygroundLink code="<!-- Any component that needs a counter -->
+
+<script setup>
+import { useCounter } from '@/composables/useCounter'
+&#10;const { count, increment, reset } = useCounter(10)
+</script>
+
+&#10;<template>
+
+  <p>{{ count }}</p>
+  <button @click=&quot;increment&quot;>+</button>
+  <button @click=&quot;reset&quot;>Reset</button>
+</template>" />
+
 Each component that calls `useCounter()` gets its own independent instance. They don't share state unless you explicitly design the composable to do so.
 
 ## A real-world example: useFetch
@@ -90,6 +104,11 @@ import { useFetch } from '@/composables/useFetch'
 const { data: users, loading, error } = useFetch<User[]>(() => '/api/users')
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useFetch } from '@/composables/useFetch'
+&#10;const { data: users, loading, error } = useFetch<User[]>(() => '/api/users')
+</script>" />
 
 Now every component that fetches data gets loading state, error handling, and reactive URL tracking for free.
 

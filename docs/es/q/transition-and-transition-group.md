@@ -34,6 +34,23 @@ Envuelve un único elemento (o componente) que alterna con `v-if` o `v-show`. Vu
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <button @click=&quot;show = !show&quot;>Alternar</button>
+&#10;  <Transition name=&quot;fade&quot;>
+    <p v-if=&quot;show&quot;>Hola</p>
+  </Transition>
+</template>
+&#10;<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+&#10;.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>" />
+
 El patrón de nombres de clase con un `name` de `"fade"`:
 
 ```
@@ -53,6 +70,13 @@ Al intercambiar entre dos elementos, ambos son visibles al mismo tiempo por defe
   </Transition>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Transition name=&quot;fade&quot; mode=&quot;out-in&quot;>
+    <p v-if=&quot;isActive&quot; key=&quot;active&quot;>Activo</p>
+    <p v-else key=&quot;inactive&quot;>Inactivo</p>
+  </Transition>
+</template>" />
 
 Añade `key` cuando intercambias elementos del mismo tipo (`<p>` por `<p>`), de lo contrario Vue reutiliza el nodo DOM y la transición no se activa.
 
@@ -117,6 +141,32 @@ Para listas renderizadas con `v-for`. Cada hijo debe tener un `:key` único.
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <TransitionGroup name=&quot;list&quot; tag=&quot;ul&quot;>
+    <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+      {{ item.name }}
+    </li>
+  </TransitionGroup>
+</template>
+&#10;<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+&#10;.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+&#10;/* Anima los elementos restantes cuando se elimina uno */
+.list-move {
+  transition: transform 0.3s ease;
+}
+&#10;.list-leave-active {
+  position: absolute;
+}
+</style>" />
+
 La clase `.list-move` anima los elementos que cambian de posición cuando un hermano entra o sale. Establecer `position: absolute` en el elemento que sale permite que los restantes fluyan a su lugar de forma fluida.
 
 ## Animaciones de lista escalonadas
@@ -154,6 +204,37 @@ function onEnter(el: HTMLElement, done: () => void) {
 }
 </script>
 ```
+
+<PlaygroundLink code="<template>
+<TransitionGroup
+tag=&quot;ul&quot;
+:css=&quot;false&quot;
+@before-enter=&quot;onBeforeEnter&quot;
+@enter=&quot;onEnter&quot;
+
+>
+
+    <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot; :data-index=&quot;index&quot;>
+      {{ item.name }}
+    </li>
+
+  </TransitionGroup>
+</template>
+&#10;<script setup>
+function onBeforeEnter(el: HTMLElement) {
+  el.style.opacity = '0'
+  el.style.transform = 'translateY(12px)'
+}
+&#10;function onEnter(el: HTMLElement, done: () => void) {
+  const delay = Number(el.dataset.index) * 80
+  setTimeout(() => {
+    el.style.transition = 'all 0.25s ease'
+    el.style.opacity = '1'
+    el.style.transform = 'translateY(0)'
+    setTimeout(done, 250)
+  }, delay)
+}
+</script>" />
 
 ## Transition vs TransitionGroup
 

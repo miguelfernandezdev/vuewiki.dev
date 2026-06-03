@@ -32,6 +32,13 @@ items.value.push('new item')
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- No se necesita .value en las plantillas -->
+  <p>{{ count }}</p>
+  <p>{{ user.name }}</p>
+</template>" />
+
 ## reactive: solo objetos, sin `.value`
 
 `reactive` envuelve un objeto (o array, Map, Set) y hace sus propiedades reactivas directamente, sin `.value`. Pero **solo funciona con objetos**. No puedes pasarle un número o string.

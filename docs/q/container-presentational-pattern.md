@@ -36,6 +36,31 @@ defineEmits<{
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/UserCard.vue -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{
+  name: string
+  email: string
+  avatar: string
+}>()
+&#10;defineEmits<{
+  edit: []
+  delete: []
+}>()
+</script>
+
+&#10;<template>
+
+  <div class=&quot;user-card&quot;>
+    <img :src=&quot;avatar&quot; :alt=&quot;name&quot; />
+    <h3>{{ name }}</h3>
+    <p>{{ email }}</p>
+    <button @click=&quot;$emit('edit')&quot;>Edit</button>
+    <button @click=&quot;$emit('delete')&quot;>Delete</button>
+  </div>
+</template>" />
+
 This component is reusable anywhere. It doesn't fetch data, doesn't access stores, doesn't call APIs. You can test it by passing props directly.
 
 ## Container component (logic and data)
@@ -70,6 +95,35 @@ function handleEdit(userId: string) {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- views/UserListView.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const { data: users, refresh } = await useFetch('/api/users')
+&#10;async function handleDelete(userId: string) {
+  await $fetch(`/api/users/${userId}`, { method: 'DELETE' })
+  refresh()
+}
+&#10;function handleEdit(userId: string) {
+  navigateTo(`/users/${userId}/edit`)
+}
+</script>
+
+&#10;<template>
+
+  <div>
+    <h1>Users</h1>
+    <UserCard
+      v-for=&quot;user in users&quot;
+      :key=&quot;user.id&quot;
+      :name=&quot;user.name&quot;
+      :email=&quot;user.email&quot;
+      :avatar=&quot;user.avatar&quot;
+      @edit=&quot;handleEdit(user.id)&quot;
+      @delete=&quot;handleDelete(user.id)&quot;
+    />
+  </div>
+</template>" />
 
 The container knows about the API, routing, and what happens on user actions. The `UserCard` knows none of this.
 
@@ -114,6 +168,21 @@ const { users, deleteUser } = useUsers()
   />
 </template>
 ```
+
+<PlaygroundLink code="<!-- views/UserListView.vue -->
+
+<script setup>
+const { users, deleteUser } = useUsers()
+</script>
+
+&#10;<template>
+<UserCard
+v-for=&quot;user in users&quot;
+:key=&quot;user.id&quot;
+v-bind=&quot;user&quot;
+@delete=&quot;deleteUser(user.id)&quot;
+/>
+</template>" />
 
 The page component is thinner because the composable owns the logic. The presentational component stays the same.
 

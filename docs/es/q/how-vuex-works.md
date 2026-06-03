@@ -91,6 +91,17 @@ function loadUsers() {
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+&#10;const store = useStore()
+&#10;const users = computed(() => store.state.users)
+const activeUsers = computed(() => store.getters.activeUsers)
+&#10;function loadUsers() {
+  store.dispatch('fetchUsers')
+}
+</script>" />
+
 Observa la API basada en strings: `commit('SET_USERS')`, `dispatch('fetchUsers')`, `store.getters.activeUsers`. Estos strings no son type-safe. Los typos se convierten en bugs en runtime, no en errores de compilación. Esta es una de las principales razones por las que se creó Pinia.
 
 ## Módulos

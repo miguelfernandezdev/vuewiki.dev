@@ -23,6 +23,15 @@ const name = ref('World')
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <p>Hello, {{ name }}</p>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const name = ref('World')
+</script>" />
+
 **Reactividad.** Vue rastrea las dependencias en tiempo de ejecución. Cuando un valor reactivo cambia, solo las partes del DOM que dependen de él se vuelven a renderizar.
 
 ```ts
@@ -59,6 +68,17 @@ App
 /* estilos aislados a este componente */
 </style>
 ```
+
+<PlaygroundLink code="<script setup>
+// lógica
+</script>
+&#10;<template>
+
+  <!-- marcado -->
+</template>
+&#10;<style scoped>
+/* estilos aislados a este componente */
+</style>" />
 
 ## Cómo se compara Vue con otros frameworks
 

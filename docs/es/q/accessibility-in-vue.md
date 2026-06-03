@@ -32,6 +32,24 @@ La decisión de accesibilidad con mayor impacto no tiene nada que ver con Vue:
 </template>
 ```
 
+<PlaygroundLink code="<!-- MAL: sopa de divs con parches ARIA -->
+<template>
+
+  <div role=&quot;navigation&quot;>
+    <div role=&quot;list&quot;>
+      <div role=&quot;listitem&quot; @click=&quot;navigate&quot;>Home</div>
+    </div>
+  </div>
+</template>
+&#10;<!-- BIEN: elementos nativos que funcionan sin configuración extra -->
+<template>
+  <nav aria-label=&quot;Main navigation&quot;>
+    <ul>
+      <li><RouterLink to=&quot;/&quot;>Home</RouterLink></li>
+    </ul>
+  </nav>
+</template>" />
+
 Los elementos nativos ofrecen soporte de teclado, anuncios de lectores de pantalla y comportamiento de foco de forma gratuita. ARIA no puede añadir funcionalidad, solo puede describir lo que ya existe.
 
 ## Atributos ARIA en templates Vue
@@ -55,6 +73,24 @@ const panelId = useId()
   <div v-show="isExpanded" :id="panelId" role="region">Panel content</div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const isExpanded = ref(false)
+const panelId = useId()
+</script>
+&#10;<template>
+<button
+:aria-expanded=&quot;isExpanded&quot;
+:aria-controls=&quot;panelId&quot;
+@click=&quot;isExpanded = !isExpanded&quot;
+
+>
+
+    Details
+
+  </button>
+  <div v-show=&quot;isExpanded&quot; :id=&quot;panelId&quot; role=&quot;region&quot;>Panel content</div>
+</template>" />
 
 `useId()` (Vue 3.5+) genera un ID único para cada instancia del componente, evitando IDs duplicados cuando el componente se reutiliza.
 
@@ -111,6 +147,35 @@ function closeModal() {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const triggerRef = ref<HTMLElement>()
+const dialogRef = ref<HTMLElement>()
+&#10;function openModal() {
+isOpen.value = true
+nextTick(() => dialogRef.value?.focus())
+}
+&#10;function closeModal() {
+isOpen.value = false
+triggerRef.value?.focus()
+}
+</script>
+&#10;<template>
+<button ref=&quot;triggerRef&quot; @click=&quot;openModal&quot;>Open</button>
+&#10; <dialog
+v-if=&quot;isOpen&quot;
+ref=&quot;dialogRef&quot;
+tabindex=&quot;-1&quot;
+@keydown.escape=&quot;closeModal&quot;
+
+>
+
+    <h2>Dialog title</h2>
+    <p>Content here</p>
+    <button @click=&quot;closeModal&quot;>Close</button>
+
+  </dialog>
+</template>" />
+
 Usar el elemento nativo `<dialog>` gestiona el atrapamiento de foco automáticamente cuando se abre con `showModal()`.
 
 ## Regiones en vivo para contenido dinámico
@@ -138,6 +203,24 @@ async function save() {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const notification = ref('')
+&#10;async function save() {
+await submitForm()
+notification.value = 'Changes saved successfully'
+}
+</script>
+&#10;<template>
+
+  <form @submit.prevent=&quot;save&quot;>
+    <!-- campos del formulario -->
+    <button type=&quot;submit&quot;>Save</button>
+  </form>
+&#10;  <div aria-live=&quot;polite&quot; role=&quot;status&quot; class=&quot;sr-only&quot;>
+    {{ notification }}
+  </div>
+</template>" />
 
 `aria-live="polite"` espera a que el lector de pantalla termine su anuncio actual. Usa `aria-live="assertive"` solo para mensajes urgentes como errores.
 
@@ -167,6 +250,13 @@ Contenido que debe estar disponible para lectores de pantalla pero no visible en
   </button>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <button @click=&quot;removeItem(item)&quot;>
+    <TrashIcon />
+    <span class=&quot;sr-only&quot;>Remove {{ item.name }}</span>
+  </button>
+</template>" />
 
 Sin el texto visualmente oculto, un lector de pantalla solo anunciaría "botón" sin indicar qué hace.
 

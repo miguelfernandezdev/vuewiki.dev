@@ -34,6 +34,27 @@ Wrap a single element (or component) that toggles with `v-if` or `v-show`. Vue a
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <button @click=&quot;show = !show&quot;>Toggle</button>
+&#10;  <Transition name=&quot;fade&quot;>
+    <p v-if=&quot;show&quot;>Hello</p>
+  </Transition>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const show = ref(true)
+</script>
+&#10;<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+&#10;.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>" />
+
 The class naming pattern with a `name` of `"fade"`:
 
 ```
@@ -53,6 +74,13 @@ When swapping between two elements, both are visible at the same time by default
   </Transition>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Transition name=&quot;fade&quot; mode=&quot;out-in&quot;>
+    <p v-if=&quot;isActive&quot; key=&quot;active&quot;>Active</p>
+    <p v-else key=&quot;inactive&quot;>Inactive</p>
+  </Transition>
+</template>" />
 
 Add `key` when swapping elements of the same type (`<p>` to `<p>`), otherwise Vue reuses the DOM node and the transition doesn't fire.
 
@@ -117,6 +145,32 @@ For lists rendered with `v-for`. Every child must have a unique `:key`.
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <TransitionGroup name=&quot;list&quot; tag=&quot;ul&quot;>
+    <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+      {{ item.name }}
+    </li>
+  </TransitionGroup>
+</template>
+&#10;<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+&#10;.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+&#10;/* Animate remaining items when one is removed */
+.list-move {
+  transition: transform 0.3s ease;
+}
+&#10;.list-leave-active {
+  position: absolute;
+}
+</style>" />
+
 The `.list-move` class animates items that shift position when a sibling enters or leaves. Setting `position: absolute` on the leaving element lets the remaining items flow into place smoothly.
 
 ## Staggered list animations
@@ -154,6 +208,37 @@ function onEnter(el: HTMLElement, done: () => void) {
 }
 </script>
 ```
+
+<PlaygroundLink code="<template>
+<TransitionGroup
+tag=&quot;ul&quot;
+:css=&quot;false&quot;
+@before-enter=&quot;onBeforeEnter&quot;
+@enter=&quot;onEnter&quot;
+
+>
+
+    <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot; :data-index=&quot;index&quot;>
+      {{ item.name }}
+    </li>
+
+  </TransitionGroup>
+</template>
+&#10;<script setup>
+function onBeforeEnter(el: HTMLElement) {
+  el.style.opacity = '0'
+  el.style.transform = 'translateY(12px)'
+}
+&#10;function onEnter(el: HTMLElement, done: () => void) {
+  const delay = Number(el.dataset.index) * 80
+  setTimeout(() => {
+    el.style.transition = 'all 0.25s ease'
+    el.style.opacity = '1'
+    el.style.transform = 'translateY(0)'
+    setTimeout(done, 250)
+  }, delay)
+}
+</script>" />
 
 ## Transition vs TransitionGroup
 

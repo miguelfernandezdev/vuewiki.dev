@@ -84,6 +84,15 @@ const counter = useCounterStore()
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const counter = useCounterStore()
+</script>
+&#10;<template>
+
+  <p>{{ counter.count }} (doble: {{ counter.doubled }})</p>
+  <button @click=&quot;counter.increment()&quot;>+1</button>
+</template>" />
+
 La instancia del store es reactiva. Accede a las propiedades directamente, sin necesidad de `.value` en el template.
 
 ## Desestructurar con storeToRefs
@@ -99,6 +108,13 @@ const { count, doubled } = storeToRefs(counter) // refs reactivos
 const { increment } = counter // las actions no necesitan storeToRefs
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { storeToRefs } from 'pinia'
+&#10;const counter = useCounterStore()
+const { count, doubled } = storeToRefs(counter) // refs reactivos
+const { increment } = counter // las actions no necesitan storeToRefs
+</script>" />
 
 ## Modificar el state
 

@@ -18,6 +18,13 @@ function increment() {
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ count: number }>()
+&#10;function increment() {
+  props.count++ // ⚠️ Warning: Attempting to mutate prop &quot;count&quot;
+}
+</script>" />
+
 Vue shows this warning because it's almost always a bug. The data owner (parent) and the data mutator (child) are out of sync.
 
 ## How to fix it
@@ -39,6 +46,19 @@ function increment() {
 <Counter :count="count" @update="count = $event" />
 ```
 
+<PlaygroundLink code="<!-- Child -->
+
+<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ count: number }>()
+const emit = defineEmits<{ update: [value: number] }>()
+&#10;function increment() {
+  emit('update', props.count + 1)
+}
+</script>
+
+&#10;<!-- Parent -->
+<Counter :count=&quot;count&quot; @update=&quot;count = $event&quot; />" />
+
 **Option 2:** Use `v-model` (shortcut for the pattern above).
 
 ```vue
@@ -54,6 +74,18 @@ const count = defineModel<number>()
 <!-- Parent -->
 <Counter v-model="count" />
 ```
+
+<PlaygroundLink code="<!-- Child -->
+
+<script setup lang=&quot;ts&quot;>
+const count = defineModel<number>()
+</script>
+
+&#10;<template>
+<button @click=&quot;count++&quot;>{{ count }}</button>
+</template>
+&#10;<!-- Parent -->
+<Counter v-model=&quot;count&quot; />" />
 
 **Option 3:** Use a local copy if the prop is just an initial value.
 

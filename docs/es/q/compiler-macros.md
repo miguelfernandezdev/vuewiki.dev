@@ -32,6 +32,23 @@ const props = withDefaults(
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{
+  title: string
+  count?: number
+}>()
+&#10;// Con valores por defecto
+const props = withDefaults(
+  defineProps<{
+    title: string
+    items?: string[]
+  }>(),
+  {
+    items: () => []
+  }
+)
+</script>" />
+
 ## defineEmits
 
 Declara los eventos que puede emitir el componente. Devuelve una función emit tipada.
@@ -46,6 +63,14 @@ const emit = defineEmits<{
 emit('submit', formData)
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const emit = defineEmits<{
+  submit: [data: FormData]
+  cancel: []
+}>()
+&#10;emit('submit', formData)
+</script>" />
 
 ## defineModel (Vue 3.4+)
 
@@ -65,6 +90,17 @@ const [text, modifiers] = defineModel<string>({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const name = defineModel<string>('name', { required: true })
+const checked = defineModel<boolean>({ default: false })
+&#10;// Con modificadores personalizados
+const [text, modifiers] = defineModel<string>({
+  set(value) {
+    return modifiers.trim ? value.trim() : value
+  }
+})
+</script>" />
+
 ## defineExpose
 
 Controla lo que el componente expone a las template refs del padre. Sin ella, los componentes `<script setup>` no exponen nada.
@@ -82,6 +118,15 @@ defineExpose({ count, reset })
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const count = ref(0)
+function reset() {
+  count.value = 0
+}
+&#10;defineExpose({ count, reset })
+</script>" />
+
 ## defineOptions (Vue 3.3+)
 
 Establece opciones del componente que no tienen una macro equivalente, como `name` e `inheritAttrs`.
@@ -94,6 +139,13 @@ defineOptions({
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+defineOptions({
+  name: 'MyComponent',
+  inheritAttrs: false
+})
+</script>" />
 
 Antes de la versión 3.3, necesitabas un bloque `<script>` separado para esto.
 
@@ -110,6 +162,14 @@ const slots = defineSlots<{
 }>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const slots = defineSlots<{
+  default: (props: { item: User }) => any
+  header: (props: { title: string }) => any
+  empty: () => any
+}>()
+</script>" />
 
 No cambia el comportamiento en tiempo de ejecución. Solo proporciona comprobación de tipos para las props de slot en el template y para los consumidores que usan el componente.
 

@@ -25,6 +25,17 @@ onUpdated(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, onUpdated } from 'vue'
+&#10;const name = ref('Alice')
+const count = ref(0)
+&#10;onUpdated(() => {
+  console.log('Component re-rendered')
+  // Fires when name OR count changes
+  // You don't know which one triggered it
+})
+</script>" />
+
 The hook has no information about what changed. It just tells you the DOM was patched. If the component has 10 reactive properties, the hook fires when any of them changes.
 
 ## The dangers
@@ -105,6 +116,22 @@ watch(
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, watch } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
+&#10;const items = ref([])
+&#10;const syncToServer = useDebounceFn((newItems) => {
+  fetch('/api/sync', { method: 'POST', body: JSON.stringify(newItems) })
+}, 500)
+&#10;watch(
+  items,
+  (newItems) => {
+    syncToServer(newItems)
+  },
+  { deep: true }
+)
+</script>" />
+
 This only fires when `items` changes, not when any other state in the component changes. The debounce prevents hammering the server.
 
 ## Use computed for derived data
@@ -141,6 +168,13 @@ onUpdated(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { onUpdated } from 'vue'
+&#10;onUpdated(() => {
+  thirdPartyWidget.refresh()
+})
+</script>" />
+
 Some libraries (chart renderers, syntax highlighters) need to know when the DOM changed so they can re-measure or re-paint.
 
 ### Auto-scrolling after content changes
@@ -164,6 +198,22 @@ onUpdated(() => {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { ref, onUpdated } from 'vue'
+&#10;const chatContainer = (ref < HTMLElement) | (null > null)
+&#10;onUpdated(() => {
+if (chatContainer.value) {
+chatContainer.value.scrollTop = chatContainer.value.scrollHeight
+}
+})
+</script>
+&#10;<template>
+
+  <div ref=&quot;chatContainer&quot; class=&quot;chat&quot;>
+    <div v-for=&quot;msg in messages&quot; :key=&quot;msg.id&quot;>{{ msg.text }}</div>
+  </div>
+</template>" />
 
 The scroll position depends on the rendered DOM height, not on the data directly. This is one of the few cases where `updated` makes sense.
 

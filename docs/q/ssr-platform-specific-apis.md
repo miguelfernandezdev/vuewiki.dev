@@ -47,6 +47,18 @@ onMounted(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const width = ref(0)
+const theme = ref('light')
+&#10;onMounted(() => {
+  width.value = window.innerWidth
+  theme.value = localStorage.getItem('theme') || 'light'
+&#10;  window.addEventListener('resize', () => {
+    width.value = window.innerWidth
+  })
+})
+</script>" />
+
 Initialize refs with safe defaults that work on the server, then update them after mount.
 
 ## Solution 2: typeof guard
@@ -78,6 +90,15 @@ if (import.meta.server) {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+if (import.meta.client) {
+  window.analytics.track('page_view')
+}
+&#10;if (import.meta.server) {
+  console.log('Rendering on server')
+}
+</script>" />
+
 Code inside `import.meta.server` is removed from the client bundle, and vice versa. This is better than a runtime check because it reduces bundle size.
 
 ## Solution 4: ClientOnly component (Nuxt)
@@ -94,6 +115,15 @@ Wrap browser-only components so they render only on the client:
   </ClientOnly>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <ClientOnly>
+    <BrowserChart :data=&quot;chartData&quot; />
+    <template #fallback>
+      <div class=&quot;skeleton&quot; />
+    </template>
+  </ClientOnly>
+</template>" />
 
 The `#fallback` slot renders during SSR so the layout doesn't shift when the component loads.
 
@@ -114,6 +144,17 @@ const MapView = defineAsyncComponent(() =>
   </ClientOnly>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const MapView = defineAsyncComponent(() =>
+  import('leaflet-vue').then((m) => m.MapView)
+)
+</script>
+&#10;<template>
+  <ClientOnly>
+    <MapView :center=&quot;[40, -3]&quot; />
+  </ClientOnly>
+</template>" />
 
 ## SSR-safe composable pattern
 

@@ -21,6 +21,13 @@ Adding `scoped` to a `<style>` block limits the CSS to the current component. Vu
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+.title {
+  color: blue;
+}
+/* Compiles to: .title[data-v-abc123] { color: blue; } */
+</style>" />
+
 Styles won't leak to parent or sibling components. Child component internals are also unaffected (except the child's root element).
 
 ## CSS Modules
@@ -39,6 +46,17 @@ CSS Modules hash class names at build time. You bind them via `$style` instead o
 /* Compiles to: .title_abc1 { color: blue; } */
 </style>
 ```
+
+<PlaygroundLink code="<template>
+
+  <h1 :class=&quot;$style.title&quot;>Hello</h1>
+</template>
+&#10;<style module>
+.title {
+  color: blue;
+}
+/* Compiles to: .title_abc1 { color: blue; } */
+</style>" />
 
 The advantage over scoped styles: hashed names work everywhere in the DOM, so they're safe for teleported content, dynamic elements, and third-party integrations.
 
@@ -67,6 +85,22 @@ const baseClass = ref('card')
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Object syntax: key is class name, value is condition -->
+  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
+&#10;  <!-- Array syntax: combine multiple sources -->
+  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
+&#10;  <!-- With CSS Modules -->
+  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const isActive = ref(true)
+const isDisabled = ref(false)
+const baseClass = ref('card')
+</script>" />
+
 ## Dynamic inline styles
 
 ```vue
@@ -78,6 +112,14 @@ const baseClass = ref('card')
   <div :style="[baseStyles, overrideStyles]">...</div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Object syntax -->
+  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
+&#10;  <!-- Array syntax: merges multiple style objects -->
+  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
+</template>" />
 
 Vue auto-prefixes vendor-specific CSS properties at runtime, so you don't need to write `-webkit-` or `-moz-` yourself.
 

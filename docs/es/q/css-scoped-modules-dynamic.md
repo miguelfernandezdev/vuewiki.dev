@@ -21,6 +21,13 @@ Añadir `scoped` a un bloque `<style>` limita el CSS al componente actual. Vue a
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+.title {
+  color: blue;
+}
+/* Compila a: .title[data-v-abc123] { color: blue; } */
+</style>" />
+
 Los estilos no se filtran a componentes padre o hermanos. Los internos de los componentes hijos tampoco se ven afectados (excepto el elemento raíz del hijo).
 
 ## CSS Modules
@@ -39,6 +46,17 @@ CSS Modules hace hash de los nombres de clase en tiempo de compilación. Los enl
 /* Compila a: .title_abc1 { color: blue; } */
 </style>
 ```
+
+<PlaygroundLink code="<template>
+
+  <h1 :class=&quot;$style.title&quot;>Hello</h1>
+</template>
+&#10;<style module>
+.title {
+  color: blue;
+}
+/* Compila a: .title_abc1 { color: blue; } */
+</style>" />
 
 La ventaja frente a los estilos con scoped: los nombres con hash funcionan en cualquier lugar del DOM, así que son seguros para contenido teleportado, elementos dinámicos e integraciones de terceros.
 
@@ -67,6 +85,22 @@ const baseClass = ref('card')
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Sintaxis de objeto: la clave es el nombre de clase, el valor es la condición -->
+  <div :class=&quot;{ active: isActive, disabled: isDisabled }&quot;>...</div>
+&#10;  <!-- Sintaxis de array: combina varias fuentes -->
+  <div :class=&quot;[baseClass, { active: isActive }]&quot;>...</div>
+&#10;  <!-- Con CSS Modules -->
+  <div :class=&quot;[$style.card, { [$style.active]: isActive }]&quot;>...</div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const isActive = ref(true)
+const isDisabled = ref(false)
+const baseClass = ref('card')
+</script>" />
+
 ## Estilos inline dinámicos
 
 ```vue
@@ -78,6 +112,14 @@ const baseClass = ref('card')
   <div :style="[baseStyles, overrideStyles]">...</div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Sintaxis de objeto -->
+  <div :style=&quot;{ color: textColor, fontSize: size + 'px' }&quot;>...</div>
+&#10;  <!-- Sintaxis de array: combina varios objetos de estilo -->
+  <div :style=&quot;[baseStyles, overrideStyles]&quot;>...</div>
+</template>" />
 
 Vue añade automáticamente prefijos de vendor para propiedades CSS específicas del navegador, así que no necesitas escribir `-webkit-` ni `-moz-` tú mismo.
 

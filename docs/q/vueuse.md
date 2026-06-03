@@ -185,6 +185,22 @@ watch(searchQuery, (q) => debouncedSearch(q))
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { useLocalStorage, useDebounceFn, useMediaQuery } from '@vueuse/core'
+&#10;const searchQuery = useLocalStorage('search', '')
+const isMobile = useMediaQuery('(max-width: 768px)')
+&#10;const debouncedSearch = useDebounceFn((query: string) => {
+  fetchResults(query)
+}, 300)
+&#10;watch(searchQuery, (q) => debouncedSearch(q))
+</script>
+&#10;<template>
+  <input
+    v-model=&quot;searchQuery&quot;
+    :placeholder=&quot;isMobile ? 'Search...' : 'Search articles...'&quot;
+  />
+</template>" />
+
 ## VueUse vs writing your own
 
 Write your own composable when the logic is specific to your domain. Use VueUse when the problem is generic (debounce, storage, media queries, clipboard, intersection observer). VueUse composables handle edge cases, SSR compatibility, and cleanup that you would otherwise have to implement yourself.

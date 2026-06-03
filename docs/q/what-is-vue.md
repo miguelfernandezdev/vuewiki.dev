@@ -23,6 +23,15 @@ const name = ref('World')
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <p>Hello, {{ name }}</p>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const name = ref('World')
+</script>" />
+
 **Reactivity.** Vue tracks dependencies at runtime. When a reactive value changes, only the parts of the DOM that depend on it re-render.
 
 ```ts
@@ -59,6 +68,17 @@ App
 /* styles isolated to this component */
 </style>
 ```
+
+<PlaygroundLink code="<script setup>
+// logic
+</script>
+&#10;<template>
+
+  <!-- markup -->
+</template>
+&#10;<style scoped>
+/* styles isolated to this component */
+</style>" />
 
 ## How Vue compares to other frameworks
 

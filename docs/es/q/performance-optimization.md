@@ -25,6 +25,14 @@ El sistema de reactividad de Vue es eficiente por diseño, pero no puede saber q
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Se renderiza una vez, nunca vuelve a ser diffeado -->
+  <footer v-once>
+    <p>© 2024 Acme Corp. Todos los derechos reservados.</p>
+  </footer>
+</template>" />
+
 ### `v-memo` para elementos de lista que rara vez cambian
 
 `v-memo` acepta un array de dependencias, igual que `useMemo` funciona en React. Vue omite el re-render del subárbol cuando todos los valores de ese array son iguales al render anterior. Esto es especialmente útil dentro de bucles `v-for` donde solo una pequeña fracción de los elementos cambia en cada actualización.
@@ -50,6 +58,25 @@ defineProps<{
   </ul>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Item {
+id: number
+label: string
+}
+&#10;defineProps<{
+items: Item[]
+selectedId: number
+}>()
+</script>
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
+      {{ item.label }}
+    </li>
+  </ul>
+</template>" />
 
 Con 1.000 elementos en la lista, seleccionar una fila diferente hace que Vue solo re-renderice las dos filas cuyo valor de `v-memo` cambió, no las 1.000.
 
@@ -81,6 +108,25 @@ function updateConfig(next: Config) {
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { shallowRef } from 'vue'
+&#10;interface Config {
+  theme: string
+  locale: string
+  featureFlags: Record<string, boolean>
+  // ... potencialmente cientos de claves más
+}
+&#10;const config = shallowRef<Config>({
+  theme: 'dark',
+  locale: 'en',
+  featureFlags: {}
+})
+&#10;function updateConfig(next: Config) {
+  // Reemplazar la ref de nivel superior dispara la reactividad correctamente
+  config.value = next
+}
+</script>" />
+
 ### Caché de `computed` frente a llamar a un método repetidamente
 
 Una propiedad `computed` tiene caché: Vue evalúa la función una vez y devuelve el resultado cacheado en cada acceso posterior hasta que alguna de sus dependencias reactivas cambia. Una llamada a un método no tiene caché; se ejecuta en cada render. Si tienes una operación costosa de filtrado u ordenación que no necesita ejecutarse en cada pulsación de tecla, hazla un `computed`, no un método.
@@ -100,6 +146,17 @@ function getSortedItems() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref, computed } from 'vue'
+&#10;const items = ref<string[]>(['banana', 'apple', 'cherry'])
+&#10;// Se ejecuta una vez, con caché hasta que `items` cambie
+const sortedItems = computed(() => [...items.value].sort())
+&#10;// Se ejecuta en cada render — sin caché
+function getSortedItems() {
+  return [...items.value].sort()
+}
+</script>" />
 
 ## Optimizaciones de carga
 
@@ -162,6 +219,24 @@ const ChartWidget = defineAsyncComponent({
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { defineAsyncComponent } from 'vue'
+&#10;const RichTextEditor = defineAsyncComponent(
+  () => import('@/components/RichTextEditor.vue')
+)
+&#10;const ChartWidget = defineAsyncComponent({
+  loader: () => import('@/components/ChartWidget.vue'),
+  loadingComponent: LoadingSpinner,
+  errorComponent: ErrorDisplay,
+  delay: 200, // Mostrar el spinner solo después de 200ms
+  timeout: 5000
+})
+</script>
+&#10;<template>
+  <RichTextEditor v-if=&quot;isEditing&quot; />
+  <ChartWidget />
+</template>" />
+
 ### Lazy hydration en Nuxt
 
 En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el componente entra en el viewport (o se necesita). El componente sigue siendo renderizado por el servidor como HTML, pero la hidratación del lado del cliente (que es lo que lo hace interactivo) se retrasa. Esto mejora directamente el Time to Interactive en páginas con mucho contenido.
@@ -176,6 +251,15 @@ En Nuxt, prefijar un componente con `Lazy` difiere su JavaScript hasta que el co
   <LazyRecommendedArticles />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Se hidrata de inmediato -->
+  <HeroSection />
+&#10;  <!-- La hidratación se difiere hasta que el componente se necesite -->
+  <LazyCommentSection />
+  <LazyRecommendedArticles />
+</template>" />
 
 ## Rendimiento en listas
 
@@ -209,6 +293,30 @@ defineProps<{ users: User[] }>()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { RecycleScroller } from 'vue-virtual-scroller'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+&#10;interface User {
+id: number
+name: string
+email: string
+}
+&#10;defineProps<{ users: User[] }>()
+</script>
+&#10;<template>
+<RecycleScroller
+:items=&quot;users&quot;
+:item-size=&quot;56&quot;
+key-field=&quot;id&quot;
+v-slot=&quot;{ item }&quot;
+
+>
+
+    <UserRow :user=&quot;item&quot; />
+
+  </RecycleScroller>
+</template>" />
+
 La **estabilidad de props** es un patrón relacionado. Cuando pasas valores derivados a un elemento de lista que cambian en cada re-render del padre, todos los elementos se re-renderizan también, aunque sus propios datos no hayan cambiado. Prefiere pasar el booleano derivado directamente:
 
 ```vue
@@ -228,6 +336,21 @@ La **estabilidad de props** es un patrón relacionado. Cuando pasas valores deri
   :active="user.id === activeId"
 />
 ```
+
+<PlaygroundLink code="<!-- Inestable: el prop `activeId` hace que todos los elementos se re-rendericen -->
+<UserRow
+  v-for=&quot;user in users&quot;
+  :key=&quot;user.id&quot;
+  :user=&quot;user&quot;
+  :active-id=&quot;activeId&quot;
+/>
+&#10;<!-- Estable: solo el elemento cuyo valor `active` cambia se re-renderiza -->
+<UserRow
+  v-for=&quot;user in users&quot;
+  :key=&quot;user.id&quot;
+  :user=&quot;user&quot;
+  :active=&quot;user.id === activeId&quot;
+/>" />
 
 ## Rendimiento de la reactividad
 

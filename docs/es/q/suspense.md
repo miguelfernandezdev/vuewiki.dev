@@ -24,6 +24,17 @@ summary: '<Suspense> renderiza contenido de respaldo mientras los hijos async se
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <Suspense>
+    <!-- Slot por defecto: el contenido asíncrono -->
+    <AsyncDashboard />
+&#10;    <!-- Slot fallback: se muestra mientras carga -->
+    <template #fallback>
+      <LoadingSkeleton />
+    </template>
+  </Suspense>
+</template>" />
+
 `Suspense` espera a que todas las dependencias asíncronas dentro del slot por defecto se resuelvan antes de cambiar del fallback al contenido real.
 
 ## Async setup
@@ -43,6 +54,19 @@ const posts = await fetchPosts(user.id)
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserProfile.vue -->
+
+<script setup>
+const user = await fetchUser() // await de nivel superior
+const posts = await fetchPosts(user.id)
+</script>
+
+&#10;<template>
+
+  <h1>{{ user.name }}</h1>
+  <PostList :posts=&quot;posts&quot; />
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <template>
@@ -52,6 +76,14 @@ const posts = await fetchPosts(user.id)
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <Suspense>
+    <UserProfile />
+    <template #fallback>Cargando perfil...</template>
+  </Suspense>
+</template>" />
 
 ## Un único elemento raíz en cada slot
 
@@ -75,6 +107,21 @@ Suspense rastrea un único hijo inmediato por slot. Envuelve varios elementos:
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <Suspense>
+    <div>
+      <AsyncHeader />
+      <AsyncContent />
+    </div>
+&#10;    <template #fallback>
+      <div>
+        <LoadingSpinner />
+        <p>Cargando...</p>
+      </div>
+    </template>
+  </Suspense>
+</template>" />
+
 ## Timeout para re-activaciones
 
 Cuando Suspense ya está resuelto y comienza nuevo trabajo asíncrono (por ejemplo, al cambiar de vista), el contenido anterior permanece visible hasta que expira un timeout. Configura `timeout` para controlar cuándo vuelve a aparecer el fallback:
@@ -88,6 +135,15 @@ Cuando Suspense ya está resuelto y comienza nuevo trabajo asíncrono (por ejemp
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Muestra el fallback tras 200ms si la nueva vista no ha resuelto -->
+  <Suspense :timeout=&quot;200&quot;>
+    <component :is=&quot;currentView&quot; :key=&quot;currentView&quot; />
+    <template #fallback>Cargando...</template>
+  </Suspense>
+</template>" />
 
 ## Eventos de Suspense
 
@@ -109,6 +165,18 @@ const isLoading = ref(false)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+const isLoading = ref(false)
+</script>
+&#10;<template>
+  <ProgressBar v-if=&quot;isLoading&quot; />
+&#10;  <Suspense @pending=&quot;isLoading = true&quot; @resolve=&quot;isLoading = false&quot;>
+    <AsyncPage />
+    <template #fallback><PageSkeleton /></template>
+  </Suspense>
+</template>" />
+
 ## Anidamiento con RouterView, Transition y KeepAlive
 
 El orden correcto de anidamiento es RouterView, luego Transition, luego KeepAlive y luego Suspense:
@@ -127,6 +195,19 @@ El orden correcto de anidamiento es RouterView, luego Transition, luego KeepAliv
   </RouterView>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <RouterView v-slot=&quot;{ Component }&quot;>
+    <Transition mode=&quot;out-in&quot;>
+      <KeepAlive>
+        <Suspense>
+          <component :is=&quot;Component&quot; />
+          <template #fallback>Cargando...</template>
+        </Suspense>
+      </KeepAlive>
+    </Transition>
+  </RouterView>
+</template>" />
 
 ## Suspense sigue siendo experimental
 

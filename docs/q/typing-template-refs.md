@@ -24,6 +24,16 @@ onMounted(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const inputRef = ref<HTMLInputElement | null>(null)
+&#10;onMounted(() => {
+  inputRef.value?.focus()
+})
+</script>
+&#10;<template>
+  <input ref=&quot;inputRef&quot; />
+</template>" />
+
 The type is `HTMLInputElement | null` because the ref is `null` during setup and becomes the element only after the component mounts.
 
 ## useTemplateRef (Vue 3.5+)
@@ -43,6 +53,16 @@ onMounted(() => {
   <input ref="my-input" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const input = useTemplateRef<HTMLInputElement>('my-input')
+&#10;onMounted(() => {
+  input.value?.focus()
+})
+</script>
+&#10;<template>
+  <input ref=&quot;my-input&quot; />
+</template>" />
 
 The string `'my-input'` matches the `ref` attribute in the template. The variable name `input` is independent.
 
@@ -66,6 +86,17 @@ function submit() {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import ChildForm from './ChildForm.vue'
+&#10;const formRef = ref<InstanceType<typeof ChildForm> | null>(null)
+&#10;function submit() {
+  formRef.value?.validate()
+}
+</script>
+&#10;<template>
+  <ChildForm ref=&quot;formRef&quot; />
+</template>" />
+
 The child must expose the method with `defineExpose`:
 
 ```vue
@@ -79,6 +110,16 @@ function validate() {
 defineExpose({ validate })
 </script>
 ```
+
+<PlaygroundLink code="<!-- ChildForm.vue -->
+
+<script setup lang=&quot;ts&quot;>
+function validate() {
+  // validation logic
+  return isValid.value
+}
+&#10;defineExpose({ validate })
+</script>" />
 
 Without `defineExpose`, the parent cannot access any of the child's internal state or methods.
 
@@ -102,6 +143,20 @@ watch(modalRef, (el) => {
   <div v-if="showModal" ref="modalRef" tabindex="-1">Modal content</div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const showModal = ref(false)
+const modalRef = ref<HTMLDivElement | null>(null)
+&#10;watch(modalRef, (el) => {
+if (el) {
+el.focus() // element just mounted
+}
+})
+</script>
+&#10;<template>
+
+  <div v-if=&quot;showModal&quot; ref=&quot;modalRef&quot; tabindex=&quot;-1&quot;>Modal content</div>
+</template>" />
 
 Always use optional chaining or null checks when the ref target can be conditionally rendered.
 
@@ -135,6 +190,30 @@ onMounted(() => {
   </ul>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const items = ref(['a', 'b', 'c'])
+const itemRefs = ref<(HTMLLIElement | null)[]>([])
+&#10;onMounted(() => {
+itemRefs.value[0]?.focus()
+})
+</script>
+&#10;<template>
+
+  <ul>
+    <li
+      v-for=&quot;(item, index) in items&quot;
+      :key=&quot;item&quot;
+      :ref=&quot;
+        (el) => {
+          itemRefs[index] = el as HTMLLIElement
+        }
+      &quot;
+    >
+      {{ item }}
+    </li>
+  </ul>
+</template>" />
 
 ## After async operations
 

@@ -44,6 +44,33 @@ function removeFirst() {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref } from 'vue'
+&#10;const items = ref([
+{ id: 1, name: 'Apple' },
+{ id: 2, name: 'Banana' },
+{ id: 3, name: 'Cherry' }
+])
+&#10;function removeFirst() {
+items.value.shift()
+}
+</script>
+&#10;<template>
+
+  <!-- ❌ key=index: tras eliminar Apple, el input que tenía el texto de Apple
+       ahora aparece junto a Banana — el estado no coincide -->
+  <div v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
+    <span>{{ item.name }}</span>
+    <input placeholder=&quot;Escribe algo&quot; />
+  </div>
+&#10;  <!-- ✅ key=item.id: Vue elimina correctamente el nodo DOM de Apple,
+       Banana y Cherry conservan sus inputs y su estado -->
+  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;>
+    <span>{{ item.name }}</span>
+    <input placeholder=&quot;Escribe algo&quot; />
+  </div>
+</template>" />
+
 Escribe algo en cada input y luego elimina el primer elemento. Con `key=index`, los inputs se mezclan. Con `key=item.id`, el nodo DOM correcto se elimina y todo lo demás permanece en su sitio.
 
 ## Las reglas
@@ -63,6 +90,14 @@ Escribe algo en cada input y luego elimina el primer elemento. Con `key=index`, 
 <!-- ❌ Mal: el índice cambia cuando el array cambia -->
 <li v-for="(item, i) in items" :key="i">{{ item.name }}</li>
 ```
+
+<PlaygroundLink code="<!-- ✅ Bien: ID estable de los datos -->
+
+<li v-for=&quot;user in users&quot; :key=&quot;user.id&quot;>{{ user.name }}</li>
+&#10;<!-- ✅ Bien: string único y estable -->
+<li v-for=&quot;tab in tabs&quot; :key=&quot;tab.slug&quot;>{{ tab.label }}</li>
+&#10;<!-- ❌ Mal: el índice cambia cuando el array cambia -->
+<li v-for=&quot;(item, i) in items&quot; :key=&quot;i&quot;>{{ item.name }}</li>" />
 
 ## Cuándo el índice es válido
 

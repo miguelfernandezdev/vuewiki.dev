@@ -61,6 +61,29 @@ function retry() {
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/ErrorBoundary.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const error = ref<Error | null>(null)
+&#10;onErrorCaptured((err) => {
+  error.value = err
+  return false // stop propagation — don't reach app.config.errorHandler
+})
+&#10;function retry() {
+  error.value = null
+}
+</script>
+
+&#10;<template>
+
+  <div v-if=&quot;error&quot; class=&quot;error-state&quot;>
+    <h3>Something went wrong</h3>
+    <p>{{ error.message }}</p>
+    <button @click=&quot;retry&quot;>Try again</button>
+  </div>
+  <slot v-else />
+</template>" />
+
 Wrap sections of your app that can fail:
 
 ```vue
@@ -72,6 +95,14 @@ Wrap sections of your app that can fail:
   <AppFooter />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <AppHeader />
+  <ErrorBoundary>
+    <RouterView />
+  </ErrorBoundary>
+  <AppFooter />
+</template>" />
 
 If a page crashes, the header and footer stay visible. The user sees an error message with a retry button instead of a blank screen.
 
@@ -110,6 +141,28 @@ async function submitForm(data: FormData) {
   <form @submit.prevent="submitForm">...</form>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const error = ref<string | null>(null)
+const isLoading = ref(false)
+&#10;async function submitForm(data: FormData) {
+error.value = null
+isLoading.value = true
+try {
+await $fetch('/api/submit', { method: 'POST', body: data })
+navigateTo('/success')
+} catch (e) {
+error.value = e instanceof Error ? e.message : 'Something went wrong'
+} finally {
+isLoading.value = false
+}
+}
+</script>
+&#10;<template>
+
+  <div v-if=&quot;error&quot; class=&quot;alert-error&quot;>{{ error }}</div>
+  <form @submit.prevent=&quot;submitForm&quot;>...</form>
+</template>" />
 
 ## Composable for async operations
 
@@ -151,6 +204,16 @@ const {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const {
+  execute: submit,
+  isLoading,
+  error
+} = useAsyncAction(() =>
+  $fetch('/api/submit', { method: 'POST', body: formData })
+)
+</script>" />
+
 ## Nuxt error handling
 
 Nuxt adds framework-level error handling on top of Vue's:
@@ -176,6 +239,24 @@ function goHome() {
 </template>
 ```
 
+<PlaygroundLink code="<!-- error.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ error: { statusCode: number; message: string } }>()
+&#10;function goHome() {
+  clearError({ redirect: '/' })
+}
+</script>
+
+&#10;<template>
+
+  <div class=&quot;error-page&quot;>
+    <h1>{{ error.statusCode }}</h1>
+    <p>{{ error.message }}</p>
+    <button @click=&quot;goHome&quot;>Go home</button>
+  </div>
+</template>" />
+
 **showError / createError** for explicit error throwing:
 
 ```ts
@@ -196,6 +277,16 @@ throw createError({ statusCode: 404, statusMessage: 'Page not found' })
   </NuxtErrorBoundary>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <NuxtErrorBoundary>
+    <SomeRiskyComponent />
+    <template #error=&quot;{ error, clearError }&quot;>
+      <p>{{ error.message }}</p>
+      <button @click=&quot;clearError&quot;>Retry</button>
+    </template>
+  </NuxtErrorBoundary>
+</template>" />
 
 ## Error handling layers
 

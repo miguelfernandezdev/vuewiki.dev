@@ -24,3 +24,4 @@ logs
 .claude/skills/
 .kiro/
 .vercel
+.playwright-mcp/

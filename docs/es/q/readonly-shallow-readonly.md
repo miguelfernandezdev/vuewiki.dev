@@ -89,6 +89,19 @@ provide('updateConfig', (patch: Partial<typeof config>) => {
 </script>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+
+<script setup>
+const config = reactive({
+  theme: 'dark',
+  locale: 'en'
+})
+&#10;provide('config', readonly(config))
+provide('updateConfig', (patch: Partial<typeof config>) => {
+  Object.assign(config, patch)
+})
+</script>" />
+
 ```vue
 <!-- DeepChild.vue -->
 <script setup>
@@ -99,6 +112,15 @@ const updateConfig = inject<(patch: any) => void>('updateConfig')
 updateConfig({ theme: 'light' }) // funciona — pasa por la función del padre
 </script>
 ```
+
+<PlaygroundLink code="<!-- DeepChild.vue -->
+
+<script setup>
+const config = inject<Readonly<{ theme: string; locale: string }>>('config')
+const updateConfig = inject<(patch: any) => void>('updateConfig')
+&#10;// config.theme = 'light' // aviso — readonly
+updateConfig({ theme: 'light' }) // funciona — pasa por la función del padre
+</script>" />
 
 Esto impone el flujo de datos unidireccional a través del árbol de provide/inject, similar a cómo las props son de solo lectura.
 

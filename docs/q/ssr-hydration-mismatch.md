@@ -21,6 +21,14 @@ A hydration mismatch happens when the HTML the client renders differs from what 
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Browser splits this into <p></p><div>...</div><p></p> -->
+  <p>
+    <div>This breaks hydration</div>
+  </p>
+</template>" />
+
 **2. Non-deterministic values in the render.** `Math.random()`, `Date.now()`, and `new Date().toLocaleString()` produce different output on server and client.
 
 ```vue
@@ -32,6 +40,15 @@ A hydration mismatch happens when the HTML the client renders differs from what 
   <span>{{ new Date().toLocaleTimeString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Server: &quot;field-0.847...&quot; / Client: &quot;field-0.231...&quot; -->
+
+<input :id=&quot;'field-' + Math.random()&quot; />
+&#10; <!-- Server timezone != client timezone -->
+<span>{{ new Date().toLocaleTimeString() }}</span>
+</template>" />
 
 Fix: defer non-deterministic values to `onMounted`.
 
@@ -58,6 +75,12 @@ Use `data-allow-mismatch` when the difference is expected:
   </span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <span data-allow-mismatch=&quot;text&quot;>
+    {{ clientOnlyTimestamp }}
+  </span>
+</template>" />
 
 Accepted values: `text`, `children`, `class`, `style`, `attribute`, or no value (suppresses all).
 

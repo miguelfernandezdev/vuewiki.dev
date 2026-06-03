@@ -39,6 +39,30 @@ function setScore(name: string, score: number) {
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const tags = reactive(new Set<string>())
+const scores = reactive(new Map<string, number>())
+&#10;function addTag(tag: string) {
+tags.add(tag)
+}
+&#10;function setScore(name: string, score: number) {
+scores.set(name, score)
+}
+</script>
+&#10;<template>
+
+  <div>
+    <button @click=&quot;addTag('vue')&quot;>Add tag</button>
+    <span v-for=&quot;tag in tags&quot; :key=&quot;tag&quot;>{{ tag }}</span>
+  </div>
+&#10;  <div>
+    <button @click=&quot;setScore('Alice', 95)&quot;>Set score</button>
+    <div v-for=&quot;[name, score] in scores&quot; :key=&quot;name&quot;>
+      {{ name }}: {{ score }}
+    </div>
+  </div>
+</template>" />
+
 `v-for` works directly on `Map` and `Set` because Vue iterates them just like arrays. For a `Map`, each entry destructures as `[key, value]`.
 
 ## Which methods are tracked
@@ -113,6 +137,28 @@ const activePermissions = computed(() =>
   <button @click="permissions.set('write', true)">Grant write</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const permissions = reactive(
+new Map() < string,
+boolean >
+[
+['read', true],
+['write', false],
+['admin', false]
+]
+)
+&#10;const activePermissions = computed(() =>
+[...permissions.entries()]
+.filter(([, enabled]) => enabled)
+.map(([name]) => name)
+)
+</script>
+&#10;<template>
+
+  <p>Active: {{ activePermissions.join(', ') }}</p>
+  <button @click=&quot;permissions.set('write', true)&quot;>Grant write</button>
+</template>" />
 
 The `computed` re-evaluates when any entry in the Map changes because spreading the Map calls its iterator, which Vue tracks.
 

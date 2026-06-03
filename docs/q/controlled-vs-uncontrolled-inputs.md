@@ -23,6 +23,16 @@ const name = ref('')
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const name = ref('')
+</script>
+&#10;<template>
+<input v-model=&quot;name&quot; />
+
+  <p>Current value: {{ name }}</p>
+</template>" />
+
 Every character the user types flows through: input event → update `name` → Vue re-renders → input shows new value. You always have the current value in `name`.
 
 ## Uncontrolled (template ref)
@@ -44,6 +54,19 @@ function handleSubmit() {
   <button @click="handleSubmit">Submit</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useTemplateRef } from 'vue'
+&#10;const inputEl = useTemplateRef('name-input')
+&#10;function handleSubmit() {
+  const value = inputEl.value?.value
+  console.log('Submitted:', value)
+}
+</script>
+&#10;<template>
+  <input ref=&quot;name-input&quot; />
+  <button @click=&quot;handleSubmit&quot;>Submit</button>
+</template>" />
 
 The DOM owns the value. You only read it when you need it.
 
@@ -72,6 +95,8 @@ Uncontrolled inputs use the HTML `value` attribute:
 <input ref="email-input" value="user@example.com" />
 ```
 
+<PlaygroundLink code="<input ref=&quot;email-input&quot; value=&quot;user@example.com&quot; />" />
+
 ## The hybrid pattern: lazy v-model
 
 `v-model.lazy` syncs after `change` events instead of `input` events, giving you a middle ground. The `change` event fires when the input loses focus after its value has changed:
@@ -82,6 +107,12 @@ Uncontrolled inputs use the HTML `value` attribute:
   <input v-model.lazy="search" />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Updates only when the user leaves the field after changing it -->
+  <input v-model.lazy=&quot;search&quot; />
+</template>" />
 
 This avoids re-rendering on every keystroke while still keeping the value in reactive state.
 

@@ -56,6 +56,25 @@ defineSlots<{
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+  variant?: 'primary' | 'secondary' | 'danger'
+  size?: 'sm' | 'md' | 'lg'
+  disabled?: boolean
+}
+&#10;withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'md'
+})
+&#10;defineEmits<{
+  click: [event: MouseEvent]
+}>()
+&#10;defineSlots<{
+  default: () => void
+  icon?: () => void
+}>()
+</script>" />
+
 **Use slots over props for content.** A button that takes `label` and `icon` props is limited. A button with a default slot and an `icon` slot lets consumers put anything inside: text, icons, badges, complex markup.
 
 **Use CSS custom properties for theming.** Don't hardcode colors or spacing. Expose design tokens that consumers can override:

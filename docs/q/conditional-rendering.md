@@ -27,6 +27,18 @@ const data = ref(null)
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-if=&quot;status === 'loading'&quot;>Loading...</div>
+  <div v-else-if=&quot;status === 'error'&quot;>Something went wrong</div>
+  <div v-else>{{ data }}</div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const status = ref('loading')
+const data = ref(null)
+</script>" />
+
 The elements must be siblings. You can't put other elements between `v-if` and `v-else`:
 
 ```vue
@@ -40,6 +52,15 @@ The elements must be siblings. You can't put other elements between `v-if` and `
 <div v-else>No</div>
 ```
 
+<PlaygroundLink code="<!-- Wrong: the <hr> breaks the chain -->
+
+<div v-if=&quot;ok&quot;>Yes</div>
+<hr />
+<div v-else>No</div>
+&#10;<!-- Right: siblings, no gap -->
+<div v-if=&quot;ok&quot;>Yes</div>
+<div v-else>No</div>" />
+
 ## v-if on template
 
 To conditionally render multiple elements without adding a wrapper to the DOM:
@@ -51,6 +72,12 @@ To conditionally render multiple elements without adding a wrapper to the DOM:
 </template>
 ```
 
+<PlaygroundLink code="<template v-if=&quot;loggedIn&quot;>
+
+  <h1>Welcome back</h1>
+  <p>Your dashboard is ready</p>
+</template>" />
+
 ## v-show
 
 `v-show` keeps the element in the DOM and toggles `display: none`.
@@ -58,6 +85,8 @@ To conditionally render multiple elements without adding a wrapper to the DOM:
 ```vue
 <div v-show="isVisible">Always in the DOM, just hidden</div>
 ```
+
+<PlaygroundLink code="<div v-show=&quot;isVisible&quot;>Always in the DOM, just hidden</div>" />
 
 ## v-if vs v-show
 
@@ -87,6 +116,16 @@ Never put `v-if` and `v-for` on the same element. In Vue 3, `v-if` has higher pr
   {{ item.name }}
 </li>
 ```
+
+<PlaygroundLink code="<!-- Wrong: v-if can't see &quot;item&quot; -->
+
+<li v-for=&quot;item in items&quot; v-if=&quot;item.active&quot; :key=&quot;item.id&quot;>
+  {{ item.name }}
+</li>
+&#10;<!-- Right: filter with computed -->
+<li v-for=&quot;item in activeItems&quot; :key=&quot;item.id&quot;>
+  {{ item.name }}
+</li>" />
 
 ```ts
 const activeItems = computed(() => items.value.filter((i) => i.active))

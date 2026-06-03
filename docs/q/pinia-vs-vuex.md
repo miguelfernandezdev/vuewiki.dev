@@ -75,6 +75,15 @@ const cart = useCartStore()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { useCartStore } from '@/stores/cart'
+&#10;const cart = useCartStore()
+</script>
+&#10;<template>
+  <span>{{ cart.items.length }} items, {{ cart.total }}€</span>
+  <button @click=&quot;cart.checkout()&quot;>Checkout</button>
+</template>" />
+
 No `commit`, no `dispatch`, no `mapGetters`. Just import the store and use it.
 
 ## Key differences table

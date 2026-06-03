@@ -136,6 +136,14 @@ const userStore = useUserStore()
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const userStore = useUserStore()
+// isLoading is available on every store
+</script>
+&#10;<template>
+  <Spinner v-if=&quot;userStore.isLoading&quot; />
+</template>" />
+
 ## Targeting specific stores
 
 Check `store.$id` or use the options object to apply logic selectively:

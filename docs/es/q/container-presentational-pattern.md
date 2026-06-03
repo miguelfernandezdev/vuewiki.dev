@@ -36,6 +36,31 @@ defineEmits<{
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/UserCard.vue -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{
+  name: string
+  email: string
+  avatar: string
+}>()
+&#10;defineEmits<{
+  edit: []
+  delete: []
+}>()
+</script>
+
+&#10;<template>
+
+  <div class=&quot;user-card&quot;>
+    <img :src=&quot;avatar&quot; :alt=&quot;name&quot; />
+    <h3>{{ name }}</h3>
+    <p>{{ email }}</p>
+    <button @click=&quot;$emit('edit')&quot;>Edit</button>
+    <button @click=&quot;$emit('delete')&quot;>Delete</button>
+  </div>
+</template>" />
+
 Este componente es reutilizable en cualquier lugar. No carga datos, no accede a stores, no llama a APIs. Puedes probarlo pasando props directamente.
 
 ## Componente contenedor (lógica y datos)
@@ -70,6 +95,35 @@ function handleEdit(userId: string) {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- views/UserListView.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const { data: users, refresh } = await useFetch('/api/users')
+&#10;async function handleDelete(userId: string) {
+  await $fetch(`/api/users/${userId}`, { method: 'DELETE' })
+  refresh()
+}
+&#10;function handleEdit(userId: string) {
+  navigateTo(`/users/${userId}/edit`)
+}
+</script>
+
+&#10;<template>
+
+  <div>
+    <h1>Users</h1>
+    <UserCard
+      v-for=&quot;user in users&quot;
+      :key=&quot;user.id&quot;
+      :name=&quot;user.name&quot;
+      :email=&quot;user.email&quot;
+      :avatar=&quot;user.avatar&quot;
+      @edit=&quot;handleEdit(user.id)&quot;
+      @delete=&quot;handleDelete(user.id)&quot;
+    />
+  </div>
+</template>" />
 
 El contenedor conoce la API, el enrutamiento y qué ocurre con las acciones del usuario. `UserCard` no sabe nada de eso.
 
@@ -114,6 +168,21 @@ const { users, deleteUser } = useUsers()
   />
 </template>
 ```
+
+<PlaygroundLink code="<!-- views/UserListView.vue -->
+
+<script setup>
+const { users, deleteUser } = useUsers()
+</script>
+
+&#10;<template>
+<UserCard
+v-for=&quot;user in users&quot;
+:key=&quot;user.id&quot;
+v-bind=&quot;user&quot;
+@delete=&quot;deleteUser(user.id)&quot;
+/>
+</template>" />
 
 El componente de página es más delgado porque el composable posee la lógica. El componente presentacional permanece igual.
 

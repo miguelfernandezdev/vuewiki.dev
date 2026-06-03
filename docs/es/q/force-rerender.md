@@ -16,6 +16,10 @@ Cambia el atributo `key` del componente. Cuando la key cambia, Vue destruye la i
 </template>
 ```
 
+<PlaygroundLink code="<template>
+  <UserProfile :user=&quot;user&quot; :key=&quot;user.id&quot; />
+</template>" />
+
 Cuando `user.id` cambia, Vue desmonta el `UserProfile` antiguo y monta uno nuevo. Esto es útil cuando un componente tiene estado interno que necesita reiniciarse al cambiar la entidad subyacente (como cambiar entre perfiles de usuario que comparten la misma ruta).
 
 Una versión más explícita cuando necesitas un disparador manual:
@@ -34,6 +38,17 @@ function forceRecreate() {
   <button @click="forceRecreate">Reset</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const componentKey = ref(0)
+&#10;function forceRecreate() {
+  componentKey.value++
+}
+</script>
+&#10;<template>
+  <ExpensiveComponent :key=&quot;componentKey&quot; />
+  <button @click=&quot;forceRecreate&quot;>Reset</button>
+</template>" />
 
 ## Por qué rara vez lo necesitas
 

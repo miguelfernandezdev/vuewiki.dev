@@ -22,6 +22,14 @@ provide('theme', theme)
 </script>
 ```
 
+<PlaygroundLink code="<!-- GrandParent.vue -->
+
+<script setup lang=&quot;ts&quot;>
+import { provide, ref } from 'vue'
+&#10;const theme = ref('dark')
+provide('theme', theme)
+</script>" />
+
 ```vue
 <!-- DeeplyNestedChild.vue (cualquier nivel por debajo de GrandParent) -->
 <script setup lang="ts">
@@ -30,6 +38,13 @@ import { inject } from 'vue'
 const theme = inject('theme') // 'dark' — sin props pasadas por componentes intermedios
 </script>
 ```
+
+<PlaygroundLink code="<!-- DeeplyNestedChild.vue (cualquier nivel por debajo de GrandParent) -->
+
+<script setup lang=&quot;ts&quot;>
+import { inject } from 'vue'
+&#10;const theme = inject('theme') // 'dark' — sin props pasadas por componentes intermedios
+</script>" />
 
 El valor provisto es reactivo. Cuando `theme` cambia en el padre, cada componente que lo inyectó se actualiza automáticamente.
 

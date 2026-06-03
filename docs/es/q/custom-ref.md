@@ -48,6 +48,17 @@ const searchQuery = useDebouncedRef('', 500)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const searchQuery = useDebouncedRef('', 500)
+</script>
+&#10;<template>
+
+  <!-- Escribir actualiza el valor interno inmediatamente,
+       pero los watchers y computed solo se disparan tras 500ms sin actividad -->
+  <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <p>Debounced value: {{ searchQuery }}</p>
+</template>" />
+
 Cada pulsación de tecla reinicia el temporizador de debounce. El `value` interno y `trigger()` solo se ejecutan cuando el usuario lleva 500ms sin escribir. Eso significa que watchers, propiedades computed y re-renderizados del template todos esperan.
 
 ## track() y trigger() explicados

@@ -35,6 +35,27 @@ onErrorCaptured((err, instance, info) => {
 </template>
 ```
 
+<PlaygroundLink code="<!-- ErrorBoundary.vue -->
+
+<script setup>
+import { ref, onErrorCaptured } from 'vue'
+&#10;const error = (ref < Error) | (null > null)
+&#10;onErrorCaptured((err, instance, info) => {
+  error.value = err
+  console.error(`Error in ${info}:`, err)
+  return false // stop propagation to parent error handlers
+})
+</script>
+
+&#10;<template>
+
+  <div v-if=&quot;error&quot; class=&quot;error-state&quot;>
+    <p>Something went wrong: {{ error.message }}</p>
+    <button @click=&quot;error = null&quot;>Try again</button>
+  </div>
+  <slot v-else />
+</template>" />
+
 ```vue
 <!-- Usage -->
 <template>
@@ -43,6 +64,13 @@ onErrorCaptured((err, instance, info) => {
   </ErrorBoundary>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Usage -->
+<template>
+  <ErrorBoundary>
+    <DashboardWidget />
+  </ErrorBoundary>
+</template>" />
 
 The callback receives three arguments:
 
@@ -137,6 +165,25 @@ Wrap independent sections so one failure doesn't take down the whole page:
   </aside>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <header>
+    <ErrorBoundary>
+      <Navigation />
+    </ErrorBoundary>
+  </header>
+&#10;  <main>
+    <ErrorBoundary>
+      <RouterView />
+    </ErrorBoundary>
+  </main>
+&#10;  <aside>
+    <ErrorBoundary>
+      <Sidebar />
+    </ErrorBoundary>
+  </aside>
+</template>" />
 
 See also: [What are async components?](/q/async-components) · [How does Suspense work?](/q/suspense)
 

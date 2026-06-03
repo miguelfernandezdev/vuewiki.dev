@@ -29,6 +29,19 @@ const fullName = computed(() => `${firstName.value} ${lastName.value}`)
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref, computed } from 'vue'
+&#10;const firstName = ref('Ana')
+const lastName = ref('García')
+&#10;const fullName = computed(() => `${firstName.value} ${lastName.value}`)
+// fullName.value === 'Ana García'
+// Se recalcula solo cuando firstName o lastName cambian
+</script>
+&#10;<template>
+
+  <p>{{ fullName }}</p>
+</template>" />
+
 Piensa en `computed` como una fórmula en una celda de hoja de cálculo. Celda C1 = A1 + B1. No la "ejecutas". Simplemente siempre tiene la respuesta correcta.
 
 ## watch: reaccionar a cambios

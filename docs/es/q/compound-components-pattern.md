@@ -53,6 +53,44 @@ provide('tabs', {
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/Tabs.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const activeTab = ref(0)
+const tabs = ref<string[]>([])
+&#10;function register(label: string) {
+  tabs.value.push(label)
+  return tabs.value.length - 1
+}
+&#10;function select(index: number) {
+  activeTab.value = index
+}
+&#10;provide('tabs', {
+  activeTab: readonly(activeTab),
+  register,
+  select
+})
+</script>
+
+&#10;<template>
+
+  <div class=&quot;tabs&quot;>
+    <div class=&quot;tabs-header&quot;>
+      <button
+        v-for=&quot;(label, i) in tabs&quot;
+        :key=&quot;i&quot;
+        :class=&quot;{ active: activeTab === i }&quot;
+        @click=&quot;select(i)&quot;
+      >
+        {{ label }}
+      </button>
+    </div>
+    <div class=&quot;tabs-body&quot;>
+      <slot />
+    </div>
+  </div>
+</template>" />
+
 ```vue
 <!-- components/Tab.vue -->
 <script setup lang="ts">
@@ -71,6 +109,22 @@ const isActive = computed(() => activeTab.value === index)
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/Tab.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ label: string }>()
+&#10;const { activeTab, register } = inject('tabs')!
+const index = register(props.label)
+&#10;const isActive = computed(() => activeTab.value === index)
+</script>
+
+&#10;<template>
+
+  <div v-show=&quot;isActive&quot;>
+    <slot />
+  </div>
+</template>" />
+
 ### Uso
 
 ```vue
@@ -88,6 +142,20 @@ const isActive = computed(() => activeTab.value === index)
   </Tabs>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Tabs>
+    <Tab label=&quot;Profile&quot;>
+      <UserProfile />
+    </Tab>
+    <Tab label=&quot;Settings&quot;>
+      <UserSettings />
+    </Tab>
+    <Tab label=&quot;Billing&quot;>
+      <BillingInfo />
+    </Tab>
+  </Tabs>
+</template>" />
 
 El consumidor no gestiona el estado activo, no conecta manejadores de click, no pasa índices. Los componentes `Tabs` y `Tab` se coordinan internamente a través de provide/inject.
 
@@ -116,6 +184,13 @@ provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
 </script>
 ```
 
+<PlaygroundLink code="<!-- Tabs.vue -->
+
+<script setup>
+import { TABS_KEY } from '@/composables/useTabs'
+provide(TABS_KEY, { activeTab: readonly(activeTab), register, select })
+</script>" />
+
 ```vue
 <!-- Tab.vue -->
 <script setup>
@@ -124,6 +199,14 @@ const ctx = inject(TABS_KEY)
 if (!ctx) throw new Error('Tab must be used inside Tabs')
 </script>
 ```
+
+<PlaygroundLink code="<!-- Tab.vue -->
+
+<script setup>
+import { TABS_KEY } from '@/composables/useTabs'
+const ctx = inject(TABS_KEY)
+if (!ctx) throw new Error('Tab must be used inside Tabs')
+</script>" />
 
 ## Ejemplo: Accordion
 
@@ -154,6 +237,30 @@ provide('accordion', { toggle, isOpen })
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/Accordion.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const openItems = ref<Set<string>>(new Set())
+&#10;function toggle(id: string) {
+  if (openItems.value.has(id)) {
+    openItems.value.delete(id)
+  } else {
+    openItems.value.add(id)
+  }
+}
+&#10;function isOpen(id: string) {
+  return openItems.value.has(id)
+}
+&#10;provide('accordion', { toggle, isOpen })
+</script>
+
+&#10;<template>
+
+  <div class=&quot;accordion&quot;>
+    <slot />
+  </div>
+</template>" />
+
 ```vue
 <!-- components/AccordionItem.vue -->
 <script setup lang="ts">
@@ -174,6 +281,26 @@ const { toggle, isOpen } = inject('accordion')!
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/AccordionItem.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ id: string; title: string }>()
+const { toggle, isOpen } = inject('accordion')!
+</script>
+
+&#10;<template>
+
+  <div class=&quot;accordion-item&quot;>
+    <button @click=&quot;toggle(id)&quot;>
+      {{ title }}
+      <span>{{ isOpen(id) ? '−' : '+' }}</span>
+    </button>
+    <div v-show=&quot;isOpen(id)&quot;>
+      <slot />
+    </div>
+  </div>
+</template>" />
+
 ```vue
 <template>
   <Accordion>
@@ -186,6 +313,17 @@ const { toggle, isOpen } = inject('accordion')!
   </Accordion>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Accordion>
+    <AccordionItem id=&quot;faq-1&quot; title=&quot;What is Vue?&quot;>
+      <p>A progressive JavaScript framework.</p>
+    </AccordionItem>
+    <AccordionItem id=&quot;faq-2&quot; title=&quot;What is Vite?&quot;>
+      <p>A build tool for modern web projects.</p>
+    </AccordionItem>
+  </Accordion>
+</template>" />
 
 ## Cuándo usar componentes compuestos
 
@@ -215,6 +353,19 @@ El enfoque solo con props pasa todos los datos a un único componente:
   <Tab label="Settings"><UserSettings /></Tab>
 </Tabs>
 ```
+
+<PlaygroundLink code="<!-- Solo props: menos flexible, más simple para casos pequeños -->
+<Tabs
+  :items=&quot;[
+    { label: 'Profile', content: '...' },
+    { label: 'Settings', content: '...' }
+  ]&quot;
+/>
+&#10;<!-- Compuesto: más flexible, el consumidor controla el layout -->
+<Tabs>
+  <Tab label=&quot;Profile&quot;><UserProfile /></Tab>
+  <Tab label=&quot;Settings&quot;><UserSettings /></Tab>
+</Tabs>" />
 
 Los componentes compuestos ganan cuando los hijos tienen contenido complejo (componentes, slots, lógica condicional) que no encaja bien en un array de datos.
 

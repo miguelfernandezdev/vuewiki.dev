@@ -19,6 +19,14 @@ const count = ref(0)
 </script>
 ```
 
+<PlaygroundLink code="<template>
+  <button @click=&quot;count++&quot;>Clicked {{ count }} times</button>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+</script>" />
+
 ## Manejadores inline vs método
 
 ```vue
@@ -54,6 +62,32 @@ function log(msg: string, event: MouseEvent) {
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Inline: la expresión se evalúa directamente -->
+
+<button @click=&quot;count++&quot;>+1</button>
+&#10; <!-- Método: referencia a una función -->
+<button @click=&quot;increment&quot;>+1</button>
+&#10; <!-- Método con argumentos -->
+<button @click=&quot;addAmount(5)&quot;>+5</button>
+&#10; <!-- Acceder al evento nativo junto con argumentos personalizados -->
+<button @click=&quot;log('clicked', $event)&quot;>Log</button>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+&#10;function increment() {
+count.value++
+}
+&#10;function addAmount(n: number) {
+count.value += n
+}
+&#10;function log(msg: string, event: MouseEvent) {
+console.log(msg, event.target)
+}
+</script>" />
+
 ## Modificadores de eventos
 
 Los modificadores reemplazan patrones imperativos habituales como `event.preventDefault()` con sintaxis declarativa en el template.
@@ -79,6 +113,22 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Prevenir el comportamiento predeterminado del navegador -->
+  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+&#10;  <!-- Detener la propagación a elementos padre -->
+  <button @click.stop=&quot;doThis&quot;>Click</button>
+&#10;  <!-- Disparar solo una vez -->
+  <button @click.once=&quot;initialize&quot;>Init</button>
+&#10;  <!-- Encadenar modificadores -->
+  <a @click.stop.prevent=&quot;handleLink&quot;>Link</a>
+&#10;  <!-- Solo disparar si el target del evento es el propio elemento, no un hijo -->
+  <div @click.self=&quot;onDivClick&quot;>
+    <button>Clicking here won't trigger onDivClick</button>
+  </div>
+</template>" />
+
 ## Modificadores de teclas
 
 ```vue
@@ -96,6 +146,20 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Teclas específicas -->
+
+<input @keyup.enter=&quot;submit&quot; />
+<input @keyup.escape=&quot;cancel&quot; />
+&#10; <!-- Teclas modificadoras del sistema -->
+<input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
+
+  <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
+&#10;  <!-- .exact: solo disparar cuando estén presionados EXACTAMENTE estos modificadores -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
+</template>" />
+
 ## Modificadores de botón del ratón
 
 ```vue
@@ -105,6 +169,13 @@ Los modificadores reemplazan patrones imperativos habituales como `event.prevent
   <div @click.middle="onMiddleClick">Middle click</div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div @click.left=&quot;onLeftClick&quot;>Left click</div>
+  <div @click.right.prevent=&quot;onRightClick&quot;>Right click (no context menu)</div>
+  <div @click.middle=&quot;onMiddleClick&quot;>Middle click</div>
+</template>" />
 
 ## Referencia rápida
 

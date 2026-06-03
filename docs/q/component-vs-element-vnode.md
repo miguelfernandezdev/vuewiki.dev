@@ -23,6 +23,17 @@ An element is a plain HTML tag (`<div>`, `<button>`, `<input>`). A component is 
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Element: maps to a real <div> in the DOM -->
+  <div class=&quot;container&quot;>
+    <!-- Component: Vue creates an instance, runs setup, renders its template -->
+    <UserCard :user=&quot;user&quot; @click=&quot;selectUser&quot; />
+&#10;    <!-- Element: maps to a real <p> -->
+    <p>{{ user.bio }}</p>
+  </div>
+</template>" />
+
 Vue's template compiler treats them differently. When it sees a lowercase tag (`div`, `span`, `input`), it creates an element VNode. When it sees a PascalCase or kebab-case registered name (`UserCard`, `user-card`), it creates a component VNode.
 
 ## What is a VNode

@@ -77,6 +77,11 @@ const { data: users, isLoading } = useFetch<User[]>('/api/users')
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const { data: users, isLoading } = useFetch<User[]>('/api/users')
+// If the component unmounts, the request is cancelled automatically
+</script>" />
+
 The `onUnmounted` hook aborts any in-flight request. The `AbortError` catch ensures the error state stays clean.
 
 ## Cancel stale requests (race condition)
@@ -110,6 +115,19 @@ const { data: results, isLoading } = useFetch(searchUrl)
   </ul>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+const query = ref('')
+const searchUrl = computed(() => `/api/search?q=${query.value}`)
+&#10;const { data: results, isLoading } = useFetch(searchUrl)
+</script>
+&#10;<template>
+<input v-model=&quot;query&quot; placeholder=&quot;Search...&quot; />
+
+  <ul v-if=&quot;results&quot;>
+    <li v-for=&quot;item in results&quot; :key=&quot;item.id&quot;>{{ item.name }}</li>
+  </ul>
+</template>" />
 
 When `query` changes from "vu" to "vue", the watcher fires `execute`, which aborts the "vu" request and starts the "vue" request. Only the last result arrives.
 
@@ -184,6 +202,14 @@ const { data: results } = useFetch('/api/search', {
 // Nuxt cancels stale requests and cleans up on unmount
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const query = ref('')
+&#10;const { data: results } = useFetch('/api/search', {
+  query: { q: query }
+})
+// Nuxt cancels stale requests and cleans up on unmount
+</script>" />
 
 No manual `AbortController` needed. This is one of the reasons to prefer Nuxt's data fetching over raw `fetch` in Nuxt apps.
 

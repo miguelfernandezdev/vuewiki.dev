@@ -26,6 +26,18 @@ La forma más simple. El hijo define un placeholder `<slot />`, y cualquier cosa
 </Card>
 ```
 
+<PlaygroundLink code="<!-- Card.vue -->
+<template>
+
+  <div class=&quot;card&quot;>
+    <slot />
+  </div>
+</template>
+&#10;<!-- Uso -->
+<Card>
+  <p>Este párrafo reemplaza el slot</p>
+</Card>" />
+
 Si el padre no proporciona nada, puedes establecer contenido por defecto: `<slot>Texto por defecto</slot>`.
 
 ## Slots con nombre
@@ -54,6 +66,24 @@ Cuando un componente tiene múltiples puntos de inserción, dale un nombre a cad
 </PageLayout>
 ```
 
+<PlaygroundLink code="<!-- PageLayout.vue -->
+<template>
+
+  <header><slot name=&quot;header&quot; /></header>
+  <main><slot /></main>
+  <footer><slot name=&quot;footer&quot; /></footer>
+</template>
+&#10;<!-- Uso -->
+<PageLayout>
+  <template #header>
+    <h1>Dashboard</h1>
+  </template>
+&#10;  <p>El contenido principal va en el slot por defecto</p>
+&#10;  <template #footer>
+    <span>© 2025</span>
+  </template>
+</PageLayout>" />
+
 `#header` es la abreviatura de `v-slot:header`. El contenido no envuelto en un `<template #nombre>` va al slot por defecto.
 
 ## Scoped slots
@@ -81,6 +111,27 @@ defineProps<{ items: string[] }>()
   </template>
 </ItemList>
 ```
+
+<PlaygroundLink code="<!-- ItemList.vue -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{ items: string[] }>()
+</script>
+
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
+      <slot name=&quot;item&quot; :value=&quot;item&quot; :index=&quot;index&quot; />
+    </li>
+  </ul>
+</template>
+&#10;<!-- Uso: el padre decide cómo se ve cada item -->
+<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
+  <template #item=&quot;{ value, index }&quot;>
+    <strong>{{ index + 1 }}.</strong> {{ value }}
+  </template>
+</ItemList>" />
 
 El hijo posee los datos y el bucle. El padre posee el renderizado. Este es el **patrón de delegación de renderizado**, la misma idea detrás de librerías headless UI como [Headless UI](https://headlessui.com/) y [Radix Vue](https://www.radix-vue.com/).
 

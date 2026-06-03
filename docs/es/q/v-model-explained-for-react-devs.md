@@ -29,6 +29,16 @@ const name = ref('')
 </template>
 ```
 
+<PlaygroundLink code="<!-- Vue: declarativo, bidireccional -->
+
+<script setup>
+const name = ref('')
+</script>
+
+&#10;<template>
+<input v-model=&quot;name&quot; />
+</template>" />
+
 Ambos logran el mismo resultado. React requiere que conectes `value` y `onChange` explícitamente. `v-model` de Vue conecta ambos por ti.
 
 ## En qué se compila v-model
@@ -42,6 +52,11 @@ En elementos nativos, `v-model` es azúcar para un binding de valor y un listene
 <!-- Se compila en esto -->
 <input :value="name" @input="name = $event.target.value" />
 ```
+
+<PlaygroundLink code="<!-- Esto -->
+<input v-model=&quot;name&quot; />
+&#10;<!-- Se compila en esto -->
+<input :value=&quot;name&quot; @input=&quot;name = $event.target.value&quot; />" />
 
 Es exactamente lo que hace el patrón de input controlado de React, pero de forma manual. Vue genera ambas partes a partir de una sola directiva.
 
@@ -68,6 +83,11 @@ En Vue 3, `v-model` en un componente usa `modelValue` como prop y `update:modelV
 <CustomInput :modelValue="name" @update:modelValue="name = $event" />
 ```
 
+<PlaygroundLink code="<!-- Padre -->
+<CustomInput v-model=&quot;name&quot; />
+&#10;<!-- Que es equivalente a -->
+<CustomInput :modelValue=&quot;name&quot; @update:modelValue=&quot;name = $event&quot; />" />
+
 ```vue
 <!-- CustomInput.vue -->
 <script setup>
@@ -83,6 +103,20 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </template>
 ```
 
+<PlaygroundLink code="<!-- CustomInput.vue -->
+
+<script setup>
+defineProps<{ modelValue: string }>()
+const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
+</script>
+
+&#10;<template>
+<input
+:value=&quot;modelValue&quot;
+@input=&quot;emit('update:modelValue', $event.target.value)&quot;
+/>
+</template>" />
+
 O con el macro `defineModel` de Vue 3.4+, que elimina el código repetitivo:
 
 ```vue
@@ -95,6 +129,16 @@ const model = defineModel<string>()
   <input v-model="model" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- CustomInput.vue -->
+
+<script setup>
+const model = defineModel<string>()
+</script>
+
+&#10;<template>
+<input v-model=&quot;model&quot; />
+</template>" />
 
 ## Múltiples bindings v-model
 
@@ -117,6 +161,9 @@ Vue 3 admite bindings v-model con nombre:
 <UserForm v-model:name="userName" v-model:email="userEmail" />
 ```
 
+<PlaygroundLink code="<!-- Padre -->
+<UserForm v-model:name=&quot;userName&quot; v-model:email=&quot;userEmail&quot; />" />
+
 ```vue
 <!-- UserForm.vue -->
 <script setup>
@@ -129,6 +176,18 @@ const email = defineModel < string > 'email'
   <input v-model="email" placeholder="Email" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- UserForm.vue -->
+
+<script setup>
+const name = defineModel < string > 'name'
+const email = defineModel < string > 'email'
+</script>
+
+&#10;<template>
+<input v-model=&quot;name&quot; placeholder=&quot;Name&quot; />
+<input v-model=&quot;email&quot; placeholder=&quot;Email&quot; />
+</template>" />
 
 Cada `v-model` con nombre se mapea a su propio par prop/evento: `:name` + `@update:name`, `:email` + `@update:email`.
 
@@ -146,6 +205,13 @@ Cada `v-model` con nombre se mapea a su propio par prop/evento: `:name` + `@upda
 <!-- .lazy sincroniza con el evento change en lugar de input — actualiza cuando el usuario sale del campo, no en cada pulsación de tecla -->
 <input v-model.lazy="query" />
 ```
+
+<PlaygroundLink code="<!-- .trim elimina espacios en blanco -->
+<input v-model.trim=&quot;name&quot; />
+&#10;<!-- .number convierte a número -->
+<input v-model.number=&quot;age&quot; type=&quot;number&quot; />
+&#10;<!-- .lazy sincroniza con el evento change en lugar de input — actualiza cuando el usuario sale del campo, no en cada pulsación de tecla -->
+<input v-model.lazy=&quot;query&quot; />" />
 
 En React, manejarías estas transformaciones dentro del handler `onChange` de forma manual.
 

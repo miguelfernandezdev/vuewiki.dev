@@ -21,6 +21,14 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- El navegador lo divide en <p></p><div>...</div><p></p> -->
+  <p>
+    <div>Esto rompe la hidratación</div>
+  </p>
+</template>" />
+
 **2. Valores no deterministas en el render.** `Math.random()`, `Date.now()` y `new Date().toLocaleString()` producen resultados distintos en el servidor y en el cliente.
 
 ```vue
@@ -32,6 +40,15 @@ Un error de hidratación ocurre cuando el HTML que renderiza el cliente difiere 
   <span>{{ new Date().toLocaleTimeString() }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Servidor: &quot;field-0.847...&quot; / Cliente: &quot;field-0.231...&quot; -->
+
+<input :id=&quot;'field-' + Math.random()&quot; />
+&#10; <!-- La zona horaria del servidor != zona horaria del cliente -->
+<span>{{ new Date().toLocaleTimeString() }}</span>
+</template>" />
 
 Solución: aplaza los valores no deterministas a `onMounted`.
 
@@ -58,6 +75,12 @@ Usa `data-allow-mismatch` cuando la diferencia es esperada:
   </span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <span data-allow-mismatch=&quot;text&quot;>
+    {{ clientOnlyTimestamp }}
+  </span>
+</template>" />
 
 Valores aceptados: `text`, `children`, `class`, `style`, `attribute`, o sin valor (suprime todos).
 

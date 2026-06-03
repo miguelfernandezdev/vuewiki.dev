@@ -21,6 +21,16 @@ Vue tiene tres modificadores integrados para `v-model` en inputs nativos (`.lazy
 </template>
 ```
 
+<PlaygroundLink code="<template>
+<input v-model.lazy=&quot;msg&quot; />
+
+  <!-- sincroniza en change, no en input -->
+  <input v-model.number=&quot;age&quot; />
+  <!-- convierte a número con parseFloat -->
+  <input v-model.trim=&quot;name&quot; />
+  <!-- elimina espacios en blanco -->
+</template>" />
+
 El modificador `.number` tiene un problema: devuelve una cadena vacía (no `0` ni `NaN`) cuando se borra el input, y `parseFloat("123abc")` devuelve `123`, no `NaN`.
 
 ## Modificadores personalizados con defineModel (Vue 3.4+)
@@ -45,12 +55,34 @@ const [model, modifiers] = defineModel<number>({
 </template>
 ```
 
+<PlaygroundLink code="<!-- CurrencyInput.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const [model, modifiers] = defineModel<number>({
+  set(value) {
+    if (modifiers.round) {
+      return Math.round(value)
+    }
+    return value
+  }
+})
+</script>
+
+&#10;<template>
+<input type=&quot;number&quot; v-model=&quot;model&quot; />
+</template>" />
+
 ```vue
 <!-- Parent.vue -->
 <template>
   <CurrencyInput v-model.round="price" />
 </template>
 ```
+
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+  <CurrencyInput v-model.round=&quot;price&quot; />
+</template>" />
 
 Cuando el usuario escribe `9.7`, el padre recibe `10`.
 
@@ -75,10 +107,28 @@ const [model, modifiers] = defineModel<string>({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const [model, modifiers] = defineModel<string>({
+  set(value) {
+    let result = value
+    if (modifiers.capitalize) {
+      result = result.charAt(0).toUpperCase() + result.slice(1)
+    }
+    if (modifiers.trim) {
+      result = result.trim()
+    }
+    return result
+  }
+})
+</script>" />
+
 ```vue
 <!-- Padre -->
 <TextInput v-model.capitalize.trim="name" />
 ```
+
+<PlaygroundLink code="<!-- Padre -->
+<TextInput v-model.capitalize.trim=&quot;name&quot; />" />
 
 ## Transformación get
 
@@ -100,6 +150,20 @@ const [model, modifiers] = defineModel<string>({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const [model, modifiers] = defineModel<string>({
+  get(value) {
+    if (modifiers.uppercase) {
+      return value.toUpperCase()
+    }
+    return value
+  },
+  set(value) {
+    return value.toLowerCase()
+  }
+})
+</script>" />
+
 ## Modelos nombrados con modificadores
 
 Los modificadores personalizados también funcionan con `v-model` nombrado:
@@ -111,12 +175,22 @@ const [lastName, lastModifiers] = defineModel<string>('lastName')
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const [firstName, firstModifiers] = defineModel<string>('firstName')
+const [lastName, lastModifiers] = defineModel<string>('lastName')
+</script>" />
+
 ```vue
 <UserForm
   v-model:first-name.capitalize="first"
   v-model:last-name.capitalize="last"
 />
 ```
+
+<PlaygroundLink code="<UserForm
+  v-model:first-name.capitalize=&quot;first&quot;
+  v-model:last-name.capitalize=&quot;last&quot;
+/>" />
 
 ## Antes de defineModel (Vue < 3.4)
 
@@ -146,6 +220,26 @@ function handleInput(e: Event) {
   <input :value="modelValue" @input="handleInput" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{
+  modelValue: string
+  modelModifiers?: { capitalize?: boolean }
+}>()
+&#10;const emit = defineEmits<{
+  'update:modelValue': [value: string]
+}>()
+&#10;function handleInput(e: Event) {
+  let value = (e.target as HTMLInputElement).value
+  if (props.modelModifiers?.capitalize) {
+    value = value.charAt(0).toUpperCase() + value.slice(1)
+  }
+  emit('update:modelValue', value)
+}
+</script>
+&#10;<template>
+  <input :value=&quot;modelValue&quot; @input=&quot;handleInput&quot; />
+</template>" />
 
 `defineModel` elimina todo este código repetitivo.
 

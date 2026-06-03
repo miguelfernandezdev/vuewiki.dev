@@ -29,6 +29,23 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <Teleport to=&quot;body&quot;>
+    <div class=&quot;modal&quot;>
+      <p class=&quot;modal-text&quot;>This text won't be styled</p>
+    </div>
+  </Teleport>
+</template>
+&#10;<style scoped>
+/* .modal[data-v-abc123] — but .modal is now under <body>, not here */
+.modal {
+  background: white;
+}
+&#10;.modal-text {
+  color: blue; /* won't apply */
+}
+</style>" />
+
 ## How to fix it
 
 **Option 1 (recommended):** Use a separate non-scoped style block with prefixed class names.
@@ -53,6 +70,23 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 </style>
 ```
 
+<PlaygroundLink code="<style scoped>
+/* Normal component styles stay scoped */
+.trigger-button {
+  color: blue;
+}
+</style>
+&#10;<style>
+/* Teleported content uses non-scoped styles */
+.my-modal {
+  background: white;
+  padding: 20px;
+}
+.my-modal-text {
+  color: blue;
+}
+</style>" />
+
 **Option 2:** Use CSS Modules. Class names are hashed at build time, so scoping doesn't depend on DOM position.
 
 ```vue
@@ -75,6 +109,23 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 </style>
 ```
 
+<PlaygroundLink code="<template>
+  <Teleport to=&quot;body&quot;>
+    <div :class=&quot;$style.modal&quot;>
+      <p :class=&quot;$style.text&quot;>Styled correctly</p>
+    </div>
+  </Teleport>
+</template>
+&#10;<style module>
+.modal {
+  background: white;
+  padding: 20px;
+}
+.text {
+  color: blue;
+}
+</style>" />
+
 **Option 3:** Use `:deep()` from a scoped block.
 
 ```vue
@@ -87,6 +138,15 @@ Because scoped styles work by adding a `data-v-xxxxx` attribute to elements in t
 }
 </style>
 ```
+
+<PlaygroundLink code="<style scoped>
+:deep(.modal) {
+  background: white;
+}
+:deep(.modal-text) {
+  color: blue;
+}
+</style>" />
 
 This works but defeats the purpose of scoping. CSS Modules or a dedicated non-scoped block are cleaner solutions for teleported content.
 

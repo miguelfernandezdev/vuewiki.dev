@@ -104,6 +104,36 @@ function addToCart() {
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/ProductCard.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const props = defineProps<{
+  id: string
+  name: string
+  price: number
+  image: string
+}>()
+&#10;const cart = useCartStore()
+&#10;function addToCart() {
+  cart.addItem({
+    id: props.id,
+    name: props.name,
+    price: props.price,
+    image: props.image
+  })
+}
+</script>
+
+&#10;<template>
+
+  <div class=&quot;product-card&quot;>
+    <img :src=&quot;image&quot; :alt=&quot;name&quot; />
+    <h3>{{ name }}</h3>
+    <p>{{ price.toFixed(2) }} €</p>
+    <button @click=&quot;addToCart&quot;>Add to cart</button>
+  </div>
+</template>" />
+
 ## Cart drawer (viewing and editing)
 
 ```vue
@@ -139,6 +169,37 @@ const cart = useCartStore()
   </aside>
 </template>
 ```
+
+<PlaygroundLink code="<!-- components/CartDrawer.vue -->
+
+<script setup lang=&quot;ts&quot;>
+const cart = useCartStore()
+</script>
+
+&#10;<template>
+
+  <aside class=&quot;cart-drawer&quot;>
+    <h2>Cart ({{ cart.totalItems }})</h2>
+&#10;    <p v-if=&quot;!cart.items.length&quot;>Your cart is empty.</p>
+&#10;    <div v-for=&quot;item in cart.items&quot; :key=&quot;item.id&quot; class=&quot;cart-item&quot;>
+      <img :src=&quot;item.image&quot; :alt=&quot;item.name&quot; />
+      <div>
+        <p>{{ item.name }}</p>
+        <p>{{ item.price.toFixed(2) }} € × {{ item.qty }}</p>
+      </div>
+      <div class=&quot;qty-controls&quot;>
+        <button @click=&quot;cart.updateQty(item.id, item.qty - 1)&quot;>−</button>
+        <span>{{ item.qty }}</span>
+        <button @click=&quot;cart.updateQty(item.id, item.qty + 1)&quot;>+</button>
+      </div>
+      <button @click=&quot;cart.removeItem(item.id)&quot;>Remove</button>
+    </div>
+&#10;    <div v-if=&quot;cart.items.length&quot; class=&quot;cart-total&quot;>
+      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
+      <NuxtLink to=&quot;/checkout&quot;>Checkout</NuxtLink>
+    </div>
+  </aside>
+</template>" />
 
 ## Persistence with a Pinia plugin
 
@@ -195,6 +256,19 @@ const cart = useCartStore()
 </template>
 ```
 
+<PlaygroundLink code="<!-- components/CartBadge.vue -->
+
+<script setup>
+const cart = useCartStore()
+</script>
+
+&#10;<template>
+<button class=&quot;cart-icon&quot;>
+🛒
+<span v-if=&quot;cart.totalItems&quot; class=&quot;badge&quot;>{{ cart.totalItems }}</span>
+</button>
+</template>" />
+
 The badge updates reactively from any page because all components share the same Pinia store instance.
 
 ## Checkout flow
@@ -238,6 +312,45 @@ async function placeOrder() {
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<!-- pages/checkout.vue -->
+
+<script setup>
+const cart = useCartStore()
+const isSubmitting = ref(false)
+&#10;async function placeOrder() {
+  isSubmitting.value = true
+  try {
+    await $fetch('/api/orders', {
+      method: 'POST',
+      body: {
+        items: cart.items.map((i) => ({ id: i.id, qty: i.qty }))
+      }
+    })
+    cart.clear()
+    navigateTo('/order-confirmation')
+  } finally {
+    isSubmitting.value = false
+  }
+}
+</script>
+
+&#10;<template>
+
+  <div>
+    <h1>Checkout</h1>
+    <div v-for=&quot;item in cart.items&quot; :key=&quot;item.id&quot;>
+      {{ item.name }} × {{ item.qty }} —
+      {{ (item.price * item.qty).toFixed(2) }} €
+    </div>
+    <p>
+      <strong>Total: {{ cart.totalPrice.toFixed(2) }} €</strong>
+    </p>
+    <button :disabled=&quot;isSubmitting || !cart.items.length&quot; @click=&quot;placeOrder&quot;>
+      Place order
+    </button>
+  </div>
+</template>" />
 
 ## Architecture summary
 

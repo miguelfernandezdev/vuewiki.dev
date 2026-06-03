@@ -49,6 +49,16 @@ function addItem() {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const items = ref(['a', 'b', 'c'])
+&#10;function addItem() {
+  items.value.push('d')
+  items.value.push('e')
+  // Vue batches both changes into a single DOM update
+}
+</script>" />
+
 ## Vue's optimizations over a naive diff
 
 Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom) analyzes your templates at build time and adds hints that make the runtime diff faster:
@@ -69,6 +79,18 @@ Vue's [compiler](https://vuejs.org/guide/extras/rendering-mechanism.html#compile
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div>
+    <h1>Static title</h1>
+    <!-- hoisted, skipped during diff -->
+    <p>{{ dynamicContent }}</p>
+    <!-- patch flag: TEXT -->
+    <span :class=&quot;activeClass&quot;>ok</span>
+    <!-- patch flag: CLASS -->
+  </div>
+</template>" />
 
 ## Virtual DOM vs no Virtual DOM
 

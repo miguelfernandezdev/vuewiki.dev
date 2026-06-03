@@ -22,6 +22,18 @@ const user = await response.json()
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserProfile.vue -->
+
+<script setup>
+const response = await fetch('/api/user/1')
+const user = await response.json()
+</script>
+
+&#10;<template>
+
+  <h1>{{ user.name }}</h1>
+</template>" />
+
 Esto compila a:
 
 ```js
@@ -56,6 +68,20 @@ Un componente asíncrono debe tener un ancestro `<Suspense>`. Sin él, el compon
 </template>
 ```
 
+<PlaygroundLink code="<!-- Parent.vue -->
+<template>
+
+  <!-- MAL: sin Suspense → UserProfile nunca aparece -->
+  <UserProfile />
+&#10;  <!-- BIEN: Suspense gestiona el estado pendiente -->
+  <Suspense>
+    <UserProfile />
+    <template #fallback>
+      <p>Loading profile...</p>
+    </template>
+  </Suspense>
+</template>" />
+
 El slot `#fallback` se renderiza mientras el setup asíncrono está pendiente. Una vez que el await se resuelve, Vue intercambia el contenido real.
 
 ## En Nuxt: funciona sin configuración adicional
@@ -73,6 +99,18 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
   <h1>{{ user.name }}</h1>
 </template>
 ```
+
+<PlaygroundLink code="<!-- pages/users/[id].vue — página Nuxt -->
+
+<script setup>
+const route = useRoute()
+const { data: user } = await useFetch(`/api/users/${route.params.id}`)
+</script>
+
+&#10;<template>
+
+  <h1>{{ user.name }}</h1>
+</template>" />
 
 Esto funciona sin configuración adicional porque el `app.vue` de Nuxt contiene `<NuxtPage>`, que internamente proporciona el límite `<Suspense>`. Durante SSR, el await se resuelve en el servidor. Durante la navegación del cliente, Nuxt muestra un indicador de carga mientras el setup de la nueva página se resuelve.
 
@@ -97,6 +135,17 @@ onMounted(() => console.log('after await')) // funciona
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// Estos funcionan: registrados antes de cualquier await
+const count = ref(0)
+watch(count, (val) => console.log(val))
+onMounted(() => console.log('mounted'))
+&#10;const data = await fetch('/api/data').then((r) => r.json())
+&#10;// Estos también funcionan: withAsyncContext preserva la instancia
+watch(data, (val) => console.log(val)) // funciona
+onMounted(() => console.log('after await')) // funciona
+</script>" />
+
 La recomendación: registrar los watchers, lifecycle hooks y composables ANTES del primer `await` sigue siendo buena práctica por legibilidad y claridad. Pon las declaraciones reactivas al principio, las operaciones asíncronas al final.
 
 ```vue
@@ -113,6 +162,17 @@ items.value = await response.json()
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// 1. Todo el estado reactivo y composables primero
+const count = ref(0)
+const items = ref([])
+watch(count, (val) => console.log(val))
+onMounted(() => console.log('mounted'))
+&#10;// 2. Operaciones asíncronas al final
+const response = await fetch('/api/data')
+items.value = await response.json()
+</script>" />
+
 ## Cuándo usar await frente a useFetch
 
 En Nuxt, prefiere `useFetch` sobre `await fetch()` directo:
@@ -126,6 +186,13 @@ const { data } = await useFetch('/api/users')
 const data = ref(await fetch('/api/users').then((r) => r.json()))
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+// Preferible: gestiona payload SSR, caché y cancelación
+const { data } = await useFetch('/api/users')
+&#10;// Evitar: sin transferencia de payload, doble fetch en la hydration
+const data = ref(await fetch('/api/users').then((r) => r.json()))
+</script>" />
 
 Ambos usan `await`, pero `useFetch` se integra con el sistema de payload de Nuxt. El `fetch` directo se ejecuta de nuevo en el cliente durante la hydration.
 
@@ -148,6 +215,17 @@ const [{ data: users }, { data: posts }] = await Promise.all([
 ])
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+// MAL: secuencial — tiempo total = A + B
+const users = await useFetch('/api/users')
+const posts = await useFetch('/api/posts')
+&#10;// BIEN: paralelo — tiempo total = max(A, B)
+const [{ data: users }, { data: posts }] = await Promise.all([
+  useFetch('/api/users'),
+  useFetch('/api/posts')
+])
+</script>" />
 
 ## Resumen
 

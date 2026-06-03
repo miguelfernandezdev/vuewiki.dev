@@ -26,6 +26,18 @@ The simplest form. The child defines a `<slot />` placeholder, and anything the 
 </Card>
 ```
 
+<PlaygroundLink code="<!-- Card.vue -->
+<template>
+
+  <div class=&quot;card&quot;>
+    <slot />
+  </div>
+</template>
+&#10;<!-- Usage -->
+<Card>
+  <p>This paragraph replaces the slot</p>
+</Card>" />
+
 If the parent provides nothing, you can set fallback content: `<slot>Default text</slot>`.
 
 ## Named slots
@@ -54,6 +66,24 @@ When a component has multiple insertion points, give each slot a name. The paren
 </PageLayout>
 ```
 
+<PlaygroundLink code="<!-- PageLayout.vue -->
+<template>
+
+  <header><slot name=&quot;header&quot; /></header>
+  <main><slot /></main>
+  <footer><slot name=&quot;footer&quot; /></footer>
+</template>
+&#10;<!-- Usage -->
+<PageLayout>
+  <template #header>
+    <h1>Dashboard</h1>
+  </template>
+&#10;  <p>Main content goes into the default slot</p>
+&#10;  <template #footer>
+    <span>© 2025</span>
+  </template>
+</PageLayout>" />
+
 `#header` is shorthand for `v-slot:header`. Content not wrapped in a `<template #name>` goes into the default slot.
 
 ## Scoped slots
@@ -81,6 +111,27 @@ defineProps<{ items: string[] }>()
   </template>
 </ItemList>
 ```
+
+<PlaygroundLink code="<!-- ItemList.vue -->
+
+<script setup lang=&quot;ts&quot;>
+defineProps<{ items: string[] }>()
+</script>
+
+&#10;<template>
+
+  <ul>
+    <li v-for=&quot;(item, index) in items&quot; :key=&quot;index&quot;>
+      <slot name=&quot;item&quot; :value=&quot;item&quot; :index=&quot;index&quot; />
+    </li>
+  </ul>
+</template>
+&#10;<!-- Usage: parent decides how each item looks -->
+<ItemList :items=&quot;['Apple', 'Banana', 'Cherry']&quot;>
+  <template #item=&quot;{ value, index }&quot;>
+    <strong>{{ index + 1 }}.</strong> {{ value }}
+  </template>
+</ItemList>" />
 
 The child owns the data and the loop. The parent owns the rendering. This is the **render delegation pattern**, the same idea behind headless UI libraries like [Headless UI](https://headlessui.com/) and [Radix Vue](https://www.radix-vue.com/).
 

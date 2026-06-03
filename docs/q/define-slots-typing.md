@@ -36,6 +36,30 @@ defineSlots<{
 </template>
 ```
 
+<PlaygroundLink code="<!-- DataList.vue -->
+
+<script setup lang=&quot;ts&quot;>
+interface Item {
+  id: number
+  label: string
+}
+&#10;defineProps<{ items: Item[] }>()
+&#10;defineSlots<{
+  default(props: { item: Item; index: number }): any
+  empty(): any
+}>()
+</script>
+
+&#10;<template>
+
+  <ul v-if=&quot;items.length&quot;>
+    <li v-for=&quot;(item, index) in items&quot; :key=&quot;item.id&quot;>
+      <slot :item=&quot;item&quot; :index=&quot;index&quot; />
+    </li>
+  </ul>
+  <slot v-else name=&quot;empty&quot; />
+</template>" />
+
 Now when a parent uses this component, the slot props are typed:
 
 ```vue
@@ -50,6 +74,18 @@ Now when a parent uses this component, the slot props are typed:
   </template>
 </DataList>
 ```
+
+<PlaygroundLink code="<DataList :items=&quot;products&quot;>
+
+  <!-- 'item' is typed as Item, 'index' as number -->
+
+<template #default=&quot;{ item, index }&quot;>
+<span>{{ index + 1 }}. {{ item.label }}</span>
+</template>
+&#10; <template #empty>
+<p>No items found.</p>
+</template>
+</DataList>" />
 
 ## Syntax
 
@@ -122,6 +158,54 @@ defineSlots<{
 </template>
 ```
 
+<PlaygroundLink code="<!-- DataTable.vue -->
+
+<script setup lang=&quot;ts&quot; generic=&quot;T extends { id: string | number }&quot;>
+defineProps<{
+  rows: T[]
+  columns: Array<{ key: keyof T; label: string }>
+}>()
+&#10;defineSlots<{
+  header(props: { columns: Array<{ key: keyof T; label: string }> }): any
+  cell(props: { row: T; column: keyof T; value: T[keyof T] }): any
+  empty(): any
+}>()
+</script>
+
+&#10;<template>
+
+  <table>
+    <thead>
+      <slot name=&quot;header&quot; :columns=&quot;columns&quot;>
+        <tr>
+          <th v-for=&quot;col in columns&quot; :key=&quot;String(col.key)&quot;>{{ col.label }}</th>
+        </tr>
+      </slot>
+    </thead>
+    <tbody>
+      <template v-if=&quot;rows.length&quot;>
+        <tr v-for=&quot;row in rows&quot; :key=&quot;row.id&quot;>
+          <td v-for=&quot;col in columns&quot; :key=&quot;String(col.key)&quot;>
+            <slot
+              name=&quot;cell&quot;
+              :row=&quot;row&quot;
+              :column=&quot;col.key&quot;
+              :value=&quot;row[col.key]&quot;
+            >
+              {{ row[col.key] }}
+            </slot>
+          </td>
+        </tr>
+      </template>
+      <tr v-else>
+        <td :colspan=&quot;columns.length&quot;>
+          <slot name=&quot;empty&quot;>No data</slot>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>" />
+
 Combined with `generic`, the slot props are inferred from the actual data type passed to the component.
 
 ## Conditional slot rendering
@@ -151,6 +235,28 @@ defineSlots<{
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+defineSlots<{
+header(): any
+default(): any
+footer(): any
+}>()
+</script>
+&#10;<template>
+
+  <div class=&quot;card&quot;>
+    <header v-if=&quot;$slots.header&quot; class=&quot;card-header&quot;>
+      <slot name=&quot;header&quot; />
+    </header>
+    <div class=&quot;card-body&quot;>
+      <slot />
+    </div>
+    <footer v-if=&quot;$slots.footer&quot; class=&quot;card-footer&quot;>
+      <slot name=&quot;footer&quot; />
+    </footer>
+  </div>
+</template>" />
 
 ## Before defineSlots (Vue < 3.3)
 

@@ -31,6 +31,24 @@ const frozenList = reactive(
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const frozenList = reactive(
+Object.freeze([
+{ id: 1, name: 'Alice' },
+{ id: 2, name: 'Bob' }
+])
+)
+</script>
+&#10;<template>
+
+  <!-- Renders fine on first load -->
+  <p v-for=&quot;item in frozenList&quot; :key=&quot;item.id&quot;>
+    {{ item.name }}
+  </p>
+&#10;  <!-- This button does nothing visible -->
+  <button @click=&quot;frozenList[0].name = 'Changed'&quot;>Try to mutate</button>
+</template>" />
+
 Clicking the button won't update the DOM. In strict mode, the mutation throws a `TypeError`. In non-strict mode, it silently fails. Either way, Vue never re-renders.
 
 ## Why: Proxy vs freeze
@@ -75,6 +93,22 @@ const countries = shallowRef(
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { shallowRef } from 'vue'
+&#10;const countries = shallowRef(
+  Object.freeze(
+    await $fetch('/api/countries') // 250 objects with nested properties
+  )
+)
+</script>
+&#10;<template>
+  <select>
+    <option v-for=&quot;c in countries&quot; :key=&quot;c.code&quot; :value=&quot;c.code&quot;>
+      {{ c.name }}
+    </option>
+  </select>
+</template>" />
+
 Combining [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) with `Object.freeze` means Vue tracks the ref itself (you can replace the entire array) but doesn't create Proxies for the 250 country objects or their nested properties.
 
 ## Replacing frozen data
@@ -92,6 +126,15 @@ function addItem() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const data = ref(Object.freeze([1, 2, 3]))
+&#10;function addItem() {
+  // BAD: data.value.push(4) — fails silently or throws
+  // GOOD: replace with a new frozen array
+  data.value = Object.freeze([...data.value, 4])
+}
+</script>" />
 
 The ref's `.value` is reassignable. Vue detects the new value and re-renders. The new array is also frozen, so its contents stay non-reactive.
 

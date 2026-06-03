@@ -23,6 +23,16 @@ const name = ref('')
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const name = ref('')
+</script>
+&#10;<template>
+<input v-model=&quot;name&quot; />
+
+  <p>Current value: {{ name }}</p>
+</template>" />
+
 Cada carácter que escribe el usuario fluye a través de: evento input → actualiza `name` → Vue re-renderiza → el input muestra el nuevo valor. Siempre tienes el valor actual en `name`.
 
 ## No controlado (template ref)
@@ -44,6 +54,19 @@ function handleSubmit() {
   <button @click="handleSubmit">Submit</button>
 </template>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useTemplateRef } from 'vue'
+&#10;const inputEl = useTemplateRef('name-input')
+&#10;function handleSubmit() {
+  const value = inputEl.value?.value
+  console.log('Submitted:', value)
+}
+</script>
+&#10;<template>
+  <input ref=&quot;name-input&quot; />
+  <button @click=&quot;handleSubmit&quot;>Submit</button>
+</template>" />
 
 El DOM posee el valor. Solo lo lees cuando lo necesitas.
 
@@ -72,6 +95,8 @@ Los inputs no controlados usan el atributo HTML `value`:
 <input ref="email-input" value="user@example.com" />
 ```
 
+<PlaygroundLink code="<input ref=&quot;email-input&quot; value=&quot;user@example.com&quot; />" />
+
 ## El patrón híbrido: v-model.lazy
 
 `v-model.lazy` sincroniza tras eventos `change` en lugar de `input`, ofreciendo un punto intermedio. El evento `change` se dispara cuando el input pierde el foco después de que su valor haya cambiado:
@@ -82,6 +107,12 @@ Los inputs no controlados usan el atributo HTML `value`:
   <input v-model.lazy="search" />
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Se actualiza solo cuando el usuario abandona el campo después de modificarlo -->
+  <input v-model.lazy=&quot;search&quot; />
+</template>" />
 
 Esto evita el re-renderizado en cada pulsación mientras mantiene el valor en estado reactivo.
 

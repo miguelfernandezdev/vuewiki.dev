@@ -57,6 +57,49 @@ function sendInvitation(email) {
 </template>
 ```
 
+<PlaygroundLink code="<!-- MAL: UserDashboard.vue haciendo todo -->
+
+<script setup>
+const users = ref([])
+const searchQuery = ref('')
+const sortBy = ref('name')
+const isLoading = ref(false)
+const error = ref(null)
+const selectedUser = ref(null)
+const isModalOpen = ref(false)
+&#10;onMounted(async () => {
+  isLoading.value = true
+  try {
+    users.value = await $fetch('/api/users')
+  } catch (e) {
+    error.value = e.message
+  } finally {
+    isLoading.value = false
+  }
+})
+&#10;const filteredUsers = computed(() => {
+  /* 30 líneas de filtrado y ordenación */
+})
+&#10;function selectUser(user) {
+  /* ... */
+}
+function deleteUser(id) {
+  /* ... */
+}
+function exportToCsv() {
+  /* ... */
+}
+function sendInvitation(email) {
+  /* ... */
+}
+</script>
+
+&#10;<template>
+
+  <!-- 200 líneas de template -->
+
+</template>" />
+
 La solución: extrae la obtención de datos a un composable, divide en componentes contenedor y presentacional, saca la lógica de negocio del componente por completo.
 
 ## 2. Poner todo en Pinia
@@ -193,6 +236,24 @@ Componentes con docenas de props que controlan todo, sin nombres consistentes y 
   :loading="isLoading"
 />
 ```
+
+<PlaygroundLink code="<!-- Antipatrón: espagueti basado en props -->
+<DataTable
+  :data=&quot;items&quot;
+  :columns=&quot;cols&quot;
+  :sortable=&quot;true&quot;
+  :filterable=&quot;true&quot;
+  :paginated=&quot;true&quot;
+  :page-size=&quot;20&quot;
+  :show-header=&quot;true&quot;
+  :show-footer=&quot;false&quot;
+  :selectable=&quot;true&quot;
+  :selection-mode=&quot;'multi'&quot;
+  :row-click-action=&quot;'expand'&quot;
+  :expandable=&quot;true&quot;
+  :export-csv=&quot;true&quot;
+  :loading=&quot;isLoading&quot;
+/>" />
 
 Prefiere componentes componibles sobre componentes configurables: slots para la personalización, componentes más pequeños y enfocados en lugar de un mega-componente, y composición sobre configuración.
 

@@ -25,6 +25,17 @@ watchEffect(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, watchEffect } from 'vue'
+&#10;// This code runs ONCE when the component is created
+const count = ref(0)
+console.log('setup') // logs once
+&#10;watchEffect(() => {
+  // This runs when dependencies change, not on every render
+  console.log(count.value)
+})
+</script>" />
+
 In React, the equivalent component function re-executes on every state change, every prop change, every parent re-render. That creates problems Vue doesn't have.
 
 ## No stale closures

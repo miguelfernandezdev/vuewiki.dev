@@ -42,6 +42,19 @@ const [users, posts, stats] = await Promise.all([
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// BAD: sequential — total time = A + B + C
+const users = await fetch('/api/users').then((r) => r.json())
+const posts = await fetch('/api/posts').then((r) => r.json())
+const stats = await fetch('/api/stats').then((r) => r.json())
+&#10;// GOOD: parallel — total time = max(A, B, C)
+const [users, posts, stats] = await Promise.all([
+  fetch('/api/users').then((r) => r.json()),
+  fetch('/api/posts').then((r) => r.json()),
+  fetch('/api/stats').then((r) => r.json())
+])
+</script>" />
+
 **Too many requests**: 20 API calls on page load means 20 round trips. Combine into fewer endpoints or use a BFF (Backend for Frontend) pattern.
 
 **Large payloads**: an API returning 500 KB of JSON when the page only needs 10 fields. Add pagination, field selection, or compress the response.
@@ -84,6 +97,13 @@ const HeavyChart = defineAsyncComponent(() => import('./HeavyChart.vue'))
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+// BAD: chart library loads even if the tab isn't visible
+import HeavyChart from './HeavyChart.vue'
+&#10;// GOOD: loads only when rendered
+const HeavyChart = defineAsyncComponent(() => import('./HeavyChart.vue'))
+</script>" />
+
 ## Step 4: Check Vue reactivity issues
 
 Open Vue DevTools and look at the Performance tab. Sort components by render time.
@@ -120,6 +140,12 @@ const filteredItems = computed(() => items.value.filter((i) => i.active))
 <div v-for="item in filteredItems" :key="item.id">
 ```
 
+<PlaygroundLink code="<!-- BAD: expensiveFilter() runs on every render -->
+
+<div v-for=&quot;item in expensiveFilter(items)&quot; :key=&quot;item.id&quot;>
+&#10;<!-- GOOD: runs only when items change -->
+<div v-for=&quot;item in filteredItems&quot; :key=&quot;item.id&quot;>" />
+
 ## Step 5: Check rendering issues
 
 **v-if vs v-show**: `v-if` destroys and recreates the DOM. For something that toggles frequently (tabs, tooltips), `v-show` just toggles `display: none`.
@@ -137,6 +163,13 @@ const { list, containerProps, wrapperProps } = useVirtualList(items, {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { useVirtualList } from '@vueuse/core'
+&#10;const { list, containerProps, wrapperProps } = useVirtualList(items, {
+  itemHeight: 50
+})
+</script>" />
 
 **Components re-rendering unnecessarily**: check Vue DevTools for components that re-render when they shouldn't. Common cause: unstable props (passing a new object reference every render).
 

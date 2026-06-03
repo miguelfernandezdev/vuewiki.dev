@@ -35,6 +35,23 @@ watch(searchQuery, (newVal) => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref, watch } from 'vue'
+&#10;const searchQuery = ref('')
+const debouncedQuery = ref('')
+&#10;let timeout: ReturnType<typeof setTimeout>
+&#10;watch(searchQuery, (newVal) => {
+  clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    debouncedQuery.value = newVal
+  }, 300)
+})
+</script>
+&#10;<template>
+  <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <SearchResults :query=&quot;debouncedQuery&quot; />
+</template>" />
+
 The user types into `searchQuery` (instant feedback). After 300ms of no typing, `debouncedQuery` updates and triggers the actual search. Each new keystroke resets the timer.
 
 ## Extract a reusable composable
@@ -73,6 +90,17 @@ const debouncedQuery = useDebouncedRef(searchQuery, 300)
   <SearchResults :query="debouncedQuery" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { ref } from 'vue'
+import { useDebouncedRef } from '@/composables/useDebouncedRef'
+&#10;const searchQuery = ref('')
+const debouncedQuery = useDebouncedRef(searchQuery, 300)
+</script>
+&#10;<template>
+  <input v-model=&quot;searchQuery&quot; placeholder=&quot;Search...&quot; />
+  <SearchResults :query=&quot;debouncedQuery&quot; />
+</template>" />
 
 ## Using VueUse
 

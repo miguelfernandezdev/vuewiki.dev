@@ -26,6 +26,18 @@ const company = 'Acme Corp'
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Rendered once, never re-evaluated -->
+  <footer v-once>
+    <p>Copyright {{ year }} {{ company }}</p>
+  </footer>
+</template>
+&#10;<script setup>
+const year = 2024
+const company = 'Acme Corp'
+</script>" />
+
 Even though `year` and `company` are interpolated at runtime, `v-once` tells Vue their values will never change, so the subtree is frozen after the first render.
 
 ## v-memo
@@ -53,6 +65,22 @@ const selectedId = (ref < number) | (null > null)
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-for=&quot;item in items&quot; :key=&quot;item.id&quot; v-memo=&quot;[item.id === selectedId]&quot;>
+    <div :class=&quot;{ selected: item.id === selectedId }&quot;>
+      <ExpensiveComponent :data=&quot;item&quot; />
+    </div>
+  </div>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+&#10;const items = ref([
+  /* 1,000 items */
+])
+const selectedId = (ref < number) | (null > null)
+</script>" />
+
 When `selectedId` changes, only two items re-render: the previously selected one (true to false) and the newly selected one (false to true). The other 998 items are skipped entirely.
 
 ## v-memo with multiple dependencies
@@ -73,6 +101,21 @@ When `selectedId` changes, only two items re-render: the previously selected one
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div
+    v-for=&quot;item in items&quot;
+    :key=&quot;item.id&quot;
+    v-memo=&quot;[item.id === selectedId, item.id === editingId]&quot;
+  >
+    <ItemCard
+      :item=&quot;item&quot;
+      :selected=&quot;item.id === selectedId&quot;
+      :editing=&quot;item.id === editingId&quot;
+    />
+  </div>
+</template>" />
+
 The item re-renders only when its selection or editing state changes.
 
 ## v-memo with empty array
@@ -84,6 +127,11 @@ The item re-renders only when its selection or editing state changes.
   {{ item.name }}
 </div>
 ```
+
+<PlaygroundLink code="<div v-for=&quot;item in staticList&quot; :key=&quot;item.id&quot; v-memo=&quot;[]&quot;>
+{{ item.name }}
+
+</div>" />
 
 ## When NOT to use them
 
@@ -103,6 +151,20 @@ The item re-renders only when its selection or editing state changes.
   <span v-once>{{ label }}</span>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <!-- Wrong: count will never update in the UI -->
+  <div v-once>
+    <span>Count: {{ count }}</span>
+  </div>
+&#10;  <!-- Wrong: v-model inside memoized subtree won't work properly -->
+  <div v-memo=&quot;[selected]&quot;>
+    <input v-model=&quot;item.name&quot; />
+  </div>
+&#10;  <!-- Pointless: overhead of memoization exceeds the cost of re-rendering a <span> -->
+  <span v-once>{{ label }}</span>
+</template>" />
 
 ## When to use which
 

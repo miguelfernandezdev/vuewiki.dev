@@ -32,6 +32,22 @@ const showModal = ref(false)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+const showModal = ref(false)
+</script>
+&#10;<template>
+  <button @click=&quot;showModal = true&quot;>Open</button>
+&#10;  <Teleport to=&quot;body&quot;>
+    <div v-if=&quot;showModal&quot; class=&quot;modal-overlay&quot;>
+      <div class=&quot;modal&quot;>
+        <p>This renders as a direct child of body</p>
+        <button @click=&quot;showModal = false&quot;>Close</button>
+      </div>
+    </div>
+  </Teleport>
+</template>" />
+
 Without Teleport, a modal inside a deeply nested component inherits all parent CSS (`overflow: hidden`, `z-index`, `transform`), which can clip or misposition it. Teleporting to `<body>` sidesteps those issues. The `to` prop accepts any CSS selector or DOM element.
 
 Common uses: modals, tooltips, dropdown menus, notifications. Anything that needs to visually escape its parent's layout.
@@ -50,6 +66,15 @@ In Vue 2, every component needed a single root element. This forced unnecessary 
 </template>
 ```
 
+<PlaygroundLink code="<!-- Vue 2: required single root -->
+<template>
+
+  <div>
+    <header>Header</header>
+    <main>Content</main>
+  </div>
+</template>" />
+
 Vue 3 supports **fragments**, meaning multiple root elements with no wrapper:
 
 ```vue
@@ -60,6 +85,14 @@ Vue 3 supports **fragments**, meaning multiple root elements with no wrapper:
   <footer>Footer</footer>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Vue 3: multiple roots, no wrapper needed -->
+<template>
+
+  <header>Header</header>
+  <main>Content</main>
+  <footer>Footer</footer>
+</template>" />
 
 One caveat: [fallthrough attributes](/q/fallthrough-attrs) don't work automatically with multi-root components because Vue doesn't know which root to apply them to. You need to bind `$attrs` explicitly.
 
@@ -79,6 +112,17 @@ One caveat: [fallthrough attributes](/q/fallthrough-attrs) don't work automatica
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Suspense>
+    <template #default>
+      <UserDashboard />
+    </template>
+    <template #fallback>
+      <LoadingSpinner />
+    </template>
+  </Suspense>
+</template>" />
 
 If `UserDashboard` has an async `setup` (returns a promise), Suspense shows `LoadingSpinner` until the promise resolves. You can also handle errors with [`onErrorCaptured`](/q/error-handling) in the parent.
 

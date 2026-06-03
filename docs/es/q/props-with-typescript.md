@@ -29,6 +29,20 @@ const props = defineProps<Props>()
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+title: string
+count?: number
+items: string[]
+}
+&#10;const props = defineProps<Props>()
+</script>
+&#10;<template>
+
+  <h2>{{ props.title }}</h2>
+  <span>{{ props.count }} items</span>
+</template>" />
+
 Las props opcionales (marcadas con `?`) pueden ser `undefined`. Las props requeridas generan un warning en tiempo de ejecución si el componente padre no las proporciona.
 
 ## Valores por defecto con withDefaults
@@ -51,6 +65,20 @@ const props = withDefaults(defineProps<Props>(), {
 // props.tags ahora es `string[]` (no `string[] | undefined`)
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+interface Props {
+  title: string
+  count?: number
+  tags?: string[]
+}
+&#10;const props = withDefaults(defineProps<Props>(), {
+  count: 0,
+  tags: () => ['vue']
+})
+// props.count ahora es `number` (no `number | undefined`)
+// props.tags ahora es `string[]` (no `string[] | undefined`)
+</script>" />
 
 Para arrays y objetos, usa una función factoría (`() => ['vue']`), misma razón que `data()` en la Options API: cada instancia del componente necesita su propia copia.
 
@@ -77,6 +105,23 @@ const {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const {
+title,
+count = 0,
+tags = ['vue']
+} = defineProps<{
+title: string
+count?: number
+tags?: string[]
+}>()
+</script>
+&#10;<template>
+
+  <!-- `title` y `count` son reactivos — no necesitan `.value` en el template -->
+  <h2>{{ title }}</h2>
+</template>" />
+
 Esto reemplaza `withDefaults` en la mayoría de casos. Las variables destructuradas son reactivas en el template y en `watch`/`computed`, pero si las pasas a una función normal, son solo valores en ese momento.
 
 ## Tipos complejos
@@ -96,6 +141,16 @@ interface Props {
 const props = defineProps<Props>()
 </script>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import type { User } from '@/types'
+&#10;interface Props {
+  user: User
+  status: 'active' | 'inactive' | 'pending'
+  onUpdate?: (user: User) => void
+}
+&#10;const props = defineProps<Props>()
+</script>" />
 
 Hay [limitaciones en los tipos que puedes usar](/es/q/defineprops-type-limitations). Por ejemplo, no puedes usar tipos condicionales o alias de tipos importados que resuelven a genéricos complejos en algunos casos.
 

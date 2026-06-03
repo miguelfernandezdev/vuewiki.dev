@@ -29,6 +29,20 @@ watchEffect(() => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref, computed, watchEffect } from 'vue'
+&#10;const count = ref(0)
+&#10;const stats = computed(() => {
+  return {
+    isEven: count.value % 2 === 0,
+    doubled: count.value * 2
+  }
+})
+&#10;watchEffect(() => {
+  console.log('Stats changed:', stats.value)
+})
+</script>" />
+
 Every time `count` changes, `stats` returns a brand new object. Vue compares by reference (`===`), sees a different object, and runs the effect. If `count` goes from 0 to 2 to 4, `isEven` is `true` all three times, but the effect fires on each change because the object reference is new.
 
 ## Primitive stability (Vue 3.4+)
@@ -82,6 +96,29 @@ watchEffect(() => {
 })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+import { ref, computed, watchEffect } from 'vue'
+&#10;const count = ref(0)
+&#10;const stats = computed((oldValue) => {
+  const newValue = {
+    isEven: count.value % 2 === 0,
+    category: count.value < 10 ? 'small' : 'large'
+  }
+&#10;  if (
+    oldValue &amp;&amp;
+    oldValue.isEven === newValue.isEven &amp;&amp;
+    oldValue.category === newValue.category
+  ) {
+    return oldValue
+  }
+&#10;  return newValue
+})
+&#10;watchEffect(() => {
+  console.log('Stats changed:', stats.value)
+  // Only runs when isEven or category actually changes
+})
+</script>" />
 
 Returning the old reference tells Vue nothing changed. No watchers fire, no child components re-render.
 

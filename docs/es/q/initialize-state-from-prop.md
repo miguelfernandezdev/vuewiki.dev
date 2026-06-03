@@ -22,6 +22,14 @@ const count = ref(props.initialCount)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ initialCount: number }>()
+&#10;const count = ref(props.initialCount)
+</script>
+&#10;<template>
+  <button @click=&quot;count++&quot;>{{ count }}</button>
+</template>" />
+
 `count` comienza con el valor que tenga `initialCount` cuando el componente se monta. Después de eso, `count` lleva su propia vida. El padre puede cambiar `initialCount` a 999 y el `count` local no se moverá.
 
 ## Cuándo es el enfoque correcto
@@ -32,6 +40,9 @@ Este patrón funciona cuando la prop es realmente un valor semilla, no un bindin
 <!-- Padre -->
 <UserForm :initial-name="user.name" @save="updateUser" />
 ```
+
+<PlaygroundLink code="<!-- Padre -->
+<UserForm :initial-name=&quot;user.name&quot; @save=&quot;updateUser&quot; />" />
 
 ```vue
 <!-- UserForm.vue -->
@@ -48,6 +59,19 @@ const name = ref(props.initialName)
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserForm.vue -->
+
+<script setup>
+const props = defineProps<{ initialName: string }>()
+const emit = defineEmits<{ save: [name: string] }>()
+&#10;const name = ref(props.initialName)
+</script>
+
+&#10;<template>
+<input v-model=&quot;name&quot; />
+<button @click=&quot;emit('save', name)&quot;>Guardar</button>
+</template>" />
+
 El formulario edita una copia local. Los datos del padre solo se actualizan cuando el usuario guarda explícitamente.
 
 ## El error: esperar que permanezca sincronizado
@@ -62,6 +86,13 @@ const localCount = ref(props.count)
 // Cuando el padre cambia props.count, localCount no se mueve
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ count: number }>()
+&#10;// Este ref copia el valor UNA SOLA VEZ
+const localCount = ref(props.count)
+&#10;// Cuando el padre cambia props.count, localCount no se mueve
+</script>" />
 
 Si necesitas que el valor local siga la prop, usa `computed` o `watch`:
 
@@ -80,6 +111,17 @@ watch(() => props.count, (newVal) => {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ count: number }>()
+&#10;// Opción 1: valor derivado de solo lectura
+const doubled = computed(() => props.count * 2)
+&#10;// Opción 2: copia local que se reinicia cuando cambia la prop
+const localCount = ref(props.count)
+watch(() => props.count, (newVal) => {
+  localCount.value = newVal
+})
+</script>" />
+
 ## ¿Por qué no usar la prop directamente?
 
 Vue impone el flujo de datos unidireccional. Las props son de solo lectura:
@@ -92,6 +134,12 @@ const props = defineProps<{ count: number }>()
 props.count++ // [Vue warn]: Set operation on key "count" of target is invalid
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ count: number }>()
+&#10;// Esto genera un warning en desarrollo
+props.count++ // [Vue warn]: Set operation on key &quot;count&quot; of target is invalid
+</script>" />
 
 Mutar una prop directamente cambiaría los datos del padre desde el hijo, haciendo imposible rastrear de dónde vienen los cambios de state. Los tres patrones válidos son:
 
@@ -115,6 +163,15 @@ const pageSize = ref(props.defaultPageSize)
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+const props = defineProps<{
+  initialQuery: string
+  defaultPageSize: number
+}>()
+&#10;const query = ref(props.initialQuery)
+const pageSize = ref(props.defaultPageSize)
+</script>" />
+
 Esto deja claro a cualquier persona que lea el template del padre: `initial-query="vue"` significa que el hijo empezará con "vue" pero puede divergir.
 
 ## Props de objeto: la trampa de la referencia
@@ -133,6 +190,15 @@ localFilters.value.category = 'new' // también muta el objeto del padre
 const localFilters = ref({ ...props.initialFilters })
 </script>
 ```
+
+<PlaygroundLink code="<script setup>
+const props = defineProps<{ initialFilters: { category: string; sort: string } }>()
+&#10;// MAL: localFilters.value y props.initialFilters apuntan al mismo objeto
+const localFilters = ref(props.initialFilters)
+localFilters.value.category = 'new' // también muta el objeto del padre
+&#10;// BIEN: spread para crear una copia real
+const localFilters = ref({ ...props.initialFilters })
+</script>" />
 
 Para objetos anidados, usa `structuredClone(props.initialFilters)` o una utilidad de copia profunda.
 

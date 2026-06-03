@@ -21,6 +21,14 @@ Ambas directivas muestran y ocultan elementos según una condición, pero lo hac
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <div v-if=&quot;showPanel&quot;>
+    <!-- Este componente completo se destruye cuando showPanel es false -->
+    <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
+
 Alternar `v-if` es costoso: Vue tiene que desmontar y reconstruir el subárbol del DOM cada vez. Pero si la condición es `false` en el renderizado inicial, no se crea nada. Coste cero.
 
 ## v-show: oculta con CSS
@@ -35,6 +43,14 @@ Alternar `v-if` es costoso: Vue tiene que desmontar y reconstruir el subárbol d
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div v-show=&quot;showPanel&quot;>
+    <!-- Siempre en el DOM, solo oculto via CSS cuando showPanel es false -->
+    <ExpensiveChart :data=&quot;chartData&quot; />
+  </div>
+</template>" />
 
 Alternar es barato (un cambio de propiedad CSS), pero el renderizado inicial siempre paga el coste completo aunque el elemento empiece oculto.
 

@@ -37,6 +37,27 @@ export default defineComponent({
 </script>
 ```
 
+<PlaygroundLink code="<!-- Sin <script setup> — mucho código repetitivo -->
+
+<script lang=&quot;ts&quot;>
+import { defineComponent, ref, computed } from 'vue'
+&#10;export default defineComponent({
+  props: {
+    initialCount: { type: Number, default: 0 }
+  },
+  emits: ['update'],
+  setup(props, { emit }) {
+    const count = ref(props.initialCount)
+    const doubled = computed(() => count.value * 2)
+&#10;    function increment() {
+      count.value++
+      emit('update', count.value)
+    }
+&#10;    return { count, doubled, increment }
+  }
+})
+</script>" />
+
 Con `<script setup>`, todo eso desaparece. Cada variable, función e importación del nivel superior queda disponible automáticamente en la plantilla:
 
 ```vue
@@ -56,6 +77,20 @@ function increment() {
 }
 </script>
 ```
+
+<PlaygroundLink code="<!-- Con <script setup> — mismo resultado, la mitad del código -->
+
+<script setup lang=&quot;ts&quot;>
+import { ref, computed } from 'vue'
+&#10;const props = defineProps<{ initialCount?: number }>()
+const emit = defineEmits<{ update: [value: number] }>()
+&#10;const count = ref(props.initialCount ?? 0)
+const doubled = computed(() => count.value * 2)
+&#10;function increment() {
+  count.value++
+  emit('update', count.value)
+}
+</script>" />
 
 Sin `export default`. Sin función `setup()`. Sin declaración `return`. Todo lo declarado en el nivel superior se expone a la plantilla automáticamente.
 
@@ -82,6 +117,17 @@ defineExpose({
 </script>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const props = defineProps<{ title: string }>()
+const emit = defineEmits<{ close: [] }>()
+const model = defineModel<string>()
+&#10;defineExpose({
+  reset() {
+    /* ... */
+  }
+})
+</script>" />
+
 ## Cuándo todavía necesitas un `<script>` normal
 
 Ocasionalmente necesitas tanto `<script setup>` como un bloque `<script>` normal en el mismo componente. Por ejemplo, para establecer `inheritAttrs: false` o declarar exportaciones con nombre:
@@ -95,6 +141,13 @@ export default { inheritAttrs: false }
 const attrs = useAttrs()
 </script>
 ```
+
+<PlaygroundLink code="<script lang=&quot;ts&quot;>
+export default { inheritAttrs: false }
+</script>
+&#10;<script setup lang=&quot;ts&quot;>
+const attrs = useAttrs()
+</script>" />
 
 Esto es poco frecuente. Para la gran mayoría de componentes, `<script setup>` solo es todo lo que necesitas.
 

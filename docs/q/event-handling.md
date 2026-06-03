@@ -19,6 +19,14 @@ const count = ref(0)
 </script>
 ```
 
+<PlaygroundLink code="<template>
+  <button @click=&quot;count++&quot;>Clicked {{ count }} times</button>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+</script>" />
+
 ## Inline vs method handlers
 
 ```vue
@@ -54,6 +62,32 @@ function log(msg: string, event: MouseEvent) {
 </script>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Inline: expression evaluated directly -->
+
+<button @click=&quot;count++&quot;>+1</button>
+&#10; <!-- Method: reference to a function -->
+<button @click=&quot;increment&quot;>+1</button>
+&#10; <!-- Method with arguments -->
+<button @click=&quot;addAmount(5)&quot;>+5</button>
+&#10; <!-- Access the native event alongside custom args -->
+<button @click=&quot;log('clicked', $event)&quot;>Log</button>
+</template>
+&#10;<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+&#10;function increment() {
+count.value++
+}
+&#10;function addAmount(n: number) {
+count.value += n
+}
+&#10;function log(msg: string, event: MouseEvent) {
+console.log(msg, event.target)
+}
+</script>" />
+
 ## Event modifiers
 
 Modifiers replace common imperative patterns like `event.preventDefault()` with declarative template syntax.
@@ -79,6 +113,22 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Prevent default browser behavior -->
+  <form @submit.prevent=&quot;onSubmit&quot;>...</form>
+&#10;  <!-- Stop propagation to parent elements -->
+  <button @click.stop=&quot;doThis&quot;>Click</button>
+&#10;  <!-- Only trigger once -->
+  <button @click.once=&quot;initialize&quot;>Init</button>
+&#10;  <!-- Chain modifiers -->
+  <a @click.stop.prevent=&quot;handleLink&quot;>Link</a>
+&#10;  <!-- Only fire if the event target is the element itself, not a child -->
+  <div @click.self=&quot;onDivClick&quot;>
+    <button>Clicking here won't trigger onDivClick</button>
+  </div>
+</template>" />
+
 ## Key modifiers
 
 ```vue
@@ -96,6 +146,20 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
 </template>
 ```
 
+<PlaygroundLink code="<template>
+
+  <!-- Specific keys -->
+
+<input @keyup.enter=&quot;submit&quot; />
+<input @keyup.escape=&quot;cancel&quot; />
+&#10; <!-- System modifier keys -->
+<input @keyup.ctrl.enter=&quot;submitAndClose&quot; />
+
+  <div @click.ctrl=&quot;selectMultiple&quot;>Hold Ctrl + click</div>
+&#10;  <!-- .exact: only fire when EXACTLY these modifiers are pressed -->
+  <button @click.ctrl.exact=&quot;onCtrlClick&quot;>Ctrl + Click only</button>
+</template>" />
+
 ## Mouse button modifiers
 
 ```vue
@@ -105,6 +169,13 @@ Modifiers replace common imperative patterns like `event.preventDefault()` with 
   <div @click.middle="onMiddleClick">Middle click</div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div @click.left=&quot;onLeftClick&quot;>Left click</div>
+  <div @click.right.prevent=&quot;onRightClick&quot;>Right click (no context menu)</div>
+  <div @click.middle=&quot;onMiddleClick&quot;>Middle click</div>
+</template>" />
 
 ## Quick reference
 

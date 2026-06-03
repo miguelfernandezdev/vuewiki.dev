@@ -49,6 +49,16 @@ function addItem() {
 </script>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+&#10;const items = ref(['a', 'b', 'c'])
+&#10;function addItem() {
+  items.value.push('d')
+  items.value.push('e')
+  // Vue agrupa ambos cambios en una sola actualización del DOM
+}
+</script>" />
+
 ## Las optimizaciones de Vue sobre una comparación ingenua
 
 El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom) analiza tus templates en tiempo de compilación y añade pistas que hacen la comparación en tiempo de ejecución más rápida:
@@ -69,6 +79,18 @@ El [compilador de Vue](https://vuejs.org/guide/extras/rendering-mechanism.html#c
   </div>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+
+  <div>
+    <h1>Static title</h1>
+    <!-- elevado, omitido en la comparación -->
+    <p>{{ dynamicContent }}</p>
+    <!-- flag de parche: TEXT -->
+    <span :class=&quot;activeClass&quot;>ok</span>
+    <!-- flag de parche: CLASS -->
+  </div>
+</template>" />
 
 ## Virtual DOM frente a sin Virtual DOM
 

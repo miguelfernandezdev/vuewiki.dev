@@ -24,6 +24,18 @@ watchEffect(() => {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const inputEl = ref<HTMLInputElement | null>(null)
+const showInput = ref(true)
+&#10;watchEffect(() => {
+  inputEl.value.focus() // TypeError when showInput is false
+})
+</script>
+&#10;<template>
+  <input v-if=&quot;showInput&quot; ref=&quot;inputEl&quot; />
+  <button @click=&quot;showInput = !showInput&quot;>Toggle</button>
+</template>" />
+
 When `showInput` becomes `false`, Vue removes the `<input>` from the DOM and sets `inputEl.value` to `null`. The `watchEffect` re-runs and crashes.
 
 ## How to fix it
@@ -52,6 +64,8 @@ watch(inputEl, (el) => {
 <input v-show="showInput" ref="inputEl" />
 ```
 
+<PlaygroundLink code="<input v-show=&quot;showInput&quot; ref=&quot;inputEl&quot; />" />
+
 **Option 4 (Vue 3.5+):** Use `useTemplateRef` for a cleaner API.
 
 ```vue
@@ -67,6 +81,16 @@ watchEffect(() => {
   <input v-if="showInput" ref="my-input" />
 </template>
 ```
+
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+const input = useTemplateRef<HTMLInputElement>('my-input')
+&#10;watchEffect(() => {
+  input.value?.focus()
+})
+</script>
+&#10;<template>
+  <input v-if=&quot;showInput&quot; ref=&quot;my-input&quot; />
+</template>" />
 
 The null check is still needed, but the typing and naming are more explicit.
 

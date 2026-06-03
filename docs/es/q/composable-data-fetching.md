@@ -73,6 +73,26 @@ const {
 </template>
 ```
 
+<PlaygroundLink code="<script setup lang=&quot;ts&quot;>
+import { computed } from 'vue'
+import { useFetch } from '@/composables/useFetch'
+&#10;const props = defineProps<{ userId: number }>()
+&#10;const {
+data: user,
+error,
+loading
+} = useFetch<User>(() => `/api/users/${props.userId}`)
+</script>
+&#10;<template>
+
+  <div v-if=&quot;loading&quot;>Cargando...</div>
+  <div v-else-if=&quot;error&quot;>Error: {{ error }}</div>
+  <div v-else-if=&quot;user&quot;>
+    <h2>{{ user.name }}</h2>
+    <p>{{ user.email }}</p>
+  </div>
+</template>" />
+
 Pasar un getter (`() => /api/users/${props.userId}`) significa que el composable hace refetch automáticamente cuando `userId` cambia.
 
 ## ¿Y AbortController?

@@ -24,6 +24,19 @@ const user = await $fetch(`/api/users/${props.userId}`)
 </template>
 ```
 
+<PlaygroundLink code="<!-- UserProfile.vue -->
+
+<script setup>
+const props = defineProps<{ userId: number }>()
+&#10;const user = await $fetch(`/api/users/${props.userId}`)
+</script>
+
+&#10;<template>
+
+  <h1>{{ user.name }}</h1>
+  <p>{{ user.email }}</p>
+</template>" />
+
 The top-level `await` makes this an async setup component. Vue's compiler wraps the entire `<script setup>` in an `async setup()` function.
 
 ## The test

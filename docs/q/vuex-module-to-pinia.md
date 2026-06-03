@@ -112,6 +112,32 @@ const cart = useCartStore()
 </template>
 ```
 
+<PlaygroundLink code="<!-- Before: Vuex -->
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+&#10;export default {
+  computed: {
+    ...mapGetters('cart', ['itemCount'])
+  },
+  methods: {
+    ...mapActions('cart', ['checkout'])
+  }
+}
+</script>
+
+&#10;<!-- After: Pinia -->
+
+<script setup lang=&quot;ts&quot;>
+import { useCartStore } from '@/stores/cart'
+&#10;const cart = useCartStore()
+</script>
+
+&#10;<template>
+<span>{{ cart.itemCount }} items</span>
+<button @click=&quot;cart.checkout()&quot;>Checkout</button>
+</template>" />
+
 ## Migration strategy for large apps
 
 Don't rewrite everything at once. Pinia and Vuex can coexist in the same app:

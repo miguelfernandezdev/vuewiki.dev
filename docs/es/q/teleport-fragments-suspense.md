@@ -32,6 +32,22 @@ const showModal = ref(false)
 </template>
 ```
 
+<PlaygroundLink code="<script setup>
+import { ref } from 'vue'
+const showModal = ref(false)
+</script>
+&#10;<template>
+  <button @click=&quot;showModal = true&quot;>Abrir</button>
+&#10;  <Teleport to=&quot;body&quot;>
+    <div v-if=&quot;showModal&quot; class=&quot;modal-overlay&quot;>
+      <div class=&quot;modal&quot;>
+        <p>Esto se renderiza como hijo directo de body</p>
+        <button @click=&quot;showModal = false&quot;>Cerrar</button>
+      </div>
+    </div>
+  </Teleport>
+</template>" />
+
 Sin Teleport, un modal dentro de un componente profundamente anidado hereda todo el CSS del padre (`overflow: hidden`, `z-index`, `transform`), lo cual puede recortar o posicionar mal el modal. Teleportar a `<body>` evita esos problemas. La prop `to` acepta cualquier selector CSS o elemento DOM.
 
 Usos comunes: modales, tooltips, menús dropdown, notificaciones. Cualquier cosa que necesite escapar visualmente del layout de su padre.
@@ -50,6 +66,15 @@ En Vue 2, cada componente necesitaba un único elemento raíz. Esto forzaba `<di
 </template>
 ```
 
+<PlaygroundLink code="<!-- Vue 2: requería un único raíz -->
+<template>
+
+  <div>
+    <header>Header</header>
+    <main>Content</main>
+  </div>
+</template>" />
+
 Vue 3 soporta **fragments**, es decir, múltiples elementos raíz sin wrapper:
 
 ```vue
@@ -60,6 +85,14 @@ Vue 3 soporta **fragments**, es decir, múltiples elementos raíz sin wrapper:
   <footer>Footer</footer>
 </template>
 ```
+
+<PlaygroundLink code="<!-- Vue 3: múltiples raíces, sin wrapper necesario -->
+<template>
+
+  <header>Header</header>
+  <main>Content</main>
+  <footer>Footer</footer>
+</template>" />
 
 Un detalle: los [atributos fallthrough](/es/q/fallthrough-attrs) no funcionan automáticamente con componentes multi-raíz porque Vue no sabe a qué raíz aplicarlos. Necesitas vincular `$attrs` explícitamente.
 
@@ -79,6 +112,17 @@ Un detalle: los [atributos fallthrough](/es/q/fallthrough-attrs) no funcionan au
   </Suspense>
 </template>
 ```
+
+<PlaygroundLink code="<template>
+  <Suspense>
+    <template #default>
+      <UserDashboard />
+    </template>
+    <template #fallback>
+      <LoadingSpinner />
+    </template>
+  </Suspense>
+</template>" />
 
 Si `UserDashboard` tiene un `setup` asíncrono (devuelve una promise), Suspense muestra `LoadingSpinner` hasta que la promise se resuelve. También puedes manejar errores con [`onErrorCaptured`](/es/q/error-handling) en el padre.
 
