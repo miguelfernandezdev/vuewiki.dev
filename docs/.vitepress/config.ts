@@ -85,7 +85,7 @@ Available in English and Spanish.
         },
         footer: {
           message: 'Publicado bajo la licencia MIT.',
-          copyright: 'Copyright © 2026-present Miguel Fernández'
+          copyright: 'Copyright © 2026-present Miguel Fernández Carratalá'
         },
         nav: [
           { text: 'Preguntas', link: '/es/', activeMatch: '^/es/$' },
@@ -166,7 +166,7 @@ Available in English and Spanish.
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2026-present Miguel Fernández'
+      copyright: 'Copyright © 2026-present Miguel Fernández Carratalá'
     },
 
     nav: [
