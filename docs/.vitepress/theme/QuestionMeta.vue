@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
 import { computed, watch, onMounted } from 'vue'
+import posthog from 'posthog-js'
 import { useI18n } from './i18n'
 import { useReadTracker } from './useReadTracker'
 
 const { frontmatter, lang } = useData()
 const { t } = useI18n()
 const route = useRoute()
-const { isRead, markRead, toggleRead } = useReadTracker()
+const { isRead, markRead, toggleRead: _toggleRead } = useReadTracker()
 
 const isQuestion = computed(() => !!frontmatter.value.difficulty)
 const backUrl = computed(() => lang.value === 'es' ? '/es/' : '/')
@@ -20,6 +21,18 @@ onMounted(() => {
 watch(() => route.path, () => {
   if (isQuestion.value) markRead(questionUrl.value)
 })
+
+function toggleRead(url: string) {
+  const wasRead = isRead(url)
+  _toggleRead(url)
+  posthog.capture('question_read_toggled', {
+    is_read: !wasRead,
+    question_url: url,
+    difficulty: frontmatter.value.difficulty,
+    tags: frontmatter.value.tags,
+    language: lang.value,
+  })
+}
 
 const difficultyClass: Record<string, string> = {
   beginner: 'badge-beginner',

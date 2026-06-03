@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
+import posthog from 'posthog-js'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
 
@@ -92,6 +93,14 @@ function startDeck(reviewOnly = false) {
   currentIndex.value = 0
   revealed.value = false
   phase.value = 'active'
+  posthog.capture('flashcard_session_started', {
+    review_only: reviewOnly,
+    card_count: deck.value.length,
+    difficulty_filter: difficultyFilter.value,
+    tag_count: tagFilter.value.size,
+    tags: [...tagFilter.value],
+    language: lang.value,
+  })
 }
 
 const currentCard = computed(() => deck.value[currentIndex.value])
@@ -115,6 +124,17 @@ function answer(result: Result) {
     revealed.value = false
   } else {
     phase.value = 'complete'
+    const gotItCount = [...results.value.values()].filter(r => r === 'got-it').length
+    const reviewCount = [...results.value.values()].filter(r => r === 'review').length
+    posthog.capture('flashcard_session_completed', {
+      card_count: deck.value.length,
+      got_it_count: gotItCount,
+      review_count: reviewCount,
+      score_percent: Math.round((gotItCount / deck.value.length) * 100),
+      difficulty_filter: difficultyFilter.value,
+      tag_count: tagFilter.value.size,
+      language: lang.value,
+    })
   }
 }
 

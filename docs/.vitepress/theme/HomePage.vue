@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
+import posthog from 'posthog-js'
 import Fuse from 'fuse.js'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
@@ -73,6 +74,7 @@ function setSort(key: SortKey) {
   activeSort.value = key
   sortDropdownOpen.value = false
   visibleCount.value = PAGE_SIZE
+  posthog.capture('sort_order_changed', { sort: key })
 }
 
 const difficultyFilteredQuestions = computed(() => {
@@ -248,12 +250,14 @@ const hasMore = computed(() =>
 )
 
 function showMore() {
+  posthog.capture('show_more_clicked', { visible_count: visibleCount.value })
   visibleCount.value += PAGE_SIZE
 }
 
 function setFilter(value: string | null) {
   activeFilter.value = value
   visibleCount.value = PAGE_SIZE
+  posthog.capture('difficulty_filter_applied', { filter: value ?? 'all' })
 }
 
 function toggleTag(tag: string) {
@@ -262,6 +266,7 @@ function toggleTag(tag: string) {
     next.delete(tag)
   } else {
     next.add(tag)
+    posthog.capture('tag_filter_applied', { tag, active_tag_count: next.size })
   }
   activeTags.value = next
   visibleCount.value = PAGE_SIZE
@@ -284,6 +289,18 @@ const difficultyClass: Record<string, string> = {
   intermediate: 'badge-intermediate',
   advanced: 'badge-advanced',
 }
+
+let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (value) => {
+  if (searchDebounceTimer) clearTimeout(searchDebounceTimer)
+  if (!value) return
+  searchDebounceTimer = setTimeout(() => {
+    posthog.capture('question_searched', {
+      query: value,
+      result_count: filteredQuestions.value.length,
+    })
+  }, 800)
+})
 </script>
 
 <template>

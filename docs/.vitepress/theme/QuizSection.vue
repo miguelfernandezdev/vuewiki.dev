@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useData, useRoute } from 'vitepress'
+import posthog from 'posthog-js'
 import { useI18n } from './i18n'
 
 interface QuizQuestion {
@@ -67,6 +68,11 @@ function start() {
   currentIndex.value = 0
   selected.value = null
   answers.value = []
+  posthog.capture('quiz_started', {
+    question_slug: slug.value,
+    question_count: questions.value.length,
+    language: lang.value,
+  })
 }
 
 function selectOption(index: number) {
@@ -79,6 +85,13 @@ function selectOption(index: number) {
       selected.value = null
     } else {
       phase.value = 'complete'
+      posthog.capture('quiz_completed', {
+        question_slug: slug.value,
+        question_count: questions.value.length,
+        score: score.value,
+        score_percent: scorePercent.value,
+        language: lang.value,
+      })
     }
   }, 1500)
 }
