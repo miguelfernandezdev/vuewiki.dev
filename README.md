@@ -1,12 +1,14 @@
 # VueWiki.dev
 
+[![Deploy](https://img.shields.io/github/deployments/miguelfernandezdev/vuewiki.dev/production?label=vercel&logo=vercel)](https://vuewiki.dev)
+
 Vue.js interview questions with answers and code examples. Built with [VitePress](https://vitepress.dev/).
 
-**[vuewiki.vercel.app](https://vuewiki.vercel.app)**
+**[vuewiki.dev](https://vuewiki.dev)**
 
 ## Features
 
-- 30 questions across beginner, intermediate, and advanced levels
+- 170+ questions across beginner, intermediate, and advanced levels
 - Filter by difficulty and topic tags
 - Full-text search
 - Dark/light mode
@@ -41,9 +43,14 @@ docs/
   public/              # Static assets
 ```
 
+## Community
+
+- [GitHub Discussions](https://github.com/miguelfernandezdev/vuewiki.dev/discussions) for questions, ideas, and feedback
+- [Issues](https://github.com/miguelfernandezdev/vuewiki.dev/issues) for bug reports and content improvements
+
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add questions, fix answers, or translate content.
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add questions, fix answers, or translate content.
 
 ## License
 

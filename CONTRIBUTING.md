@@ -1,5 +1,7 @@
 # Contributing to VueWiki
 
+Please read the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
 Thanks for your interest in contributing! Every improvement matters, whether it's fixing a typo, improving an answer, adding a new question, or translating content.
 
 ## Before you start
@@ -10,6 +12,11 @@ Thanks for your interest in contributing! Every improvement matters, whether it'
 
 ## Development setup
 
+Prerequisites:
+
+- Node.js >= 20
+- pnpm >= 9
+
 ```bash
 git clone https://github.com/miguelfernandezdev/vuewiki.dev.git
 cd vuewiki.dev
@@ -19,6 +26,8 @@ pnpm dev
 
 The site runs at `http://localhost:5173`. Markdown changes hot-reload automatically.
 
+This is a content-focused project. There are no test suites. A successful `pnpm build` is the quality gate.
+
 ## Adding a new question
 
 1. Create a markdown file in `docs/q/` with a slug-based name (e.g. `docs/q/your-question-slug.md`).
@@ -27,9 +36,9 @@ The site runs at `http://localhost:5173`. Markdown changes hot-reload automatica
 ```yaml
 ---
 order: 171
-title: "Your question title here?"
-difficulty: "beginner"
-tags: ["composition-api", "reactivity"]
+title: 'Your question title here?'
+difficulty: 'beginner'
+tags: ['composition-api', 'reactivity']
 ---
 ```
 
@@ -38,12 +47,12 @@ tags: ["composition-api", "reactivity"]
 
 ### Frontmatter fields
 
-| Field | Type | Values |
-|-------|------|--------|
-| `order` | number | Next available number (check existing files) |
-| `title` | string | The interview question |
-| `difficulty` | enum | `beginner`, `intermediate`, `advanced` |
-| `tags` | string[] | One or more from the list below |
+| Field        | Type     | Values                                       |
+| ------------ | -------- | -------------------------------------------- |
+| `order`      | number   | Next available number (check existing files) |
+| `title`      | string   | The interview question                       |
+| `difficulty` | enum     | `beginner`, `intermediate`, `advanced`       |
+| `tags`       | string[] | One or more from the list below              |
 
 ### Available tags
 
