@@ -12,7 +12,7 @@ Vue.js interview questions with answers and code examples. Built with [VitePress
 - Filter by difficulty and topic tags
 - Full-text search
 - Dark/light mode
-- i18n (English + Spanish)
+- i18n (English + Spanish, 10 more languages in progress)
 - Syntax-highlighted code examples
 
 ## Development

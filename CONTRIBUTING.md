@@ -66,16 +66,18 @@ If your question needs a new tag, propose it in the PR description.
 2. Edit the markdown content.
 3. Open a pull request explaining what was wrong or what you improved.
 
-## Translating to Spanish
+## Translating content
 
-English is the source of truth. Spanish files in `docs/es/q/` mirror the English files in `docs/q/`.
+English is the source of truth. Translated files live in `docs/{lang}/q/` mirroring `docs/q/`.
 
-1. Pick a file from `docs/es/q/` that still has English content or needs improvement.
-2. Translate the markdown body. Keep code examples in English, translate surrounding text.
-3. Keep the same frontmatter structure (translate only the `title`).
-4. Open a pull request.
+Currently supported: English (en), Spanish (es). Looking for contributors for: Chinese (zh), Portuguese (pt), Japanese (ja), Korean (ko), French (fr), German (de), Russian (ru), Arabic (ar), Vietnamese (vi), Hindi (hi). See the [translation issues](https://github.com/miguelfernandezdev/vuewiki.dev/issues?q=label%3Aenhancement+i18n) for details.
 
-UI translations live in `docs/.vitepress/theme/locales/es.json`.
+1. Pick a question file from `docs/{lang}/q/` that still has English content or needs improvement.
+1. Translate the markdown body. Keep code examples in English, translate surrounding text.
+1. Keep the same frontmatter structure (translate only the `title`).
+1. Open a pull request.
+
+UI labels for all languages live in `docs/.vitepress/theme/locales/{lang}.json`.
 
 ## Commit convention
 
