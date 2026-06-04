@@ -1,0 +1,91 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Book logo gradients -->
+    <linearGradient id="leftPage" x1="214" y1="360" x2="504" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0EBF9B"/>
+      <stop offset="1" stop-color="#05A67B"/>
+    </linearGradient>
+    <linearGradient id="rightPage" x1="810" y1="360" x2="514" y2="642" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#20CFF3"/>
+      <stop offset="1" stop-color="#0A9DE8"/>
+    </linearGradient>
+    <linearGradient id="leftLip" x1="212" y1="325" x2="512" y2="429" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B6F5B8"/>
+      <stop offset="1" stop-color="#92EFA7"/>
+    </linearGradient>
+    <linearGradient id="rightLip" x1="512" y1="428" x2="812" y2="324" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#BEEFFF"/>
+      <stop offset="1" stop-color="#9FE8FF"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="512" y1="383" x2="512" y2="646" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#073452"/>
+      <stop offset="1" stop-color="#03253D"/>
+    </linearGradient>
+    <linearGradient id="bottomShadowLeft" x1="230" y1="596" x2="512" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#014457"/>
+      <stop offset="1" stop-color="#012A47"/>
+    </linearGradient>
+    <linearGradient id="bottomShadowRight" x1="794" y1="596" x2="512" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#034B83"/>
+      <stop offset="1" stop-color="#00356D"/>
+    </linearGradient>
+    <!-- VueWiki gradient text -->
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#42d392"/>
+      <stop offset="1" stop-color="#647eff"/>
+    </linearGradient>
+    <!-- Logo glow -->
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#42b883" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#42b883" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1b1b1f"/>
+
+  <!-- Green accent bar at bottom -->
+  <rect y="614" width="1200" height="16" fill="#42b883"/>
+
+  <!-- Difficulty badge -->
+  <rect x="80" y="80" width="{{badge_width}}" height="36" rx="8" fill="{{badge_color}}"/>
+  <text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" letter-spacing="1.5">
+    <tspan x="96" y="104">{{difficulty}}</tspan>
+  </text>
+
+  <!-- Title (up to 3 lines) -->
+  <text fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="bold">
+    <tspan x="80" y="200">{{title_line1}}</tspan>
+    <tspan x="80" y="260">{{title_line2}}</tspan>
+    <tspan x="80" y="320">{{title_line3}}</tspan>
+  </text>
+
+  <!-- Tags -->
+  <text fill="#ffffff" fill-opacity="0.5" font-family="Arial, Helvetica, sans-serif" font-size="22">
+    <tspan x="80" y="560">{{tags}}</tspan>
+  </text>
+
+  <!-- Logo group: glow + book + text, all centered at x=1030 -->
+
+  <!-- Glow behind book -->
+  <ellipse cx="1030" cy="350" rx="160" ry="140" fill="url(#glow)"/>
+
+  <!-- Book logo (centered at x=1030, y=340) -->
+  <g transform="translate(876, 210) scale(0.30)">
+    <path d="M228 569C318 568 414 590 492 626C505 632 519 632 532 626C610 590 706 568 796 569C813 569 824 579 824 594V604C824 621 811 633 793 634C697 638 598 655 530 679C518 684 506 684 494 679C426 655 327 638 231 634C213 633 200 621 200 604V594C200 579 211 569 228 569Z" fill="#012F4D" opacity="0.9"/>
+    <path d="M423 350C467 366 501 389 512 430C523 389 557 366 601 350L512 640L423 350Z" fill="url(#spine)"/>
+    <path d="M200 366C200 338 222 318 253 319C347 321 445 351 512 415V642C512 653 500 660 489 655C409 618 313 598 228 599C211 599 200 587 200 570V366Z" fill="url(#leftPage)"/>
+    <path d="M824 366C824 338 802 318 771 319C677 321 579 351 512 415V642C512 653 524 660 535 655C615 618 711 598 796 599C813 599 824 587 824 570V366Z" fill="url(#rightPage)"/>
+    <path d="M423 350C467 366 501 389 512 430V640L423 350Z" fill="#052F4A" opacity="0.38"/>
+    <path d="M601 350C557 366 523 389 512 430V640L601 350Z" fill="#042E4C" opacity="0.34"/>
+    <path d="M200 364C200 337 221 318 252 319C349 322 447 353 512 415V450C445 380 340 345 248 344C219 344 200 350 200 364Z" fill="url(#leftLip)"/>
+    <path d="M824 364C824 337 803 318 772 319C675 322 577 353 512 415V450C579 380 684 345 776 344C805 344 824 350 824 364Z" fill="url(#rightLip)"/>
+    <path d="M201 371C201 354 217 344 247 344C340 345 445 380 512 450V415C447 353 349 322 252 319C221 318 200 337 200 364V371H201Z" fill="#B7F4B5" opacity="0.55"/>
+    <path d="M823 371C823 354 807 344 777 344C684 345 579 380 512 450V415C577 353 675 322 772 319C803 318 824 337 824 364V371H823Z" fill="#C3F1FF" opacity="0.6"/>
+  </g>
+
+  <!-- VueWiki gradient text, centered below book -->
+  <text fill="url(#titleGrad)" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="bold" text-anchor="middle">
+    <tspan x="1030" y="460">VueWiki</tspan>
+  </text>
+</svg>

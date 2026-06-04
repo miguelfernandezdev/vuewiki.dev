@@ -1,6 +1,7 @@
 import { defineConfig, type HeadConfig } from 'vitepress'
 import llmstxt from 'vitepress-plugin-llms'
 import { generateSidebar } from './sidebar'
+import { generateOgImage } from './og-image'
 
 const docsDir = new URL('../', import.meta.url).pathname
 const siteUrl = 'https://vuewiki.dev'
@@ -26,7 +27,7 @@ export default defineConfig({
     ['meta', { name: 'twitter:image', content: `${siteUrl}/og-image.png` }]
   ],
 
-  transformHead({ pageData }) {
+  async transformHead({ pageData, siteConfig }) {
     const head: HeadConfig[] = []
     const path = pageData.relativePath.replace(/(index)?\.md$/, '')
     const canonicalUrl = `${siteUrl}/${path}`
@@ -56,6 +57,30 @@ export default defineConfig({
       'meta',
       { property: 'og:type', content: isQuestion ? 'article' : 'website' }
     ])
+
+    if (isQuestion && pageData.frontmatter.difficulty) {
+      const slug = pageData.relativePath
+        .replace(/\.md$/, '')
+        .replaceAll('/', '-')
+      const outDir = siteConfig.outDir
+      const lang = pageData.relativePath.startsWith('es/') ? 'es' : 'en'
+      const filename = await generateOgImage(
+        slug,
+        pageData.frontmatter.title,
+        pageData.frontmatter.difficulty,
+        pageData.frontmatter.tags || [],
+        outDir,
+        lang
+      )
+      head.push([
+        'meta',
+        { property: 'og:image', content: `${siteUrl}/${filename}` }
+      ])
+      head.push([
+        'meta',
+        { name: 'twitter:image', content: `${siteUrl}/${filename}` }
+      ])
+    }
 
     if (pageData.relativePath.startsWith('q/')) {
       const esUrl = `${siteUrl}/es/${path}`

@@ -23,6 +23,7 @@
   "devDependencies": {
     "lint-staged": "^17.0.7",
     "prettier": "^3.8.3",
+    "sharp": "^0.34.5",
     "simple-git-hooks": "^2.13.1",
     "vitepress": "^1.6.3",
     "vitepress-plugin-llms": "^1.13.1",
