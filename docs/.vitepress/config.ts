@@ -2,6 +2,7 @@ import { defineConfig, type HeadConfig } from 'vitepress'
 import llmstxt from 'vitepress-plugin-llms'
 import { generateSidebar } from './sidebar'
 import { generateOgImage } from './og-image'
+import { buildJsonLdHeads } from './json-ld'
 
 const docsDir = new URL('../', import.meta.url).pathname
 const siteUrl = 'https://vuewiki.dev'
@@ -96,6 +97,20 @@ export default defineConfig({
         { rel: 'alternate', hreflang: 'es', href: canonicalUrl }
       ])
       head.push(['link', { rel: 'alternate', hreflang: 'en', href: enUrl }])
+    }
+
+    if (isQuestion && pageData.frontmatter.title) {
+      head.push(
+        ...buildJsonLdHeads({
+          title,
+          description,
+          canonicalUrl,
+          relativePath: pageData.relativePath,
+          difficulty: pageData.frontmatter.difficulty,
+          tags: pageData.frontmatter.tags,
+          lastUpdated: pageData.lastUpdated
+        })
+      )
     }
 
     return head
