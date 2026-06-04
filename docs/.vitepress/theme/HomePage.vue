@@ -848,9 +848,9 @@ watch(search, (value) => {
 }
 
 .filter-btn.active {
-  background: var(--vp-c-brand-1);
+  background: #247f53;
   color: var(--vp-c-white);
-  border-color: var(--vp-c-brand-1);
+  border-color: #247f53;
 }
 
 .filter-btn.filter-beginner {
@@ -865,8 +865,8 @@ watch(search, (value) => {
 }
 
 .filter-btn.filter-beginner.active {
-  background: var(--vp-c-green-2);
-  border-color: var(--vp-c-green-2);
+  background: #247f53;
+  border-color: #247f53;
   color: var(--vp-c-white);
 }
 
@@ -882,8 +882,8 @@ watch(search, (value) => {
 }
 
 .filter-btn.filter-intermediate.active {
-  background: var(--vp-c-yellow-2);
-  border-color: var(--vp-c-yellow-2);
+  background: #8a6d2e;
+  border-color: #8a6d2e;
   color: var(--vp-c-white);
 }
 
@@ -899,8 +899,8 @@ watch(search, (value) => {
 }
 
 .filter-btn.filter-advanced.active {
-  background: var(--vp-c-red-2);
-  border-color: var(--vp-c-red-2);
+  background: #b54248;
+  border-color: #b54248;
   color: var(--vp-c-white);
 }
 
@@ -984,7 +984,7 @@ watch(search, (value) => {
   border-radius: 9999px;
   font-size: 0.6875rem;
   font-weight: 700;
-  background: var(--vp-c-brand-1);
+  background: #247f53;
   color: var(--vp-c-white);
 }
 
