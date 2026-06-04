@@ -253,16 +253,16 @@ const homeBase = computed(() => (lang.value === 'es' ? '/es/' : '/'))
 
 .badge-beginner {
   background: var(--vp-c-green-soft);
-  color: var(--vp-c-green-2);
+  color: var(--vp-c-green-1);
 }
 
 .badge-intermediate {
   background: var(--vp-c-yellow-soft);
-  color: var(--vp-c-yellow-2);
+  color: var(--vp-c-yellow-1);
 }
 
 .badge-advanced {
   background: var(--vp-c-red-soft);
-  color: var(--vp-c-red-2);
+  color: var(--vp-c-red-1);
 }
 </style>

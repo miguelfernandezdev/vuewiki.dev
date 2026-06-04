@@ -64,6 +64,16 @@
   }
 }
 
+.VPButton.brand {
+  background-color: #33a06f !important;
+  border-color: #33a06f !important;
+}
+
+.VPButton.brand:hover {
+  background-color: #2b8c60 !important;
+  border-color: #2b8c60 !important;
+}
+
 .vp-doc h1:first-child {
   display: none;
 }

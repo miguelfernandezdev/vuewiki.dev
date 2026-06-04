@@ -812,7 +812,7 @@ watch(search, (value) => {
 .progress-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-2);
   white-space: nowrap;
 }
 
@@ -1187,17 +1187,17 @@ watch(search, (value) => {
 
 .badge-beginner {
   background: var(--vp-c-green-soft);
-  color: var(--vp-c-green-2);
+  color: var(--vp-c-green-1);
 }
 
 .badge-intermediate {
   background: var(--vp-c-yellow-soft);
-  color: var(--vp-c-yellow-2);
+  color: var(--vp-c-yellow-1);
 }
 
 .badge-advanced {
   background: var(--vp-c-red-soft);
-  color: var(--vp-c-red-2);
+  color: var(--vp-c-red-1);
 }
 
 .show-more-btn {
