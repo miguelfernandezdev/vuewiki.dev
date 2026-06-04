@@ -106,6 +106,20 @@ import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
 When navigating from `/a` to `/b`:
 
+```mermaid
+flowchart TD
+  A["Navigation triggered"] --> B["onBeforeRouteLeave"]
+  B -->|"can cancel"| C["router.beforeEach"]
+  C -->|"can cancel / redirect"| D["beforeEnter"]
+  D -->|"can cancel / redirect"| E["onBeforeRouteUpdate"]
+  E -->|"if reusing component"| F["router.beforeResolve"]
+  F -->|"async components resolved"| G["✓ Navigation confirmed"]
+  G --> H["router.afterEach"]
+
+  style G fill:#42b883,color:#fff
+  style A fill:#3b82f6,color:#fff
+```
+
 1. `onBeforeRouteLeave` in the component being left
 2. `router.beforeEach` (global)
 3. `beforeEnter` on the target route (per-route)

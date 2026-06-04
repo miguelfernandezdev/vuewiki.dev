@@ -47,19 +47,20 @@ onUnmounted(() => {
 
 ## Lifecycle flow
 
-```
-setup()
-  │
-  ├── onBeforeMount
-  ├── onMounted          ← DOM ready
-  │
-  │   (reactive state changes)
-  ├── onBeforeUpdate
-  ├── onUpdated          ← DOM re-rendered
-  │
-  │   (component removed)
-  ├── onBeforeUnmount
-  └── onUnmounted        ← fully cleaned up
+```mermaid
+flowchart TD
+  A["setup()"] --> B["onBeforeMount"]
+  B --> C["onMounted"]
+  C -->|"DOM ready"| D{Reactive state changes?}
+  D -->|Yes| E["onBeforeUpdate"]
+  E --> F["onUpdated"]
+  F -->|"DOM re-rendered"| D
+  D -->|"Component removed"| G["onBeforeUnmount"]
+  G --> H["onUnmounted"]
+
+  style A fill:#42b883,color:#fff
+  style C fill:#42b883,color:#fff
+  style H fill:#e06c75,color:#fff
 ```
 
 ## Which hook for what

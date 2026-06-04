@@ -64,6 +64,20 @@ state = reactive({ count: 1 }) // new Proxy, old watchers still watch the old on
 
 **Shallow variants skip deep tracking.** [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) and `shallowReactive` only track the top level, which is useful for large data structures where deep reactivity would be expensive.
 
+## How tracking and triggering work
+
+```mermaid
+flowchart LR
+  A["state.count"] -->|"get (read)"| B["track()"]
+  B --> C["Link effect → property"]
+  D["state.count = 1"] -->|"set (write)"| E["trigger()"]
+  E --> F["Re-run linked effects"]
+  F --> G["Component re-renders"]
+
+  style B fill:#42b883,color:#fff
+  style E fill:#e06c75,color:#fff
+```
+
 ## Vue 2 vs Vue 3
 
 Vue 2 used `Object.defineProperty`, which had real limitations: it couldn't detect property addition/deletion, didn't work with arrays natively, and required workarounds like `Vue.set()`. The Proxy-based system in Vue 3 eliminates all of those issues.

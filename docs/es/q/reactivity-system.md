@@ -64,6 +64,20 @@ state = reactive({ count: 1 }) // nuevo Proxy, los watchers antiguos siguen obse
 
 **Las variantes shallow omiten el rastreo profundo.** [shallowRef](https://vuejs.org/api/reactivity-advanced.html#shallowref) y `shallowReactive` solo rastrean el primer nivel, lo cual es útil para estructuras de datos grandes donde la reactividad profunda sería costosa.
 
+## Cómo funcionan el tracking y el triggering
+
+```mermaid
+flowchart LR
+  A["state.count"] -->|"get (lectura)"| B["track()"]
+  B --> C["Vincular efecto → propiedad"]
+  D["state.count = 1"] -->|"set (escritura)"| E["trigger()"]
+  E --> F["Re-ejecutar efectos vinculados"]
+  F --> G["El componente se re-renderiza"]
+
+  style B fill:#42b883,color:#fff
+  style E fill:#e06c75,color:#fff
+```
+
 ## Vue 2 vs Vue 3
 
 Vue 2 usaba `Object.defineProperty`, que tenía limitaciones reales: no podía detectar adición ni eliminación de propiedades, no funcionaba bien con arrays de forma nativa, y requería alternativas como `Vue.set()`. El sistema basado en Proxy de Vue 3 elimina todos esos problemas.
