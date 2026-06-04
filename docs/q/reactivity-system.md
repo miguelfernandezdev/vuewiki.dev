@@ -66,17 +66,7 @@ state = reactive({ count: 1 }) // new Proxy, old watchers still watch the old on
 
 ## How tracking and triggering work
 
-```mermaid
-flowchart LR
-  A["state.count"] -->|"get (read)"| B["track()"]
-  B --> C["Link effect → property"]
-  D["state.count = 1"] -->|"set (write)"| E["trigger()"]
-  E --> F["Re-run linked effects"]
-  F --> G["Component re-renders"]
-
-  style B fill:#42b883,color:#fff
-  style E fill:#e06c75,color:#fff
-```
+<img src="/diagrams/en/reactivity.svg" alt="Diagram showing how Vue's reactivity tracks reads via get and triggers updates via set" style="max-width: 100%;" />
 
 ## Vue 2 vs Vue 3
 

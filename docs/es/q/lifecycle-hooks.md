@@ -47,21 +47,7 @@ onUnmounted(() => {
 
 ## Flujo del lifecycle
 
-```mermaid
-flowchart TD
-  A["setup()"] --> B["onBeforeMount"]
-  B --> C["onMounted"]
-  C -->|"DOM listo"| D{¿Cambió el estado reactivo?}
-  D -->|Sí| E["onBeforeUpdate"]
-  E --> F["onUpdated"]
-  F -->|"DOM re-renderizado"| D
-  D -->|"Componente eliminado"| G["onBeforeUnmount"]
-  G --> H["onUnmounted"]
-
-  style A fill:#42b883,color:#fff
-  style C fill:#42b883,color:#fff
-  style H fill:#e06c75,color:#fff
-```
+<img src="/diagrams/es/lifecycle.svg" alt="Diagrama del flujo de lifecycle hooks en Vue 3 desde setup hasta onUnmounted" style="max-width: 100%;" />
 
 ## Qué hook usar para cada tarea
 
