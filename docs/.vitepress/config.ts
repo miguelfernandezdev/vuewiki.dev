@@ -7,7 +7,7 @@ import { buildJsonLdHeads } from './json-ld'
 const docsDir = new URL('../', import.meta.url).pathname
 const siteUrl = 'https://vuewiki.dev'
 const ogDescription =
-  'Master Vue.js with 170+ interview questions, answers, and interactive code examples. Covers Composition API, reactivity, components, TypeScript, Pinia, Nuxt, SSR, and more.'
+  'Master Vue.js with 170+ interview questions, answers, and code examples. Covers Composition API, reactivity, components, TypeScript, Pinia, Nuxt, and SSR.'
 
 export default defineConfig({
   title: 'VueWiki',
@@ -36,7 +36,12 @@ export default defineConfig({
     head.push(['link', { rel: 'canonical', href: canonicalUrl }])
     head.push(['meta', { property: 'og:url', content: canonicalUrl }])
 
-    const title = pageData.frontmatter.title || 'VueWiki'
+    const isHome =
+      pageData.relativePath === 'index.md' ||
+      pageData.relativePath === 'es/index.md'
+    const title = isHome
+      ? 'VueWiki — 170+ Vue.js Interview Questions with Answers'
+      : pageData.frontmatter.title || 'VueWiki'
     head.push(['meta', { property: 'og:title', content: title }])
     head.push(['meta', { name: 'twitter:title', content: title }])
 
