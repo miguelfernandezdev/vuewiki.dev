@@ -57,6 +57,22 @@ export default defineConfig({
       { property: 'og:type', content: isQuestion ? 'article' : 'website' }
     ])
 
+    if (pageData.relativePath.startsWith('q/')) {
+      const esUrl = `${siteUrl}/es/${path}`
+      head.push([
+        'link',
+        { rel: 'alternate', hreflang: 'en', href: canonicalUrl }
+      ])
+      head.push(['link', { rel: 'alternate', hreflang: 'es', href: esUrl }])
+    } else if (pageData.relativePath.startsWith('es/q/')) {
+      const enUrl = `${siteUrl}/${path.replace('es/', '')}`
+      head.push([
+        'link',
+        { rel: 'alternate', hreflang: 'es', href: canonicalUrl }
+      ])
+      head.push(['link', { rel: 'alternate', hreflang: 'en', href: enUrl }])
+    }
+
     return head
   },
 
