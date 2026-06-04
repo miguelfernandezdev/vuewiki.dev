@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 import llmstxt from 'vitepress-plugin-llms'
 import { generateSidebar } from './sidebar'
 
@@ -21,16 +21,44 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'VueWiki' }],
-    ['meta', { property: 'og:description', content: ogDescription }],
-    ['meta', { property: 'og:url', content: siteUrl }],
     ['meta', { property: 'og:image', content: `${siteUrl}/og-image.png` }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'VueWiki' }],
-    ['meta', { name: 'twitter:description', content: ogDescription }],
     ['meta', { name: 'twitter:image', content: `${siteUrl}/og-image.png` }]
   ],
+
+  transformHead({ pageData }) {
+    const head: HeadConfig[] = []
+    const path = pageData.relativePath.replace(/(index)?\.md$/, '')
+    const canonicalUrl = `${siteUrl}/${path}`
+
+    head.push(['link', { rel: 'canonical', href: canonicalUrl }])
+    head.push(['meta', { property: 'og:url', content: canonicalUrl }])
+
+    const title = pageData.frontmatter.title || 'VueWiki'
+    head.push(['meta', { property: 'og:title', content: title }])
+    head.push(['meta', { name: 'twitter:title', content: title }])
+
+    const description = pageData.frontmatter.summary || ogDescription
+    head.push(['meta', { property: 'og:description', content: description }])
+    head.push(['meta', { name: 'twitter:description', content: description }])
+
+    if (pageData.frontmatter.tags) {
+      head.push([
+        'meta',
+        { name: 'keywords', content: pageData.frontmatter.tags.join(', ') }
+      ])
+    }
+
+    const isQuestion =
+      pageData.relativePath.startsWith('q/') ||
+      pageData.relativePath.includes('/q/')
+    head.push([
+      'meta',
+      { property: 'og:type', content: isQuestion ? 'article' : 'website' }
+    ])
+
+    return head
+  },
 
   markdown: {
     theme: {
