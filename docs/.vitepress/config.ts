@@ -4,10 +4,12 @@ import { generateSidebar } from './sidebar'
 
 const docsDir = new URL('../', import.meta.url).pathname
 const siteUrl = 'https://vuewiki.dev'
-const ogDescription = 'Vue.js interview questions with answers and examples'
+const ogDescription =
+  'Master Vue.js with 170+ interview questions, answers, and interactive code examples. Covers Composition API, reactivity, components, TypeScript, Pinia, Nuxt, SSR, and more.'
 
 export default defineConfig({
   title: 'VueWiki',
+  titleTemplate: ':title — VueWiki',
   description: ogDescription,
   cleanUrls: true,
   lastUpdated: true,

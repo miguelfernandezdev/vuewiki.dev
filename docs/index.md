@@ -1,7 +1,7 @@
 ---
 layout: home
 title: VueWiki
-titleTemplate: Vue.js interview questions with answers and examples
+titleTemplate: 170+ Vue.js interview questions with answers and interactive examples
 
 hero:
   name: VueWiki
