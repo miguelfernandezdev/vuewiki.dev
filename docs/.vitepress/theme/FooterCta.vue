@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import posthog from 'posthog-js'
+import { capture } from './analytics'
 import { useI18n } from './i18n'
 
 const { t } = useI18n()
@@ -7,7 +7,7 @@ const { t } = useI18n()
 const repoUrl = 'https://github.com/miguelfernandezdev/vuewiki.dev'
 
 function trackCta(type: 'suggest_question' | 'contribute') {
-  posthog.capture('cta_clicked', { type })
+  capture('cta_clicked', { type })
 }
 </script>
 

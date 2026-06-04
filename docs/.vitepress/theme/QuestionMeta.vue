@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
 import { computed, watch, onMounted } from 'vue'
-import posthog from 'posthog-js'
+import { capture } from './analytics'
 import { useI18n } from './i18n'
 import { useReadTracker } from './useReadTracker'
 
@@ -28,7 +28,7 @@ watch(
 function toggleRead(url: string) {
   const wasRead = isRead(url)
   _toggleRead(url)
-  posthog.capture('question_read_toggled', {
+  capture('question_read_toggled', {
     is_read: !wasRead,
     question_url: url,
     difficulty: frontmatter.value.difficulty,

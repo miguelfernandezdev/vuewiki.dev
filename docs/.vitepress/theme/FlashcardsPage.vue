@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useData } from 'vitepress'
-import posthog from 'posthog-js'
+import { capture } from './analytics'
 import { data as allQuestions } from './questions.data'
 import { useI18n } from './i18n'
 
@@ -99,7 +99,7 @@ function startDeck(reviewOnly = false) {
   currentIndex.value = 0
   revealed.value = false
   phase.value = 'active'
-  posthog.capture('flashcard_session_started', {
+  capture('flashcard_session_started', {
     review_only: reviewOnly,
     card_count: deck.value.length,
     difficulty_filter: difficultyFilter.value,
@@ -136,7 +136,7 @@ function answer(result: Result) {
     const reviewCount = [...results.value.values()].filter(
       (r) => r === 'review'
     ).length
-    posthog.capture('flashcard_session_completed', {
+    capture('flashcard_session_completed', {
       card_count: deck.value.length,
       got_it_count: gotItCount,
       review_count: reviewCount,
