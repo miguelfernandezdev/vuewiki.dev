@@ -24,6 +24,8 @@ La hidratación es el proceso por el que Vue toma el HTML estático renderizado 
 
 La diferencia clave respecto a un montaje de SPA normal: Vue NO crea nuevos elementos DOM. Reutiliza lo que el servidor ya renderizó.
 
+<img src="/diagrams/es/what-is-hydration.svg" alt="Diagrama de flujo del proceso de hydration desde el servidor hasta la página interactiva" style="max-width: 100%;" />
+
 ## createSSRApp vs createApp
 
 ```ts

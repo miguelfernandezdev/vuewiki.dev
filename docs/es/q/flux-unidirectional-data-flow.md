@@ -30,6 +30,8 @@ Acción → Store (estado) → Vista → Acción → ...
 
 La restricción clave: la vista nunca modifica el estado directamente. Siempre pasa por una acción.
 
+<img src="/diagrams/es/flux.svg" alt="Diagrama del ciclo de flujo de datos unidireccional Flux: Acción → Store → Vista" style="max-width: 100%;" />
+
 ## Por qué importa el flujo unidireccional
 
 En el flujo de datos bidireccional, cualquier componente puede cambiar cualquier dato, y esos cambios se propagan en direcciones impredecibles. Con 5 componentes compartiendo estado, un error podría originarse en cualquiera de ellos. Depurar significa revisar cada posible ruta de mutación.

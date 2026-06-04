@@ -22,6 +22,8 @@ summary: "During hydration, async component chunks may not be loaded yet, causin
 
 The user sees content, then a flash of loading state, then content again.
 
+<img src="/diagrams/en/suspense-ssr-hydration.svg" alt="Sequence diagram showing the Suspense hydration flicker: async chunk not loaded causes fallback to show briefly" style="max-width: 100%;" />
+
 ## Problem code
 
 ```vue

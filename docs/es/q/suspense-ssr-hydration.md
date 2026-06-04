@@ -22,6 +22,8 @@ summary: 'Durante la hydration, los chunks de componentes async pueden no estar 
 
 El usuario ve el contenido, luego un destello del estado de carga, y luego el contenido de nuevo.
 
+<img src="/diagrams/es/suspense-ssr-hydration.svg" alt="Diagrama de secuencia mostrando el parpadeo de hydration con Suspense" style="max-width: 100%;" />
+
 ## Código problemático
 
 ```vue

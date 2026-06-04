@@ -28,6 +28,8 @@ On the server, this `ref` is created once when the module loads. Every request t
 
 The problem applies to any module-level mutable state: `ref`, `reactive`, `Map`, `Set`, plain objects, even a counter variable.
 
+<img src="/diagrams/en/ssr-cross-request.svg" alt="Sequence diagram showing how shared singleton state leaks data between concurrent SSR requests" style="max-width: 100%;" />
+
 ## Red flags
 
 ```ts

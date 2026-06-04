@@ -39,6 +39,8 @@ Cada clave es un patrón de ruta. Los patrones glob (`**`) coinciden con rutas a
 
 ## Cuándo usar cada estrategia
 
+<img src="/diagrams/es/nuxt-hybrid-rendering.svg" alt="Árbol de decisión para elegir la estrategia de renderizado híbrido en Nuxt" style="max-width: 100%;" />
+
 **Prerender** para contenido que cambia en el momento del despliegue:
 
 ```ts

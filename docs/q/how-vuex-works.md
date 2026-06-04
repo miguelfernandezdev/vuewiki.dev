@@ -18,6 +18,8 @@ Every Vuex store has four concepts, each with a specific role:
 Component → dispatch(Action) → commit(Mutation) → State → Getters → Component
 ```
 
+<img src="/diagrams/en/vuex.svg" alt="Flowchart showing the Vuex pipeline: Component → dispatch Action → commit Mutation → State → Getters" style="max-width: 100%;" />
+
 ### State
 
 The single source of truth: a reactive object that holds all shared data. Components read from it, but never write to it directly.

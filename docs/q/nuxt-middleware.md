@@ -126,6 +126,8 @@ Server middleware files in `server/middleware/` run on every server request auto
 | Applied to                 | Specific pages or globally        | All server requests                   |
 | Can redirect to Vue routes | Yes (`navigateTo`)                | No (HTTP redirects only)              |
 
+<img src="/diagrams/en/nuxt-middleware.svg" alt="Two flowcharts comparing Nuxt server middleware and route middleware pipelines" style="max-width: 100%;" />
+
 See also: [What is the difference between server and route middleware?](/q/nuxt-server-vs-route-middleware) · [How do you implement authentication in Nuxt?](/q/nuxt-authentication) · [How does Vue Router work?](/q/vue-router-navigation-guards)
 
 ## References

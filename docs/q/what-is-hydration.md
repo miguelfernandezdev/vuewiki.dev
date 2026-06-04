@@ -24,6 +24,8 @@ Hydration is the process where Vue takes over static HTML that was rendered on t
 
 The key difference from a normal SPA mount: Vue does NOT create new DOM elements. It reuses what the server already rendered.
 
+<img src="/diagrams/en/what-is-hydration.svg" alt="Flowchart showing the hydration process from server render to interactive page" style="max-width: 100%;" />
+
 ## createSSRApp vs createApp
 
 ```ts

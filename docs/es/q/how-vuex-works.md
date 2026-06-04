@@ -18,6 +18,8 @@ Cada store de Vuex tiene cuatro conceptos, cada uno con un rol específico:
 Componente → dispatch(Action) → commit(Mutation) → State → Getters → Componente
 ```
 
+<img src="/diagrams/es/vuex.svg" alt="Diagrama del pipeline de Vuex: Componente → dispatch Action → commit Mutation → State → Getters" style="max-width: 100%;" />
+
 ### State
 
 La única fuente de verdad: un objeto reactivo que contiene todos los datos compartidos. Los componentes leen de él, pero nunca escriben directamente.

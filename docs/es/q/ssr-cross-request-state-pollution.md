@@ -28,6 +28,8 @@ En el servidor, este `ref` se crea una vez cuando el módulo se carga. Cada peti
 
 El problema afecta a cualquier estado mutable a nivel de módulo: `ref`, `reactive`, `Map`, `Set`, objetos planos, incluso una variable contador.
 
+<img src="/diagrams/es/ssr-cross-request.svg" alt="Diagrama de secuencia mostrando cómo el estado singleton compartido filtra datos entre peticiones SSR concurrentes" style="max-width: 100%;" />
+
 ## Señales de alerta
 
 ```ts

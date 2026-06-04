@@ -37,6 +37,8 @@ SSR:
   JS loads in background → hydrates → page becomes interactive
 ```
 
+<img src="/diagrams/en/what-is-ssr.svg" alt="Sequence diagram comparing SSR and CSR request timelines" style="max-width: 100%;" />
+
 ## Advantages of SSR
 
 **Faster first contentful paint.** Users see content before JavaScript loads. On slow connections or low-end devices, this difference is significant.

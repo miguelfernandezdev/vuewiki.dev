@@ -138,6 +138,8 @@ User clicks link to /dashboard
     (server middleware is NOT involved — no HTTP request for the page)
 ```
 
+<img src="/diagrams/en/nuxt-server-vs-route.svg" alt="Architecture diagram showing server middleware runs on SSR initial load while route middleware runs on both SSR and client navigation" style="max-width: 100%;" />
+
 ## Common mistake: using route middleware for API protection
 
 ```ts

@@ -30,6 +30,8 @@ Action → Store (state) → View → Action → ...
 
 The key constraint: the view never modifies state directly. It always goes through an action.
 
+<img src="/diagrams/en/flux.svg" alt="Flowchart showing the Flux unidirectional data flow cycle: Action → Store → View" style="max-width: 100%;" />
+
 ## Why unidirectional matters
 
 In bidirectional data flow, any component can change any data, and those changes propagate in unpredictable directions. With 5 components sharing state, a bug could originate from any of them. Debugging means checking every possible mutation path.

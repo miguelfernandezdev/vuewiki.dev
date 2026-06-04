@@ -37,6 +37,8 @@ SSR:
   El JS carga en segundo plano → hidrata → la página se vuelve interactiva
 ```
 
+<img src="/diagrams/es/what-is-ssr.svg" alt="Diagrama de secuencia comparando los tiempos de SSR y CSR" style="max-width: 100%;" />
+
 ## Ventajas del SSR
 
 **Primera pintura con contenido más rápida.** Los usuarios ven el contenido antes de que cargue JavaScript. En conexiones lentas o dispositivos de gama baja, esta diferencia es significativa.

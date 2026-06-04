@@ -79,6 +79,8 @@ defineRouteRules({ prerender: true })
 </script>
 ```
 
+<img src="/diagrams/en/nuxt-rendering-modes.svg" alt="Comparison diagram of Nuxt rendering modes: SSR, SPA, SSG, and Hybrid" style="max-width: 100%;" />
+
 ## Client-only content
 
 When parts of a page can't run on the server (browser APIs, third-party widgets):

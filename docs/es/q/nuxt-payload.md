@@ -50,6 +50,8 @@ El payload contiene cada dato resuelto durante SSR: resultados de `useFetch`, re
 
 ## Sin payload (el problema de la doble petición)
 
+<img src="/diagrams/es/nuxt-payload.svg" alt="Diagrama de secuencia mostrando cómo Nuxt serializa datos del servidor en el payload para evitar doble petición en el cliente" style="max-width: 100%;" />
+
 Si Nuxt no serializara los datos, el cliente tendría que volver a obtenerlos:
 
 ```

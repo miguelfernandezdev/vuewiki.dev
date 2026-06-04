@@ -19,6 +19,8 @@ During SSR, this is the sequence:
 5. On hydration, `useFetch` reads the payload instead of calling `/api/users` again
 6. The app becomes interactive with no extra network request
 
+<img src="/diagrams/en/nuxt-payload.svg" alt="Sequence diagram showing how Nuxt serializes server data into the payload to avoid double-fetching on the client" style="max-width: 100%;" />
+
 ## What's in the HTML
 
 After SSR, the HTML contains something like this:

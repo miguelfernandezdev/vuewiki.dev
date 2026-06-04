@@ -118,6 +118,8 @@ export default defineNuxtRouteMiddleware((to) => {
 
 ## Cómo interactúan durante SSR
 
+<img src="/diagrams/es/nuxt-server-vs-route.svg" alt="Diagrama de arquitectura mostrando cuándo se ejecuta cada tipo de middleware en SSR vs navegación del cliente" style="max-width: 100%;" />
+
 En una carga inicial de página SSR, ambas capas se ejecutan en secuencia:
 
 ```

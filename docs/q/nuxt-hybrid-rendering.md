@@ -37,6 +37,8 @@ Each key is a route pattern. Glob patterns (`**`) match nested paths.
 | `cors: true`                | Add CORS headers                                              |
 | `headers: object`           | Custom response headers                                       |
 
+<img src="/diagrams/en/nuxt-hybrid-rendering.svg" alt="Decision tree for choosing Nuxt hybrid rendering strategy based on SEO needs and content freshness" style="max-width: 100%;" />
+
 ## When to use each strategy
 
 **Prerender** for content that changes at deploy time:

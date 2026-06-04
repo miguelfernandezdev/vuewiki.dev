@@ -51,6 +51,8 @@ O genera el sitio completo con `nuxt generate`.
 
 ## Renderizado híbrido (el verdadero potencial)
 
+<img src="/diagrams/es/nuxt-rendering-modes.svg" alt="Diagrama comparativo de modos de renderizado en Nuxt: SSR, SPA, SSG e Híbrido" style="max-width: 100%;" />
+
 Combina modos de renderizado por ruta usando `routeRules`. Cada ruta puede tener su propia estrategia:
 
 ```ts

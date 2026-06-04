@@ -88,6 +88,8 @@ definePageMeta({
 
 ## Middleware de servidor
 
+<img src="/diagrams/es/nuxt-middleware.svg" alt="Dos diagramas comparando los pipelines de middleware de servidor y de rutas en Nuxt" style="max-width: 100%;" />
+
 El middleware de servidor se ejecuta en la capa de Nitro, antes de que Vue procese la petición. Gestiona peticiones HTTP en bruto, similar al middleware de Express.
 
 ```ts
