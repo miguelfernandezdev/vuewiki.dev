@@ -8,6 +8,8 @@ summary: 'onErrorCaptured catches errors from descendant components (error bound
 
 Vue provides `onErrorCaptured` to catch errors from descendant components, letting you build error boundaries similar to React's `componentDidCatch`. Combined with `app.config.errorHandler` for global errors and `defineAsyncComponent`'s error options, you can handle failures at every level.
 
+<img src="/diagrams/en/error-handling.svg" alt="Flowchart showing Vue error propagation: child error bubbles through onErrorCaptured to app.config.errorHandler" style="max-width: 100%;" />
+
 ## onErrorCaptured (error boundary)
 
 A parent component can catch errors thrown by any descendant (including async errors from lifecycle hooks and watchers):

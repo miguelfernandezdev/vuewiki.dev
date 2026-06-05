@@ -8,6 +8,8 @@ summary: 'watch especifica fuentes explícitas y da valores old/new. watchEffect
 
 Ambos ejecutan código en respuesta a cambios reactivos, pero difieren en **cómo le dices a Vue qué observar** y **cuándo se ejecutan por primera vez**.
 
+<img src="/diagrams/es/watch-vs-watcheffect.svg" alt="Diagrama comparativo: watch usa fuente explícita y es lazy, watchEffect auto-rastrea y ejecuta inmediatamente" style="max-width: 100%;" />
+
 ## watch: tú especificas qué observar
 
 [`watch`](https://vuejs.org/api/reactivity-core.html#watch) toma una fuente explícita (un ref, un getter, o un array de fuentes) y solo se ejecuta cuando esa fuente específica cambia. Te proporciona tanto el valor antiguo como el nuevo.

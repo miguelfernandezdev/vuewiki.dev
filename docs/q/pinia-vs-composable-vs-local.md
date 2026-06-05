@@ -9,6 +9,8 @@ summary: 'Local state by default. Composable when logic is reusable across compo
 
 Local state by default. Pinia only when there's a clear reason. The decision depends on three questions: how many components need this data, whether it must survive page navigation, and whether the logic is reusable. The anti-pattern is putting everything in a store "just in case," which creates a bloated global state where 80% is local state in disguise.
 
+<img src="/diagrams/en/pinia-vs-composable-vs-local.svg" alt="Decision tree for choosing between local ref, Pinia store, or composable based on state sharing needs" style="max-width: 100%;" />
+
 ## Decision tree
 
 ```

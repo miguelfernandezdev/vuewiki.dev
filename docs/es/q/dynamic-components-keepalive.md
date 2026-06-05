@@ -8,6 +8,8 @@ summary: '<component :is> cambia componentes en tiempo de ejecución. <KeepAlive
 
 Los componentes dinámicos permiten cambiar entre componentes en tiempo de ejecución usando el elemento integrado `<component>` con la prop `:is`. Por defecto, Vue destruye el componente antiguo y crea uno nuevo en cada cambio. `<KeepAlive>` altera ese comportamiento almacenando las instancias en memoria.
 
+<img src="/diagrams/es/dynamic-components-keepalive.svg" alt="Diagrama comparativo: sin KeepAlive los componentes se destruyen al cambiar, con KeepAlive se mantienen en caché" style="max-width: 100%;" />
+
 ## Componentes dinámicos
 
 ```vue

@@ -9,6 +9,8 @@ summary: 'Estado local por defecto. Composable cuando la lógica es reutilizable
 
 Estado local por defecto. Pinia solo cuando hay una razón clara. La decisión depende de tres preguntas: cuántos componentes necesitan estos datos, si deben sobrevivir a la navegación entre páginas y si la lógica es reutilizable. El anti-patrón es meter todo en un store "por si acaso", lo que genera un estado global inflado donde el 80% es estado local disfrazado.
 
+<img src="/diagrams/es/pinia-vs-composable-vs-local.svg" alt="Árbol de decisión para elegir entre ref local, Pinia store o composable según las necesidades de estado" style="max-width: 100%;" />
+
 ## Árbol de decisión
 
 ```

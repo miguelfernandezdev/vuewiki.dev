@@ -8,6 +8,8 @@ summary: 'Containers handle logic and data fetching; presentational components r
 
 The container-presentational pattern separates components into two roles: containers handle logic and data, presentational components handle UI. Containers fetch data, manage state, and call APIs. Presentational components receive everything through props and emit events. They don't know where the data comes from.
 
+<img src="/diagrams/en/container-presentational-pattern.svg" alt="Layered diagram showing container component passes props down to presentational component which emits events up" style="max-width: 100%;" />
+
 ## Presentational component (pure UI)
 
 ```vue

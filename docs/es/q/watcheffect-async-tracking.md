@@ -25,6 +25,8 @@ watchEffect(async () => {
 
 Cambiar `userId` vuelve a ejecutar el efecto. Cambiar `includeDetails` no hace nada porque Vue nunca lo vio siendo accedido.
 
+<img src="/diagrams/es/watcheffect-async-tracking.svg" alt="Diagrama mostrando que watchEffect rastrea dependencias en código síncrono pero deja de rastrear después de un await" style="max-width: 100%;" />
+
 ## Cómo solucionarlo
 
 **Opción 1:** Lee todos los valores reactivos antes del primer `await`.

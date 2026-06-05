@@ -15,6 +15,8 @@ Optimistic updates change the UI immediately before the server confirms the acti
 3. Send the request to the server
 4. If error, restore the snapshot
 
+<img src="/diagrams/en/optimistic-updates.svg" alt="Flowchart showing optimistic update pattern: snapshot, apply UI change, send request, success or rollback" style="max-width: 100%;" />
+
 ## Example: toggling a todo
 
 ```vue

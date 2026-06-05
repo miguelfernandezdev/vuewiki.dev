@@ -8,6 +8,8 @@ summary: 'app.config.errorHandler catches all uncaught errors globally. Combine 
 
 Vue provides multiple layers for catching errors: `app.config.errorHandler` for uncaught errors globally, `onErrorCaptured` for errors in a component subtree, and try/catch for async operations. A production app should combine all three, plus a user-facing error UI.
 
+<img src="/diagrams/en/global-error-handling.svg" alt="Flowchart showing three-layer error handling: try/catch, onErrorCaptured boundary, app.config.errorHandler" style="max-width: 100%;" />
+
 ## app.config.errorHandler (global catch-all)
 
 This is the last line of defense. It catches any unhandled error from components, watchers, lifecycle hooks, and event handlers:

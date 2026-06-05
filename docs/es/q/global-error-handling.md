@@ -8,6 +8,8 @@ summary: 'app.config.errorHandler captura todos los errores no manejados globalm
 
 Vue proporciona múltiples capas para capturar errores: `app.config.errorHandler` para errores no capturados de forma global, `onErrorCaptured` para errores en un subárbol de componentes, y try/catch para operaciones asíncronas. Una app en producción debería combinar los tres, más una interfaz de error visible para el usuario.
 
+<img src="/diagrams/es/global-error-handling.svg" alt="Diagrama de flujo de tres capas de manejo de errores: try/catch, barrera onErrorCaptured, app.config.errorHandler" style="max-width: 100%;" />
+
 ## app.config.errorHandler (captura global)
 
 Es la última línea de defensa. Captura cualquier error no gestionado de componentes, watchers, lifecycle hooks y manejadores de eventos:

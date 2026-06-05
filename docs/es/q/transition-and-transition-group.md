@@ -58,6 +58,8 @@ El patrón de nombres de clase con un `name` de `"fade"`:
 .fade-leave-from   → .fade-leave-active → .fade-leave-to
 ```
 
+<img src="/diagrams/es/transition-and-transition-group.svg" alt="Línea temporal de las clases CSS de transición en Vue: v-enter-from a v-enter-to para entrada, v-leave-from a v-leave-to para salida" style="max-width: 100%;" />
+
 ## Modos de Transition
 
 Al intercambiar entre dos elementos, ambos son visibles al mismo tiempo por defecto. Usa `mode="out-in"` para animar la salida del elemento antiguo primero, y luego la entrada del nuevo.

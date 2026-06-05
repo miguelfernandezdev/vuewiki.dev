@@ -8,6 +8,8 @@ summary: 'useFetch for SSR-aware component data, useAsyncData for custom async l
 
 Nuxt provides three ways to fetch data. Each solves a different problem around SSR, hydration, and double-fetching.
 
+<img src="/diagrams/en/nuxt-data-fetching.svg" alt="Flowchart showing when to use useFetch, useAsyncData, or $fetch in Nuxt" style="max-width: 100%;" />
+
 ## $fetch
 
 A thin wrapper around the Fetch API (powered by `ofetch`). Use it for client-side events like form submissions or button clicks.

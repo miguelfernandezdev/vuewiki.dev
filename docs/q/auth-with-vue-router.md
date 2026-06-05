@@ -8,6 +8,8 @@ summary: 'Combine an auth store/composable, a beforeEach navigation guard, and r
 
 The standard approach combines a composable or store for auth state, a navigation guard to protect routes, and route meta to declare which pages need authentication. The guard checks auth state before every navigation and redirects unauthenticated users to login.
 
+<img src="/diagrams/en/auth-with-vue-router.svg" alt="Flowchart showing Vue Router auth guard: check requiresAuth meta, verify authentication, allow or redirect to login" style="max-width: 100%;" />
+
 ## Auth composable
 
 ```ts

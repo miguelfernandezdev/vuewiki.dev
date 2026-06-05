@@ -8,6 +8,8 @@ summary: 'A lightweight JS tree of vnodes. Vue diffs the new tree against the ol
 
 The [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual-dom) is a lightweight JavaScript representation of the real DOM. Instead of manipulating the browser's DOM directly on every change, Vue builds a tree of plain objects (vnodes), diffs the new tree against the previous one, and applies only the minimal set of real DOM operations needed.
 
+<img src="/diagrams/en/virtual-dom.svg" alt="Flowchart showing virtual DOM process: state change triggers render, diff old vs new vnode tree, apply minimal DOM patches" style="max-width: 100%;" />
+
 ## How it works
 
 1. Your template compiles into a **render function** that returns vnodes.

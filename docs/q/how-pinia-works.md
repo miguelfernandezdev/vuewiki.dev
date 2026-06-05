@@ -8,6 +8,8 @@ summary: 'Each Pinia store is a reactive object with state (refs), getters (comp
 
 Pinia is Vue's official state management library. Each store is an isolated reactive unit with state, getters (computed values), and actions (methods). Under the hood, a store is a `reactive` object enhanced with devtools integration, plugin support, and SSR safety.
 
+<img src="/diagrams/en/how-pinia-works.svg" alt="Architecture diagram showing Pinia store structure: defineStore creates state, getters, and actions that components access directly" style="max-width: 100%;" />
+
 ## Defining a store
 
 There are two syntaxes. Both produce the same result.

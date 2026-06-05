@@ -8,6 +8,8 @@ summary: 'Vue batches all synchronous state changes within one tick into a singl
 
 Vue doesn't update the DOM on every reactive state change. It batches all synchronous mutations within the same event loop tick and applies them in a single DOM update. Watchers and [computed](https://vuejs.org/api/reactivity-core.html#computed) properties also only fire once with the final value, not for each intermediate change.
 
+<img src="/diagrams/en/dom-update-batching.svg" alt="Sequence diagram showing multiple state changes batched into a single DOM update" style="max-width: 100%;" />
+
 ## Batching in action
 
 ```ts

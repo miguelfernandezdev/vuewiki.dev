@@ -19,6 +19,8 @@ El [Virtual DOM](https://vuejs.org/guide/extras/rendering-mechanism.html#virtual
 Cambios de estado → nuevo árbol de vnodes → comparar con árbol anterior → parchear el DOM real
 ```
 
+<img src="/diagrams/es/virtual-dom.svg" alt="Diagrama de flujo del virtual DOM: cambio de estado → render → diff → parches mínimos en DOM" style="max-width: 100%;" />
+
 ```ts
 // Cómo es un vnode internamente (simplificado)
 const vnode = {

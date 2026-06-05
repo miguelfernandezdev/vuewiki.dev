@@ -8,6 +8,8 @@ summary: '<Transition> animates a single element entering/leaving. <TransitionGr
 
 Vue provides two built-in components for animation. `<Transition>` animates a single element entering or leaving. `<TransitionGroup>` animates items in a list.
 
+<img src="/diagrams/en/transition-and-transition-group.svg" alt="Timeline showing Vue transition CSS class phases: v-enter-from to v-enter-to for entering, v-leave-from to v-leave-to for leaving" style="max-width: 100%;" />
+
 ## Transition
 
 Wrap a single element (or component) that toggles with `v-if` or `v-show`. Vue adds CSS classes at each stage of the enter/leave cycle.

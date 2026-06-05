@@ -8,6 +8,8 @@ summary: 'onErrorCaptured captura errores de componentes descendientes (error bo
 
 Vue proporciona `onErrorCaptured` para capturar errores de componentes descendientes, lo que permite construir límites de error similares al `componentDidCatch` de React. Combinado con `app.config.errorHandler` para errores globales y las opciones de error de `defineAsyncComponent`, puedes gestionar fallos a todos los niveles.
 
+<img src="/diagrams/es/error-handling.svg" alt="Diagrama de flujo de propagación de errores en Vue: error hijo sube por onErrorCaptured hasta app.config.errorHandler" style="max-width: 100%;" />
+
 ## onErrorCaptured (límite de error)
 
 Un componente padre puede capturar errores lanzados por cualquier descendiente (incluyendo errores asíncronos de lifecycle hooks y watchers):

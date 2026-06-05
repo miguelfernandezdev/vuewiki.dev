@@ -8,6 +8,8 @@ summary: 'Mueve datos compartidos al ancestro común más cercano. Los hijos los
 
 Lifting state up significa mover datos compartidos desde un componente hijo al ancestro común más cercano para que varios hijos puedan acceder al mismo state y mantenerse sincronizados.
 
+<img src="/diagrams/es/lifting-state-up.svg" alt="Diagrama antes/después: hermanos con estado propio refactorizados a padre con estado compartido, props abajo y eventos arriba" style="max-width: 100%;" />
+
 ## El problema
 
 Dos componentes hermanos necesitan acceder a los mismos datos, pero cada uno gestiona su propia copia. Se dessincronizan.

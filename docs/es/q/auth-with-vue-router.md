@@ -220,6 +220,8 @@ const token = useCookie('auth-token')
 7. El guard comprueba isAuthenticated → true → permite la navegación
 ```
 
+<img src="/diagrams/es/auth-with-vue-router.svg" alt="Diagrama de flujo del guard de autenticación con Vue Router: verificar requiresAuth, comprobar autenticación, permitir o redirigir a login" style="max-width: 100%;" />
+
 Ver también: [¿Cómo funciona Vue Router?](/es/q/vue-router-navigation-guards) · [¿Cómo implementar autenticación en Nuxt?](/es/q/nuxt-authentication) · [¿Cuál es la diferencia entre server middleware y route middleware?](/es/q/nuxt-server-vs-route-middleware)
 
 ## Referencias

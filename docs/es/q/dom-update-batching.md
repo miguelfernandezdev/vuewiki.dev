@@ -8,6 +8,8 @@ summary: 'Vue agrupa todos los cambios de estado síncronos en un tick en una so
 
 Vue no actualiza el DOM en cada cambio de estado reactivo. Agrupa todas las mutaciones síncronas dentro del mismo tick del event loop y las aplica en una única actualización del DOM. Los watchers y los [computed](https://vuejs.org/api/reactivity-core.html#computed) también se disparan una sola vez con el valor final, no con cada cambio intermedio.
 
+<img src="/diagrams/es/dom-update-batching.svg" alt="Diagrama de secuencia mostrando múltiples cambios de estado agrupados en una sola actualización del DOM" style="max-width: 100%;" />
+
 ## El batching en acción
 
 ```ts

@@ -8,6 +8,8 @@ summary: 'Every .vue file in pages/ becomes a route automatically. Use [brackets
 
 In Nuxt, you don't configure routes manually. Every `.vue` file inside the `pages/` directory automatically becomes a route. The file system IS the router config.
 
+<img src="/diagrams/en/nuxt-file-based-routing.svg" alt="Mapping diagram showing how Nuxt pages/ directory structure maps to URL routes" style="max-width: 100%;" />
+
 ## Basic routes
 
 ```

@@ -48,6 +48,8 @@ const currentTab = shallowRef(TabHome)
 
 Without `KeepAlive`, any local state in `TabSettings` (form inputs, scroll position, expanded sections) resets every time you switch away and back.
 
+<img src="/diagrams/en/dynamic-components-keepalive.svg" alt="Comparison diagram: without KeepAlive components are destroyed on switch, with KeepAlive they are cached" style="max-width: 100%;" />
+
 ## Adding KeepAlive
 
 Wrap `<component>` in `<KeepAlive>` to cache instances instead of destroying them.

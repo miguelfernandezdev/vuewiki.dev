@@ -28,6 +28,8 @@ controller.abort()
 
 Calling `abort()` rejects the fetch promise with an `AbortError`. You check `err.name` to distinguish cancellations from real errors.
 
+<img src="/diagrams/en/abort-controller-composable.svg" alt="Sequence diagram showing AbortController cancelling a stale request when a new one starts" style="max-width: 100%;" />
+
 ## Cancel on unmount
 
 When a component unmounts while a request is in flight, the response arrives after the component is destroyed. Setting state on a destroyed component is a memory leak and can cause warnings.

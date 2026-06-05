@@ -8,6 +8,8 @@ summary: 'defineAsyncComponent envuelve un import dinámico para que el código 
 
 Los componentes asíncronos permiten dividir el bundle cargando el código de un componente solo cuando se necesita. En lugar de importar el componente al inicio del archivo (lo que lo incluye en el bundle del componente padre), envuelves la importación en `defineAsyncComponent` y Vite crea un chunk separado para él.
 
+<img src="/diagrams/es/async-components.svg" alt="Diagrama de flujo de defineAsyncComponent: estados de carga, cargado, error y timeout" style="max-width: 100%;" />
+
 ## Uso básico
 
 ```ts

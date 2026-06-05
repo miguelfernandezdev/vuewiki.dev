@@ -8,6 +8,8 @@ summary: 'Cada .vue en pages/ se convierte en ruta automáticamente. Usa [corche
 
 En Nuxt no se configuran las rutas manualmente. Cada archivo `.vue` dentro del directorio `pages/` se convierte automáticamente en una ruta. El sistema de archivos es la configuración del router.
 
+<img src="/diagrams/es/nuxt-file-based-routing.svg" alt="Diagrama de mapeo mostrando cómo la estructura de pages/ en Nuxt se convierte en rutas URL" style="max-width: 100%;" />
+
 ## Rutas básicas
 
 ```

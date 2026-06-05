@@ -44,6 +44,8 @@ import { inject } from 'vue'
 
 The provided value is reactive. When `theme` changes in the parent, every component that injected it updates automatically.
 
+<img src="/diagrams/en/provide-inject.svg" alt="Tree diagram showing provide/inject bypassing intermediate components" style="max-width: 100%;" />
+
 ## Type-safe injection with InjectionKey
 
 String keys work but don't give you type safety. Use `InjectionKey` for typed provide/inject:

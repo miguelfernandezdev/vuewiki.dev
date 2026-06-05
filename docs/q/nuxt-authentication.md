@@ -8,6 +8,8 @@ summary: 'Combine a useAuth composable, a plugin for session init, route middlew
 
 The standard pattern uses four pieces working together: a `useAuth` composable that exposes the auth state and methods, a plugin that initializes the user session on app start, a route middleware that protects pages, and a server middleware that protects API routes. Tokens are stored in cookies (not localStorage) because cookies are accessible during SSR.
 
+<img src="/diagrams/en/nuxt-authentication.svg" alt="Sequence diagram showing Nuxt authentication flow through route middleware, useAuth composable, and server validation" style="max-width: 100%;" />
+
 ## Why cookies, not localStorage
 
 localStorage doesn't exist on the server. During SSR, the server needs to know who the user is to render personalized content and protect pages. Cookies are sent with every HTTP request, so the server can read them during both SSR and API calls.

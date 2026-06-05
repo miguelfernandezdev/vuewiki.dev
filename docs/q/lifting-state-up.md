@@ -8,6 +8,8 @@ summary: 'Move shared data to the nearest common ancestor. Children receive it v
 
 Lifting state up means moving shared data from a child component to the nearest common ancestor so that multiple children can access and stay in sync with the same state.
 
+<img src="/diagrams/en/lifting-state-up.svg" alt="Before/after diagram: siblings with own state refactored to parent holding shared state with props down and events up" style="max-width: 100%;" />
+
 ## The problem
 
 Two sibling components need access to the same data, but each manages its own copy. They get out of sync.

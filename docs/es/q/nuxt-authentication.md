@@ -212,6 +212,8 @@ Usuario hace clic en logout
   → useAuth().logout() → POST /api/auth/logout → borrar cookie → borrar state → redirigir
 ```
 
+<img src="/diagrams/es/nuxt-authentication.svg" alt="Diagrama de secuencia del flujo de autenticación en Nuxt: middleware de ruta, useAuth y validación del servidor" style="max-width: 100%;" />
+
 ## Resumen
 
 | Pieza                       | Ubicación                 | Responsabilidad                                      |

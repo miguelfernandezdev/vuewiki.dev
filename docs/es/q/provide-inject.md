@@ -10,6 +10,8 @@ Cuando un componente padre necesita pasar datos a un hijo profundamente anidado,
 
 [`provide`](https://vuejs.org/api/composition-api-dependency-injection.html#provide) e [`inject`](https://vuejs.org/api/composition-api-dependency-injection.html#inject) resuelven esto. Un padre provee datos, y cualquier descendiente, sin importar la profundidad, puede inyectarlos directamente sin que ningún componente intermedio sepa de ellos.
 
+<img src="/diagrams/es/provide-inject.svg" alt="Diagrama de árbol mostrando provide/inject saltando componentes intermedios" style="max-width: 100%;" />
+
 ## Cómo funciona
 
 ```vue

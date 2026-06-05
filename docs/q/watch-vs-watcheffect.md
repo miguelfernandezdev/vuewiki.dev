@@ -8,6 +8,8 @@ summary: 'watch specifies explicit sources and gives old/new values. watchEffect
 
 Both run code in response to reactive changes, but they differ in **how you tell Vue what to watch** and **when they first run**.
 
+<img src="/diagrams/en/watch-vs-watcheffect.svg" alt="Comparison diagram: watch uses explicit source and is lazy with old/new values, watchEffect auto-tracks and runs immediately" style="max-width: 100%;" />
+
 ## watch: you specify what to observe
 
 [`watch`](https://vuejs.org/api/reactivity-core.html#watch) takes an explicit source (a ref, a getter, or an array of sources) and only runs when that specific source changes. It gives you both the old and new values.

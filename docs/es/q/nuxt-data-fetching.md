@@ -100,6 +100,8 @@ El primer argumento es una clave única para el caché y la deduplicación.
 | Clic en botón, envío de formulario, acción del usuario   | `$fetch`                                         |
 | Datos iniciales en `setup`                               | `useFetch` o `useAsyncData`, nunca `$fetch` solo |
 
+<img src="/diagrams/es/nuxt-data-fetching.svg" alt="Diagrama de flujo mostrando cuándo usar useFetch, useAsyncData o $fetch en Nuxt" style="max-width: 100%;" />
+
 ## Valores de retorno compartidos
 
 Todos los composables devuelven la misma estructura:

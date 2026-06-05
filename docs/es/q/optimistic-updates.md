@@ -8,6 +8,8 @@ summary: 'Actualiza la UI inmediatamente, guarda el estado previo con toRaw, env
 
 Las actualizaciones optimistas cambian la interfaz de inmediato antes de que el servidor confirme la acción. El patrón se apoya en [ref](https://vuejs.org/api/reactivity-core.html#ref) y [toRaw](https://vuejs.org/api/reactivity-advanced.html#toraw) para capturar y restaurar el estado. Si la petición al servidor tiene éxito, nada cambia visualmente. Si falla, se revierte al estado anterior. La app se siente instantánea porque el usuario no espera un viaje de red de ida y vuelta.
 
+<img src="/diagrams/es/optimistic-updates.svg" alt="Diagrama de flujo del patrón de actualización optimista: capturar estado, aplicar cambio en UI, enviar petición, éxito o rollback" style="max-width: 100%;" />
+
 ## Patrón básico
 
 1. Guarda el estado actual (instantánea)

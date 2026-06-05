@@ -8,6 +8,8 @@ summary: 'watchEffect only tracks dependencies during synchronous execution. Aft
 
 Because [watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect) only tracks dependencies during **synchronous** execution. After the first `await`, Vue stops tracking. Any reactive property accessed after that point is invisible to the watcher.
 
+<img src="/diagrams/en/watcheffect-async-tracking.svg" alt="Flowchart showing watchEffect tracks dependencies in sync code but stops tracking after an await boundary" style="max-width: 100%;" />
+
 ```ts
 const userId = ref(1)
 const includeDetails = ref(true)
