@@ -55,7 +55,7 @@ Migrated from Nuxt but didn't fully adapt to VitePress conventions. Review how m
 - [ ] Vitest testing guides (#4)
 - [ ] Dedicated Nuxt section (#5)
 - [x] Interactive code examples (#6)
-- [ ] Static SVG diagrams for conceptual questions (#17)
+- [x] Static SVG diagrams for conceptual questions (#17)
 
 ## Phase 6 — Translations
 
