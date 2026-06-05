@@ -10,6 +10,8 @@ Los componentes compuestos son un conjunto de componentes que trabajan juntos y 
 
 El ejemplo clásico es un accordion, un sistema de pestañas o un componente select donde el padre rastrea qué elemento está activo y los hijos se registran en él.
 
+<img src="/diagrams/es/compound-components-pattern.svg" alt="Diagrama de árbol mostrando padre proveyendo contexto e hijos consumiendo via inject" style="max-width: 100%;" />
+
 ## Ejemplo: Pestañas
 
 ```vue

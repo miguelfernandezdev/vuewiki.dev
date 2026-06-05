@@ -8,6 +8,8 @@ summary: 'v-model crea enlace bidireccional. En inputs nativos: :value + @input.
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) crea un enlace bidireccional entre los datos del padre y un componente hijo (o un elemento de formulario). En elementos nativos es azúcar sintáctico para un binding `:value` más un listener `@input`. En componentes, vincula un prop y escucha un evento de actualización.
 
+<img src="/diagrams/es/v-model-basics.svg" alt="Diagrama de flujo de datos mostrando modelValue bajando y evento update subiendo" style="max-width: 100%;" />
+
 ## v-model en elementos nativos
 
 ```vue

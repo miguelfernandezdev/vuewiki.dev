@@ -8,6 +8,8 @@ summary: 'v-model en un componente enlaza un prop modelValue y escucha update:mo
 
 Cuando escribes `v-model` en un `<input>` nativo, Vue vincula su valor y escucha eventos de input. Cuando escribes `v-model` en un componente personalizado, Vue hace algo similar: pasa una prop `modelValue` y escucha un evento `update:modelValue`. El componente controla lo que el usuario ve y cuándo emitir actualizaciones.
 
+<img src="/diagrams/es/v-model-custom-components.svg" alt="Diagrama de flujo de datos para v-model con componentes personalizados usando defineModel" style="max-width: 100%;" />
+
 ## A qué se expande v-model
 
 ```vue

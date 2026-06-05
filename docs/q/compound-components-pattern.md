@@ -10,6 +10,8 @@ Compound components are a set of components that work together and share implici
 
 The classic example is an accordion, tabs, or select component where the parent tracks which item is active and the children register themselves.
 
+<img src="/diagrams/en/compound-components-pattern.svg" alt="Tree diagram showing parent providing context and children consuming via inject" style="max-width: 100%;" />
+
 ## Example: Tabs
 
 ```vue

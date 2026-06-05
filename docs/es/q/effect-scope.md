@@ -8,6 +8,8 @@ summary: 'effectScope agrupa watchers, computed y watchEffect en un contenedor. 
 
 [effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) crea un contenedor que recolecta todos los efectos reactivos (watchers, computed, watchEffect) creados dentro de él. Cuando llamas a `scope.stop()`, todos los efectos del scope se eliminan a la vez. Esto es lo que Vue hace internamente para cada instancia de componente, pero puedes usarlo tú mismo en composables o contextos fuera de componentes.
 
+<img src="/diagrams/es/effect-scope.svg" alt="Diagrama mostrando effectScope conteniendo computed y watchers con scope.stop liberando todo" style="max-width: 100%;" />
+
 ## Uso básico
 
 ```ts

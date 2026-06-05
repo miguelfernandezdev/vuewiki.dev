@@ -8,6 +8,8 @@ summary: 'Nitro es el motor de servidor de Nuxt. Los archivos en server/api/ se 
 
 Nitro es el motor de servidor de Nuxt. Gestiona las rutas de API, el middleware de servidor y el despliegue. Escribes el código del servidor en `server/`, y Nitro lo compila para cualquier plataforma de alojamiento (Node, Cloudflare Workers, Vercel, Deno, etc.) sin cambios de configuración.
 
+<img src="/diagrams/es/nuxt-nitro-server-routes.svg" alt="Diagrama de enrutamiento mostrando petición HTTP al router Nitro hacia API, rutas y handler SSR" style="max-width: 100%;" />
+
 ## Rutas de API
 
 Crea archivos en `server/api/` y se convierten en endpoints automáticamente:

@@ -8,6 +8,8 @@ summary: 'Los layouts envuelven páginas con UI compartida (cabeceras, pies). La
 
 Los layouts son componentes wrapper que rodean tus páginas. Definen la interfaz compartida como cabeceras, pies de página y barras laterales. En lugar de repetir esa estructura en cada página, la defines una vez en un layout y Nuxt envuelve las páginas automáticamente.
 
+<img src="/diagrams/es/nuxt-layouts.svg" alt="Diagrama mostrando NuxtLayout envolviendo el contenido de página via slot" style="max-width: 100%;" />
+
 ## Layout por defecto
 
 Crea `layouts/default.vue`. Todas las páginas lo usan automáticamente salvo que se indique otro:

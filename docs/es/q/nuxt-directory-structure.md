@@ -8,6 +8,8 @@ summary: 'Basado en convenciones: pages/ para rutas, server/api/ para endpoints,
 
 Nuxt está basado en convenciones. La estructura de directorios es la configuración. El lugar donde colocas un archivo determina su función: un archivo `.vue` en `pages/` se convierte en una ruta, un archivo `.ts` en `server/api/` se convierte en un endpoint de API, un composable en `composables/` se importa automáticamente. No hay configuración manual.
 
+<img src="/diagrams/es/nuxt-directory-structure.svg" alt="Árbol anotado de la estructura de directorios Nuxt con descripciones de roles" style="max-width: 100%;" />
+
 ## Estructura completa del proyecto
 
 ```

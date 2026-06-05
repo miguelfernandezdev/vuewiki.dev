@@ -8,6 +8,8 @@ summary: 'Usa import() dinámico en definiciones de rutas y defineAsyncComponent
 
 El code splitting divide tu app en archivos JavaScript más pequeños (chunks) que se cargan bajo demanda en lugar de todos a la vez. El lazy loading significa cargar un chunk solo cuando el usuario realmente lo necesita: al navegar a una ruta, abrir un modal o hacer scroll a una sección. Vite gestiona esto automáticamente cuando usas `import()` dinámico.
 
+<img src="/diagrams/es/lazy-loading-code-splitting.svg" alt="Diagrama de bundle mostrando chunk principal y chunks async cargados bajo demanda" style="max-width: 100%;" />
+
 ## Code splitting a nivel de ruta
 
 La división más impactante. Cada ruta se convierte en su propio chunk, cargado solo cuando el usuario navega a ella:

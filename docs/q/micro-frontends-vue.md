@@ -8,6 +8,8 @@ summary: 'Split the frontend into independent apps using Module Federation, Web 
 
 Micro-frontends split a large frontend into independent apps that are developed, deployed, and run separately. Each team owns a feature and ships it without coordinating releases with others. In Vue, the main approaches are Module Federation, Web Components, and iframe-based composition.
 
+<img src="/diagrams/en/micro-frontends-vue.svg" alt="Architecture diagram showing shell app with remote micro-frontends via Module Federation" style="max-width: 100%;" />
+
 ## Module Federation (Vite/Webpack)
 
 Module Federation lets one app load components from another at runtime. Each micro-frontend is a separate Vite/Webpack build that exposes specific modules.

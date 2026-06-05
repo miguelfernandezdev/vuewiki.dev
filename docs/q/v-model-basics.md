@@ -8,6 +8,8 @@ summary: 'v-model creates two-way binding. On native inputs: :value + @input. On
 
 [`v-model`](https://vuejs.org/guide/components/v-model.html) creates a two-way binding between a parent's data and a child component (or a form element). On native elements it's syntactic sugar for a `:value` binding plus an `@input` listener. On components, it binds a prop and listens for an update event.
 
+<img src="/diagrams/en/v-model-basics.svg" alt="Data flow diagram showing modelValue prop down and update event up" style="max-width: 100%;" />
+
 ## v-model on native elements
 
 ```vue

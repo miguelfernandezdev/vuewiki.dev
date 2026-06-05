@@ -8,6 +8,8 @@ summary: 'Los layers son apps Nuxt parciales que extiendes via config. Comparten
 
 Los layers permiten compartir aplicaciones Nuxt parciales entre proyectos. Un layer puede incluir componentes, composables, páginas, layouts, middleware, plugins, rutas de servidor y configuración. Son el modelo de herencia de Nuxt: tu proyecto extiende uno o más layers, y todo se fusiona automáticamente.
 
+<img src="/diagrams/es/nuxt-layers.svg" alt="Diagrama mostrando proyecto extendiendo capas base y compartidas" style="max-width: 100%;" />
+
 ## Usar un layer
 
 Añádelo a `extends` en tu configuración:

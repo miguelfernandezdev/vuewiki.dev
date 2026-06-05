@@ -8,6 +8,8 @@ summary: 'effectScope collects watchers, computed, and watchEffect in a containe
 
 [effectScope](https://vuejs.org/api/reactivity-advanced.html#effectscope) creates a container that collects all reactive effects (watchers, computed, watchEffect) created inside it. When you call `scope.stop()`, every effect in the scope is disposed at once. This is what Vue does internally for each component instance, but you can use it yourself in composables or non-component contexts.
 
+<img src="/diagrams/en/effect-scope.svg" alt="Diagram showing effectScope containing computed and watchers with scope.stop disposing all" style="max-width: 100%;" />
+
 ## Basic usage
 
 ```ts

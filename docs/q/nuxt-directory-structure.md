@@ -8,6 +8,8 @@ summary: 'Convention-driven: pages/ for routes, server/api/ for endpoints, compo
 
 Nuxt is convention-driven. The directory structure IS the configuration. Where you place a file determines what it does: a `.vue` file in `pages/` becomes a route, a `.ts` file in `server/api/` becomes an API endpoint, a composable in `composables/` gets auto-imported. You don't wire things up manually.
 
+<img src="/diagrams/en/nuxt-directory-structure.svg" alt="Annotated tree of Nuxt directory structure with role descriptions" style="max-width: 100%;" />
+
 ## Full project structure
 
 ```

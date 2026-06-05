@@ -8,6 +8,8 @@ summary: 'Use dynamic import() in route definitions and defineAsyncComponent. Vi
 
 Code splitting breaks your app into smaller JavaScript files (chunks) that load on demand instead of all at once. Lazy loading means loading a chunk only when the user actually needs it: navigating to a route, opening a modal, scrolling to a section. Vite handles this automatically when you use dynamic `import()`.
 
+<img src="/diagrams/en/lazy-loading-code-splitting.svg" alt="Bundle diagram showing main chunk and async route chunks loaded on demand" style="max-width: 100%;" />
+
 ## Route-level code splitting
 
 The most impactful split. Each route becomes its own chunk, loaded only when the user navigates to it:

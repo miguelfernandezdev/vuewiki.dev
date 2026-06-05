@@ -8,6 +8,8 @@ summary: 'Layouts wrap pages with shared UI (headers, footers). Pages choose a l
 
 Layouts are wrapper components that surround your pages. They define shared UI like headers, footers, and sidebars. Instead of repeating that structure in every page, you define it once in a layout and let Nuxt wrap your pages automatically.
 
+<img src="/diagrams/en/nuxt-layouts.svg" alt="Diagram showing NuxtLayout wrapping page content via slot" style="max-width: 100%;" />
+
 ## Default layout
 
 Create `layouts/default.vue`. Every page uses it automatically unless told otherwise:
