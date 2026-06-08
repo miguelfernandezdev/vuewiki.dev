@@ -137,7 +137,7 @@ function parseFrontmatter(content: string): QuestionFrontmatter | null {
   const order = Number(fm.match(/order:\s*(\d+)/)?.[1] ?? 0)
   const tagsMatch = fm.match(/tags:\s*\[(.+)\]/)
   const tags = tagsMatch
-    ? tagsMatch[1].split(',').map((t) => t.trim().replace(/"/g, ''))
+    ? tagsMatch[1].split(',').map((t) => t.trim().replace(/["']/g, ''))
     : []
 
   return { title, order, tags }
