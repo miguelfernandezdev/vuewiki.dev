@@ -27,7 +27,9 @@ export function initAnalytics() {
   const token = import.meta.env.VITE_POSTHOG_PROJECT_TOKEN
   if (!token) return
 
-  requestIdleCallback(() => {
+  const schedule =
+    globalThis.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1))
+  schedule(() => {
     import('posthog-js').then(({ default: posthog }) => {
       posthog.init(token, {
         api_host:

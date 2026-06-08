@@ -23,8 +23,6 @@ export default {
     })
   },
   enhanceApp({ app }) {
-    initAnalytics()
-
     app.config.errorHandler = (err) => {
       captureException(err)
     }
@@ -33,5 +31,7 @@ export default {
     app.component('QuestionsPage', QuestionsPage)
     app.component('FlashcardsPage', FlashcardsPage)
     app.component('PlaygroundLink', PlaygroundLink)
+
+    initAnalytics()
   }
 } satisfies Theme
