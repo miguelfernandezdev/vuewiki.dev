@@ -95,7 +95,8 @@
     "missingTitle": "هل لديك سؤال لم نتناوله؟",
     "missingDesc": "اقترحه على GitHub. نحن نضيف أسئلة جديدة باستمرار",
     "missingAction": "اقترح",
-    "contribute": "ساهم"
+    "contribute": "ساهم",
+    "sponsor": "رعاية"
   },
   "detail": {
     "back": "← جميع الأسئلة",

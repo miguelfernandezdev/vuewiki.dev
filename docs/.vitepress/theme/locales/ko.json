@@ -95,7 +95,8 @@
     "missingTitle": "아직 다루지 않은 질문이 있나요?",
     "missingDesc": "GitHub에서 제안해 주세요. 계속해서 새 질문을 추가하고 있습니다",
     "missingAction": "제안하기",
-    "contribute": "기여하기"
+    "contribute": "기여하기",
+    "sponsor": "후원하기"
   },
   "detail": {
     "back": "← 전체 질문",

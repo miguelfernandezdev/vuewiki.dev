@@ -95,7 +95,8 @@
     "missingTitle": "Got a question we haven't covered?",
     "missingDesc": "Suggest it on GitHub. We're always adding new ones",
     "missingAction": "Suggest",
-    "contribute": "Contribute"
+    "contribute": "Contribute",
+    "sponsor": "Sponsor"
   },
   "detail": {
     "back": "← All questions",

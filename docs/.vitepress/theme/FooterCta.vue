@@ -6,7 +6,7 @@ const { t } = useI18n()
 
 const repoUrl = 'https://github.com/miguelfernandezdev/vuewiki.dev'
 
-function trackCta(type: 'suggest_question' | 'contribute') {
+function trackCta(type: 'suggest_question' | 'contribute' | 'sponsor') {
   capture('cta_clicked', { type })
 }
 </script>
@@ -52,6 +52,21 @@ function trackCta(type: 'suggest_question' | 'contribute') {
           />
         </svg>
         {{ t('cta.contribute') }}
+      </a>
+      <a
+        href="https://github.com/sponsors/miguelfernandezdev"
+        target="_blank"
+        rel="noreferrer"
+        class="contribute-link sponsor-link"
+        @click="trackCta('sponsor')"
+      >
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M8 14s-5.5-3.5-5.5-7.5C2.5 4 4.5 2.5 6.5 3.5L8 5l1.5-1.5C11.5 2.5 13.5 4 13.5 6.5 13.5 10.5 8 14 8 14z"
+            fill="currentColor"
+          />
+        </svg>
+        {{ t('cta.sponsor') }}
       </a>
     </div>
   </div>
@@ -134,6 +149,7 @@ function trackCta(type: 'suggest_question' | 'contribute') {
 .cta-bar {
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
   margin-top: 1rem;
 }
 
@@ -157,6 +173,17 @@ function trackCta(type: 'suggest_question' | 'contribute') {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
+}
+
+.sponsor-link {
+  color: #bf4b8a;
+  border-color: rgba(191, 75, 138, 0.3);
+}
+
+.sponsor-link:hover {
+  color: #bf4b8a;
+  border-color: #bf4b8a;
+  background: rgba(191, 75, 138, 0.1);
 }
 
 @media (max-width: 640px) {

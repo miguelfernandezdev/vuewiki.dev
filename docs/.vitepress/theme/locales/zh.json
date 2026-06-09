@@ -95,7 +95,8 @@
     "missingTitle": "有我们还没涵盖的题目？",
     "missingDesc": "在 GitHub 上提交建议，我们会持续添加新题目",
     "missingAction": "提交建议",
-    "contribute": "参与贡献"
+    "contribute": "参与贡献",
+    "sponsor": "赞助"
   },
   "detail": {
     "back": "← 所有题目",

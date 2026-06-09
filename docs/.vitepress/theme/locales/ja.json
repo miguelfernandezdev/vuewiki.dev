@@ -95,7 +95,8 @@
     "missingTitle": "まだ取り上げていない質問がありますか？",
     "missingDesc": "GitHub で提案してください。随時新しい質問を追加しています",
     "missingAction": "提案する",
-    "contribute": "貢献する"
+    "contribute": "貢献する",
+    "sponsor": "スポンサー"
   },
   "detail": {
     "back": "← 全質問",

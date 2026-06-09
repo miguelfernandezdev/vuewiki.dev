@@ -95,7 +95,8 @@
     "missingTitle": "¿Tienes una pregunta que no hemos cubierto?",
     "missingDesc": "Sugiere en GitHub, siempre estamos añadiendo nuevas",
     "missingAction": "Sugerir",
-    "contribute": "Contribuir"
+    "contribute": "Contribuir",
+    "sponsor": "Patrocinar"
   },
   "detail": {
     "back": "← Todas las preguntas",
