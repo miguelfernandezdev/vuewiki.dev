@@ -3,6 +3,13 @@
     "questions": "{count} preguntas"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Prueba una pregunta",
+    "revealAnswer": "Ver respuesta",
+    "hideAnswer": "Ocultar respuesta",
+    "readMore": "Leer respuesta completa",
+    "ctaMessage": "170+ preguntas como esta. ¡Prueba el mazo completo!"
+  },
   "home": {
     "title": "Preguntas de Entrevista de Vue.js",
     "subtitle": "{count} preguntas con respuestas y ejemplos de código",

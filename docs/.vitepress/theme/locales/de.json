@@ -3,6 +3,12 @@
     "questions": "{count} Fragen"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Probieren Sie eine Frage",
+    "revealAnswer": "Antwort anzeigen",
+    "hideAnswer": "Antwort ausblenden",
+    "readMore": "Vollständige Antwort lesen"
+  },
   "home": {
     "title": "Vue.js Interview-Fragen",
     "subtitle": "{count} Fragen mit Antworten und Code-Beispielen",

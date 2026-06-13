@@ -3,6 +3,12 @@
     "questions": "{count} questions"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Essayez une question",
+    "revealAnswer": "Afficher la réponse",
+    "hideAnswer": "Masquer la réponse",
+    "readMore": "Lire la réponse complète"
+  },
   "home": {
     "title": "Questions d'entretien Vue.js",
     "subtitle": "{count} questions avec réponses et exemples de code",

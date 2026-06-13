@@ -3,6 +3,12 @@
     "questions": "{count} câu hỏi"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Thử một câu hỏi",
+    "revealAnswer": "Hiện đáp án",
+    "hideAnswer": "Ẩn đáp án",
+    "readMore": "Đọc đáp án đầy đủ"
+  },
   "home": {
     "title": "Câu hỏi phỏng vấn Vue.js",
     "subtitle": "{count} câu hỏi với câu trả lời và ví dụ code",

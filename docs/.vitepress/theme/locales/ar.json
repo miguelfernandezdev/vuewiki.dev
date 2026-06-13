@@ -3,6 +3,12 @@
     "questions": "{count} أسئلة"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "جرّب سؤالاً",
+    "revealAnswer": "إظهار الإجابة",
+    "hideAnswer": "إخفاء الإجابة",
+    "readMore": "اقرأ الإجابة الكاملة"
+  },
   "home": {
     "title": "أسئلة مقابلات Vue.js",
     "subtitle": "{count} سؤال مع إجابات وأمثلة على الكود",

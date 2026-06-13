@@ -11,6 +11,7 @@ import FooterCta from './FooterCta.vue'
 import QuizSection from './QuizSection.vue'
 import TranslationBanner from './TranslationBanner.vue'
 import PlaygroundLink from './PlaygroundLink.vue'
+import HeroPreview from './HeroPreview.vue'
 import './style.css'
 
 export default {
@@ -19,7 +20,8 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'doc-before': () => [h(TranslationBanner), h(QuestionMeta)],
       'doc-after': () => [h(QuizSection), h(FooterCta)],
-      'home-hero-image': () => h(BookLogo)
+      'home-hero-image': () => h(BookLogo),
+      'home-features-after': () => h(HeroPreview)
     })
   },
   enhanceApp({ app }) {

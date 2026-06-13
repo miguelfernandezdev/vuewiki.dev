@@ -3,6 +3,12 @@
     "questions": "{count} 問"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "質問を試す",
+    "revealAnswer": "答えを表示",
+    "hideAnswer": "答えを隠す",
+    "readMore": "完全な回答を読む"
+  },
   "home": {
     "title": "Vue.js 面接質問集",
     "subtitle": "回答とコード例付き {count} 問",

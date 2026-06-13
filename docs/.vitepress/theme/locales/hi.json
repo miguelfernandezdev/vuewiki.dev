@@ -3,6 +3,12 @@
     "questions": "{count} प्रश्न"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "एक प्रश्न आज़माएं",
+    "revealAnswer": "उत्तर दिखाएं",
+    "hideAnswer": "उत्तर छिपाएं",
+    "readMore": "पूरा उत्तर पढ़ें"
+  },
   "home": {
     "title": "Vue.js साक्षात्कार प्रश्न",
     "subtitle": "{count} प्रश्न उत्तरों और कोड उदाहरणों के साथ",

@@ -3,6 +3,12 @@
     "questions": "{count} 道题目"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "试一道题",
+    "revealAnswer": "显示答案",
+    "hideAnswer": "隐藏答案",
+    "readMore": "查看完整答案"
+  },
   "home": {
     "title": "Vue.js 面试题",
     "subtitle": "{count} 道题目，含答案和代码示例",

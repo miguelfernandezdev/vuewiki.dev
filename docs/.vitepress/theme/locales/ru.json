@@ -3,6 +3,12 @@
     "questions": "{count} вопросов"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Попробуйте вопрос",
+    "revealAnswer": "Показать ответ",
+    "hideAnswer": "Скрыть ответ",
+    "readMore": "Читать полный ответ"
+  },
   "home": {
     "title": "Вопросы для собеседования по Vue.js",
     "subtitle": "{count} вопросов с ответами и примерами кода",

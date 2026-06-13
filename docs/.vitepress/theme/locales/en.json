@@ -3,6 +3,13 @@
     "questions": "{count} questions"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Try a question",
+    "revealAnswer": "Reveal answer",
+    "hideAnswer": "Hide answer",
+    "readMore": "Read full answer",
+    "ctaMessage": "170+ questions like this one. Try the full deck!"
+  },
   "home": {
     "title": "Vue.js Interview Questions",
     "subtitle": "{count} questions with answers and code examples",

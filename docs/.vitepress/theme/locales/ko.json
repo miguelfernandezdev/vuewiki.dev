@@ -3,6 +3,12 @@
     "questions": "{count}개 질문"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "질문 체험하기",
+    "revealAnswer": "답변 보기",
+    "hideAnswer": "답변 숨기기",
+    "readMore": "전체 답변 읽기"
+  },
   "home": {
     "title": "Vue.js 면접 질문",
     "subtitle": "답변과 코드 예제가 포함된 {count}개 질문",

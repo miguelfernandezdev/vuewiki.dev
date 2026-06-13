@@ -3,6 +3,12 @@
     "questions": "{count} perguntas"
   },
   "footer": {},
+  "hero": {
+    "previewLabel": "Experimente uma pergunta",
+    "revealAnswer": "Revelar resposta",
+    "hideAnswer": "Ocultar resposta",
+    "readMore": "Ler resposta completa"
+  },
   "home": {
     "title": "Perguntas de Entrevista Vue.js",
     "subtitle": "{count} perguntas com respostas e exemplos de código",
